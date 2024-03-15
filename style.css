@@ -217,41 +217,6 @@ p {
   display: flex;
 }
 
-.image {
-  flex: 1;
-  overflow: hidden;
-  position: relative;
-}
-
-.image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: skewX(-15deg);
-}
-
-.text {
-  flex: 1;
-  background-color: #7891a9;
-  color: #ffffff;
-  padding: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transform: skewX(-15deg);
-}
-
-.text h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-.text p {
-  font-size: 18px;
-  margin-bottom: 30px;
-}
-
 .button {
   display: inline-block;
   background-color: #2c3e50;
@@ -275,7 +240,7 @@ section {
 }
 
 footer {
-    background-color: #ffb300;
+    background-color: #afbcd2d2;
     color: #ffffff;
     text-align: center;
     padding: 10px 0;
@@ -491,21 +456,18 @@ section {
 
   /*  middle content w properties */
   .property-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 0 20px; /* Add responsive padding */
-}
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three widgets per row */
+    gap: 20px; /* Add gap between widgets */
+    padding: 0 20px; /* Add padding to the container */
+  }
 
 .property-widget {
-  flex: 0 0 calc(33.33% - 40px); /* Three widgets per row with margin */
-  border: 1px solid #ccc;
   border-radius: 10px;
-  overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   transition: transform 0.3s ease;
-  box-sizing: border-box;
+  background-color: white;
 }
 
 .property-widget:hover {
@@ -554,7 +516,7 @@ section {
   border-radius: 5px;
   text-decoration: none;
   cursor: pointer;
-  background-color: #7891a9;
+  background-color: #ffb300;
   color: #fff;
   transition: background-color 0.3s ease, color 0.3s ease;
   margin-right: 10px; /* Add spacing between buttons */
@@ -593,6 +555,14 @@ section {
     object-fit: cover;
 }
 
+.peachytwo {
+  background-color:#afbcd2d2;
+    size:100%;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    object-fit: cover;
+}
 image-container {
   width: 100%;
   height: 100%;
@@ -609,14 +579,17 @@ image-container {
 
 /* Services section styles */
 .services-new {
-  padding: 100px 0;
+  padding: 120px 0;
   background-color: #f9f7f7;
   text-align: center;
+  max-height: 600px;
+  position: relative;
 }
+
 
 .services-new h2 {
   font-size: 36px;
-  margin-bottom: 40px;
+  margin-bottom: 0px;
 }
 
 .row-new {
@@ -628,7 +601,7 @@ image-container {
 
 .column-new {
   flex: 0 0 33.33%;
-  padding: 20px;
+  padding: 35px;
 }
 
 .card-new {
@@ -637,6 +610,7 @@ image-container {
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
+  height: 120%;
 }
 
 .card-new:hover {
@@ -761,7 +735,7 @@ image-container {
   .property-carousel-container {
     overflow: hidden;
     position: relative;
-    max-width: 800px; /* Set maximum width of the carousel */
+    max-width: 1500px; /* Set maximum width of the carousel */
     margin: 0 auto; /* Center the carousel horizontally */
     border: 8px solid #ffb300; /* Increase border width and use yellow color */
     border-radius: 30px; /* Increase border radius for more dramatic effect */
@@ -780,10 +754,10 @@ image-container {
   background-color: #afbcd2d2;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
-  margin: 20px;
   width: 1000px;
+  height: 600px;
 }
 
 h2 {
@@ -791,5 +765,110 @@ h2 {
 }
 
 p {
+  margin-bottom: 0;
+}
+/* agents */
+
+.agents-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px; /* Added padding to space out the cards */
+  max-width: 1200px; /* Added max-width to limit container width */
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+.agent-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 100%; /* Extend the card width to the container width */
+  background-color: white; /* Added background color to cards */
+  transition: transform 0.3s ease;
+}
+
+.agent {
+  display: flex;
+  justify-content: space-between; 
+}
+
+.agent-image {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+}
+
+.agent-image img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.call-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.agent-name {
+  margin-top: 5px;
+  margin-right: 40px;
+}
+
+.agent-description {
+  flex: 3;
+  padding: 20px;
+  padding-top: 7%;
+ 
+}
+
+.agent-card:hover {
+  transform: scale(1.05); /* Enlarge the card on hover */
+}
+
+.agent-description h2 {
+  margin-top: 0;
+}
+
+.agent-description p {
+  margin-bottom: 0;
+}
+/* widget test */
+.containerfirst {
+  display: flex;
+  flex-direction: row;
+  align-items: ;
+  justify-content: space-between;
+  max-width: ; /* Adjust as needed */
+  margin: 0 auto; /* Center the container */
+}
+
+.image {
+  flex: 1;
+  padding: 0 10px; /* Adjust spacing */
+}
+
+.image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.text {
+  flex: 1;
+  padding: 0 10px; /* Adjust spacing */
+  background-color: #afbcd2d2;
+}
+
+.text h2 {
+  margin-bottom: 10px;
+}
+
+.text p {
   margin-bottom: 0;
 }

@@ -96,5 +96,10 @@ class StickyNavigation {
 
 new StickyNavigation();
 
-// trying out scroll code
+// Paralax- I dont like it
 
+// window.addEventListener('scroll', function() {
+//     const parallax = document.querySelector('.parallax-bg');
+//     let scrollPosition = window.pageYOffset;
+//     parallax.style.transform = 'translateY(' + scrollPosition * 0.5 + 'px)';
+// });
