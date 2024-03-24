@@ -1,11 +1,199 @@
 
 body {
   margin: 0;
+  padding: 0;
   background-color: #fdfdfd;
   font-family: 'Bauer Bodoni', serif;
+  text-decoration: none;
+}
+header {
+  position: relative;
+  background-image: url('header.png/header.png'); /* Adjust the image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
-header {
+.navbar {
+  background-color: transparent;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.navbar.navbar-scrolled {
+  background-color: #615344;; /* Color to show when scrolled */
+}
+
+.navbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.navbar-logo {
+  color: #fff; /* Color of logo/text */
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar-nav li {
+  margin: 0 10px;
+}
+
+.navbar-nav li a {
+  color: #fff; /* Color of nav links */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav li a:hover {
+  color: #ffc800; /* Hover color for nav links */
+}
+.centered-content {
+  position: relative;
+  text-align: center;
+}
+
+.centered-text {
+  padding-top: 50%; /* Adjust the value to lower or raise the text */
+  transform: translateY(-50%);
+  color: white;
+  font-size: 50px;
+  text-align: center;
+}
+
+
+.buttons {
+  position: absolute;
+  bottom: 400px; /* Adjust distance from bottom as needed */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.transparent-button {
+  background-color: transparent;
+  border: 2px solid white; /* Adjust border properties as needed */
+  color: white; /* Adjust text color as needed */
+  padding: 10px 20px; /* Adjust padding as needed */
+  font-size: 16px; /* Adjust font size as needed */
+  margin: 0 10px; /* Adjust margin between buttons as needed */
+  cursor: pointer;
+}
+
+.transparent-button:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Adjust hover background color as needed */
+}
+
+.main-section {
+  padding: 50px 0; /* Adjust padding as needed */
+    height: 100vh;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.half-width {
+  width: 50%;
+  padding: 0 20px; /* Adjust padding as needed */
+}
+
+.image-container {
+  text-align: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.text-container {
+  text-align: left;
+}
+
+.text-container h2 {
+  font-size: 24px;
+}
+
+.text-container p {
+  font-size: 16px;
+}
+/* Style for the container holding the images and text */
+.listing-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px; /* Adjust the maximum width as needed */
+  margin: 0 auto; /* Center the container */
+}
+
+/* Style for each listing item */
+.listing-item {
+  flex: 0 0 calc(33.33% - 20px); /* Adjust the width of each item */
+  max-width: calc(33.33% - 50px); /* Adjust the maximum width of each item */
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid white; /* White outline */
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.2); /* Transparent background */
+  text-align: center;
+}
+
+/* Style for the image */
+.listing-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* Style for the text */
+.listing-item p {
+  color: white; /* White text */
+  margin-top: 10px;
+}
+
+
+/* Style for the transparent button */
+.transparent-btn {
+  position: absolute;
+  bottom: 10px; /* Adjust bottom margin as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 8px;
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+}
+
+.transparent-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+
+
+/* header {
   background-color: #fdfdfd;
   padding: 20px 0;
   display: flex;
@@ -14,26 +202,22 @@ header {
   background-size: cover;
   background-position: center;
   position: relative;
-}
+} */ */
 
-.header-content {
+/* .header-content {
     display: flex;
-    align-items: center; /* Center align items vertically */
-    padding: 20px; /* Adjust padding as needed */
-}
-
-.header img {
-    width: 50%; /* Adjust width of the image */
-    height: auto; /* Maintain aspect ratio */
+    align-items: center; 
+    padding: 20px; 
 }
 
 
-.content {
+
+/* .content {
     flex: 1;
     padding-left: 20px; /* Add spacing between image and content */
     color: #ffffff; /* Text color for the content */
-}
-
+} */
+/* 
 .content h1 {
     font-size: 36px;
     margin-bottom: 20px;
@@ -54,15 +238,15 @@ header {
     text-decoration: none;
     font-size: 18px;
     transition: background-color 0.3s ease;
-}
+} */
 
-.button:hover {
+/* .button:hover {
     background-color: #607d8b;
-}
+} */
 
-.header img {
+/* .header img {
   width: 100%;
-  height: auto; /* Maintain aspect ratio */
+  height: auto; 
   display: block;
 }
 
@@ -71,8 +255,8 @@ header {
   margin: 0;
   padding: 0;
   font-size: 24px;
-}
-/* new navbar*/
+} */
+/* new navbar
 .et-hero-tabs,
 .et-slide {
     display: flex;
@@ -159,7 +343,7 @@ header {
 
 /* cloe */
 
-
+/* 
 .content {
   text-align: center;
   padding: 50px 20px;
@@ -167,14 +351,9 @@ header {
 
 h2 {
   color: #2c3e50; /* Dark Blue */
-}
+/* } */
 
-p {
-  color: #555555; /* Dark Gray */
-  margin-bottom: 20px;
-  font-family: 'Bauer Bodoni', serif;
-}
-
+/* 
 .button {
   display: inline-block;
   background-color: #afbcd2d2;
@@ -182,13 +361,10 @@ p {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  text-decoration: none;
-  transition: background-color 0.3s ease; /* Smooth transition */
-}
+  /* text-decoration: none; */
+  /* transition: background-color 0.3s ease; 
+} */ */
 
-.button:hover {
-  background-color: #607d8b; /* Darker shade of blue on hover */
-}
 
 /* Responsive Design */
 
@@ -205,7 +381,7 @@ p {
   nav {
       margin-top: 20px;
   }
-}
+} */
 
 @media only screen and (max-width: 480px) {
   .content {
@@ -214,7 +390,7 @@ p {
 }
 
 /* shapes?? image half thins */
-
+/* 
 .container {
   display: flex;
 }
@@ -233,13 +409,13 @@ p {
 
 .button:hover {
   background-color: #ffb300;
-}
+} */
 
 /*  image */
-
+/* 
 section {
     padding: 20px;
-}
+} */
 
 footer {
     background-color: #afbcd2d2;
@@ -269,7 +445,7 @@ footer a {
 
 
 /* new section code */
-
+/* 
 .section-heading {
     font-size: 100px;
     color: #ffffff;
@@ -354,7 +530,7 @@ section {
 }
 
 /* about us */
-
+/* 
 * {
     padding: 0;
     margin: 0;
@@ -436,14 +612,14 @@ section {
     left: 0;
     opacity: 0;
     transition: 0.7s;
-  }
-  .container:hover .img-wrapper:after {
+  } */
+  /* .container:hover .img-wrapper:after {
     opacity: 0.5;
   }
   i:hover {
     color: #afbcd2d2;
-    cursor: pointer;
-  }
+    cursor: pointer; */
+  /* } */
   @media screen and (min-width: 992px) {
     .wrapper {
       grid-template-columns: repeat(3, 1fr);
@@ -457,21 +633,21 @@ section {
   }
 
   /*  middle content w properties */
-  .property-container {
+  /* .property-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Three widgets per row */
     gap: 20px; /* Add gap between widgets */
     padding: 0 20px; /* Add padding to the container */
-  }
+  } */
 
-.property-widget {
+/* .property-widget {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease;
   background-color: white;
-}
-
+} */
+/* 
 .property-widget:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
@@ -480,7 +656,7 @@ section {
 .property-widget img {
   width: 100%;
   height: 200px; /* Adjust the height as needed */
-  object-fit: cover;
+  /* object-fit: cover;
   border-radius: 10px 10px 0 0;
 }
 
@@ -494,23 +670,23 @@ section {
   color: #29273d;
 }
 
-.price {
-  font-size: 1.2em;
-  color: #3a4e67; /* Green color for price */
-  margin-bottom: 10px;
+.price { */
+  /* font-size: 1.2em; */
+  /* color: #3a4e67; Green color for price */
+  /* margin-bottom: 10px;
 }
 
 .location {
   font-style: italic;
   margin-bottom: 20px;
   color: #575a7b;
-}
+} */ */
 
-.buttons {
+/* .buttons {
   display: flex;
   justify-content: center;
-}
-
+} */
+/* 
 .btn {
   display: inline-block;
   padding: 10px 20px;
@@ -522,14 +698,10 @@ section {
   color: #fff;
   transition: background-color 0.3s ease, color 0.3s ease;
   margin-right: 10px; /* Add spacing between buttons */
-}
-
+} */
+/* 
 .btn:last-child {
   margin-right: 0; /* Remove margin from the last button */
-}
-
-.btn:hover {
-  background-color: #1f194c;
 }
 
 @media screen and (max-width: 768px) {
@@ -547,8 +719,8 @@ section {
   }
 }
 
-/* new widgets */
-.peachy {
+new widgets
+/* .peachy {
   background-color: #afbcd2d2;
     size:100%;
     height: 100%;
@@ -569,9 +741,9 @@ image-container {
   width: 100%;
   height: 100%;
   overflow: hidden;
-}
+} */
 
-.image-container img {
+/* .image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -579,12 +751,12 @@ image-container {
 
 /* split in half */
 
-/* Services section styles */
+/* Services styles */
 .services-new {
   padding: 120px 0;
-  background-color: #f9f7f7;
+  background-color: rgb(241, 216, 194);
   text-align: center;
-  max-height: 600px;
+  max-height: 100px;
   position: relative;
 }
 
@@ -602,7 +774,7 @@ image-container {
 }
 
 .column-new {
-  flex: 0 0 33.33%;
+  flex: 0 0 25.33%;
   padding: 35px;
 }
 
@@ -632,15 +804,15 @@ image-container {
 .card-new p {
   font-size: 18px;
   margin-bottom: 0;
-}
+} */
 
 /* property carousel */
-.property-carousel-container {
+/* .property-carousel-container {
   overflow: hidden;
   position: relative;
   max-width: 800px; /* Set maximum width of the carousel */
   margin: 0 auto; /* Center the carousel horizontally */
-  background-color: white;
+  /* background-color: white;
 }
 
 .property-carousel {
@@ -655,9 +827,9 @@ image-container {
   flex-direction: column;
 
 
-}
+} */ */
 
-.property-image {
+/* .property-image {
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -677,10 +849,10 @@ image-container {
 .property-details h3 {
   margin: 0;
   font-size: 16px; /* Reduce font size for property names */
-}
+} */
 
 /* arrows for property carousel */
-
+/* 
 .arrow-container {
   position: absolute;
   top: 50%;
@@ -698,26 +870,26 @@ image-container {
   border-radius: 50%;
   margin: 0 10px;
   transition: transform 0.3s ease;
-}
-
+} */
+/* 
 .arrow-left:hover,
 .arrow-right:hover {
   transform: scale(1.2);
-}
+} */
 /* buttons for carousel */
 .arrow-container {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
-  left: 10px; /* Adjust the positioning of the left arrow */
+  left: 10px; Adjust the positioning of the left arrow */
 }
 
-.arrow-right {
+/* .arrow-right {
   right: 10px; /* Adjust the positioning of the right arrow */
-}
+} */
 
-.arrow-left,
+/* .arrow-left,
 .arrow-right {
   cursor: pointer;
   font-size: 24px;
@@ -727,14 +899,14 @@ image-container {
   border-radius: 50%;
   margin: 0 10px;
   transition: transform 0.3s ease;
-}
-
+} */
+/* 
 .arrow-left:hover,
 .arrow-right:hover {
   transform: scale(1.2);
 }
 /* try something new */
-  .property-carousel-container {
+  /* .property-carousel-container {
     overflow: hidden;
     position: relative;
     max-width: 1500px; /* Set maximum width of the carousel */
@@ -742,16 +914,16 @@ image-container {
     border: 8px solid #ffb300; /* Increase border width and use yellow color */
     border-radius: 30px; /* Increase border radius for more dramatic effect */
     padding: 20px; /* Increase padding for spacing */
-}
+} */ */
 
 /* white card center */
-.containerone {
+/* .containerone {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-}
-
+} */
+/* 
 .cardone {
   background-color: #afbcd2d2;
   border-radius: 10px;
@@ -759,18 +931,10 @@ image-container {
   padding: 10px;
   box-sizing: border-box;
   width: 1000px;
-  height: 600px;
-}
-
-h2 {
-  margin-top: 0;
-}
-
-p {
-  margin-bottom: 0;
-}
+  height: 600px; */
+/*/
 /* agents */
-
+/* 
 .agents-container {
   display: flex;
   flex-direction: column;
@@ -779,7 +943,7 @@ p {
   max-width: 1200px; /* Added max-width to limit container width */
   margin: 0 auto; /* Center the container horizontally */
 }
-
+/* 
 .agent-card {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -789,7 +953,7 @@ p {
   transition: transform 0.3s ease;
 }
 
-.agent {
+/* .agent {
   display: flex;
   justify-content: space-between; 
 }
@@ -798,12 +962,12 @@ p {
   flex: 1;
   text-align: center;
   padding: 20px;
-}
-
+} */
+/* 
 .agent-image img {
   width: 150px;
-  height: 150px;
-  border-radius: 50%;
+  height: 150px; */
+  /* border-radius: 50%;
   margin-bottom: 10px;
 }
 
@@ -815,8 +979,8 @@ p {
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 10px;
-}
-
+} */ */
+/* 
 .agent-name {
   margin-top: 5px;
   margin-right: 40px;
@@ -826,33 +990,33 @@ p {
   flex: 3;
   padding: 20px;
   padding-top: 7%;
- 
+  */
 }
-
+/* 
 .agent-card:hover {
   transform: scale(1.05); /* Enlarge the card on hover */
-}
+/* }
 
 .agent-description h2 {
   margin-top: 0;
-}
+} */ */
 
-.agent-description p {
+/* .agent-description p {
   margin-bottom: 0;
 }
-/* widget test */
+/* widget test
 .containerfirst {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 0 auto; /* Center the container */
-}
+} */
 
-.image {
+/* .image {
   flex: 1;
   padding: 0 10px; /* Adjust spacing */
 }
-
+/* 
 .image img {
   width: 100%;
   height: auto;
@@ -862,18 +1026,18 @@ p {
 .text {
   flex: 1;
   padding: 0 10px; /* Adjust spacing */
-  background-color: #afbcd2d2;
-}
+  /* background-color: #afbcd2d2;
+} */
 
 .text h2 {
   margin-bottom: 10px;
 }
 
 .text p {
-  margin-bottom: 0;
-}
+  margin-bottom: 0; */
+} */ */ */
 /* call button */
-.button-74 {
+/* .button-74 {
   background-color: #ffcc00;
   border: 2px solid #422800;
   border-radius: 30px;
@@ -890,9 +1054,9 @@ p {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-}
+} */
 
-.button-74:hover {
+/* .button-74:hover {
   background-color: #fff;
 }
 
@@ -906,5 +1070,5 @@ p {
     min-width: 120px;
     padding: 0 25px;
   }
-}
-/* test */
+} */
+test
