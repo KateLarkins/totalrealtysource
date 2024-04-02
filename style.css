@@ -2,21 +2,21 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #fdfdfd;
+  background-color: #ffffff;
   font-family: 'Bauer Bodoni', serif;
   text-decoration: none;
 }
 
 .indexheader {
   position: relative;
-  background-image: url('header.png/header.png'); /* Adjust the image path */
+  background-image: url('takefive.png/takefive.png'); /* Adjust the image path */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
 }
 .navbar {
-  background-color:rgba(213, 202, 182, 0.649);
+  background-color:rgb(17, 45, 93);
   position: fixed;
   width: 100%;
   top: 0;
@@ -39,8 +39,10 @@ body {
 }
 
 .navbarindex.navbar-scrolled {
-  background-color: rgba(213, 202, 182, 0.649); /* Color to show when scrolled */
+  /* background-color: rgba(213, 202, 182, 0.649); Color to show when scrolled */
+  background-color: rgb(16, 39, 79);
 }
+
 
 .navbar-inner {
   display: flex;
@@ -91,11 +93,16 @@ body {
 }
 
 .navbar-nav li a:hover {
-  color: #a98d6d; /* Hover color for nav links */
+  /* color: #a98d6d; Hover color for nav links */
+  color:rgb(240, 184, 0);
 }
 .centered-content {
   position: relative;
   text-align: center;
+}
+
+.content {
+  font-family:"Source Serif 4";
 }
 
 .centered-text {
@@ -118,7 +125,7 @@ body {
 .transparent-button {
   font-family: 'Bauer Bodoni', serif;
   background-color: transparent;
-  border: 3px solid rgb(255, 255, 255); /* Adjust border properties as needed */
+  border: 3px solid rgb(255, 166, 0); /* Adjust border properties as needed */
   color: rgb(255, 255, 255); /* Adjust text color as needed */
   padding: 10px 20px; /* Adjust padding as needed */
   font-size: 20px; /* Adjust font size as needed */
@@ -133,21 +140,28 @@ body {
 
 /* Second Section */
 
+
+
 .text-container h2 {
-  font-size: 68px;
-  color: #BFA586;
+  font-size: 55px;
+  color: white;
+
 }
 
 .text-container p {
   font-size: 35px;
+  font-family:"Source Serif 4";
+  color: white;
 }
-
+.text-container {
+  padding-bottom: 100px;
+}
 /* Our Services Section */
 
 
 /* Services styles */
 .services-new {
-  background-color: rgb(241, 216, 194);
+  background-color: white;
   text-align: center;
   max-height: 200px;
   position: relative;
@@ -176,13 +190,13 @@ body {
   background-color: #fff;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px white;
   transition: box-shadow 0.3s ease;
   height: 80%;
 }
 
 .card-new:hover {
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 40px white;
 }
 
 .card-new i {
@@ -245,7 +259,7 @@ body {
 
 /* Style for the text */
 .listing-item p {
-  color: rgb(0, 0, 0); /* White text */
+  color: white; /* White text */
   margin-top: 10px;
 }
 
@@ -323,7 +337,7 @@ body {
   height: 300px;
   object-fit: cover;
   border-radius: 0%;
-  border: 50px #d0bda8 solid;
+  border: 50px white
   background-color:  rgb(235, 224, 214);
 }
 
@@ -333,11 +347,17 @@ body {
 .learnmore {
   position: absolute;
   padding: 10px 20px;
-  border: 5px solid  rgb(241, 216, 194);
+  border: 5px solid  rgb(255, 179, 0);
   border-radius: 8px;
   background-color: transparent;
   text-decoration: none;
+  font-size: 25px;
   font-family: 'Bauer Bodoni', serif;
+  color: white;
+}
+
+.learnmore:hover {
+  color: #00aeff;
 }
 
 .button-74 {
@@ -360,6 +380,7 @@ body {
   -webkit-user-select: none;
   touch-action: manipulation;
 }
+
 
 .seventyfour {
   display: flex;
@@ -426,6 +447,45 @@ padding-top: 40px;
 .location {
   color: #666;
 }
+/* overlay effect */
+
+.listing-item {
+  position: relative;
+  display: inline-block;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgb(167, 156, 140); /* Adjust the opacity and color as needed */
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.listing-item:hover .overlay {
+  opacity: 1;
+}
+
+.overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text {
+  color: black;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1; /* Ensure text is above the overlay */
+}
+
 
 
 .btn {
