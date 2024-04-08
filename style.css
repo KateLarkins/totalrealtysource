@@ -8,7 +8,7 @@ body {
 
 .indexheader {
   position: relative;
-  background-image: url('condo.png/condo.png'); /* Adjust the image path */
+  background-image: url('interior.png/interior.png'); /* Adjust the image path */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -39,7 +39,7 @@ body {
 }
 
 .navbar-nav li a {
-  color: white; /* Color of nav links */
+  color: rgb(0, 0, 0); /* Color of nav links */
   text-decoration: none;
   transition: color 0.3s ease;
   font-size: 18px;
@@ -56,7 +56,7 @@ body {
 }
 
 .navbar-logo {
-  color: white; /* Color of logo/text */
+  color: rgb(0, 0, 0); /* Color of logo/text */
   font-size: 30px;
   font-weight: bold;
   text-decoration: none;
@@ -81,17 +81,12 @@ body {
   /* background-color: rgba(213, 202, 182, 0.649); Color to show when scrolled */
   background-color: rgb(255, 255, 255);
 }
-
-.navbarindex.navbar-scrolled {
-  /* background-color: rgba(213, 202, 182, 0.649); Color to show when scrolled */
-  background-color: rgb(255, 255, 255);
-}
 .navbarindex.navbar-scrolled .navbar-nav li a {
-  color: rgb(33, 34, 60);
+  color: rgb(0, 0, 0)
 }
 
 .navbarindex.navbar-scrolled .navbar-logo {
-  color: rgb(33, 34, 60);
+  color: rgb(0, 0, 0);
 }
 /* Responsive Design */
 
@@ -153,7 +148,7 @@ body {
 .centered-text {
   padding-top: 50%; /* Adjust the value to lower or raise the text */
   transform: translateY(-50%);
-  color:  rgb(255, 255, 255);
+  color:  rgb(0, 0, 0);
   font-size: 50px;
   text-align: center;
 }
@@ -170,8 +165,8 @@ body {
 .transparent-button {
   font-family: 'Bauer Bodoni', serif;
   background-color: transparent;
-  border: 3px solid rgb(192, 192, 192); /* Adjust border properties as needed */
-  color: rgb(255, 255, 255); /* Adjust text color as needed */
+  border: 3px solid rgb(0, 0, 0); /* Adjust border properties as needed */
+  color: rgb(0, 0, 0); /* Adjust text color as needed */
   padding: 10px 20px; /* Adjust padding as needed */
   font-size: 20px; /* Adjust font size as needed */
   margin: 0 10px; /* Adjust margin between buttons as needed */
@@ -186,15 +181,15 @@ body {
 /* Second Section */
 
 .text-container h2 {
-  font-size: 55px;
-  color: rgb(19, 23, 60);
-
+  font-size: 50px;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
 }
 
 .text-container p {
   font-size: 25px;
   font-family:"Source Serif 4";
-  color: rgb(19, 23, 60);
+  color: rgb(22, 22, 22);
 }
 .text-container {
   padding-bottom: 100px;
@@ -255,7 +250,7 @@ body {
 .card-new p {
   font-size: 18px;
   margin-bottom: 0;
-} */
+} 
 
 /* our team */
 
@@ -282,11 +277,12 @@ body {
 
 /* Style for each listing item */
 .listing-item {
-  flex: 0 0 calc(33.33% - 20px); /* Adjust the width of each item */
-  max-width: calc(33.33% - 50px); /* Adjust the maximum width of each item */
+  flex: 0 0 calc(33.33% - 20px); 
+  max-width: calc(33.33% - 50px);
+  height: fit-content;
   margin: 10px;
   padding: 10px;
-  border: 2px solid rgb(19, 23, 60); /* White outline */
+  border: 2px solid rgb(16, 16, 16); /* White outline */
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.2); /* Transparent background */
   text-align: center;
@@ -294,14 +290,16 @@ body {
 
 /* Style for the image */
 .listing-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
+  width: 100%; /* Ensures the image fills its container */
+  height: 200px; /* Set the desired height for all images */
+  object-fit: cover; /* Ensures the image maintains aspect ratio */
+  border-radius: 6px; /* Adjust border-radius if needed */
 }
+
 
 /* Style for the text */
 .listing-item p {
-  color: rgb(19, 23, 60); /* White text */
+  color: rgb(16, 16, 16); /* White text */
   margin-top: 10px;
 }
 
@@ -343,7 +341,7 @@ body {
 
   /* border: 1px solid white; */
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.004); /* Transparent white background */
+  background-color: rgba(236, 236, 236, 0); /* Transparent white background */
   padding: 20px;
   flex: 0 0 calc(33.33% - 20px); /* Adjust width of each card */
   max-width: calc(33.33% - 20px); /* Limit maximum width of each card */
@@ -351,10 +349,10 @@ body {
 }
 
 .fun-button {
-  border: 4px solid white;
+  border: 2px solid rgb(0, 0, 0);
   margin: 4px;
   text-decoration: none;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   font-size: 20px;
   padding: 4px 10px;
 }
@@ -379,13 +377,11 @@ body {
   height: 300px;
   object-fit: cover;
   border-radius: 0%;
-  border: 50px white;
-  background-color:rgb(235, 224, 214);
+  background-color:rgb(0, 0, 0);
+  border: 20px solid #212121;
 }
 
-.buttons {
-  margin-top: 70px;
-}
+
 
 .learnmorediv {
   align-items: center;
@@ -398,7 +394,7 @@ body {
 .learnmore {
   position: absolute;
   padding: 10px 20px;
-  border: 4px solid  rgb(0, 0, 0);
+  border: 2px solid  rgb(0, 0, 0);
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0);
   text-decoration: none;
@@ -408,7 +404,7 @@ body {
 }
 
 .learnmore:hover {
-  color: #ffaa00;
+    background-color: rgba(238, 238, 238, 0.469); 
 }
 
 /* For Sale */
@@ -423,7 +419,7 @@ body {
 
 .property-widget {
   width: calc(33.33% - 20px); /* Adjust width based on your preference */
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 5px;
   overflow: hidden;
@@ -433,8 +429,19 @@ body {
   width: 100%;
   height: auto;
   display: block;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 8px solid rgb(255, 255, 255);
 }
+.content-wrapper img {
+  border: 1px solid #ffffff;
+}
+.content-wrapper img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.content-wrapper img:hover {
+  transform: scale(1.01);
+}
+
 
 .property-details {
   padding: 20px;
@@ -472,7 +479,7 @@ body {
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgb(247, 243, 243); /* Adjust the opacity and color as needed */
+  background-color: rgb(253, 252, 252); /* Adjust the opacity and color as needed */
   opacity: 0;
   transition: opacity 0.5s ease;
 }
@@ -530,7 +537,83 @@ body {
   background-color: #c82333;
 }
 /* end for sale */
+/* Contact */
+.contactcontainer {
+  width:80%;
+  margin: 50px auto;
+}
+.contactbox {
+  background-color: #ffffff;
+  display:flex;
+}
 
+.contactleft {
+  flex-basis: 60%;
+  padding:40px 60px;
+}
+.contactright {
+  flex-basis: 40%;
+  padding:40px;
+  background-color: #bfcfd8;
+  color: #fff;
+}
+.contactcontainer p {
+  margin-bottom:40px;
+}
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.input-row .input-group {
+  flex-basis:45%;
+}
+input {
+  width: 100%;
+  border:none;
+  border-bottom: 1px solid rgb(204, 204, 204);
+  outline: none;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+textarea {
+  width:100%;
+  border: 1px solid rgb(204, 204, 204);
+  outline:none;
+  padding:10px;
+  box-sizing: border-box;
+}
+label {
+  margin-bottom: 6px;
+  display: block;
+  color: #000000;
+}
+.submit {
+  background: #bfcfd8;
+  width: 100px;
+  border: none;
+  outline:none;
+  color:#fff;
+  height: 35px;
+  border-radius: 30px;
+  margin-top: 20px;
+  box-shadow: 0px 5px 15px 0px rgb(216, 196, 196)
+}
+.contactleft h3 {
+  color: #363b3f;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+.contactright h3 {
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+tr td:first-child {
+  padding-right:20px;
+}
+tr td {
+  padding-top:20px;
+}
 @media (min-width: 768px) {
   .button-74 {
     min-width: 120px;
@@ -572,8 +655,8 @@ body {
 }
 
 footer {
-    background-color:rgb(23, 42, 76);
-    color: #ffffff;
+    background-color:rgb(242, 246, 248);
+    color: #000000;
     text-align: center;
     padding: 10px 0;
     width: 100%;
@@ -581,7 +664,7 @@ footer {
 }
 
 footer a {
-    color: #ffffff;
+    color: #000000;
     text-decoration: none;
     margin: 0 10px;
 }
@@ -636,5 +719,15 @@ footer a {
     margin: 0 5px; /* Adjust margin as needed */
   }
 }
-
-
+@media only screen and (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+  .column {
+    margin: 0;
+    text-align: center;
+  }
+  .column:nth-child(2) {
+    margin-top: 50px;
+  }
+}

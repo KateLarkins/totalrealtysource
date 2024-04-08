@@ -1,0 +1,198 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Realty Source</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bauer+Bodoni:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #afbcd2d2;">
+    <header>
+        <section class="et-hero-tabs">
+          <h1>Total Realty Source</h1>
+          <h3>Your real estate family</h3>
+          <div class="et-hero-tabs-container">
+            <a class="et-hero-tab" href="index.html">Home</a>
+            <a class="et-hero-tab" href="forsale.html">For Sale</a>
+            <a class="et-hero-tab" href="about.html">About</a>
+            <a class="et-hero-tab" href="agents.html">Agents</a>
+            <a class="et-hero-tab" href="contact.html">Contact</a>
+            <span class="et-hero-tab-slider"></span>
+          </div>
+        </section>  
+    </header>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Meet the Agents</title>
+      <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="contactcontainer">
+            <h1 style="margin-bottom:10px;">Connect With Us</h1>
+            <p>We would love to get to know you or answer any questions you may have!</p>
+            <div class="contactbox"> 
+                <div class="contactleft">
+                    <h3>Send Message</h3>
+                    <form action="send_email.php" method="post">
+                       <div class="input-row">
+                            <div class="input-group">
+                                <label>Name</label>
+                                <input type="text" name="name" placeholder="Your Name">
+                            </div>
+                            <div class="input-group">
+                            <label>Phone</label>
+                                <input type="text" 
+                                name="phone" placeholder="+1 555 5555">
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Email</label>
+                                <input type="email" 
+                                name="email" placeholder="name@gmail.com">
+                            </div>
+                            <div class="input-group">
+                            <label>Subject</label>
+                                <input type="text" 
+                                name="subject" placeholder="Email Subject Line">
+                            </div>
+                        </div>
+                        <label>Message</label>
+                        <textarea rows="5" name="message" placeholder="Your Message"></textarea>
+
+                        <button class="submit"type="submit">SEND</button> 
+                       
+                    </form>
+                </div>
+                <div class="contactright">
+                    <h3>Reach Us</h3>
+
+                    <table>
+                        <tr>
+                            <td>Email</td>
+                            <td>contactus@email.com</td>
+                        </tr>
+                        <tr>
+                            <td>Phone</td>
+                            <td>731-574-9340</td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>3511 US-45 
+                            <br>Jackson, TN 38305 United States</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    
+    <footer>
+        <p>Follow us on social media:</p>
+        <a href="https://facebook.com">Facebook</a>
+        <a href="https://twitter.com">Twitter</a>
+        <a href="https://instagram.com">Instagram</a>
+        <p>HI.</p>
+    </footer>
+
+</body>
+</html>  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Realty Source</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bauer+Bodoni:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #ddddddd2;">
+    <header class="header">
+        <nav class="navbar" id="navbar">
+          <div class="navbar-inner">
+            <a href="index.html" class="navbar-logo">
+              <span>T</span>otal <span>R</span>ealty <span>S</span>ource
+            </a>
+            <ul class="navbar-nav">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="forsale.html">For Sale</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><i class="fa fa-phone" style="font-size:36px; color:white;"> </i></li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+    <div class="contactcontainer">
+        <h1 style="margin-bottom:10px; margin-top: 10%;">Contact Us!</h1>
+        <p>We would love to get to know you and answer any questions you may have.</p>
+        <div class="contactbox"> 
+            <div class="contactleft">
+                <h3>Send Message</h3>
+                <form id="contactForm" action="https://formspree.io/f/mayrlybl" method="post">
+                   <div class="input-row">
+                        <div class="input-group">
+                            <label>Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="input-group">
+                        <label>Phone</label>
+                            <input type="text" id="phone" name="phone" placeholder="( ___ )  ___  _____" required>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" id="email" name="email" placeholder="name@gmail.com" required>
+                        </div>
+                        <div class="input-group">
+                        <label>Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Subject Line" required>
+                        </div>
+                    </div>
+                    <label>Message</label>
+                    <textarea rows="5" id="message" name="message" placeholder="Your Message" required></textarea>
+
+                    <button class="submit" type="submit">SEND</button> 
+                </form>
+            </div>
+            <div class="contactright">
+                <h3>Reach Us</h3>
+
+                <table>
+                    <tr>
+                        <td>Email</td>
+                        <td>contactus@email.com</td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td>731-574-9340</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>3511 US-45 
+                        <br>Jackson, TN 38305 United States</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Follow us on social media:</p>
+        <a href="https://facebook.com">Facebook</a>
+        <a href="https://twitter.com">Twitter</a>
+        <a href="https://instagram.com">Instagram</a>
+        <p>HI.</p>
+    </footer>
+</body>
+</html>
+
