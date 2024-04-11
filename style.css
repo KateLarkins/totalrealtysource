@@ -859,11 +859,12 @@ footer a {
 @media only screen and (max-width: 600px) {
   .listing-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .listing-item {
-    margin-bottom: 20px;
+    width: calc(50% - 20px); 
+    margin: 10px; 
   }
 }
