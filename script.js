@@ -1,29 +1,26 @@
-window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-      navbar.classList.add('navbar-scrolled');
-    } else {
-      navbar.classList.remove('navbar-scrolled');
-    }
-  });
+// Function to check if an element is in viewport
+function isInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
 
-  // JavaScript for Navbar Collapse Toggle
-document.addEventListener('DOMContentLoaded', function () {
-  const navbarInner = document.querySelector('.navbar-inner');
-  const navbarNav = document.querySelector('.navbar-nav');
-  const navbarBars = document.querySelector('.fa-bars');
-
-  navbarBars.addEventListener('click', function () {
-    navbarInner.classList.toggle('collapsed');
-    navbarNav.classList.toggle('collapsed');
+// Function to reveal elements when they enter viewport
+function revealElements() {
+  const elements = document.querySelectorAll('.reveal');
+  elements.forEach(element => {
+      if (isInViewport(element)) {
+          element.classList.add('visible');
+      }
   });
+}
 
-  // Close navbar if a nav link is clicked
-  const navbarLinks = document.querySelectorAll('.navbar-nav li a');
-  navbarLinks.forEach(function (link) {
-    link.addEventListener('click', function () {
-      navbarInner.classList.add('collapsed');
-      navbarNav.classList.add('collapsed');
-    });
-  });
-});
+// Event listener for scroll event
+window.addEventListener('scroll', revealElements);
+
+// Initially reveal elements in viewport
+revealElements();
