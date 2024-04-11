@@ -98,6 +98,76 @@ body {
 .navbarindex.navbar-scrolled .navbar-logo {
   color: rgb(0, 0, 0);
 }
+
+/* Navbar */
+/* Navbar */
+.navbar {
+  background-color:rgb(255, 255, 255);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease;
+  overflow-x: hidden; /* Add this line to prevent horizontal overflow */
+}
+
+.navbarindex {
+  background-color:transparent;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease;
+  overflow-x: hidden; /* Add this line to prevent horizontal overflow */
+}
+
+.navbar-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar-nav li {
+  margin: 0 10px;
+}
+
+.navbar-nav li a {
+  color: rgb(0, 0, 0); /* Color of nav links */
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 18px;
+}
+
+.navbar-nav li a:hover {
+  color:rgb(240, 184, 0);
+}
+
+.navbarindex.navbar-scrolled {
+  background-color: rgb(255, 255, 255);
+}
+
+.navbarindex.navbar-scrolled .navbar-nav li a {
+  color: rgb(0, 0, 0);
+}
+
+.navbarindex.navbar-scrolled .navbar-logo {
+  color: rgb(0, 0, 0);
+}
+
+/* Navbar Collapse */
+.navbar-inner.collapsed .navbar-nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .navbar-inner.collapsed .navbar-nav {
+    display: none;
+  }
+}
+
 /* Responsive Design */
 
 /* Navbar Collapse */
@@ -756,3 +826,32 @@ footer a {
       padding: 2% 0; /* Adjust padding for smaller screens */
     }
   }
+
+  /* navbar */
+
+  @media only screen and (max-width: 768px) {
+    /* Adjustments for smaller screens */
+    .navbar-inner {
+        flex-direction: column;
+        align-items: center;
+    }
+    .navbar-nav {
+        margin-top: 20px;
+    }
+    .centered-content {
+        text-align: center;
+    }
+    .column {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        text-align: center;
+    }
+    .text-container {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .column-new {
+        width: calc(100% - 40px);
+    }
+}

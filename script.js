@@ -24,3 +24,12 @@ window.addEventListener('scroll', revealElements);
 
 // Initially reveal elements in viewport
 revealElements();
+
+document.addEventListener("DOMContentLoaded", function() {
+  var menuToggle = document.getElementById("menu-toggle");
+  var navbarNav = document.querySelector(".navbar-nav");
+
+  menuToggle.addEventListener("click", function() {
+    navbarNav.classList.toggle("show");
+  });
+});
