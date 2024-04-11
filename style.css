@@ -739,3 +739,6 @@ footer a {
     .centered-content {
         display: none;
     }
+    .indexheader {
+      background-image: none;
+  }
