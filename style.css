@@ -865,3 +865,11 @@ footer a {
     margin-bottom: 20px; /* Adds space between stacked items */
   }
 }
+
+
+@media screen and (max-width: 600px) {
+  .column-new {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
