@@ -858,9 +858,10 @@ footer a {
 
 @media only screen and (max-width: 600px) {
   .listing-item {
-    width: 50%; /* Each listing item takes up 50% of the container's width */
+    width: 100%; /* Each listing item takes up full width of the container */
     box-sizing: border-box; /* Include padding and border in the width calculation */
     padding: 0 10px; /* Add padding to create space between items */
-    box-sizing: border-box; /* Include padding and border in the width calculation */
+    display: block; /* Ensures each item stacks as a block element */
+    margin-bottom: 20px; /* Adds space between stacked items */
   }
 }
