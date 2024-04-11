@@ -731,3 +731,11 @@ footer a {
     margin-top: 50px;
   }
 }
+
+/* Media query for iPhones */
+@media only screen 
+    and (max-device-width: 480px) 
+    and (-webkit-device-pixel-ratio: 2) {
+    .centered-content {
+        display: none;
+    }
