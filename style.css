@@ -384,17 +384,15 @@ body {
 
 
 .learnmorediv {
-  align-items: center;
   display: flex;
-  padding-top: 5%;
   justify-content: center;
+  align-items: center;
   height: 100%; /* Adjust height as needed */
-
 }
+
 .learnmore {
-  position: absolute;
   padding: 10px 20px;
-  border: 2px solid  rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0);
   text-decoration: none;
@@ -404,8 +402,9 @@ body {
 }
 
 .learnmore:hover {
-    background-color: rgba(238, 238, 238, 0.469); 
+  background-color: rgba(238, 238, 238, 0.469);
 }
+
 
 /* For Sale */
 
