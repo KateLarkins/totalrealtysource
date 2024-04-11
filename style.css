@@ -340,7 +340,7 @@ body {
 }
 .card-content {
   max-height: 100px; /* Maximum height of the text content */
-  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-y: initial; /* Allow content to expand vertically */
 }
 
 .card-new h3 {
