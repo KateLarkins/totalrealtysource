@@ -888,14 +888,6 @@ footer a {
 }
 
 
-@media screen and (max-width: 600px) {
-  .column-new {
-    width: 100%;
-    margin: 10px 0;
-  }
-}
-
-
 @media screen and (max-width: 768px) {
   .column-new {
     flex: 0 0 calc(50% - 40px); /* Adjusted flex value for smaller screens */
@@ -907,5 +899,14 @@ footer a {
   .column-new {
     flex: 0 0 calc(100% - 40px); /* Adjusted flex value for even smaller screens */
     max-width: calc(100% - 40px); /* Adjusted max-width for even smaller screens */
+  }
+  
+  .card-content {
+    max-height: none; /* Allow content to expand vertically */
+  }
+  
+  .card-new h3 {
+    white-space: normal; /* Allow the heading to wrap to the next line */
+    text-overflow: initial;
   }
 }
