@@ -741,3 +741,8 @@ footer a {
     .indexheader {
       background-image: none;
   }
+  @media only screen and (max-width: 768px) {
+    .learnmorediv {
+      padding: 2% 0; /* Adjust padding for smaller screens */
+    }
+  }
