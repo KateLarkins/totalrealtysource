@@ -5,11 +5,11 @@ body {
   font-family: 'Bauer Bodoni', serif;
   text-decoration: none;
 }
-.reveal {
+/* .reveal {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 8s ease;
-}
+  transition: opacity 0.5s ease, transform 0.5s ease;
+} */
 
 .reveal.visible {
   opacity: 1;
@@ -279,78 +279,80 @@ body {
 
 /* Services styles */
 .services-new {
-  background-color: white;
+  background-color: rgb(242, 246, 248);
   text-align: center;
-  max-height: 200px;
-  position: relative;
+
 }
 
-.services-new h2 {
-  font-size: 36px;
-  margin-bottom: 0px;
+.services-new h1 {
+  font-size: 36px; /* Adjust as needed */
+  color: rgb(0, 0, 0);
+  font-weight: 400;
 }
 
 .row-new {
   display: flex;
+  flex-wrap: wrap; /* Ensure flex items wrap to the next line */
   justify-content: center;
   align-items: stretch;
-  padding-bottom: 60px;
 }
 
 .column-new {
-  flex: 0 0 calc(33.33% - 40px); /* Adjusted flex value */
-  margin: 20px;
-  max-width: calc(33.33% - 40px); /* Adjusted max-width */
-  width: 200px;
+  flex: 0 0 100%; /* Each column takes up 100% of the row width by default */
+  margin: 10px; /* Adjust as needed */
   padding: 20px;
   box-sizing: border-box; /* Ensure padding is included in the width */
-}
-
-.card-new svg {
-  width: 50px; /* Ensure consistent size for SVG icons */
-  height: 50px;
 }
 
 .card-new {
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 3px white;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
-  height: 100%;
-  overflow: hidden; /* Hide overflowing content */
+  margin-bottom: 20px; /* Add space between stacked cards */
+  max-width: 300px; /* Limit the maximum width of the card */
+  margin: 0 auto; /* Center the card horizontally */
+}
+
+.card-new svg {
+  width: 50px; /* Ensure consistent size for SVG icons */
+  height: 50px;
+  display: block; /* Ensure SVG is displayed as a block element */
+  margin: 0 auto; /* Center SVG horizontally */
 }
 
 .card-new h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  /* Ensure the heading is always visible */
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  font-size: 20px; /* Adjust as needed */
+  margin-bottom: 10px; /* Adjust as needed */
 }
+
 .card-new:hover {
-  box-shadow: 0 0 4px white;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
 .card-new i {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-.card-content {
-  max-height: 100px; /* Maximum height of the text content */
-  overflow-y: initial; /* Allow content to expand vertically */
+  font-size: 24px; /* Adjust as needed */
+  margin-bottom: 20px; /* Adjust as needed */
 }
 
-.card-new h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
+.card-content {
+  max-height: 80px; /* Maximum height of the text content */
+  overflow-y: hidden; /* Hide overflow content */
 }
 
 .card-new p {
-  font-size: 18px;
+  font-size: 16px; /* Adjust as needed */
   margin-bottom: 0;
-} 
+}
+
+@media (min-width: 768px) {
+  .column-new {
+    flex: 0 0 calc(30.33% - 20px); /* Each column takes up approximately 33.33% of the row width with margin */
+    max-width: calc(30.33% - 20px); /* Prevents column from exceeding 33.33% of the row width with margin */
+  }
+}
+
 
 /* our team */
 
@@ -366,7 +368,6 @@ body {
 .card-new p {
   text-align: center;
 }
-/* Style for the container holding the images and text */
 .listing-container {
   display: flex;
   flex-wrap: wrap;
@@ -375,18 +376,25 @@ body {
   margin: 0 auto; /* Center the container */
 }
 
-/* Style for each listing item */
 .listing-item {
-  flex: 0 0 calc(33.33% - 20px); 
-  max-width: calc(33.33% - 50px);
-  height: fit-content;
-  margin: 10px;
-  padding: 10px;
+  flex: 0 0 30%; /* Each item takes up 33.33% of the container width */
+  max-width: 30%; /* Prevents item from exceeding 33.33% of the container width */
+  box-sizing: border-box; /* Ensures padding and border are included in the width */
+  padding: 10px; /* Adjust padding as needed */
   border: 2px solid rgb(16, 16, 16); /* White outline */
   border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.2); /* Transparent background */
-  text-align: center;
+  margin: 6px;
+  /* Other styling for the items */
 }
+
+@media (max-width: 768px) { /* Adjust breakpoint as needed */
+  .listing-item {
+    flex: 0 0 100%; /* Each item takes up 100% of the container width on smaller screens */
+    max-width: 100%; /* Prevents item from exceeding 100% of the container width */
+  }
+}
+
+
 
 /* Style for the image */
 .listing-item img {
@@ -876,15 +884,22 @@ footer a {
     }
 }
 
-@media only screen and (max-width: 600px) {
+/* Media query for smaller screens */
+@media (max-width: 768px) {
   .listing-item {
-    width: 100%; /* Each listing item takes up full width of the container */
-    box-sizing: border-box; /* Include padding and border in the width calculation */
-    padding: 0 10px; /* Add padding to create space between items */
-    display: block; /* Ensures each item stacks as a block element */
-    margin-bottom: 20px; /* Adds space between stacked items */
+    flex: 0 0 calc(50% - 20px);
+    max-width: calc(50% - 50px);
   }
 }
+
+/* Media query for even smaller screens */
+@media (max-width: 576px) {
+  .listing-item {
+    flex: 0 0 calc(100% - 20px);
+    max-width: calc(100% - 50px);
+  }
+}
+
 
 
 @media screen and (max-width: 768px) {
@@ -909,3 +924,4 @@ footer a {
     text-overflow: initial;
   }
 }
+
