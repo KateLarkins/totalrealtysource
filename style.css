@@ -8,7 +8,7 @@ body {
 .reveal {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.35s ease;
+  transition: opacity 0.5s ease, transform 8s ease;
 }
 
 .reveal.visible {
@@ -294,7 +294,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: stretch;
-  flex-wrap: wrap;
   padding-bottom: 60px;
 }
 
