@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Listing</title>
+</head>
+<body>
+    <h1>Create Listing</h1>
+    <form id="listingForm" enctype="multipart/form-data">
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address"><br>
+        
+        <label for="price">Price:</label><br>
+        <input type="number" id="price" name="price"><br>
+        
+        <label for="bedrooms">Bedrooms:</label><br>
+        <input type="number" id="bedrooms" name="bedrooms"><br>
+        
+        <label for="bathrooms">Bathrooms:</label><br>
+        <input type="number" id="bathrooms" name="bathrooms"><br>
+        
+        <label for="image">Image:</label><br>
+        <input type="file" id="image" name="image"><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="response"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

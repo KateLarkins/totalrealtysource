@@ -33,3 +33,30 @@ document.addEventListener("DOMContentLoaded", function() {
     navbarNav.classList.toggle("show");
   });
 });
+
+
+
+// test
+
+document.getElementById('listingForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  var formData = new FormData();
+  formData.append('address', document.getElementById('address').value);
+  formData.append('price', document.getElementById('price').value);
+  formData.append('bedrooms', document.getElementById('bedrooms').value);
+  formData.append('bathrooms', document.getElementById('bathrooms').value);
+  formData.append('image', document.getElementById('image').files[0]);
+
+  fetch('create_listing.php', {
+      method: 'POST',
+      body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+      document.getElementById('response').innerText = data.message;
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
+});

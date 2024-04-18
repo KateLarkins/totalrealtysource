@@ -5,15 +5,38 @@ body {
   font-family: 'Bauer Bodoni', serif;
   text-decoration: none;
 }
+
+iframe {
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 95%;
+  height: 50vh; /* Optional: to make it stretch vertically to fill the viewport */
+  border: none; /* Optional: to remove the iframe border */
+  padding: 50px;
+}
 /* .reveal {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 } */
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+.aboutbody {
+  background-color: #f0f0f0; /* Fallback color */
+  /* Pattern */
+  background-image: 
+    linear-gradient(45deg, #eeeeee 25%, transparent 25%, transparent 75%, #eeeeee 75%, #eeeeee),
+    linear-gradient(45deg, #eeeeee 25%, transparent 25%, transparent 75%, #eeeeee 75%, #eeeeee);
+  background-size: 60px 60px; /* Size of the pattern */
+  animation: animateBackground 10s linear infinite;
+}
+
+@keyframes animateBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 60px 60px;
+  }
 }
 
 .indexheader {
@@ -84,7 +107,7 @@ body {
 }
 
 .navbar-nav li a:hover {
-  color:rgb(240, 184, 0);
+  color:rgb(200, 200, 200);
 }
 
 .navbarindex.navbar-scrolled {
@@ -142,7 +165,7 @@ body {
 }
 
 .navbar-nav li a:hover {
-  color:rgb(240, 184, 0);
+  color:rgb(93, 93, 93);
 }
 
 .navbarindex.navbar-scrolled {
@@ -465,6 +488,10 @@ body {
   padding: 4px 10px;
 }
 
+.fun-button:hover {
+  background-color: #75757529;
+}
+
 .fun-card-inner {
   display: flex;
   flex-direction: column;
@@ -483,10 +510,12 @@ body {
 .fun-rounded-image {
   width: 200px;
   height: 300px;
+  padding: 3%;
   object-fit: cover;
   border-radius: 0%;
-  background-color:rgb(0, 0, 0);
-  border: 20px solid #212121;
+  background-color:rgba(212, 212, 212, 0.253);
+  border: 7px solid #ffffff81;
+  border-radius: 7%;
 }
 
 
@@ -530,13 +559,36 @@ body {
   border: 1px solid #ddd;
   border-radius: 5px;
   overflow: hidden;
+  flex-wrap: wrap;
 }
 
 .property-widget img {
   width: 100%;
-  height: auto;
   display: block;
   border-bottom: 8px solid rgb(255, 255, 255);
+  max-height: 190px;
+  object-fit: cover; /* Ensure images maintain aspect ratio and cover the entire container */
+  flex: 0 0 30%; /* Each item takes up 33.33% of the container width */
+  max-width: 100%; 
+}
+.property-widget {
+  transition: transform 0.3s ease;
+}
+
+.property-widget:hover {
+  transform: scale(1.1);
+}
+/* Make the widget responsive */
+@media screen and (max-width: 768px) {
+  .property-widget {
+    width: calc(50% - 20px); /* Adjust width for smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .property-widget {
+    width: 100%; /* Adjust width for even smaller screens */
+  }
 }
 .content-wrapper img {
   border: 1px solid #ffffff;
@@ -546,7 +598,7 @@ body {
 }
 
 .content-wrapper img:hover {
-  transform: scale(1.01);
+  transform: scale(0.8);
 }
 
 
@@ -567,7 +619,7 @@ body {
 
 .price {
   font-weight: bold;
-  color: #007bff;
+  color: #004793;
 }
 
 .location {
@@ -624,25 +676,6 @@ body {
   font-size: 14px;
 }
 
-.btn:hover {
-  background-color: #0056b3;
-}
-
-.btn-details {
-  background-color: #28a745;
-}
-
-.btn-details:hover {
-  background-color: #218838;
-}
-
-.btn-contact {
-  background-color: #dc3545;
-}
-
-.btn-contact:hover {
-  background-color: #c82333;
-}
 /* end for sale */
 /* Contact */
 .contactcontainer {
@@ -762,8 +795,8 @@ tr td {
 }
 
 footer {
-    background-color:rgb(242, 246, 248);
-    color: #000000;
+    background-color:rgba(56, 100, 161, 0.463);
+    color: #ffffff;
     text-align: center;
     padding: 10px 0;
     width: 100%;
@@ -771,7 +804,7 @@ footer {
 }
 
 footer a {
-    color: #000000;
+    color: #fff6f6;
     text-decoration: none;
     margin: 0 10px;
 }
