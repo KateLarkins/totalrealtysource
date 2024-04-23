@@ -60,3 +60,16 @@ document.getElementById('listingForm').addEventListener('submit', function(event
       console.error('Error:', error);
   });
 });
+
+// JavaScript to automatically collapse navbar on smaller screens
+window.addEventListener("resize", function() {
+  const navbarMenu = document.getElementById("navbar-menu");
+  const windowWidth = window.innerWidth;
+
+  if (windowWidth <= 768) {
+    navbarMenu.classList.add("collapsed");
+  } else {
+    navbarMenu.classList.remove("collapsed");
+  }
+});
+
