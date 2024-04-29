@@ -44,6 +44,7 @@ iframe {
 .topnav {
   background-color: #333;
   overflow: hidden;
+  position: relative;
 }
 
 /* Style the links inside the navigation bar */
@@ -141,6 +142,14 @@ iframe {
   }
 }
 
+
+.call-button-container {
+  position: absolute;
+  top: 0;
+  right: 0; /* Adjust this value as needed */
+  padding: 0px; /* Adjust padding as needed */
+  background-color: #333; /* Change background color as needed */
+}
 
 .navbar {
   background-color:rgb(255, 255, 255);
@@ -571,9 +580,6 @@ iframe {
   color: #ffb23f;
   background-color: white;
 }
-.buttonend:hover {
-  color: #ffb23f;
-}
 
 /* For Sale */
 
@@ -786,16 +792,7 @@ tr td:first-child {
 tr td {
   padding-top:20px;
 }
-@media (min-width: 768px) {
-  .button-74 {
-    min-width: 120px;
-    padding: 0 25px;
-  }
-}
-.button:hover {
-  background-color: white;
-  color: black;
-}
+
 @media screen and (max-width: 768px) {
   .fun-card {
     flex: 0 0 calc(50% - 20px); /* Adjust width for smaller screens */
