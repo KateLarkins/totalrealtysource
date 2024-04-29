@@ -65,7 +65,7 @@ iframe {
 
 /* Add an active class to highlight the current page */
 .topnav a.active {
-  background-color: #7a9ac8;
+  background-color: #ffc767;
   color: white;
 }
 
