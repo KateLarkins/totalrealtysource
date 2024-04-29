@@ -798,12 +798,6 @@ tr td {
 } */
 
 
-@media only screen and (max-width: 480px) {
-  .content {
-      padding: 30px 10px;
-  }
-}
-
 footer {
     background-color: #7a9ac8;
     color: #ffffff;
@@ -971,4 +965,4 @@ footer a {
 @media (max-width: 768px) {
   .row {
     flex-direction: column;
-}
+  }}
