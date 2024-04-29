@@ -65,7 +65,7 @@ iframe {
 
 /* Add an active class to highlight the current page */
 .topnav a.active {
-  background-color: #ffc767;
+  background-color: #ffc267;
   color: white;
 }
 
@@ -560,7 +560,7 @@ iframe {
   padding: 10px 20px;
   border: 2px solid rgb(0, 0, 0);
   border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: #ffc267;
   text-decoration: none;
   font-size: 20px;
   font-family: 'Bauer Bodoni', serif;
@@ -568,7 +568,7 @@ iframe {
 }
 
 .learnmore:hover {
-  background-color: rgba(238, 238, 238, 0.469);
+  background-color: #ffc767a2;
 }
 
 
