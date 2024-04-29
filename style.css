@@ -432,8 +432,9 @@ iframe {
   max-width: 30%; /* Prevents item from exceeding 33.33% of the container width */
   box-sizing: border-box; /* Ensures padding and border are included in the width */
   padding: 10px; /* Adjust padding as needed */
-  border: 2px solid rgb(16, 16, 16); /* White outline */
+
   border-radius: 8px;
+  background-color: #7a9ac8 ;
   margin: 6px;
   /* Other styling for the items */
 }
