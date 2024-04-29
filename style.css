@@ -563,6 +563,7 @@ iframe {
   justify-content: center;
   align-items: center;
   height: 100%; /* Adjust height as needed */
+  text-decoration: none;
 }
 
 .learnmore {
