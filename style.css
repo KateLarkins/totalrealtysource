@@ -40,12 +40,12 @@ iframe {
 }
 
 .indexheader {
-  position: relative;
+  /* position: relative;
   background-image: url('interior.png/interior.png'); /* Adjust the image path */
-  background-size: cover;
+  /* background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 100vh; */ */
 }
 
 /* Navbar */
@@ -284,6 +284,16 @@ iframe {
 
 /* navbar ends */
 
+.header-container {
+  max-width: 100%;
+  max-height: 100%;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
 .centered-content {
   position: relative;
   text-align: center;
@@ -1003,3 +1013,7 @@ footer a {
   }
 }
 
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+}
