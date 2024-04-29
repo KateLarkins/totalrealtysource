@@ -12,7 +12,8 @@ iframe {
   width: 95%;
   height: 50vh; /* Optional: to make it stretch vertically to fill the viewport */
   border: none; /* Optional: to remove the iframe border */
-  padding: 50px;
+  padding-left: 30px;
+  max-width: 100%;
 }
 /* .reveal {
   opacity: 0;
@@ -20,24 +21,7 @@ iframe {
   transition: opacity 0.5s ease, transform 0.5s ease;
 } */
 
-.aboutbody {
-  background-color: #f0f0f0; /* Fallback color */
-  /* Pattern */
-  background-image: 
-    linear-gradient(45deg, #eeeeee 25%, transparent 25%, transparent 75%, #eeeeee 75%, #eeeeee),
-    linear-gradient(45deg, #eeeeee 25%, transparent 25%, transparent 75%, #eeeeee 75%, #eeeeee);
-  background-size: 60px 60px; /* Size of the pattern */
-  animation: animateBackground 10s linear infinite;
-}
 
-@keyframes animateBackground {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 60px 60px;
-  }
-}
 
 /* Navbar */
 /* Add a black background color to the top navigation */
@@ -508,8 +492,6 @@ iframe {
 
 .fun-card {
 
-  /* border: 1px solid white; */
-  border-radius: 10px;
   background-color: rgba(236, 236, 236, 0); /* Transparent white background */
   padding: 20px;
   flex: 0 0 calc(33.33% - 20px); /* Adjust width of each card */
@@ -527,7 +509,7 @@ iframe {
 }
 
 .fun-button:hover {
-  background-color: #75757529;
+  background-color: #ffca1c;
 }
 
 .fun-card-inner {
@@ -551,12 +533,10 @@ iframe {
   padding: 3%;
   object-fit: cover;
   border-radius: 0%;
-  background-color:rgba(212, 212, 212, 0.253);
-  border: 7px solid #ffffff81;
+  background-color:#7a9ac8;
+  border: 7px solid #7a9ac8;
   border-radius: 7%;
 }
-
-
 
 .learnmorediv {
   display: flex;
