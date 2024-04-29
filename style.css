@@ -59,7 +59,7 @@ iframe {
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: #ffc267;
   color: black;
 }
 
@@ -558,19 +558,22 @@ iframe {
 
 .learnmore {
   padding: 10px 20px;
-  border: 2px solid rgb(0, 0, 0);
   border-radius: 8px;
+  border: white 3px solid;
   background-color: #ffc267;
   text-decoration: none;
   font-size: 20px;
   font-family: 'Bauer Bodoni', serif;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 .learnmore:hover {
-  background-color: #ffc767a2;
+  color: #ffb23f;
+  background-color: white;
 }
-
+.buttonend:hover {
+  color: #ffb23f;
+}
 
 /* For Sale */
 
