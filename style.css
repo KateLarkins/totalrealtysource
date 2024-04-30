@@ -277,6 +277,9 @@ iframe {
   text-align: center;
 }
 
+.meet:hover {
+  background-color:#333;
+}
 
 .buttons {
   position: absolute;
@@ -950,14 +953,31 @@ footer a {
 }
 
     }
-    @media screen and (max-width: 768px) {
-      .column {
-        max-width: 100%; /* Each column will take up 100% width on smaller screens */
-      }
-      .content-wrapper img {
-        padding: 0; /* Remove padding around the image on smaller screens */
-      }
-      .text-container {
-        text-align: center; /* Center text on smaller screens */
-      }
-    }
+ 
+
+    /* Add this CSS to your existing stylesheet */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.column {
+  flex: 1;
+  max-width: 50%; /* Each column will take up 50% width */
+}
+
+@media screen and (max-width: 768px) {
+  .column {
+    max-width: 100%; /* Each column will take up 100% width on smaller screens */
+  }
+  .row {
+    flex-direction: column; /* Stack columns vertically on smaller screens */
+    align-items: center; /* Center columns horizontally on smaller screens */
+  }
+  .content-wrapper {
+    padding: 20px; /* Add space between image and text on smaller screens */
+    text-align: center;
+  }
+}
