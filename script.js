@@ -23,13 +23,13 @@ document.getElementById('listingForm').addEventListener('submit', function(event
 
 // JavaScript to automatically collapse navbar on smaller screens
 window.addEventListener("resize", function() {
-  const navbarMenu = document.getElementById("navbar-menu");
+  const navbar = document.getElementById("myTopnav"); // Updated to target "myTopnav" instead of "navbar-menu"
   const windowWidth = window.innerWidth;
 
   if (windowWidth <= 768) {
-    navbarMenu.classList.add("collapsed");
+    navbar.classList.add("collapsed");
   } else {
-    navbarMenu.classList.remove("collapsed");
+    navbar.classList.remove("collapsed");
   }
 });
 
