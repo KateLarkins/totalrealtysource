@@ -43,3 +43,14 @@ function myFunction() {
     x.className = "topnav";
   }
 }
+// JavaScript to automatically collapse navbar on smaller screens
+window.addEventListener("resize", function() {
+  const navbar = document.getElementById("myTopnav");
+  const windowWidth = window.innerWidth;
+
+  if (windowWidth <= 768) {
+    navbar.classList.add("responsive"); // Add the responsive class
+  } else {
+    navbar.classList.remove("responsive"); // Remove the responsive class
+  }
+});
