@@ -779,7 +779,20 @@ tr td {
     flex: 0 0 calc(50% - 20px); /* Adjust width for smaller screens */
   }
 }
+footer {
+  background-color: #7a9ac8;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+  bottom: 0;
+}
 
+footer a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 10px;
+}
 /* Responsive Design */
 
 @media only screen and (max-width: 768px) {
@@ -795,43 +808,17 @@ tr td {
   nav {
       margin-top: 20px;
   }
-} */
-
-
-footer {
-    background-color: #7a9ac8;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px 0;
-    width: 100%;
-    bottom: 0;
-}
-
-footer a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-@media only screen and (max-width: 600px) {
-    nav {
-        display: block;
-    }
-    nav a {
-        display: block;
-        border-right: none;
-        margin-bottom: 5px;
-    }
-}
+} 
 
 @media screen and (max-width: 768px) {
   .property-container {
     padding: 0 10px; /* Adjust padding for smaller screens */
-  } */
+  }
   .property-widget {
     flex: 0 0 calc(50% - 30px); /* Two widgets per row with margin */
   }
 }
+
 
 @media screen and (max-width: 480px) {
   .property-widget {
