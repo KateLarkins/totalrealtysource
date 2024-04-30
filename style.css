@@ -950,3 +950,12 @@ footer a {
 }
 
     }
+
+    @media screen and (max-width: 768px) {
+      .column {
+        max-width: 100%; /* Each column will take up 100% width on smaller screens */
+      }
+      .content-wrapper {
+        padding: 0; /* Remove padding around the image on smaller screens */
+      }
+    }
