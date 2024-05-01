@@ -269,6 +269,9 @@ iframe {
   font-family:"Source Serif 4";
 }
 
+.more:hover {
+  background-color: #7a9ac85f;
+}
 .centered-text {
   padding-top: 50%; /* Adjust the value to lower or raise the text */
   transform: translateY(-50%);
@@ -503,10 +506,10 @@ iframe {
 }
 
 .fun-button {
-  border: 2px solid rgb(0, 0, 0);
+  border: 2px solid rgb(255, 255, 255);
   margin: 4px;
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-size: 20px;
   padding: 4px 10px;
 }
@@ -514,7 +517,12 @@ iframe {
 .fun-button:hover {
   background-color: #ffca1c;
 }
-
+.fun-text-container p {
+  color:white;
+}
+.fun-text-container h2 {
+  color:white;
+}
 .fun-card-inner {
   display: flex;
   flex-direction: column;
@@ -539,6 +547,12 @@ iframe {
   background-color:#7a9ac8;
   border: 7px solid #7a9ac8;
   border-radius: 7%;
+}
+
+.fun-text-container {
+  border: 3px solid black;
+  padding-top: 0%;
+  padding-bottom:5%;
 }
 
 .learnmorediv {
@@ -647,32 +661,10 @@ iframe {
 .location {
   color: #666;
 }
-/* overlay effect */
 
 .listing-item {
   position: relative;
   display: inline-block;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: rgb(253, 252, 252); /* Adjust the opacity and color as needed */
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.listing-item:hover .overlay {
-  opacity: 1;
-}
-
-.overlay img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .text {
@@ -981,3 +973,4 @@ footer a {
     text-align: center;
   }
 }
+
