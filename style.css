@@ -498,27 +498,33 @@ iframe {
 
 .fun-card {
 
-  background-color: rgba(236, 236, 236, 0); /* Transparent white background */
-  padding: 20px;
-  flex: 0 0 calc(33.33% - 20px); /* Adjust width of each card */
-  max-width: calc(33.33% - 20px); /* Limit maximum width of each card */
-  box-sizing: border-box; /* Include padding and border in the width calculation */
+  flex: 0 0 100%;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  padding-top: 3%;
+  padding:5%;
 }
 
 .fun-button {
-  border: 2px solid rgb(127, 127, 127);
-  margin: 4px;
-  background-color: rgb(244, 244, 244);
-  text-decoration: none;
-  color: rgb(127, 127, 127);
-  font-size: 20px;
-  padding: 4px 10px;
+    padding: 8px 16px;
+    text-decoration: none;
+    background-color: #649edb;
+    color: #fff;
+    border-radius: 5px;
 }
 
 .fun-button:hover {
-  background-color: #7c7c7c3e;
-  color:#000;
+  background-color: #007bff;
 }
+
+.top-card-container, .bottom-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .fun-text-container p {
   color:rgb(127, 127, 127);
 }
@@ -552,6 +558,7 @@ iframe {
 .fun-text-container {
   padding-top: 0%;
   padding-bottom:5%;
+  padding-left:3%
 }
 
 .learnmorediv {
