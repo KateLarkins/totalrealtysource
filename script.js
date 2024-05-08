@@ -23,7 +23,7 @@ document.getElementById('listingForm').addEventListener('submit', function(event
 
 // JavaScript to automatically collapse navbar on smaller screens
 window.addEventListener("resize", function() {
-  const navbar = document.getElementById("myTopnav"); // Updated to target "myTopnav" instead of "navbar-menu"
+  const navbar = document.getElementById("Topnav"); // Updated to target "myTopnav" instead of "navbar-menu"
   const windowWidth = window.innerWidth;
 
   if (windowWidth <= 768) {
@@ -36,7 +36,7 @@ window.addEventListener("resize", function() {
 
 /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 function myFunction() {
-  var x = document.getElementById("myTopnav");
+  var x = document.getElementById("Topnav");
   if (x.className === "topnav") {
     x.className += " responsive";
   } else {
@@ -45,7 +45,7 @@ function myFunction() {
 }
 // JavaScript to automatically collapse navbar on smaller screens
 window.addEventListener("resize", function() {
-  const navbar = document.getElementById("myTopnav");
+  const navbar = document.getElementById("Topnav");
   const windowWidth = window.innerWidth;
 
   if (windowWidth <= 768) {
@@ -56,13 +56,16 @@ window.addEventListener("resize", function() {
 });
 
 function myFunction() {
-  var x = document.getElementById("myTopnav");
+  var x = document.getElementById("Topnav");
   if (x.className === "topnav") {
     x.className += " responsive";
   } else {
     x.className = "topnav";
   }
 }
+
+
+
 
 
 
