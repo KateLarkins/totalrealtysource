@@ -15,6 +15,11 @@ iframe {
   padding-left: 30px;
   max-width: 100%;
 }
+
+.icon {
+  display: none;
+}
+
 /* .reveal {
   opacity: 0;
   transform: translateY(20px);
@@ -23,12 +28,18 @@ iframe {
 
 
 
-/* Navbar */
+/* Navbar
 /* Add a black background color to the top navigation */
 .topnav {
   background-color: #333;
   overflow: hidden;
   position: relative;
+}
+.myTopnav {
+  display: none;
+}
+.myTopnav.active {
+  display: block; /* Show the menu when the active class is added */
 }
 
 /* Style the links inside the navigation bar */
@@ -40,6 +51,10 @@ iframe {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+}
+
+.topnav.active {
+  display: block; /* Show the menu when the active class is added */
 }
 
 /* Change the color of links on hover */
@@ -105,25 +120,6 @@ iframe {
   .navbar-nav.collapsed {
     display: flex; /* Show navbar links when collapsed class is present */
   }
-
-  .navbar-nav li {
-    margin: 10px 0;
-  }
-
-  .navbar-nav a {
-    color: #000; /* Set link color */
-    font-size: 18px; /* Set font size */
-    text-decoration: none; /* Remove underline */
-    padding: 10px; /* Add padding to improve touch target */
-  }
-
-  .navbar-logo {
-    margin-right: 0; /* Remove margin for logo */
-  }
-
-  .fa-bars {
-    display: none; /* Hide bars icon */
-  }
 }
 
 
@@ -135,72 +131,6 @@ iframe {
   background-color: #333; /* Change background color as needed */
 }
 
-.navbar {
-  background-color:rgb(255, 255, 255);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  transition: background-color 0.3s ease;
-  overflow-x: hidden; /* Add this line to prevent horizontal overflow */
-}
-
-.navbarindex {
-  background-color:transparent;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  transition: background-color 0.3s ease;
-  overflow-x: hidden; /* Add this line to prevent horizontal overflow */
-}
-
-.navbar-nav {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-.navbar-nav li {
-  margin: 0 10px;
-}
-
-.navbar-nav li a {
-  color: rgb(0, 0, 0); /* Color of nav links */
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 18px;
-}
-
-.navbar-nav li a:hover {
-  color:rgb(93, 93, 93);
-}
-
-.navbarindex.navbar-scrolled {
-  background-color: rgb(255, 255, 255);
-}
-
-.navbarindex.navbar-scrolled .navbar-nav li a {
-  color: rgb(0, 0, 0);
-}
-
-.navbarindex.navbar-scrolled .navbar-logo {
-  color: rgb(0, 0, 0);
-}
-
-/* Navbar Collapse */
-.navbar-inner.collapsed .navbar-nav {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .navbar-inner.collapsed .navbar-nav {
-    display: none;
-  }
-}
 
 /* Responsive Design */
 
@@ -236,15 +166,7 @@ iframe {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
   }
 
-  .navbar-nav li {
-    margin: 10px 0;
-  }
-
-  .fa-bars {
-    display: none; /* Hide bars icon by default */
-    cursor: pointer;
-  }
-}
+} */
 
 /* End Responsive Design */
 
