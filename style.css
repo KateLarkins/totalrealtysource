@@ -52,12 +52,49 @@ iframe {
 .topnav.active {
   display: block; /* Show the menu when the active class is added */
 }
-
+.icon {
+  display: inline-block;
+}
 /* Change the color of links on hover */
 .topnav a:hover {
   background-color: #ffc267;
   color: black;
 }
+
+/* Ensure the three-bar icon is positioned above the call button */
+.icon {
+  position: relative;
+  z-index: 2; /* Increase the z-index to make it appear above other elements */
+}
+
+
+
+
+.call-button-container {
+  position: relative; /* Ensure the container is positioned relatively */
+}
+
+/* Adjust the z-index of the call button to make sure it's below the three-bar icon */
+.call-button {
+  position: relative;
+  z-index: 1; /* Lower z-index to keep it behind the three-bar icon */
+}
+/* Media query for small screens */
+@media screen and (max-width: 600px) {
+  /* Hide the Home link */
+  .topnav a[href="index.html"] {
+    display: none;
+  }
+  
+  /* Show the bars icon and position it to the left */
+  .icon {
+    display: block;
+    float: left;
+  }
+}
+
+
+
 
 /* Add an active class to highlight the current page */
 .topnav a.active {
