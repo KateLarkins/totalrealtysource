@@ -566,7 +566,7 @@ iframe {
 /* Media query for smaller screens */
 @media screen and (max-width: 768px) {
   .agent-description {
-    font-size: 18px; /* Adjust the font size for smaller screens */
+    font-size: 15px; /* Adjust the font size for smaller screens */
   }
 }
 
