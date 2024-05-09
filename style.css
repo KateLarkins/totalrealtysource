@@ -92,9 +92,21 @@ iframe {
     float: left;
   }
 }
+@media screen and (max-width: 600px) {
+  /* Hide the Home link */
+  .topnav a[href="index.html"] {
+    display: none;
+  }
+  
+  /* Show the bars icon and position it to the left */
+  .icon {
+    display: block;
+    float: left;
+  }
+}
 
 /* Media query for small screens */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   /* Hide the call button */
   .call-button-container {
     display: none;
