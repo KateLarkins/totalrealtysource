@@ -109,6 +109,13 @@ iframe {
     display: none;
   }
 }
+/* Media query for small screens including iPhones */
+@media only screen and (max-width: 600px), only screen and (max-device-width: 600px) {
+  /* Hide the call button */
+  .call-button-container {
+    display: none !important;
+  }
+}
 
 
 
