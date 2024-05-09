@@ -528,6 +528,13 @@ iframe {
   flex-wrap: wrap;
   justify-content: space-around;
 }
+.fun-image-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100%; /* Set height to 100% */
+}
+
 
 .fun-text-container p {
   color:rgb(127, 127, 127);
