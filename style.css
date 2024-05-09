@@ -563,6 +563,10 @@ iframe {
   color: rgb(145, 145, 145);
 }
 
+.fun-card-top {
+  flex-grow: 1; /* Allow cards to grow vertically to fill the space */
+}
+
 /* Media query for smaller screens */
 @media screen and (max-width: 768px) {
   .agent-description {
