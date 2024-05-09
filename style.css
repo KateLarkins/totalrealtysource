@@ -577,6 +577,20 @@ iframe {
     font-size: 18px; /* Adjust the font size for smaller screens */
   }
 }
+/* CSS for smaller screens */
+@media screen and (max-width: 768px) {
+  /* Adjust card width */
+  .fun-card {
+    width: 100%; /* Make cards occupy full width on smaller screens */
+  }
+
+  /* Adjust button size and padding */
+  .fun-button {
+    padding: 6px 12px; /* Decrease padding for smaller screens */
+    font-size: 14px; /* Decrease font size for smaller screens */
+  }
+}
+
 
 
 .image-container {
