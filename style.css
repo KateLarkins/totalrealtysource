@@ -93,6 +93,13 @@ iframe {
   }
 }
 
+/* Media query for small screens */
+@media screen and (max-width: 600px) {
+  /* Hide the call button */
+  .call-button-container {
+    display: none;
+  }
+}
 
 
 
