@@ -555,6 +555,21 @@ iframe {
   padding-right: 22%;
   padding-bottom: 5%;
 }
+/* Default font size */
+.agent-description {
+  margin: 10%;
+  line-height: 1.5em;
+  font-size: 24px;
+  color: rgb(145, 145, 145);
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .agent-description {
+    font-size: 18px; /* Adjust the font size for smaller screens */
+  }
+}
+
 
 /* Media query for smaller screens */
 @media screen and (max-width: 768px) {
