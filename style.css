@@ -548,6 +548,21 @@ iframe {
   align-items: center;
   text-align: center;
 }
+/* Default font size */
+.team-description {
+  font-size: 23px;
+  padding-left: 22%;
+  padding-right: 22%;
+  padding-bottom: 5%;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .team-description {
+    font-size: 18px; /* Adjust the font size for smaller screens */
+  }
+}
+
 
 .image-container {
   overflow: hidden;
