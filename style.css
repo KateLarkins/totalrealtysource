@@ -102,6 +102,7 @@ iframe {
   }
 }
 
+
 /* Media query for small screens */
 @media screen and (max-width: 600px) {
   /* Hide the call button */
@@ -426,6 +427,28 @@ iframe {
 
 
 
+  @media screen and (max-width: 600px) {
+    .fun-card-top {
+      flex-direction: column;
+    }
+    
+    .fun-card-text {
+      flex: 1 1 100%;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .fun-buttons {
+      text-align: center;
+    }
+    
+    .fun-buttons a {
+      margin: 5px;
+    }
+  }
+
+
+
 /* Style for the image */
 .listing-item img {
   width: 100%; /* Ensures the image fills its container */
@@ -484,6 +507,8 @@ iframe {
   overflow: hidden;
   padding-top: 3%;
   padding:5%;
+  max-width: calc(100% - 40px); /* Adjust as needed */
+    overflow: hidden;
 }
 
 .fun-button {
