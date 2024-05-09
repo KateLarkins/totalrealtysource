@@ -67,9 +67,6 @@ iframe {
   z-index: 2; /* Increase the z-index to make it appear above other elements */
 }
 
-
-
-
 .call-button-container {
   position: relative; /* Ensure the container is positioned relatively */
 }
@@ -106,7 +103,7 @@ iframe {
 }
 
 /* Media query for small screens */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
   /* Hide the call button */
   .call-button-container {
     display: none;
