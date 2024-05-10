@@ -529,6 +529,7 @@ iframe {
   line-height: 1.5em;
   font-size: 24px;
   color: rgb(145, 145, 145);
+  text-align: left;
 }
 
 .fun-card-top {
