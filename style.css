@@ -250,6 +250,10 @@ iframe {
   transform: translateX(-50%);
 }
 
+#viewmore:hover {
+  background-color: #333;
+}
+
 .transparent-button {
   font-family: 'Bauer Bodoni', serif;
   background-color: transparent;
@@ -435,30 +439,16 @@ iframe {
   border-radius: 6px; /* Adjust border-radius if needed */
 }
 
-
+.transparent-button {
+  color: rgb(0, 0, 0); background-color: #4d4d4d9b;
+}
+.transparent-button:hover {
+  background-color: #7a7a7a72;
+}
 /* Style for the text */
 .listing-item p {
   color: rgb(16, 16, 16); /* White text */
   margin-top: 10px;
-}
-
-
-/* Style for the transparent button */
-.transparent-btn {
-  position: absolute;
-  bottom: 10px; /* Adjust bottom margin as needed */
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 20px;
-  border: 2px solid rgb(194, 194, 194);
-  border-radius: 8px;
-  background-color: transparent;
-  color: white;
-  text-decoration: none;
-}
-
-.transparent-btn:hover {
-  background-color: rgb(255, 255, 255);
 }
 
 /* our teammmm */
