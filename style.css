@@ -17,7 +17,9 @@ iframe {
   margin: 2.5%;
 }
 
-
+a:hover {
+  color:#ffc267 ;
+}
 /* Navbar
 /* Add a black background color to the top navigation */
 .topnav {
@@ -479,17 +481,6 @@ iframe {
     overflow: hidden;
 }
 
-.fun-button {
-    padding: 8px 16px;
-    text-decoration: none;
-    background-color: #649edb;
-    color: #fff;
-    border-radius: 5px;
-}
-
-.fun-button:hover {
-  background-color: #007bff;
-}
 
 .top-card-container, .bottom-card-container {
   display: flex;
@@ -502,8 +493,18 @@ iframe {
   align-items: center; /* Center vertically */
   height: 100%; /* Set height to 100% */
 }
-
-
+.funbuttonone {
+  margin: 0 10px; padding: 8px 16px; text-decoration: none; background-color: rgb(255, 191, 88); color: #fff; border-radius: 5px; 
+}
+.funbuttontwo {
+margin: 0 10px; padding: 8px 16px; text-decoration: none; background-color: rgb(255, 191, 88); color: #fff; border-radius: 5px;
+}
+.funbuttonone:hover {
+  background-color: #333;
+}
+.funbuttontwo:hover {
+  background-color: #333;
+}
 .fun-text-container p {
   color:rgb(127, 127, 127);
 }
