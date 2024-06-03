@@ -379,7 +379,7 @@ a:hover {
   max-width: 30%; /* Prevents item from exceeding 33.33% of the container width */
   box-sizing: border-box; /* Ensures padding and border are included in the width */
   padding: 10px; /* Adjust padding as needed */
-  background-color: rgb(0, 26, 92) ;
+  background-color: rgb(255, 255, 255) ;
   margin: 6px;
   /* Other styling for the items */
 }
