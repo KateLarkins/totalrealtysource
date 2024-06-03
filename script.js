@@ -19,3 +19,15 @@ function toggleMenu() {
     x.classList.add("responsive");
   }
 }
+// share test
+
+
+function shareOnFacebook(url) {
+  FB.ui({
+    method: 'share',
+    href: url,
+  }, function(response){
+    // Optional: Callback function after sharing
+    console.log('Shared on Facebook');
+  });
+}
