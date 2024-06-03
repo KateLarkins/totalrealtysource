@@ -912,20 +912,24 @@ footer a {
     .centered-content {
         text-align: center;
     }
-    .column {
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-    }
-    .text-container {
-        margin-left: 0;
-        margin-right: 0;
-        text-align: left;
-    }
+ 
     .column-new {
         width: calc(100% - 40px);
     }
 }
+@media only screen and (max-width: 768px) {
+  .column {
+    margin: 0;
+    /* Removed text-align: center; */
+  }
+  .column:nth-child(2) {
+    margin-top: 50px;
+  }
+  .text-container {
+    text-align: left; 
+  }
+}
+
 
 /* Media query for smaller screens */
 @media (max-width: 768px) {
