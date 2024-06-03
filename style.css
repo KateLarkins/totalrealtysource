@@ -253,11 +253,11 @@ a:hover {
 }
 
 #viewmore:hover {
-  background-color: #333;
+  background-color: rgb(255, 191, 88);
 }
 
 .transparent-button {
-  font-family: 'Bauer Bodoni', serif;
+  font-family: 'Quicksand', serif;
   background-color: transparent;
   border: 3px solid rgb(255, 255, 255); /* Adjust border properties as needed */
   color: rgb(0, 0, 0); /* Adjust text color as needed */
@@ -581,18 +581,19 @@ margin: 0 10px; padding: 8px 16px; text-decoration: none; background-color: rgb(
 
 .learnmore {
   padding: 10px 20px;
-  border-radius: 8px;
-  border: white 3px solid;
-  background-color: #ffc267;
+  border-radius: 50px;
+  background-color: #ffc26700;
   text-decoration: none;
   font-size: 20px;
-  font-family: 'Bauer Bodoni', serif;
-  color: rgb(255, 255, 255);
+  font-family: 'Quicksand', serif;
+  color: rgb(0, 0, 0);
+  border: 5px solid #ffc266;
 }
 
 .learnmore:hover {
-  color: #ffb23f;
-  background-color: rgba(255, 255, 255, 0.751);
+  color: #ffffff;
+  font-family: 'Quicksand', serif;
+  background-color:#ffb23f;
 }
 
 /* For Sale */
