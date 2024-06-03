@@ -23,7 +23,7 @@ a:hover {
 /* Navbar
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: #333;
+  background-color: rgb(255, 255, 255);
   overflow: hidden;
   position: relative;
 }
@@ -38,7 +38,7 @@ a:hover {
 .topnav a {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: #000000;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -171,7 +171,7 @@ a:hover {
   top: 0;
   right: 0; /* Adjust this value as needed */
   padding: 0px; /* Adjust padding as needed */
-  background-color: #333; /* Change background color as needed */
+  background-color: #ffffff; /* Change background color as needed */
 }
 
 /* Navbar Collapse */
@@ -397,7 +397,7 @@ a:hover {
   padding: 10px; /* Adjust padding as needed */
 
   border-radius: 8px;
-  background-color: #7a9ac8 ;
+  background-color: rgb(0, 26, 92) ;
   margin: 6px;
   /* Other styling for the items */
 }
@@ -581,7 +581,7 @@ margin: 0 10px; padding: 8px 16px; text-decoration: none; background-color: rgb(
   object-fit: cover;
   border-radius: 0%;
   background-color: rgb(243, 243, 243);
-  border: 7px solid #7a9ac8;
+  border: 7px solid #001F3F;
 }
 
 .fun-text-container {
@@ -783,7 +783,7 @@ label {
   color: #000000;
 }
 .submit {
-  background: #7a9ac8;
+  background: rgb(102, 132, 209);
   width: 100px;
   border: none;
   outline:none;
@@ -815,7 +815,7 @@ tr td {
   }
 }
 footer {
-  background-color: #7a9ac8;
+  background-color: rgb(0, 26, 92);
   color: #ffffff;
   text-align: center;
   padding: 10px 0;
