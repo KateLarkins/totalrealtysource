@@ -31,3 +31,28 @@ function shareOnFacebook(url) {
     console.log('Shared on Facebook');
   });
 }
+// carousel 
+
+function nextSlide() {
+  const carouselInner = document.querySelector('.carousel-inner');
+  const currentSlide = document.querySelector('.carousel-item.active');
+  const nextSlide = currentSlide.nextElementSibling;
+
+  if (nextSlide) {
+    carouselInner.style.transform = `translateX(-${nextSlide.offsetLeft}px)`;
+    currentSlide.classList.remove('active');
+    nextSlide.classList.add('active');
+  }
+}
+
+function prevSlide() {
+  const carouselInner = document.querySelector('.carousel-inner');
+  const currentSlide = document.querySelector('.carousel-item.active');
+  const prevSlide = currentSlide.previousElementSibling;
+
+  if (prevSlide) {
+    carouselInner.style.transform = `translateX(-${prevSlide.offsetLeft}px)`;
+    currentSlide.classList.remove('active');
+    prevSlide.classList.add('active');
+  }
+}

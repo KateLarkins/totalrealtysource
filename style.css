@@ -790,6 +790,10 @@ tr td {
   padding-top:20px;
 }
 
+
+/* carousel  */
+
+
 @media screen and (max-width: 768px) {
   .fun-card {
     flex: 0 0 calc(50% - 20px); /* Adjust width for smaller screens */
