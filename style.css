@@ -996,7 +996,7 @@ footer a {
   }
   .content-wrapper {
     padding: 20px; /* Add space between image and text on smaller screens */
-    text-align: left;
+    text-align: center;
   }
 }
 
