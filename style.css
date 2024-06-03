@@ -921,6 +921,9 @@ footer a {
         margin-right: 0;
         text-align: left;
     }
+    .text-container p {
+      text-align:left;
+    }
     .column-new {
         width: calc(100% - 40px);
     }
