@@ -898,6 +898,7 @@ footer a {
   @media only screen and (max-width: 768px) {
     text-container p {
       text-align: left;
+      align-items: left;
     }
   }
 
