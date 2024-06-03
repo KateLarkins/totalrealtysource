@@ -936,7 +936,7 @@ footer a {
     }
     .text-container {
         margin-left: 0;
-        margin-right: 0;
+        margin-right: 50;
     }
     .column-new {
         width: calc(100% - 40px);
