@@ -272,22 +272,6 @@ a:hover {
   background-color: rgba(255, 255, 255, 0.38); /* Adjust hover background color as needed */
 }
 
-/* Second Section */
-
-.text-container h2 {
-  font-size: 50px;
-  color: rgb(0, 0, 0);
-  font-weight: 600;
-}
-
-.text-container p {
-  font-size: 25px;
-  font-family:"Source Serif 4";
-  color: rgb(22, 22, 22);
-}
-.text-container {
-  padding-bottom: 100px;
-}
 /* Our Services Section */
 
 
