@@ -975,7 +975,7 @@ footer a {
     }
  
 
-    /* Add this CSS to your existing stylesheet */
+
 
 .row {
   display: flex;
@@ -999,6 +999,12 @@ footer a {
   .content-wrapper {
     padding: 20px; /* Add space between image and text on smaller screens */
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .column {
+    text-align: left; /* Ensure columns do not center-align their content on even smaller screens */
   }
 }
 
