@@ -895,6 +895,11 @@ footer a {
       padding: 2% 0; /* Adjust padding for smaller screens */
     }
   }
+  @media only screen and (max-width: 768px) {
+    text-container p {
+      text-align: left;
+    }
+  }
 
   /* navbar */
 
@@ -920,12 +925,6 @@ footer a {
         margin-left: 0;
         margin-right: 0;
         text-align: left;
-    }
-    .text-container p {
-      text-align:left;
-    }
-    .text-container h2 {
-      text-align:left;
     }
     .column-new {
         width: calc(100% - 40px);
