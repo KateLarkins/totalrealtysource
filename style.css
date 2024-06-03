@@ -898,6 +898,7 @@ footer a {
   }
 }
 
+
 /* Media query for iPhones */
 @media only screen 
     and (max-device-width: 480px) 
@@ -936,7 +937,8 @@ footer a {
     }
     .text-container {
         margin-left: 0;
-        margin-right: 50;
+        margin-right: 0;
+        text-align: left;
     }
     .column-new {
         width: calc(100% - 40px);
