@@ -870,6 +870,9 @@ footer a {
   .row {
     flex-direction: column;
   }
+  .text-container {
+    text-align: left;
+  }
   .column {
     margin: 0;
   }
@@ -892,11 +895,6 @@ footer a {
   @media only screen and (max-width: 768px) {
     .learnmorediv {
       padding: 2% 0; /* Adjust padding for smaller screens */
-    }
-  }
-  @media only screen and (max-width: 768px) {
-    text-container p {
-      text-align: left;
     }
   }
 
