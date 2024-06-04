@@ -56,3 +56,28 @@ function prevSlide() {
     prevSlide.classList.add('active');
   }
 }
+
+
+// scroll test
+document.addEventListener('DOMContentLoaded', function() {
+  document.body.classList.add('fade-in');
+});
+// animations
+document.addEventListener('DOMContentLoaded', function() {
+  const elements = document.querySelectorAll('.smooth-fade-in, .slide-up, .scale-in, .fade-slide-in, .gentle-rotate');
+
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+          }
+      });
+  }, {
+      threshold: 0.1
+  });
+
+  elements.forEach(element => {
+      observer.observe(element);
+  });
+});
