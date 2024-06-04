@@ -478,18 +478,6 @@ a:hover {
   align-items: center; /* Center vertically */
   height: 100%; /* Set height to 100% */
 }
-.funbuttonone {
-  margin: 0 10px; padding: 8px 16px; text-decoration: none; background-color: rgb(255, 191, 88); color: #fff; border-radius: 5px; 
-}
-.funbuttontwo {
-margin: 0 10px; padding: 8px 16px; text-decoration: none; background-color: rgb(255, 191, 88); color: #fff; border-radius: 5px;
-}
-.funbuttonone:hover {
-  background-color: #333;
-}
-.funbuttontwo:hover {
-  background-color: #333;
-}
 .fun-text-container p {
   color:rgb(127, 127, 127);
 }
@@ -563,10 +551,10 @@ margin: 0 10px; padding: 8px 16px; text-decoration: none; background-color: rgb(
   width: 200px;
   height: 300px;
   padding: 3%;
-  object-fit: cover;
+  object-fit: cover; 
   border-radius: 0%;
-  background-color: rgb(243, 243, 243);
-  border: 7px solid #001F3F;
+  background-image:url(larry.png/larry.png);
+  border: 3px #e6e6e699;
 }
 
 .fun-text-container {
