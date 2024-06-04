@@ -721,6 +721,7 @@ margin: 0 10px; padding: 8px 16px; text-decoration: none; background-color: rgb(
   display: flex;
   flex-direction: column;
   max-width: 600px; /* Adjust as needed */
+  box-shadow: 0 0 40px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)
 }
 
 .contact {
