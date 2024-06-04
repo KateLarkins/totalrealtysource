@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bauer+Bodoni:ital@0;1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">  
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -33,14 +34,14 @@
 
   <div class="text-column" style="flex: 1 1 100%; padding: 16px; background-color: #0B1C37; color:rgb(255, 255, 255);">
     <!-- Add your text content here -->
-    <h2 style="font-size:40px; text-align: left; padding-left: 22%;">Meet Our Team</h2>
-    <p class="team-description" style="font-size: 20px; padding-left: 22%; padding-right: 22%; padding-bottom: 5%; font-weight: 400; text-align: left; font-family: 'Quicksand', sans-serif; ">
+    <h2 style="font-size:40px; text-align: left; padding-left: 22%; padding-top: 3%;">Meet Our Team</h2>
+    <p class="team-description" style="font-size: 20px; padding-left: 22%; padding-right: 22%; padding-bottom: 5%; font-weight: 400; text-align: left; font-family: 'Quicksand', sans-serif; padding-top:2%; ">
       Our agents specialize in buying and selling properties throughout West Tennessee. Whether you're searching for your dream home or looking to invest in real estate, our team is here to assist you every step of the way. <br> <br>Ready to get started? Contact us at <a style="color:#fff" href="tel:7315749340">731-574-9340</a>!
     </p>
     
 </div>
 <section>
-  <div class="container" style="display: flex; flex-wrap: wrap;">
+  <div class="container" style="display: flex; flex-wrap: wrap ;">
     <!-- "Fun" Items Section -->
     <div class="fun-items" style="flex: 1 1 100%; display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; background-color: rgb(228, 228, 228);">
       <!-- Agent Card 1: Lynda Climer -->
@@ -197,6 +198,73 @@
     </div>
   </div>
 </section>
+<!-- FAQ -->
+<section style="padding:8%;">
+  <h1 style="color: rgb(0, 0, 0); padding-top: 0px; padding-bottom: 40px; font-size:45px; font-weight:600; text-align: center;">Frequently Asked Questions</h1> 
+  <div class="accordion" id="accordionExample" style="max-width: 100%; overflow-x: hidden;">
+    <div class="accordion-item" style="margin-bottom: 1rem;">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Who should I contact for property management and renovation?
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body" style="padding: 1rem; word-wrap: break-word;">
+
+              If you're looking for property renovation and management services, our broker Mrs. Lynda Climer is the person you need to contact. With her extensive experience spanning residential, industrial, and commercial buildings, she's well-equipped to handle all your property needs. Whether you're seeking to enhance the value of your investment or ensure smooth operations, her expertise and dedication ensure exceptional results. You can reach her directly at <strong>731-217-3827</strong>.
+              
+              
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item" style="margin-bottom: 1rem;">
+        <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Where is your office located?
+            </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body" style="padding: 1rem; word-wrap: break-word;">
+              Currently, you can visit us at our existing location (<strong>3511 US-45 Jackson, TN 38305)</strong>, but exciting changes are on the horizon! We are preparing to move to our new home in Medina, ensuring we continue to serve you. Come see us at both locations and be part of our journey!
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item" style="margin-bottom: 1rem;">
+        <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Why should I choose Total Realty Source?
+            </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div class="accordion-body" style="padding: 1rem; word-wrap: break-word;">
+
+               
+                Thank you for considering us for your home buying journey! With over 40 years of experience, our broker ensures you are well-prepared for every decision. Our agents continually earn new certifications to stay current with industry standards, providing excellent service. We serve clients across Tennessee with extensive local expertise in urban, suburban, and rural areas. We deliver personalized, one-on-one service to make your first home purchase smooth and stress-free. Choose us for our expertise, dedicated team, and statewide reach. Contact us to start this exciting journey today!
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+    @media (max-width: 768px) {
+        .accordion-body {
+            padding: 0.5rem;
+        }
+        .accordion-item {
+            margin-bottom: 0.5rem;
+        }
+    }
+    .accordion-body img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+
+</section>
 <section>
   <div>
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.732228646491!2d-88.83667022385892!3d35.70820647257862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x63070055ea95b291%3A0x105300fbf299da3c!2sTotal%20Realty%20Source!5e0!3m2!1sen!2sus!4v1715268149226!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -229,6 +297,7 @@
     </a>
   </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="script.js"></script>
 </body>
 </html>
