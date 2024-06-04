@@ -5,6 +5,9 @@ body {
   font-family: 'Bauer Bodoni', serif;
   text-decoration: none;
 }
+p {
+  font-family: 'Quicksand';
+}
 
 iframe {
   flex-wrap: nowrap;
