@@ -838,6 +838,7 @@ td {
 
 .image-content img {
   width: 100%;
+  border-left: white solid 13px;
   height: 100%;
   object-fit: cover; /* Ensures the image covers the entire div */
 }
