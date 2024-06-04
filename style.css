@@ -612,7 +612,6 @@ margin: 0 10px; padding: 8px 16px; text-decoration: none; background-color: rgb(
 .property-widget {
   width: calc(33.33% - 20px); /* Adjust width based on your preference */
   background-color: #ffffff;
-  border: 1px solid #ddd;
   border-radius: 5px;
   overflow: hidden;
   flex-wrap: wrap;
@@ -664,18 +663,18 @@ margin: 0 10px; padding: 8px 16px; text-decoration: none; background-color: rgb(
 
 .property-details h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: 17px;
   color: #333;
 }
 
 .property-details p {
   margin: 5px 0;
-  font-size: 14px;
+  font-size: 17px;
 }
 
 .price {
   font-weight: bold;
-  color: #004793;
+  color: #ffc267;
 }
 
 .location {
