@@ -560,7 +560,7 @@ a:hover {
 .fun-text-container {
   padding-top: 0%;
   padding-bottom:5%;
-  padding-left:3%
+  padding-left:3%;
 }
 
 .learnmorediv {
@@ -759,17 +759,6 @@ label {
   margin-bottom: 6px;
   display: block;
   color: #000000;
-}
-.submit {
-  background: rgb(102, 132, 209);
-  width: 100px;
-  border: none;
-  outline:none;
-  color:#fff;
-  height: 35px;
-  border-radius: 30px;
-  margin-top: 20px;
-  box-shadow: 0px 5px 15px 0px rgb(216, 216, 216)
 }
 .contactleft h3 {
   color: #363b3f;
