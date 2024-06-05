@@ -111,3 +111,15 @@ document.addEventListener('DOMContentLoaded', function() {
   slideInCards();
 });
 
+// about us expand btn
+function toggleReadMore() {
+  const desc = document.querySelector('.agent-description');
+  const button = document.querySelector('.read-more-button');
+  if (desc.style.maxHeight === 'none') {
+      desc.style.maxHeight = '3.6em';
+      button.textContent = 'Read More';
+  } else {
+      desc.style.maxHeight = 'none';
+      button.textContent = 'Read Less';
+  }
+}

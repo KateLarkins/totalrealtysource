@@ -1116,3 +1116,25 @@ footer a {
   }
 }
 
+@media (max-width: 600px) {
+  .agent-description {
+      overflow: hidden;
+      max-height: 3.6em; /* Adjust this value to show more or less text */
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* Number of lines to show */
+      -webkit-box-orient: vertical;
+  }
+  .read-more-button {
+      display: block;
+  }
+}
+.read-more-button {
+  display: none;
+  margin-top: 10px;
+  background-color: #f0f0f0;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
