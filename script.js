@@ -115,11 +115,11 @@ document.addEventListener('DOMContentLoaded', function() {
 function toggleReadMore() {
   const desc = document.querySelector('.agent-description');
   const button = document.querySelector('.read-more-button');
-  if (desc.style.maxHeight === 'none') {
-      desc.style.maxHeight = '3.6em';
-      button.textContent = 'Read More';
-  } else {
-      desc.style.maxHeight = 'none';
+  if (desc.classList.contains('collapsed')) {
+      desc.classList.remove('collapsed');
       button.textContent = 'Read Less';
+  } else {
+      desc.classList.add('collapsed');
+      button.textContent = 'Read More';
   }
 }
