@@ -45,7 +45,7 @@
     
 </div>
 <section>
-  <div class="container" style="display: flex; flex-wrap: wrap ;">
+  <div class="container" style="display: flex; flex-wrap: wrap;">
     <!-- "Fun" Items Section -->
     <div class="fun-items" style="flex: 1 1 100%; display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; background: linear-gradient( #e4e4e4, #ffffff, #e4e4e4, #ffffff, #e4e4e4, #ffffff);">
       <!-- Agent Card 1: Lynda Climer -->
@@ -56,7 +56,7 @@
             <img src="lynda.png/Lynda.png" alt="Lynda Climer" class="fun-rounded-image" style="border-radius: 50%; max-width: 100%; height: auto;">
           </div>
         </div>
-        <div class="fun-card-text" style="flex: 0 0 70%; padding: 20px;">
+        <div class="fun-card-text" style="flex: 0 0 70%; padding: 0px;">
           <!-- Text Container -->
           <div class="fun-text-container" style="text-align: center;">
               <!-- Agent Name -->
@@ -66,14 +66,11 @@
               <p style="font-size:20px;">Principal Broker</p>
               <!-- Add more text here -->
               <div class="agent-description">
-                  <p class="expandable" style="margin: 10%; line-height:1.5em;font-size:20px; font-family: 'Quicksand', sans-serif; color:rgb(145, 145, 145);">
-                      Introducing Lynda, our Principal Broker at Total Realty Source, with 50 years of expertise across residential, <span class="expand-link" style="cursor: pointer;">...</span>
-                      <span class="hidden-text" style="display: none;"> commercial, and light industrial properties. She excels in property listing, sales, purchasing, management, renovation, start-up business investment, and development. Contact Lynda at <a href="tel:7312173827">731-217-3827</a> to explore real estate opportunities today.</span>
-            
-                    </p>
-                  
+                <div class="agent-description expandable" id="lynda-description">
+                  Introducing Lynda, our Principal Broker at Total Realty Source, with 50 years of expertise across residential, <span class="hidden-text">commercial, and light industrial properties. She excels in property listing, sales, purchasing, management, renovation, start-up business investment, and development. Contact Lynda at <a href="tel:7312173827">731-217-3827</a> to explore real estate opportunities today.</span> <span class="expand-link" onclick="toggleText('lynda-description')">... Read More</span>
+                </div>                
               </div>
-              <div class="fun-buttons" style="margin-top:20px;">
+              <div class="fun-buttons">
                   <!-- Add buttons or links here -->
                   <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:rgb(0, 0, 0);" href="tel:7312173827">Call</a></button>
                   <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:rgb(0, 0, 0);" href="https://www.realtor.com/realestateagents/5c2501dd46f9e70019a7ed7f">Learn more</a></button>
@@ -100,9 +97,11 @@
             <!-- Agent Role -->
             <p style="font-size:20px;">Real Estate Agent</p>
             <!-- Add more text here -->
-            <p class="agent-description expandable" style="margin: 10%; line-height:1.5em;font-size:20px; font-family: 'Quicksand', sans-serif; color:rgb(145, 145, 145);">Meet Jackie, our experienced Real Estate Agent serving West Tennessee.<span class="expand-link">...</span>  <span class="hidden-text">With specialized designations like PSA, e-PRO, CRB, RENE, GRI, and SRS, Jackie has earned a reputation as a trusted advisor in the industry.
-              Whether you're a first-time buyer or a seasoned seller, Jackie's personalized approach ensures a smooth and enjoyable real estate journey. Reach out to Jackie at <a href="tel:7314876545">731-487-6545</a> to discover the difference she can make for you.</p></span>
-            <div class="fun-buttons">
+            <div class="agent-description" id="jackie-description">
+              Meet Jackie, our experienced Real Estate Agent serving West Tennessee. With specialized designations <span class="hidden-text"> like PSA, e-PRO, CRB, RENE, GRI, and SRS, Jackie has earned a reputation as a trusted advisor in the industry.
+              Whether you're a first-time buyer or a seasoned seller, Jackie's personalized approach ensures a smooth and enjoyable real estate journey. Reach out to Jackie at <a href="tel:7314876545">731-487-6545</a> to discover the difference she can make for you.</p></span><span class="expand-link" onclick="toggleText('jackie-description')">... Read More</span>
+            </div>
+              <div class="fun-buttons">
               <!-- Add buttons or links here -->
               <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:rgb(0, 0, 0);" href="tel:7314876545">Call</a></button></a>
               <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:rgb(0, 0, 0);" href="https://www.realtor.com/realestateagents/5d002dde9e549c0012b01cc4">Learn more</a></button></a>
@@ -127,7 +126,9 @@
             <!-- Agent Role -->
             <p style="font-size:20px;">Real Estate Agent</p>
             <!-- Add more text here -->
-            <p class="agent-description" style="margin: 10%; line-height:1.5em;font-size:20px; font-family: 'Quicksand', sans-serif; color:rgb(145, 145, 145);">Meet Jay, your local real estate expert in West Tennessee. With a flair for fun and a knack for success, Jay secured the title of Rookie of the Year in his first year as an agent. Specializing in first-time home buying and listings, Jay is your go-to representative. Beyond real estate, he owns a black car service, catering to celebrities and Grammy winners. Contact Jay today at <a href="tel:7312259757">731-225-9757</a> for stellar service.</p>
+            <div class="agent-description" id="jay-description">
+              Meet Jay, your local real estate expert in West Tennessee. With a flair for fun and a knack for success, Jay secured the title of Rookie of the Year <span class="hidden-text">in his first year as an agent. Specializing in first-time home buying and listings, Jay is your go-to representative. Beyond real estate, he owns a black car service, catering to celebrities and Grammy winners. Contact Jay today at <a href="tel:7312259757">731-225-9757</a> for stellar service.</span><span class="expand-link" onclick="toggleText('jay-description')">... Read More</span>
+            </div>
             <div class="fun-buttons">
               <!-- Add buttons or links here -->
               <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:rgb(0, 0, 0);" href="tel:7312259757">Call</a></button></a>
@@ -153,7 +154,9 @@
             <!-- Agent Role -->
             <p style="font-size:20px;">Real Estate Agent</p>
             <!-- Add more text here -->
-            <p class="agent-description" style="margin: 10%; line-height:1.5em;font-size:20px; font-family: 'Quicksand', sans-serif; color:rgb(145, 145, 145);">Meet Brandie, our dedicated Real Estate Agent serving the West Tennessee area. With a passion for helping clients achieve their real estate goals, Brandie provides personalized service and expert guidance throughout the buying and selling process. Contact Brandie at <a href="tel:7316952785">731-695-2785</a> to discuss your real estate needs today.</p>
+            <div class="agent-description" id="brandie-description">
+            Meet Brandie, our dedicated Real Estate Agent serving the West Tennessee area. With a passion for helping clients <span class="hidden-text"> achieve their real estate goals, Brandie provides personalized service and expert guidance throughout the buying and selling process. Contact Brandie at <a href="tel:7316952785">731-695-2785</a> to discuss your real estate needs today.</span><span class="expand-link" onclick="toggleText('brandie-description')">... Read More</span>
+            </div>
             <div class="fun-buttons">
               <!-- Add buttons or links here -->
               <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:rgb(0, 0, 0);" href="tel:7316952785">Call</a></button></a>
@@ -179,7 +182,9 @@
             <!-- Agent Role -->
             <p style="font-size:20px;">Real Estate Agent</p>
             <!-- Add more text here -->
-            <p class="agent-description" style="margin: 10%; line-height:1.5em;font-size:20px; font-family: 'Quicksand', sans-serif; color:rgb(145, 145, 145);">Meet Ashley, our dedicated Real Estate Agent with a passion for helping clients achieve their real estate goals. In her remarkable career, Ashley has earned accolades including Rookie of the Year and Multi-Million Dollar Sales Awards, showcasing her talent and expertise. As a Certified Real Estate Negotiator Expert, she excels in securing deals for her clients. Contact Ashley at <a href="tel:7314140317">731-414-0317</a> to discuss your real estate needs today.</p>
+            <div class="agent-description" id="ashley-description">
+            Meet Ashley, a committed Real Estate Agent helping clients achieve their home-ownership goals. <span class="hidden-text"> In her remarkable career, Ashley has earned accolades including Rookie of the Year and Multi-Million Dollar Sales Awards, showcasing her talent and expertise. As a Certified Real Estate Negotiator Expert, she excels in securing deals for her clients. Contact Ashley at <a href="tel:7314140317">731-414-0317</a> to discuss your real estate needs today.</span><span class="expand-link" onclick="toggleText('ashley-description')">... Read More</span>
+          </div>
             <div class="fun-buttons">
               <!-- Add buttons or links here -->
               <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:rgb(0, 0, 0);" href="tel:7314140317">Call</a></button></a>
@@ -205,7 +210,9 @@
             <!-- Agent Role -->
             <p style="font-size:20px;">Real Estate Agent</p>
             <!-- Add more text here -->
-            <p class="agent-description" style="margin: 10%; line-height:1.5em;font-size:20px; font-family: 'Quicksand', sans-serif; color:rgb(145, 145, 145);">Meet Mary, our dedicated Real Estate Agent serving West Tennessee with over 40 years of experience. Leveraging her expertise as an Accredited Buyer's Representative (ABR) and a Real Estate Negotiation Expert (RENE), Mary helps first-time homebuyers with all their needs. Contact Mary at <a href="tel:7315749340">731-574-9340</a> to discuss your real estate needs today.</p>
+            <div class="agent-description" id="mary-description">
+            Meet Mary, our Real Estate Agent with over 40 years of experience serving West Tennessee. <span class="hidden-text"> Leveraging her expertise as an Accredited Buyer's Representative (ABR) and a Real Estate Negotiation Expert (RENE), Mary helps first-time homebuyers with all their needs. Contact Mary at <a href="tel:7315749340">731-574-9340</a> to discuss your real estate needs today. </span><span class="expand-link" onclick="toggleText('mary-description')">... Read More</span>
+          </div>
             <div class="fun-buttons">
               <!-- Add buttons or links here -->
               <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:rgb(0, 0, 0);" href="tel:7315749340">Call</a></button></a>

@@ -479,6 +479,7 @@ a:hover {
   justify-content: space-between;
   margin: 20px 0; /* Add margin between rows */
 }
+
 .card-row {
   display: flex;
   justify-content: space-between;
@@ -488,16 +489,13 @@ a:hover {
 }
 
 .fun-card {
-
   flex: 0 0 100%;
   margin-bottom: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  overflow: hidden;
-  padding-top: 3%;
-  padding:5%;
+  padding: 3% 5%; /* Combined padding */
   max-width: calc(100% - 40px); /* Adjust as needed */
-    overflow: hidden;
+  background-color: #fff;
 }
 
 .top-card-container, .bottom-card-container {
@@ -505,25 +503,30 @@ a:hover {
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
 .fun-image-container {
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   height: 100%; /* Set height to 100% */
 }
+
 .fun-text-container p {
-  color:rgb(127, 127, 127);
+  color: rgb(127, 127, 127);
+  text-align: center;
 }
+
 .fun-text-container h2 {
-  color:rgb(100, 100, 100);
+  color: rgb(100, 100, 100);
+  text-align: center;
 }
+
 .fun-card-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
-
 
 /* Default font size */
 .team-description {
@@ -532,6 +535,7 @@ a:hover {
   padding-right: 22%;
   padding-bottom: 5%;
 }
+
 /* Default font size */
 .agent-description {
   margin: 10%;
@@ -545,33 +549,33 @@ a:hover {
   flex-grow: 1; /* Allow cards to grow vertically to fill the space */
 }
 
-/* read expand btn */
+/* Read expand btn */
 .expandable {
   overflow: hidden;
-  max-height: 100px; /* Adjust the height based on your needs */
+  display: block;
+  max-height: 100%; /* Adjust the height based on your needs */
   transition: max-height 0.3s ease;
 }
+
 .expanded .expandable {
   max-height: none;
 }
+
 .expand-link {
   cursor: pointer;
   color: blue;
 }
+
 .hidden-text {
   display: none;
 }
-
-
 
 /* Media query for smaller screens */
 @media screen and (max-width: 768px) {
   .team-description {
     font-size: 18px; /* Adjust the font size for smaller screens */
   }
-}
-/* CSS for smaller screens */
-@media screen and (max-width: 768px) {
+
   /* Adjust card width */
   .fun-card {
     width: 100%; /* Make cards occupy full width on smaller screens */
@@ -582,9 +586,12 @@ a:hover {
     padding: 6px 12px; /* Decrease padding for smaller screens */
     font-size: 14px; /* Decrease font size for smaller screens */
   }
+
+  .fun-text-container {
+    padding-left: 5%; /* Reduce padding on smaller screens */
+    padding-right: 5%; /* Reduce padding on smaller screens */
+  }
 }
-
-
 
 .image-container {
   overflow: hidden;
@@ -597,16 +604,16 @@ a:hover {
   width: 100%;
   height: 100%;
   padding: 3%;
-  object-fit: cover; 
+  object-fit: cover;
   border-radius: 0%;
-  background-image:url(larry.png/larry.png);
+  background-image: url(larry.png/larry.png);
   border: 3px #e6e6e699;
 }
 
 .fun-text-container {
   padding-top: 0%;
-  padding-bottom:5%;
-  padding-left:3%;
+  padding-bottom: 5%;
+  padding-left: 3%;
 }
 
 .learnmorediv {

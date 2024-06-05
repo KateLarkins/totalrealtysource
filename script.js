@@ -112,18 +112,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // about us expand btn 
-document.addEventListener('DOMContentLoaded', function() {
-  const expandLink = document.querySelector('.expand-link');
-  const hiddenText = document.querySelector('.hidden-text');
+function toggleText(id) {
+  const description = document.getElementById(id);
+  const hiddenText = description.querySelector('.hidden-text');
+  const expandLink = description.querySelector('.expand-link');
 
-  expandLink.addEventListener('click', function() {
-      hiddenText.classList.toggle('expanded');
-      if (hiddenText.classList.contains('expanded')) {
-          expandLink.textContent = 'Read less';
-          hiddenText.style.display = 'inline'; // Show the hidden text
-      } else {
-          expandLink.textContent = '...';
-          hiddenText.style.display = 'none'; // Hide the hidden text
-      }
-  });
-});
+  if (hiddenText.style.display === 'none' || hiddenText.style.display === '') {
+    hiddenText.style.display = 'inline';
+    expandLink.innerHTML = ' Read Less';
+  } else {
+    hiddenText.style.display = 'none';
+    expandLink.innerHTML = '... Read More';
+  }
+}
+
+
