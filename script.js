@@ -111,30 +111,34 @@ document.addEventListener('DOMContentLoaded', function() {
   slideInCards();
 });
 
-// about us expand btn
+// about us expand btn 
 function toggleReadMore() {
-  const desc = document.querySelector('.agent-description');
-  const button = document.querySelector('.read-more-button');
-  if (desc.classList.contains('collapsed')) {
-      desc.classList.remove('collapsed');
-      button.textContent = 'Read Less';
-  } else {
-      desc.classList.add('collapsed');
-      button.textContent = 'Read More';
-  }
-}
+            const desc = document.querySelector('.agent-description');
+            const button = document.querySelector('.read-more-button');
+            if (desc.classList.contains('collapsed')) {
+                desc.classList.remove('collapsed');
+                button.textContent = 'Read Less';
+            } else {
+                desc.classList.add('collapsed');
+                button.textContent = 'Read More';
+            }
+        }
 
-function checkScreenSize() {
-  const desc = document.querySelector('.agent-description');
-  const button = document.querySelector('.read-more-button');
-  if (window.innerWidth > 600) {
-      desc.classList.remove('collapsed');
-      button.style.display = 'none';
-  } else {
-      desc.classList.add('collapsed');
-      button.style.display = 'block';
-  }
-}
+        function checkScreenSize() {
+            const desc = document.querySelector('.agent-description');
+            const button = document.querySelector('.read-more-button');
+            if (window.innerWidth > 600) {
+                desc.classList.remove('collapsed');
+                button.style.display = 'none';
+            } else {
+                if (!desc.classList.contains('collapsed')) {
+                    button.textContent = 'Read Less';
+                } else {
+                    button.textContent = 'Read More';
+                }
+                button.style.display = 'block';
+            }
+        }
 
-window.addEventListener('resize', checkScreenSize);
-window.addEventListener('load', checkScreenSize);
+        window.addEventListener('resize', checkScreenSize);
+        window.addEventListener('load', checkScreenSize);
