@@ -81,3 +81,33 @@ document.addEventListener('DOMContentLoaded', function() {
       observer.observe(element);
   });
 });
+
+// cards appear
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
+  const cards = document.querySelectorAll('.card-new');
+
+  const slideInCards = () => {
+      cards.forEach(card => {
+          if (isElementInViewport(card)) {
+              card.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+              card.style.opacity = 1;
+              card.style.transform = 'translateY(0)';
+          }
+      });
+  };
+
+  const isElementInViewport = (el) => {
+      const rect = el.getBoundingClientRect();
+      return (
+          rect.bottom >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+      );
+  };
+
+  window.addEventListener('scroll', slideInCards);
+  
+  // Initially check for visible cards on page load
+  slideInCards();
+});
+

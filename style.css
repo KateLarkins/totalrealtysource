@@ -326,6 +326,19 @@ a:hover {
   padding: 20px;
   box-sizing: border-box; /* Ensure padding is included in the width */
 }
+ /* card animation */
+
+.card-new {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.card-new.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* continued */
 
 .card-new {
   background-color: #fff;
@@ -486,7 +499,6 @@ a:hover {
   max-width: calc(100% - 40px); /* Adjust as needed */
     overflow: hidden;
 }
-
 
 .top-card-container, .bottom-card-container {
   display: flex;
