@@ -126,4 +126,25 @@ function toggleText(id) {
   }
 }
 
+// spinny test
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Hide the content and show the loader
+  document.querySelector(".content").style.display = "none";
+  document.querySelector(".loader-container").style.display = "flex";
+
+  // Start spinning the house icon
+  document.querySelector(".house-icon").classList.add("spin");
+
+  // Simulate loading time (replace this with your actual loading code)
+  setTimeout(function() {
+    // Show the content and hide the loader after loading
+    document.querySelector(".content").style.display = "block";
+    document.querySelector(".loader-container").style.display = "none";
+
+    // Stop spinning the house icon
+    document.querySelector(".house-icon").classList.remove("spin");
+  }, 2000); // Change 2000 to your desired loading time in milliseconds
+});
+
 

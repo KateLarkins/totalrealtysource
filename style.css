@@ -1,3 +1,30 @@
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.house-icon {
+  width: 100px; /* Adjust the width and height of the house icon as needed */
+  height: auto;
+}
+
+.house-icon.spin {
+  animation: spin 2s linear infinite; /* Start the spinning animation */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.content {
+  /* Additional styles for your content */
+  display: none; /* Hide content by default */
+}
+
+
 body {
   margin: 0;
   padding: 0;
