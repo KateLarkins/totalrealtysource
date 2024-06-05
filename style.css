@@ -588,6 +588,7 @@ a:hover {
 
   .fun-card-text {
     padding: 6px;
+    text-align: left;
   }
 
   button.learnmore {
