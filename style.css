@@ -537,15 +537,7 @@ a:hover {
   font-size: 20px;
   font-family: 'Quicksand', sans-serif;
   color: rgb(145, 145, 145);
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* Number of lines to show */
-  -webkit-box-orient: vertical;
-  transition: max-height 0.3s ease;
-
-
 }
-
 .agent-description.collapsed {
   overflow: hidden;
   display: -webkit-box;

@@ -123,3 +123,15 @@ function toggleReadMore() {
       button.textContent = 'Read More';
   }
 }
+
+function checkScreenSize() {
+  const desc = document.querySelector('.agent-description');
+  if (window.innerWidth > 600) {
+      desc.classList.remove('collapsed');
+  } else {
+      desc.classList.add('collapsed');
+  }
+}
+
+window.addEventListener('resize', checkScreenSize);
+window.addEventListener('load', checkScreenSize);
