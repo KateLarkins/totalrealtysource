@@ -570,26 +570,47 @@ a:hover {
   display: none;
 }
 
-/* Media query for smaller screens */
-@media screen and (max-width: 768px) {
-  .team-description {
-    font-size: 18px; /* Adjust the font size for smaller screens */
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .text-column {
+    padding-left: 10%;
+    padding-right: 10%;
   }
 
-  /* Adjust card width */
+  .learnmorediv {
+    padding-left: 10%;
+  }
+
   .fun-card {
-    width: 100%; /* Make cards occupy full width on smaller screens */
+    margin-bottom: 15px;
   }
 
-  /* Adjust button size and padding */
-  .fun-button {
-    padding: 6px 12px; /* Decrease padding for smaller screens */
-    font-size: 14px; /* Decrease font size for smaller screens */
+  .fun-card-text {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-column {
+    padding-left: 5%;
+    padding-right: 5%;
   }
 
-  .fun-text-container {
-    padding-left: 5%; /* Reduce padding on smaller screens */
-    padding-right: 5%; /* Reduce padding on smaller screens */
+  .learnmorediv {
+    padding-left: 5%;
+  }
+
+  .fun-card {
+    margin-bottom: 10px;
+  }
+
+  .fun-card-text {
+    padding: 6px;
+  }
+
+  button.learnmore {
+    padding: 8px 16px;
+    font-size: 14px;
   }
 }
 
