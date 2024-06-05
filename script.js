@@ -126,10 +126,13 @@ function toggleReadMore() {
 
 function checkScreenSize() {
   const desc = document.querySelector('.agent-description');
+  const button = document.querySelector('.read-more-button');
   if (window.innerWidth > 600) {
       desc.classList.remove('collapsed');
+      button.style.display = 'none';
   } else {
       desc.classList.add('collapsed');
+      button.style.display = 'block';
   }
 }
 
