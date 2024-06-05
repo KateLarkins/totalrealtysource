@@ -112,33 +112,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // about us expand btn 
-function toggleReadMore() {
-            const desc = document.querySelector('.agent-description');
-            const button = document.querySelector('.read-more-button');
-            if (desc.classList.contains('collapsed')) {
-                desc.classList.remove('collapsed');
-                button.textContent = 'Read Less';
-            } else {
-                desc.classList.add('collapsed');
-                button.textContent = 'Read More';
-            }
-        }
+document.addEventListener('DOMContentLoaded', function() {
+  const expandLink = document.querySelector('.expand-link');
+  const hiddenText = document.querySelector('.hidden-text');
 
-        function checkScreenSize() {
-            const desc = document.querySelector('.agent-description');
-            const button = document.querySelector('.read-more-button');
-            if (window.innerWidth > 600) {
-                desc.classList.remove('collapsed');
-                button.style.display = 'none';
-            } else {
-                if (!desc.classList.contains('collapsed')) {
-                    button.textContent = 'Read Less';
-                } else {
-                    button.textContent = 'Read More';
-                }
-                button.style.display = 'block';
-            }
-        }
-
-        window.addEventListener('resize', checkScreenSize);
-        window.addEventListener('load', checkScreenSize);
+  expandLink.addEventListener('click', function() {
+      hiddenText.classList.toggle('expanded');
+      if (hiddenText.classList.contains('expanded')) {
+          expandLink.textContent = 'Read less';
+          hiddenText.style.display = 'inline'; // Show the hidden text
+      } else {
+          expandLink.textContent = '...';
+          hiddenText.style.display = 'none'; // Hide the hidden text
+      }
+  });
+});
