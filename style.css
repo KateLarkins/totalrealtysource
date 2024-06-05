@@ -575,14 +575,14 @@ a:hover {
 
 .image-container {
   overflow: hidden;
-  width: 100px; /* Adjust image width as needed */
-  height: 100px; /* Adjust image height as needed */
+  width: 100%; /* Adjust image width as needed */
+  height: 100%; /* Adjust image height as needed */
   margin-bottom: 20px;
 }
 
 .fun-rounded-image {
-  width: 200px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   padding: 3%;
   object-fit: cover; 
   border-radius: 0%;
