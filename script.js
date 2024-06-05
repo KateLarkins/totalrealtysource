@@ -119,10 +119,10 @@ function toggleText(id) {
 
   if (hiddenText.style.display === 'none' || hiddenText.style.display === '') {
     hiddenText.style.display = 'inline';
-    expandLink.innerHTML = ' Read Less';
+    expandLink.textContent = ' Read Less';
   } else {
     hiddenText.style.display = 'none';
-    expandLink.innerHTML = '... Read More';
+    expandLink.textContent = '...Read More';
   }
 }
 
