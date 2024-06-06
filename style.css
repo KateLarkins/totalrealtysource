@@ -19,10 +19,7 @@
   100% { transform: rotate(360deg); }
 }
 
-.content {
-  /* Additional styles for your content */
-  display: none; /* Hide content by default */
-}
+
 
 
 body {
@@ -1092,6 +1089,4 @@ footer a {
     flex: 0 0 calc(100% - 20px);
     max-width: calc(100% - 50px);
   }
-}
-
-
+}}
