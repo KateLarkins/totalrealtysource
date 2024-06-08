@@ -662,6 +662,10 @@ a:hover {
   padding-left: 3%;
 }
 
+.fun-buttons {
+  text-align:center;
+}
+
 .learnmorediv {
   display: flex;
   justify-content: center;
