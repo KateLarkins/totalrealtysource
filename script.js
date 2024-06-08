@@ -147,53 +147,72 @@ document.addEventListener("DOMContentLoaded", function() {
   }, 2000); // Change 2000 to your desired loading time in milliseconds
 });
 
-// search bar// Function to toggle the menu for mobile view
-function toggleMenu() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-
-// Function to filter properties based on search criteria
+// search bar// Function to toggle the menu for mobile view// Function to filter properties based on address, price range, and agent
 function filterProperties() {
-  var inputAddress, inputPrice, inputAgent, filter, propertyContainer, properties, property, i;
-  inputAddress = document.getElementById("addressInput").value.toUpperCase();
-  inputPrice = document.getElementById("priceInput").value.toUpperCase();
-  inputAgent = document.getElementById("agentInput").value.toUpperCase();
-  filter = inputAddress + inputPrice + inputAgent;
-  propertyContainer = document.getElementsByClassName("property-container")[0];
-  properties = propertyContainer.getElementsByClassName("property-widget");
+  // Get input values
+  var addressInput = document.getElementById('addressInput').value.toLowerCase();
+  var priceFilter = document.getElementById('price').value;
+  var agentFilter = document.getElementById('agent').value.toLowerCase();
 
-  // Loop through all properties and hide those that do not match the search criteria
-  for (i = 0; i < properties.length; i++) {
-    property = properties[i];
-    if (property) {
-      var address = property.querySelector(".property-details h3").textContent.toUpperCase();
-      var price = property.querySelector(".property-details .price").textContent.toUpperCase();
-      var agent = property.querySelector(".property-details .location a").textContent.toUpperCase();
-      if (address.indexOf(inputAddress) > -1 && price.indexOf(inputPrice) > -1 && agent.indexOf(inputAgent) > -1) {
-        property.style.display = "";
+  // Get all property widgets
+  var propertyWidgets = document.getElementsByClassName('property-widget');
+
+  // Loop through property widgets
+  for (var i = 0; i < propertyWidgets.length; i++) {
+      var propertyWidget = propertyWidgets[i];
+      var propertyAddress = propertyWidget.querySelector('.property-details h3').textContent.toLowerCase();
+      var propertyPrice = parseFloat(propertyWidget.querySelector('.price').textContent.replace(/\D/g, ''));
+
+      // Check if property matches filters
+      var addressMatch = propertyAddress.includes(addressInput);
+      var priceMatch = filterPrice(propertyPrice, priceFilter);
+      var agentMatch = propertyWidget.querySelector('.location').textContent.toLowerCase().includes(agentFilter);
+
+      // Show or hide property based on filter matches
+      if (addressMatch && priceMatch && agentMatch) {
+          propertyWidget.style.display = 'block';
       } else {
-        property.style.display = "none";
+          propertyWidget.style.display = 'none';
       }
-    }
   }
 
-  // Display the number of results and the "Showing Results" section
-  var count = 0;
-  for (i = 0; i < properties.length; i++) {
-    if (properties[i].style.display !== "none") {
-      count++;
-    }
-  }
-  var showingResults = document.getElementById("showingResults");
-  if (count > 0) {
-    showingResults.innerHTML = "Showing " + count + " result(s).";
-    showingResults.style.display = "";
+  // Update showing results info
+  updateShowingResults();
+}
+
+// Function to filter properties based on price range
+// Function to filter properties based on price range
+function filterPrice(propertyPrice, priceFilter) {
+  if (priceFilter === '<100000') {
+      return propertyPrice < 100000;
+  } else if (priceFilter === '100000-500000') {
+      return propertyPrice >= 100000 && propertyPrice <= 500000;
+  } else if (priceFilter === '>500000') {
+      return propertyPrice > 500000;
   } else {
-    showingResults.style.display = "none";
+      return true; // No price filter selected, return true to show all properties
   }
 }
+
+
+// Function to update showing results info
+function updateShowingResults() {
+  var visibleProperties = document.querySelectorAll('.property-widget[style="display: block;"]').length;
+  var totalProperties = document.getElementsByClassName('property-widget').length;
+  var showingResults = document.getElementById('showingResults');
+
+  showingResults.innerHTML = "Showing " + visibleProperties + " out of " + totalProperties + " results.";
+  showingResults.style.display = 'block';
+}
+
+// Function to clear all filters
+function clearFilters() {
+  document.getElementById('addressInput').value = '';
+  document.getElementById('price').value = '';
+  document.getElementById('agent').value = '';
+  filterProperties(); // Reapply filters to show all properties
+}
+
+// Add event listeners
+document.getElementById('clearPriceFilter').addEventListener('click', clearFilters);
+document.getElementById('clearAgentFilter').addEventListener('click', clearFilters);
