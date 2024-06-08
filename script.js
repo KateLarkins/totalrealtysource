@@ -147,4 +147,53 @@ document.addEventListener("DOMContentLoaded", function() {
   }, 2000); // Change 2000 to your desired loading time in milliseconds
 });
 
+// search bar// Function to toggle the menu for mobile view
+function toggleMenu() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
 
+// Function to filter properties based on search criteria
+function filterProperties() {
+  var inputAddress, inputPrice, inputAgent, filter, propertyContainer, properties, property, i;
+  inputAddress = document.getElementById("addressInput").value.toUpperCase();
+  inputPrice = document.getElementById("priceInput").value.toUpperCase();
+  inputAgent = document.getElementById("agentInput").value.toUpperCase();
+  filter = inputAddress + inputPrice + inputAgent;
+  propertyContainer = document.getElementsByClassName("property-container")[0];
+  properties = propertyContainer.getElementsByClassName("property-widget");
+
+  // Loop through all properties and hide those that do not match the search criteria
+  for (i = 0; i < properties.length; i++) {
+    property = properties[i];
+    if (property) {
+      var address = property.querySelector(".property-details h3").textContent.toUpperCase();
+      var price = property.querySelector(".property-details .price").textContent.toUpperCase();
+      var agent = property.querySelector(".property-details .location a").textContent.toUpperCase();
+      if (address.indexOf(inputAddress) > -1 && price.indexOf(inputPrice) > -1 && agent.indexOf(inputAgent) > -1) {
+        property.style.display = "";
+      } else {
+        property.style.display = "none";
+      }
+    }
+  }
+
+  // Display the number of results and the "Showing Results" section
+  var count = 0;
+  for (i = 0; i < properties.length; i++) {
+    if (properties[i].style.display !== "none") {
+      count++;
+    }
+  }
+  var showingResults = document.getElementById("showingResults");
+  if (count > 0) {
+    showingResults.innerHTML = "Showing " + count + " result(s).";
+    showingResults.style.display = "";
+  } else {
+    showingResults.style.display = "none";
+  }
+}

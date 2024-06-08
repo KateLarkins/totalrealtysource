@@ -15,6 +15,53 @@
     <link rel="stylesheet" href="style.css">  
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </head>
+  <style>
+
+.search-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin: 20px 0;
+      }
+      .search-container input {
+        padding: 10px;
+        font-size: 16px;
+        width: 20%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .search-container button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        background-color: #ffc267;
+        color: white;
+        cursor: pointer;
+      }
+      .search-container button:hover {
+        background-color: #f3b963;
+      }
+      .result-info {
+    margin-top: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+  </style>
 <body>
   <div class="topnav" id="myTopnav">
     <a href="index.html" style="color:rgb(0, 0, 0); text-decoration:overline underline; text-decoration-thickness: 2px;">TOTAL REALTY SOURCE</a>
@@ -45,12 +92,25 @@
       <img src="bob.png/bob.png" alt="Placeholder Image">
     </div>
   </div>
+  <!-- search bar -->
+
 
     <section style="background-color: #ffffff; padding-top: 5%; padding-bottom: 5%; padding-left: 3%; padding-right: 3%; border: none;">
         <p style="color:#000000; font-size:300%; font-family:'Bauer Bodoni'; font-weight:bolder; margin-top: 2%; margin-bottom: 1%; text-align: center;">Listings</p>
         <br>
         <br>
+        <section style="background-color: #ffffff; padding-top: 2%; padding-bottom: 2%; padding-left: 3%; padding-right: 3%; border: none;">
+          <div class="search-container">
+            <input type="text" id="addressInput" placeholder="Search by Address" onkeyup="filterProperties()">
+            <input type="text" id="priceInput" placeholder="Search by Price" onkeyup="filterProperties()">
+            <input type="text" id="agentInput" placeholder="Search by Agent" onkeyup="filterProperties()">
+            <button onclick="filterProperties()">Search</button>
+          </div>
+          <div id="showingResults" class="result-info" style="display: none;"></div>
+        </section>
           <div class="property-container">
+
+
 
         <div class="property-widget">
             <img src="huntingdon.png/Huntingdon.png" alt="Property 2">
@@ -139,6 +199,15 @@
   <p style="color:#000000; font-size:300%; font-family:'Bauer Bodoni'; font-weight:bolder; margin-top: 2%; margin-bottom: 1%; text-align: center;">Pending and Closed!</p>
   <br>
   <br>
+  <section style="background-color: #ffffff; padding-top: 2%; padding-bottom: 2%; padding-left: 3%; padding-right: 3%; border: none;">
+    <div class="search-container">
+      <input type="text" id="addressInput" placeholder="Search by Address" onkeyup="filterProperties()">
+      <input type="text" id="priceInput" placeholder="Search by Price" onkeyup="filterProperties()">
+      <input type="text" id="agentInput" placeholder="Search by Agent" onkeyup="filterProperties()">
+      <button onclick="filterProperties()">Search</button>
+    </div>
+    <div id="showingResults" class="result-info" style="display: none;"></div>
+  </section>
   <div class="property-container">
   <div class="property-widget">
     <img src="forest.png/forest.png" alt="Property 2">
