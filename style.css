@@ -19,6 +19,18 @@
   100% { transform: rotate(360deg); }
 }
 
+/* Media query for screens smaller than 768px */
+@media screen and (max-width: 768px) {
+  .search-bar {
+      display: block; /* Display the search bars as block elements */
+      margin-bottom: 10px; /* Add some space between search bars */
+      width: 100%; /* Set the width to 100% to make them full-width */
+  }
+
+  .search-button {
+      width: 100%; /* Set the width of the search buttons to 100% */
+  }
+}
 
 
 
