@@ -397,13 +397,19 @@ a:hover {
 }
 
 .card-content {
-  max-height: 80px; /* Maximum height of the text content */
+  max-height: 100px; /* Maximum height of the text content */
   overflow-y: hidden; /* Hide overflow content */
 }
 
 .card-new p {
   font-size: 16px; /* Adjust as needed */
   margin-bottom: 0;
+}
+@media (max-width: 600px) {
+  .card-new {
+    /* Maintain the same box shadow on smaller screens */
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
+  }
 }
 
 @media (min-width: 768px) {
@@ -472,9 +478,6 @@ a:hover {
     
     .fun-buttons a {
       margin: 5px;
-    }
-    .card-new {
-      box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
     }
   }
 
