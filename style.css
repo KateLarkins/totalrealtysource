@@ -55,6 +55,28 @@
   padding-bottom: 80px;
 }
 
+Responsive adjustments */
+@media (max-width: 768px) {
+  .containerreveal {
+    font-size: 28px; /* Adjust font size for smaller screens */
+    padding: 60px 10px; /* Adjust padding */
+  }
+
+  .reveal {
+    margin: 0 5px; /* Adjust margin for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .containerreveal {
+    font-size: 22px; /* Further adjust font size */
+    padding: 40px 5px; /* Further adjust padding */
+  }
+
+  .reveal {
+    margin: 0 2px; /* Further adjust margin */
+  }
+}
 .reveal {
   margin: 0 20px;
   overflow: hidden;
