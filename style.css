@@ -45,14 +45,14 @@
 
 .containerreveal {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  padding: 90px;
+  height: auto; /* Adjust height for responsiveness */
+  padding: 90px 20px; /* Adjust padding for smaller screens */
   font-size: 35px;
   font-weight: 700;
-  padding-top:100px;
-  padding-bottom: 80px;
+  background-color: #133551; /* Moved background color here */
 }
 
 Responsive adjustments */
