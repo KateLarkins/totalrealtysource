@@ -54,6 +54,25 @@
   font-weight: 700;
   background-color: #133551; /* Moved background color here */
 }
+/* Reveal text styling */
+.reveal {
+  margin: 0 10px; /* Reduced margin for responsiveness */
+  overflow: hidden;
+}
+
+.reveal__content {
+  transform: translateY(100%);
+  animation: reveal 1.7s cubic-bezier(1, 0, 0.3, 0.9) forwards;
+}
+
+.reveal:nth-child(2) .reveal__content {
+  animation-delay: 0.6s;
+}
+
+.reveal:nth-child(3) .reveal__content {
+  animation-delay: 1.2s;
+}
+
 
 Responsive adjustments */
 @media (max-width: 768px) {
@@ -76,23 +95,6 @@ Responsive adjustments */
   .reveal {
     margin: 0 2px; /* Further adjust margin */
   }
-}
-.reveal {
-  margin: 0 20px;
-  overflow: hidden;
-}
-
-.reveal__content {
-  transform: translateY(100%);
-  animation: reveal 1.7s cubic-bezier(1, 0, 0.3, 0.9) forwards;
-}
-
-.reveal:nth-child(2) .reveal__content {
-  animation-delay: 0.6s;
-}
-
-.reveal:nth-child(3) .reveal__content {
-  animation-delay: 1.2s;
 }
 
 @keyframes reveal {
