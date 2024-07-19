@@ -1,4 +1,8 @@
 /* typewriter  */
+/* Define the animation */
+
+
+/*  */
 
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -257,7 +261,7 @@ a:hover {
 /* Navbar
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: rgb(255, 255, 255);
+  background-color: #0B1C37;
   overflow: hidden;
   position: relative;
 }
@@ -272,7 +276,7 @@ a:hover {
 .topnav a {
   float: left;
   display: block;
-  color: #000000;
+  color: #ffffff;
   text-align: center;
   padding: 20px 20px;
   text-decoration: none;
@@ -287,7 +291,7 @@ a:hover {
 /* Change the color of links on hover */
 .topnav a:hover {
   background-color: #ffc267;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 /* Ensure the three-bar icon is positioned above the call button */
@@ -389,7 +393,7 @@ a:hover {
     top: 60px; /* Adjust top position */
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.9); /* Background color for collapsed navbar */
+    background-color: #0B1C37; /* Background color for collapsed navbar */
     padding: 10px 0; /* Adjust padding */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
   }
@@ -405,7 +409,7 @@ a:hover {
   top: 0;
   right: 0; /* Adjust this value as needed */
   padding: 0px; /* Adjust padding as needed */
-  background-color: #ffffff; /* Change background color as needed */
+  background-color:#0B1C37; /* Change background color as needed */
 }
 
 /* Navbar Collapse */
@@ -554,7 +558,6 @@ a:hover {
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
   margin-bottom: 20px; /* Add space between stacked cards */
   max-width: 300px; /* Limit the maximum width of the card */
@@ -562,8 +565,8 @@ a:hover {
 }
 
 .card-new svg {
-  width: 50px; /* Ensure consistent size for SVG icons */
-  height: 50px;
+  width: 70px; /* Ensure consistent size for SVG icons */
+  height: 70px;
   display: block; /* Ensure SVG is displayed as a block element */
   margin: 0 auto; /* Center SVG horizontally */
 }
@@ -578,13 +581,14 @@ a:hover {
 }
 
 .card-new i {
-  font-size: 24px; /* Adjust as needed */
+  font-size: 40px; /* Adjust as needed */
   margin-bottom: 20px; /* Adjust as needed */
 }
 
 .card-content {
-  max-height: 100px; /* Maximum height of the text content */
+  max-height: 200px; /* Maximum height of the text content */
   overflow-y: hidden; /* Hide overflow content */
+  color:white;
 }
 
 .card-new p {
@@ -633,9 +637,8 @@ a:hover {
   max-width: 30%; /* Prevents item from exceeding 33.33% of the container width */
   box-sizing: border-box; /* Ensures padding and border are included in the width */
   padding: 10px; /* Adjust padding as needed */
-  background-color: rgb(255, 255, 255) ;
   margin: 6px;
-  /* Other styling for the items */
+ 
 }
 
 @media (max-width: 768px) { /* Adjust breakpoint as needed */
@@ -1136,7 +1139,7 @@ td {
   color: #ffffff; /* Adjust the color as needed */
 }
 footer {
-  background-color: rgb(0, 26, 92);
+  background-color: #0B1C37;
   color: #ffffff;
   text-align: center;
   padding: 10px 0;
