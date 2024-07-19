@@ -1,12 +1,54 @@
+/* typewriter  */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.reveal {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+  animation-delay: 1s;
+}
+.reveallisting {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 2.5s;
+}
+
+.listing-item {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  position: relative; /* Ensure items are positioned correctly */
+}
+
+.listing-item:nth-child(1) {
+  animation-delay: 2.5s;
+}
+
+.listing-item:nth-child(2) {
+  animation-delay: 3s;
+}
+
+.listing-item:nth-child(3) {
+  animation-delay: 3.5s;
+}
+
+
+
+
+/* Reveal text animation */
+
 .containerreveal {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
-  padding: 30px;
-  font-size: 40px;
+  padding: 90px;
+  font-size: 30px;
   font-weight: 700;
-  
+  padding-top:100px;
+  padding-bottom: 80px;
 }
 
 .reveal {

@@ -216,3 +216,7 @@ function clearFilters() {
 // Add event listeners
 document.getElementById('clearPriceFilter').addEventListener('click', clearFilters);
 document.getElementById('clearAgentFilter').addEventListener('click', clearFilters);
+
+
+// type
+
