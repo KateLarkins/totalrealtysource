@@ -1372,3 +1372,24 @@ footer a {
     font-size: 20px;
   }
 }
+
+/* Responsive adjustments for tablets and smaller screens */
+@media (max-width: 1024px) {
+  .contacttworight {
+    padding: 20px;
+  }
+}
+
+/* Responsive adjustments for mobile screens */
+@media (max-width: 768px) {
+  .contacttworight {
+    padding: 10px;
+  }
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 480px) {
+  .contacttworight {
+    padding: 5px;
+  }
+}
