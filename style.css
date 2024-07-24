@@ -1,3 +1,8 @@
+.homeheader {
+  background-image:url(kitchen.png/kitchen.png);
+  height: 100;
+}
+
 /* typewriter  */
 /* Define the animation */
 
@@ -51,8 +56,9 @@
   height: auto; /* Adjust height for responsiveness */
   padding: 90px 20px; /* Adjust padding for smaller screens */
   font-size: 35px;
-  font-weight: 700;
-  background-color: #133551; /* Moved background color here */
+  font-weight: 00;
+  font-family: 'Quicksand';
+  background-color: #fefefe; /* Moved background color here */
 }
 /* Reveal text styling */
 .reveal {
@@ -74,7 +80,7 @@
 }
 
 
-Responsive adjustments */
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .containerreveal {
     font-size: 28px; /* Adjust font size for smaller screens */
@@ -282,193 +288,84 @@ iframe {
 a:hover {
   color:#ffc267 ;
 }
-/* Navbar
-/* Add a black background color to the top navigation */
+/* Navbar */body {
+  margin: 0;
+}
+
 .topnav {
-  background-color: #0B1C37;
-  overflow: hidden;
-  position: relative;
-}
-.myTopnav {
-  display: none;
-}
-.myTopnav.active {
-  display: block; /* Show the menu when the active class is added */
+  background-color: white;
+  border-bottom: 1px solid #ddd; /* Optional: border for separation */
 }
 
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  display: block;
-  color: #ffffff;
-  text-align: center;
-  padding: 20px 20px;
+.logo-row {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.logo img {
+  height: 150px; /* Adjust based on your logo size */
+}
+
+.links-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between links */
+}
+
+.nav-links a {
+  padding: 10px;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
   text-decoration: none;
-  font-size: 23px;
-}
-.topnav.active {
-  display: block; /* Show the menu when the active class is added */
-}
-.icon {
-  display: inline-block;
-}
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ffc267;
-  color: rgb(255, 255, 255);
+  font-weight: bold;
 }
 
-/* Ensure the three-bar icon is positioned above the call button */
-.icon {
-  position: relative;
-  z-index: 2; /* Increase the z-index to make it appear above other elements */
+.nav-links a:hover {
+  background-color: #f0f0f0;
+  color: #333;
 }
-
-.call-button-container {
-  position: relative; /* Ensure the container is positioned relatively */
-}
-
-/* Adjust the z-index of the call button to make sure it's below the three-bar icon */
-.call-button {
-  position: relative;
-  z-index: 1; /* Lower z-index to keep it behind the three-bar icon */
-}
-/* Media query for small screens */
-@media screen and (max-width: 600px) {
-  /* Hide the Home link */
-  .topnav a[href="index.html"] {
-    display: none;
-  }
-  
-  /* Show the bars icon and position it to the left */
-  .icon {
-    display: block;
-    float: left;
-  }
-}
-  /* Show the bars icon and position it to the left */
-  .icon {
-    display: block;
-    float: left;
-  }
-
-/* Media query for small screens */
-@media screen and (max-width: 600px) {
-  /* Hide the call button */
-  .call-button-container {
-    display: none;
-  }
-}
-/* Media query for small screens including iPhones */
-@media only screen and (max-width: 600px), only screen and (max-device-width: 600px) {
-  /* Hide the call button */
-  .call-button-container {
-    display: none !important;
-  }
-}
-
-/* Add an active class to highlight the current page */
-.topnav a.active {
-  background-color: #ffc267;
-  color: white;
-}
-
-/* Hide the link that should open and close the topnav on small screens */
-.topnav .icon {
-  display: none;
-}
-/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-@media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive a.icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-/* Navbar */
-
-
-/* Media Queries */
-/* Your existing CSS */
-
-/* Media Queries */
-@media screen and (max-width: 768px) {
-  .navbar-nav {
-    display: none; /* Hide navbar links by default */
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 60px; /* Adjust top position */
-    left: 0;
-    width: 100%;
-    background-color: #0B1C37; /* Background color for collapsed navbar */
-    padding: 10px 0; /* Adjust padding */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
-  }
-
-  .navbar-nav.collapsed {
-    display: flex; /* Show navbar links when collapsed class is present */
-  }
-}
-
 
 .call-button-container {
   position: absolute;
-  top: 0;
-  right: 0; /* Adjust this value as needed */
-  padding: 0px; /* Adjust padding as needed */
-  background-color:#0B1C37; /* Change background color as needed */
+  right: 20px; /* Adjust based on your design */
 }
 
-/* Navbar Collapse */
-.navbar-inner.collapsed .navbar-nav {
-  display: none;
+.call-button {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
 }
 
-.navbar-inner.collapsed .fa-bars {
-  display: block;
-}
-
-/* Media Queries */
-@media screen and (max-width: 768px) {
-  .navbar-inner {
-    padding: 10px; /* Adjust padding for smaller screens */
+@media screen and (max-width: 600px) {
+  .logo-row {
+    padding: 10px;
   }
 
-  .navbar-logo {
-    margin-right: 0; /* Remove margin for logo */
-  }
-
-  .navbar-nav {
-    display: none; /* Hide navbar links by default */
+  .links-row {
     flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 60px; /* Adjust top position */
-    left: 0;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.9); /* Background color for collapsed navbar */
-    padding: 10px 0; /* Adjust padding */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
   }
 
-} */
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .call-button-container {
+    margin-top: 10px;
+    position: static;
+  }
+}
+
 
 /* navbar ends */
 
@@ -615,6 +512,11 @@ a:hover {
   color:white;
 }
 
+.card-content h2 {
+  font-size: 25px;
+  font-weight: 500;
+}
+
 .card-new p {
   font-size: 16px; /* Adjust as needed */
   margin-bottom: 0;
@@ -721,6 +623,7 @@ a:hover {
   display: flex;
   justify-content: space-between;
   margin: 20px 0; /* Add margin between rows */
+  background-color: #ffffff;
 }
 
 .card-row {
@@ -729,22 +632,24 @@ a:hover {
   flex-wrap: wrap;
   margin-top: 30px; /* Add space between the rows */
   margin-bottom: 30px;
+  background-color: #ffffff;
 }
 
 .fun-card {
   flex: 0 0 100%;
   margin-bottom: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #ffffff;
   border-radius: 5px;
   padding: 3% 5%; /* Combined padding */
   max-width: calc(100% - 40px); /* Adjust as needed */
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 .top-card-container, .bottom-card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  background-color: #ffffff;
 }
 
 .fun-image-container {
@@ -752,6 +657,7 @@ a:hover {
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   height: 100%; /* Set height to 100% */
+  background-color:#ffffff;
 }
 
 .fun-text-container p {
@@ -769,6 +675,7 @@ a:hover {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  background-color: #ffffff;
 }
 
 /* Default font size */
@@ -853,7 +760,7 @@ a:hover {
   padding: 3%;
   object-fit: cover;
   border-radius: 0%;
-  background-image: url(larry.png/larry.png);
+  background:#ffffff;
   border: 3px #e6e6e699;
 }
 
@@ -1003,7 +910,46 @@ a:hover {
 }
 
 /* end for sale */
+/* Contact Two */
 /* Contact */
+table {
+  width: 450px;
+}
+.contacttwocontainer {
+  width:100%;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  margin: 50px auto;
+  padding: 5%;
+  background-color: transparent;
+}
+.contacttwobox {
+  background-color:transparent;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px; /* Adjust as needed */
+  box-shadow: 0 0 40px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)
+}
+
+.contacttwoleft {
+  flex-basis: 60%;
+  padding:40px 80px;
+  background-color: transparent;
+}
+.contacttworight {
+  flex-basis: 40%;
+  padding:55px;
+  background-color: transparent;
+  color: #fff;
+  text-align: center;
+}
+.contacttwocontainer p {
+  margin-bottom:40px;
+
+}
+
+/* Contact One */
 .contactcontainer {
   width:80%;
   display: flex;
@@ -1039,7 +985,7 @@ a:hover {
 .input-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 .input-row .input-group {
   flex-basis:45%;
@@ -1050,13 +996,13 @@ input {
   border-bottom: 1px solid rgb(204, 204, 204);
   outline: none;
   padding-bottom: 5px;
-  padding-top: 5px;
+  padding-top: 5 px;
 }
 textarea {
   width:100%;
   border: 1px solid rgb(204, 204, 204);
   outline:none;
-  padding:10px;
+  padding:0px;
   box-sizing: border-box;
 }
 label {
@@ -1077,7 +1023,7 @@ tr td:first-child {
   padding-right:20px;
 }
 tr td {
-  padding-top:20px;
+  padding-top:15px;
 }
 
 td {
@@ -1160,11 +1106,11 @@ td {
 }
 .icon-row svg, .icon-row i {
   transform: translateY(-7px);
-  color: #ffffff; /* Adjust the color as needed */
+  color: #000000; /* Adjust the color as needed */
 }
 footer {
-  background-color: #0B1C37;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
   text-align: center;
   padding: 10px 0;
   width: 100%;
@@ -1172,7 +1118,7 @@ footer {
 }
 
 footer a {
-  color: #ffffff;
+  color: #000000;
   text-decoration: none;
   margin: 0 10px;
 }

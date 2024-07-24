@@ -220,3 +220,23 @@ document.getElementById('clearAgentFilter').addEventListener('click', clearFilte
 
 // type
 
+// New navbar
+
+function toggleMenu() {
+  var navLinks = document.getElementById("navLinks");
+  if (navLinks.classList.contains("show")) {
+    navLinks.classList.remove("show");
+  } else {
+    navLinks.classList.add("show");
+  }
+}
+
+function toggleOtherLinks() {
+  var otherLinks = document.getElementById("otherLinks");
+  if (otherLinks.style.display === "block") {
+    otherLinks.style.display = "none";
+  } else {
+    otherLinks.style.display = "block";
+  }
+}
+
