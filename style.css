@@ -1389,3 +1389,151 @@ footer a {
     font-size: 14px;
   }
 }
+
+
+
+
+
+
+
+/* Base styles for large screens (default) */
+table {
+  width: 450px;
+}
+
+.contacttwocontainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto;
+  padding: 5%;
+  background-color: transparent;
+}
+
+.contacttwobox {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px; /* Adjust as needed */
+  box-shadow: 0 0 40px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15);
+}
+
+.contacttwoleft {
+  flex-basis: 60%;
+  padding: 40px 80px;
+  background-color: transparent;
+}
+
+.contacttworight {
+  flex-basis: 40%;
+  padding: 55px;
+  background-color: transparent;
+  color: #fff;
+  text-align: center;
+}
+
+.contacttwocontainer p {
+  margin-bottom: 40px;
+}
+
+/* Responsive adjustments for tablets and small screens */
+@media (max-width: 1024px) {
+  .contacttwobox {
+    max-width: 80%;
+  }
+
+  .contacttworight {
+    padding: 20px;
+  }
+
+  .contacttworight h2 {
+    font-size: 24px;
+  }
+
+  .contacttworight h4 {
+    font-size: 18px;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  .contacttworight td {
+    padding: 10px;
+  }
+
+  .contacttworight button {
+    margin-right: 20px;
+  }
+}
+
+/* Responsive adjustments for mobile screens */
+@media (max-width: 768px) {
+  .contacttwobox {
+    max-width: 95%;
+    padding: 5%;
+  }
+
+  .contacttworight {
+    padding: 15px;
+  }
+
+  .contacttworight h2 {
+    font-size: 20px;
+  }
+
+  .contacttworight h4 {
+    font-size: 16px;
+  }
+
+  table {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .contacttworight td {
+    padding: 8px;
+    display: block;
+    text-align: center;
+  }
+
+  .contacttworight button {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 480px) {
+  .contacttwobox {
+    max-width: 100%;
+    padding: 5px;
+  }
+
+  .contacttworight {
+    padding: 10px;
+  }
+
+  .contacttworight h2 {
+    font-size: 18px;
+  }
+
+  .contacttworight h4 {
+    font-size: 14px;
+  }
+
+  table {
+    font-size: 10px;
+  }
+
+  .contacttworight td {
+    padding: 5px;
+  }
+
+  .contacttworight button {
+    width: 100%;
+    margin: 5px 0;
+    font-size: 12px;
+  }
+}
