@@ -1259,3 +1259,97 @@ footer a {
     max-width: calc(100% - 50px);
   }
 }}
+
+/* home page ahh */
+
+/* Media Queries for Responsiveness */
+
+/* Tablets and smaller screens */
+@media (max-width: 1024px) {
+  .contacttworight {
+    padding: 20px;
+  }
+
+  .contacttworight h2 {
+    font-size: 24px;
+  }
+
+  .contacttworight h4 {
+    font-size: 18px;
+  }
+
+  .contacttworight table {
+    width: 100%;
+  }
+
+  .contacttworight td {
+    font-size: 14px;
+  }
+
+  .text-column h2 {
+    font-size: 30px;
+  }
+
+  .text-column p {
+    font-size: 18px;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+  .contacttwobox {
+    flex-direction: column;
+  }
+
+  .contacttworight {
+    padding: 10px;
+  }
+
+  .contacttworight h2 {
+    font-size: 20px;
+  }
+
+  .contacttworight h4 {
+    font-size: 16px;
+  }
+
+  .contacttworight table {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .text-column h2 {
+    font-size: 24px;
+  }
+
+  .text-column p {
+    font-size: 16px;
+  }
+
+  .column {
+    padding: 0 10px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .contacttworight h2 {
+    font-size: 18px;
+  }
+
+  .contacttworight h4 {
+    font-size: 14px;
+  }
+
+  .contacttworight table {
+    font-size: 12px;
+  }
+
+  .text-column h2 {
+    font-size: 20px;
+  }
+
+  .text-column p {
+    font-size: 14px;
+  }
+}
