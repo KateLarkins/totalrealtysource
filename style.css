@@ -1261,11 +1261,13 @@ footer a {
 }}
 
 /* home page ahh */
-
-/* Media Queries for Responsiveness */
-
 /* Tablets and smaller screens */
 @media (max-width: 1024px) {
+  .contacttwobox {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
   .contacttworight {
     padding: 20px;
   }
@@ -1280,10 +1282,17 @@ footer a {
 
   .contacttworight table {
     width: 100%;
+    font-size: 14px;
   }
 
   .contacttworight td {
-    font-size: 14px;
+    padding: 10px;
+    text-align: left;
+  }
+
+  .contacttworight button {
+    width: auto;
+    margin: 10px 0;
   }
 
   .text-column h2 {
@@ -1298,7 +1307,9 @@ footer a {
 /* Mobile screens */
 @media (max-width: 768px) {
   .contacttwobox {
-    flex-direction: column;
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 10px;
   }
 
   .contacttworight {
@@ -1315,6 +1326,16 @@ footer a {
 
   .contacttworight table {
     width: 100%;
+    font-size: 12px;
+  }
+
+  .contacttworight td {
+    padding: 8px;
+  }
+
+  .contacttworight button {
+    width: 100%;
+    margin: 8px 0;
     font-size: 14px;
   }
 
@@ -1325,14 +1346,19 @@ footer a {
   .text-column p {
     font-size: 16px;
   }
-
-  .column {
-    padding: 0 10px;
-  }
 }
 
 /* Very small screens */
 @media (max-width: 480px) {
+  .contacttwobox {
+    max-width: 100%;
+    padding: 5px;
+  }
+
+  .contacttworight {
+    padding: 5px;
+  }
+
   .contacttworight h2 {
     font-size: 18px;
   }
@@ -1342,6 +1368,16 @@ footer a {
   }
 
   .contacttworight table {
+    font-size: 10px;
+  }
+
+  .contacttworight td {
+    padding: 5px;
+  }
+
+  .contacttworight button {
+    width: 100%;
+    margin: 5px 0;
     font-size: 12px;
   }
 
