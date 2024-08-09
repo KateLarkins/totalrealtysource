@@ -1069,6 +1069,22 @@ td {
   object-fit: cover; /* Ensures the image covers the entire div */
 }
 
+.image-content-two {
+  flex: 2; /* Image content takes more space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Ensure the image does not overflow */
+}
+
+.image-content-two img {
+  width: auto; /* Let the image keep its aspect ratio */
+  height: auto; /* Let the image keep its aspect ratio */
+  max-width: 70%; /* Set maximum width to control the size */
+  max-height: 70%; /* Set maximum height to control the size */
+  border-left: white solid 13px;
+}
+
 @media (max-width: 768px) {
   .split-section {
     flex-direction: column; /* Stack the sections vertically */
@@ -1123,7 +1139,28 @@ footer a {
   margin: 0 10px;
 }
 /* Responsive Design */
+.fun-rounded-image {
+  max-width: 50%; /* Default size for larger screens */
+  height: auto;
+}
 
+@media (max-width: 1024px) {
+  .fun-rounded-image {
+    max-width: 40%; /* Scale down to 40% when the screen width is 1024px or less */
+  }
+}
+
+@media (max-width: 768px) {
+  .fun-rounded-image {
+    max-width: 30%; /* Further reduce to 30% for tablet-sized screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .fun-rounded-image {
+    max-width: 20%; /* Reduce to 20% for mobile screens */
+  }
+}
 @media only screen and (max-width: 768px) {
   header {
       flex-direction: column;
