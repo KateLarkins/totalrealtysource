@@ -940,7 +940,7 @@ table {
   flex-basis: 40%;
   padding:55px;
   background-color: transparent;
-  color: #fff;
+  color: black;
   text-align: center;
 }
 .contacttwocontainer p {
@@ -957,7 +957,7 @@ table {
   margin: 50px auto;
 }
 .contactbox {
-  background-color: #ffffff;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   max-width: 600px; /* Adjust as needed */
@@ -965,21 +965,31 @@ table {
 }
 
 .contact {
-  background-image: url(contact.png/contact.png);
+  background-image: url(contact.png/contacttwo.png);
 }
 
 .contactleft {
-  flex-basis: 60%;
-  padding:40px 60px;
+ padding-bottom: 40px;
 }
 .contactright {
   flex-basis: 40%;
   padding:40px;
   background-color: #bfcfd8;
-  color: #fff;
+  color: black;
 }
 .contactcontainer p {
   margin-bottom:40px;
+}
+.contactpar {
+  background-color: white;
+  box-shadow:none;
+  padding-top: 50px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 40px 0 rgba(0,0,0,0.5);
+  max-width: 530px; /* Adjust as needed */
+  
 }
 .input-row {
   display: flex;
