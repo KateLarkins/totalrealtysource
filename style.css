@@ -758,9 +758,10 @@ a:hover {
   height: 100%;
   padding: 3%;
   object-fit: cover;
-  border-radius: 0%;
+  /* border: 10px solid #07144f; */
   background:#ffffff;
-  border: 3px #e6e6e699;
+  border-radius:50%;
+
 }
 
 .fun-text-container {
