@@ -913,67 +913,38 @@ a:hover {
 /* Contact Two */
 /* Contact */
 table {
-  width: 450px;
-}
-.contacttwocontainer {
-  width:100%;
-  display: flex;
-  flex-direction:column;
-  align-items: center;
-  margin: 50px auto;
-  padding: 5%;
-  background-color: transparent;
-}
-.contacttwobox {
-  background-color:transparent;
-  display: flex;
-  flex-direction: column;
-  max-width: 600px; /* Adjust as needed */
-  box-shadow: 0 0 40px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)
+  width: 500px;
+  max-height: 50%;
 }
 
-.contacttwoleft {
-  flex-basis: 60%;
-  padding:40px 80px;
-  background-color: transparent;
-}
-.contacttworight {
-  flex-basis: 40%;
-  padding:55px;
-  background-color: transparent;
-  color: black;
-  text-align: center;
-}
-.contacttwocontainer p {
-  margin-bottom:40px;
-
-}
 
 /* Contact One */
 .contactcontainer {
-  width:80%;
+  width:100%;
+  height:100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 50px auto;
+  margin: 100px auto;
+  background-image: url(flowers/happyflowersfive.png);
+  background-repeat: none;
+  
 }
-.contactbox {
-  background-color: transparent;
-  display: flex;
-  flex-direction: column;
-  max-width: 600px; /* Adjust as needed */
-  box-shadow: 0 0 40px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)
+
+
+td {
+  font-size: 20px;
 }
 
 .contact {
-  background-image: url(contact.png/contacttwo.png);
+  /* background-image: url(contact.png/contacttwo.png); */
 }
+
 
 .contactleft {
  padding-bottom: 40px;
 }
 .contactright {
-  flex-basis: 40%;
   padding:40px;
   background-color: #bfcfd8;
   color: black;
@@ -981,67 +952,7 @@ table {
 .contactcontainer p {
   margin-bottom:40px;
 }
-.contactpar {
-  background-color: white;
-  box-shadow:none;
-  padding-top: 50px;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 0 40px 0 rgba(0,0,0,0.5);
-  max-width: 530px; /* Adjust as needed */
-  
-}
-.input-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0px;
-}
-.input-row .input-group {
-  flex-basis:45%;
-}
-input {
-  width: 100%;
-  border:none;
-  border-bottom: 1px solid rgb(204, 204, 204);
-  outline: none;
-  padding-bottom: 5px;
-  padding-top: 5 px;
-}
-textarea {
-  width:100%;
-  border: 1px solid rgb(204, 204, 204);
-  outline:none;
-  padding:0px;
-  box-sizing: border-box;
-}
-label {
-  margin-bottom: 6px;
-  display: block;
-  color: #000000;
-}
-.contactleft h3 {
-  color: #363b3f;
-  font-weight: 600;
-  margin-bottom: 30px;
-}
-.contactright h3 {
-  font-weight: 600;
-  margin-bottom: 30px;
-}
-tr td:first-child {
-  padding-right:20px;
-}
-tr td {
-  padding-top:15px;
-}
 
-td {
-  font-size: 20px;
-  font-family: 'Quicksand';
-}
-
-/* carousel  */
 
 
 /* for sale split screen */
