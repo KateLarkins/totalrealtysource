@@ -658,17 +658,6 @@ a:hover {
   height: 100%; /* Set height to 100% */
   background-color:#ffffff;
 }
-
-.fun-text-container p {
-  color: rgb(127, 127, 127);
-  text-align: center;
-}
-
-.fun-text-container h2 {
-  color: rgb(0, 0, 0);
-  text-align: center;
-}
-
 .fun-card-inner {
   display: flex;
   flex-direction: column;
@@ -691,7 +680,12 @@ a:hover {
   line-height: 1.5em;
   font-size: 20px;
   font-family: 'Quicksand', sans-serif;
-  color: rgb(145, 145, 145);
+  color: rgb(0, 0, 0);
+  text-align:left;
+}
+.agent-description h2 {
+  font-family: 'Bauer Bodoni';
+  font-weight:600;
 }
 
 .fun-card-top {
