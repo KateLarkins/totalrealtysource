@@ -684,9 +684,14 @@ a:hover {
   text-align:left;
 }
 .agent-description h2 {
-  font-family: 'Bauer Bodoni';
   font-weight:600;
+  font-family: 'Bauer Bodoni';
 }
+.agent-description p {
+  font-weight:300;
+  font-family: 'Bauer Bodoni';
+}
+
 
 .fun-card-top {
   flex-grow: 1; /* Allow cards to grow vertically to fill the space */
