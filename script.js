@@ -161,7 +161,10 @@ function filterProperties() {
   for (var i = 0; i < propertyWidgets.length; i++) {
       var propertyWidget = propertyWidgets[i];
       var propertyAddress = propertyWidget.querySelector('.property-details h3').textContent.toLowerCase();
-      var propertyPrice = parseFloat(propertyWidget.querySelector('.price').textContent.replace(/\D/g, ''));
+      var propertyPrice = parseFloat(
+        propertyWidget.querySelector('.price').childNodes[0].textContent.replace(/\D/g, '')
+    );
+    
 
       // Check if property matches filters
       var addressMatch = propertyAddress.includes(addressInput);
@@ -188,11 +191,12 @@ function filterPrice(propertyPrice, priceFilter) {
   } else if (priceFilter === '100000-500000') {
       return propertyPrice >= 100000 && propertyPrice <= 500000;
   } else if (priceFilter === '>500000') {
-      return propertyPrice > 500000;
+      return propertyPrice > 500000; // Fix: This ensures prices over 500,000 are included
   } else {
-      return true; // No price filter selected, return true to show all properties
+      return true; // No price filter selected, show all properties
   }
 }
+
 
 
 // Function to update showing results info
