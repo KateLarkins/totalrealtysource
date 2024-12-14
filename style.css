@@ -357,7 +357,7 @@ body {
     flex-direction: column;
     gap: 10px;
     width: 100%;
-    text-align: center;
+    text-align: left;
   }
 
   .call-button-container {
