@@ -301,7 +301,7 @@ body {
 
 .links-row {
   display: flex;
-  align-items: center; /* Ensure vertical alignment */
+  align-items: left; /* Ensure vertical alignment */
   justify-content: space-between; /* Spread items evenly */
   padding: 10px;
   flex-wrap: nowrap; /* Prevent items from wrapping */
