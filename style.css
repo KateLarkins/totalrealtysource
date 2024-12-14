@@ -6,7 +6,11 @@
 /* typewriter  */
 /* Define the animation */
 
-
+.logo {
+  background-image:url(background/logoo.png);
+  background-repeat: no-repeat;
+  width: 100%;
+}
 /*  */
 
 @keyframes fadeIn {
@@ -287,40 +291,36 @@ iframe {
 a:hover {
   color:#ffc267 ;
 }
-/* Navbar */body {
+body {
   margin: 0;
 }
 
 .topnav {
   background-color: white;
-  border-bottom: 1px solid #ddd; /* Optional: border for separation */
-}
-
-.logo-row {
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-}
-
-.logo img {
-  height: 150px; /* Adjust based on your logo size */
 }
 
 .links-row {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: center; /* Ensure vertical alignment */
+  justify-content: space-between; /* Spread items evenly */
   padding: 10px;
-  position: relative;
+  flex-wrap: nowrap; /* Prevent items from wrapping */
+}
+
+.logo img {
+  height: 40px; /* Adjust height */
+  object-fit: contain; /* Ensure logo scales proportionally */
+  margin-right: 15px; /* Space between logo and links */
 }
 
 .nav-links {
   display: flex;
-  justify-content: center;
   gap: 20px; /* Space between links */
+  flex-wrap: nowrap; /* Prevent links from wrapping */
 }
 
 .nav-links a {
+  white-space: nowrap; /* Prevent words like "For Sale" from breaking into multiple lines */
   padding: 10px;
   color: rgb(0, 0, 0);
   font-size: 20px;
@@ -334,9 +334,10 @@ a:hover {
 }
 
 .call-button-container {
-  position: absolute;
-  right: 20px; /* Adjust based on your design */
+  display: flex;
+  align-items: center; /* Center the call button vertically */
 }
+
 
 .call-button {
   color: rgb(0, 0, 0);
@@ -408,7 +409,7 @@ a:hover {
   left: 50%;
   height: 60px;
   transform: translateX(-50%);
-}
+} 
 
 #viewmore:hover {
   background-color: rgb(255, 191, 88);
@@ -432,7 +433,6 @@ a:hover {
 }
 
 /* Our Services Section */
-
 
 /* Services styles */
 .services-new {
@@ -461,94 +461,60 @@ a:hover {
   box-sizing: border-box; /* Ensure padding is included in the width */
 }
  /* card animation */
-
-.card-new {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+ .row-new {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-.card-new.visible {
-  opacity: 1;
-  transform: translateY(0);
+.column-new {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-/* continued */
 
 .card-new {
-  background-color: #fff;
+  width: 200px; /* Diameter */
+  height: 200px; /* Diameter */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 50%; /* Makes it circular */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  border-radius: 10px;
-  transition: box-shadow 0.3s ease;
-  margin-bottom: 20px; /* Add space between stacked cards */
-  max-width: 300px; /* Limit the maximum width of the card */
-  margin: 0 auto; /* Center the card horizontally */
-}
-
-.card-new svg {
-  width: 70px; /* Ensure consistent size for SVG icons */
-  height: 70px;
-  display: block; /* Ensure SVG is displayed as a block element */
-  margin: 0 auto; /* Center SVG horizontally */
-}
-
-.card-new h3 {
-  font-size: 20px; /* Adjust as needed */
-  margin-bottom: 10px; /* Adjust as needed */
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card-new:hover {
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
-.card-new i {
-  font-size: 40px; /* Adjust as needed */
-  margin-bottom: 20px; /* Adjust as needed */
+.card-new svg {
+  margin-bottom: 15px;
 }
 
-.card-content {
-  max-height: 200px; /* Maximum height of the text content */
-  overflow-y: hidden; /* Hide overflow content */
-  color:white;
-}
-
-.card-content h2 {
-  font-size: 25px;
-  font-weight: 500;
+.card-new h2 {
+  font-size: 18px;
+  color: #000;
+  margin-bottom: 10px;
 }
 
 .card-new p {
-  font-size: 16px; /* Adjust as needed */
-  margin-bottom: 0;
-}
-@media (max-width: 600px) {
-  .card-new {
-    /* Maintain the same box shadow on smaller screens */
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
-  }
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px;
+  color: #000;
 }
 
-@media (min-width: 768px) {
-  .column-new {
-    flex: 0 0 calc(30.33% - 20px); /* Each column takes up approximately 33.33% of the row width with margin */
-    max-width: calc(30.33% - 20px); /* Prevents column from exceeding 33.33% of the row width with margin */
-  }
+.card-new a {
+  text-decoration: none;
+  color: #ffc267;
 }
 
-
-/* our team */
-
-
-.container {
-  max-width: 100%; /* Ensure the container doesn't overflow its parent */
-  overflow-x: hidden; /* Hide horizontal overflow */
-}
-
- .card-new h3 {
-  text-align: center;
-}
-.card-new p {
-  text-align: center;
-}
 .listing-container {
   display: flex;
   flex-wrap: wrap;
@@ -789,13 +755,13 @@ a:hover {
   font-size: 20px;
   font-family: 'Quicksand', serif;
   color: rgb(0, 0, 0);
-  border: 5px solid #ffc266;
+  border: 2px solid black;
 }
 
 .learnmore:hover {
   color: #ffffff;
   font-family: 'Quicksand', serif;
-  background-color:#ffb23f;
+  background-color:#c9c9c9;
 }
 
 /* For Sale */
@@ -1353,3 +1319,4 @@ footer a {
     background-size: contain; /* Ensures the image fits within smaller viewports */
   }
 }
+
