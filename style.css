@@ -1,16 +1,27 @@
-
-@font-face {
+/* Logo Font */
+/* @font-face {
   font-family: 'Molecular-Demo-SemiBold';
   src: url('Molecula-Demo-SemiBold.otf') format('truetype'); /* Update path as necessary */
-  font-weight: 500;
+/* } */ 
+
+
+@font-face {
+  font-family: 'At Hauss Std Semibold';
+  src: url('AtHaussStd-Semibold.ttf') format('truetype'); /* Update path as necessary */
+}
+
+@font-face {
+  font-family: 'At Hauss Std Light';
+  src: url('AtHaussStd-Light.ttf') format('truetype'); /* Update path as necessary */
 }
 
 
-.work-sans {
+/* .work
+-sans {
   font-family: "Work Sans", serif;
   font-optical-sizing: auto;
   font-style: normal;
-}
+} */
 .homeheader {
   background-image:url(kitchen.png/kitchen.png);
   height: 100;
@@ -72,9 +83,9 @@
   justify-content: center;
   height: auto; /* Adjust height for responsiveness */
   padding: 90px 20px; /* Adjust padding for smaller screens */
-  font-size: 35px;
+  font-size: 45px;
   font-weight: 00;
-  background-color: #fefefe; /* Moved background color here */
+  background-color: #023E6C; /* Moved background color here */
 }
 /* Reveal text styling */
 .reveal {
@@ -305,7 +316,7 @@ body {
 }
 
 .topnav {
-  background-color: #ffffff;
+  background-color:#023E6C;
 }
 
 .links-row {
@@ -314,7 +325,7 @@ body {
   justify-content: space-between; /* Spread items evenly */
   padding: 10px;
   flex-wrap: nowrap; /* Prevent items from wrapping */
-  font-family: 'Molecular-Demo-SemiBold';
+  font-family: 'At Hauss Std Light';
 }
 
 .logo img {
@@ -333,8 +344,8 @@ body {
 .nav-links a {
   white-space: nowrap; /* Prevent words like "For Sale" from breaking into multiple lines */
   padding: 10px;
-  color: black;
-  font-size: 20px;
+  color: white;
+  font-size: 25px;
   text-decoration: none;
 }
 
@@ -350,7 +361,7 @@ body {
 
 
 .call-button {
-  color: rgb(0, 0, 0);
+  color: white;
   text-decoration: none;
 }
 
@@ -422,16 +433,18 @@ body {
 } 
 
 #viewmore:hover {
-  background-color: #11456F;
+  background-color: none;
+
 }
 
 #viewmore {
-  background-color: #11456F;
-  font-family: 'Molecular-Demo-SemiBold';
+  background-color: none;
+  font-family: 'At Hauss Std Light';
+  border: 3px solid black;
 }
 
 .transparent-button {
-  font-family: 'Quicksand', serif;
+  font-family: 'At Hauss Std Light';
   background-color: grey;
   border: 3px solid grey; /* Adjust border properties as needed */
   color: rgba(255, 255, 255, 0.096); /* Adjust text color as needed */
