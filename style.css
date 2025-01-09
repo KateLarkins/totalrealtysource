@@ -1,5 +1,16 @@
 
+@font-face {
+  font-family: 'Molecular-Demo-SemiBold';
+  src: url('Molecula-Demo-SemiBold.otf') format('truetype'); /* Update path as necessary */
+  font-weight: 500;
+}
 
+
+.work-sans {
+  font-family: "Work Sans", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
 .homeheader {
   background-image:url(kitchen.png/kitchen.png);
   height: 100;
@@ -250,7 +261,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family:'Lato';
+  font-family: 'Quicksand';
   text-decoration: none;
   opacity: 0;
   transition: opacity 2s ease-out;
@@ -303,6 +314,7 @@ body {
   justify-content: space-between; /* Spread items evenly */
   padding: 10px;
   flex-wrap: nowrap; /* Prevent items from wrapping */
+  font-family: 'Molecular-Demo-SemiBold';
 }
 
 .logo img {
@@ -415,6 +427,7 @@ body {
 
 #viewmore {
   background-color: #11456F;
+  font-family: 'Molecular-Demo-SemiBold';
 }
 
 .transparent-button {
@@ -657,7 +670,7 @@ body {
 }
 .agent-description p {
   font-weight:300;
-  font-family: 'Bauer Bodoni';
+  font-family:'Molecular-Demo-SemiBold';
 }
 
 
