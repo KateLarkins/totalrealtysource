@@ -394,7 +394,7 @@ body {
 }
 
 .more:hover {
-  background-color: black;
+  background-color: rgb(222, 222, 222);
 }
 .centered-text {
   padding-top: 50%; /* Adjust the value to lower or raise the text */
@@ -836,6 +836,7 @@ body {
   font-size: 17px;
 }
 
+
 .price {
   font-weight: bold;
   color: #000000;
@@ -852,6 +853,7 @@ body {
   background-color: none;
   color:black;
 }
+
 
 .listing-item {
   position: relative;
