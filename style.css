@@ -151,21 +151,6 @@
 
 
 
-.info-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  font-size: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-}
-
 .info-bubble {
   display: none;
   position: absolute;
@@ -173,7 +158,6 @@
   left: -50px;
   background-color: white;
   border: 1px solid #ccc;
-  border-radius: 5px;
   padding: 10px;
   width: 200px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -272,7 +256,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Quicksand';
+  font-family: 'At Hauss Std Light';
   text-decoration: none;
   opacity: 0;
   transition: opacity 2s ease-out;
@@ -441,18 +425,7 @@ body {
   background-color: none;
   font-family: 'At Hauss Std Light';
   border: 3px solid black;
-}
-
-.transparent-button {
-  font-family: 'At Hauss Std Light';
-  background-color: grey;
-  border: 3px solid grey; /* Adjust border properties as needed */
-  color: rgba(255, 255, 255, 0.096); /* Adjust text color as needed */
-  padding: 10px 20px; /* Adjust padding as needed */
-  font-size: 20px; /* Adjust font size as needed */
-  margin: 0 10px; /* Adjust margin between buttons as needed */
-  cursor: pointer;
-  font-weight:800;
+  border-radius: none;
 }
 
 
@@ -533,7 +506,7 @@ body {
 }
 
 .card-new p {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'At Hauss Std Light';
   font-size: 14px;
   color: #000;
 }
@@ -628,6 +601,10 @@ body {
   background-color: #ffffff;
 }
 
+.fun-card-text {
+  font-family: 'At Hauss Std Light';
+}
+
 .fun-card {
   flex: 0 0 100%;
   margin-bottom: 20px;
@@ -673,17 +650,17 @@ body {
   margin: 10%;
   line-height: 1.5em;
   font-size: 20px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'At Hauss Std Light';
   color: rgb(0, 0, 0);
   text-align:left;
 }
 .agent-description h2 {
   font-weight:600;
-  font-family: 'Bauer Bodoni';
+  font-family: 'At Hauss Std Semibold';
 }
 .agent-description p {
   font-weight:300;
-  font-family:'Molecular-Demo-SemiBold';
+  font-family: 'At Hauss Std Light';
 }
 
 
@@ -777,20 +754,14 @@ body {
 
 .learnmore {
   padding: 10px 20px;
-  border-radius: 50px;
-  background-color: #ffc26700;
   text-decoration: none;
   font-size: 20px;
-  font-family: 'Quicksand', serif;
   color: rgb(0, 0, 0);
-  border: 2px solid #ffffff;
+  border: 1px solid #ffffff;
+  background-color: transparent;
 }
 
-.learnmore:hover {
-  color: #ffffff;
-  font-family: 'Quicksand', serif;
-  background-color:#F5F4F0;
-}
+
 
 /* For Sale */
 
@@ -906,7 +877,7 @@ body {
   color: #fff;
   background-color: #1c232b;
   border: none;
-  border-radius: 3px;
+  border-radius:;
   font-size: 14px;
 }
 
