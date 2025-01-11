@@ -192,7 +192,80 @@
               <h2>Brandie Bassett</h2>
               <!-- Agent Role -->
               <p style="font-size:20px;">Real Estate Agent</p>
-            Meet Brandie, our dedicated Real Estate Agent serving the West Tennessee area. With a passion for helping clients <span class="hidden-text"> achieve their real estate goals, Brandie provides personalized service and expert guidance throughout the buying and selling process. Contact Brandie at <a href="tel:7316952785" style="color:rgb(0, 140, 255);">731-695-2785</a> to discuss your real estate needs today.</span><span class="expand-link" style="color:rgb(0, 140, 255);" onclick="toggleText('brandie-description')">... Read More</span>
+            Meet Brandie, our dedicated Real Estate Agent serving the West Tennessee area. With a passion for helping clients <span class="hidden-text"> achieve their real estate goals, Brandie provides personalized service and expert guidance throughout the buying and selling process. Contact Brandie at <a href="tel:7316952785" style="color:rgb(0, 140, 255);">731-695-2785</a> to discuss your real estate needs today. <div id="testimonial-slider" style="max-width: 400px; margin: auto; text-align: center; overflow: hidden;">
+              <br><br><p style="font-family:'At Hauss Std SemiBold';">Testimonials</p>
+              <div id="testimonials" style="display: flex; transition: transform 0.5s ease-in-out;">
+                <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
+                  <div style="color: #ffc107; font-size: 20px; line-height: 1;">
+                    ★★★★★
+                  </div>
+                  <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Brandie was such a pleasure to work with in selling my home. She went above & beyond, always answering my questions." <p style="text-align:center; font-size:16px;">- Tammy B.</p></p>
+                </div>
+                <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
+                  <div style="color: #ffc107; font-size: 20px; line-height: 1;">
+                    ★★★★★
+                  </div>
+                  <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Brandie is the consummate professional. Every aspect from listing to close was seamless as a result of her efforts. Thank you!" <p style="text-align:center; font-size:16px;">- Jack K.</p></p>
+                </div>
+                <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
+                  <div style="color: #ffc107; font-size: 20px; line-height: 1;">
+                    ★★★★★
+                  </div>
+                  <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Brandie was so amazing in our home search!! She was so responsive and worked to find homes within our budget and in the area that we were looking. She was great during every phase of purchasing our home. I highly recommend Brandie for finding your dream home. We found ours!" <p style="text-align:center; font-size:16px;">- Heather R.</p></p>
+                </div>
+                <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
+                  <div style="color: #ffc107; font-size: 20px; line-height: 1;">
+                    ★★★★★
+                  </div>
+                  <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Thanks for everything you have done for me. I appreciate it more than you know. You were the sweetest and most down to earth realtor and I couldn't have asked for any more awesome than yourself! Thank you again!" <p style="text-align:center; font-size:16px;">- Amanda D.</p></p>
+                </div>
+                <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
+                  <div style="color: #ffc107; font-size: 20px; line-height: 1;">
+                    ★★★★★
+                  </div>
+                  <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Relocating to a new area is scary. She not only knew what neighborhood would be perfect for our family, but She also understood the market and got us a great deal!" <p style="text-align:center; font-size:16px;">- The Smith Family</p></p>
+                </div>
+
+                <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
+                  <div style="color: #ffc107; font-size: 20px; line-height: 1;">
+                    ★★★★★
+                  </div>
+                  <p style="margin-top: 10px; font-size: 16px; text-align: left;">"As first time home buyers, we couldn't have asked for a better experience. She was with us every step of the way!" <p style="text-align:center; font-size:16px;">- The Stapeltons</p></p>
+                </div>
+              </div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+              <button onclick="prevTestimonial()" style="background: #007BFF; color: white; border: none; border-radius: 20px; padding: 10px 20px; cursor: pointer; font-size: 14px; margin: 0 10px; transition: background 0.3s;">
+                &#10094; Prev
+              </button>
+              <button onclick="nextTestimonial()" style="background: #007BFF; color: white; border: none; border-radius: 20px; padding: 10px 20px; cursor: pointer; font-size: 14px; margin: 0 10px; transition: background 0.3s;">
+                Next &#10095;
+              </button>
+            </div>
+            
+            <script>
+              let currentIndex = 0;
+            
+              function showTestimonial(index) {
+                const slider = document.getElementById('testimonials');
+                const total = slider.children.length;
+                if (index >= total) currentIndex = 0;
+                else if (index < 0) currentIndex = total - 1;
+                else currentIndex = index;
+            
+                const offset = -currentIndex * 100;
+                slider.style.transform = `translateX(${offset}%)`;
+              }
+            
+              function nextTestimonial() {
+                showTestimonial(currentIndex + 1);
+              }
+            
+              function prevTestimonial() {
+                showTestimonial(currentIndex - 1);
+              }
+            </script>
+            </span><span class="expand-link" style="color:rgb(0, 140, 255);" onclick="toggleText('brandie-description')">... Read More</span>
             </div>
             <div class="fun-buttons">
               <!-- Add buttons or links here -->
