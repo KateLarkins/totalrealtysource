@@ -225,6 +225,53 @@
             </div>
           </div>
         </div>
+              <!-- Agent Card 6: Lisa Ballinger -->
+              <div class="fun-card fun-card-top" style="flex: 1 1 100%; margin-bottom: 20px; font-family: 'At Hauss Std Light'; overflow: hidden; display: flex;">
+                <div class="fun-card-image" style="flex: 0 0 30%;">
+                  <!-- Agent Image Container -->
+                  <div class="fun-image-container" style="text-align: center; margin: auto;">
+                    <img src="agent/Lisa.png" alt="Lisa Ballinger" class="fun-rounded-image" style="border-radius: 50%; max-width: 100%; height: auto;">
+                  </div>
+                </div>
+                <div class="fun-card-text" style="flex: 0 0 70%; padding: 20px;">
+                  <!-- Text Container -->
+                  <div class="agent-description" id="lisa-description">
+                    <h2>Lisa Ballinger</h2>
+                    <p style="font-size:20px;">Real Estate Agent</p>
+                    <p>Introducing agent Lisa Ballinger! With impressive credentials including PSA, ABR, 
+                      <span class="hidden-text" style="display: none;">RENE, MRP, SFR, e-PRO, and SRS, Lisa is highly skilled in guiding clients through every step of the real estate process. Contact Lisa at 
+                        <a href="tel:7312230919" style="color:rgb(0, 140, 255);">731-223-0919</a> to discuss your real estate needs today.</span> <span class="expand-link" style="color:rgb(0, 140, 255);" onclick="toggleText('lisa-description')">... Read More</span>
+                    </p>
+                  </div>
+              
+                  <div class="fun-buttons">
+                    <!-- Add buttons or links here -->
+                    <button id="viewmore" class="learnmore">
+                      <a style="text-decoration: none; color:black;" href="tel:7314140317">Call</a>
+                    </button>
+                    <button id="viewmore" class="learnmore">
+                      <a style="text-decoration: none; color:black;" href="https://www.realtor.com/realestateagents/58383500e73f5e0001cad641">Learn more</a>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+              <script>
+                function toggleText(id) {
+                  const text = document.getElementById(id).getElementsByClassName('hidden-text')[0];
+                  const expandLink = document.getElementById(id).getElementsByClassName('expand-link')[0];
+              
+                  if (text.style.display === "none") {
+                    text.style.display = "inline";
+                    expandLink.textContent = "... Read Less";
+                  } else {
+                    text.style.display = "none";
+                    expandLink.textContent = "... Read More";
+                  }
+                }
+              </script>
+              
+
 
 
 <section style="padding:8%;">
