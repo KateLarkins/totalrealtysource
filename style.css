@@ -4,6 +4,52 @@
   src: url('Molecula-Demo-SemiBold.otf') format('truetype'); /* Update path as necessary */
 /* } */ 
 
+#testimonial-slider {
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  overflow: hidden;
+}
+
+#testimonials {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  justify-content: left;
+  flex-direction: column; /* Stack testimonials vertically */
+  max-height: 500px; /* Adjust this to your preferred maximum height */
+  overflow-y: auto; /* Scroll vertically if content exceeds max-height */
+}
+
+.testimonial {
+  flex: 0 0 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+button {
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 10px;
+  transition: background 0.3s;
+}
+
+/* Make sure buttons are always visible under the testimonials */
+#testimonial-slider > section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+#testimonial-slider > section > div {
+  flex-grow: 1;
+}
+
 
 @font-face {
   font-family: 'At Hauss Std Semibold';
@@ -406,7 +452,7 @@ body {
 #viewmore {
   background-color: none;
   font-family: 'At Hauss Std Light';
-  border: 3px solid black;
+  border: 1px solid black;
   border-radius: none;
 }
 
