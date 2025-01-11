@@ -14,6 +14,25 @@
     <link rel="stylesheet" href="style.css">  
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </head>
+
+  <style>
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+    @media (max-width: 768px) {
+        .accordion-body {
+            padding: 0.5rem;
+        }
+        .accordion-item {
+            margin-bottom: 0.5rem;
+        }
+    }
+    .accordion-body img {
+        max-width: 100%;
+        height: auto;
+    }
+
+</style>
 <body class="aboutbody" style="background-color:#ffffff;">
   <div class="topnav">
     <!-- Row 1: Logo -->
@@ -112,8 +131,11 @@
               <h2>Jackie David</h2>
             <!-- Agent Role -->
             <p style="font-size:20px;">Real Estate Agent</p>
-              Meet Jackie, our experienced Real Estate Agent serving West Tennessee. With specialized designations <span class="hidden-text"> like PSA, e-PRO, CRB, RENE, GRI, and SRS, Jackie has earned a reputation as a trusted advisor in the industry.
-              Whether you're a first-time buyer or a seasoned seller, Jackie's personalized approach ensures a smooth and enjoyable real estate journey. Reach out to Jackie at <a href="tel:7314876545" style="color:rgb(0, 140, 255);">731-487-6545</a> to discover the difference she can make for you.</p></span><span class="expand-link" style="color:rgb(0, 140, 255);" onclick="toggleText('jackie-description')">... Read More</span>
+              Meet Jackie, our experienced Real Estate Agent serving West Tennessee. With specialized designations 
+              <span class="hidden-text"> like PSA, e-PRO, CRB, RENE, GRI, and SRS, Jackie has earned a reputation as a trusted advisor in the industry. Whether you're a first-time buyer or a seasoned seller, Jackie's personalized approach ensures a smooth and enjoyable real estate journey. Reach out to Jackie at 
+                <a href="tel:7314876545" style="color:rgb(0, 140, 255);">731-487-6545</a> to discover the difference she can make for you.
+              </span>
+              <span class="expand-link" style="color:rgb(0, 140, 255);" onclick="toggleText('jackie-description')">... Read More</span>
             </div>
               <div class="fun-buttons">
               <!-- Add buttons or links here -->
@@ -192,10 +214,22 @@
               <h2>Brandie Bassett</h2>
               <!-- Agent Role -->
               <p style="font-size:20px;">Real Estate Agent</p>
-            Meet Brandie, our dedicated Real Estate Agent serving the West Tennessee area. With a passion for helping clients <span class="hidden-text"> achieve their real estate goals, Brandie provides personalized service and expert guidance throughout the buying and selling process. Contact Brandie at <a href="tel:7316952785" style="color:rgb(0, 140, 255);">731-695-2785</a> to discuss your real estate needs today. <div id="testimonial-slider" style="max-width: 400px; margin: auto; text-align: center; overflow: hidden;">
-              <br><br><p style="font-family:'At Hauss Std SemiBold';">Testimonials</p>
-              <div id="testimonials" style="display: flex; transition: transform 0.5s ease-in-out;">
+                Meet Brandie, our dedicated Real Estate Agent serving the West Tennessee area. With a passion for helping clients 
+                <span class="hidden-text"> achieve their real estate goals, Brandie provides personalized service and expert guidance throughout the buying and selling process. Contact Brandie at 
+                  <a href="tel:7316952785" style="color:rgb(0, 140, 255);">731-695-2785</a> to discuss your real estate needs today. 
+              <div id="testimonial-slider" style="max-width: 400px; margin: auto; text-align: center; overflow: hidden;"></p>
+              <br><br>
+              <section>
+              <p style="font-family:'At Hauss Std SemiBold'; text-align: left;">Testimonials:</p>
+              <div id="testimonials" style="display: flex; transition: transform 0.5s ease-in-out; justify-content: left;">
                 <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
+                  <div style="color: #ffc107; font-size: 20px; line-height: 1;">
+                    ★★★★★
+                  </div>
+                  <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Brandie was so amazing in our home search!! She was so responsive and worked to find homes within our budget and in the area that we were looking. She was great during every phase of purchasing our home. I highly recommend Brandie for finding your dream home. We found ours!" <p style="text-align:center; font-size:16px;">- Heather R.</p></p>
+                </div>
+                <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
+    
                   <div style="color: #ffc107; font-size: 20px; line-height: 1;">
                     ★★★★★
                   </div>
@@ -206,12 +240,6 @@
                     ★★★★★
                   </div>
                   <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Brandie is the consummate professional. Every aspect from listing to close was seamless as a result of her efforts. Thank you!" <p style="text-align:center; font-size:16px;">- Jack K.</p></p>
-                </div>
-                <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
-                  <div style="color: #ffc107; font-size: 20px; line-height: 1;">
-                    ★★★★★
-                  </div>
-                  <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Brandie was so amazing in our home search!! She was so responsive and worked to find homes within our budget and in the area that we were looking. She was great during every phase of purchasing our home. I highly recommend Brandie for finding your dream home. We found ours!" <p style="text-align:center; font-size:16px;">- Heather R.</p></p>
                 </div>
                 <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
                   <div style="color: #ffc107; font-size: 20px; line-height: 1;">
@@ -242,31 +270,9 @@
                 Next &#10095;
               </button>
             </div>
-            
-            <script>
-              let currentIndex = 0;
-            
-              function showTestimonial(index) {
-                const slider = document.getElementById('testimonials');
-                const total = slider.children.length;
-                if (index >= total) currentIndex = 0;
-                else if (index < 0) currentIndex = total - 1;
-                else currentIndex = index;
-            
-                const offset = -currentIndex * 100;
-                slider.style.transform = `translateX(${offset}%)`;
-              }
-            
-              function nextTestimonial() {
-                showTestimonial(currentIndex + 1);
-              }
-            
-              function prevTestimonial() {
-                showTestimonial(currentIndex - 1);
-              }
-            </script>
             </span><span class="expand-link" style="color:rgb(0, 140, 255);" onclick="toggleText('brandie-description')">... Read More</span>
             </div>
+          </section>
             <div class="fun-buttons">
               <!-- Add buttons or links here -->
               <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:black;" href="tel:7316952785">Call</a></button></a>
@@ -276,7 +282,6 @@
           </div>
         </div>
   
-
       <!-- Agent Card 5: Ashley McMillan -->
       <div class="fun-card fun-card-top" style="flex: 1 1 100%; margin-bottom: 20px; font-family: 'At Hauss Std Light'; overflow: hidden; display: flex;">
         <div class="fun-card-image" style="flex: 0 0 30%;">
@@ -319,7 +324,6 @@
                         <a href="tel:7312230919" style="color:rgb(0, 140, 255);">731-223-0919</a> to discuss your real estate needs today.</span> <span class="expand-link" style="color:rgb(0, 140, 255);" onclick="toggleText('lisa-description')">... Read More</span>
                     </p>
                   </div>
-              
                   <div class="fun-buttons">
                     <!-- Add buttons or links here -->
                     <button id="viewmore" class="learnmore">
@@ -332,23 +336,6 @@
                 </div>
               </div>
               
-              <script>
-                function toggleText(id) {
-                  const text = document.getElementById(id).getElementsByClassName('hidden-text')[0];
-                  const expandLink = document.getElementById(id).getElementsByClassName('expand-link')[0];
-              
-                  if (text.style.display === "none") {
-                    text.style.display = "inline";
-                    expandLink.textContent = "... Read Less";
-                  } else {
-                    text.style.display = "none";
-                    expandLink.textContent = "... Read More";
-                  }
-                }
-              </script>
-              
-
-
 
 <section style="padding:8%;">
   <h1 id="anchor" style="color: black; padding-top: 0px; padding-bottom: 40px; font-size:45px; font-weight:600; text-align: center; font-family: 'At Hauss Std Semibold';">Frequently Asked Questions</h1> 
@@ -361,66 +348,74 @@
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body" style="padding: 1rem; word-wrap: break-word;">
-
               If you're looking for property renovation and management services, our broker Mrs. Lynda Climer is the person you need to contact. With her extensive experience spanning residential, industrial, and commercial buildings, she's well-equipped to handle all your property needs. Whether you're seeking to enhance the value of your investment or ensure smooth operations, her expertise and dedication ensure exceptional results. You can reach her directly at <strong>731-217-3827</strong>.
-              
-              
             </div>
         </div>
     </div>
     <div class="accordion-item" style="margin-bottom: 1rem;">
-        <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Where is your office located?
-            </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-            <div class="accordion-body" style="padding: 1rem; word-wrap: break-word;">
-             You can visit us at our existing location <strong>117 S Main St., Medina, TN 38355.</strong>
-            </div>
-        </div>
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Where is your office located?
+        </button>
+      </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body" style="padding: 1rem; word-wrap: break-word;">
+          You can visit us at our existing location <strong>117 S Main St., Medina, TN 38355.</strong>
+      </div>
     </div>
     <div class="accordion-item" style="margin-bottom: 1rem;">
-        <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Why should I choose Total Realty Source?
-            </button>
-        </h2>
-        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-            <div class="accordion-body" style="padding: 1rem; word-wrap: break-word;">
-                Thank you for considering us for your home buying journey! With over 40 years of experience, our broker ensures you are well-prepared for every decision. Our agents continually earn new certifications to stay current with industry standards, providing excellent service. <br><br> We serve clients across Tennessee with extensive local expertise in urban, suburban, and rural areas. <br><br>We deliver personalized, one-on-one service to make your first home purchase smooth and stress-free. Choose us for our expertise, dedicated team, and statewide reach. Contact us today!
-                
-                
-            </div>
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+           Why should I choose Total Realty Source?
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body" style="padding: 1rem; word-wrap: break-word;">
+          Thank you for considering us for your home buying journey! With over 40 years of experience, our broker ensures you are well-prepared for every decision. Our agents continually earn new certifications to stay current with industry standards, providing excellent service. <br><br> We serve clients across Tennessee with extensive local expertise in urban, suburban, and rural areas. <br><br>We deliver personalized, one-on-one service to make your first home purchase smooth and stress-free. Choose us for our expertise, dedicated team, and statewide reach. Contact us today!
         </div>
+      </div>
     </div>
-</div>
-<style>
-    *, *::before, *::after {
-        box-sizing: border-box;
-    }
-    @media (max-width: 768px) {
-        .accordion-body {
-            padding: 0.5rem;
-        }
-        .accordion-item {
-            margin-bottom: 0.5rem;
-        }
-    }
-    .accordion-body img {
-        max-width: 100%;
-        height: auto;
-    }
-
-</style>
-
+  </div>
 </section>
-    <!-- Text Column -->
-</div>
-   
-    <footer class="text-center text-lg-start text-white" style="background-color:#023E6C; font-family: 'At Hauss Std Semibold'; ">
+
+<script>
+  let currentIndex = 0;
+
+  function showTestimonial(index) {
+    const slider = document.getElementById('testimonials');
+    const total = slider.children.length;
+    if (index >= total) currentIndex = 0;
+    else if (index < 0) currentIndex = total - 1;
+    else currentIndex = index;
+
+    const offset = -currentIndex * 100;
+    slider.style.transform = `translateX(${offset}%)`;
+  }
+
+  function nextTestimonial() {
+    showTestimonial(currentIndex + 1);
+  }
+
+  function prevTestimonial() {
+    showTestimonial(currentIndex - 1);
+  }
+</script>
+<script>
+  function toggleText(id) {
+    const text = document.getElementById(id).getElementsByClassName('hidden-text')[0];
+    const expandLink = document.getElementById(id).getElementsByClassName('expand-link')[0];
+
+    if (text.style.display === "none") {
+      text.style.display = "inline";
+      expandLink.textContent = "... Read Less";
+    } else {
+      text.style.display = "none";
+      expandLink.textContent = "... Read More";
+    }
+  }
+</script>
+    <footer class="text-center text-lg-start text-white" style="background-color:#023E6C; font-family: 'At Hauss Std Semibold';">
       <div class="container p-4 pb-0">
-        <section class="">
           <div class="row">
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
               <h6 class="text-uppercase mb-4 font-weight-bold">
@@ -468,7 +463,6 @@
               <p style="font-family: 'At Hauss Std Light';">+ 01 731 574 9340</p>
             </div>
           </div>
-        </section>
         <hr class="my-3">
       </div>
     </footer>
