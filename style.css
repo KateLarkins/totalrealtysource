@@ -81,25 +81,6 @@ button {
   background-repeat: no-repeat;
   width: 100%;
 }
-/*  */
-
-
-/* .reveal {
-  opacity: 0;
-  animation: fadeIn 2s forwards;
-  animation-delay: 1s;
-}
-.reveallisting {
-  opacity: 0;
-  animation: fadeIn 1s forwards;
-  animation-delay: 2.5s;
-} */
-
-/* .listing-item {
-  opacity: 0;
-  animation: fadeIn 1s forwards;
-  position: relative; /* Ensure items are positioned correctly */
-
 
 .listing-item:nth-child(1) {
   animation-delay: 2.5s;
@@ -415,10 +396,6 @@ body {
 .centered-content {
   position: relative;
   text-align: center;
-}
-
-.content {
-  font-family:"Source Serif 4";
 }
 
 .more:hover {
