@@ -989,6 +989,10 @@ td {
   border-left: white solid 13px;
 }
 
+@media (max-wdith:768px) {
+
+  
+}
 
 @media (max-width: 768px) {
   .split-section {
