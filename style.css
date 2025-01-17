@@ -358,8 +358,10 @@ body {
 
 
 .call-button {
-  color: white;
+  color: rgb(0, 0, 0);
   text-decoration: none;
+  padding-right: 30px;
+  font-size: 25px;
 }
 
 @media screen and (max-width: 600px) {
