@@ -1020,7 +1020,7 @@ td {
     padding: 6px 12px;
   }
 }
-</style>
+
 @media (max-width: 768px) {
   .split-section {
     flex-direction: column; /* Stack the sections vertically */
