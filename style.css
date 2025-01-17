@@ -27,7 +27,7 @@
 }
 
 button {
-  background: #007BFF;
+  background: #FBB53C;
   color: white;
   border: none;
   border-radius: 20px;
@@ -693,7 +693,7 @@ body {
 
 .expand-link {
   cursor: pointer;
-  color: blue;
+  color: #FBB53C;
 }
 
 .hidden-text {
