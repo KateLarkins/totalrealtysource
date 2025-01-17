@@ -988,38 +988,7 @@ td {
   max-height: 70%; /* Set maximum height to control the size */
   border-left: white solid 13px;
 }
-@media (max-width: 768px) {
-  h2 {
-    font-size: 30px;
-  }
-  p {
-    font-size: 18px;
-    line-height: 1.5;
-  }
-  .typewriter {
-    font-size: 18px;
-  }
-  button.learnmore {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-}
 
-@media (max-width: 480px) {
-  h2 {
-    font-size: 24px;
-  }
-  p {
-    font-size: 16px;
-  }
-  .typewriter {
-    font-size: 16px;
-  }
-  button.learnmore {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
-}
 
 @media (max-width: 768px) {
   .split-section {
