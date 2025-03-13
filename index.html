@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="style.css">  
   </head>
 
-  <body style="background-color:white;">
+  <body style="background-color:#f6f6f6;">
     <div class="topnav">
       <div class="links-row">
         <!-- Navigation Links -->
@@ -54,15 +54,15 @@
         </div>
       </div>
     </div>
-    
-  <div style="width: 100%; height:100%; background-color: #ffffff;">
-    <div class="header-container">
-      <video autoplay muted loop id="background-video" style=" top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
-        <source src="video/commercial.mp4" type="video/mp4">
-        Your browser does not support the video.
-      </video>
+    <div style="width: 100%; height: 100vh; background-color: #ffffff; margin: 0; padding: 0; overflow: hidden;">
+      <div class="header-container" style="margin: 0; padding: 0;">
+        <video autoplay muted loop id="background-video" style="top: 0; left: 0; width: 100%; height: 100vh; object-fit: cover; display: block;">
+          <source src="video/commercial.mp4" type="video/mp4">
+          Your browser does not support the video.
+        </video>
+      </div>
     </div>
-  </div>
+    
   <style>
     /* Adjust video size for smaller screens */
     @media (max-width: 768px) {
@@ -112,12 +112,111 @@
   </div>
   </section> --> 
 
-  <section class="secondsection" style="padding-bottom: 0px; margin-top:90px; background-color: white;">
+  <section style="padding-bottom: 0px;  background-color:#023E6C; color:white; ">
+    <div style="max-width: 100%; padding-left: 0; padding-right: 0; margin: 0 auto;">
+      <div style="display: flex; flex-wrap: wrap; align-items: stretch;">
+  
+        <!-- Column for the image (fills entire space) -->
+        <div style="flex: 1; padding: 0; display: flex;">
+          <img src="kitchen.png/whitekitchen.png" alt="Kitchen" style="width: 100%; height: 100%; object-fit: cover; border: none;">
+        </div>
+  
+        <!-- Column for the text -->
+        <div style="flex: 1; padding: 0; margin-top: 0; display: flex; align-items: center;">
+          <div style="padding: 20px; box-sizing: border-box; width: 100%;">
+            <h2 style="font-size: 40px; color: rgb(255, 255, 255); margin-left:30px; font-family: 'At Hauss Std Semibold';">Total Realty Source</h2>
+            <p style="font-size: 25px; color: rgb(255, 255, 255); font-family: 'At Hauss Std Light'; padding-top: 1%;">
+            </p>
+            <p style="font-size: 20px; color: rgb(255, 255, 255); font-family: 'At Hauss Std Light'; margin-left:30px; margin-right: 30px;">
+              At Total Realty Source, we believe in building better lives and stronger communities. We're more than just real estate agents—we're dedicated members of West Tennessee, committed to making a positive impact. West Tennessee real estate is our expertise, and community is our passion. Work with a team that truly cares and experience the difference.
+            </p>
+  
+        <!-- Scrolling Text Items -->
+        <div id="scroll-text" style="display: flex; justify-content: center; align-items: center; width: 100%; gap: 30px; font-size: 20px;">
+
+          <!-- First Set: Properties for Sale -->
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+            <div style="display: flex; gap: 5px; align-items: center;">
+              <span style="display: inline-block; opacity: 0; transform: translateY(100%); animation: slotMachine 2s ease-out forwards; animation-delay: 0s; font-size: 30px;">2</span>
+              <span style="display: inline-block; opacity: 0; transform: translateY(100%); animation: slotMachine 2s ease-out forwards; animation-delay: 0.2s; font-size: 30px;">1</span>
+            </div>
+            <span style="font-size: 16px;">Properties for Sale</span>
+          </div>
+        
+          <!-- Second Set: Recently Sold -->
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+            <div style="display: flex; gap: 5px; align-items: center;">
+              <span style="display: inline-block; opacity: 0; transform: translateY(100%); animation: slotMachine 2s ease-out forwards; animation-delay: 0s; font-size: 30px;">1</span>
+              <span style="display: inline-block; opacity: 0; transform: translateY(100%); animation: slotMachine 2s ease-out forwards; animation-delay: 0.2s; font-size: 30px;">5</span>
+            </div>
+            <span style="font-size: 16px;">Total Sold</span>
+          </div>
+        
+          <!-- Third Set: Properties Under Contract -->
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+            <div style="display: flex; gap: 5px; align-items: center;">
+              <span style="display: inline-block; opacity: 0; transform: translateY(100%); animation: slotMachine 2s ease-out forwards; animation-delay: 0s; font-size: 30px;">3</span>
+              <span style="display: inline-block; opacity: 0; transform: translateY(100%); animation: slotMachine 2s ease-out forwards; animation-delay: 0.2s; font-size: 30px;">0</span>
+            </div>
+            <span style="font-size: 16px;">Average Listing Price</span>
+          </div>
+        
+          <!-- Fourth Set: New Listings -->
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+            <div style="display: flex; gap: 5px; align-items: center;">
+              <span style="display: inline-block; opacity: 0; transform: translateY(100%); animation: slotMachine 2s ease-out forwards; animation-delay: 0s; font-size: 30px;">4</span>
+              <span style="display: inline-block; opacity: 0; transform: translateY(100%); animation: slotMachine 2s ease-out forwards; animation-delay: 0.2s; font-size: 30px;">2</span>
+            </div>
+            <span style="font-size: 16px;">New Listings</span>
+          </div>
+          
+        </div>
+        
+        <style>
+          @keyframes slotMachine {
+            0% {
+              transform: translateY(100%);
+              opacity: 0;
+            }
+            100% {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
+        </style>
+        
+        <script>
+          // Create an intersection observer to trigger the animation on scroll
+          const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                // Add a class to start the animation when it comes into view
+                entry.target.classList.add('animate-letters');
+              }
+            });
+          }, {
+            threshold: 0.5 // trigger the animation when 50% of the element is in the viewport
+          });
+        
+          // Target the element to observe
+          observer.observe(document.querySelector('#scroll-text'));
+        </script>
+        
+            
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+  
+  <section class="secondsection" style="padding-bottom: 0px; margin-top:90px; padding-top:5%;padding-bottom:5%;background-color: #ffffff;">
     <div class="container" style="max-width: 100%; padding-left: 0; padding-right: 0; margin: 0 auto;">
       <div class="row" style="margin: 0;">
         <!-- Column for the image -->
         <div class="column" style="flex:1; padding: 0;">
-          <div class="content-wrapper" style="padding: 0px; box-sizing: border-box;"><br>
+          <div class="content-wrapper" style="padding: 20px; margin-left:60px; box-sizing: border-box; background-color:#ffffff;"><br>
             <img 
    
             src="people.png/people.png" alt="Your Image" style="max-width: 100%; height: auto; padding-top: 5%; border:none;">
@@ -127,9 +226,9 @@
         <!-- Column for the text -->
         <div class="column" style="flex:1; padding: 0; margin-top: 0;">
           <div class="text-container" style="padding: 0 10px; box-sizing: border-box;">
-            <h2 style="font-size:40px; color:black; font-family: 'At Hauss Std Semibold'">Total Realty Source</h2>
+            <h2 style="font-size:40px; color:black; margin-left:30px; font-family: 'At Hauss Std Semibold'">Who are we?</h2>
           
-            <p style="font-family: 'At Hauss Std Light'; font-size:25px; color:black; padding-top:1%;">
+            <p style="font-family: 'At Hauss Std Light'; font-size:20px;  margin-left:30px; margin-right:30px; color:black; padding-top:1%;">
               We are a real estate company located in Medina, Tennessee. <br>We buy and sell properties, manage properties, and renovate properties! As a proud member of the Central West Tennessee Association of REALTORS®, our company is dedicated to upholding the highest standards of professionalism in the industry.
               <br><br>We serve all areas in Tennessee including
             <span class="typewriter"> Medina, Milan, Jackson, Lexington, Sharon, Huntingdon, Brownsville, Decaturville, Beech Bluff, and many more!</span></span>
@@ -142,8 +241,8 @@
     </div>
   </section>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#023E6C" fill-opacity="1" d="M0,96L720,160L1440,96L1440,320L720,320L0,320Z"></path></svg>
-      <section style>
-        <div class="containerreveal">
+      <section style="background-color:white;">
+        <div class="containerreveal" style="padding-bottom:20%;">
           <div class="reveal"><div class="reveal__content" style="color:white;  font-family: 'At Hauss Std Semibold';">We've sold over
           </div></div>
           <div class="reveal"><div class="reveal__content" style="color:#FCB741;  font-family: 'At Hauss Std Semibold'; font-weight: 600;">$15 <span style=" font-family: 'At Hauss Std Semibold';">million</span></div></div>
@@ -151,11 +250,44 @@
         </div> 
         
         </section>
+        
+        <section class="secondsection" style="background-color: #ffffff; padding-top: 0px; margin: 0;">
+          <div class="container" style="max-width: 100%; padding-left: 0; padding-right: 0; margin: 0 auto;">
+            <div class="row" style="display: flex; margin: 0; height: 100%;">
+              
+              <!-- Column for the text -->
+              <div class="column" style="flex: 1; padding: 0; margin-top: 0; display: flex; flex-direction: column; justify-content: center;">
+                <div class="text-container" style="padding: 0 0px; box-sizing: border-box; padding-top: 10%;">
+                  <h2 style="font-size: 40px; color: black; margin-left: 50px; font-family: 'At Hauss Std Semibold';">Meet the Team</h2>
+      
+                  <p style="font-family: 'At Hauss Std Light'; font-size: 20px; margin-left: 50px; margin-right: 50px; color: black; padding-top: 1%;">
+                    At Total Realty Source, our goal is to help you sell your home quickly. Keep up to date via our social media! Our real estate agents work hard to buy your homes and sell them! Not only do we want to help you find a home, we want to walk with you along the way to guarantee a smooth transition. <br><br> 
+                    Meet our agents on our "About" page. Click below to see.
+                  </p>
+      
+                  <div style="display: flex; margin-top: 20px; margin-left:50px; margin-right: 30px;">
+                    <button id="viewmore" class="learnmore" style="background-color: transparent; border: 1px solid rgb(0, 0, 0); padding: 10px 20px; cursor: pointer;">
+                      <a style="text-decoration: none; color: rgb(0, 0, 0);" href="about.html">Learn more</a>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Column for the image -->
+              <div class="column" style="flex: 1; padding: 0; margin: 0; height: 100%;">
+                <div class="content-wrapper" style="width: 100%; height: 100%;">
+                  <img src="group.png/groupteam.png" alt="Your Image" style="width: 100%; height: 100%; object-fit: cover; display: block; border: none;">
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
   <section style="background-color:#023E6C;"><div><br><br></div></section>
 
       <section class="services-new" style="background-color: #023E6C; padding: 0px 0 90px; margin: 0; padding-top: 45px; text-align: center;">
         <h1 style="color: white; font-size: 40px; font-weight: 200; margin: 0; padding: 40px;  font-family: 'At Hauss Std Semibold';">Our Services</h1>
-        <div class="row-new reveal" style="display: flex; justify-content: center; flex-wrap: wrap; margin: 0; padding: 0;">
+        <div class="row-new reveal" style="display: flex; justify-content: center; flex-wrap: wrap; margin: 0; padding: 0; padding-bottom: 5%;">
           <!-- Property Sales -->
           <div class="service-circle-container" style="text-align: center; margin: 20px;">
             <div class="service-circle" style="width: 200px; height: 200px; background-color: #ffffff; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); margin: 0 auto;">
@@ -229,37 +361,8 @@
   </div> -->
 
   <!-- end -->
-
-
-  <section class="secondsection" style="background-color: #023E6C; padding-top: 0px; margin: 0;">
-    <div class="container" style="max-width: 100%; padding-left: 0; padding-right: 0; margin: 0 auto;">
-      <div class="row" style="margin: 0;">
-        <!-- Column for the image -->
-      
-
-        <!-- Column for the text -->
-        <div class="column" style="flex:1; padding: 0; margin-top: 0;">
-          <div class="text-container" style="padding: 0 0px; box-sizing: border-box; padding-top: 10%;">
-            <h2 style="font-size:40px; padding:0px; color:rgb(255, 255, 255); text-align: center; font-family: 'At Hauss Std Semibold';">Meet Our Team</h2>
-            <p style="font-family: 'At Hauss Std Light'; font-size:20px; color:rgb(255, 255, 255); padding: 50px; padding-left: 70px;">
-              At Total Realty Source, our goal is to help you sell your home quickly. Keep up to date via our social media! Our real estate agents work hard to buy your homes and sell them! Not only do we want to help you find a home, we want to walk with you along the way to guarantee a smooth transition. <br><br> Meet our agents on our "About" page. Click below to see.
-            </p>
-            <div style="display: flex; justify-content: center; margin-top: 20px;">
-              <button id="viewmore" class="learnmore" style="background-color: none; border: 2px solid white; padding: 10px 20px; cursor: pointer;">
-                <a style="text-decoration: none; color:white; background-color:#023E6C;" href="about.html">Learn more</a>
-              </button>
-            </div>
-          </div>
-        </div>
-        
-        <div class="column" style="flex:1; padding: 0;">
-          <div class="content-wrapper" style="box-sizing: border-box;">
-            <img src="group.png/groupteam.png" alt="Your Image" style="max-width: 100%; height: auto; padding:10%; border:none;">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
+  
   <h1 style=" font-family: 'At Hauss Std Semibold'; color: black; font-size: 40px; font-weight: 200; margin: 0; padding: 40px; padding-top:60px; text-align: center; background: white;">Our Listings</h1>
 
   <section style="background: white; padding-bottom: 80px; padding-top: 20px;">

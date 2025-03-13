@@ -818,16 +818,6 @@ body {
     width: 100%; /* Adjust width for even smaller screens */
   }
 }
-.content-wrapper img {
-  border: 1px solid #ffffff;
-}
-/* .content-wrapper img {
-  transition: transform 0.3s ease-in-out;
-}
-
-.content-wrapper img:hover {
-  transform: scale(0.8);
-} */
 
 
 .property-details {
