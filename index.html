@@ -63,6 +63,25 @@
       </video>
     </div>
   </div>
+  <style>
+    /* Adjust video size for smaller screens */
+    @media (max-width: 768px) {
+      #background-video {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+      }
+    }
+  
+    @media (max-width: 480px) {
+      #background-video {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        max-height: 600px; /* Keeps the Instagram Reel-like look */
+      }
+    }
+  </style>
   <!-- <section class="homeheader">
   <div class="contacttwocontainer">
     <div class="contacttwobox"> 
