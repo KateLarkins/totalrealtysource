@@ -570,76 +570,62 @@
   </div>
 
   <!-- Navbar Media Queries -->
-  <style>
-  /* Media Queries for Mobile */
-@media (max-width: 768px) {
-  /* Hide the navigation links by default on small screens */
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    background-color: #023E6C;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    gap: 15px;
-    z-index: 5;
-  }
-
-  /* Show the hamburger menu */
-  .hamburger-menu {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 4px;
-    width: 30px;
-    height: 30px;
-    justify-content: space-around;
-  }
-
-  /* Make links stack vertically on smaller screens */
-  .nav-links a {
-    font-size: 20px;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-    border-bottom: 1px solid #ddd;
-  }
-
-  /* Remove bottom border from the last link */
-  .nav-links a:last-child {
-    border-bottom: none;
-  }
-
-  /* Show the hamburger menu on small screens */
-  .hamburger-menu .line {
-    width: 100%;
-    height: 4px;
-    background-color: white;
-    border-radius: 2px;
-  }
-}
-
-/* When the menu is active, show the nav links */
-.nav-links.active {
-  display: flex;
-}
-
-/* Close the menu button */
-.nav-links a.close-menu {
-  background-color: #023E6C;
-  color: white;
-  text-align: center;
-  cursor: pointer;
-  font-size: 20px;
-  padding: 10px;
-  width: 100%;
-  border-bottom: 1px solid #ddd;
-}
-</style>
+  <style>/* Mobile and Tablet styles */
+    @media (max-width: 768px) {
+      .topnav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    
+      .nav-links {
+        display: none; /* Hide links by default */
+        width: 100%; /* Full width to allow centering */
+        text-align: center; /* Center the links */
+        flex-direction: column; /* Stack the links */
+        padding: 10px;
+        background-color: #023E6C;
+      }
+    
+      .nav-links a {
+        padding: 10px;
+        font-size: 18px;
+      }
+    
+      .hamburger-menu {
+        display: block; /* Show hamburger menu */
+        cursor: pointer;
+      }
+    
+      .hamburger-menu .line {
+        width: 30px;
+        height: 4px;
+        background-color: white;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+      }
+    
+      .call-button-container {
+        display: none; /* Hide call button on mobile for now */
+      }
+    
+      .nav-links.active {
+        display: flex; /* Show links when active */
+      }
+    }
+    
+    /* Smaller screens (up to 480px) */
+    @media (max-width: 480px) {
+      .nav-links a {
+        font-size: 16px; /* Smaller font size for even smaller screens */
+        padding: 8px; /* Adjust padding for smaller devices */
+      }
+    
+      .hamburger-menu {
+        display: block;
+      }
+    }
+    </style>
   <!-- Section 1 Media Queries -->
   <style>
   /* Mobile-responsive styles */
