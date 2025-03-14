@@ -582,42 +582,40 @@
   <!-- Navbar Media Queries -->
   <style>
   
-/* Mobile and Tablet styles */
+/* For small screens and below 768px */
 @media (max-width: 768px) {
-  .topnav {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-  }
-
-  .nav-links {
-    display: none; /* Hide links by default */
-    width: 100%;
-    text-align: center;
-    flex-direction: column;
-    padding: 10px;
-    background-color: #023E6C;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-  }
-
-  .nav-links a {
-    padding: 10px;
-    font-size: 18px;
-    color: white;
-    text-decoration: none;
-  }
-
+  /* Hamburger menu visibility */
   .hamburger-menu {
     display: block;
     cursor: pointer;
   }
 
-  /* Show the links when 'active' class is added */
+  /* Hide the navbar links by default */
+  .nav-links {
+    display: none; /* Links are hidden */
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    background-color: #023E6C;
+    padding: 10px 0;
+    position: absolute;
+    top: 60px; /* Adjust depending on the height of your navbar */
+    left: 0;
+    right: 0;
+  }
+
+  /* When 'active' class is added to nav-links, make it visible */
   .nav-links.active {
-    display: flex;
+    display: flex; /* Display navbar links */
+  }
+
+  /* Ensure links are centered and properly spaced */
+  .nav-links a {
+    padding: 15px;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    display: block;
   }
 
   .call-button-container {
@@ -628,11 +626,11 @@
   }
 }
 
-/* Smaller screens (up to 480px) */
+/* For even smaller screens, up to 480px */
 @media (max-width: 480px) {
   .nav-links a {
     font-size: 16px;
-    padding: 8px;
+    padding: 12px;
   }
 
   .hamburger-menu {
