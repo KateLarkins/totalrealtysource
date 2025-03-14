@@ -1,68 +1,55 @@
-/* Default styles (for larger screens) */
-.topnav .nav-links {
+/* Default styles for navbar on larger screens */
+.nav-links {
   display: flex;
   gap: 20px;
-  align-items: center;
-  z-index: 1; /* Ensure navbar is not on top of other content */
+  background-color: white;
 }
 
-.call-button-container {
-  position: fixed;
-  top: 15px;
-  right: 10px;
-  z-index: 2; /* Ensure call button stays above other content */
+/* Hide the hamburger icon by default */
+.hamburger-icon {
+  display: none;
 }
 
-/* For small screens (below 768px) */
+/* Media query for small screens */
 @media (max-width: 768px) {
-  /* Show hamburger menu */
-  .hamburger-menu {
-    display: block;
+  .hamburger-icon {
+    display: block; /* Show hamburger icon on small screens */
   }
 
-  /* Initially hide nav links */
   .nav-links {
-    display: none;
+    display: none; /* Hide nav links by default on small screens */
     flex-direction: column;
+    align-items: center;
     width: 100%;
-    text-align: center;
-    background-color: #ffffff;
-    padding: 10px 0;
+    background-color:#ffffff;
     position: absolute;
-    top: 60px;
+    top: 0;
     left: 0;
     right: 0;
-    z-index: 1; /* Ensure it doesn't overlap content */
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   }
 
-  /* When 'active' class is added to nav-links, make them visible */
-  .nav-links.active {
-    display: flex;
-  }
-
-  /* Style for the links inside the nav */
   .nav-links a {
-    padding: 15px;
-    font-size: 18px;
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    display: block;
+    margin: 10px 0;
+    text-align: center;
   }
 
-  /* Adjust call button position */
   .call-button-container {
-    position: fixed;
-    top: 15px;
-    right: 10px;
-    z-index: 2; /* Keep the call button above the nav */
+    display: block;
+    text-align: center;
+    margin-top: 20px;
   }
 }
 
-/* For even smaller screens (below 480px) */
+/* Media query for very small screens */
 @media (max-width: 480px) {
-  .nav-links a {
-    font-size: 16px;
-    padding: 12px;
+  .hamburger-icon {
+    display: block; /* Ensure hamburger is visible on very small screens */
+  }
+
+  .nav-links {
+    display: none;
   }
 }
 
