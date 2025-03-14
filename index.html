@@ -36,31 +36,41 @@
   </head>
 
   <body style="background-color:#f6f6f6;">
-    <div class="topnav">
-      <div class="links-row">
+    <div class="topnav" style="display: flex; justify-content: space-between; align-items: center; position: relative;">
+      <div class="links-row" style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
         <!-- Navigation Links -->
-        <div class="nav-links" id="navLinks">
-          <a href="index.html"><img src="logo.png/horizontallogo.png" style="max-height:100%; display:block; object-fit: contain; max-height: 100px;"></a>
-          <a href="index.html" class="active">Home</a>
-          <a href="forsale.html">For Sale</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
+        <div class="nav-links" id="navLinks" style="display: flex; gap: 20px; align-items: center;">
+          <a href="index.html" style="display: block;">
+            <img src="logo.png/horizontallogo.png" style="max-height: 100px; display: block; object-fit: contain;">
+          </a>
+          <a href="index.html" class="active" style="color: rgb(0, 0, 0); text-decoration: none; padding: 10px;">Home</a>
+          <a href="forsale.html" style="color: rgb(0, 0, 0); text-decoration: none; padding: 10px;">For Sale</a>
+          <a href="about.html" style="color: rgb(0, 0, 0); text-decoration: none; padding: 10px;">About</a>
+          <a href="contact.html" style="color: rgb(0, 0, 0); text-decoration: none; padding: 10px;">Contact</a>
         </div>
-        <div class="hamburger-menu" id="hamburgerMenu">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
+        
         <!-- Call Button -->
-        <div class="call-button-container">
+        <div class="call-button-container" style="position: fixed; right: 10px; top: 15px; z-index: 10;">
           <a href="tel:7315749340" class="call-button">
-            <i class="fa fa-phone" style="font-size:28px; color:rgb(0, 0, 0);"></i>
+            <i class="fa fa-phone" style="font-size:28px; color: rgb(0, 0, 0);"></i>
           </a>
         </div>
-           <!-- Hamburger Menu Icon -->
- 
+      </div>
+    
+      <!-- Hamburger Menu (hidden on large screens) -->
+      <div class="hamburger-menu" onclick="toggleNav()" style="display: none; cursor: pointer;">
+        <span style="font-size: 30px; color: #fff;">&#9776;</span>
       </div>
     </div>
+    
+    <script>
+      function toggleNav() {
+        var navLinks = document.getElementById('navLinks');
+        navLinks.classList.toggle('active'); // Toggle visibility of the nav links
+      }
+    </script>
+    
+    
 <style></style>
 
 
