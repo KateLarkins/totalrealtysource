@@ -46,14 +46,24 @@
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
         </div>
+        <div class="hamburger-menu" id="hamburgerMenu">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
         <!-- Call Button -->
         <div class="call-button-container">
           <a href="tel:7315749340" class="call-button">
             <i class="fa fa-phone" style="font-size:28px; color:rgb(0, 0, 0);"></i>
           </a>
         </div>
+           <!-- Hamburger Menu Icon -->
+ 
       </div>
     </div>
+<style></style>
+
+
     <div style="width: 100%; height: 100vh; background-color: #ffffff; margin: 0; padding: 0; overflow: hidden;">
       <div class="header-container" style="margin: 0; padding: 0;">
         <video autoplay muted loop id="background-video" style="top: 0; left: 0; width: 100%; height: 100vh; object-fit: cover; display: block;">
@@ -570,26 +580,33 @@
   </div>
 
   <!-- Navbar Media Queries -->
-  <style>/* Mobile and Tablet styles */
+  <style>
+    /* Mobile and Tablet styles */
     @media (max-width: 768px) {
       .topnav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
       }
     
       .nav-links {
         display: none; /* Hide links by default */
-        width: 100%; /* Full width to allow centering */
+        width: 100%;
         text-align: center; /* Center the links */
         flex-direction: column; /* Stack the links */
         padding: 10px;
         background-color: #023E6C;
+        position: absolute;
+        top: 60px; /* Adjust position below the hamburger menu */
+        left: 0;
+        right: 0;
       }
     
       .nav-links a {
         padding: 10px;
         font-size: 18px;
+        color: white;
+        text-decoration: none;
       }
     
       .hamburger-menu {
@@ -597,16 +614,12 @@
         cursor: pointer;
       }
     
-      .hamburger-menu .line {
-        width: 30px;
-        height: 4px;
-        background-color: white;
-        margin: 5px auto;
-        transition: all 0.3s ease-in-out;
-      }
-    
+      /* Ensure call button stays on the right for mobile as well */
       .call-button-container {
-        display: none; /* Hide call button on mobile for now */
+        position: fixed;
+        top: 15px;
+        right: 10px;
+        z-index: 10; /* Keep it on top of other elements */
       }
     
       .nav-links.active {
@@ -626,6 +639,7 @@
       }
     }
     </style>
+
   <!-- Section 1 Media Queries -->
   <style>
   /* Mobile-responsive styles */
