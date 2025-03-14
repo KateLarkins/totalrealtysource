@@ -364,28 +364,6 @@ body {
   font-size: 25px;
 }
 
-@media screen and (max-width: 600px) {
-  .logo-row {
-    padding: 10px;
-  }
-
-  .links-row {
-    flex-direction: column;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    text-align: left;
-  }
-
-  .call-button-container {
-    margin-top: 10px;
-    position: static;
-  }
-}
-
 
 /* navbar ends */
 
@@ -1142,25 +1120,6 @@ footer {
     }
   }
 
-  /* navbar */
-
-  @media only screen and (max-width: 768px) {
-    /* Adjustments for smaller screens */
-    .navbar-inner {
-        flex-direction: column;
-        align-items: center;
-    }
-    .navbar-nav {
-        margin-top: 20px;
-    }
-    .centered-content {
-        text-align: center;
-    }
- 
-    .column-new {
-        width: calc(100% - 40px);
-    }
-}
 @media only screen and (max-width: 768px) {
   .column {
     margin: 0;
