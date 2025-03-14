@@ -25,7 +25,7 @@
     flex-direction: column;
     width: 100%;
     text-align: center;
-    background-color: #023E6C;
+    background-color: #000000;
     padding: 10px 0;
     position: absolute;
     top: 60px;
@@ -42,7 +42,7 @@
   .nav-links a {
     padding: 15px;
     font-size: 18px;
-    color: white;
+    color: black;
     text-decoration: none;
     display: block;
   }
