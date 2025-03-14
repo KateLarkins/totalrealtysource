@@ -581,63 +581,64 @@
 
   <!-- Navbar Media Queries -->
   <style>
-    /* Mobile and Tablet styles */
-    @media (max-width: 768px) {
-      .topnav {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-      }
-    
-      .nav-links {
-        display: none; /* Hide links by default */
-        width: 100%;
-        text-align: center; /* Center the links */
-        flex-direction: column; /* Stack the links */
-        padding: 10px;
-        background-color: #023E6C;
-        position: absolute;
-        top: 60px; /* Adjust position below the hamburger menu */
-        left: 0;
-        right: 0;
-      }
-    
-      .nav-links a {
-        padding: 10px;
-        font-size: 18px;
-        color: white;
-        text-decoration: none;
-      }
-    
-      .hamburger-menu {
-        display: block; /* Show hamburger menu */
-        cursor: pointer;
-      }
-    
-      /* Ensure call button stays on the right for mobile as well */
-      .call-button-container {
-        position: fixed;
-        top: 15px;
-        right: 10px;
-        z-index: 10; /* Keep it on top of other elements */
-      }
-    
-      .nav-links.active {
-        display: flex; /* Show links when active */
-      }
-    }
-    
-    /* Smaller screens (up to 480px) */
-    @media (max-width: 480px) {
-      .nav-links a {
-        font-size: 16px; /* Smaller font size for even smaller screens */
-        padding: 8px; /* Adjust padding for smaller devices */
-      }
-    
-      .hamburger-menu {
-        display: block;
-      }
-    }
+  
+/* Mobile and Tablet styles */
+@media (max-width: 768px) {
+  .topnav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .nav-links {
+    display: none; /* Hide links by default */
+    width: 100%;
+    text-align: center;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #023E6C;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+  }
+
+  .nav-links a {
+    padding: 10px;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+    cursor: pointer;
+  }
+
+  /* Show the links when 'active' class is added */
+  .nav-links.active {
+    display: flex;
+  }
+
+  .call-button-container {
+    position: fixed;
+    top: 15px;
+    right: 10px;
+    z-index: 10;
+  }
+}
+
+/* Smaller screens (up to 480px) */
+@media (max-width: 480px) {
+  .nav-links a {
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+}
     </style>
 
   <!-- Section 1 Media Queries -->
