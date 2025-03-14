@@ -1,30 +1,44 @@
+/* Default styles (for larger screens) */
+.topnav .nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.call-button-container {
+  position: fixed;
+  top: 15px;
+  right: 10px;
+  z-index: 10;
+}
+
 /* For small screens (below 768px) */
 @media (max-width: 768px) {
-  /* Hamburger menu visibility */
+  /* Show hamburger menu */
   .hamburger-menu {
     display: block;
   }
 
-  /* Hide the navbar links by default */
+  /* Initially hide nav links */
   .nav-links {
-    display: none; /* Links hidden by default */
+    display: none;
     flex-direction: column;
     width: 100%;
     text-align: center;
     background-color: #023E6C;
     padding: 10px 0;
     position: absolute;
-    top: 60px; /* Adjust if needed */
+    top: 60px;
     left: 0;
     right: 0;
   }
 
-  /* When 'active' class is added to nav-links, make it visible */
+  /* When 'active' class is added to nav-links, make them visible */
   .nav-links.active {
-    display: flex; /* Display navbar links */
+    display: flex;
   }
 
-  /* Make the links centered and properly spaced */
+  /* Style for the links inside the nav */
   .nav-links a {
     padding: 15px;
     font-size: 18px;
@@ -33,6 +47,7 @@
     display: block;
   }
 
+  /* Adjust call button position */
   .call-button-container {
     position: fixed;
     top: 15px;
