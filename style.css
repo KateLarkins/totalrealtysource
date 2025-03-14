@@ -3,13 +3,14 @@
   display: flex;
   gap: 20px;
   align-items: center;
+  z-index: 1; /* Ensure navbar is not on top of other content */
 }
 
 .call-button-container {
   position: fixed;
   top: 15px;
   right: 10px;
-  z-index: 10;
+  z-index: 2; /* Ensure call button stays above other content */
 }
 
 /* For small screens (below 768px) */
@@ -25,12 +26,13 @@
     flex-direction: column;
     width: 100%;
     text-align: center;
-    background-color: #000000;
+    background-color: #ffffff;
     padding: 10px 0;
     position: absolute;
     top: 60px;
     left: 0;
     right: 0;
+    z-index: 1; /* Ensure it doesn't overlap content */
   }
 
   /* When 'active' class is added to nav-links, make them visible */
@@ -42,7 +44,7 @@
   .nav-links a {
     padding: 15px;
     font-size: 18px;
-    color: black;
+    color: rgb(0, 0, 0);
     text-decoration: none;
     display: block;
   }
@@ -52,7 +54,7 @@
     position: fixed;
     top: 15px;
     right: 10px;
-    z-index: 10;
+    z-index: 2; /* Keep the call button above the nav */
   }
 }
 
@@ -63,7 +65,6 @@
     padding: 12px;
   }
 }
-
 
 
 /* Logo Font */
