@@ -569,73 +569,92 @@
     </footer>
   </div>
 
+  
   <!-- Section 1 Media Queries -->
-<style>
+  <style>
   /* Mobile-responsive styles */
   @media (max-width: 768px) {
     .content-container {
       flex-direction: column;
+      padding: 0 10px; /* Added padding to avoid content touching screen edges */
     }
-
+  
     .image-container {
-      margin-bottom: 20px;
+      margin-bottom: 15px; /* Reduced margin for better spacing */
     }
-
+  
     .title {
-      font-size: 24px;
+      font-size: 22px; /* Smaller font for the title */
+      margin-bottom: 10px; /* Reduced bottom margin */
     }
-
+  
     .paragraph {
-      font-size: 18px;
+      font-size: 16px; /* Smaller paragraph font */
       margin-left: 10px;
       margin-right: 10px;
+      line-height: 1.4; /* Line height to prevent text from being too cramped */
     }
-
+  
     .scroll-text {
-      gap: 20px;
-      font-size: 16px;
+      gap: 15px; /* Reduced gap between items */
+      font-size: 14px; /* Smaller font for scrolling text */
+      flex-direction: column; /* Stack items for smaller screens */
+      align-items: flex-start; /* Align items to the start */
     }
-
+  
     .text-item {
-      gap: 10px;
+      gap: 5px;
     }
-
+  
     .numbers {
-      font-size: 22px;
+      font-size: 18px; /* Smaller font for the numbers */
     }
-
+  
     .scroll-text span {
-      font-size: 14px;
+      font-size: 12px; /* Reduced font size */
     }
   }
-
+  
   @media (max-width: 480px) {
+    .content-container {
+      padding: 0 5px; /* Further reduced padding */
+    }
+  
+    .image-container {
+      margin-bottom: 10px; /* Further reduced margin */
+    }
+  
     .title {
-      font-size: 20px;
+      font-size: 18px; /* Even smaller font for the title */
+      margin-bottom: 5px; /* Reduced bottom margin */
     }
-
+  
     .paragraph {
-      font-size: 16px;
+      font-size: 14px; /* Smaller font size */
+      margin-left: 5px;
+      margin-right: 5px;
+      line-height: 1.3; /* Further reduced line height for better spacing */
     }
-
+  
     .scroll-text {
-      gap: 15px;
-      font-size: 14px;
+      gap: 10px; /* Reduced gap */
+      font-size: 12px; /* Smaller font for scrolling text */
+      flex-direction: column; /* Stack items for better responsiveness */
     }
-
+  
     .text-item {
-      gap: 8px;
+      gap: 4px; /* Reduced gap */
     }
-
+  
     .numbers {
-      font-size: 20px;
+      font-size: 16px; /* Smaller font for the numbers */
     }
-
+  
     .scroll-text span {
-      font-size: 12px;
+      font-size: 10px; /* Small font size for scrolling numbers */
     }
   }
-</style>
+</style>  
 
       <script src="script.js"></script>
       <script>
