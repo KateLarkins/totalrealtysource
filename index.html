@@ -62,17 +62,56 @@
         <span style="font-size: 30px; color: #fff;">&#9776;</span>
       </div>
     </div>
-<section>
-    <div style="width: 100%; height: 100vh; background-color: #ffffff; margin: 0; padding: 0; overflow: hidden;">
-      <div class="header-container" style="margin: 0; padding: 0;">
-        <video autoplay muted loop id="background-video" style="top: 0; left: 0; width: 100%; height: 100vh; object-fit: cover; display: block;">
-          <source src="video/commercial.mp4" type="video/mp4">
-          Your browser does not support the video.
-        </video>
-      </div>
-    </div>
-  </section>
 
+<!-- Introduction Video -->
+<section>
+  <div style="width: 100%; height: 100vh; background-color: #ffffff; margin: 0; padding: 0; overflow: hidden;">
+    <div class="header-container" style="margin: 0; padding: 0;">
+      <video autoplay muted loop id="background-video" style="top: 0; left: 0; width: 100%; height: 100vh; object-fit: cover; display: block;">
+        <source src="video/commercial.mp4" type="video/mp4">
+        Your browser does not support the video.
+      </video>
+    </div>
+  </div>
+</section>
+
+
+<style>
+  /* Video container to hold the video and keep it responsive */
+  .video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1; /* Keeps the video behind other content */
+  }
+  
+  /* Background video styling */
+  #background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Adjust video size for tablets */
+  @media (max-width: 768px) {
+    #background-video {
+      width: 100%;
+      height: auto;
+      min-height: 100vh;
+    }
+  }
+  
+  /* Adjust video for very small screens */
+  @media (max-width: 480px) {
+    #background-video {
+      height: 100vh;
+      object-fit: cover;
+    }
+  }
+  </style>
 
   <section style="padding-bottom: 0px;  background-color:#023E6C; color:white; ">
     <div style="max-width: 100%; padding-left: 0; padding-right: 0; margin: 0 auto;">
