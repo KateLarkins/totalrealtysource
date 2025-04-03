@@ -308,11 +308,6 @@ body {
   margin: 0;
 }
 
-.topnav {
-  background-color:#ffffff;
-  z-index: 1000; /* Ensures it stays above other elements */
-  position: fixed;
-}
 
 .links-row {
   display: flex;
@@ -1270,88 +1265,65 @@ footer {
 /* Media Queries */
 /* Index.html */
 
-/* Navbar media queries */
-@media (max-width: 768px) {
-  /* Make the navbar fixed at the top */
-  .topnav {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: white;
-    z-index: 1000;
-    padding: 10px 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
+/* Original navbar styles for large screens */
+.topnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  width: 100%; /* Ensures it stretches across the full page */
+}
 
-  /* Hide navigation links by default */
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: white;
+/* Layout adjustments for small screens */
+@media (max-width: 768px) {
+  .topnav {
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    padding: 10px 0;
-  }
-
-  /* Show links when active */
-  .nav-links.active {
-    display: flex;
-  }
-
-  /* Style each navigation link */
-  .nav-links a {
-    font-size: 18px;
-    padding: 12px 0;
-    text-align: center;
-    text-decoration: none;
-    color: black;
+    padding: 20px;
     width: 100%;
-    transition: background 0.3s;
+    position: relative; /* Ensures navbar is not fixed on scroll */
   }
 
-  /* Add hover effect for better interactivity */
-  .nav-links a:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-
-  /* Hamburger menu styling */
-  .hamburger-icon {
-    display: block;
+  /* Hamburger menu and "Menu" text on small screens */
+  .hamburger-menu {
+    display: flex;
+    align-items: center;
     cursor: pointer;
     padding: 10px;
-    border-radius: 5px;
-    background-color: white;
-    border: 1px solid #ccc;
   }
 
-  /* Style the three lines inside the hamburger */
+  /* Hide the nav-links by default on small screens */
+  .nav-links {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .nav-links.active {
+    display: flex; /* Display nav links when the menu is toggled */
+  }
+
+  /* Vertical Hamburger Icon */
+  .hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
   .hamburger-icon div {
     width: 30px;
-    height: 3px;
+    height: 4px;
     background-color: black;
-    margin: 5px 0;
-    transition: all 0.3s ease-in-out;
   }
+}
 
-  /* Animation for when the menu is open */
-  .hamburger-icon.active div:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .hamburger-icon.active div:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger-icon.active div:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+/* Keep the hamburger menu hidden on large screens */
+@media (min-width: 769px) {
+  .hamburger-menu {
+    display: none; /* Hide hamburger on larger screens */
   }
 }
 
