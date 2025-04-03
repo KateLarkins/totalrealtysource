@@ -96,30 +96,31 @@
   }
 
   /* Universal reset for all elements to remove unwanted margins and paddings */
-  html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow-x: hidden; /* Prevents horizontal scroll issues */
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-.header-container {
-  height: 100vh; /* Ensure it only takes full viewport height */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
+  .header-container {
+    height: auto; /* Container height adjusts based on video */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent extra content spilling out */
+  }
 
-#background-video {
-  width: 100%;
-  height: auto;
-  object-fit: contain; /* Keeps aspect ratio without overflow */
-  display: block;
+  #background-video {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Ensure video maintains aspect ratio */
+    display: block;
+    max-height: 100vh; /* Ensure the video height doesn't exceed the viewport height */
+  }
 }
-
 
 </style>
 
