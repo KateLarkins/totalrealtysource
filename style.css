@@ -1271,28 +1271,8 @@ footer {
 /* Index.html */
 
 /* Navbar media queries */
-/* Default styles for navbar on larger screens */
-.nav-links {
-  display: flex;
-  gap: 20px;
-  background-color: white;
-}
-
-/* Hide the hamburger icon by default */
-.hamburger-icon {
-  display: none;
-}
-
-@media (max-width: 1024px) {
-  .nav-links {
-    flex-direction: column;
-    text-align: center;
-    width: 100%;
-    background-color: white;
-  }
-}
-
 @media (max-width: 768px) {
+  /* Make the navbar fixed at the top */
   .topnav {
     position: fixed;
     width: 100%;
@@ -1300,68 +1280,81 @@ footer {
     left: 0;
     background-color: white;
     z-index: 1000;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
 
-  
+  /* Hide navigation links by default */
   .nav-links {
     display: none;
-    flex-direction: column;
-    align-items: center;
+    position: absolute;
+    top: 100%;
+    left: 0;
     width: 100%;
     background-color: white;
-    top: 60px; /* Adjusted to avoid overlapping the video */
-    left: 0;
-    right: 0;
-    padding: 20px;
+    flex-direction: column;
+    align-items: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
   }
 
+  /* Show links when active */
   .nav-links.active {
     display: flex;
   }
 
+  /* Style each navigation link */
   .nav-links a {
-    margin: 10px 0;
-    text-align: center;
     font-size: 18px;
-    color: rgb(0, 0, 0);
+    padding: 12px 0;
+    text-align: center;
     text-decoration: none;
-    display: block;
+    color: black;
+    width: 100%;
+    transition: background 0.3s;
   }
 
+  /* Add hover effect for better interactivity */
+  .nav-links a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  /* Hamburger menu styling */
   .hamburger-icon {
-    display: block !important;
+    display: block;
     cursor: pointer;
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    z-index: 1100;
-    background-color: white;
     padding: 10px;
     border-radius: 5px;
+    background-color: white;
+    border: 1px solid #ccc;
   }
 
-  .call-button-container {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
+  /* Style the three lines inside the hamburger */
+  .hamburger-icon div {
+    width: 30px;
+    height: 3px;
+    background-color: black;
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
   }
 
-  .header-container {
-    margin-top: 70px; /* Ensures space below the navbar for the video */
+  /* Animation for when the menu is open */
+  .hamburger-icon.active div:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger-icon.active div:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-icon.active div:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
   }
 }
 
-@media (max-width: 480px) {
-  .nav-links a {
-    font-size: 16px;
-    padding: 12px;
-  }
-
-  .hamburger-icon {
-    display: block !important;
-  }
-}
 
 
 /* Section 1- slot header and kitchen picture */
