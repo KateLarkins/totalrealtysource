@@ -72,10 +72,17 @@
       </video>
     </div>
   </div>
-<p>check 6</p>
+<p>check 7</p>
 <style>
 
 @media (max-width: 768px) {
+  /* Ensure the body and html take up the full height */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
   .header-container {
     height: auto; /* Allows container to resize */
     min-height: 100vh; /* Ensures container doesn't collapse too much */
@@ -83,6 +90,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0; /* Ensure no extra space around the container */
+    padding: 0; /* Ensure no extra space around the container */
   }
 
   #background-video {
@@ -93,6 +102,7 @@
     display: block;
   }
 }
+
 </style>
 
 
