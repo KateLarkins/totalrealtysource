@@ -74,13 +74,14 @@
     </div>
   </div>
 </section>
-<p>check</p>
+<p>check 2</p>
 <style>
 @media (max-width: 768px) {
   #background-video {
-    height: auto;
     width: 100%;
-    object-fit: contain; /* Ensures the entire video is visible */
+    height: auto;
+    max-height: 50vh; /* Adjust the height dynamically */
+    object-fit: cover; /* Ensures it still fills the space */
   }
 }
 
