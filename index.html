@@ -74,31 +74,30 @@
     </div>
   </div>
 </section>
-<p>check 4</p>
+<p>check 5</p>
 <style>
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
   section {
-    height: 100vh; /* Ensure section fills the full viewport height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Prevents extra white space */
+    height: auto; /* Allows section to shrink */
+    min-height: 100vh; /* Ensures it doesn't collapse too much */
+    overflow: hidden; /* Hides any excess space */
   }
 
   .header-container {
-    height: 100%;
+    height: auto; /* Allows container to shrink */
     width: 100%;
-    margin: 0;
-    padding: 0;
   }
 
   #background-video {
     width: 100%;
-    height: 100%;
+    height: auto;
+    max-height: 50vh; /* Reduce height for smaller screens */
     object-fit: cover;
+    display: block;
   }
 }
+
 
 
 </style>
