@@ -46,7 +46,7 @@
 
     <!-- "Menu" text and vertical Hamburger Menu (visible only on small screens) -->
     <div class="hamburger-menu" onclick="toggleNav()">
-      <span style="font-size: 18px; color: rgb(0, 0, 0); margin-right: 10px;">Menu</span>
+      <span style="font-size: 18px; color: rgb(0, 0, 0); margin-right: 9px;">Menu</span>
       <div class="hamburger-icon">
         <div></div>
         <div></div>
@@ -95,6 +95,7 @@
 @media (max-width: 768px) {
   /* Stack logo, Menu, and hamburger vertically */
   .topnav {
+    display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
@@ -102,6 +103,13 @@
   }
 
   /* Logo styling */
+  .links-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
   .links-row a {
     margin-bottom: 20px; /* Add space between logo and the menu */
   }
@@ -166,8 +174,8 @@
     display: none; /* Hide on large screens */
   }
 }
-
 </style>
+
 
 
 <!-- Introduction Video -->
