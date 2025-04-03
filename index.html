@@ -72,12 +72,12 @@
       </video>
     </div>
   </div>
-<p>check 12</p>
+<p>check 13</p>
 <style>
 @media (max-width: 768px) {
-  /* Ensure body and html fill the full height of the viewport */
+  /* Reset margins and paddings for html, body */
   html, body {
-    height: 100%;
+    height: 100%; /* Ensure full screen height */
     margin: 0;
     padding: 0;
   }
@@ -89,21 +89,23 @@
     box-sizing: border-box;
   }
 
+  /* The container for the video */
   .header-container {
-    height: 100vh; /* Ensures it takes up the full viewport height */
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: 0;
+    height: auto; /* Let container resize automatically */
+    min-height: 100vh; /* Ensures the container takes at least the height of the viewport */
     padding: 0;
+    margin: 0;
+    overflow: hidden; /* Prevent any overflow from spilling out */
   }
 
   #background-video {
-    width: 100%;
-    height: auto;
-    max-height: 50vh; /* Make the video 50% of the viewport height on smaller screens */
-    object-fit: contain; /* Ensure the video keeps its aspect ratio and fits within the container */
+    width: 100%; /* Ensure video fills the width */
+    height: auto; /* Height adjusts automatically to maintain aspect ratio */
+    object-fit: contain; /* Ensures the video keeps its aspect ratio and fits within the container */
     display: block;
   }
 }
