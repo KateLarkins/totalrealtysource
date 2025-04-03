@@ -72,36 +72,37 @@
       </video>
     </div>
   </div>
-<p>check 7</p>
+<p>check 9</p>
 <style>
 
 @media (max-width: 768px) {
-  /* Ensure the body and html take up the full height */
+  /* Ensure body and html fill the screen and remove default margins/paddings */
   html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow: hidden; /* Prevents scrollbars from showing */
   }
 
   .header-container {
-    height: auto; /* Allows container to resize */
-    min-height: 100vh; /* Ensures container doesn't collapse too much */
-    overflow: hidden; /* Hides any extra space */
+    height: 100%; /* Ensures it takes full available height */
+    width: 100%; /* Ensures full width */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0; /* Ensure no extra space around the container */
-    padding: 0; /* Ensure no extra space around the container */
+    margin: 0;
+    padding: 0;
   }
 
   #background-video {
     width: 100%;
-    height: auto;
-    max-height: 50vh; /* Limits video height for smaller screens */
+    height: 100%; /* Ensures it covers the available height */
+    max-height: 50vh; /* Limit the max height of the video */
     object-fit: cover;
     display: block;
   }
 }
+
 
 </style>
 
