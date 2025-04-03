@@ -78,32 +78,162 @@
 
   </style>
 <body style="background-color:#023E6C;">
-  <div class="topnav" style="display: flex; justify-content: space-between; align-items: center; position: relative;">
-    <div class="links-row" style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
-      <!-- Navigation Links -->
-      <div class="nav-links" id="navLinks" style="display: flex; gap: 20px; align-items: center;">
-        <a href="index.html" style="display: block;">
-          <img src="logo.png/horizontallogo.png" style="max-height: 100px; display: block; object-fit: contain;">
-        </a>
-        <a href="index.html" class="active" style="color: rgb(0, 0, 0); text-decoration: none; padding: 10px;">Home</a>
-        <a href="forsale.html" style="color: rgb(0, 0, 0); text-decoration: none; padding: 10px;">For Sale</a>
-        <a href="about.html" style="color: rgb(0, 0, 0); text-decoration: none; padding: 10px;">About</a>
-        <a href="contact.html" style="color: rgb(0, 0, 0); text-decoration: none; padding: 10px;">Contact</a>
+<!-- Top Navigation Bar -->
+<div class="topnav">
+  <div class="links-row">
+    <!-- Logo on top for smaller screens -->
+    <a href="index.html" style="display: block;">
+      <img src="logo.png/horizontallogo.png" style="max-height: 100px; display: block; object-fit: contain;">
+    </a>
+
+    <!-- "Menu" text and vertical Hamburger Menu (visible only on small screens) -->
+    <div class="hamburger-menu" onclick="toggleNav()">
+      <span style="font-size: 18px; color: rgb(0, 0, 0); margin-right: 0px;">Menu</span>
+      <div class="hamburger-icon">
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
-      
-      <!-- Call Button -->
-      <div class="call-button-container" style="position: fixed; right: 10px; top: 15px; z-index: 10;">
-        <a href="tel:7315749340" class="call-button">
-          <i class="fa fa-phone" style="font-size:28px; color: rgb(0, 0, 0);"></i>
-        </a>
-      </div>
-    </div>
-  
-    <!-- Hamburger Menu (hidden on large screens) -->
-    <div class="hamburger-menu" onclick="toggleNav()" style="display: none; cursor: pointer; padding: 15px; background-color: white; border-radius: 5px;">
-      <span style="font-size: 30px; color: #fff;">&#9776;</span>
     </div>
   </div>
+
+  <!-- Hidden nav links, toggled by clicking the hamburger menu -->
+  <div class="nav-links" id="navLinks">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="forsale.html" class="nav-link">For Sale</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+</div>
+
+<script>
+  function toggleNav() {
+    const navLinks = document.getElementById("navLinks");
+    const hamburgerIcon = document.querySelector(".hamburger-icon");
+    
+    // Toggle display of nav links when clicked
+    navLinks.classList.toggle("active");
+
+    // Toggle the X and hamburger icon
+    hamburgerIcon.classList.toggle("active");
+  }
+</script>
+
+<style>
+/* Navbar layout for larger screens (normal behavior) */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  background-color: white;
+}
+
+/* Hide Hamburger Menu and "Menu" text on large screens */
+.hamburger-menu {
+  display: none;
+}
+
+/* New layout for small screens only */
+@media (max-width: 768px) {
+  /* Stack logo, Menu, and hamburger vertically */
+  .topnav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%; /* Ensures full width for small screens */
+  }
+
+  /* Logo styling */
+  .links-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .links-row a {
+    margin-bottom: 20px; /* Add space between logo and the menu */
+  }
+
+  /* Ensure Hamburger Menu and "Menu" text only show on small screens */
+  .hamburger-menu {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hamburger-menu span {
+    margin-bottom: 5px; /* Space between the text and hamburger icon */
+  }
+
+  /* Vertical Hamburger Icon */
+  .hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    cursor: pointer;
+  }
+
+  .hamburger-icon div {
+    width: 30px;
+    height: 4px;
+    font-weight: 100;
+    background-color: black;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  /* When hamburger is clicked, turn into "X" */
+  .hamburger-icon.active div:nth-child(1) {
+    transform: rotate(45deg);
+    position: relative;
+    top: 8px;
+  }
+
+  .hamburger-icon.active div:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-icon.active div:nth-child(3) {
+    transform: rotate(-45deg);
+    position: relative;
+    bottom: 8px;
+  }
+
+  /* Hide nav-links by default on small screens */
+  .nav-links {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Ensures nav links stretch across the full width */
+    margin-top: 10px;
+  }
+
+  /* Display nav-links when active */
+  .nav-links.active {
+    display: flex; /* Display the nav links when active */
+    background-color: white;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-link {
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+/* Hide Hamburger Menu on large screens */
+@media (min-width: 769px) {
+  .hamburger-menu {
+    display: none; /* Hide on large screens */
+  }
+}
+</style>
 
   <div class="split-section" style="background-color:#023E6C;">
     <div class="text-content">
