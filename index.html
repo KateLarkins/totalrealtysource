@@ -76,25 +76,14 @@
 </section>
 
 <style>
-  /* Media query for tablets and smaller screens (max-width: 768px) */
-  @media (max-width: 768px) {
-    #background-video {
-      width: 100%;
-      height: auto; /* Adjust height to auto to maintain aspect ratio */
-      object-fit: cover;
-      min-height: 100vh;
-    }
+@media (max-width: 768px) {
+  #background-video {
+    height: auto;
+    width: 100%;
+    object-fit: contain; /* Ensures the entire video is visible */
   }
+}
 
-  /* Media query for very small screens (max-width: 480px) */
-  @media (max-width: 480px) {
-    #background-video {
-      width: 100%;
-      height: auto; /* Adjust height to auto */
-      object-fit: cover;
-      min-height: 100vh;
-    }
-  }
 </style>
 
 
