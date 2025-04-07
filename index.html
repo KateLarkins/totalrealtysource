@@ -46,7 +46,7 @@
 
     <!-- "Menu" text and vertical Hamburger Menu (visible only on small screens) -->
     <div class="hamburger-menu" onclick="toggleNav()">
-      <span style="font-size: 18px; color: rgb(0, 0, 0); margin-right: 0px;">Menu</span>
+      <span style="font-size: 18px; color: rgb(0, 0, 0); margin-right: 9px;">Menu</span>
       <div class="hamburger-icon">
         <div></div>
         <div></div>
@@ -67,13 +67,14 @@
 <script>
   function toggleNav() {
     const navLinks = document.getElementById("navLinks");
-    const hamburgerIcon = document.querySelector(".hamburger-icon");
-    
-    // Toggle display of nav links when clicked
     navLinks.classList.toggle("active");
 
-    // Toggle the X and hamburger icon
-    hamburgerIcon.classList.toggle("active");
+    // Toggle display of nav links when clicked
+    if (navLinks.classList.contains("active")) {
+      navLinks.style.display = "flex";
+    } else {
+      navLinks.style.display = "none";
+    }
   }
 </script>
 
@@ -94,7 +95,6 @@
 @media (max-width: 768px) {
   /* Stack logo, Menu, and hamburger vertically */
   .topnav {
-    display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
@@ -102,13 +102,6 @@
   }
 
   /* Logo styling */
-  .links-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
   .links-row a {
     margin-bottom: 20px; /* Add space between logo and the menu */
   }
@@ -140,24 +133,6 @@
     height: 4px;
     font-weight: 100;
     background-color: black;
-    transition: transform 0.3s, opacity 0.3s;
-  }
-
-  /* When hamburger is clicked, turn into "X" */
-  .hamburger-icon.active div:nth-child(1) {
-    transform: rotate(45deg);
-    position: relative;
-    top: 8px;
-  }
-
-  .hamburger-icon.active div:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger-icon.active div:nth-child(3) {
-    transform: rotate(-45deg);
-    position: relative;
-    bottom: 8px;
   }
 
   /* Hide nav-links by default on small screens */
@@ -191,8 +166,8 @@
     display: none; /* Hide on large screens */
   }
 }
-</style>
 
+</style>
 
 
 <!-- Introduction Video -->
