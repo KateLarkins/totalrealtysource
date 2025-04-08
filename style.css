@@ -912,7 +912,6 @@ td {
   justify-content: center;
   background-color: #ffffff;
   align-items: stretch; /* Ensure items stretch to fill container height */
-  min-height: 100vh; /* Full viewport height */
 }
 
 .text-content {
