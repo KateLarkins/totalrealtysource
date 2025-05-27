@@ -14,24 +14,6 @@
     <link rel="stylesheet" href="style.css">  
   </head>
 
-  <style>
-    *, *::before, *::after {
-        box-sizing: border-box;
-    }
-    @media (max-width: 768px) {
-        .accordion-body {
-            padding: 0.5rem;
-        }
-        .accordion-item {
-            margin-bottom: 0.5rem;
-        }
-    }
-    .accordion-body img {
-        max-width: 100%;
-        height: auto;
-    }
-
-</style>
 <body class="aboutbody" style="background-color:#ffffff;">
 <!-- Top Navigation Bar -->
 <div class="topnav">
@@ -62,544 +44,287 @@
 </div>
 
 <style>
-/* Navbar layout for larger screens (normal behavior) */
-.nav-links {
-  display: flex;
-  gap: 20px;
-  background-color: white;
-}
-
-/* Hide Hamburger Menu and "Menu" text on large screens */
-.hamburger-menu {
-  display: none;
-}
-
-/* New layout for small screens only */
-@media (max-width: 768px) {
-  /* Stack logo, Menu, and hamburger vertically */
-  .topnav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    width: 100%; /* Ensures full width for small screens */
+  @media (max-width: 768px) {
+    .card {
+      width: 100% !important;
+      margin: 10px 0 !important;
+    }
   }
-
-  /* Logo styling */
-  .links-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  .links-row a {
-    margin-bottom: 20px; /* Add space between logo and the menu */
-  }
-
-  /* Ensure Hamburger Menu and "Menu" text only show on small screens */
-  .hamburger-menu {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    padding: 10px;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hamburger-menu span {
-    margin-bottom: 5px; /* Space between the text and hamburger icon */
-  }
-
-  /* Vertical Hamburger Icon */
-  .hamburger-icon {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    cursor: pointer;
-  }
-
-  .hamburger-icon div {
-    width: 30px;
-    height: 4px;
-    font-weight: 100;
-    background-color: black;
-    transition: transform 0.3s, opacity 0.3s;
-  }
-
-  /* When hamburger is clicked, turn into "X" */
-  .hamburger-icon.active div:nth-child(1) {
-    transform: rotate(45deg);
-    position: relative;
-    top: 8px;
-  }
-
-  .hamburger-icon.active div:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger-icon.active div:nth-child(3) {
-    transform: rotate(-45deg);
-    position: relative;
-    bottom: 8px;
-  }
-
-  /* Hide nav-links by default on small screens */
-  .nav-links {
-    display: none; /* Hidden by default */
-    flex-direction: column;
-    align-items: center;
-    width: 100%; /* Ensures nav links stretch across the full width */
-    margin-top: 10px;
-  }
-
-  /* Display nav-links when active */
-  .nav-links.active {
-    display: flex; /* Display the nav links when active */
-    background-color: white;
-    padding: 20px;
-    width: 100%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  }
-
-  .nav-link {
-    font-size: 18px;
-    padding: 10px;
-    text-align: center;
-  }
-}
-
-/* Hide Hamburger Menu on large screens */
-@media (min-width: 769px) {
-  .hamburger-menu {
-    display: none; /* Hide on large screens */
-  }
-}
 </style>
 
-  <div class="split-section" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; background-color: #023E6C;">
-    <div class="text-content" style="flex: 1; min-width: 300px; max-width: 50%; padding: 20px; color:white;">
-      <div style="background-color:#023E6C; padding: 20px 20px 70px 20px; margin:30px;">
-        <h1 style="font-size: 40px; text-align: left; margin-bottom: 20px; font-family: 'At Hauss Std SemiBold';">Meet Our Team</h1>
-        <p style="font-family: 'At Hauss Std Light'; font-size: 20px; font-weight: 400; text-align: left;">
-          Our agents specialize in buying and selling properties throughout West Tennessee.
-          Whether you're searching for your dream home or looking to invest in real estate, our team is here to assist you every step of the way. <br><br>
-          Ready to get started? Contact us at <a href="tel:7315749340">731-574-9340</a>! <br><br>
-          Want to see our frequently asked questions? <br><br>
-          <div>
-            <button id="viewmore" style=" padding: 10px 20px; background-color: transparent; font-family: 'At Hauss Std Light'; font-size: 20px;">
-              <a href="#anchor" style="color: rgb(255, 255, 255); text-decoration: none;">Click here to read!</a>
-            </button>
-          </div>
-        </p>
+
+<div class="team-header-section" style="background-color:#023E6C; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; padding: 40px 20px;">
+  
+  <!-- Text Content -->
+  <div class="team-header-text" style="flex: 1 1 500px; text-align: center; padding: 20px; box-sizing: border-box;">
+    <h1 style="font-family:'At Hauss Std Semibold'; font-size: 40px; color:white; margin-bottom: 10px;">Meet Our Team</h1>
+ <br>
+    <p style="font-family:'At Hauss Std Light'; font-size: 20px; color:white; line-height: 1.6; margin: 0 auto; max-width: 600px;">
+      Our agents specialize in buying and selling properties throughout West Tennessee. Whether you're searching for your dream home or looking to invest in real estate, our team is here to assist you every step of the way.
+      Ready to get started? Contact us at 
+      <a href="tel:7315749340" style="color: white; text-decoration: underline;">731-574-9340</a>!<br><br>
+      Want to see our frequently asked questions?
+    </p>
+    <button id="viewmore" style="margin-top: 20px; padding: 10px 24px; background-color: transparent; font-family: 'At Hauss Std Light'; font-size: 18px; border: 2px solid white; border-radius: 25px; cursor: pointer;">
+      <a href="#anchor" style="color: white; text-decoration: none;">Click here to read!</a>
+    </button>
+  </div>
+
+  <!-- Image Content -->
+  <div class="team-header-image" style="flex: 1 1 400px; text-align: center; padding: 20px; box-sizing: border-box;">
+    <img src="team/team.png" alt="Our Team" style="width: 100%; max-width: 400px; height: auto; border-radius: 20px;">
+  </div>
+</div>
+
+
+
+  <br><br>
+
+  <div class="container" style="display: flex; flex-wrap: wrap; justify-content: center; background-color: #ffffff; padding: 20px;">
+    <!-- Lynda Agent Card -->
+    <div class="card" style="width: 22%; min-width: 250px; box-sizing: border-box; margin: 10px; text-align: center; position: relative; border: none;">
+      <div style="position: relative; display: inline-block;">
+        <img src="agent/Lynda.png" alt="Agent 1" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
+        <button 
+        style="position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);" 
+        data-bs-toggle="modal" 
+        data-bs-target="#agentModal">
+        Contact
+      </button>
+      
+      </div>
+      <div class="agent-description">
+        <h2>Lynda Climer</h2>
+        <p>Broker</p>
       </div>
     </div>
-    <div class="image-content-two" style="flex: 1;  display: flex; justify-content: center; align-items: center; padding: 20px;">
-      <img src="team/team.png" alt="Team Image" style="max-width: 100%; height: auto;">
+     <!-- Jackie Agent Card -->
+     <div class="card" style="width: 22%; min-width: 250px; box-sizing: border-box; margin: 10px; text-align: center; position: relative; border: none;">
+      <div style="position: relative; display: inline-block;">
+        <img src="agent/Jackie.png" alt="Agent 1" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
+        <button 
+        data-bs-toggle="modal" 
+        data-bs-target="#jackieModal"
+        style="position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);">
+        Contact
+      </button>
+      
+      </div>
+      <div class="agent-description">
+        <h2>Jackie David</h2>
+        <p>Real Estate Agent</p>
+      </div>
+    </div>
+   <!-- Amy Agent Card -->
+   <div class="card" style="width: 22%; min-width: 250px; box-sizing: border-box; margin: 10px; text-align: center; position: relative; border: none;">
+    <div style="position: relative; display: inline-block;">
+      <img src="agent/amywork.png" alt="Agent 1" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
+      <button style="position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);">Contact</button>
+    </div>
+    <div class="agent-description">
+      <h2>Amy McLemore</h2>
+      <p>Real Estate Agent</p>
+    </div>
+  </div>
+    <!-- Jay Agent Card -->
+    <div class="card" style="width: 22%; min-width: 250px; box-sizing: border-box; margin: 10px; text-align: center; position: relative; border: none;">
+      <div style="position: relative; display: inline-block;">
+        <img src="agent/jay.png" alt="Agent 1" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
+        <button style="position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);">Contact</button>
+      </div>
+      <div class="agent-description">
+        <h2>Jay Grant</h2>
+        <p>Real Estate Agent</p>
+      </div>
     </div>
   </div>
 
-  <br><br>
-  <div class="container" style="display: flex; flex-wrap: wrap; background-color: #ffffff;">
-    <!-- "Fun" Items Section -->
-    <div class="fun-items" style="flex: 1 1 100%; display: flex; flex-wrap: wrap; padding: 20px; background: #ffffff;">
-      <!-- Agent Card 1: Lynda Climer -->
-      <div class="fun-card fun-card-top" style="flex: 1 1 100%; margin-bottom: 20px; background:white; overflow: hidden; display: flex; ">
-        <div class="fun-card-image" style="flex: 0 0 30%;   background-color: black;">
-          <!-- Agent Image Container -->
-          <div class="fun-image-container" style="text-align: center; margin: auto;   background-color: #ffffff; ">
-            <img src="agent/Lynda.png" alt="Lynda Climer" class="fun-rounded-image" style="border-radius: 50%; max-width: 100%; height: auto;   background-color: #ffffff;">
-          </div>
-        </div>
-        <div class="fun-card-text" style="flex: 0 0 70%; padding: 0px;   background-color: #ffffff;">
-          <!-- Text Container -->
+  <!-- new row -->
+
+  <div class="container" style="display: flex; flex-wrap: wrap; justify-content: center; background-color: #ffffff; padding: 20px;">
+    <!-- Ashley Agent Card -->
+    <div class="card" style="width: 22%; min-width: 250px; box-sizing: border-box; margin: 10px; text-align: center; position: relative; border: none;">
+    <div style="position: relative; display: inline-block;">
+      <img src="agent/Ashley.png" alt="Agent 1" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
+      <button style="position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);">Contact</button>
+    </div>
+    <div class="agent-description">
+      <h2>Ashley McMillan</h2>
+      <p>Real Estate Agent</p>
+    </div>
+  </div>
+   <!-- Brandie Agent Card -->
+   <div class="card" style="width: 22%; min-width: 250px; box-sizing: border-box; margin: 10px; text-align: center; position: relative; border: none;">
+    <div style="position: relative; display: inline-block;">
+      <img src="agent/Brandie.png" alt="Agent 1" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
+      <button style="position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);">Contact</button>
+    </div>
+    <div class="agent-description">
+      <h2>Brandie Bassett</h2>
+      <p>Real Estate Agent</p>
+    </div>
+  </div>
+  <!-- Laura Agent Card -->
+  <div class="card" style="width: 22%; min-width: 250px; box-sizing: border-box; margin: 10px; text-align: center; position: relative; border: none;">
+    <div style="position: relative; display: inline-block;">
+      <img src="agent/Laura.png" alt="Agent 1" style="width: 80%; max-width: 130px; border-radius: 50%; display: block; margin: 0 auto;">
+      <button style="position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);">Contact</button>
+    </div>
+    <div class="agent-description">
+      <h2>Laura Burke</h2>
+      <p>Real Estate Agent</p>
+    </div>
+  </div>
+   <!-- Lisa Agent Card -->
+   <div class="card" style="width: 22%; min-width: 250px; box-sizing: border-box; margin: 10px; text-align: center; position: relative; border: none;">
+    <div style="position: relative; display: inline-block;">
+      <img src="agent/lisa1.png" alt="Agent 1" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
+      <button style="position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);">Contact</button>
+    </div>
+    <div class="agent-description">
+      <h2>Lisa Ballinger</h2>
+      <p>Real Estate Agent</p>
+    </div>
+  </div>
+  </div>
+  <!-- Modal -->
+
+  <!-- Lynda Modal -->
+  <div class="modal fade" id="agentModal" tabindex="-1" aria-labelledby="agentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content" style="border-radius: 15px; overflow: hidden;">
         
-              <div class="agent-description">
-                <div class="expandable" id="lynda-description">
-                  <h2 style="color:black;">Lynda Climer</h2>
-             
-                  <!-- Agent Role -->
-                  <p style="font-size:20px; color:black;">Principal Broker</p>
-                  Introducing Lynda, our Principal Broker at Total Realty Source, with 50 <span class="hidden-text">years of expertise across residential, commercial, and light industrial properties. She excels in property listing, sales, purchasing, management, renovation, start-up business investment, and development. Contact Lynda at <a href="tel:7312173827" style="color:rgb(0, 140, 255);">731-217-3827</a> to explore real estate opportunities today.</span> <span class="expand-link" style="color:rgb(0, 140, 255);" onclick="toggleText('lynda-description')">... Read More</span>
-                </div>                
-              </div>
-              <div class="fun-buttons">
-                  <!-- Add buttons or links here -->
-                  <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:black;" href="tel:7312173827">Call</a></button>
-                  <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:black;" href="https://www.realtor.com/realestateagents/5c2501dd46f9e70019a7ed7f">Learn more</a></button>
-              </div>
+        <!-- Close Button -->
+        <div class="modal-header" style="border-bottom: none;">
+          <h5 class="modal-title" id="agentModalLabel" style="font-family:'At Hauss Std Semibold';">Lynda Climer</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        
+        <div class="modal-body" style="display: flex; flex-wrap: wrap; padding: 20px;">
+  
+          <!-- Agent Photo -->
+          <div style="flex: 1 1 250px; text-align: center;">
+            <img src="agent/Lynda.png" alt="Lynda Climer" style="width: 100%; max-width: 220px; border-radius: 10px;">
           </div>
+  
+          <!-- Agent Details -->
+          <div style="flex: 2 1 400px; padding: 0 20px;">
+            <h3 style="font-family:'At Hauss Std Semibold'; font-size: 26px; margin-bottom: 5px;">Lynda Climer</h3>
+            <p style="font-family:'At Hauss Std Light'; font-size: 18px; margin-bottom: 10px;">Broker – Total Realty Source</p>
+            <p style="font-family:'At Hauss Std Light'; font-size: 16px; line-height: 1.6;">
+              Lynda is our Principal Broker here at Total Realty Source. With over 50 years of experience in residential, commercial, and light industrial real estate, she knows how to get things done. From listing and selling to managing and renovating properties, Lynda’s handled it all. She also works with clients on business startups and development projects. If you’re looking for someone who truly understands the ins and outs of real estate, give her a call at 731-217-3827.
+            </p>
+  
+            <p style="font-family:'At Hauss Std Light'; font-size: 16px; margin-top: 15px;"><strong>Contact:</strong> <a href="tel:7312173827" style="text-decoration: underline; color: #023E6C;">731-217-3827</a></p>
+  
+            <hr style="margin: 20px 0;">
+             <!-- Testamonials -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Jackie Modal -->
+<!-- Jackie Modal -->
+<!-- <div class="modal fade" id="jackieModal" tabindex="-1" aria-labelledby="jackieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content" style="border-radius: 15px; overflow: hidden;">
+      
+       Close Button -->
+      <!-- <div class="modal-header" style="border-bottom: none;">
+        <h5 class="modal-title" id="jackieModalLabel" style="font-family:'At Hauss Std Semibold';">Jackie David</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       
+      <div class="modal-body" style="display: flex; flex-wrap: wrap; padding: 20px;"> -->
+
+        <!-- Agent Photo -->
+        <!-- <div style="flex: 1 1 250px; text-align: center;">
+          <img src="agent/Jackie.png" alt="Jackie David" style="width: 100%; max-width: 220px; border-radius: 10px;">
+        </div> -->
+
+        <!-- Agent Details -->
+        <!-- <div style="flex: 2 1 400px; padding: 0 20px;">
+          <h3 style="font-family:'At Hauss Std Semibold'; font-size: 26px; margin-bottom: 5px;">Jackie David</h3>
+          <p style="font-family:'At Hauss Std Light'; font-size: 18px; margin-bottom: 10px;">Real Estate Agent – Total Realty Source</p>
+          <p style="font-family:'At Hauss Std Light'; font-size: 16px; line-height: 1.6;">
+            Jackie is a seasoned agent serving West Tennessee, holding designations like PSA, e-PRO, CRB, RENE, GRI, and SRS. Whether you're buying your first home or preparing to sell, her attentive and personalized approach ensures a seamless experience. You're in capable hands every step of the way.
+          </p>
+
+          <p style="font-family:'At Hauss Std Light'; font-size: 16px; margin-top: 15px;">
+            <strong>Contact:</strong> <a href="tel:7314876545" style="text-decoration: underline; color: #023E6C;">731-487-6545</a>
+          </p>
+
+          <hr style="margin: 20px 0;"> -->
+          <!-- Testimonials or More Content Here -->
+        <!-- </div>
       </div>
-      <!-- Repeat similar structure for other agents -->
-      <!-- Agent Card 2: Jackie David -->
-      <div class="fun-card fun-card-top" style="flex: 1 1 100%; margin-bottom: 20px; overflow: hidden; display: flex;">
-        <div class="fun-card-image" style="flex: 0 0 30%;">
-          <!-- Agent Image Container -->
-          <div class="fun-image-container" style="text-align: center; margin: auto;">
-            <img src="agent/Jackie.png" alt="Jackie David" class="fun-rounded-image" style="border-radius: 50%; max-width: 100%; height: auto;">
-          </div>
-        </div>
-        <div class="fun-card-text" style="flex: 0 0 70%; padding: 20px;">
-            <div class="agent-description" id="jackie-description">
-              <h2>Jackie David</h2>
-            <!-- Agent Role -->
-            <p style="font-size:20px;">Real Estate Agent</p>
-              Meet Jackie, our experienced Real Estate Agent serving West Tennessee. With specialized designations 
-              <span class="hidden-text"> like PSA, e-PRO, CRB, RENE, GRI, and SRS, Jackie has earned a reputation as a trusted advisor in the industry. Whether you're a first-time buyer or a seasoned seller, Jackie's personalized approach ensures a smooth and enjoyable real estate journey. Reach out to Jackie at 
-                <a href="tel:7314876545" style="color:rgb(0, 140, 255);">731-487-6545</a> to discover the difference she can make for you.
-                <div id="testimonial-slider" style="max-width: 400px; margin: auto; text-align: center; overflow: hidden;"></p>
-                  <br><br>
-                  <section>
-                  <p style="font-family:'At Hauss Std SemiBold'; text-align: left;">Testimonials:</p>
-                  <div id="testimonials" style="display: flex; transition: transform 0.5s ease-in-out; justify-content: left;">
-                    <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
-                      <div style="color: #ffc107; font-size: 20px; line-height: 1;">
-                        ★★★★★
-                      </div>
-                      <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Jackie is the most helpful real estate agent I have ever dealt with. She went above and beyond in my home buying process. She always had my back even through a very trying home loan ordeal. I definitely couldn't have done it without her."<p style="text-align:center; font-size:16px;">- Kevin Amalong</p></p>
-                    </div>
-                    <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
-        
-                      <div style="color: #ffc107; font-size: 20px; line-height: 1;">
-                        ★★★★★
-                      </div>
-                      <p style="margin-top: 10px; font-size: 16px; text-align: left;">Jackie David was a Godsend to me! As a realtor, she is very thorough and detailed in studying a house before she lists it. She leaves no stone unturned and gets you the highest possible sale price! I am temporarily disabled, and Jackie went above and beyond her duties as a realtor for me and helped me arrange for help to complete the packing and moving process, and had I not already had a place to go to, she was ready to help me find a place. I would call on Jackie again in a heartbeat, and I highly recommend her to anyone looking for an outstanding realtor with a personal touch!"<p style="text-align:center; font-size:16px;">- Steph Green</p></p>
-                    </div>
-                    <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
-                      <div style="color: #ffc107; font-size: 20px; line-height: 1;">
-                        ★★★★★
-                      </div>
-                      <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Jackie was an absolute pleasure to work with from start to finish. She is very knowledgeable & passionate about her job. One of THE Very best in the business! She works extra hard to get the Best Results for her clients, we are Proud to know her & of been able to work closely with her on the recent sale of our Property. She went the extra mile throughout the entire Process & got us some Incredible results! Her Attention to detail & energetic spirit was a breath of fresh air during what was a pretty hectic & stressful time for us. When suggesting a Realtor for a Friend or a Family member or anyone else for that matter, we say Look NO further! You can rely on Jackie She will turn your dreams into reality with her Incredible level of Service! Thanks again Jackie & we're looking forward to the Next one!"<p style="text-align:center; font-size:16px;">- Jason Lee</p></p>
-                    </div>
-                    <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
-                      <div style="color: #ffc107; font-size: 20px; line-height: 1;">
-                        ★★★★★
-                      </div>
-                      <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Jackie is simply amazing! She was 100% honest, dedicated, helpful and always available when I needed her. Finding realtors like her are hard to find. She helped me so much with selling my house and I don't think I could have done it without her. After dealing with some realtors that was totally in it for their own money, Jackie was like a breath of fresh air! I would definitely recommend her and I will definitely be using her again to help me find my forever home 🏡. Thank you for everything you do Jackie and keep up the great work!"<p style="text-align:center; font-size:16px;">- Jonathon Jones</p></p>
-                    </div>
-                    <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
-                      <div style="color: #ffc107; font-size: 20px; line-height: 1;">
-                        ★★★★★
-                      </div>
-                      <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Let me introduce you to our Realtor, Jackie David. When my husband and I were looking for a house in Jackson TN, we were lucky to find Jackie. Jackie was professional, personable, knew the area, and was very knowledgeable in every aspect of the realestate business. Jackie took her time to understand what we were looking for, and made sure she answered all of our questions and that we understood everything. From our offer to the closing, she was there every step of the way. Jackie made our home buying experience easy, which is why I am proud to recommend her to anyone looking to buy a home in the Jackson area! Sharon." <p style="text-align:center; font-size:16px;">- Sharon Pertiller</p></p>
-                    </div>
-                    <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
-                      <div style="color: #ffc107; font-size: 20px; line-height: 1;">
-                        ★★★★★
-                      </div>
-                      <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Jackie is amazing. She answered any and all questions we had in the process of buying our first home! We had a few set backs, I guess you could call them, between trying to buy around the holidays and then having to make an emergency trip to New York the week before we were supposed to close. Jackie did such a good job taking care of things and moving stuff to work for us due to these events. I recommend that if you’re in the market to buy or sell you go to Jackie, she is such a sweet and caring person she will do everything in her power to get you into the home you want! Thank you for everything Jackie we really appreciate you!" <p style="text-align:center; font-size:16px;">- Kaitlinn Wickwire</p></p>
-                    </div>
-                  </div>
-                </div>
-                <div style="text-align: center; margin-top: 20px;">
-                </div>
-                </span><span class="expand-link" style="color:rgb(0, 140, 255);" onclick="toggleText('jackie-description')">... Read More</span>
-                </div>
-              </section>
-          
-              <div class="fun-buttons">
-              <!-- Add buttons or links here -->
-              <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:black;" href="tel:7314876545">Call</a></button></a>
-              <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:black;" href="https://www.realtor.com/realestateagents/5d002dde9e549c0012b01cc4">Learn more</a></button></a>
-              <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:black;" href="https://www.jackiedavidrealestate.com">View Website</a></button></a>
-            </div>
-          </div>
-        </div>
-    
-             <!-- Agent Card 2: Amy McLemore -->
-      <div class="fun-card fun-card-top" style="flex: 1 1 100%; margin-bottom: 20px; overflow: hidden; display: flex;">
-        <div class="fun-card-image" style="flex: 0 0 30%;">
-          <!-- Agent Image Container -->
-          <div class="fun-image-container" style="text-align: center; margin: auto;">
-            <img src="agent/amywork.png" alt="Amy McLemore" class="fun-rounded-image" style="border-radius: 50%; max-width: 100%; height: auto;">
-          </div>
-        </div>
-        <div class="fun-card-text" style="flex: 0 0 70%; padding: 20px;">
-            <div class="agent-description" id="amy-description">
-              <h2>Amy McLemore</h2>
-            <!-- Agent Role -->
-            <p style="font-size:20px;">Real Estate Agent</p>
-            Meet Amy, a Certified Residential Specialist serving all areas of Tennessee.
-              <span class="hidden-text"> Amy, a resident of Medina, TN, is highly knowledgeable about the local market trends and what it takes to secure a great deal or maximize value for your home. With extensive connections in the Jackson, TN area, she is committed to providing personalized service tailored to each client's needs. Understanding the significance of real estate as a major investment, Amy builds strong, lasting relationships with her clients, ensuring their satisfaction every step of the way. For more information, reach out to Amy today to discuss your real estate needs. Call her at
-                <a href="tel:7314876545" style="color:rgb(0, 140, 255);">731-234-0049</a> to discover the difference she can make for you.
-                <div id="testimonial-slider" style="max-width: 400px; margin: auto; text-align: center; overflow: hidden;"></p>
-                  <br><br>
-                  <section>
-                  <p style="font-family:'At Hauss Std SemiBold'; text-align: left;">Testimonials:</p>
-                  <div id="testimonials" style="display: flex; transition: transform 0.5s ease-in-out; justify-content: left;">
-                    <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
-                      <div style="color: #ffc107; font-size: 20px; line-height: 1;">
-                        ★★★★★
-                      </div>
-                      <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Amy has helped me buy two houses and sell a house! I have nothing but amazing experiences with her! She has helped me through every obstacle and change of plans throughout the process of buying my dream home!"<p style="text-align:center; font-size:16px;">- Brittney Goode</p></p>
-                    </div>
-                    <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
-        
-                      <div style="color: #ffc107; font-size: 20px; line-height: 1;">
-                        ★★★★★
-                      </div>
-                      <p style="margin-top: 10px; font-size: 16px; text-align: left;">"I worked with Amy on the purchase of a home for my buyer that she had listed in Milan. It was a very smooth transaction and I hope to work with her again!"<p style="text-align:center; font-size:16px;">- Jennifer Easterday</p></p>
-                    </div>
-                    <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
-                      <div style="color: #ffc107; font-size: 20px; line-height: 1;">
-                        ★★★★★
-                      </div>
-                      <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Amy is a great realtor! She gives her all and is so positive!"<p style="text-align:center; font-size:16px;">- Ginger Williams</p></p>
-                    </div>
-                    <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
-                      <div style="color: #ffc107; font-size: 20px; line-height: 1;">
-                        ★★★★★
-                      </div>
-                      <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Amy takes care of her people. No one any better."<p style="text-align:center; font-size:16px;">- Bobby Moody</p></p>
-                    </div>
-                  </div>
-                </div>
-                <div style="text-align: center; margin-top: 20px;">
-                </div>
-                </span><span class="expand-link" style="color:rgb(0, 140, 255);" onclick="toggleText('amy-description')">... Read More</span>
-                </div>
-              </section>
-          
-              <div class="fun-buttons">
-              <!-- Add buttons or links here -->
-              <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:black;" href="tel:7314876545">Call</a></button></a>
-              <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:black;" href="https://www.realtor.com/realestateagents/5b03b073bee2360010db93ce">Learn more</a></button></a>
-              <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:black;" href="https://amymclemore.com">View Website</a></button></a>
-            </div>
-          </div>
-        </div>
-    
-      <!-- Agent Card 3: Jay Grant -->
-      <div class="fun-card fun-card-top" style="flex: 1 1 100%; margin-bottom: 20px; overflow: hidden; display: flex;">
-        <div class="fun-card-image" style="flex: 0 0 30%;">
-          <!-- Agent Image Container -->
-          <div class="fun-image-container" style="text-align: center; margin: auto;">
-            <img src="agent/Jay.png" alt="Jay Grant" class="fun-rounded-image" style="border-radius: 50%; max-width: 100%; height: auto;">
-          </div>
-        </div>
-        <div class="fun-card-text" style="flex: 0 0 70%; padding: 20px;">
-          <!-- Text Container -->
-            <!-- Add more text here -->
-            <div class="agent-description" id="jay-description">
-              <h2>Jay Grant</h2>
-              <!-- Agent Role -->
-              <p style="font-size:20px;">Real Estate Agent</p>
-              Meet Jay, your local real estate expert in West Tennessee. With a flair for fun and a knack for success, Jay secured the title of Rookie of the Year <span class="hidden-text">in his first year as an agent. Specializing in first-time home buying and listings, Jay is your go-to representative. Beyond real estate, he owns a black car service, catering to celebrities and Grammy winners. Contact Jay today at <a href="tel:7312259757" style="color:rgb(0, 140, 255);">731-225-9757</a> for stellar service.</span><span style="color:rgb(0, 140, 255);" class="expand-link" onclick="toggleText('jay-description')">... Read More</span>
-            </div>
-            <div class="fun-buttons">
-              <!-- Add buttons or links here -->
-              <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:black;" href="tel:7312259757">Call</a></button></a>
-              <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:black;" href="https://www.realtor.com/realestateagents/5b03b073bee2360010db93ce">Learn more</a></button></a>
-            </div>
-          </div>
-        </div>
-    
-      <!-- Agent Card 4: Brandie Bassett -->
-      <div class="fun-card fun-card-top" style="flex: 1 1 100%; margin-bottom: 20px; overflow: hidden; display: flex;">
-        <div class="fun-card-image" style="flex: 0 0 30%;">
-          <!-- Agent Image Container -->
-          <div class="fun-image-container" style="text-align: center; margin: auto;">
-            <img src="agent/Brandie.png" alt="Brandie Bassett" class="fun-rounded-image" style="border-radius: 50%; max-width: 100%; height: auto;">
-          </div>
-        </div>
-        <div class="fun-card-text" style="flex: 0 0 70%; padding: 20px;">
-          <!-- Text Container -->
-                    <!-- Add more text here -->
-            <div class="agent-description" id="brandie-description">
-              <h2>Brandie Bassett</h2>
-              <!-- Agent Role -->
-              <p style="font-size:20px;">Real Estate Agent</p>
-                Meet Brandie, our dedicated Real Estate Agent serving the West Tennessee area. With a passion for helping clients 
-                <span class="hidden-text"> achieve their real estate goals, Brandie provides personalized service and expert guidance throughout the buying and selling process. Contact Brandie at 
-                  <a href="tel:7316952785" style="color:rgb(0, 140, 255);">731-695-2785</a> to discuss your real estate needs today. 
-                    <div id="testimonial-slider" style="max-width: 400px; margin: auto; text-align: center; overflow: hidden;"></p>
-                    <br><br>
-                    <section>
-                    <p style="font-family:'At Hauss Std SemiBold'; text-align: left;">Testimonials:</p>
-                    <div id="testimonials" style="display: flex; transition: transform 0.5s ease-in-out; justify-content: left;">
-                      <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
-                        <div style="color: #ffc107; font-size: 20px; line-height: 1;">
-                          ★★★★★
-                        </div>
-                        <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Brandie was so amazing in our home search!! She was so responsive and worked to find homes within our budget and in the area that we were looking. She was great during every phase of purchasing our home. I highly recommend Brandie for finding your dream home. We found ours!" <p style="text-align:center; font-size:16px;">- Heather R.</p></p>
-                      </div>
-                      <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
-          
-                        <div style="color: #ffc107; font-size: 20px; line-height: 1;">
-                          ★★★★★
-                        </div>
-                        <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Brandie was such a pleasure to work with in selling my home. She went above & beyond, always answering my questions." <p style="text-align:center; font-size:16px;">- Tammy B.</p></p>
-                      </div>
-                      <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
-                        <div style="color: #ffc107; font-size: 20px; line-height: 1;">
-                          ★★★★★
-                        </div>
-                        <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Brandie is the consummate professional. Every aspect from listing to close was seamless as a result of her efforts. Thank you!" <p style="text-align:center; font-size:16px;">- Jack K.</p></p>
-                      </div>
-                      <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
-                        <div style="color: #ffc107; font-size: 20px; line-height: 1;">
-                          ★★★★★
-                        </div>
-                        <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Thanks for everything you have done for me. I appreciate it more than you know. You were the sweetest and most down to earth realtor and I couldn't have asked for any more awesome than yourself! Thank you again!" <p style="text-align:center; font-size:16px;">- Amanda D.</p></p>
-                      </div>
-                      <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
-                        <div style="color: #ffc107; font-size: 20px; line-height: 1;">
-                          ★★★★★
-                        </div>
-                        <p style="margin-top: 10px; font-size: 16px; text-align: left;">"Relocating to a new area is scary. She not only knew what neighborhood would be perfect for our family, but She also understood the market and got us a great deal!" <p style="text-align:center; font-size:16px;">- The Smith Family</p></p>
-                      </div>
-                      <div class="testimonial" style="flex: 0 0 100%; padding: 20px; box-sizing: border-box;">
-                        <div style="color: #ffc107; font-size: 20px; line-height: 1;">
-                          ★★★★★
-                        </div>
-                        <p style="margin-top: 10px; font-size: 16px; text-align: left;">"As first time home buyers, we couldn't have asked for a better experience. She was with us every step of the way!" <p style="text-align:center; font-size:16px;">- The Stapeltons</p></p>
-                      </div>
-                    </div>
-                  </div>
-                  </span>
-                  <span class="expand-link" style="color:rgb(0, 140, 255);" onclick="toggleText('brandie-description')">... Read More</span>
-                  </div>
-                </section>
-            <div class="fun-buttons">
-              <!-- Add buttons or links here -->
-              <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:black;" href="tel:7316952785">Call</a></button></a>
-              <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:black;" href="https://www.realtor.com/realestateagents/6273a951e9c24776e674b1c2">Learn more</a></button></a>
-              <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:black;" href="https://www.brandiebassett.realtor">View Website</a></button></a>
-            </div>
-          </div>
-        </div>
-  
-      <!-- Agent Card 5: Ashley McMillan -->
-      <div class="fun-card fun-card-top" style="flex: 1 1 100%; margin-bottom: 20px; font-family: 'At Hauss Std Light'; overflow: hidden; display: flex;">
-        <div class="fun-card-image" style="flex: 0 0 30%;">
-          <!-- Agent Image Container -->
-          <div class="fun-image-container" style="text-align: center; margin: auto;">
-            <img src="agent/Ashley.png" alt="Ashley McMillan" class="fun-rounded-image" style="border-radius: 50%; max-width: 100%; height: auto;">
-          </div>
-        </div>
-        <div class="fun-card-text" style="flex: 0 0 70%; padding: 20px;">
-          <!-- Text Container -->
-            <!-- Add more text here -->
-            <div class="agent-description" id="ashley-description">
-              <h2>Ashley McMillan</h2>
-              <!-- Agent Role -->
-              <p style="font-size:20px;">Real Estate Agent</p>
-            Meet Ashley, a committed Real Estate Agent helping clients achieve their home-ownership goals. 
-            <span class="hidden-text"> In her remarkable career, Ashley has earned accolades including Rookie of the Year and Multi-Million Dollar Sales Awards, showcasing her talent and expertise. As a Certified Real Estate Negotiator Expert, she excels in securing deals for her clients. Contact Ashley at 
-              <a href="tel:7314140317" style="color:rgb(0, 140, 255);">731-414-0317</a> to discuss your real estate needs today.</span>
-              <span class="expand-link" style="color:rgb(0, 140, 255);" onclick="toggleText('ashley-description')">... Read More</span>
-          </div>
-            <div class="fun-buttons">
-              <!-- Add buttons or links here -->
-              <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:black;" href="tel:7314140317">Call</a></button></a>
-              <button id="viewmore" class="learnmore"><a style="text-decoration: none; color:black;" href="https://www.realtor.com/realestateagents/61b08bc4dede57f49e47b743">Learn more</a></button></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Agent Card 6: Lisa Ballinger -->
-        <div class="fun-card fun-card-top" style="flex: 1 1 100%; margin-bottom: 20px; font-family: 'At Hauss Std Light'; overflow: hidden; display: flex;">
-          <div class="fun-card-image" style="flex: 0 0 30%;">
-            <!-- Agent Image Container -->
-            <div class="fun-image-container" style="text-align: center; margin: auto;">
-              <img src="agent/lisa1.png" alt="Lisa Ballinger" class="fun-rounded-image" style="border-radius: 50%; max-width: 100%; height: auto;">
-            </div>
-          </div>
-          <div class="fun-card-text" style="flex: 0 0 70%; padding: 20px;">
-            <!-- Text Container -->
-            <div class="agent-description" id="lisa-description">
-              <h2>Lisa Ballinger</h2>
-              <p style="font-size:20px;">Real Estate Agent</p>
-              <p>Introducing agent Lisa Ballinger! With impressive credentials including PSA, ABR, 
-                <span class="hidden-text" style="display: none;">RENE, MRP, SFR, e-PRO, and SRS, Lisa is highly skilled in guiding clients through every step of the real estate process. Contact Lisa at 
-                  <a href="tel:7312230919" style="color:rgb(0, 140, 255);">731-223-0919</a> to discuss your real estate needs today.</span> <span class="expand-link" style="color:rgb(0, 140, 255);" onclick="toggleText('lisa-description')">... Read More</span>
-              </p>
-            </div>
-            <div class="fun-buttons">
-              <!-- Add buttons or links here -->
-              <button id="viewmore" class="learnmore">
-                <a style="text-decoration: none; color:black;" href="tel:7314140317">Call</a>
-              </button>
-              <button id="viewmore" class="learnmore">
-                <a style="text-decoration: none; color:black;" href="https://www.realtor.com/realestateagents/58383500e73f5e0001cad641">Learn more</a>
-              </button>
-            </div>
-          </div>
-        </div>
-
-               <!-- Agent Card 7: Laura Burke -->
-               <div class="fun-card fun-card-top" style="flex: 1 1 100%; margin-bottom: 20px; font-family: 'At Hauss Std Light'; overflow: hidden; display: flex;">
-                <div class="fun-card-image" style="flex: 0 0 30%;">
-                  <!-- Agent Image Container -->
-                  <div class="fun-image-container" style="text-align: center; margin: auto;">
-                    <img src="agent/Laura.png" alt="Laura Burke" class="fun-rounded-image" style="border-radius: 50%; max-width: 100%; height: auto;">
-                  </div>
-                </div>
-                <div class="fun-card-text" style="flex: 0 0 70%; padding: 20px;">
-                  <!-- Text Container -->
-                  <div class="agent-description" id="laura-description">
-                    <h2>Laura Burke</h2>
-                    <p style="font-size:20px;">Real Estate Agent</p>
-                    <p>Introducing agent Laura Burke! We’re excited to welcome Laura to the team. With a dedication to client service, she is ready to help guide buyers and sellers through every step of the journey.
-                      <span class="hidden-text" style="display: none;">Whether you're searching for your first home or planning your next move, Laura is committed to making the experience smooth and successful. Contact Laura at 
-                        <a href="tel:3125198659" style="color:rgb(0, 140, 255);">312-519-8659</a> to discuss your real estate needs today.</span> <span class="expand-link" style="color:rgb(0, 140, 255);" onclick="toggleText('laura-description')">... Read More</span>
-                    </p>
-                  </div>
-                  <div class="fun-buttons">
-                    <!-- Add buttons or links here -->
-                    <button id="viewmore" class="learnmore">
-                      <a style="text-decoration: none; color:black;" href="tel:3125198659">Call</a>
-                    </button>
-                    <button id="viewmore" class="learnmore">
-                      <a style="text-decoration: none; color:black;" href="https://www.realtor.com/realestateagents/67cc1f73d4152e5595358cdf">Learn more</a>
-                    </button>
-                  </div>
-                </div>
-              </div>
-        
-<!--Accordian-->
-<section style="padding:8%;">
-  <h1 id="anchor" style="color: black; padding-top: 0px; padding-bottom: 40px; font-size:45px; font-weight:600; text-align: center; font-family: 'At Hauss Std Semibold';">Frequently Asked Questions</h1> 
-  <div class="accordion" id="accordionExample" style="max-width: 100%; overflow-x: hidden;">
-    <div class="accordion-item" style="margin-bottom: 1rem;">
-        <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Who should I contact for property management and renovation?
-            </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-            <div class="accordion-body" style="padding: 1rem; word-wrap: break-word;">
-              If you're looking for property renovation and management services, our broker Mrs. Lynda Climer is the person you need to contact. With her extensive experience spanning residential, industrial, and commercial buildings, she's well-equipped to handle all your property needs. Whether you're seeking to enhance the value of your investment or ensure smooth operations, her expertise and dedication ensure exceptional results. You can reach her directly at <strong>731-217-3827</strong>.
-            </div>
-        </div>
     </div>
-    <div class="accordion-item" style="margin-bottom: 1rem;">
+  </div>
+</div> -->
+
+
+        
+<!-- Accordion Section -->
+<section style="padding:5%; background-color:#ffffff;">
+  <h1 id="anchor" style="color: black; padding-top: 0px; padding-bottom: 40px; font-size:45px; font-weight:600; text-align: center; font-family: 'At Hauss Std Semibold';">
+    Frequently Asked Questions <br><br>
+  </h1>
+
+  <div class="accordion" id="accordionExample" style="max-width: 900px; margin: auto;">
+
+    <!-- Question 1 -->
+    <div class="accordion-item" style="margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px;">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="false" aria-controls="collapseOne"
+          style="font-family: 'At Hauss Std Light'; font-size: 18px;">
+          Who should I contact for property management and renovation?
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body" style="padding: 1rem; font-family: 'At Hauss Std Light'; font-size: 16px;">
+          For property management or renovation needs, please reach out to our broker, Mrs. Lynda Climer. With decades of experience across residential, industrial, and commercial real estate, she’s well-equipped to guide you through every step. Contact her directly at <strong>731-217-3827</strong>.
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="accordion-item" style="margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px;">
       <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+          aria-expanded="false" aria-controls="collapseTwo"
+          style="font-family: 'At Hauss Std Light'; font-size: 18px;">
           Where is your office located?
         </button>
       </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body" style="padding: 1rem; word-wrap: break-word;">
-          You can visit us at our existing location <strong>117 S Main St., Medina, TN 38355.</strong>
-      </div>
-    </div>
-    <div class="accordion-item" style="margin-bottom: 1rem;">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-           Why should I choose Total Realty Source?
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body" style="padding: 1rem; word-wrap: break-word;">
-          Thank you for considering us for your home buying journey! With over 40 years of experience, our broker ensures you are well-prepared for every decision. Our agents continually earn new certifications to stay current with industry standards, providing excellent service. <br><br> We serve clients across Tennessee with extensive local expertise in urban, suburban, and rural areas. <br><br>We deliver personalized, one-on-one service to make your first home purchase smooth and stress-free. Choose us for our expertise, dedicated team, and statewide reach. Contact us today!
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body" style="padding: 1rem; font-family: 'At Hauss Std Light'; font-size: 16px;">
+          Our office is located at <strong>117 S Main St., Medina, TN 38355</strong>. You're welcome to stop by during business hours — we’re always happy to meet with clients in person.
         </div>
       </div>
     </div>
+
+    <!-- Question 3 -->
+    <div class="accordion-item" style="margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px;">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+          aria-expanded="false" aria-controls="collapseThree"
+          style="font-family: 'At Hauss Std Light'; font-size: 18px;">
+          Why should I choose Total Realty Source?
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body" style="padding: 1rem; font-family: 'At Hauss Std Light'; font-size: 16px;">
+          With more than 40 years of experience, our broker leads a team that’s committed to staying current through ongoing education and certifications. We provide one-on-one service tailored to your needs and proudly serve clients throughout Tennessee — from rural properties to urban neighborhoods. We're here to make your experience as smooth and successful as possible.
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
+<br>
+
+
 
 <script>
   let currentIndex = 0;
@@ -704,5 +429,11 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="script.js"></script>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS Bundle (includes Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

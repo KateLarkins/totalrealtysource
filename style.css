@@ -1,3 +1,121 @@
+/* hamburger css */
+/* Navbar layout for larger screens (normal behavior) */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  background-color: white;
+}
+
+/* Hide Hamburger Menu and "Menu" text on large screens */
+.hamburger-menu {
+  display: none;
+}
+
+/* New layout for small screens only */
+@media (max-width: 768px) {
+  /* Stack logo, Menu, and hamburger vertically */
+  .topnav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%; /* Ensures full width for small screens */
+  }
+
+  /* Logo styling */
+  .links-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .links-row a {
+    margin-bottom: 20px; /* Add space between logo and the menu */
+  }
+
+  /* Ensure Hamburger Menu and "Menu" text only show on small screens */
+  .hamburger-menu {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hamburger-menu span {
+    margin-bottom: 5px; /* Space between the text and hamburger icon */
+  }
+
+  /* Vertical Hamburger Icon */
+  .hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    cursor: pointer;
+  }
+
+  .hamburger-icon div {
+    width: 30px;
+    height: 4px;
+    font-weight: 100;
+    background-color: black;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  /* When hamburger is clicked, turn into "X" */
+  .hamburger-icon.active div:nth-child(1) {
+    transform: rotate(45deg);
+    position: relative;
+    top: 8px;
+  }
+
+  .hamburger-icon.active div:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-icon.active div:nth-child(3) {
+    transform: rotate(-45deg);
+    position: relative;
+    bottom: 8px;
+  }
+
+  /* Hide nav-links by default on small screens */
+  .nav-links {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Ensures nav links stretch across the full width */
+    margin-top: 10px;
+  }
+
+  /* Display nav-links when active */
+  .nav-links.active {
+    display: flex; /* Display the nav links when active */
+    background-color: white;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-link {
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+/* Hide Hamburger Menu on large screens */
+@media (min-width: 769px) {
+  .hamburger-menu {
+    display: none; /* Hide on large screens */
+  }
+}
+
+
+
+
 
 /* Logo Font */
 /* @font-face {
@@ -636,13 +754,15 @@ body {
 .agent-description {
   margin: 10%;
   line-height: 1.5em;
-  font-size: 20px;
+  font-size: 15px;
   font-family: 'At Hauss Std Light';
   color: rgb(0, 0, 0);
-  text-align:left;
+  text-align:center;
+
 }
 .agent-description h2 {
-  font-weight:600;
+  font-weight:500;
+  font-size: 20px;
   font-family: 'At Hauss Std Semibold';
 }
 .agent-description p {
@@ -655,11 +775,11 @@ body {
   flex-grow: 1; /* Allow cards to grow vertically to fill the space */
 }
 
-/* Read expand btn */
+/* 
 .expandable {
   overflow: hidden;
   display: block;
-  max-height: 100%; /* Adjust the height based on your needs */
+  max-height: 100%;
   transition: max-height 0.3s ease;
 }
 
@@ -674,7 +794,7 @@ body {
 
 .hidden-text {
   display: none;
-}
+} */
 
 /* Media Queries for Responsive Design */
 
@@ -1406,3 +1526,21 @@ footer {
 }
 
 /* Section 2 */
+
+
+/* Accordian Styling */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .accordion-body {
+      padding: 0.5rem;
+  }
+  .accordion-item {
+      margin-bottom: 0.5rem;
+  }
+}
+.accordion-body img {
+  max-width: 100%;
+  height: auto;
+}
