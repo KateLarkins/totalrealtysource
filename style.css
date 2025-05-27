@@ -29,6 +29,7 @@
     align-items: center;
     padding: 20px;
     width: 100%; /* Ensures full width for small screens */
+    background-color: transparent;
   }
 
   /* Logo styling */
