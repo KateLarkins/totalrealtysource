@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="14 new listings in Tennessee! Click to learn more.">
+    <title>Total Realty Source</title>
+    <link rel="icon" href="logo.png/logocircle.png" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bauer+Bodoni:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">  
+  </head>
+  <style>
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    font-family:'At Hauss Std Light';
+}
+
+.search-container input,
+.search-container select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family:'At Hauss Std Light';
+}
+#clearPriceFilter,
+#clearAgentFilter {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px; /* Add spacing above */
+    font-family:'At Hauss Std Light';
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .search-bar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #clearPriceFilter,
+    #clearAgentFilter {
+        margin-top: 10px; /* Add spacing above */
+        margin-left: 0; /* Align with dropdowns */
+        width: 100%; /* Set button width to 100% */
+        font-family:'At Hauss Std Light';
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .search-container input,
+    .search-container button {
+        flex-basis: 100%; /* Full width on smaller screens */
+        max-width: none; /* Remove maximum width */
+        display: flex;
+        font-family:'At Hauss Std Light';
+    }
+}
+
+
+  </style>
+<body style="background-color:#ffffff;">
+<!-- Top Navigation Bar -->
+<div class="topnav">
+  <div class="links-row">
+    <!-- Logo on top for smaller screens -->
+    <a href="index.html" style="display: block;">
+      <img src="logo.png/horizontallogo.png" style="max-height: 100px; display: block; object-fit: contain;">
+    </a>
+
+    <!-- "Menu" text and vertical Hamburger Menu (visible only on small screens) -->
+    <div class="hamburger-menu" onclick="toggleNav()">
+      <span style="font-size: 18px; color: rgb(0, 0, 0); margin-right: 0px;">Menu</span>
+      <div class="hamburger-icon">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden nav links, toggled by clicking the hamburger menu -->
+  <div class="nav-links" id="navLinks">
+    <a href="index.html" class="nav-link">Home</a>
+  
+    <div style="position: relative;">
+      <a href="forsale.html" class="nav-link" onmouseover="showDropdown()" onmouseout="hideDropdown()">For Sale ▾</a>
+      <div id="forsale-dropdown" onmouseover="showDropdown()" onmouseout="hideDropdown()" style="position: absolute; top: 100%; left: 0; background-color: white; min-width: 160px; display: none; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1000;">
+        
+        <a href="forsale.html"
+           style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-family: 'At Hauss Std Light';"
+           onmouseover="this.style.backgroundColor='#f0f0f0'"
+           onmouseout="this.style.backgroundColor='white'">
+           Current
+        </a>
+        
+        <a href="forsale-closed.html"
+           style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-family: 'At Hauss Std Light';"
+           onmouseover="this.style.backgroundColor='#f0f0f0'"
+           onmouseout="this.style.backgroundColor='white'">
+           Closed
+        </a>
+      </div>
+    </div>
+  
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+  
+</div>
+
+  <!-- <div class="split-section" style="background-color:#023E6C;">
+    <div class="text-content">
+      <card style=" padding: 20px; margin:0px;">
+      <h1 style="font-family:'At Hauss Std Semibold'; text-align:left; font-size: 40px; color:white;">For Sale</h1>
+      <hr style="color:white; height:10px;">
+      <p style="font-family:'At Hauss Std Light'; font-size: 20px; color:white;" >Here you'll find a curated selection of high-quality properties, including family homes, apartments, and investment opportunities.<br><br> Explore our detailed property descriptions and images, and contact us at our <a href="mailto:totalrealtysource@outlook.com" style="color:white;">email address</a> or connect on <a href="https://www.facebook.com/Totalrealtysource" style="color:white;">Facebook</a> and <a href="https://www.instagram.com/Totalrealtysource" style="color:white;">Instagram</a> for expert assistance with all your real estate needs. Homes for sale in Medina, Jackson, Trenton, Huntingdon, Collierville, Humboldt, McKenzie, and more in Tennessee!</p>
+    </card>
+    </div>
+    <div class="image-content">
+      <img src="bob.png/bob.png" alt="Placeholder Image">
+    </div>
+  </div> -->
+
+  <!-- search bar -->
+
+    <!-- <p style="font-family: At Hauss Std Light;"> <a href="index.html" style="text-decoration:none; color:rgb(41, 41, 41);">Home</a> > For Sale</p>
+    <p style="color:black; font-size:40px; font-family:'At Hauss Std SemiBold'; font-weight:bolder; margin-top: 2%; margin-bottom: 1%; text-align: left; color: black;">Listings for Sale</p>
+    <p style="font-family:At Hauss Std Light; font-size:20px;">Here you'll find a curated selection of high-quality properties, including family homes, apartments, and investment opportunities. Explore our detailed property descriptions and images, and contact us at our <a href="mailto:totalrealtysource@outlook.com" style="color:rgb(0, 0, 0);">email address</a> or connect on <a href="https://www.facebook.com/Totalrealtysource" style="color:rgb(0, 0, 0);">Facebook</a> and <a href="https://www.instagram.com/Totalrealtysource" style="color:rgb(0, 0, 0);">Instagram</a> for expert assistance with all your real estate needs. Homes for sale in Medina, Jackson, Trenton, Huntingdon, Collierville, Humboldt, McKenzie, and more in Tennessee!</p> -->
+    <!-- <hr>
+    <br>
+    <br> -->
+    <!-- <p style="color:black; font-size:40px; font-family:'At Hauss Std SemiBold'; font-weight:bolder; margin-top: 2%; margin-bottom: 1%; text-align: center; color: black;">Featured Listings</p> -->
+    <section style="background-color: white; padding-bottom: 2%; padding-left: 3%; padding-right: 3%; border: none; font-size: 20px;">
+        <p style="color:black; font-size:20px; font-family:'At Hauss Std Light'; margin-top: 2%; margin-bottom: 1%; text-align: left;">Showing results for closed listings.</p><hr>
+        <div class="search-container">
+            <input type="text" id="addressInput" placeholder="Search by Address" onkeyup="filterProperties()">
+            <div class="search-bar">
+                <label for="price">Price:</label>
+                <select id="price">
+                    <option value="">Select Price Range</option>
+                    <option value="100000">&lt;$100,000</option>
+                    <option value="100000-500000">$100,000 - $500,000</option>
+                    <option value=">500000">&gt;$500,000</option>
+                </select>
+                <button id="clearPriceFilter">Clear Filter</button>
+            </div>
+            <div class="search-bar">
+                <label for="agent">Agent:</label>
+                <select id="agent">
+                    <option value="">Select Agent</option>
+                    <option value="Jay Grant">Jay Grant</option>
+                    <option value="Ashley McMillan">Ashley McMillan</option>
+                    <option value="Brandie Bassett">Brandie Bassett</option>
+                    <option value="Jackie David">Jackie David</option>
+                    <option value="Lynda Climer">Lynda Climer</option>
+                    <option value="Amy McLemore">Amy McLemore</option>
+                </select>
+                <button id="clearAgentFilter">Clear Filter</button>
+            </div>
+            <button onclick="filterProperties()">Search</button>
+        </div>
+        <div id="showingResults" class="result-info" style="display: none;"></div>
+    </section>
+
+
+
+<!-- closed and pending -->
+<section style="background-color: white; padding-bottom: 5%; padding-left: 3%; padding-right: 3%; border: none;">
+  <div class="property-container">
+    <div class="property-widget">
+      <img src="listing/johnbrown.png" alt="Property 2">
+      <div class="property-details">
+          <h3>175 John Brown Rd., Beech Bluff, TN 38313</h3>
+          <p class="price">$599,900 <span style="color:rgb(0, 206, 21)">↓$50k</span></p>
+          <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/175-John-Brown-Rd_Beech-Bluff_TN_38313_M97535-21602">More Information</a></button></p>
+        
+      </div>
+  </div>
+  <div class="property-widget">
+    <img src="listing/haynes.png" alt="Property 2">
+    <div class="property-details">
+        <h3>71 Hayneshaven Drive
+          Jackson, TN 38301</h3>
+        <p class="price">$525,000</p>
+        <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/2500378/71-Hayneshaven-Drive-Jackson-TN-38301">More Information</a></button></p>
+       
+    </div>
+  </div>
+  <div class="property-widget">
+    <img src="listing/aztec.png" alt="Property 2">
+    <div class="property-details">
+        <h3>15 Aztec Drive
+          Jackson, TN 38305</h3>
+        <p class="price">$279,900</p>
+        <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/2500277/15-Aztec-Drive-Jackson-TN-38305">More Information</a></button>
+        </p>
+    </div>
+  </div>
+  <div class="property-widget">
+    <img src="listing/como.png" alt="Property 2">
+    <div class="property-details">
+        <h3>265 Como Street
+          McKenzie, TN 38201</h3>
+        <p class="price">$275,000</p>
+        <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/2500704/265-Como-Street-McKenzie-TN-38201">More Information</a></button></p>
+       
+    </div>
+  </div>
+  <div class="property-widget">
+    <img src="listing/604.png" alt="Property 2">
+    <div class="property-details">
+        <h3>604 Mary Ann Street, Humboldt, TN 38343</h3>
+        <p class="price">$249,900</p>
+        <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="">More Information</a></button></p>
+    </div>
+  </div>
+  <div class="property-widget">
+    <img src="listing/hansford.png" alt="Property 2">
+    <div class="property-details">
+        <h3>29 Hansford Place, Jackson, TN 38305</h3>
+        <p class="price">$256,900</p>
+        <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Lisa Ballinger</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/246251/29-Hansford-Place-Jackson-TN-38305">More Information</a></button></p>
+    </div>
+  </div>
+  <div class="property-widget">
+    <img src="listing/fancy.png" alt="Property 2">
+    <div class="property-details">
+        <h3>2811 E Main St, Humboldt, TN 38343</h3>
+        <p class="price">$715,000</p>
+        <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/246679/2811-E-Main-Street-Humboldt-TN-38343">More Information</a></button></p>
+       
+    </div>
+  </div>
+<div class="property-widget">
+  <img src="listing/263.png" alt="Property 2">
+  <div class="property-details">
+      <h3>263 Browns Church Rd, Jackson, TN 38305</h3>
+      <p class="price">$289,900</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jay Grant</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.zillow.com/homedetails/263-Browns-Church-Rd-Jackson-TN-38305/41806927_zpid/">More Information</a></button></p>
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/Ridgeoak.png" alt="Property 2">
+  <div class="property-details">
+      <h3>62 Ridgeoak Place, Jackson, TN 38305</h3>
+      <p class="price">$318,900</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Brandie Bassett</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.zillow.com/homedetails/62-Ridgeoak-Pl-Jackson-TN-38305/41805712_zpid/">More Information</a></button></p>
+    
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/bradfordtwo.png" alt="Property 2">
+  <div class="property-details">
+      <h3>129 E Main Street, Bradford, TN 38316</h3>
+      <p class="price">$180,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/246206/129-E-E-Main-Street-Bradford-TN-38316">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/8012.png" alt="Property 2">
+  <div class="property-details">
+      <h3>801 George Street, Trenton, TN 38382</h3>
+      <p class="price">$150,000 <span style="color:rgb(0, 206, 21)">↓$10k</span></p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;"> Amy McLemore</a> 
+        <!-- <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" a href="">More Information</a></button></p> -->
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/423.png" alt="Property 2">
+  <div class="property-details">
+      <h3>423 Mebanewood Dr, Huntingdon, TN 38344</h3>
+      <p class="price">$429,000</p>
+      <p class="location">Agent: 
+        <a href="about.html" style="text-decoration:none; color:black;">Jay Grant</a> 
+        <button style="text-decoration:none;   background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/245623/423-Mebanewood-Drive-Huntingdon-TN-38344">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/chapel.png" alt="Property 2">
+  <div class="property-details">
+      <h3>60 Chapel Hill Rd, Milan, TN 38358</h3>
+      <p class="price">$415,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/246654/60-Chapel-Hill-Road-Milan-TN-38358">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/hollywood.png" alt="Property 2">
+  <div class="property-details">
+      <h3>1216 Hollywood Dr, Jackson, TN 38301</h3>
+      <p class="price">$375,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/246485/1216-Hollywood-Drive-Jackson-TN-38301">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/birmingham.png" alt="Property 2">
+  <div class="property-details">
+      <h3>125 Birmingham Rd N, McKenzie, TN 38201</h3>
+      <p class="price">$185,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/125-Birmingham-Ln-N_Mc-Kenzie_TN_38201_M75282-33305">More Information</a></button></p>
+    
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/bradley.png" alt="Property 2">
+  <div class="property-details">
+      <h3>135 Bradley Drive, Lexington, TN 38351</h3>
+      <p class="price">$210,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.zillow.com/homes/135-Bradley-Dr-Lexington,-TN-38351_rb/41447318_zpid/">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="bradford.png/bradford.png" alt="Property 2">
+  <div class="property-details">
+      <h3>44 Rubin white Rd., Bradford, TN, 38316 </h3>
+      <p class="price">$419,900</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jay Grant</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/M7114411340">More Information</a></button></p>
+   
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/listingthree.png" alt="Property 2">
+  <div class="property-details">
+      <h3>1120 Campbell St. Jackson TN, 38301</h3>
+      <p class="price">$216,000 <span style="color:rgb(0, 206, 21)">↓$10k</span></p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a>  <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/M8107774566">More Information</a></button></p>
+  
+  </div>
+</div>
+<div class="property-widget">
+  <img src="bjackson.png/bjackson.png" alt="Property 2">
+  <div class="property-details">
+      <h3>219 Melwood St., Jackson, TN 38301</h3>
+      <p class="price">$139,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Brandie Bassett</a>  <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" a href="https://www.realtor.com/realestateandhomes-detail/M7077487608">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/mchihg.png" alt="Property 2">
+  <div class="property-details">
+      <h3>16860 Highland Drive, McKenzie, TN 38201</h3>
+      <p class="price">$294,900</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Lisa Ballinger</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="">Commerical Listing</a></button>
+      </p>
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/thompson.png" alt="Property 2">
+  <div class="property-details">
+      <h3>425 Thompson School Access Rd, Huntingdon, TN 38344</h3>
+      <p class="price">$325,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Brandie Bassett and Jay Grant</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.zillow.com/homedetails/425-Thompson-School-Access-Rd-Huntingdon-TN-38344/406368241_zpid/">More Information</a></button></p>
+  
+  </div>
+</div>
+<div class="property-widget">
+  <img src="lexingtonone.png/lexingtonone.png" alt="Property 2">
+  <div class="property-details">
+      <h3>13721 Natchez Trace Rd., Lexington, TN 38351</h3>
+      <p class="price">$193,500</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/13721-Natchez-Trace-Rd_Lexington_TN_38351_M79075-98034">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/mockingbird.png" alt="Property 2">
+  <div class="property-details">
+      <h3>24 Mockingbird Cv, Jackson, TN 38305</h3>
+      <p class="price">$220,000 <span style="color:rgb(0, 206, 21)">↓$10k</span></p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/24-Mockingbird-Cv_Jackson_TN_38305_M86483-51362">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/thirteen.png" alt="Property 2">
+  <div class="property-details">
+      <h3>13 Roy Hargrove Road, Medina, TN 38355</h3>
+      <p class="price">$465,700</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Lisa Ballinger</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/247758/13-Roy-Hargrove-Road-Medina-TN-38355">More Information</a></button></p>
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/oakgrove.png" alt="Property 2">
+  <div class="property-details">
+      <h3>110 Oak Grove Road, Milan, TN 38358</h3>
+      <p class="price">$339,900</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/247158/110-Oak-Grove-Road-Milan-TN-38358">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/listingtwo.png" alt="Property 1">
+  <div class="property-details">
+      <h3>3249 Beech Bluff Rd., Beech Bluff, TN 38301</h3>
+      <p class="price">$169,900</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Brandie Bassett</a>  <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/3249-Beech-Bluff-Rd_Jackson_TN_38301_M76877-98950">More Information</a></button></p>
+      </p>
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/paristwo.png" alt="Property 2">
+  <div class="property-details">
+      <h3>307 S Highland Street
+        Paris, TN 38242</h3>
+      <p class="price">$210,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.zillow.com/homedetails/307-S-Highland-St-Paris-TN-38242/41462243_zpid/">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/puryear.png" alt="Property 2">
+  <div class="property-details">
+      <h3>675 Beecham Lane, Puryear, TN 38251</h3>
+      <p class="price">$989,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/234689/675-Beecham-Lane-Puryear-TN-38251?widgetReferer=true">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/2222.png" alt="Property 2">
+  <div class="property-details">
+      <h3>2222 E Main St., Humbolt, TN 38343</h3>
+      <p class="price">$255,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a>  <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" a href="https://www.realtor.com/realestateandhomes-detail/2222-E-Main-St_Humboldt_TN_38343_M70985-09635?ex=2966745010">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/duncan.png" alt="Property 2">
+  <div class="property-details">
+      <h3>90 Duncan Drive, Jackson, TN 38305</h3>
+      <p class="price">$249,900</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Brandie Bassett</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/247277/90-Duncan-Drive-Jackson-TN-38305">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/919.png" alt="Property 2">
+  <div class="property-details">
+      <h3>919 N 30th Ave, Humboldt, TN 38343</h3>
+      <p class="price">$160,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.zillow.com/homedetails/919-N-30th-Ave-Humboldt-TN-38343/41308370_zpid/">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="brownsville.png/brownsville.png" alt="Property 2">
+  <div class="property-details">
+      <h3>Land on E Highway 70, Brownsville, TN 38012</h3>
+      <p class="price">$99,900<span style="color:rgb(0, 206, 21)">↓25k</span></p> 
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" a href="https://www.realtor.com/realestateandhomes-detail/E-Highway-70_Brownsville_TN_38012_M93450-26605?ex=2964320399">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="lexingtonthree.png/lexingtonthree.png" alt="Property 2">
+  <div class="property-details">
+      <h3>13741 Natchez Trace Rd., Lexington, TN 38351</h3>
+      <p class="price">$225,000 <span style="color:rgb(0, 206, 21)">↓$5k</span></p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/13741-Natchez-Trace-Rd_Lexington_TN_38351_M99555-28399">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/autumn.png" alt="Property 2">
+  <div class="property-details">
+      <h3>32 Autumn Leaf Cv, Jackson, TN 38305</h3>
+      <p class="price">$264,900</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Brandie Bassett</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/247596/32-Autumn-Leaf-Cove-Jackson-TN-38305">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/forney.png" alt="Property 2">
+  <div class="property-details">
+      <h3>125 Forney Rd., Huntingdon, TN 38344</h3>
+      <p class="price">$129,900</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jay Grant</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/125-Forney-Rd_Huntingdon_TN_38344_M83162-81242?ex=2963150735">More Information</a></button></p>
+   
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/hammy.png" alt="Property 2">
+  <div class="property-details">
+      <h3>4506 Hamilton Street, Atwood, TN 38220</h3>
+      <p class="price">$269,900</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Lisa Ballinger</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/246490/4506-Hamilton-Street-Atwood-TN-38220">More Information</a></button></p>
+  </div>
+</div>
+<div class="property-widget">
+  <img src="forest.png/forest.png" alt="Property 2">
+  <div class="property-details">
+      <h3>493 E Forest Ave, Jackson, TN 38301</h3>
+      <p class="price">$45,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Brandie Bassett</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/493-E-Forest-Ave_Jackson_TN_38301_M97215-80440?ex=2960717677">More Information</a></button></p>
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/bobkillen.png" alt="Property 2">
+  <div class="property-details">
+      <h3>41 Bob Killen Rd, Milan, TN 38358</h3>
+      <p class="price">$219,900 <span style="color:rgb(0, 206, 21)">↓10k</span></p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David and Jay Grant</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/41-Bob-Killen-Rd_Milan_TN_38358_M73081-30562">More Information</a></button></p>
+    
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/125alamo.png" alt="Property 2">
+  <div class="property-details">
+      <h3>125 Alamo Hwy, Trenton, TN 38382</h3>
+      <p class="price">$260,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a>  <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" a href="https://www.realtor.com/realestateandhomes-detail/125-Alamo-Hwy_Trenton_TN_38382_M75477-61945?ex=2966145956">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/615.png" alt="Property 2">
+  <div class="property-details">
+      <h3>615 S Church St,
+        Trenton, TN 38382</h3>
+      <p class="price">$245,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a>  <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" a href="https://www.realtor.com/realestateandhomes-detail/615-S-Church-St_Trenton_TN_38382_M74729-63419?ex=2957327245">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/jennalee.png" alt="Property 2">
+  <div class="property-details">
+      <h3>78 Jennalee Ln,
+        Medon, TN 38356</h3>
+      <p class="price">$328,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a>  <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" a href="https://www.realtor.com/realestateandhomes-detail/78-Jennalee-Ln_Medon_TN_38356_M71949-39526?ex=2965238975">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/atwood.png" alt="Property 2">
+  <div class="property-details">
+      <h3>834 State Route 77, Atwood, TN 38220</h3>
+      <p class="price">$139,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a>  <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" a href="https://www.realtor.com/realestateandhomes-detail/835-State-Route-77_Atwood_TN_38220_M92130-76838?ex=2967391943">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/33.png" alt="Property 2">
+  <div class="property-details">
+      <h3>33 Battery Cv,
+        Jackson, TN 38305</h3>
+      <p class="price">$225,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a>  <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" a href="https://www.realtor.com/realestateandhomes-detail/33-Battery-Cv_Jackson_TN_38305_M89231-18047?ex=2963398026">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/fairway.png" alt="Property 2">
+  <div class="property-details">
+      <h3>229 Fairway Villa Dr., Decaturville, TN 38329</h3>
+      <p class="price">$454,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/229-Fairway-Villa-Ln_Decaturville_TN_38329_M91303-81192?ex=2963107451">More Information</a></button></p>
+   
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/1224.png" alt="Property 2">
+  <div class="property-details">
+      <h3>1224 US Highway 45 Byp N, Trenton, TN 38382</h3>
+      <p class="price">$55,000 <span style="color:rgb(0, 206, 21)">↓$10k</span></p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.zillow.com/homedetails/1224-Us-Highway-45-Byp-N-Trenton-TN-38382/2067614891_zpid/">More Information</a></button></p>
+    
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/hamil.png" alt="Property 2">
+  <div class="property-details">
+      <h3>36 Hamil St., Gates, TN 38037</h3>
+      <p class="price">$5,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/36-Hamil-St_Gates_TN_38037_M88478-77711?ex=2964465309">More Information</a></button></p>
+   
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/4021.png" alt="Property 2">
+  <div class="property-details">
+      <h3>4021 Ragsdale Dr., Milan, TN 38358</h3>
+      <p class="price">$213,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/4021-Ragsdale-Dr_Milan_TN_38358_M82239-78701?ex=2961923496">More Information</a></button></p>
+   
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/southfulton.png" alt="Property 2">
+  <div class="property-details">
+      <h3>105 Stovall St., South Fulton, TN 38257</h3>
+      <p class="price">$28,500</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jay Grant</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/105-Stovall-St_South-Fulton_TN_38257_M85926-60300?ex=2963739771">More Information</a></button></p>
+   
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/oakfield.png" alt="Property 2">
+  <div class="property-details">
+      <h3>192 Eagle Ridge Dr., Oakfield, TN 38362</h3>
+      <p class="price">$202,500</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Mary Evans</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/192-Eagle-Ridge-Dr_Oakfield_TN_38362_M79488-32356?ex=2962518556">More Information</a></button></p>
+   
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/97.png" alt="Property 2">
+  <div class="property-details">
+      <h3>97 Ridgemont Dr., Jackson, TN 38305</h3>
+      <p class="price">$194,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Brandie Bassett</a>  <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" a href="https://www.realtor.com/realestateandhomes-detail/97-Ridgemont-Dr_Jackson_TN_38305_M83604-95405?ex=2962823833">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/sundown.png" alt="Property 2">
+  <div class="property-details">
+      <h3>195 Sundown Dr, Jackson, TN 38305</h3>
+      <p class="price">$249,900</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Brandie Bassett</a>  <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" a href="https://www.realtor.com/realestateandhomes-detail/195-Sundown-Dr_Jackson_TN_38305_M89567-61856?ex=2964647824">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/cooper.png" alt="Property 2">
+  <div class="property-details">
+      <h3>978 Cooper Anderson Rd., Jackson, TN 38305</h3>
+      <p class="price">$301,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Brandie Bassett</a>  <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" a href="https://www.realtor.com/realestateandhomes-detail/978-Cooper-Anderson-Rd_Jackson_TN_38305_M72827-44384?ex=2965177425">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/james.png" alt="Property 2">
+  <div class="property-details">
+      <h3>63 James St., Jackson, TN 38301</h3>
+      <p class="price">$64,900</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Brandie Bassett</a>  <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" a href="https://www.realtor.com/realestateandhomes-detail/63-James-St_Jackson_TN_38301_M77585-81312?ex=2964251376">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/237bradford.png" alt="Property 2">
+  <div class="property-details">
+      <h3>237 E Main St., Bradford, TN 38316</h3>
+      <p class="price">$178,900</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a>  <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" a href="https://www.realtor.com/realestateandhomes-detail/237-E-Main-St_Bradford_TN_38316_M77264-24319?ex=2964648431">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/strike.png" alt="Property 2">
+  <div class="property-details">
+      <h3>214 Strike King Dr
+        Cedar Grove, TN 38321</h3>
+      <p class="price">$12,000 </p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> 
+        <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/214-Strike-King-Dr_Cedar-Grove_TN_38321_M91291-41753">More Information</a></button>
+      </p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/335.png" alt="Property 2">
+  <div class="property-details">
+      <h3>335 Cumberland St., Medina, TN 38355</h3>
+      <p class="price">$84,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/335-Cumberland-St_Medina_TN_38355_M78588-21135?ex=2968650149">More Information</a></button></p>
+   
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/oakhill.png" alt="Property 2">
+  <div class="property-details">
+      <h3>2063 E Oakhill Dr, Milan, TN 38358</h3>
+      <p class="price">$299,900</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/246947/2063-E-Oakhill-Drive-Milan-TN-38358">More Information</a></button></p>
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/jema.png" alt="Property 2">
+  <div class="property-details">
+      <h3>143 Jemma Drive
+        Lexington, TN 38351</h3>
+      <p class="price">$244,900</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/2500638/143-Jemma-Drive-Lexington-TN-38351">More Information</a></button></p>
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/15.png" alt="Property 2">
+  <div class="property-details">
+      <h3>15 5th St., Jackson, TN 38301</h3>
+      <p class="price">$140,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/15-5th-St_Jackson_TN_38301_M72496-44890?ex=2964244990">More Information</a></button></p>
+   
+  </div>
+</div>
+<div class="property-widget">
+  <img src="huntingdon.png/Huntingdon.png" alt="Property 2">
+  <div class="property-details">
+      <h3>269 Redden Ln, Huntingdon, TN 38344</h3>
+      <p class="price">$179,900 <span style="color:rgb(0, 206, 21)">↓$10k</span></p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jay Grant</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/269-Redden-Ln_Huntingdon_TN_38344_M86882-94338">More Information</a></button></p>
+    
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/bluebird.png" alt="Property 2">
+  <div class="property-details">
+      <h3>480 Bluebird Ln., Huntingdon, TN, 38344</h3>
+      <p class="price">$83,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="">More Information</a></button></p>
+   
+  </div>
+</div>
+<div class="property-widget">
+  <img src="sugartree.png/sugartree.png" alt="Property 2">
+  <div class="property-details">
+      <h3>00 Elm Cv, Sugar Tree, TN 38380</h3>
+      <p class="price">$10,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;"> Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" a href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/231956/00-Elm-Cove-Sugar-Tree-TN-38380">More Information</a></button></p>
+     
+  </div>
+</div>
+<div class="property-widget">
+  <img src="listing/park.png" alt="Property 2">
+  <div class="property-details">
+      <h3>121 Park Cir, Trenton, TN 38382</h3>
+      <p class="price">$199,900 <span style="color:rgb(0, 206, 21)">↓$10k</span></p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://totalrealtysource.idxbroker.com/idx/details/listing/b278/246753/121-Park-Circle-Trenton-TN-38382">More Information</a></button></p>
+  </div>
+</div>
+
+<div class="property-widget">
+  <img src="listing/1938.png" alt="Property 2">
+  <div class="property-details">
+      <h3>1938 Highway 45 Bypass
+        Jackson, TN 38305</h3>
+      <p class="price">$469,000</p>
+      <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Lynda Climer</a> 
+        <!-- <button style="text-decoration:none;  background-color: #ffc267;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="">More Information</a></button> -->
+      </p>
+     
+  </div>
+</div>
+
+</div>
+</section>
+
+
+
+<div style="background-color:rgb(255, 255, 255); background-color:none;">
+  <p style="text-align: center; color:black;">  All properties displayed are listed for the past eight months. Past properties are not available for viewing. 
+<br>
+    <span style="font-style:italic; ">Disclaimer</span>: This page may not include all available properties.<br><br></p>
+</div>
+<footer class="text-center text-lg-start text-white" style="background-color:#023E6C; font-family: 'At Hauss Std Semibold'; ">
+  <div class="container p-4 pb-0">
+    <section class="">
+      <div class="row">
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold">
+            Total Realty Source
+          </h6>
+          <p style="font-family: 'At Hauss Std Light';">
+            Serving Tennessee with dedication, providing expertise, personalized service, and commitment to ensuring a successful real estate experience.
+            ©2025 Copyright:
+            totalrealtysource.com | All Rights Reserved.
+          </p>
+        </div>
+        <hr class="w-100 clearfix d-md-none" />
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Contact Us</h6>
+          <p>
+            <a href="https://www.facebook.com/totalrealtysource/" style="color:white; font-family: 'At Hauss Std Light';">Facebook</a>
+          </p>
+          <p>
+            <a href="https://www.instagram.com/totalrealtysource/Instagram/" style="color:white; font-family: 'At Hauss Std Light';">Instagram</a>
+          </p>
+          <p>
+            <a href="contact.html" style="color:white; font-family: 'At Hauss Std Light';">Contact Page</a>
+          </p>
+        </div>
+        <hr class="w-100 clearfix d-md-none" />
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold" >
+            Useful links
+          </h6>
+          <p>
+            <a href="forsale.html" style="color:white; font-family: 'At Hauss Std Light';">For Sale</a>
+          </p>
+          <p>
+            <a href="about.html" style="color:white; font-family: 'At Hauss Std Light';">About</a>
+          </p>
+          <p>
+            <a href="index.html" style="color:white; font-family: 'At Hauss Std Light';">Home</a>
+          </p>
+        </div>
+        <hr class="w-100 clearfix d-md-none" />
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Location</h6>
+          <p style="font-family: 'At Hauss Std Light';">117 South Main Street, Medina, Tennessee, 38355</p>
+          <p style="font-family: 'At Hauss Std Light';"><a href="mailto:totalrealtysource@outlook.com" style="color:white;">totalrealtysource@outlook.com</a></p>
+          <p style="font-family: 'At Hauss Std Light';">+ 01 731 574 9340</p>
+        </div>
+      </div>
+    </section>
+    <hr class="my-3">
+  </div>
+</footer>
+<script>
+  function toggleNav() {
+    const navLinks = document.getElementById("navLinks");
+    const hamburgerIcon = document.querySelector(".hamburger-icon");
+    
+    // Toggle display of nav links when clicked
+    navLinks.classList.toggle("active");
+
+    // Toggle the X and hamburger icon
+    hamburgerIcon.classList.toggle("active");
+  }
+</script>
+<script>
+  function showDropdown() {
+    document.getElementById('forsale-dropdown').style.display = 'block';
+  }
+
+  function hideDropdown() {
+    document.getElementById('forsale-dropdown').style.display = 'none';
+  }
+</script>
+
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="script.js"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+</body>
+</html>

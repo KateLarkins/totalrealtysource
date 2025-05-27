@@ -35,211 +35,92 @@
   <!-- Hidden nav links, toggled by clicking the hamburger menu -->
   <div class="nav-links" id="navLinks">
     <a href="index.html" class="nav-link">Home</a>
-    <a href="forsale.html" class="nav-link">For Sale</a>
+  
+    <div style="position: relative;">
+      <a href="forsale.html" class="nav-link" onmouseover="showDropdown()" onmouseout="hideDropdown()">For Sale ▾</a>
+      <div id="forsale-dropdown" onmouseover="showDropdown()" onmouseout="hideDropdown()" style="position: absolute; top: 100%; left: 0; background-color: white; min-width: 160px; display: none; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1000;">
+        
+        <a href="forsale.html"
+           style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-family: 'At Hauss Std Light';"
+           onmouseover="this.style.backgroundColor='#f0f0f0'"
+           onmouseout="this.style.backgroundColor='white'">
+           Current
+        </a>
+        
+        <a href="forsale-closed.html"
+           style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-family: 'At Hauss Std Light';"
+           onmouseover="this.style.backgroundColor='#f0f0f0'"
+           onmouseout="this.style.backgroundColor='white'">
+           Closed
+        </a>
+      </div>
+    </div>
+  
     <a href="about.html" class="nav-link">About</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
+  
+</div>
+<!-- Contact Page Section -->
+<div class="split-section" style="background-color:#023E6C; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;">
+  <div class="text-content" style="flex: 1 1 400px; padding: 0px;">
+    <div style="padding: 40px;">
+      <h1 style="font-family:'At Hauss Std Semibold'; font-size: 40px; color:white; text-align:left;">Get in Touch</h1>
+      <hr style="background-color:white; height: 4px; border: none; margin: 10px 0;">
+      <p style="font-family:'At Hauss Std Light'; font-size: 20px; color:white; line-height:1.6;">
+        <strong style="font-family:'At Hauss Std Semibold';">Total Realty Source</strong><br>
+        117 S Main Street<br>
+        Medina, TN 38355<br><br>
+
+        <strong style="font-family:'At Hauss Std Semibold';">Phone:</strong> (731) 574-9340<br>
+        <strong style="font-family:'At Hauss Std Semibold';">Email:</strong> 
+        <a href="mailto:totalrealtysource@outlook.com" style="color:white;">totalrealtysource@outlook.com</a><br><br>
+
+        <strong style="font-family:'At Hauss Std Semibold';">Business Hours:</strong><br>
+        Monday – Friday: 9:00 AM – 5:00 PM<br>
+        Feel free to contact us anytime.<br><br>
+
+        Connect with us on 
+        <a href="https://www.facebook.com/Totalrealtysource" style="color:white;">Facebook</a> and 
+        <a href="https://www.instagram.com/Totalrealtysource" style="color:white;">Instagram</a>.
+      </p>
+      <div style="margin-top: 20px;">
+        <a href="about.html" style="text-decoration: none;">
+          <button style="background-color: transparent; color:white; border: 1px solid white; padding: 10px 20px; cursor: pointer; font-family:'At Hauss Std Light';">
+            Learn more
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="image-content" style="flex: 1 1 50%; height: 100%;">
+    <img src="coffee.png/coffee.png" alt="Contact Office" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0;">
+  </div>  
 </div>
 
-<style>
-/* Navbar layout for larger screens (normal behavior) */
-.nav-links {
-  display: flex;
-  gap: 20px;
-  background-color: white;
-}
-
-/* Hide Hamburger Menu and "Menu" text on large screens */
-.hamburger-menu {
-  display: none;
-}
-
-/* New layout for small screens only */
-@media (max-width: 768px) {
-  /* Stack logo, Menu, and hamburger vertically */
-  .topnav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    width: 100%; /* Ensures full width for small screens */
-  }
-
-  /* Logo styling */
-  .links-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  .links-row a {
-    margin-bottom: 20px; /* Add space between logo and the menu */
-  }
-
-  /* Ensure Hamburger Menu and "Menu" text only show on small screens */
-  .hamburger-menu {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    padding: 10px;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hamburger-menu span {
-    margin-bottom: 5px; /* Space between the text and hamburger icon */
-  }
-
-  /* Vertical Hamburger Icon */
-  .hamburger-icon {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    cursor: pointer;
-  }
-
-  .hamburger-icon div {
-    width: 30px;
-    height: 4px;
-    font-weight: 100;
-    background-color: black;
-    transition: transform 0.3s, opacity 0.3s;
-  }
-
-  /* When hamburger is clicked, turn into "X" */
-  .hamburger-icon.active div:nth-child(1) {
-    transform: rotate(45deg);
-    position: relative;
-    top: 8px;
-  }
-
-  .hamburger-icon.active div:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger-icon.active div:nth-child(3) {
-    transform: rotate(-45deg);
-    position: relative;
-    bottom: 8px;
-  }
-
-  /* Hide nav-links by default on small screens */
-  .nav-links {
-    display: none; /* Hidden by default */
-    flex-direction: column;
-    align-items: center;
-    width: 100%; /* Ensures nav links stretch across the full width */
-    margin-top: 10px;
-  }
-
-  /* Display nav-links when active */
-  .nav-links.active {
-    display: flex; /* Display the nav links when active */
-    background-color: white;
-    padding: 20px;
-    width: 100%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  }
-
-  .nav-link {
-    font-size: 18px;
-    padding: 10px;
-    text-align: center;
-  }
-}
-
-/* Hide Hamburger Menu on large screens */
-@media (min-width: 769px) {
-  .hamburger-menu {
-    display: none; /* Hide on large screens */
-  }
-}
-</style>
-
-  <section class="secondsection" style="background: linear-gradient(to bottom, #fcfcfc, #ffffff); padding-top: 90px; padding-bottom: 20px; margin: 0; padding-top: 120px;">
-    <div class="container" style="max-width: 100%; padding-left: 0; padding-right: 0; margin: 0 auto;">
-      <div class="row" style="margin: 0;">
-        <!-- Column for the image -->
-       
+<div class="split-section" style="background-color:white; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; ">
+  <div style="flex: 1 1 50%; height: 100%;">
+    <img src="contact.png/contacttwo.png" alt="Office Location" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0; box-shadow: none;">
+  </div>
   
-        <!-- Column for the text -->
-        <div class="column" style="flex:1; padding: 0; margin-top: 0;">
-          <div class="text-container" style="padding: 0 20px; box-sizing: border-box;">
-            <h2 style="font-size:3rem; color:rgb(0, 0, 0); text-align: left; padding: 0px  50px; font-family:'At Hauss Std Semibold';">Contact Us</h2>
-            <p style="font-family: 'At Hauss Std Light'; font-size:20px; color:rgb(0, 0, 0); padding: 50px;">
-                Find us at our office, or call us today! Our office number is 731-574-9340. You can email us anytime to get in touch with our agents at totalrealtysource@outlook.com. If you'd like to contact our agents individually, you can naviagte to the About page to find their information! <br><br> Keep scrolling for our contact links! Click below for our agents' information.
-              <br>
-              <br>
-              <button style="align-items: center; justify-content: center;" id="viewmore" class="learnmore"><a style="text-decoration: none; color:black;" href="about.html">Agents' Information</a></button></p>
-          </div>
-        </div>
-        <div class="column" style="flex:1; padding: 0;">
-          <div class="content-wrapper" style="padding: 20px; box-sizing: border-box;">
-            <img class="" src="coffee.png/coffee.png" alt="Your Image" style="max-width: 100%; height: auto; border:none;">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-    <div class="contactcontainer">
-      <br> <br>
+  <div class="text-content" style="flex: 1 1 400px; padding:20px;">
+    <div style="padding: 20px;">
+      <h1 style="font-family:'At Hauss Std Semibold'; font-size: 40px; color:#000000; text-align:left;">Visit Us</h1>
+      <hr style="background-color:#000000; height: 4px; border: none; margin-bottom: 20px;">
+      <p style="font-family:'At Hauss Std Light'; font-size: 20px; color:#000000; line-height: 1.6;">
+        Whether you're looking to buy, sell, or just have questions about the market, our team is here to help. <br><br>
+        Contact us today or visit our office to learn how we can support your real estate journey.<br><br>
 
-            <div class=""> 
-            <div class="contactright" style="background-color:#023E6C; color:white;">
-                <h2 style="font-size: 30px; font-weight: 600; text-align: center; font-family:'At Hauss Std Semibold';">Contact Information</h2><br>
-
-                <table>
-                    <tr style="font-size: 18px;">
-                        <td style="font-family:'At Hauss Std Light'; padding: 4%;">Email</td>
-                        <td style="padding: 4%;">totalrealtysource@outlook.com</td>
-                    </tr>
-                    <tr style="font-size: 18px;">
-                        <td style="font-family:'At Hauss Std Light'; padding: 4%;">Phone</td>
-                        <td style="padding: 4%;"><a style="text-decoration:none; color:rgb(255, 255, 255);" href="tel:7315749340">731-574-9340</a></td>
-                    </tr>
-                    <tr style="font-size: 18px;">
-                        <td style="font-family:'At Hauss Std Light'; padding: 4%;">Address</td>
-                        <td style="padding: 4%;">117 S Main St., 
-                        <br>Medina, TN 38355 United States</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <br>
-        <br>
+        Connect with us on 
+        <a href="https://www.facebook.com/Totalrealtysource" style="color:#000000;">Facebook</a> and 
+        <a href="https://www.instagram.com/Totalrealtysource" style="color:#000000;">Instagram</a>.
+      </p>
     </div>
-    <section style="background: linear-gradient(to bottom, #fcfcfc, #ffffff); margin: 0;">
-      <div class="container" style="max-width: 100%; padding-left: 0; padding-right: 0; margin: 0 auto;">
-        <div class="row" style="margin: 0;">
-          <!-- Column for the image -->
-          <div class="column" style="flex:1; padding: 0;">
-            <div class="content-wrapper">
-              <img class="fade-slide-in" src="contact.png/contacttwo.png" alt="Your Image" style="max-width: 100%; height: auto; border:none;">
-            </div>
-          </div>
-    
-          <!-- Column for the text -->
-          <div class="column" style="flex:1; padding: 0; margin-top: 0;">
-            <div class="text-container" style="padding: 10px 20px; box-sizing: border-box;">
-              <h2 style="font-size:40px; padding: 50px 0; color:rgb(0, 0, 0); font-family:'At Hauss Std Semibold';">Our Office</h2>
-              <p style="font-family: 'At Hauss Std Light', sans-serif; font-size:20px; color:rgb(0, 0, 0); padding: 0;">
-                Located in the heart of Downtown Medina is our office! Our realtors are ready to assist you anytime. Stop by anytime to meet with our realtors!
-                <br><br>
-                Need directions?
-                <span class="typewriter-container"></span> 
-                <span class="typewriter">Click the link below to find directions to our office. Our address is 117 S Main Street., Medina, Tennessee, 38355.</span></span>
-                <br>
-                <button id="viewmore" class="learnmore">
-                  <a style="text-decoration: none; color:black;" href="https://www.google.com/maps/dir//117+S+Main+St,+Medina,+TN+38355/@35.9105704,-89.7859638,7z/data=!4m8!4m7!1m0!1m5!1m1!1s0x887c021300f4e7d7:0xa26f77f9f9a4e09f!2m2!1d-88.7756884!2d35.8026075?entry=ttu&g_ep=EgoyMDI0MDkyMy4wIKXMDSoASAFQAw%3D%3D">Directions</a>
-                </button>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
+  </div>
+</div>
+
+
+
     
     <footer class="text-center text-lg-start text-white" style="background-color:#023E6C; font-family: 'At Hauss Std Semibold'; ">
       <div class="container p-4 pb-0">
@@ -308,6 +189,15 @@
       hamburgerIcon.classList.toggle("active");
     }
   </script>
+      <script>
+        function showDropdown() {
+          document.getElementById('forsale-dropdown').style.display = 'block';
+        }
+      
+        function hideDropdown() {
+          document.getElementById('forsale-dropdown').style.display = 'none';
+        }
+      </script>
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <script src="script.js"></script>
 </body>

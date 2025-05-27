@@ -56,102 +56,33 @@
   <!-- Hidden nav links, toggled by clicking the hamburger menu -->
   <div class="nav-links" id="navLinks">
     <a href="index.html" class="nav-link">Home</a>
-    <a href="forsale.html" class="nav-link">For Sale</a>
+  
+    <div style="position: relative;">
+      <a href="forsale.html" class="nav-link" onmouseover="showDropdown()" onmouseout="hideDropdown()">For Sale ▾</a>
+      <div id="forsale-dropdown" onmouseover="showDropdown()" onmouseout="hideDropdown()" style="position: absolute; top: 100%; left: 0; background-color: white; min-width: 160px; display: none; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1000;">
+        
+        <a href="forsale.html"
+           style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-family: 'At Hauss Std Light';"
+           onmouseover="this.style.backgroundColor='#f0f0f0'"
+           onmouseout="this.style.backgroundColor='white'">
+           Current
+        </a>
+        
+        <a href="forsale-closed.html"
+           style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-family: 'At Hauss Std Light';"
+           onmouseover="this.style.backgroundColor='#f0f0f0'"
+           onmouseout="this.style.backgroundColor='white'">
+           Closed
+        </a>
+      </div>
+    </div>
+  
     <a href="about.html" class="nav-link">About</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
+  
 </div>
 
-<style>
-/* Navbar layout for larger screens (normal behavior) */
-.nav-links {
-  display: flex;
-  gap: 20px;
-  background-color: white;
-}
-
-/* Hide Hamburger Menu and "Menu" text on large screens */
-.hamburger-menu {
-  display: none;
-}
-
-/* New layout for small screens only */
-@media (max-width: 768px) {
-  /* Stack logo, Menu, and hamburger vertically */
-  .topnav {
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    width: 100%; /* Ensures full width for small screens */
-  }
-
-  /* Logo styling */
-  .links-row a {
-    margin-bottom: 20px; /* Add space between logo and the menu */
-  }
-
-  /* Ensure Hamburger Menu and "Menu" text only show on small screens */
-  .hamburger-menu {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    padding: 10px;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hamburger-menu span {
-    margin-bottom: 5px; /* Space between the text and hamburger icon */
-  }
-
-  /* Vertical Hamburger Icon */
-  .hamburger-icon {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    cursor: pointer;
-  }
-
-  .hamburger-icon div {
-    width: 30px;
-    height: 4px;
-    font-weight: 100;
-    background-color: black;
-  }
-
-  /* Hide nav-links by default on small screens */
-  .nav-links {
-    display: none; /* Hidden by default */
-    flex-direction: column;
-    align-items: center;
-    width: 100%; /* Ensures nav links stretch across the full width */
-    margin-top: 10px;
-  }
-
-  /* Display nav-links when active */
-  .nav-links.active {
-    display: flex; /* Display the nav links when active */
-    background-color: white;
-    padding: 20px;
-    width: 100%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  }
-
-  .nav-link {
-    font-size: 18px;
-    padding: 10px;
-    text-align: center;
-  }
-}
-
-/* Hide Hamburger Menu on large screens */
-@media (min-width: 769px) {
-  .hamburger-menu {
-    display: none; /* Hide on large screens */
-  }
-}
-
-</style>
 
 
 <!-- Introduction Video -->
@@ -682,6 +613,15 @@
           });
         });
       
+      </script>
+       <script>
+        function showDropdown() {
+          document.getElementById('forsale-dropdown').style.display = 'block';
+        }
+      
+        function hideDropdown() {
+          document.getElementById('forsale-dropdown').style.display = 'none';
+        }
       </script>
   </body>
 </html>

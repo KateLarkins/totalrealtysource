@@ -5,7 +5,16 @@
   gap: 20px;
   background-color: white;
 }
+.topnav .nav-link {
+  /* Your original styles */
+  color: black !important;
+  font-family: 'At Hauss Std Light';
+  text-decoration: none;
+}
 
+/* .topnav {
+  background-image: url('listing/1224.png');
+} */
 /* Hide Hamburger Menu and "Menu" text on large screens */
 .hamburger-menu {
   display: none;
