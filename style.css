@@ -1693,32 +1693,7 @@ footer {
   }
 }
 
-/* Search Container */
-.search-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: flex-end;
-  margin-top: 1%;
-}
 
-.search-bar {
-  display: flex;
-  flex-direction: column;
-}
-
-.search-bar label {
-  margin-bottom: 5px;
-}
-
-.search-container input,
-.search-container button,
-.search-bar select,
-.search-bar button {
-  font-size: 16px;
-  padding: 5px;
-  margin: 2px 0;
-}
 
 /* Stack vertically on smaller screens */
 @media (max-width: 768px) {
