@@ -1651,6 +1651,7 @@ footer {
 }
 
 @media (max-width: 600px) {
+  /* About Us Agent Modals */
   .card {
     width: 100%;
     min-width: unset;
