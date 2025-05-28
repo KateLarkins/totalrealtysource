@@ -1621,7 +1621,7 @@ footer {
 
 @media (max-width: 768px) {
   .agent-details h3 {
-    font-size: 22px; /* or whatever you want */
+    font-size: 22px; 
   }
 }
 

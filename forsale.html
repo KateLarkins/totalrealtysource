@@ -646,8 +646,113 @@
       <div class="property-details">
           <h3>98 Cotton Ridge Drive, Jackson, TN 38305</h3>
           <p class="price">$830,000</p>
-          <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="">More Information</a></button></p>
+          <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button onclick="openModal('cotton-ridgeModal')" style="background-color: white; margin-left: 4%;">More Information</button></p>
       </div>
+    </div>
+    <div id="cotton-ridgeModal" class="modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+      <div class="modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
+    
+      <!-- Close Button -->
+      <span class="close" onclick="closeModal()" style="color: #aaa; position: absolute; top: 15px; right: 25px; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+    
+      <!-- Carousel -->
+      <div class="carousel" style="position: relative; margin-bottom: 20px;">
+    
+      <!-- For Sale Badge -->
+      <div style="position: absolute; top: 15px; left: 15px; background-color: rgba(255, 255, 255, 0.85); padding: 6px 14px; border-radius: 20px; font-size: 16px; font-family: 'At Hauss Std Semibold'; display: flex; align-items: center; gap: 8px; z-index: 10;">
+        <span style="display:inline-block; width:13px; height:13px; background-color:green; border-radius:50%;"></span>
+        <span>For Sale</span>
+      </div>
+    
+      <!-- Image Slides -->
+      <img class="slide" src="listing/cotton.png" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+    
+    
+      <!-- Carousel Arrows -->
+      <button onclick="plusSlides(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); font-size: 24px; background: none; border: none; cursor: pointer;">❮</button>
+      <button onclick="plusSlides(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); font-size: 24px; background: none; border: none; cursor: pointer;">❯</button>
+    </div>
+    
+        <!-- Property Overview -->
+        <div style="margin-bottom: 25px;">
+          <h2 style="margin-bottom: 5px; font-family:'At Hauss Std Semibold'; font-size: 25px;">98 Cotton Ridge Drive, Jackson, TN 38305</h2>
+          <p style="font-size: 23px; font-weight: bold; margin: 5px 0 10px; font-family:'At Hauss Std Light'">$830,000</p>
+    
+          <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 1em; font-family:'At Hauss Std Light'">
+            <div><strong>Beds:</strong> 3</div>
+            <div><strong>Baths:</strong> 2 (2 Full, 0 Half)</div>
+            <div><strong>Sqft:</strong> 1,607</div>
+            <div><strong>Lot:</strong> 0 acres</div>
+            <div><strong>Year Built:</strong> 2000</div>
+            <div><strong>Style:</strong> Single Family Residence</div>
+            <div><strong>Pool:</strong> No</div>
+            <div><strong>Garage:</strong> 2 covered, 4 total</div>
+          </div>
+          </div>
+    
+        <!-- Features Section -->
+        <div style="margin-bottom: 25px;">
+          <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;font-family:'At Hauss Std Semibold';">Key Features</h3>
+          <ul style="list-style: none; padding-left: 0; column-count: 2; gap: 20px; font-family:'At Hauss Std Light'">
+            <li><strong>Cooling:</strong> Ceiling Fan(s), Central Air, Electric</li>
+            <li><strong>Heating:</strong> Central, Forced Air, Natural Gas</li>
+            <li><strong>Fireplaces:</strong> 0 (Living Room)</li>
+            <li><strong>Exterior:</strong> Brick, Rain Gutters</li>
+            <li><strong>Interior:</strong> Blown/Textured Ceilings, Ceiling Fan(s), Eat-in Kitchen, Fiber Glass Shower, Laminate Counters, Pantry, Primary Downstairs, Tub Shower Combo</li>
+            <li><strong>Kitchen:</strong> Laminate Counters, Kitchen Island, Single-Basin Sink, Dishwasher, Electric Range, Microwave, Microwave Vent Hood, Gas Water Heater, Pantry</li>
+            <li><strong>Parking:</strong> Attached, Driveway, Garage, Garage Door Opener, Garage Faces Front, Open Parking (2 spaces)</li>
+            <li><strong>Basement:</strong> No</li>
+            <li><strong>Additional Structures:</strong> Shed(s)</li>
+            <li><strong>Garage:</strong> 2-Car Garage, Attached</li>
+            <li><strong>Water & Sewer:</strong> Public Water, Public Sewer</li>
+          </ul>                
+        </div>
+    
+        <!-- Description Section -->
+        <div style="margin-bottom: 25px;">
+          <h3 style="border-bottom: 1px solid #ccc; padding-top: 1px; font-family:'At Hauss Std Semibold'">Property Description</h3>
+          <p style="line-height: 1.6; margin-top: 15px; font-family:'At Hauss Std Light';">
+            Welcome to this charming 3-bedroom, 2-bath home that blends comfort, value, and peace of mind—with no city taxes! Recently updated with a new HVAC system and water heater, this home is move-in ready. Enjoy a spacious, fully fenced-in yard that's perfect for pets, play, or entertaining. Inside, you'll find a bright and functional layout with generous bedrooms and cozy living spaces. Whether you're starting out or settling down, this one checks all the boxes!
+          </p>
+        </div>
+    
+    <!-- Agent + Share Section -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-top: 1px solid #ccc; padding-top: 20px; gap: 20px;">
+    
+      <!-- Column 1: Agent Info -->
+      <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
+        <img src="agent/Ashley.png" alt="Ashley McMillan" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
+        <div>
+          <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Ashley McMillan</strong></p>
+          <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
+          <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 414-0317</p>
+          <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
+        </div>
+      </div>
+    
+      <!-- Column 2: Share Icons + Title -->
+      <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-end; flex: 1 1 200px;">
+        <p style="margin: 0; font-family: 'At Hauss Std Semibold'; font-size: 1rem;">Share this Listing:</p>
+        <div style="display: flex; align-items: center; gap: 15px; margin-top: 5px;">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://totalrealtysource.com/cotton-ridge.html"
+          target="_blank" title="Share on Facebook" style="color:#3b5998; font-size: 1.8rem;">
+         <i class="fa fa-facebook-official"></i>
+       </a>
+       
+       <a href="https://www.instagram.com/totalrealtysource"
+          target="_blank" title="View on Instagram" style="color:#e1306c; font-size: 1.8rem;">
+         <i class="fa fa-instagram"></i>
+       </a>
+       
+       <a href="mailto:?subject=Check out this listing&body=Take a look at this property: https://totalrealtysource.com/cotton-ridge.html"
+          title="Share by Email" style="color:#007bff; font-size: 1.8rem;">
+         <i class="fa fa-envelope"></i>
+       </a>
+       
+        </div>
+      </div>
+    </div>
+    </div>
     </div>
     <div class="property-widget">
       <img src="listing/1902.png" alt="Property 2">
