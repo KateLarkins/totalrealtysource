@@ -14,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">  
  
@@ -190,62 +192,169 @@
   <div class="property-container">
 
    <!-- Listing Widget -->
-<div class="property-widget">
-  <img src="listing/country.png" alt="Property 2">
-  <div class="property-details">
-    <h3>222 Country Club Ln, Jackson, TN 38305</h3>
-    <p class="price">$1,490,000</p>
-    <p class="location">
-      Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a>
-      <button onclick="openModal()" style="background-color: white; margin-left: 4%;">More Information</button>
-    </p>
+   <div class="property-widget">
+    <img src="listing/country.png" alt="Property 2">
+    <div class="property-details">
+      <h3>222 Country Club Ln, Jackson, TN 38305</h3>
+      <p class="price">$1,490,000</p>
+      <p class="location">
+        Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a>
+        <button onclick="openModal()" style="background-color: white; margin-left: 4%;">More Information</button>
+      </p>
+    </div>
   </div>
+  
+
+<!-- MODAL GOES BELOW THIS LINE (NOT INSIDE property-widget) -->
+<!-- Modal -->
+<div id="listingModal" class="modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+  <div class="modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative; font-family: Arial, sans-serif;">
+
+    <!-- Close Button -->
+    <span class="close" onclick="closeModal()" style="color: #aaa; position: absolute; top: 15px; right: 25px; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+
+  <!-- Carousel -->
+<div class="carousel" style="position: relative; margin-bottom: 20px;">
+
+  <!-- For Sale Badge -->
+  <div style="
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-family: 'At Hauss Std Semibold';
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+  ">
+    <span style="display:inline-block; width:13px; height:13px; background-color:green; border-radius:50%;"></span>
+    <span>For Sale</span>
+  </div>
+
+  <!-- Image Slides -->
+  <img class="slide" src="listing/country.png" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250213022310914196000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250213022318224038000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250213022322267122000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250213023328468275000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250213023331165971000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250213023334126571000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154255011373000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154256393965000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154257428150000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154258888606000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154300112294000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154302191585000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154303387043000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154304999514000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154306673022000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154308131040000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154309640288000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154311494541000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250523154723719110000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154312861463000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154314184527000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154315931525000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154317114555000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154318283267000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154319578306000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154320897056000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154322279663000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154324275597000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154325748611000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154327508868000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154330053411000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154600780829000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154602217975000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154603441576000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154604677045000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154605924605000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154607125969000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250203154608419596000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250523154717434341000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250523154717434341000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250523154719238034000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  <img class="slide" src="222-Country-Club/20250523154721516358000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+  
+   
+  
+   
+  
+ 
+
+  <!-- Carousel Arrows -->
+  <button onclick="plusSlides(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); font-size: 24px; background: none; border: none; cursor: pointer;">❮</button>
+  <button onclick="plusSlides(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); font-size: 24px; background: none; border: none; cursor: pointer;">❯</button>
 </div>
 
-<!-- Modal Popup -->
-<div id="listingModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
+    <!-- Property Overview -->
+    <div style="margin-bottom: 25px;">
+      <h2 style="margin-bottom: 5px; font-family:'At Hauss Std Semibold'; font-size: 25px;">222 Country Club Ln, Jackson, TN 38305</h2>
+      <p style="font-size: 23px; font-weight: bold; margin: 5px 0 10px; font-family:'At Hauss Std Light'">$1,490,000</p>
 
-    
-    <!-- Carousel -->
-    <div class="carousel">
-      <img src="listing/19190.png" class="slide" style="display: block;">
-      <img src="listing/179E.png" class="slide">
-      <img src="listing/fairway.png" class="slide">
-      <div class="carousel-controls">
-        <button onclick="plusSlides(-1)">&#10094;</button>
-        <button onclick="plusSlides(1)">&#10095;</button>
+      <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 1em; font-family:'At Hauss Std Light'">
+        <div><strong>Beds:</strong> 5</div>
+        <div><strong>Baths:</strong> 5 (4 Full, 1 Half)</div>
+        <div><strong>Sqft:</strong> 11,508</div>
+        <div><strong>Lot:</strong> 10.8 acres</div>
+        <div><strong>Year Built:</strong> 1946</div>
+        <div><strong>Style:</strong> Ranch / Other</div>
+        <div><strong>Pool:</strong> Saltwater, In-Ground, Gunite</div>
+        <div><strong>Garage:</strong> 5 covered, 21 total</div>
       </div>
     </div>
 
-    <!-- Content Grid -->
-    <div class="modal-body">
-      <div class="listing-info">
-        <h2>222 Country Club Ln, Jackson, TN 38305</h2>
-        <p><strong>Price:</strong> $1,490,000</p>
-        <p><strong>Description:</strong> Spacious luxury estate near the golf course with modern amenities, pool, and 5 bedrooms.</p>
-        <p><strong>Square Feet:</strong> 4,500</p>
-        <p><strong>Lot Size:</strong> 1.2 acres</p>
-        <p><strong>Year Built:</strong> 2008</p>
-        <!-- Add more listing details here -->
-      </div>
-      <div class="agent-info">
-        <h3>Contact Agent</h3>
-        <p><strong>Name:</strong> Amy McLemore</p>
-        <p><strong>Phone:</strong> (555) 123-4567</p>
-        <p><strong>Email:</strong> amy@totalrealtysource.com</p>
-        <a href="about.html">Learn More</a>
-      </div>
-      <div class="share-buttons" style="margin-top: 20px;">
-        <p><strong>Share this listing:</strong></p>
-        <a href="https://totalrealtysource.com/222-country-club.html" target="_blank">Share This Listing</a>
-
-      </div>
-      
+    <!-- Features Section -->
+    <div style="margin-bottom: 25px;">
+      <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;font-family:'At Hauss Std Semibold';">Key Features</h3>
+      <ul style="list-style: none; padding-left: 0; column-count: 2; gap: 20px;font-family:'At Hauss Std Light'">
+        <li><strong>Cooling:</strong> Central Air, Ceiling Fans, Zoned Electric</li>
+        <li><strong>Heating:</strong> Central, Electric, Fireplace(s), Heat Pump</li>
+        <li><strong>Fireplaces:</strong> 3+ (Den, Living, Rec Room)</li>
+        <li><strong>Exterior:</strong> Brick Veneer</li>
+        <li><strong>Interior:</strong> Theater, Wet Bar, Walk-In Closets, Slate Floors</li>
+        <li><strong>Kitchen:</strong> Sub-Zero Fridges, Gas Cooktop, Double Ovens, Wine Cooler</li>
+        <li><strong>Parking:</strong> Circle Driveway, RV Access, Guest Parking</li>
+        <li><strong>Basement:</strong> Partially Finished, Exterior Entry</li>
+        <li><strong>Additional Structures:</strong> Pool House, Guest House, Shed(s), Workshop</li>
+        <li><strong>Garage:</strong> 2-Car Garage</li>
+        <li><strong>Water & Sewer:</strong> Public & Well, Public Sewer</li>
+      </ul>
     </div>
+
+    <!-- Description Section -->
+    <div style="margin-bottom: 25px;">
+      <h3 style="border-bottom: 1px solid #ccc; padding-top: 1px; font-family:'At Hauss Std Semibold'">Property Description</h3>
+      <p style="line-height: 1.6; margin-top: 15px; font-family:'At Hauss Std Light';">
+        Rare opportunity to own a stately retreat on over 10 acres within Jackson city limits. This private estate combines serenity and space with proximity to shopping, dining, and schools. Backing up to 400 acres of the Jackson Country Club, enjoy resort-style living with a 20x50 saltwater pool, pool house, and spacious carport and garage areas.
+      </p>
+      <p style="line-height: 1.6;font-family:'At Hauss Std Light';">
+        The 5-bedroom, 4.5-bath home is all on one level and includes formal living/dining, a home theater, craft room, oversized sunroom, wet bar, and extensive storage. The flexible layout supports an in-law suite or office conversion with its dedicated library. The chef's kitchen includes two Sub-Zero refrigerators, gas cooktop, granite counters, prep sink, and built-in workstation.
+      </p>
+    </div>
+
+    <!-- Agent Info Section -->
+    <div style=" display: flex; align-items: center; gap: 20px; border-top: 1px solid #ccc; padding-top: 20px;">
+      <img src="agent/amywork.png" alt="Amy McLemore" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
+      <div>
+        <p style="margin: 0;font-family: 'At Hauss Std Semibold';"><strong>Amy McLemore</strong></p>
+        <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html" data-bs-toggle="modal" data-bs-target="#amyModal">View Profile</a></p>
+        <p style="margin: 2px 0;font-family: 'At Hauss Std Light';">Email: amy@example.com</p>
+        <p style="margin: 2px 0;font-family: 'At Hauss Std Light';">Phone: (731) 555-1234</p>
+      </div>
+    </div>
+
   </div>
 </div>
+
+
+
+
+
 
     <!-- New Updates to Website Add Pending and New listing -->
     <div class="property-widget">
@@ -571,35 +680,33 @@
     document.getElementById('forsale-dropdown').style.display = 'none';
   }
 </script>
-<!-- Modal Js -->
-<script>
-let currentSlide = 0;
-function openModal() {
-  document.getElementById("listingModal").style.display = "block";
-  showSlide(currentSlide);
-}
+<!-- Country Club JS -->
+<script>let currentSlide = 0;
+  function openModal() {
+    document.getElementById("listingModal").style.display = "block";
+    showSlide(currentSlide);
+  }
+  function closeModal() {
+    document.getElementById("listingModal").style.display = "none";
+  }
+  function plusSlides(n) {
+    currentSlide += n;
+    showSlide(currentSlide);
+  }
+  function showSlide(index) {
+    const slides = document.querySelectorAll(".slide");
+    if (index >= slides.length) currentSlide = 0;
+    if (index < 0) currentSlide = slides.length - 1;
+    slides.forEach(slide => slide.style.display = "none");
+    slides[currentSlide].style.display = "block";
+  }
+  </script>
 
-function closeModal() {
-  document.getElementById("listingModal").style.display = "none";
-}
-
-function plusSlides(n) {
-  currentSlide += n;
-  showSlide(currentSlide);
-}
-
-function showSlide(index) {
-  const slides = document.querySelectorAll(".slide");
-  if (index >= slides.length) currentSlide = 0;
-  if (index < 0) currentSlide = slides.length - 1;
-  slides.forEach(slide => slide.style.display = "none");
-  slides[currentSlide].style.display = "block";
-}
-
-</script>
 
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
 </body>

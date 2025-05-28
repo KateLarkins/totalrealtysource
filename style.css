@@ -1639,3 +1639,45 @@ footer {
   padding: 20px;
   border-radius: 8px;
 }
+@media (max-width: 768px) {
+  .content-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .agent-photo img {
+    margin-top: 20px;
+  }
+}
+.modal-body {
+  padding: 20px;
+}
+
+.content-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.listing-info {
+  flex: 1 1 40%;
+  min-width: 250px;
+}
+
+.agent-info {
+  flex: 1 1 25%;
+  min-width: 200px;
+}
+
+.agent-photo {
+  flex: 1 1 150px;
+  text-align: center;
+}
+
+.agent-photo img {
+  max-width: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
