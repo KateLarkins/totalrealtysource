@@ -1607,6 +1607,24 @@ footer {
   padding: 20px;
   border-radius: 8px;
 }
+
+.agent-details h3 {
+  font-family: 'At Hauss Std Semibold';
+  font-size: 26px;
+  margin-bottom: 5px;
+}
+.agent-details h3 {
+  font-family: 'At Hauss Std Semibold';
+  font-size: 26px;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .agent-details h3 {
+    font-size: 22px; /* or whatever you want */
+  }
+}
+
 @media (max-width: 768px) {
   .content-flex {
     flex-direction: column;
@@ -1672,10 +1690,6 @@ footer {
   .agent-photo p {
     text-align: center;
     font-size:16px;
-  }
-
-  .agent-details h3 {
-    font-size:500px !important;
   }
 }
 
