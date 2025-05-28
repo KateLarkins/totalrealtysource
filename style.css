@@ -1649,3 +1649,17 @@ footer {
   border-radius: 50%;
   object-fit: cover;
 }
+
+@media (max-width: 600px) {
+  .card {
+    width: 100%;
+    min-width: unset;
+    margin: 10px auto;
+    text-align: center;
+  }
+
+  .card h2,
+  .card p {
+    text-align: center;
+  }
+}
