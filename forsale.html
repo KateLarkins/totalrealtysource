@@ -199,38 +199,24 @@
       <p class="price">$1,490,000</p>
       <p class="location">
         Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a>
-        <button onclick="openModal()" style="background-color: white; margin-left: 4%;">More Information</button>
+        <button onclick="openModal('countryclubModal')" style="background-color: white; margin-left: 4%;">More Information</button>
+        
       </p>
     </div>
   </div>
   
-
-<!-- MODAL GOES BELOW THIS LINE (NOT INSIDE property-widget) -->
 <!-- Modal -->
-<div id="listingModal" class="modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+<div id="countryclubModal" class="modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
   <div class="modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative; font-family: Arial, sans-serif;">
 
-    <!-- Close Button -->
-    <span class="close" onclick="closeModal()" style="color: #aaa; position: absolute; top: 15px; right: 25px; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+  <!-- Close Button -->
+  <span class="close" onclick="closeModal()" style="color: #aaa; position: absolute; top: 15px; right: 25px; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
 
   <!-- Carousel -->
-<div class="carousel" style="position: relative; margin-bottom: 20px;">
+  <div class="carousel" style="position: relative; margin-bottom: 20px;">
 
   <!-- For Sale Badge -->
-  <div style="
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background-color: rgba(255, 255, 255, 0.85);
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 16px;
-    font-family: 'At Hauss Std Semibold';
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    z-index: 10;
-  ">
+  <div style="position: absolute; top: 15px; left: 15px; background-color: rgba(255, 255, 255, 0.85); padding: 6px 14px; border-radius: 20px; font-size: 16px; font-family: 'At Hauss Std Semibold'; display: flex; align-items: center; gap: 8px; z-index: 10;">
     <span style="display:inline-block; width:13px; height:13px; background-color:green; border-radius:50%;"></span>
     <span>For Sale</span>
   </div>
@@ -372,10 +358,8 @@
    
     </div>
   </div>
-
 </div>
-
-  </div>
+</div>
 </div>
 
 
@@ -389,9 +373,124 @@
       <div class="property-details">
           <h3>6088 Meadowbrook Cove, Milan, TN 38358</h3>
           <p class="price">$300,000</p>
-          <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="">More Information</a></button></p>
+          <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a> <button onclick="openModal('meadowbrookModal')" style="background-color: white; margin-left: 4%;">More Information</button>
+
+          </p>
       </div>
     </div>
+
+    <div id="meadowbrookModal" class="modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+      <div class="modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative; font-family: Arial, sans-serif;">
+    
+      <!-- Close Button -->
+      <span class="close" onclick="closeModal()" style="color: #aaa; position: absolute; top: 15px; right: 25px; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+    
+      <!-- Carousel -->
+      <div class="carousel" style="position: relative; margin-bottom: 20px;">
+    
+      <!-- For Sale Badge -->
+      <div style="position: absolute; top: 15px; left: 15px; background-color: rgba(255, 255, 255, 0.85); padding: 6px 14px; border-radius: 20px; font-size: 16px; font-family: 'At Hauss Std Semibold'; display: flex; align-items: center; gap: 8px; z-index: 10;">
+        <span style="display:inline-block; width:13px; height:13px; background-color:green; border-radius:50%;"></span>
+        <span>For Sale</span>
+      </div>
+    
+      <!-- Image Slides -->
+      <img class="slide" src="listing/meadowbrook.png" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+    
+      <!-- Carousel Arrows -->
+      <button onclick="plusSlides(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); font-size: 24px; background: none; border: none; cursor: pointer;">❮</button>
+      <button onclick="plusSlides(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); font-size: 24px; background: none; border: none; cursor: pointer;">❯</button>
+    </div>
+    
+        <!-- Property Overview -->
+        <div style="margin-bottom: 25px;">
+          <h2 style="margin-bottom: 5px; font-family:'At Hauss Std Semibold'; font-size: 25px;">6088 Meadowbrook Cove, Milan, TN 38358</h2>
+          <p style="font-size: 23px; font-weight: bold; margin: 5px 0 10px; font-family:'At Hauss Std Light'">$300,000</p>
+    
+          <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 1em; font-family:'At Hauss Std Light'">
+            <div><strong>Beds:</strong> 5</div>
+            <div><strong>Baths:</strong> 3 (3 Full, 0 Half)</div>
+            <div><strong>Sqft:</strong> 3,539</div>
+            <div><strong>Lot:</strong> 0.38 acres</div>
+            <div><strong>Year Built:</strong> 1968</div>
+            <div><strong>Style:</strong> Mid-Century Modern / Ranch / Other</div>
+            <div><strong>Pool:</strong> No</div>
+            <div><strong>Garage:</strong> 3 covered, 6 total</div>
+          </div>
+          </div>
+    
+        <!-- Features Section -->
+        <div style="margin-bottom: 25px;">
+          <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;font-family:'At Hauss Std Semibold';">Key Features</h3>
+          <ul style="list-style: none; padding-left: 0; column-count: 2; gap: 20px;font-family:'At Hauss Std Light'">
+            <li><strong>Cooling:</strong> Ceiling Fan(s), Central Air, Electric</li>
+            <li><strong>Heating:</strong> Central, Fireplace(s), Forced Air, Natural Gas, Wall Furnace</li>
+            <li><strong>Fireplaces:</strong> 1 (Electric, Masonry, in Den with Blower Fan)</li>
+            <li><strong>Exterior:</strong> Brick, Rain Gutters</li>
+            <li><strong>Interior:</strong> Beamed Ceilings, Cedar Closets, Crown Molding, Walk-In Closets, In-Law Floorplan</li>
+            <li><strong>Kitchen:</strong> Eat-in Kitchen, Sub-Zero Refrigerator, Built-in Hutch, Kitchen Island, Pantry, Laminate Counters</li>
+            <li><strong>Parking:</strong> Attached, Covered, Garage Faces Side, Inside Entrance, Open Parking (3 spaces), Storage</li>
+            <li><strong>Basement:</strong> No</li>
+            <li><strong>Additional Structures:</strong> None listed</li>
+            <li><strong>Garage:</strong> 3-Car Garage, Attached</li>
+            <li><strong>Water & Sewer:</strong> Public Water, Public Sewer</li>
+          </ul>          
+        </div>
+    
+        <!-- Description Section -->
+        <div style="margin-bottom: 25px;">
+          <h3 style="border-bottom: 1px solid #ccc; padding-top: 1px; font-family:'At Hauss Std Semibold'">Property Description</h3>
+          <p style="line-height: 1.6; margin-top: 15px; font-family:'At Hauss Std Light';">
+            Located at 6088 Meadowbrook Cove in Milan, Tennessee, this spacious home offers a prime location with easy access to retail outlets, restaurants, and other amenities. Boasting 3,529 square feet of heated living space, the property features: 5 bedrooms and 3 bathrooms, providing ample accommodation, a 3-car garage for convenient parking and storage, a large sunroom, perfect for relaxation and enjoying natural light, an in-law suite, ideal for extended family or guests, flooring that includes oak hardwood, luxury vinyl, and ceramic tile throughout (no carpet), ensuring both elegance and easy maintenance. The heart of the home is its large eat-in kitchen, equipped with high-end amenities: Sub-Zero refrigerator, a functional island enhancing workspace and storage, and built-in features such as a pantry and hutch, maximizing organization and efficiency.
+          </p>
+          <p style="line-height: 1.6;font-family:'At Hauss Std Light';">
+            This property combines practicality with luxury, offering a comfortable and stylish living environment suitable for many occupants or those who enjoy hosting guests. Don't miss the opportunity to explore this unique home in person! Being Sold "As Is".
+          </p>
+        </div>
+    
+    <!-- Agent + Share Section -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-top: 1px solid #ccc; padding-top: 20px; gap: 20px;">
+    
+      <!-- Column 1: Agent Info -->
+      <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
+        <img src="agent/amywork.png" alt="Amy McLemore" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
+        <div>
+          <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Amy McLemore</strong></p>
+          <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
+          <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 234-0049</p>
+          <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
+        </div>
+      </div>
+    
+      <!-- Column 2: Share Icons + Title -->
+      <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-end; flex: 1 1 200px;">
+        <p style="margin: 0; font-family: 'At Hauss Std Semibold'; font-size: 1rem;">Share this Listing:</p>
+        <div style="display: flex; align-items: center; gap: 15px; margin-top: 5px;">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://totalrealtysource.com/meadowbrook.html"
+          target="_blank" title="Share on Facebook" style="color:#3b5998; font-size: 1.8rem;">
+         <i class="fa fa-facebook-official"></i>
+       </a>
+       
+       <a href="https://www.instagram.com/totalrealtysource"
+          target="_blank" title="View on Instagram" style="color:#e1306c; font-size: 1.8rem;">
+         <i class="fa fa-instagram"></i>
+       </a>
+       
+       <a href="mailto:?subject=Check out this listing&body=Take a look at this property: https://totalrealtysource.com/meadowbrook.html"
+          title="Share by Email" style="color:#007bff; font-size: 1.8rem;">
+         <i class="fa fa-envelope"></i>
+       </a>
+       
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    
     <div class="property-widget">
       <img src="listing/stan.png" alt="Property 2">
       <div class="property-details">
@@ -707,28 +806,7 @@
     document.getElementById('forsale-dropdown').style.display = 'none';
   }
 </script>
-<!-- Country Club JS -->
-<script>let currentSlide = 0;
-  function openModal() {
-    document.getElementById("listingModal").style.display = "block";
-    showSlide(currentSlide);
-  }
-  function closeModal() {
-    document.getElementById("listingModal").style.display = "none";
-  }
-  function plusSlides(n) {
-    currentSlide += n;
-    showSlide(currentSlide);
-  }
-  function showSlide(index) {
-    const slides = document.querySelectorAll(".slide");
-    if (index >= slides.length) currentSlide = 0;
-    if (index < 0) currentSlide = slides.length - 1;
-    slides.forEach(slide => slide.style.display = "none");
-    slides[currentSlide].style.display = "block";
-  }
-  </script>
-
+  
 
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script src="script.js"></script>
@@ -736,5 +814,41 @@
 
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
+
+
+   <script>
+    let currentSlide = 0;
+  
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = "block";
+      showSlide(currentSlide, modalId);
+    }
+  
+    function closeModal() {
+      const modals = document.querySelectorAll(".modal");
+      modals.forEach(modal => modal.style.display = "none");
+    }
+  
+    function plusSlides(n) {
+      currentSlide += n;
+      const openModalEl = document.querySelector(".modal[style*='display: block']");
+      if (openModalEl) {
+        showSlide(currentSlide, openModalEl.id);
+      }
+    }
+  
+    function showSlide(index, modalId) {
+      const modal = document.getElementById(modalId);
+      const slides = modal.querySelectorAll(".slide");
+  
+      if (index >= slides.length) currentSlide = 0;
+      if (index < 0) currentSlide = slides.length - 1;
+  
+      slides.forEach(slide => slide.style.display = "none");
+      slides[currentSlide].style.display = "block";
+    }
+  </script>
+  
+      
 </body>
 </html>
