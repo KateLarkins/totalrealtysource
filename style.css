@@ -123,23 +123,6 @@
   }
 }
 
-
-
-
-
-/* Logo Font */
-/* @font-face {
-  font-family: 'Molecular-Demo-SemiBold';
-  src: url('Molecula-Demo-SemiBold.otf') format('truetype'); /* Update path as necessary */
-/* } */ 
-
-#testimonial-slider {
-  max-width: 400px;
-  margin: auto;
-  text-align: center;
-  overflow: hidden;
-}
-
 #testimonials {
   display: flex;
   transition: transform 0.5s ease-in-out;
@@ -147,12 +130,6 @@
   flex-direction: column; /* Stack testimonials vertically */
   max-height: 500px; /* Adjust this to your preferred maximum height */
   overflow-y: auto; /* Scroll vertically if content exceeds max-height */
-}
-
-.testimonial {
-  flex: 0 0 100%;
-  padding: 20px;
-  box-sizing: border-box;
 }
 
 button {
@@ -167,17 +144,6 @@ button {
   transition: background 0.3s;
 }
 
-/* Make sure buttons are always visible under the testimonials */
-#testimonial-slider > section {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-#testimonial-slider > section > div {
-  flex-grow: 1;
-}
 
 
 @font-face {
@@ -396,8 +362,10 @@ body {
   padding: 0;
   font-family: 'At Hauss Std Light';
   text-decoration: none;
-  opacity: 0;
+  opacity: 1; /* Default visible */
+  transition: opacity 0.6s ease-in-out;
 }
+
 
 body.fade-in {
   opacity: 1;
@@ -532,9 +500,9 @@ body {
 } 
 
 #viewmore:hover {
-  background-color: none;
-
+  background-color: transparent;
 }
+
 
 #viewmore {
   background-color: none;
@@ -1465,8 +1433,8 @@ footer {
     flex-direction: column;
   }
   
-  /* Ensure the image takes full width */
-  div[style*="flex: 1; padding: 0; display: flex;"] {
+  /* Ensure the image takes full width  */
+ div[style*="flex: 1; padding: 0; display: flex;"] {
     width: 100%;
     height: auto;
   }
