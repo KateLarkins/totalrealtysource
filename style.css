@@ -1662,4 +1662,14 @@ footer {
   .card p {
     text-align: center;
   }
+
+  .agent-bio {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .agent-bio p {
+    text-align: center;
+  }
 }
+
