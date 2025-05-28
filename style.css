@@ -1650,7 +1650,7 @@ footer {
   object-fit: cover;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   /* About Us Agent Modals */
   .card {
     width: 100%;
