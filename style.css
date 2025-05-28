@@ -1672,5 +1672,9 @@ footer {
     text-align: center;
     font-size:50px;
   }
+
+  .agent-details h3 {
+    font-size:50px;
+  }
 }
 
