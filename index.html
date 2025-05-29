@@ -36,14 +36,14 @@
 <!-- Top Navigation Bar -->
 <div class="topnav">
   <div class="links-row">
-    <!-- Logo on top for smaller screens -->
+    <!-- Logo -->
     <a href="index.html" style="display: block;">
       <img src="logo.png/horizontallogo.png" style="max-height: 100px; display: block; object-fit: contain;">
     </a>
 
-    <!-- "Menu" text and vertical Hamburger Menu (visible only on small screens) -->
+    <!-- Hamburger menu (visible only on small screens) -->
     <div class="hamburger-menu" onclick="toggleNav()">
-      <span style="font-size: 17px; color: rgb(0, 0, 0); margin-right: 9px;">Menu</span>
+      <span style="font-size: 17px; color: black; margin-right: 9px;">Menu</span>
       <div class="hamburger-icon">
         <div></div>
         <div></div>
@@ -52,14 +52,21 @@
     </div>
   </div>
 
-  <!-- Hidden nav links, toggled by clicking the hamburger menu -->
+  <!-- Hidden nav links, toggled by hamburger -->
   <div class="nav-links" id="navLinks">
     <a href="index.html" class="nav-link">Home</a>
-  
+
+    <!-- Dropdown for 'For Sale' -->
     <div style="position: relative;">
-      <a href="forsale.html" class="nav-link" onmouseover="showDropdown()" onmouseout="hideDropdown()">For Sale ▾</a>
-      <div id="forsale-dropdown" onmouseover="showDropdown()" onmouseout="hideDropdown()" style="position: absolute; top: 100%; left: 0; background-color: white; min-width: 160px; display: none; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1000;">
-        
+      <a href="forsale.html" class="nav-link" 
+         onmouseover="showDropdown()" 
+         onmouseout="hideDropdown()">For Sale ▾</a>
+
+      <div id="forsale-dropdown" 
+           onmouseover="showDropdown()" 
+           onmouseout="hideDropdown()" 
+           style="position: absolute; top: 100%; left: 0; background-color: white; min-width: 160px; display: none; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1000;">
+           
         <a href="forsale.html"
            style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-family: 'At Hauss Std Light';"
            onmouseover="this.style.backgroundColor='#f0f0f0'"
@@ -75,12 +82,12 @@
         </a>
       </div>
     </div>
-  
+
     <a href="about.html" class="nav-link">About</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
-  
 </div>
+
 
 
 

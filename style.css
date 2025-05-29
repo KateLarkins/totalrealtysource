@@ -21,6 +21,9 @@
 .hamburger-menu {
   display: none;
 }
+.nav-link:hover {
+  color: #f0f0f0 !important;
+}
 
 
 button {
