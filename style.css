@@ -519,7 +519,10 @@ iframe {
   font-weight:300;
   font-family: 'At Hauss Std Light';
 }
-
+@media (max-width: 768px) {
+  .agent-description p {
+    font-size:17px;
+  }
 
 .fun-card-top {
   flex-grow: 1; /* Allow cards to grow vertically to fill the space */
