@@ -279,96 +279,55 @@ iframe {
 }
 
 /* Our Services Section */
-/* Services section wrapper */
 .services-new {
-  background-color: #f6f6f6;
-  padding-bottom: 60px;
-  padding-top: none;
-  text-align: center;
-}
-
-.services-new h1 {
-  font-size: 36px;
-  color: rgb(0, 0, 0);
-  font-weight: 400;
-  margin-bottom: 50px;
-}
-/* Flex container */
-.row-new {
   display: flex;
+  justify-content: center;
+  gap: 60px;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
+  padding: 60px 20px;
+  margin: 0 auto 100px auto; /* Add bottom margin before footer */
+  max-width: 1200px;
+  box-sizing: border-box;
 }
 
-/* Each column/card wrapper */
-.column-new {
+.service-item {
   flex: 1 1 300px;
-  max-width: 340px;
+  max-width: 360px;
+  min-width: 280px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
 
-/* Card style */
-.card-new {
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  padding: 35px 30px;
-  width: 100%;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
+.service-text h2 {
+  font-family: 'At Hauss Std Semibold', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
 }
 
-.card-new:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(17, 69, 111, 0.2); /* warm shadow */
-}
-
-/* Icon styling */
-.card-new svg {
-  margin-bottom: 20px;
-  width: 60px;
-  height: 60px;
-  fill: #11456F; /* dark blue */
-}
-
-/* Title */
-.card-new h2 {
-  font-size: 22px;
-  color: #11456F;
-  margin-bottom: 12px;
-  font-family: 'At Hauss Std Semibold';
-}
-
-/* Description */
-.card-new p {
-  font-family: 'At Hauss Std Light';
-  font-size: 18px;
-  color: #333;
+.service-text p {
+  font-family: 'At Hauss Std Light', sans-serif;
+  font-size: 1rem;
   line-height: 1.6;
-  margin: 0;
+  margin-bottom: 20px;
 }
 
-/* Links (button look) */
-.card-new a {
+.service-text a {
   display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  border: 2px solid #11456F;
+  padding: 10px 24px;
+  border: 1.5px solid black;
   border-radius: 50px;
-  color: #11456F;
-  font-weight: 600;
   text-decoration: none;
-  transition: all 0.3s ease;
+  font-weight: 500;
+  color: black;
+  font-size: 0.95rem;
+  transition: background 0.25s ease-in-out;
 }
 
-.card-new a:hover {
-  background: #11456F;
+.service-text a:hover {
+  background: black;
   color: white;
-  border-color: #11456F;
 }
+
 
 
 
