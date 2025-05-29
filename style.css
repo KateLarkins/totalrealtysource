@@ -1157,70 +1157,110 @@ footer {
 /* Media Queries */
 /* Index.html */
 
-/* Original navbar styles for large screens */
-.topnav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
-  width: 100%; /* Ensures it stretches across the full page */
-}
-
-/* Layout adjustments for small screens */
+/* Original navbar styles for large screens *//* Navbar Media Queries */
 @media (max-width: 768px) {
+  /* Stack logo, Menu, and hamburger vertically */
   .topnav {
+    display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    width: 100%; /* Ensures full width for small screens */
     background-color: white;
-    width: 100%;
-    position: relative; /* Ensures navbar is not fixed on scroll */
   }
 
-  /* Hamburger menu and "Menu" text on small screens */
+  /* Logo styling */
+  .links-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .links-row a {
+    margin-bottom: 20px; /* Add space between logo and the menu */
+  }
+
+  /* Ensure Hamburger Menu and "Menu" text only show on small screens */
   .hamburger-menu {
     display: flex;
     align-items: center;
     cursor: pointer;
     padding: 10px;
-  }
-
-  /* Hide the nav-links by default on small screens */
-  .nav-links {
-    display: none; /* Hidden by default */
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    margin-top: 10px;
   }
 
-  .nav-links.active {
-    display: flex; /* Display nav links when the menu is toggled */
+  .hamburger-menu span {
+    margin-bottom: 5px; /* Space between the text and hamburger icon */
   }
 
   /* Vertical Hamburger Icon */
   .hamburger-icon {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 3px;
     cursor: pointer;
   }
 
   .hamburger-icon div {
     width: 30px;
     height: 4px;
+    font-weight: 100;
     background-color: black;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  /* When hamburger is clicked, turn into "X" */
+  .hamburger-icon.active div:nth-child(1) {
+    transform: rotate(45deg);
+    position: relative;
+    top: 8px;
+  }
+
+  .hamburger-icon.active div:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-icon.active div:nth-child(3) {
+    transform: rotate(-45deg);
+    position: relative;
+    bottom: 8px;
+  }
+
+  /* Hide nav-links by default on small screens */
+  .nav-links {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Ensures nav links stretch across the full width */
+    margin-top: 10px;
+  }
+
+  /* Display nav-links when active */
+  .nav-links.active {
+    display: flex;
+    background-color: white;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+
+  .nav-link {
+    font-size: 17px;
+    padding: 10px;
+    text-align: center;
   }
 }
 
-/* Keep the hamburger menu hidden on large screens */
+
+/* Hide Hamburger Menu on large screens */
 @media (min-width: 769px) {
   .hamburger-menu {
-    display: none; /* Hide hamburger on larger screens */
+    display: none; /* Hide on large screens */
   }
-}
-
-
+} 
 
 /* Section 1- slot header and kitchen picture */
 @media (max-width: 1024px) {
@@ -1508,96 +1548,6 @@ footer {
   .search-bar select,
   .search-bar button {
     width: 100%;
-  }
-}
-
-/* Navbar Media Queries */
-@media (max-width: 768px) {
-  .topnav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    width: 100%;
-    background-color: white;
-  }
-
-  .links-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  .links-row a {
-    margin-bottom: 20px;
-  }
-
-  .hamburger-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    cursor: pointer;
-  }
-
-  .hamburger-menu span {
-    margin-bottom: 5px;
-  }
-
-  .hamburger-icon {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    cursor: pointer;
-  }
-
-  .hamburger-icon div {
-    width: 30px;
-    height: 4px;
-    font-weight: 100;
-    background-color: black;
-    transition: transform 0.3s, opacity 0.3s;
-  }
-
-  .hamburger-icon.active div:nth-child(1) {
-    transform: rotate(45deg);
-    position: relative;
-    top: 8px;
-  }
-
-  .hamburger-icon.active div:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger-icon.active div:nth-child(3) {
-    transform: rotate(-45deg);
-    position: relative;
-    bottom: 8px;
-  }
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-top: 10px;
-  }
-  .nav-links.active {
-    display: flex;
-    background-color: white;
-    padding: 20px;
-    width: 100%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  }
-  .nav-link {
-    font-size: 17px;
-    padding: 10px;
-    text-align: center;
-  }
-}
-/* Hide Hamburger Menu on large screens */
-@media (min-width: 769px) {
-  .hamburger-menu {
-    display: none;
   }
 }
 
