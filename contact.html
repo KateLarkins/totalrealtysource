@@ -210,6 +210,19 @@
       <hr class="my-3">
     </div>
   </footer>
+  <script>
+    function toggleNav() {
+      const navLinks = document.getElementById("navLinks");
+      navLinks.classList.toggle("active");
+  
+      // Toggle display of nav links when clicked
+      if (navLinks.classList.contains("active")) {
+        navLinks.style.display = "flex";
+      } else {
+        navLinks.style.display = "none";
+      }
+    }
+  </script>
 
 </body>
 </html>
