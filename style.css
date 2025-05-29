@@ -732,7 +732,7 @@ body {
 .agent-description {
   margin: 10%;
   line-height: 1.5em;
-  font-size: 15px;
+  font-size: 17px;
   font-family: 'At Hauss Std Light';
   color: rgb(0, 0, 0);
   text-align:center;
@@ -1608,12 +1608,13 @@ footer {
   border-radius: 8px;
 }
 
+
 .agent-details h3 {
   font-family: 'At Hauss Std Semibold';
   font-size: 26px;
   margin-bottom: 5px;
 }
-.agent-details h3 {
+.agent-details p {
   font-family: 'At Hauss Std Semibold';
   font-size: 26px;
   margin-bottom: 5px;
