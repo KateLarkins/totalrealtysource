@@ -348,6 +348,45 @@ iframe {
   margin: 6px;
  
 }
+@media (max-width: 768px) {
+  .services-new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+
+  .service-item {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .service-text h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .service-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+
+  .service-text a {
+    display: inline-block;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 50px;
+    background: transparent;
+    color: black;
+    font-weight: 500;
+    text-decoration: none;
+  }
+}
 
 @media (max-width: 768px) { /* Adjust breakpoint as needed */
   .listing-item {
