@@ -1304,7 +1304,7 @@ footer {
 
 /* Fix for the X button */
 .close {
-  color: #aaa;
+  color: rgb(0, 0, 0);
   position: absolute;
   top: 12px;
   right: 20px;
