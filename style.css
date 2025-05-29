@@ -1,29 +1,43 @@
 /* hamburger css */
 /* Navbar layout for larger screens (normal behavior) */
+.topnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background-color: white; /* or your preferred background */
+}
+
+.links-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+/* Force nav-links to the right */
 .nav-links {
   display: flex;
   gap: 50px;
   font-size: 20px;
   background-color: white;
-  margin-right: 20px;
+  margin-left: auto; /* pushes nav-links to the far right */
 }
+
 .topnav .nav-link {
-  /* Your original styles */
   color: black !important;
   font-family: 'At Hauss Std Light';
   text-decoration: none;
 }
 
-/* .topnav {
-  background-image: url('listing/1224.png');
-} */
-/* Hide Hamburger Menu and "Menu" text on large screens */
 .hamburger-menu {
   display: none;
 }
+
 .nav-link:hover {
   color: #f0f0f0 !important;
 }
+
 
 button {
   background: #FBB53C;
@@ -1280,7 +1294,6 @@ footer {
     object-fit: contain;
   }
   
-  /* Adjust text container */
   div[style*="flex: 1; padding: 0; margin-top: 0; display: flex;"] {
     width: 100%;
     padding: 40px;
