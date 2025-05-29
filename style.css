@@ -274,87 +274,111 @@ iframe {
 }
 
 /* Our Services Section */
-
-/* Services styles */
+/* Services section wrapper */
 .services-new {
-  background-color: rgb(242, 246, 248);
+  background-color: #f6f6f6;
+  padding-bottom: 60px;
   text-align: center;
-
 }
 
 .services-new h1 {
-  font-size: 36px; /* Adjust as needed */
+  font-size: 36px;
   color: rgb(0, 0, 0);
   font-weight: 400;
+  margin-bottom: 50px;
 }
 
+/* Flex container */
 .row-new {
   display: flex;
-  flex-wrap: wrap; /* Ensure flex items wrap to the next line */
-  justify-content: center;
-  align-items: stretch;
-}
-
-.column-new {
-  flex: 0 0 100%; /* Each column takes up 100% of the row width by default */
-  margin: 10px; /* Adjust as needed */
-  padding: 20px;
-  box-sizing: border-box; /* Ensure padding is included in the width */
-}
- /* card animation */
- .row-new {
-  display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
+  justify-content: center;
+  gap: 30px;
 }
 
+/* Each column/card wrapper */
 .column-new {
+  flex: 1 1 300px;
+  max-width: 340px;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
+/* Card style */
 .card-new {
-  width: 200px; /* Diameter */
-  height: 200px; /* Diameter */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background-color: #ffffff;
-  border-radius: 50%; /* Makes it circular */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.07);
+  padding: 35px 30px;
+  width: 100%;
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
 .card-new:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
 }
 
+/* Icon styling */
 .card-new svg {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  width: 60px;
+  height: 60px;
+  fill: #11456F;
 }
 
+/* Title */
 .card-new h2 {
-  font-size: 18px;
+  font-size: 22px;
   color: #000;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
+/* Description */
 .card-new p {
   font-family: 'At Hauss Std Light';
-  font-size: 14px;
-  color: #000;
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+  margin: 0;
 }
 
+/* Links */
 .card-new a {
-  text-decoration: none;
+  display: inline-block;
+  margin-top: 15px;
   color: #11456F;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
+
+.card-new a:hover {
+  color: #0d3556;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .services-new h1 {
+    font-size: 28px;
+  }
+
+  .card-new {
+    padding: 25px 20px;
+  }
+
+  .card-new h2 {
+    font-size: 18px;
+  }
+
+  .card-new svg {
+    width: 48px;
+    height: 48px;
+  }
+}
+
 
 .listing-container {
   display: flex;
@@ -1484,10 +1508,6 @@ footer {
     width: 100%; /* Ensures full width for small screens */
     background-color: white;
   }
-  .service-circle-container {
-    text-align: center;
-    justify-content: center;
-  }
 
   /* Logo styling */
   .links-row {
@@ -1581,3 +1601,4 @@ footer {
     display: none; /* Hide on large screens */
   }
 }
+
