@@ -32,7 +32,8 @@
     <link rel="stylesheet" href="style.css">  
   </head>
 
-  <body style="margin:0; padding:0; background-color:#fff8e8; font-family:'At Hauss Std Light', sans-serif; color:#000000; line-height:1.7;">
+  <body style="margin:0; font-family:'At Hauss Std Light'; background-color:#ffffff; color:#000; line-height:1.7;">
+
     <!-- Top Navigation Bar -->
     <div class="topnav">
       <div class="links-row">
@@ -87,73 +88,123 @@
         <a href="contact.html" class="nav-link">Contact</a>
       </div>
     </div>
-    
-    <div style="max-width:840px; margin:0 auto; padding:50px 30px; background-color:#ffffff; box-shadow:0 4px 20px rgba(0,0,0,0.05); font-family:'At Hauss Std Light'; color:#000000; line-height:1.6; margin-top:30px; margin-bottom:30px;">
-
-      <!-- Header -->
-      <h1 style="font-family:'At Hauss Std Semibold'; font-size:32px; margin-bottom:20px;">Our Corner of Medina</h1>
-      <p style="font-size:17px; margin-bottom:24px; font-family:'At Hauss Std Light';">
-        Nestled in the heart of downtown Medina, Tennessee, our little office sits quietly among brick sidewalks and familiar storefronts. To us, it's more than a building—it's a part of the community's rhythm. We’re neighbors first, agents second. If you’ve ever strolled down Main Street just after a rain or watched the sun lower behind the trees in the evening hush, you know what we mean.
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: 'At Hauss Std Light';
+        background-color: #ffffff;
+        color: #000;
+        line-height: 1.7;
+      }
+      .fade-in {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.6s ease-out;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+  
+    <!-- Top Decorative Dots Section -->
+    <div style="width:100%; height:140px; background:
+      linear-gradient(135deg, transparent 40%, #ffffff 40%),
+      radial-gradient(#1d5b8c 1.5px, transparent 1.5px);
+      background-size: cover, 24px 24px;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%);
+      ">
+    </div>
+  
+    <!-- Hero Section -->
+    <section class="fade-in" style="text-align:center; padding:40px 20px 20px; max-width:800px; margin:0 auto;">
+      <h1 style="font-family:'At Hauss Std Semibold'; font-size:36px; margin-bottom:12px; line-height:1.3;">Our Corner of Medina</h1>
+      <p style="font-size:20px; max-width:650px; margin:0 auto; color:#333; font-family: 'At Hauss Std Light';">
+        Tucked away in downtown Medina, our office isn't just where we work — it's where stories begin.
       </p>
-    
-      <!-- Downtown Image -->
-      <div style="text-align:center; margin:40px 0;">
-        <img src="Office/Medina.jpg" alt="Downtown Medina" style="width:100%; max-width:600px; height:auto; aspect-ratio:3/2; object-fit:cover; display:block; margin:0 auto;">
-        <p style="font-size:16px; font-style:italic; margin-top:10px; font-family:'At Hauss Std Light';">A quiet view from the street where we belong.</p>
+      <div style="width:50px; height:3px; background-color:#FCB741; margin:20px auto 0;"></div>
+    </section>
+  
+    <!-- Article Body -->
+    <main style="max-width:900px; margin:0 auto; padding:20px 24px 60px; background-color:#ffffff;">
+  
+      <!-- Background dots behind this section -->
+      <div class="fade-in" style="padding:32px; background:
+        radial-gradient(#1d5b8c22 1.5px, transparent 1.5px);
+        background-size: 20px 20px; border-radius:12px; margin-bottom:40px;">
+  
+        <p style="font-size:18px; margin:0;font-family: 'At Hauss Std Light';">
+          Nestled in the heart of downtown Medina, Tennessee, our little office sits quietly among brick sidewalks and familiar storefronts. To us, it's more than a building—it's part of the town’s rhythm. We’re neighbors first, agents second. If you’ve ever strolled down Main Street just after a rain or watched the sun dip behind the trees in the evening hush, you know what we mean.
+        </p>
       </div>
-    
-      <!-- Office Image -->
-      <div style="text-align:center; margin:40px 0;">
-        <img src="contact.png/contacttwo.png" alt="Inside Our Office" style="width:100%; max-width:500px; height:auto; object-fit:cover; border-radius:4px;">
-      </div>
-    
-      <!-- Who We Are -->
-      <h2 style="font-family:'At Hauss Std Semibold'; font-size:24px; margin-bottom:12px;">This is Home</h2>
-      <p style="font-size:17px; margin-bottom:16px; font-family:'At Hauss Std Light';">
+  
+      <img class="fade-in" src="Office/Medina.jpg" alt="Downtown Medina" style="width:100%; max-width:700px; display:block; margin:0 auto 12px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+      <p style="font-size:16px; font-style:italic; text-align:center; margin-bottom:32px;font-family: 'At Hauss Std Light';">A quiet view from the street where we belong.</p>
+  
+      <p class="fade-in" style="font-size:18px; margin-bottom:28px;font-family: 'At Hauss Std Light';">
+        Inside, it’s warm. You’ll hear a door creak open, someone laugh from the back room, and maybe catch the scent of coffee brewing. You won’t find marble floors or a receptionist desk — just people who care deeply about helping you find your place here, too.
+      </p>
+  
+      <img class="fade-in" src="contact.png/contacttwo.png" alt="Inside Our Office" style="width:100%; max-width:600px; display:block; margin:0 auto 40px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.08);">
+  
+      <h2 class="fade-in" style="font-family:'At Hauss Std Semibold'; font-size:26px; margin-bottom:12px;">This Is Home</h2>
+  
+      <p class="fade-in" style="font-size:18px; margin-bottom:24px;font-family: 'At Hauss Std Light';">
         Medina may be a small town, but it carries a big heart. It’s where porch lights still flicker at dusk, where names are remembered, and kindness is an everyday thing.
       </p>
-      <p style="font-size:17px; margin-bottom:16px; font-family:'At Hauss Std Light';">
-        Our office reflects that spirit. Whether you’re walking in for the first time or stopping by to say hello, we hope it feels like home. We take our time, we listen closely, and we treat your hopes as if they were our own.
-      </p>
-      <p style="font-size:17px; margin-bottom:30px; font-family:'At Hauss Std Light';">
-        The walls of this place carry laughter, late-night planning, and coffee shared with clients who became lifelong friends. It’s not flashy. But it’s warm—and we think that’s what matters.
-      </p>
-    
-      <!-- Business Hours -->
-      <h3 style="font-family:'At Hauss Std Semibold'; font-size:20px; margin-bottom:10px;">Business Hours</h3>
-      <p style="font-size:16px; margin:0; font-family:'At Hauss Std Light';">Monday – Friday: 9:00 AM – 5:00 PM</p>
-      <p style="font-size:16px; margin-bottom:30px; font-family:'At Hauss Std Light';">Reach out any time. We're here for you.</p>
-    
-      <!-- Visit Us -->
-      <h3 style="font-family:'At Hauss Std Semibold'; font-size:20px; margin-bottom:10px;">Come Visit</h3>
-      <p style="font-size:16px; margin-bottom:30px; font-family:'At Hauss Std Light';">
-        Our doors open just off the square in downtown Medina. Look for a blue door and maybe a few flowers on the step. Come as you are—we’re ready when you are.
-      </p>
-    
-      <!-- Social Media -->
-      <h3 style="font-family:'At Hauss Std Semibold'; font-size:20px; margin-bottom:10px;">Connect with Us</h3>
-      <p style="font-size:16px; margin-bottom:40px;">
-        <a href="https://www.facebook.com/Totalrealtysource" style="color:#000000; text-decoration:underline; font-family:'At Hauss Std Light';">Facebook</a> |
-        <a href="https://www.instagram.com/Totalrealtysource" style="color:#000000; text-decoration:underline; font-family:'At Hauss Std Light';">Instagram</a>
-      </p>
-    
-      <!-- Team Photo -->
-      <div style="text-align:center; margin:40px 0;">
-        <img src="coffee.png/coffee.png" alt="Our Team" style="width:100%; max-width:600px; height:auto; object-fit:cover; border-radius:4px;">
-        <p style="font-size:16px; font-style:italic; margin-top:10px; font-family:'At Hauss Std Light';">The heart behind every handshake—our dedicated team, always here for you.</p>
+  
+      <div class="fade-in" style="padding:20px; background:
+        radial-gradient(#1d5b8c15 1.5px, transparent 1.5px);
+        background-size: 20px 20px; border-left:4px solid #023E6C; margin-bottom:32px; border-radius:8px;">
+        <p style="font-size:18px; margin:0;font-family: 'At Hauss Std Light';">
+          The walls of this place carry laughter, late-night planning, and coffee shared with clients who became lifelong friends. It’s not flashy. But it’s warm — and we think that’s what matters.
+        </p>
       </div>
-    
-      <!-- Closing -->
-      <p style="font-size:16px; font-style:italic; margin-bottom:10px; font-family:'At Hauss Std Light';">
-        From one Medina heart to another — thank you for letting us be a small part of your big story.
+  
+      <h3 class="fade-in" style="font-family:'At Hauss Std Semibold'; font-size:22px; margin-bottom:8px;">Business Hours</h3>
+      <p style="font-size:16px; margin:0;font-family: 'At Hauss Std Light';">Monday – Friday: 9:00 AM – 5:00 PM</p>
+      <p style="font-size:16px; margin-bottom:28px;font-family: 'At Hauss Std Light';">Reach out any time. We're here for you.</p>
+  
+      <h3 class="fade-in" style="font-family:'At Hauss Std Semibold'; font-size:22px; margin-bottom:8px;">Come Visit</h3>
+      <p style="font-size:16px; margin-bottom:24px;font-family: 'At Hauss Std Light';">Our doors open just off the square in downtown Medina. Look for a blue door and maybe a few flowers on the step. Come as you are — we’re ready when you are.</p>
+  
+      <h3 class="fade-in" style="font-family:'At Hauss Std Semibold'; font-size:22px; margin-bottom:8px;">Connect With Us</h3>
+      <p style="font-size:16px; margin-bottom:24px;">
+        <a href="https://www.facebook.com/Totalrealtysource" style="color:#1d5b8c; text-decoration:underline;font-family: 'At Hauss Std Light';">Facebook</a> |
+        <a href="https://www.instagram.com/Totalrealtysource" style="color:#1d5b8c; text-decoration:underline;font-family: 'At Hauss Std Light';">Instagram</a>
       </p>
-      <p style="font-size:18px; font-family:'At Hauss Std Semibold';">
-        We love where we live. We hope you will too.
-      </p>
+  
+      <img class="fade-in" src="coffee.png/coffee.png" alt="Our Team" style="width:100%; max-width:700px; display:block; margin:40px auto 0; border-radius:12px; box-shadow:0 6px 12px rgba(0,0,0,0.1);">
+    </main>
+  
+    <!-- Bottom Decorative Dots Section -->
+    <div style="width:100%; height:140px; background:
+      linear-gradient(-135deg, transparent 40%, #ffffff 40%),
+      radial-gradient(#1d5b8c 1.5px, transparent 1.5px);
+      background-size: cover, 24px 24px;
+      clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%);
+      ">
     </div>
-    
-    
-    
+  
+    <script>
+      // Simple fade-in animation on scroll
+      const faders = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+  
+      faders.forEach(el => observer.observe(el));
+    </script>
+    </body>
 
   <!-- Footer (Optional) -->
   <footer class="text-center text-lg-start text-white" style="background-color:#023E6C; font-family: 'At Hauss Std Semibold'; ">
