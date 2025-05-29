@@ -679,7 +679,7 @@
       <img src="listing/cotton.png" alt="Property 2">
       <div class="property-details">
           <h3>98 Cotton Ridge Drive, Jackson, TN 38305</h3>
-          <p class="price">$830,000</p>
+          <p class="price">$262,000</p>
           <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button onclick="openModal('cotton-ridgeModal')" style="background-color: white; margin-left: 4%;">More Information</button></p>
       </div>
     </div>
@@ -730,7 +730,7 @@
         <!-- Property Overview -->
         <div style="margin-bottom: 25px;">
           <h2 style="margin-bottom: 5px; font-family:'At Hauss Std Semibold'; font-size: 25px;">98 Cotton Ridge Drive, Jackson, TN 38305</h2>
-          <p style="font-size: 23px; font-weight: bold; margin: 5px 0 10px; font-family:'At Hauss Std Light'">$830,000</p>
+          <p style="font-size: 23px; font-weight: bold; margin: 5px 0 10px; font-family:'At Hauss Std Light'">$262,000</p>
     
           <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 1em; font-family:'At Hauss Std Light'">
             <div><strong>Beds:</strong> 3</div>
@@ -808,22 +808,324 @@
     </div>
     </div>
     </div>
+
+
     <div class="property-widget">
       <img src="listing/1902.png" alt="Property 2">
       <div class="property-details">
           <h3>1902 S College Street, Trenton, TN 38382</h3>
           <p class="price">$830,000</p>
-          <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="">More Information</a></button></p>
+          <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a> <button onclick="openModal('college-streetModal')" style="background-color: white; margin-left: 4%;">More Information</button></p>
       </div>
     </div>
+    <div id="college-streetModal" class="modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+      <div class="modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
+    
+      <!-- Close Button -->
+      <span class="close" onclick="closeModal()" style="color: #aaa; position: absolute; top: 15px; right: 25px; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+    
+      <!-- Carousel -->
+      <div class="carousel" style="position: relative; margin-bottom: 20px;">
+    
+      <!-- For Sale Badge -->
+      <div style="position: absolute; top: 15px; left: 15px; background-color: rgba(255, 255, 255, 0.85); padding: 6px 14px; border-radius: 20px; font-size: 16px; font-family: 'At Hauss Std Semibold'; display: flex; align-items: center; gap: 8px; z-index: 10;">
+        <span style="display:inline-block; width:13px; height:13px; background-color:green; border-radius:50%;"></span>
+        <span>For Sale</span>
+      </div>
+    
+      <!-- Image Slides -->
+      <img class="slide" src="listing/1902.png" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111819765367000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111821488248000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111835035879000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111836261175000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111838066957000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111839704128000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111841671956000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111823652076000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111825677770000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111828074802000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111829349321000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111831396658000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111833147904000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111843938009000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111846011045000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111848156180000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111849611244000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111851720254000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111853008811000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111854952881000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111856174605000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111857473434000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111859250170000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111900810553000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111902551390000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111904836937000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111906134290000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111908246741000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111909942704000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111911261680000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111912984422000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111915108862000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111917167607000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111919426598000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111921960085000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111923766214000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111925831135000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111927427118000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111929023655000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111930111709000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111931972324000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111933833111000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111935366387000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111936992725000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111938308911000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250423111939606499000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="College-Street/20250422212501863870000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      
+
+
+          
+    
+      <!-- Carousel Arrows -->
+      <button onclick="plusSlides(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); font-size: 24px; background: none; border: none; cursor: pointer;">❮</button>
+      <button onclick="plusSlides(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); font-size: 24px; background: none; border: none; cursor: pointer;">❯</button>
+    </div>
+    
+        <!-- Property Overview -->
+        <div style="margin-bottom: 25px;">
+          <h2 style="margin-bottom: 5px; font-family:'At Hauss Std Semibold'; font-size: 25px;">1902 S College Street, Trenton, TN 38382</h2>
+          <p style="font-size: 23px; font-weight: bold; margin: 5px 0 10px; font-family:'At Hauss Std Light'">$830,000</p>
+    
+          <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 1em; font-family:'At Hauss Std Light'">
+            <div><strong>Beds:</strong> 3</div>
+            <div><strong>Baths:</strong> 2 (2 Full, 0 Half)</div>
+            <div><strong>Sqft:</strong> 3,482</div>
+            <div><strong>Lot:</strong> 22.5 acres</div>
+            <div><strong>Year Built:</strong> 1957</div>
+            <div><strong>Style:</strong> Single Family Residence</div>
+            <div><strong>Pool:</strong> Yes</div>
+            <div><strong>Garage:</strong> No garage, 2-car carport, 10 total parking spaces</div>
+          </div>          
+          </div>
+    
+        <!-- Features Section -->
+        <div style="margin-bottom: 25px;">
+          <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;font-family:'At Hauss Std Semibold';">Key Features</h3>
+          <ul style="list-style: none; padding-left: 0; column-count: 2; gap: 20px; margin: 0;">
+            <li><strong>Cooling:</strong> Ceiling Fan(s), Central Air, Electric</li>
+            <li><strong>Heating:</strong> Central, Forced Air, Natural Gas</li>
+            <li><strong>Fireplaces:</strong> 0 (Living Room)</li>
+            <li><strong>Exterior:</strong> Brick, Rain Gutters</li>
+            <li><strong>Interior:</strong> Blown/Textured Ceilings, Ceiling Fan(s), Eat-in Kitchen, Fiber Glass Shower, Laminate Counters, Pantry, Primary Downstairs, Tub Shower Combo</li>
+            <li><strong>Kitchen:</strong> Laminate Counters, Kitchen Island, Single-Basin Sink, Dishwasher, Electric Range, Microwave, Microwave Vent Hood, Gas Water Heater, Pantry</li>
+            <li><strong>Parking:</strong> Attached, Driveway, Garage, Garage Door Opener, Garage Faces Front, Open Parking (2 spaces)</li>
+            <li><strong>Basement:</strong> No</li>
+            <li><strong>Additional Structures:</strong> Shed(s)</li>
+            <li><strong>Garage:</strong> 2-Car Garage, Attached</li>
+            <li><strong>Water & Sewer:</strong> Public Water, Public Sewer</li>
+          </ul>               
+        </div>
+    
+        <!-- Description Section -->
+        <div style="margin-bottom: 25px;">
+          <h3 style="border-bottom: 1px solid #ccc; padding-top: 1px; font-family:'At Hauss Std Semibold'">Property Description</h3>
+          <p style="line-height: 1.6; margin-top: 15px; font-family:'At Hauss Std Light';">
+            Welcome to "Oaklea Farm", where timeless architecture blends with unique potential...a rare offering of character, versatility, and future opportunity! Nestled on 22.5 scenic acres at the corner of College St & Industrial Blvd in Trenton, TN, this mid-century modern ranch is a rare gem! This 3BR/2BA home exudes timeless character with wood, stone, and brick construction, flagstone and hardwood floors, vaulted ceilings with exposed beams, and a double-sided masonry fireplace in the sunroom and den. 
+          </p>
+          <p style="line-height: 1.6; margin-top: 15px; font-family:'At Hauss Std Light';">
+            The circular drive leads to a 2-car carport with a built-in potting station featuring custom cabinetry, tiled workspace., and sink. Enjoy a beautifully remodeled kitchen (approx. 2005) with granite counters, custom cabinetry, dual sinks, built-in SubZero fridge, a separate Dacor cooktop. Outside, relax by the 20x42 in-ground pool (liner ~4 yrs old), entertain in the 36x20 pool house with kitchenette and wood stove (also has 2 full baths), or explore the picturesque pond and creek lined by split rail fencing.
+          </p>
+          <p style="line-height: 1.6; margin-top: 15px; font-family:'At Hauss Std Light';">
+            The 36x20 pool house features two full baths, a kitchenette, and a spacious great room with a wood stove — offering incredible potential to convert into a loft-style guest house, studio, or ADU (Accessory Dwelling Unit) with minimal modification. Outbuildings include: 20x20 wired shop, 18x32 dairy barn, 48x78 loft barn, 22x80 implement shed, metal storage, 2 grain silos, and 2 pole barns—perfect for hobby farming or storage. With a mix of vintage charm and practical space, this one-of-a-kind property is a true legacy estate! The rear section along Industrial Blvd presents exceptional commercial real estate potential, making this property ideal for mixed-use development, hobby farming, or as a private estate. Priced at recent appraised value. Owner willing to subdivide.
+          </p>
+        </div>
+    
+    <!-- Agent + Share Section -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-top: 1px solid #ccc; padding-top: 20px; gap: 20px;">
+    
+      <!-- Column 1: Agent Info -->
+      <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
+        <img src="agent/amywork.png" alt="Amy McLemore" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
+        <div>
+          <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Amy McLemore</strong></p>
+          <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
+          <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 234-0049</p>
+          <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
+        </div>
+      </div>
+    
+      <!-- Column 2: Share Icons + Title -->
+      <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-end; flex: 1 1 200px;">
+        <p style="margin: 0; font-family: 'At Hauss Std Semibold'; font-size: 1rem;">Share this Listing:</p>
+        <div style="display: flex; align-items: center; gap: 15px; margin-top: 5px;">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://totalrealtysource.com/college-street.html"
+          target="_blank" title="Share on Facebook" style="color:#3b5998; font-size: 1.8rem;">
+         <i class="fa fa-facebook-official"></i>
+       </a>
+       
+       <a href="https://www.instagram.com/totalrealtysource"
+          target="_blank" title="View on Instagram" style="color:#e1306c; font-size: 1.8rem;">
+         <i class="fa fa-instagram"></i>
+       </a>
+       
+       <a href="mailto:?subject=Check out this listing&body=Take a look at this property: https://totalrealtysource.com/college-street.html"
+          title="Share by Email" style="color:#007bff; font-size: 1.8rem;">
+         <i class="fa fa-envelope"></i>
+       </a>
+       
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+
+
     <div class="property-widget">
       <img src="lostcreek.png/lostcreek.png" alt="Property 2">
       <div class="property-details">
           <h3>316 Lost Creek Boat Dock Rd, Decaturville, TN 38329</h3>
           <p class="price">$199,900</p>
-          <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a> <button style="text-decoration:none;  background-color: white; margin-left: 4%;"><a class="more" style="text-decoration:none;padding:15px; color:black; background-color:none; font-family:'At Hauss Std Light';" href="https://www.realtor.com/realestateandhomes-detail/M8035169321">More Information</a></button></p>
+          <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley McMillan</a> <button onclick="openModal('lost-creekModal')" style="background-color: white; margin-left: 4%;">More Information</button></p>
          
       </div>
+    </div>
+    <div id="lost-creekModal" class="modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+      <div class="modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
+    
+      <!-- Close Button -->
+      <span class="close" onclick="closeModal()" style="color: #aaa; position: absolute; top: 15px; right: 25px; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+    
+      <!-- Carousel -->
+      <div class="carousel" style="position: relative; margin-bottom: 20px;">
+    
+      <!-- For Sale Badge -->
+      <div style="position: absolute; top: 15px; left: 15px; background-color: rgba(255, 255, 255, 0.85); padding: 6px 14px; border-radius: 20px; font-size: 16px; font-family: 'At Hauss Std Semibold'; display: flex; align-items: center; gap: 8px; z-index: 10;">
+        <span style="display:inline-block; width:13px; height:13px; background-color:green; border-radius:50%;"></span>
+        <span>For Sale</span>
+      </div>
+    
+      <!-- Image Slides -->
+      <img class="slide" src="Lost-Creek/20250430164859466270000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430164903587328000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430164906859112000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430164909360524000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430164913215547000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430164917173197000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430164920832411000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430164924440265000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430164928129259000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430164931707262000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430164935443552000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430164938922683000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430164942661946000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430164946223159000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430164949628983000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430164953093849000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430164956213176000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430164959387075000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430165003173981000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430165006598206000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430165009738294000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250430165013031057000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250428121929923001000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250428121932129135000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250428121934139782000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250428121935938722000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="Lost-Creek/20250428121945478669000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      
+   
+      
+
+
+          
+    
+      <!-- Carousel Arrows -->
+      <button onclick="plusSlides(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); font-size: 24px; background: none; border: none; cursor: pointer;">❮</button>
+      <button onclick="plusSlides(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); font-size: 24px; background: none; border: none; cursor: pointer;">❯</button>
+    </div>
+    
+        <!-- Property Overview -->
+        <div style="margin-bottom: 25px;">
+          <h2 style="margin-bottom: 5px; font-family:'At Hauss Std Semibold'; font-size: 25px;">316 Lost Creek Boat Dock Rd, Decaturville, TN 38329</h2>
+          <p style="font-size: 23px; font-weight: bold; margin: 5px 0 10px; font-family:'At Hauss Std Light'">$199,900</p>
+    
+          <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 1em; font-family:'At Hauss Std Light'">
+            <div><strong>Beds:</strong> 3</div>
+            <div><strong>Baths:</strong> 2 (2 Full, 0 Half)</div>
+            <div><strong>Sqft:</strong> 918</div>
+            <div><strong>Lot:</strong> 75x100 (0 Acres)</div>
+            <div><strong>Year Built:</strong> 1970</div>
+            <div><strong>Style:</strong> Single Family Residence</div>
+            <div><strong>Pool:</strong> No</div>
+            <div><strong>Garage:</strong> No garage, 2-car carport, 2 total parking spaces</div>
+          </div>                
+          </div>
+    
+        <!-- Features Section -->
+        <div style="margin-bottom: 25px;">
+          <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;font-family:'At Hauss Std Semibold';">Key Features</h3>
+          <ul style="list-style: none; padding-left: 0; column-count: 2; gap: 20px; margin: 0;">
+            <li><strong>Cooling:</strong> Ceiling Fan(s), Central Air, Electric</li>
+            <li><strong>Heating:</strong> Central, Forced Air, Natural Gas</li>
+            <li><strong>Fireplaces:</strong> No</li>
+            <li><strong>Exterior:</strong> Painted Exterior, New Gutters & Shutters, Privacy Fence, Carport Awning</li>
+            <li><strong>Interior:</strong> New LVP in Bedrooms, Painted Walls & Ceilings, Ceiling Fans, Custom Kitchen Cabinets, Quartz Countertops</li>
+            <li><strong>Kitchen:</strong> Quartz Counters, Custom Cabinets, Electric Range, Dishwasher, Microwave Vent Hood, Single-Basin Sink</li>
+            <li><strong>Parking:</strong> Carport; Open (2 Spaces)</li>
+            <li><strong>Basement:</strong> No</li>
+            <li><strong>Additional Structures:</strong> Shed(s)</li>
+            <li><strong>Garage:</strong> No</li>
+            <li><strong>Water & Sewer:</strong> Public Water, Septic</li>
+          </ul>
+                       
+        </div>
+    
+        <!-- Description Section -->
+        <div style="margin-bottom: 25px;">
+          <h3 style="border-bottom: 1px solid #ccc; padding-top: 1px; font-family:'At Hauss Std Semibold'">Property Description</h3>
+          <p style="line-height: 1.6; margin-top: 15px; font-family:'At Hauss Std Light';">
+          Welcome to your serene sanctuary nestled along the banks of the picturesque Beech River. This cozy river house offers an unparalleled escape from the hustle and bustle of everyday life, inviting you to unwind amidst nature's splendor on the 24x16 screened porch. Hurry fast to see this gem before it's gone. Home has had many updates including new privacy fence, exterior painted, new gutters and shutters, new carport awning, all pipes and water heater insulated, new LVP flooring in all bedrooms, ceiling and walls painted, new custom cabinets in the kitchen with quartz countertops, new ceiling fans, septic and generator. Make this your own private home or consider making this a money making airbnb.
+          </p>
+        </div>
+    
+    <!-- Agent + Share Section -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-top: 1px solid #ccc; padding-top: 20px; gap: 20px;">
+    
+      <!-- Column 1: Agent Info -->
+      <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
+        <img src="agent/Ashley.png" alt="Ashley McMillan" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
+        <div>
+          <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Ashley McMillan</strong></p>
+          <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
+          <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 414-0317</p>
+          <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
+        </div>
+      </div>
+    
+      <!-- Column 2: Share Icons + Title -->
+      <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-end; flex: 1 1 200px;">
+        <p style="margin: 0; font-family: 'At Hauss Std Semibold'; font-size: 1rem;">Share this Listing:</p>
+        <div style="display: flex; align-items: center; gap: 15px; margin-top: 5px;">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://totalrealtysource.com/lost-creek.html"
+          target="_blank" title="Share on Facebook" style="color:#3b5998; font-size: 1.8rem;">
+         <i class="fa fa-facebook-official"></i>
+       </a>
+       
+       <a href="https://www.instagram.com/totalrealtysource"
+          target="_blank" title="View on Instagram" style="color:#e1306c; font-size: 1.8rem;">
+         <i class="fa fa-instagram"></i>
+       </a>
+       
+       <a href="mailto:?subject=Check out this listing&body=Take a look at this property: https://totalrealtysource.com/lost-creek.html"
+          title="Share by Email" style="color:#007bff; font-size: 1.8rem;">
+         <i class="fa fa-envelope"></i>
+       </a>
+       
+        </div>
+      </div>
+    </div>
+    </div>
     </div>
     <div class="property-widget">
       <img src="listing/conner.png" alt="Property 2">
