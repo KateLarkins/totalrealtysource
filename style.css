@@ -1486,6 +1486,7 @@ footer {
   }
   .service-circle-container {
     text-align: center;
+    justify-content: center;
   }
 
   /* Logo styling */
