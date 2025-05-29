@@ -92,14 +92,13 @@
 
 
 <!-- Introduction Video -->
-<div style="width: 100%; height: 100%; background-color: #ffffff; margin: 0; padding: 0; overflow: hidden;">
-  <div class="header-container" style="margin: 0; padding: 0;">
-    <video autoplay muted loop id="background-video" playsinline style="top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; display: block; z-index: 1;">
-      <source src="video/commercial.mp4" type="video/mp4">
-      Your browser does not support the video.
-    </video>
-  </div>
-</div>
+<video autoplay muted loop id="background-video" playsinline preload="auto" poster="video/placeholder.jpg"
+       style="top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; display: block; z-index: 1;">
+  <source src="video/commercial.mp4" type="video/webm">
+  <source src="video/commercial.mp4" type="video/mp4">
+  Your browser does not support the video.
+</video>
+
 
 <style>
   @media (max-width: 768px) {
