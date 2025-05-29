@@ -1492,17 +1492,15 @@ footer {
 
 /* Navbar Media Queries */
 @media (max-width: 768px) {
-  /* Stack logo, Menu, and hamburger vertically */
   .topnav {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    width: 100%; /* Ensures full width for small screens */
+    width: 100%;
     background-color: white;
   }
 
-  /* Logo styling */
   .links-row {
     display: flex;
     flex-direction: column;
@@ -1511,24 +1509,21 @@ footer {
   }
 
   .links-row a {
-    margin-bottom: 20px; /* Add space between logo and the menu */
+    margin-bottom: 20px;
   }
 
-  /* Ensure Hamburger Menu and "Menu" text only show on small screens */
   .hamburger-menu {
     display: flex;
-    align-items: center;
-    cursor: pointer;
-    padding: 10px;
     flex-direction: column;
     align-items: center;
+    padding: 10px;
+    cursor: pointer;
   }
 
   .hamburger-menu span {
-    margin-bottom: 5px; /* Space between the text and hamburger icon */
+    margin-bottom: 5px;
   }
 
-  /* Vertical Hamburger Icon */
   .hamburger-icon {
     display: flex;
     flex-direction: column;
@@ -1544,7 +1539,6 @@ footer {
     transition: transform 0.3s, opacity 0.3s;
   }
 
-  /* When hamburger is clicked, turn into "X" */
   .hamburger-icon.active div:nth-child(1) {
     transform: rotate(45deg);
     position: relative;
@@ -1554,23 +1548,18 @@ footer {
   .hamburger-icon.active div:nth-child(2) {
     opacity: 0;
   }
-
   .hamburger-icon.active div:nth-child(3) {
     transform: rotate(-45deg);
     position: relative;
     bottom: 8px;
   }
-
-  /* Hide nav-links by default on small screens */
   .nav-links {
-    display: none; /* Hidden by default */
+    display: none;
     flex-direction: column;
     align-items: center;
-    width: 100%; /* Ensures nav links stretch across the full width */
+    width: 100%;
     margin-top: 10px;
   }
-
-  /* Display nav-links when active */
   .nav-links.active {
     display: flex;
     background-color: white;
@@ -1578,22 +1567,19 @@ footer {
     width: 100%;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   }
-  
-
   .nav-link {
     font-size: 17px;
     padding: 10px;
     text-align: center;
   }
 }
-
-
 /* Hide Hamburger Menu on large screens */
 @media (min-width: 769px) {
   .hamburger-menu {
-    display: none; /* Hide on large screens */
+    display: none;
   }
 }
+
 
 
 .services-modern {
