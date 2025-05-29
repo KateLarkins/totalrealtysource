@@ -1484,6 +1484,9 @@ footer {
     width: 100%; /* Ensures full width for small screens */
     background-color: white;
   }
+  .service-circle-container {
+    text-align: center;
+  }
 
   /* Logo styling */
   .links-row {
