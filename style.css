@@ -897,6 +897,26 @@ footer {
     margin: 0 5px; /* Adjust margin as needed */
   }
 }
+@media (max-width: 768px) {
+  footer .row {
+    text-align: center;
+  }
+
+  footer .col-md-3,
+  footer .col-md-2,
+  footer .col-md-4 {
+    margin-top: 30px;
+  }
+
+  footer a,
+  footer p,
+  footer h6 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .row {
     flex-direction: column;
