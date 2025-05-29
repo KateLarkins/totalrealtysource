@@ -223,6 +223,26 @@
       }
     }
   </script>
+ <script>
+  function showDropdown() {
+    document.getElementById('forsale-dropdown').style.display = 'block';
+  }
 
+  function hideDropdown() {
+    document.getElementById('forsale-dropdown').style.display = 'none';
+  }
+</script>
+<script>
+  function toggleNav() {
+    const navLinks = document.getElementById("navLinks");
+    const hamburgerIcon = document.querySelector(".hamburger-icon");
+    
+    // Toggle display of nav links when clicked
+    navLinks.classList.toggle("active");
+
+    // Toggle the X and hamburger icon
+    hamburgerIcon.classList.toggle("active");
+  }
+</script>
 </body>
 </html>
