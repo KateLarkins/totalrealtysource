@@ -283,6 +283,7 @@ iframe {
 .services-new {
   background-color: #f6f6f6;
   padding-bottom: 60px;
+  padding-top: none;
   text-align: center;
 }
 
@@ -292,7 +293,6 @@ iframe {
   font-weight: 400;
   margin-bottom: 50px;
 }
-
 /* Flex container */
 .row-new {
   display: flex;
@@ -313,7 +313,7 @@ iframe {
 .card-new {
   background-color: #ffffff;
   border-radius: 20px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
   padding: 35px 30px;
   width: 100%;
   text-align: center;
@@ -322,8 +322,8 @@ iframe {
 }
 
 .card-new:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(17, 69, 111, 0.2); /* warm shadow */
 }
 
 /* Icon styling */
@@ -331,13 +331,13 @@ iframe {
   margin-bottom: 20px;
   width: 60px;
   height: 60px;
-  fill: #11456F;
+  fill: #11456F; /* dark blue */
 }
 
 /* Title */
 .card-new h2 {
   font-size: 22px;
-  color: #000;
+  color: #11456F;
   margin-bottom: 12px;
   font-family: 'At Hauss Std Semibold';
 }
@@ -345,45 +345,32 @@ iframe {
 /* Description */
 .card-new p {
   font-family: 'At Hauss Std Light';
-  font-size: 15px;
-  color: #444;
+  font-size: 18px;
+  color: #333;
   line-height: 1.6;
   margin: 0;
 }
 
-/* Links */
+/* Links (button look) */
 .card-new a {
   display: inline-block;
-  margin-top: 15px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: 2px solid #11456F;
+  border-radius: 50px;
   color: #11456F;
   font-weight: 600;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .card-new a:hover {
-  color: #0d3556;
+  background: #11456F;
+  color: white;
+  border-color: #11456F;
 }
 
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  .services-new h1 {
-    font-size: 28px;
-  }
 
-  .card-new {
-    padding: 25px 20px;
-  }
-
-  .card-new h2 {
-    font-size: 18px;
-  }
-
-  .card-new svg {
-    width: 48px;
-    height: 48px;
-  }
-}
 
 
 .listing-container {
@@ -1609,4 +1596,109 @@ footer {
 }
 
 
-/* Test media queries */
+.services-modern {
+  padding: 60px 20px;
+  background: #023E6C;
+  text-align: center;
+}
+
+.services-title a {
+  font-family: 'At Hauss Std Semibold';
+  font-size: 40px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.service-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  width: 300px;
+  height: 380px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  background: white;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+}
+
+.service-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  background: rgba(17, 69, 111, 0.85);
+  color: white;
+  width: 100%;
+  padding: 25px 20px;
+  text-align: left;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  font-family: 'At Hauss Std Light';
+}
+.card-overlay {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  background: rgba(17, 69, 111, 0.75); /* your theme blue with transparency */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.service-card:hover .card-overlay {
+  transform: translateY(0);
+}
+
+.card-overlay h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-family: 'At Hauss Std Semibold';
+}
+
+.card-overlay p {
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-family: At Hauss Std Light;
+}
+
+.card-overlay a {
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  border: 1.5px solid #fff;
+  border-radius: 30px;
+  padding: 8px 18px;
+  font-size: 14px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.card-overlay a:hover {
+  background: #fff;
+  color: #11456F;
+}
+@media (max-width: 768px) {
+  .card-overlay {
+    opacity: 1;
+    transform: translateY(0);
+    background: rgba(17, 69, 111, 0.85); /* fallback for hover color */
+  }
+
+  .service-card:hover .card-overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
