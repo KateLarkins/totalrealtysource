@@ -1,4 +1,12 @@
-/* hamburger css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'At Hauss Std Light';
+  text-decoration: none;
+  opacity: 1; /* Default visible */
+  transition: opacity 0.6s ease-in-out;
+}
+
 /* Navbar layout for larger screens (normal behavior) */
 .topnav {
   display: flex;
@@ -186,15 +194,6 @@ button {
   }
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'At Hauss Std Light';
-  text-decoration: none;
-  opacity: 1; /* Default visible */
-  transition: opacity 0.6s ease-in-out;
-}
-
 #background-video {
   width: 100%;
   height: auto;
@@ -221,7 +220,6 @@ p {
   opacity: 1;
 }
 
-
 /* end */
 iframe {
   flex-wrap: nowrap;
@@ -233,7 +231,6 @@ iframe {
   max-width: 100%;
   margin: 2.5%;
 }
-
 
 /* navbar ends */
 
@@ -342,10 +339,6 @@ iframe {
   color: white;
 }
 
-
-
-
-
 .listing-container {
   display: flex;
   flex-wrap: wrap;
@@ -410,29 +403,6 @@ iframe {
 }
 
 
-
-  @media screen and (max-width: 600px) {
-    .fun-card-top {
-      flex-direction: column;
-    }
-    
-    .fun-card-text {
-      flex: 1 1 100%;
-      padding: 20px;
-      text-align: center;
-    }
-    
-    .fun-buttons {
-      text-align: center;
-    }
-    
-    .fun-buttons a {
-      margin: 5px;
-    }
-  }
-
-
-
 /* Style for the image */
 .listing-item img {
   width: 100%; /* Ensures the image fills its container */
@@ -450,60 +420,6 @@ iframe {
 .listing-item p {
   color: rgb(16, 16, 16); /* White text */
   margin-top: 10px;
-}
-
-/* our teammmm */
-.top-card-container,
-.bottom-card-container {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0; /* Add margin between rows */
-  background-color: #ffffff;
-}
-
-.card-row {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: 30px; /* Add space between the rows */
-  margin-bottom: 30px;
-  background-color: #ffffff;
-}
-
-.fun-card-text {
-  font-family: 'At Hauss Std Light';
-}
-
-.fun-card {
-  flex: 0 0 100%;
-  margin-bottom: 20px;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
-  padding: 3% 5%; /* Combined padding */
-  max-width: calc(100% - 40px); /* Adjust as needed */
-  background-color: #ffffff;
-}
-
-.top-card-container, .bottom-card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  background-color: #ffffff;
-}
-
-.fun-image-container {
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 100%; /* Set height to 100% */
-  background-color:#ffffff;
-}
-.fun-card-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background-color: #ffffff;
 }
 
 /* Default font size */
@@ -747,51 +663,6 @@ iframe {
 }
 
 /* end for sale */
-/* Contact Two */
-/* Contact */
-table {
-  width: 500px;
-  max-height: 50%;
-}
-
-
-/* Contact One */
-.contactcontainer {
-  width:100%;
-  height:100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 100px auto;
-  background-color:#023E6C;
-  background-repeat: none;
-  
-}
-
-
-td {
-  font-size: 20px;
-}
-
-.contact {
-  /* background-image: url(contact.png/contacttwo.png); */
-}
-
-
-.contactleft {
- padding-bottom: 40px;
-}
-.contactright {
-  padding:40px;
-  background-color: #bfcfd8;
-  color: black;
-}
-.contactcontainer p {
-  margin-bottom:40px;
-}
-
-
-
 /* for sale split screen */
 .split-section {
   display: flex;
@@ -1456,8 +1327,6 @@ footer {
   padding: 20px;
   border-radius: 8px;
 }
-
-
 .agent-details h3 {
   font-family: 'At Hauss Std Semibold';
   font-size: 26px;
@@ -1671,4 +1540,4 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
-}
+}}
