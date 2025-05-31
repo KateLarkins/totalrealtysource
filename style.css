@@ -1290,9 +1290,11 @@ footer {
 
 .slide {
   width: 100%;
+  height: 500px;
   display: none;
   object-fit: cover;
 }
+
 
 .carousel-controls {
   position: absolute;
@@ -1541,3 +1543,115 @@ footer {
     transform: translateY(0);
   }
 }}
+
+/* For Sale */
+
+.property-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.property-widget {
+  width: calc(33.33% - 20px); /* Adjust width based on your preference */
+  background-color: white;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+.property-widget img {
+  width: 100%;
+  display: block;
+  max-height: 190px;
+  object-fit: cover; /* Ensure images maintain aspect ratio and cover the entire container */
+  flex: 0 0 30%; /* Each item takes up 33.33% of the container width */
+  max-width: 100%; 
+}
+.property-widget {
+  transition: transform 0.3s ease;
+}
+
+.property-widget:hover {
+  transform: scale(1.1);
+}
+/* Make the widget responsive */
+@media screen and (max-width: 768px) {
+  .property-widget {
+    width: calc(50% - 20px); /* Adjust width for smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .property-widget {
+    width: 100%; /* Adjust width for even smaller screens */
+  }
+}
+
+
+.property-details {
+  padding: 20px;
+  color: #000;
+}
+
+.property-details h3 {
+  margin: 0;
+  font-size: 17px;
+  color: black;
+  font-family:'At Hauss Std Light';
+}
+
+.property-details p {
+  margin: 5px 0;
+  font-size: 17px;
+}
+
+
+.price {
+  font-weight: bold;
+  color: #000000;
+  font-family:'At Hauss Std Light';
+}
+
+.location {
+  color: black;
+  font-family:'At Hauss Std Light';
+}
+
+.location button {
+  border: 1px solid black;
+  background-color: none;
+  color:black;
+}
+
+
+.listing-item {
+  position: relative;
+  display: inline-block;
+}
+
+.text {
+  color: #000;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 15px;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #1c232b;
+  border: none;
+  font-size: 14px;
+}
+
+/* end for sale */
+
