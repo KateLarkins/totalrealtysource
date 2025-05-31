@@ -255,15 +255,19 @@ iframe {
 
 
 #viewmore:hover {
-  background-color: grey;
+  background-color: rgb(241, 241, 241);
 }
 
 
 #viewmore {
-  background-color: none;
+  background-color: transparent;
   font-family: 'At Hauss Std Light';
   border: 1px solid black;
-  border-radius: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 17px;
+  margin: 10px;
 }
 
 
