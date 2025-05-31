@@ -47,17 +47,6 @@ body {
 }
 
 
-button {
-  background: #FBB53C;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 14px;
-  margin: 10px;
-  transition: background 0.3s;
-}
 
 
 @font-face {
@@ -264,16 +253,9 @@ iframe {
   background-color:black;
 }
 
-.buttons {
-  position: absolute;
-  bottom: 400px; /* Adjust distance from bottom as needed */
-  left: 50%;
-  height: 60px;
-  transform: translateX(-50%);
-} 
 
 #viewmore:hover {
-  background-color: transparent;
+  background-color: grey;
 }
 
 
