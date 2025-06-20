@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="25 new listings in Tennessee! Click to learn more.">
+    <meta name="description" content="23 new listings in Tennessee! Click to learn more.">
 
     <title>Total Realty Source</title>
     <link rel="icon" href="logo.png/logocircle.png" type="image/png">
@@ -14,15 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">  
- 
-
-  
-  
-  
   </head>
   <style>
 .search-container {
@@ -81,8 +74,6 @@
         font-family:'At Hauss Std Light';
     }
 }
-
-
   </style>
 
     <!-- <span> -->
@@ -90,7 +81,8 @@
           Open House June 8th 2:00-4:00</span> -->
 
 
-<body style="background-color:#ffffff;">
+<body>
+
 <!-- Top Navigation Bar -->
 <div class="topnav">
   <div class="links-row">
@@ -137,9 +129,7 @@
     <a href="about.html" class="nav-link">About</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
-  
 </div>
-
 
   <!-- <div class="split-section" style="background-color:#023E6C;">
     <div class="text-content">
@@ -164,7 +154,8 @@
     <br> -->
     <!-- <p style="color:black; font-size:40px; font-family:'At Hauss Std SemiBold'; font-weight:bolder; margin-top: 2%; margin-bottom: 1%; text-align: center; color: black;">Featured Listings</p> -->
     <section style="background-color: white; padding-bottom: 2%; padding-left: 3%; padding-right: 3%; border: none; font-size: 20px;">
-      <p style="color:black; font-size:20px; font-family:'At Hauss Std Light'; margin-top: 2%; margin-bottom: 1%; text-align: left;">Showing results for current listings.</p><hr>
+      <p id="listing-count" style="color:black; font-size:20px; font-family:'At Hauss Std Light'; margin-top: 2%; margin-bottom: 1%; text-align: left;"></p>
+      <hr>      
         <div class="search-container">
             <input type="text" id="addressInput" placeholder="Search by Address" onkeyup="filterProperties()">
             <div class="search-bar">
@@ -194,9 +185,7 @@
         </div>
         <div id="showingResults" class="result-info" style="display: none;"></div>
     </section>
-
   <div class="property-container">
-
    <!-- Listing Widget -->
    <div class="property-widget">
     <img src="listing/country.png" alt="Property 2">
@@ -206,14 +195,13 @@
       <p class="location">
         Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a>
         <button onclick="openModal('countryclubModal')" style="background-color: white; margin-left: 4%;">More Information</button>
-        
       </p>
     </div>
   </div>
-  
+
 <!-- Modal -->
-<div id="countryclubModal" class="modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
-  <div class="modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
+<div id="countryclubModal" class="custom-modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+  <div class="custom-modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
 
   <!-- Close Button -->
   <span class="close" onclick="closeModal()">&times;</span>
@@ -372,13 +360,11 @@
           <h3>6088 Meadowbrook Cove, Milan, TN 38358</h3>
           <p class="price">$285,000</p>
           <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a> <button onclick="openModal('meadowbrookModal')" style="background-color: white; margin-left: 4%;">More Information</button>
-
           </p>
       </div>
     </div>
-
-    <div id="meadowbrookModal" class="modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
-      <div class="modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
+    <div id="meadowbrookModal" class="custom-modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+      <div class="custom-modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
     
       <!-- Close Button -->
       <span class="close" onclick="closeModal()">&times;</span>
@@ -525,8 +511,7 @@
     </div>
     </div>
     </div>
-
-    
+  
     <div class="property-widget">
       <img src="listing/stan.png" alt="Property 2">
       <div class="property-details">
@@ -535,8 +520,8 @@
           <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a> <button onclick="openModal('stanworthModal')" style="background-color: white; margin-left: 4%;">More Information</button>
       </div>
     </div>
-    <div id="stanworthModal" class="modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
-      <div class="modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
+    <div id="stanworthModal" class="custom-modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+      <div class="custom-modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
     
       <!-- Close Button -->
       <span class="close" onclick="closeModal()">&times;</span>
@@ -689,8 +674,8 @@
           <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a> <button onclick="openModal('college-streetModal')" style="background-color: white; margin-left: 4%;">More Information</button></p>
       </div>
     </div>
-    <div id="college-streetModal" class="modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
-      <div class="modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
+    <div id="college-streetModal" class="custom-modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+      <div class="custom-modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
     
       <!-- Close Button -->
       <span class="close" onclick="closeModal()">&times;</span>
@@ -858,11 +843,10 @@
           <h3>316 Lost Creek Boat Dock Rd, Decaturville, TN 38329</h3>
           <p class="price">$195,000</p>
           <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Ashley</a> <button onclick="openModal('lost-creekModal')" style="background-color: white; margin-left: 4%;">More Information</button></p>
-         
       </div>
     </div>
-    <div id="lost-creekModal" class="modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
-      <div class="modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
+    <div id="lost-creekModal" class="custom-modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+      <div class="custom-modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
     
       <!-- Close Button -->
       <span class="close" onclick="closeModal()">&times;</span>
@@ -1002,8 +986,8 @@
           <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a> <button onclick="openModal('connor-coveModal')" style="background-color: white; margin-left: 4%;">More Information</button></p>
       </div>
     </div>
-    <div id="lost-creekModal" class="modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
-      <div class="modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
+    <div id="lost-creekModal" class="custom-modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+      <div class="custom-modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
     
       <!-- Close Button -->
       <span class="close" onclick="closeModal()">&times;</span>
@@ -1144,8 +1128,9 @@
            <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a> <button onclick="openModal('berrywoodModal')" style="background-color: white; margin-left: 4%;">More Information</button></p>
       </div>
     </div>
-    <div id="berrywoodModal" class="modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
-      <div class="modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
+
+    <div id="berrywoodModal" class="custom-modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+      <div class="custom-modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
     
       <!-- Close Button -->
       <span class="close" onclick="closeModal()">&times;</span>
@@ -1279,8 +1264,9 @@
           <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Jackie David</a> <button onclick="openModal('vann-hookModal')" style="background-color: white; margin-left: 4%;">More Information</button></p>
         </div>
       </div>
-      <div id="vann-hookModal" class="modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
-        <div class="modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
+
+      <div id="vann-hookModal" class="custom-modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+        <div class="custom-modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
       
         <!-- Close Button -->
         <span class="close" onclick="closeModal()">&times;</span>
@@ -1328,7 +1314,7 @@
         <img class="slide" src="Vann-Hook/20250507151003953302000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
         <img class="slide" src="Vann-Hook/20250507151004873071000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
         
-        
+      
         
         <!-- Carousel Arrows -->
         <button onclick="plusSlides(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); font-size: 24px; background: none; border: none; cursor: pointer;">❮</button>
@@ -1337,8 +1323,8 @@
       
           <!-- Property Overview -->
           <div style="margin-bottom: 25px;">
-            <h2 style="margin-bottom: 5px; font-family:'At Hauss Std Semibold'; font-size: 25px;">3002 Berrywood Drive, Humboldt, TN 38343</h2>
-            <p style="font-size: 23px; font-weight: bold; margin: 5px 0 10px; font-family:'At Hauss Std Light'">$229,900</p>
+            <h2 style="margin-bottom: 5px; font-family:'At Hauss Std Semibold'; font-size: 25px;">6033-6035 Vann Hook Street, Milan, TN 38358</h2>
+            <p style="font-size: 23px; font-weight: bold; margin: 5px 0 10px; font-family:'At Hauss Std Light'">$199,000</p>
       
             <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 1em; font-family:'At Hauss Std Light'">
               <div><strong>Beds:</strong> 2 (2 Bedroom Units)</div>
@@ -1416,6 +1402,7 @@
       </div>
       </div>
       </div>
+  
     <div class="property-widget">
       <img src="listing/coopertwo.png" alt="Property 2">
       <div class="property-details">
@@ -1554,6 +1541,7 @@
           <p class="location">Agent: <a href="about.html" style="text-decoration:none; color:black;">Brandie Bassett</a></p>
       </div>
     </div>
+
     <!-- <div class="property-widget">
       <img src="listing/19190.png" alt="Property 2">
       <div class="property-details">
@@ -1570,7 +1558,6 @@
        
         <!-- Add more property widgets here -->
     </div>
-</section>
 
 
 
@@ -1663,39 +1650,39 @@
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
 
+<script>
+  let currentSlide = 0;
 
-   <script>
-    let currentSlide = 0;
-  
-    function openModal(modalId) {
-      document.getElementById(modalId).style.display = "block";
-      showSlide(currentSlide, modalId);
+  function openModal(modalId) {
+    document.getElementById(modalId).style.display = "block";
+    showSlide(currentSlide, modalId);
+  }
+
+  function closeModal() {
+    const modals = document.querySelectorAll(".custom-modal");
+    modals.forEach(modal => modal.style.display = "none");
+  }
+
+  function plusSlides(n) {
+    currentSlide += n;
+    const openModalEl = document.querySelector(".custom-modal[style*='display: block']");
+    if (openModalEl) {
+      showSlide(currentSlide, openModalEl.id);
     }
-  
-    function closeModal() {
-      const modals = document.querySelectorAll(".modal");
-      modals.forEach(modal => modal.style.display = "none");
-    }
-  
-    function plusSlides(n) {
-      currentSlide += n;
-      const openModalEl = document.querySelector(".modal[style*='display: block']");
-      if (openModalEl) {
-        showSlide(currentSlide, openModalEl.id);
-      }
-    }
-  
-    function showSlide(index, modalId) {
-      const modal = document.getElementById(modalId);
-      const slides = modal.querySelectorAll(".slide");
-  
-      if (index >= slides.length) currentSlide = 0;
-      if (index < 0) currentSlide = slides.length - 1;
-  
-      slides.forEach(slide => slide.style.display = "none");
-      slides[currentSlide].style.display = "block";
-    }
-  </script>
+  }
+
+  function showSlide(index, modalId) {
+    const modal = document.getElementById(modalId);
+    const slides = modal.querySelectorAll(".slide");
+
+    if (index >= slides.length) currentSlide = 0;
+    if (index < 0) currentSlide = slides.length - 1;
+
+    slides.forEach(slide => slide.style.display = "none");
+    slides[currentSlide].style.display = "block";
+  }
+</script>
+
    <script>
     function showDropdown() {
       document.getElementById('forsale-dropdown').style.display = 'block';
@@ -1705,6 +1692,15 @@
       document.getElementById('forsale-dropdown').style.display = 'none';
     }
   </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const count = document.querySelectorAll(".property-widget").length;
+      const listingText = count === 1 ? "listing" : "listings";
+      document.getElementById("listing-count").textContent =
+        `Showing ${count} ${listingText} for current listings.`;
+    });
+  </script>
+  
       
 </body>
 </html>

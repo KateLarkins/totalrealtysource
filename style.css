@@ -275,6 +275,224 @@ iframe {
   background-color: #11456F; /* Adjust hover background color as needed */
 }
 
+
+
+/* Modal for For Sale */
+.custom-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  overflow: auto;
+}
+
+.custom-modal-content {
+  background-color: white;
+  margin: 3% auto;
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 90%;
+  max-width: 1000px;
+  position: relative;
+}
+
+/* Fix for the X button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 15px;  /* or left: 15px if you want */
+  font-size: 28px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 6px 14px;
+  border-radius: 20px;
+  z-index: 9999 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  box-shadow: 0 0 8px rgba(0,0,0,0.15);
+  width: 40px;
+  height: 40px;
+  line-height: 1;
+}
+
+
+.carousel,
+.carousel img {
+  position: relative; /* or static */
+  z-index: 0;         /* lower than .close */
+}
+
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+.carousel {
+  position: relative;
+  max-height: 500px;
+  overflow: hidden;
+  z-index: 0; /* Ensure it's beneath the close button */
+}
+
+.slide {
+  position: relative;
+  z-index: 0 !important;
+  pointer-events: none; /* <--- Add this temporarily if needed */
+}
+
+
+.carousel-controls {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  z-index: 1; /* Still on top of images, but below .close */
+}
+
+.carousel-controls button {
+  background-color: rgba(255,255,255,0.7);
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1;
+  position: relative;
+}
+
+
+.modal-body {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.listing-info {
+  flex: 2;
+  padding-right: 20px;
+}
+
+.agent-info {
+  flex: 1;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 8px;
+}
+.agent-details h3 {
+  font-family: 'At Hauss Std Semibold';
+  font-size: 26px;
+  margin-bottom: 5px;
+}
+.agent-details p {
+  font-family: 'At Hauss Std Semibold';
+  font-size: 26px;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .agent-details h3 {
+    font-size: 22px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .content-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .agent-photo img {
+    margin-top: 20px;
+  }
+}
+.modal-body {
+  padding: 20px;
+}
+
+.content-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.listing-info {
+  flex: 1 1 40%;
+  min-width: 250px;
+}
+
+.agent-info {
+  flex: 1 1 25%;
+  min-width: 200px;
+}
+
+.agent-photo {
+  flex: 1 1 150px;
+  text-align: center;
+}
+
+.agent-photo img {
+  max-width: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  /* About Us Agent Modals */
+  .card {
+    width: 100%;
+    min-width: unset;
+    margin: 10px auto;
+    text-align: center;
+  }
+
+  .card h2,
+  .card p {
+    text-align: center;
+  }
+
+  .agent-photo {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .agent-photo p {
+    text-align: center;
+    font-size:16px;
+  }
+}
+
+
+
+/* Stack vertically on smaller screens */
+@media (max-width: 768px) {
+  .search-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+
+  .search-container input,
+  .search-container button,
+  .search-bar select,
+  .search-bar button {
+    width: 100%;
+  }
+}
+
+
 /* Our Services Section */
 .services-new {
   display: flex;
@@ -443,27 +661,6 @@ iframe {
 .fun-card-top {
   flex-grow: 1; /* Allow cards to grow vertically to fill the space */
 }
-
-/* 
-.expandable {
-  overflow: hidden;
-  display: block;
-  max-height: 100%;
-  transition: max-height 0.3s ease;
-}
-
-.expanded .expandable {
-  max-height: none;
-}
-
-.expand-link {
-  cursor: pointer;
-  color: #FBB53C;
-}
-
-.hidden-text {
-  display: none;
-} */
 
 /* Media Queries for Responsive Design */
 
@@ -1209,9 +1406,6 @@ footer {
   }
 }
 
-/* Section 2 */
-
-
 /* Accordian Styling */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -1229,219 +1423,6 @@ footer {
   height: auto;
 }
 
-/* Modal for For Sale */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.8);
-  overflow: auto;
-}
-
-.modal-content {
-  background-color: #fff;
-  margin: 5% auto;
-  padding: 0;
-  width: 90%;
-  max-width: 1000px;
-  border-radius: 10px;
-  position: relative;
-}
-
-/* Fix for the X button */
-.close {
-  position: absolute;
-  top: 15px;
-  right: 15px;  /* or left: 15px if you want */
-  font-size: 28px;
-  font-weight: bold;
-  color: rgb(0, 0, 0);
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: 6px 14px;
-  border-radius: 20px;
-  z-index: 9999 !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-  box-shadow: 0 0 8px rgba(0,0,0,0.15);
-  width: 40px;
-  height: 40px;
-  line-height: 1;
-}
-
-
-.carousel,
-.carousel img {
-  position: relative; /* or static */
-  z-index: 0;         /* lower than .close */
-}
-
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-}
-.carousel {
-  position: relative;
-  max-height: 500px;
-  overflow: hidden;
-  z-index: 0; /* Ensure it's beneath the close button */
-}
-
-.slide {
-  position: relative;
-  z-index: 0 !important;
-  pointer-events: none; /* <--- Add this temporarily if needed */
-}
-
-
-.carousel-controls {
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
-  z-index: 1; /* Still on top of images, but below .close */
-}
-
-.carousel-controls button {
-  background-color: rgba(255,255,255,0.7);
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  z-index: 1;
-  position: relative;
-}
-
-
-.modal-body {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 20px;
-}
-
-.listing-info {
-  flex: 2;
-  padding-right: 20px;
-}
-
-.agent-info {
-  flex: 1;
-  background-color: #f2f2f2;
-  padding: 20px;
-  border-radius: 8px;
-}
-.agent-details h3 {
-  font-family: 'At Hauss Std Semibold';
-  font-size: 26px;
-  margin-bottom: 5px;
-}
-.agent-details p {
-  font-family: 'At Hauss Std Semibold';
-  font-size: 26px;
-  margin-bottom: 5px;
-}
-
-@media (max-width: 768px) {
-  .agent-details h3 {
-    font-size: 22px; 
-  }
-}
-
-@media (max-width: 768px) {
-  .content-flex {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .agent-photo img {
-    margin-top: 20px;
-  }
-}
-.modal-body {
-  padding: 20px;
-}
-
-.content-flex {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.listing-info {
-  flex: 1 1 40%;
-  min-width: 250px;
-}
-
-.agent-info {
-  flex: 1 1 25%;
-  min-width: 200px;
-}
-
-.agent-photo {
-  flex: 1 1 150px;
-  text-align: center;
-}
-
-.agent-photo img {
-  max-width: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-@media (max-width: 768px) {
-  /* About Us Agent Modals */
-  .card {
-    width: 100%;
-    min-width: unset;
-    margin: 10px auto;
-    text-align: center;
-  }
-
-  .card h2,
-  .card p {
-    text-align: center;
-  }
-
-  .agent-photo {
-    text-align: center;
-    margin: 0 auto;
-  }
-
-  .agent-photo p {
-    text-align: center;
-    font-size:16px;
-  }
-}
-
-
-
-/* Stack vertically on smaller screens */
-@media (max-width: 768px) {
-  .search-container {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .search-bar {
-    width: 100%;
-  }
-
-  .search-container input,
-  .search-container button,
-  .search-bar select,
-  .search-bar button {
-    width: 100%;
-  }
-}
 
 
 /* Services Modern */
