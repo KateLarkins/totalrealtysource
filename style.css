@@ -46,6 +46,46 @@ body {
   color: #f0f0f0 !important;
 }
 
+/* Dropdown container with smoother look */
+.dropdown {
+  opacity: 0;
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.3s ease, visibility 0.3s ease;
+  position: absolute;
+  top: 100%; /* flush with bottom of navbar link */
+  left: 0;
+  background-color: white;
+  min-width: 160px;
+  border-radius: 0 0 8px 8px; /* Only round the bottom */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Softer and closer to navbar */
+  z-index: 1000;
+  padding: 0;
+  border-top: 1px solid #eee; /* Optional: a soft divider line */
+}
+
+
+/* Show the dropdown */
+.dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  max-height: 300px; /* Adjust to content size if needed */
+}
+
+.dropdown a {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: black;
+  font-family: 'At Hauss Std Light';
+  border-radius: 0; /* Remove individual rounding for full connection */
+  transition: background-color 0.3s ease;
+}
+
+.dropdown a:hover {
+  background-color: #f0f0f0;
+}
 
 
 
@@ -1707,4 +1747,15 @@ footer {
 }
 
 
-/* Events Page Test */
+/* Header video */
+@media (max-width: 768px) {
+  .header-container {
+    max-height: 50vh;
+  }
+
+  .header-container video {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
