@@ -83,7 +83,32 @@
       </div>
     </div>
 
-    <a href="about.html" class="nav-link">About</a>
+        <!-- Dropdown for 'About' -->
+<div style="position: relative;">
+  <a href="about.html" class="nav-link" 
+     onmouseover="showAboutDropdown()" 
+     onmouseout="hideAboutDropdown()">About ▾</a>
+
+  <div id="about-dropdown" 
+       onmouseover="showAboutDropdown()" 
+       onmouseout="hideAboutDropdown()" 
+       style="position: absolute; top: 100%; left: 0; background-color: white; min-width: 160px; display: none; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1000;">
+       
+    <a href="about.html"
+       style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-family: 'At Hauss Std Light';"
+       onmouseover="this.style.backgroundColor='#f0f0f0'"
+       onmouseout="this.style.backgroundColor='white'">
+       Our Team
+    </a>
+    
+    <a href="events.html"
+       style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-family: 'At Hauss Std Light';"
+       onmouseover="this.style.backgroundColor='#f0f0f0'"
+       onmouseout="this.style.backgroundColor='white'">
+       Events
+    </a>
+  </div>
+</div>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
 </div>
@@ -588,6 +613,15 @@
       
         function hideDropdown() {
           document.getElementById('forsale-dropdown').style.display = 'none';
+        }
+      </script>
+      <script>
+        function showAboutDropdown() {
+          document.getElementById('about-dropdown').style.display = 'block';
+        }
+      
+        function hideAboutDropdown() {
+          document.getElementById('about-dropdown').style.display = 'none';
         }
       </script>
       

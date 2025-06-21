@@ -1643,4 +1643,68 @@ footer {
 }
 
 /* end for sale */
+.events-container {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 20px;
+  font-family: 'At Hauss Std Light', sans-serif;
+  background-color: #fff;
+}
 
+.events-header {
+  text-align: center;
+  font-family: 'At Hauss Std Semibold', serif;
+  font-size: 2em;
+  margin-bottom: 40px;
+}
+
+.event-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 60px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 40px;
+}
+
+.event-flyer {
+  flex: 1 1 300px;
+  max-width: 300px;
+  border-radius: 6px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.event-details {
+  flex: 2 1 500px;
+}
+
+.event-details h3 {
+  font-family: 'At Hauss Std Semibold', serif;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.event-details p {
+  font-size: 1em;
+  margin-bottom: 10px;
+  font-family: 'At Hauss Std Light', serif;
+}
+
+.event-button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #002244; /* deep blue from your theme */
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.event-button:hover {
+  background-color: #004080;
+}
+
+
+/* Events Page Test */
