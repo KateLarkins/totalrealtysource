@@ -24,24 +24,26 @@
     align-items: center;
     gap: 10px;
     margin: 20px 0;
+    font-size: 16px;
+    padding: 8px 9px;
     font-family:'At Hauss Std Light';
 }
 
 .search-container input,
 .search-container select {
-    padding: 10px;
+    padding: 8px 9px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-family:'At Hauss Std Light';
 }
+
 #clearPriceFilter,
 #clearAgentFilter {
-    padding: 10px 20px;
+    padding: 8px 9px;
     font-size: 16px;
     border: none;
     border-radius: 4px;
-    background-color: black;
     color: white;
     cursor: pointer;
     margin-top: 10px; /* Add spacing above */
@@ -212,7 +214,7 @@
                 </select>
                 <button style="background-color:#023E6C; color:white;" id="clearAgentFilter">Clear Filter</button>
             </div>
-            <button onclick="filterProperties()">Search</button>
+            <button style="font-size: 16px; margin-top:8px;" onclick="filterProperties()">Search</button>
         </div>
         <div id="showingResults" class="result-info" style="display: none;"></div>
     </section>
@@ -3485,9 +3487,9 @@
 
 
 <div style="background-color:rgb(255, 255, 255); background-color:none;">
-  <p style="text-align: center; color:black;">  All properties displayed are listed for the past eight months. Past properties are not available for viewing. 
+  <p style="text-align: center; color:black; font-family: 'At Hauss Std Light';">  All properties displayed are listed for the past eight months. Past properties are not available for viewing. 
 <br>
-    <span style="font-style:italic; ">Disclaimer</span>: This page may not include all available properties.<br><br></p>
+    <span style="font-family:'At Hauss Std Semibold' ;">Disclaimer</span>: This page may not include all available properties.<br><br></p>
 </div>
 <footer class="text-center text-lg-start text-white" style="background-color:#023E6C; font-family: 'At Hauss Std Semibold'; ">
   <div class="container p-4 pb-0">
