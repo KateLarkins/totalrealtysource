@@ -31,10 +31,26 @@
     <!--CSS Stylesheet-->
     <link rel="stylesheet" href="style.css">  
   </head>
-
   <body style="margin:0; font-family:'At Hauss Std Light'; background-color:#ffffff; color:#000; line-height:1.7;">
 
-    <!-- Top Navigation Bar -->
+    <style>
+      body {
+        margin: 0;
+        font-family: 'At Hauss Std Light';
+        background-color: #ffffff;
+        color: #000;
+        line-height: 1.7;
+      }
+      .fade-in {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.6s ease-out;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
   <!-- Top Navigation Bar -->
   <div class="topnav">
     <div class="links-row">
@@ -103,29 +119,7 @@
       <a href="contact.html" class="nav-link">Contact</a>
     </div>
   </div>
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        margin: 0;
-        font-family: 'At Hauss Std Light';
-        background-color: #ffffff;
-        color: #000;
-        line-height: 1.7;
-      }
-      .fade-in {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: all 0.6s ease-out;
-      }
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    </style>
-  </head>
-  <body>
+  
     <div class="events-container">
         <h2 class="events-header">Upcoming Events</h2>
       
@@ -163,7 +157,7 @@
 
 
 
-  <!-- Footer (Optional) -->
+  <!-- Footer-->
   <footer class="text-center text-lg-start text-white" style="background-color:#023E6C; font-family: 'At Hauss Std Semibold'; ">
     <div class="container p-4 pb-0">
       <section class="">
@@ -219,6 +213,15 @@
     </div>
   </footer>
   <script>
+    function showDropdown(id) {
+      document.getElementById(id).classList.add('show');
+    }
+  
+    function hideDropdown(id) {
+      document.getElementById(id).classList.remove('show');
+    }
+  </script>
+  <script>
     function toggleNav() {
       const navLinks = document.getElementById("navLinks");
       navLinks.classList.toggle("active");
@@ -229,15 +232,6 @@
       } else {
         navLinks.style.display = "none";
       }
-    }
-  </script>
- <script>
-    function showDropdown(id) {
-      document.getElementById(id).classList.add('show');
-    }
-  
-    function hideDropdown(id) {
-      document.getElementById(id).classList.remove('show');
     }
   </script>
 <script>
