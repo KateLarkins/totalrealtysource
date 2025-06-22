@@ -874,17 +874,6 @@ iframe {
   z-index: 1;
 }
 
-.btn {
-  display: inline-block;
-  padding: 8px 15px;
-  margin-right: 10px;
-  text-decoration: none;
-  color: #fff;
-  background-color: #1c232b;
-  border: none;
-  font-size: 14px;
-}
-
 /* end for sale */
 /* for sale split screen */
 .split-section {
@@ -974,15 +963,7 @@ iframe {
   transform: translateY(-7px);
   color: #11456F; /* Adjust the color as needed */
 }
-footer {
-  background-color: #F5F4F0;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  width: 100%;
-  bottom: 0;
-  font-family: 'At Hauss Std Semibold';
-}
+
 /* Responsive Design */
 .fun-rounded-image {
   max-width: 50%; /* Default size for larger screens */
