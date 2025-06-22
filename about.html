@@ -19,9 +19,7 @@
     <link rel="stylesheet" href="style.css">  
   </head>
 
-<body class="aboutbody" style="background-color:#ffffff;">
-<!-- Top Navigation Bar -->
-  <!-- Top Navigation Bar -->
+<body style="background-color:#ffffff;">
   <div class="topnav">
     <div class="links-row">
       <!-- Logo -->
@@ -783,44 +781,6 @@
   </div>
 </section>
 
-
-
-<script>
-  let currentIndex = 0;
-
-  function showTestimonial(index) {
-    const slider = document.getElementById('testimonials');
-    const total = slider.children.length;
-    if (index >= total) currentIndex = 0;
-    else if (index < 0) currentIndex = total - 1;
-    else currentIndex = index;
-
-    const offset = -currentIndex * 100;
-    slider.style.transform = `translateX(${offset}%)`;
-  }
-
-  function nextTestimonial() {
-    showTestimonial(currentIndex + 1);
-  }
-
-  function prevTestimonial() {
-    showTestimonial(currentIndex - 1);
-  }
-</script>
-<script>
-  function toggleText(id) {
-    const text = document.getElementById(id).getElementsByClassName('hidden-text')[0];
-    const expandLink = document.getElementById(id).getElementsByClassName('expand-link')[0];
-
-    if (text.style.display === "none") {
-      text.style.display = "inline";
-      expandLink.textContent = "... Read Less";
-    } else {
-      text.style.display = "none";
-      expandLink.textContent = "... Read More";
-    }
-  }
-</script>
     <footer class="text-center text-lg-start text-white" style="background-color:#023E6C; font-family: 'At Hauss Std Semibold';">
       <div class="container p-4 pb-0">
           <div class="row">
@@ -874,6 +834,15 @@
       </div>
     </footer>
     <script>
+      function showDropdown(id) {
+        document.getElementById(id).classList.add('show');
+      }
+    
+      function hideDropdown(id) {
+        document.getElementById(id).classList.remove('show');
+      }
+    </script>
+    <script>
       function toggleNav() {
         const navLinks = document.getElementById("navLinks");
         const hamburgerIcon = document.querySelector(".hamburger-icon");
@@ -883,15 +852,6 @@
     
         // Toggle the X and hamburger icon
         hamburgerIcon.classList.toggle("active");
-      }
-    </script>
-    <script>
-      function showDropdown(id) {
-        document.getElementById(id).classList.add('show');
-      }
-    
-      function hideDropdown(id) {
-        document.getElementById(id).classList.remove('show');
       }
     </script>
       
@@ -904,5 +864,41 @@
 <!-- Bootstrap JS Bundle (includes Popper) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+<script>
+  let currentIndex = 0;
+
+  function showTestimonial(index) {
+    const slider = document.getElementById('testimonials');
+    const total = slider.children.length;
+    if (index >= total) currentIndex = 0;
+    else if (index < 0) currentIndex = total - 1;
+    else currentIndex = index;
+
+    const offset = -currentIndex * 100;
+    slider.style.transform = `translateX(${offset}%)`;
+  }
+
+  function nextTestimonial() {
+    showTestimonial(currentIndex + 1);
+  }
+
+  function prevTestimonial() {
+    showTestimonial(currentIndex - 1);
+  }
+</script>
+<script>
+  function toggleText(id) {
+    const text = document.getElementById(id).getElementsByClassName('hidden-text')[0];
+    const expandLink = document.getElementById(id).getElementsByClassName('expand-link')[0];
+
+    if (text.style.display === "none") {
+      text.style.display = "inline";
+      expandLink.textContent = "... Read Less";
+    } else {
+      text.style.display = "none";
+      expandLink.textContent = "... Read More";
+    }
+  }
+</script>
 </body>
 </html>
