@@ -286,43 +286,78 @@
             </div>
           </div>
         </section>
-  
-        
-        
-        <!-- <div class="services-modern">
+
+        <div class="services-modern">
           <h1 class="services-title"><a href="about.html">Our Services</a></h1>
           <div class="services-grid">
-      
-            <div class="service-card">
+        
+            <a href="contact.html" class="service-card" onclick="event.stopPropagation()">
               <img src="brandieteam.png/brandieteam.png" alt="Renovation" />
-              <div class="card-overlay">
+              
+              <!-- Bottom fixed bar with title + learn more -->
+              <div class="card-bottom-bar">
                 <h2>Property Renovation</h2>
+                <span class="learn-more-hint" onclick="toggleOverlay(event, this)">Learn More ⮕</span>
+              </div>
+              
+              <!-- Overlay with description and link -->
+              <div class="card-overlay">
                 <p>Modern upgrades with timeless care.</p>
                 <a href="contact.html" class="learn-more-link">Learn More →</a>
               </div>
-            </div>
+            </a>
         
-          
-            <div class="service-card">
+            <a href="contact.html" class="service-card" onclick="event.stopPropagation()">
               <img src="bob.png/bob.png" alt="Sales" />
-              <div class="card-overlay">
+              <div class="card-bottom-bar">
                 <h2>Property Sales</h2>
+                <span class="learn-more-hint" onclick="toggleOverlay(event, this)">Learn More ⮕</span>
+              </div>
+              <div class="card-overlay">
                 <p>Guiding your sale from start to finish.</p>
                 <a href="contact.html" class="learn-more-link">Learn More →</a>
               </div>
-            </div>
+            </a>
         
-            
-            <div class="service-card">
+            <a href="contact.html" class="service-card" onclick="event.stopPropagation()">
               <img src="team/team.png" alt="Management" />
-              <div class="card-overlay">
+              <div class="card-bottom-bar">
                 <h2>Property Management</h2>
+                <span class="learn-more-hint" onclick="toggleOverlay(event, this)">Learn More ⮕</span>
+              </div>
+              <div class="card-overlay">
                 <p>Relax while we handle the rest.</p>
                 <a href="contact.html" class="learn-more-link">Learn More →</a>
               </div>
-            </div>
+            </a>
+        
           </div>
-        </div> -->
+        </div>
+        
+        <script>
+          // Toggle overlay only when clicking "Learn More" hint on mobile
+          function toggleOverlay(event, element) {
+            event.preventDefault();
+            event.stopPropagation();
+        
+            const card = element.closest('.service-card');
+            if (window.innerWidth <= 768) {
+              card.classList.toggle('show-overlay');
+            }
+          }
+        
+          // Optional: clicking outside closes overlays on mobile
+          document.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+              document.querySelectorAll('.service-card.show-overlay').forEach(card => {
+                card.classList.remove('show-overlay');
+              });
+            }
+          });
+        </script>
+        
+        
+        
         
         
   

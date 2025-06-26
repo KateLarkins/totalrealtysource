@@ -1739,4 +1739,131 @@ iframe {
     height: auto;
     object-fit: contain;
   }
+}.services-modern {
+  padding: 60px 20px;
+  background-color: #023E6C;
+  text-align: center;
+}
+
+.services-title {
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  font-family: 'At Hauss Std Semibold', sans-serif;
+}
+
+.services-title a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.service-card {
+  position: relative;
+  display: block;
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.service-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+/* Bottom bar with title and learn more hint */
+.card-bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background:  #023e6c78;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+  user-select: none;
+}
+
+.card-bottom-bar h2 {
+  margin: 0 0 6px 0;
+  font-family: 'At Hauss Std Semibold', sans-serif;
+  font-size: 1.4em;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.learn-more-hint {
+  font-family: 'At Hauss Std Semibold', sans-serif;
+  font-size: 1em;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1.5px solid white;
+  border-radius: 20px;
+  background: transparent;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: 6px;
+  text-align: center;
+  line-height: 1;
+  min-width: 100px;
+}
+
+.learn-more-hint:hover {
+  background-color: white;
+  color: #1a1a1a;
+}
+
+/* Overlay with description and link - hidden by default */
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #023e6c78;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  opacity: 0;
+  pointer-events: none;
+  padding: 30px 25px;
+  text-align: left;
+  z-index: 3;
+  box-sizing: border-box;
+  border-radius: 10px;
+  transition: opacity 0.4s ease;
+}
+
+.card-overlay p {
+  margin: 0 0 20px 0;
+  font-family: 'At Hauss Std Light', sans-serif;
+  font-size: 1.15em;
+}
+
+.learn-more-link {
+  color: #1a1a1a;
+  text-decoration: underline;
+  font-weight: bold;
+  font-family: 'At Hauss Std Semibold', sans-serif;
+  font-size: 1.1em;
 }
