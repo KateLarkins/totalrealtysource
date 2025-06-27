@@ -223,3 +223,127 @@ function toggleOtherLinks() {
   }
 }
 
+// 
+function filterProperties() {
+  try {
+    // ✅ Helpers
+    function extractFirstInt(text) {
+      const match = text?.match(/\d+/);
+      return match ? parseInt(match[0]) : 0;
+    }
+
+    function extractFirstFloat(text) {
+      const match = text?.match(/\d+(\.\d+)?/);
+      return match ? parseFloat(match[0]) : 0;
+    }
+
+    function hasFeature(text, mustHave) {
+      if (!mustHave) return true;
+      if (!text) return false;
+      text = text.toLowerCase().trim();
+      return text !== '' && !text.includes('no') && !text.includes('none');
+    }
+
+    function filterPrice(propertyPrice, priceFilter) {
+      if (priceFilter === '<100000') return propertyPrice < 100000;
+      if (priceFilter === '100000-500000') return propertyPrice >= 100000 && propertyPrice <= 500000;
+      if (priceFilter === '>500000') return propertyPrice > 500000;
+      return true;
+    }
+
+    // 🔍 Inputs
+    const addressInput = document.getElementById('addressInput')?.value.toLowerCase() || '';
+    const priceFilter = document.getElementById('price')?.value || '';
+    const agentFilter = document.getElementById('agent')?.value.toLowerCase() || '';
+
+    const mustHavePool = document.getElementById('filterPool')?.checked;
+    const mustHaveGarage = document.getElementById('filterGarage')?.checked;
+    const minBeds = parseInt(document.getElementById('filterBeds')?.value) || 0;
+    const minBaths = parseFloat(document.getElementById('filterBaths')?.value) || 0;
+    const sqftOver2000 = document.getElementById('filterLargeSqft')?.checked;
+    const sqftUnder2000 = document.getElementById('filterSmallSqft')?.checked;
+    const builtAfter2000 = document.getElementById('filterAfter2000')?.checked;
+    const builtBefore2000 = document.getElementById('filterBefore2000')?.checked;
+    const minAcreage = parseFloat(document.getElementById('filterAcreage')?.value) || 0;
+    const mustHaveBasement = document.getElementById('filterBasement')?.checked;
+
+    // ✅ Only target cards, not modals
+    const propertyWidgets = document.querySelectorAll('.property-widget');
+
+    for (let i = 0; i < propertyWidgets.length; i++) {
+      const widget = propertyWidgets[i];
+
+      // 🏡 Basic content
+      const address = widget.querySelector('.property-details h3')?.textContent.toLowerCase() || '';
+      const priceText = widget.querySelector('.price')?.textContent || '';
+      const price = parseFloat(priceText.replace(/[^\d]/g, '')) || 0;
+      const agentText = widget.querySelector('.location')?.textContent.toLowerCase() || '';
+
+      // 📊 Detail spans
+      const bedText = widget.querySelector('.bedrooms')?.textContent || '';
+      const bathText = widget.querySelector('.bathrooms')?.textContent || '';
+      const sqftText = widget.querySelector('.sqft')?.textContent.replace(/,/g, '') || '';
+      const yearText = widget.querySelector('.year-built')?.textContent || '';
+      const lotText = widget.querySelector('.lot')?.textContent || '';
+      const poolText = widget.querySelector('.pool')?.textContent || '';
+      const garageText = widget.querySelector('.garage')?.textContent || '';
+      const basementText = widget.querySelector('.basement')?.textContent || '';
+
+      // 🧮 Cleaned values
+      const beds = extractFirstInt(bedText);
+      const baths = extractFirstFloat(bathText);
+      const sqft = extractFirstInt(sqftText);
+      const year = parseInt(yearText) || 0;
+      const lot = extractFirstFloat(lotText);
+
+      // ✅ Matching checks
+      const addressMatch = address.includes(addressInput);
+      const priceMatch = filterPrice(price, priceFilter);
+      const agentMatch = agentText.includes(agentFilter);
+      const bedMatch = beds >= minBeds;
+      const bathMatch = baths >= minBaths;
+      const sqftMatch = (!sqftOver2000 || sqft >= 2000) && (!sqftUnder2000 || sqft < 2000);
+      const yearMatch = (!builtAfter2000 || year >= 2000) && (!builtBefore2000 || year < 2000);
+      const lotMatch = lot >= minAcreage;
+      const poolMatch = hasFeature(poolText, mustHavePool);
+      const garageMatch = hasFeature(garageText, mustHaveGarage);
+      const basementMatch = hasFeature(basementText, mustHaveBasement);
+
+      const shouldShow = (
+        addressMatch &&
+        priceMatch &&
+        agentMatch &&
+        bedMatch &&
+        bathMatch &&
+        sqftMatch &&
+        yearMatch &&
+        lotMatch &&
+        poolMatch &&
+        garageMatch &&
+        basementMatch
+      );
+
+      widget.style.display = shouldShow ? 'block' : 'none';
+    }
+
+    updateShowingResults(); // your UI result updater
+
+  } catch (error) {
+    console.error("Error in filterProperties:", error);
+  }
+}
+
+
+
+
+
+
+function toggleFeatureFilters() {
+  var box = document.getElementById('featureFilterBox');
+  if (!box) return; // safety check
+  if (box.style.display === 'none' || box.style.display === '') {
+    box.style.display = 'block';
+  } else {
+    box.style.display = 'none';
+  }
+}
