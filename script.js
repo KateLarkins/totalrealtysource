@@ -225,6 +225,17 @@ function toggleOtherLinks() {
 
 // 
 
+
+document.getElementById("searchAddress").addEventListener("keypress", function (e) {
+  if (e.key === "Enter") filterProperties();
+});
+document.getElementById("priceRange").addEventListener("keypress", function (e) {
+  if (e.key === "Enter") filterProperties();
+});
+document.getElementById("filterAgent").addEventListener("keypress", function (e) {
+  if (e.key === "Enter") filterProperties();
+});
+
 function filterProperties() {
   const addressVal = document.getElementById("searchAddress").value.toLowerCase();
   const agentVal = document.getElementById("filterAgent").value.toLowerCase();
@@ -244,28 +255,28 @@ function filterProperties() {
   const listings = document.querySelectorAll(".property-widget");
 
   listings.forEach(listing => {
-    const address = listing.querySelector("h3")?.innerText.toLowerCase() || "";
-    const agent = listing.querySelector(".location a")?.innerText.toLowerCase() || "";
+    const address = listing.querySelector("h3").innerText.toLowerCase();
+    const agent = listing.querySelector(".location")?.innerText.toLowerCase() || "";
 
     const priceText = listing.querySelector(".price")?.innerText.replace(/\D/g, '') || "0";
     const price = parseInt(priceText);
 
-    const beds = parseInt(listing.querySelector(".bedrooms")?.innerText || "0");
-    const baths = parseInt(listing.querySelector(".bathrooms")?.innerText || "0");
+    const bedText = listing.querySelector(".bedrooms")?.innerText || "0";
+    const beds = parseInt(bedText);
+
+    const bathText = listing.querySelector(".bathrooms")?.innerText || "0";
+    const baths = parseInt(bathText);
 
     const garageText = listing.querySelector(".garage")?.innerText.toLowerCase() || "";
     const poolText = listing.querySelector(".pool")?.innerText.toLowerCase() || "";
-
-    const hasGarage = garageText.includes("garage") && !garageText.includes("no garage");
-    const hasPool = poolText.includes("pool") && !poolText.includes("no");
 
     const matchesAddress = address.includes(addressVal);
     const matchesAgent = agent.includes(agentVal);
     const matchesPrice = price >= minPrice && price <= maxPrice;
     const matchesBeds = beds >= bedVal;
     const matchesBaths = baths >= bathVal;
-    const matchesGarage = !needsGarage || hasGarage;
-    const matchesPool = !needsPool || hasPool;
+    const matchesGarage = !needsGarage || garageText.includes("garage");
+    const matchesPool = !needsPool || poolText.includes("pool");
 
     if (matchesAddress && matchesAgent && matchesPrice && matchesBeds && matchesBaths && matchesGarage && matchesPool) {
       listing.style.display = "";
@@ -273,213 +284,4 @@ function filterProperties() {
       listing.style.display = "none";
     }
   });
-}
-function getAllAddresses() {
-  const modals = document.querySelectorAll(".property-modal");
-  const addresses = [];
-
-  modals.forEach(modal => {
-    const address = modal.querySelector("h3")?.innerText?.trim();
-    if (address && !addresses.includes(address)) {
-      addresses.push(address);
-    }
-  });
-
-  return addresses;
-}
-
-function showSuggestions() {
-  const input = document.getElementById("searchAddress");
-  const query = input.value.toLowerCase();
-  const suggestionsBox = document.getElementById("suggestionsBox");
-
-  suggestionsBox.innerHTML = "";
-  if (!query) {
-    suggestionsBox.style.display = "none";
-    return;
-  }
-
-  const allAddresses = getAllAddresses();
-  const filtered = allAddresses.filter(addr => addr.toLowerCase().includes(query));
-
-  if (filtered.length === 0) {
-    suggestionsBox.style.display = "none";
-    return;
-  }
-
-  filtered.forEach(address => {
-    const div = document.createElement("div");
-    div.textContent = address;
-    div.style.padding = "8px";
-    div.style.cursor = "pointer";
-    div.addEventListener("click", () => {
-      input.value = address;
-      suggestionsBox.style.display = "none";
-      filterProperties(); // optional: trigger filter immediately
-    });
-    suggestionsBox.appendChild(div);
-  });
-
-  suggestionsBox.style.display = "block";
-}
-
-// Optional: hide suggestions on Enter or Esc
-function handleKey(event) {
-  const box = document.getElementById("suggestionsBox");
-  if (event.key === "Enter" || event.key === "Escape") {
-    box.style.display = "none";
-  }
-}
-
-// Optional: hide suggestions when clicking outside
-document.addEventListener("click", (e) => {
-  if (!document.getElementById("searchAddress").contains(e.target) &&
-      !document.getElementById("suggestionsBox").contains(e.target)) {
-    document.getElementById("suggestionsBox").style.display = "none";
-  }
-});
-function clearFilters() {
-  document.getElementById("searchAddress").value = "";
-  document.getElementById("filterAgent").value = "";
-  document.getElementById("priceRange").value = "";
-  document.getElementById("filterBeds").value = "";
-  document.getElementById("filterBaths").value = "";
-  document.getElementById("hasGarage").checked = false;
-  document.getElementById("hasPool").checked = false;
-
-  document.getElementById("suggestionsBox").style.display = "none"; // hide suggestions if visible
-
-  filterProperties();
-}
-function parseBaths(text) {
-  // Extract numeric part from string like "4 (3 Full, 1 Half)" or "3.5"
-  const match = text.match(/[\d\.]+/);
-  return match ? parseFloat(match[0]) : 0;
-}
-
-function filterProperties() {
-  const bedsFilter = document.getElementById('filterBeds').value;
-  const bathsFilter = document.getElementById('filterBaths').value;
-
-  const properties = document.querySelectorAll('.property-widget');
-  let countVisible = 0;
-
-  properties.forEach(prop => {
-    // Find the modal ID from the button inside the property widget
-    const modalBtn = prop.querySelector('button[onclick^="openModal"]');
-    if (!modalBtn) {
-      prop.style.display = 'none';
-      return;
-    }
-
-    // Extract modal ID from button onclick attribute: e.g. openModal('stanworthModal')
-    const onclickAttr = modalBtn.getAttribute('onclick');
-    const modalIdMatch = onclickAttr.match(/openModal\('(.+?)'\)/);
-    if (!modalIdMatch) {
-      prop.style.display = 'none';
-      return;
-    }
-    const modalId = modalIdMatch[1];
-    const modal = document.getElementById(modalId);
-    if (!modal) {
-      prop.style.display = 'none';
-      return;
-    }
-
-    // Find bedrooms and bathrooms spans inside the modal
-    const bedroomsSpan = modal.querySelector('.bedrooms');
-    const bathroomsSpan = modal.querySelector('.bathrooms');
-
-    // Parse bedrooms and bathrooms count
-    const beds = bedroomsSpan ? parseInt(bedroomsSpan.textContent.trim()) || 0 : 0;
-    const baths = bathroomsSpan ? parseBaths(bathroomsSpan.textContent.trim()) : 0;
-
-    let show = true;
-
-    if (bedsFilter) {
-      if (beds < parseInt(bedsFilter)) show = false;
-    }
-
-    if (bathsFilter) {
-      if (baths < parseFloat(bathsFilter)) show = false;
-    }
-
-    if (show) {
-      prop.style.display = 'block';
-      countVisible++;
-    } else {
-      prop.style.display = 'none';
-    }
-  });
-
-  const resultsMessage = document.getElementById('resultsMessage');
-  if (resultsMessage) {
-    resultsMessage.textContent = `Showing ${countVisible} result${countVisible !== 1 ? 's' : ''}`;
-  }
-}
-function parseBaths(text) {
-  // Extract numeric part from string like "4 (3 Full, 1 Half)" or "3.5"
-  const match = text.match(/[\d\.]+/);
-  return match ? parseFloat(match[0]) : 0;
-}
-
-function filterProperties() {
-  const bedsFilter = document.getElementById('filterBeds').value;
-  const bathsFilter = document.getElementById('filterBaths').value;
-
-  const properties = document.querySelectorAll('.property-widget');
-  let countVisible = 0;
-
-  properties.forEach(prop => {
-    // Find the modal ID from the button inside the property widget
-    const modalBtn = prop.querySelector('button[onclick^="openModal"]');
-    if (!modalBtn) {
-      prop.style.display = 'none';
-      return;
-    }
-
-    // Extract modal ID from button onclick attribute: e.g. openModal('stanworthModal')
-    const onclickAttr = modalBtn.getAttribute('onclick');
-    const modalIdMatch = onclickAttr.match(/openModal\('(.+?)'\)/);
-    if (!modalIdMatch) {
-      prop.style.display = 'none';
-      return;
-    }
-    const modalId = modalIdMatch[1];
-    const modal = document.getElementById(modalId);
-    if (!modal) {
-      prop.style.display = 'none';
-      return;
-    }
-
-    // Find bedrooms and bathrooms spans inside the modal
-    const bedroomsSpan = modal.querySelector('.bedrooms');
-    const bathroomsSpan = modal.querySelector('.bathrooms');
-
-    // Parse bedrooms and bathrooms count
-    const beds = bedroomsSpan ? parseInt(bedroomsSpan.textContent.trim()) || 0 : 0;
-    const baths = bathroomsSpan ? parseBaths(bathroomsSpan.textContent.trim()) : 0;
-
-    let show = true;
-
-    if (bedsFilter) {
-      if (beds < parseInt(bedsFilter)) show = false;
-    }
-
-    if (bathsFilter) {
-      if (baths < parseFloat(bathsFilter)) show = false;
-    }
-
-    if (show) {
-      prop.style.display = 'block';
-      countVisible++;
-    } else {
-      prop.style.display = 'none';
-    }
-  });
-
-  const resultsMessage = document.getElementById('resultsMessage');
-  if (resultsMessage) {
-    resultsMessage.textContent = `Showing ${countVisible} result${countVisible !== 1 ? 's' : ''}`;
-  }
 }
