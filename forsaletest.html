@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Real Estate Listings with Filter Sidebar & Modal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body style="margin: 0; font-family: sans-serif; background: #f7f7f7; height: 100vh; overflow: hidden;">
+
+<div class="page-container" style="position: relative; height: 100%;">
+
+  <div class="main-content" style="display: flex; flex-direction: row; height: 100%;">
+
+    <!-- Listings Area -->
+    <div class="listings" style="width: 75%; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 20px; height: 100%; overflow-y: auto; box-sizing: border-box; background: white;">
+      
+      <!-- Example Listing Card -->
+      <div class="property-widget" style="background: white; padding: 20px; border-radius: 6px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <img src="listing/1902.png" alt="Property 2" style="width: 100%; border-radius: 6px; object-fit: cover;"/>
+        <div class="property-details" style="margin-top: 15px;">
+          <h3 style="margin: 0; font-family: 'At Hauss Std Semibold'; font-size: 1.25rem;">1902 S College Street, Trenton, TN 38382</h3>
+          <p class="price" style="font-family: 'At Hauss Std Light'; font-weight: bold; font-size: 1.1rem; margin: 5px 0;">$830,000</p>
+          <p class="location" style="font-family: 'At Hauss Std Light'; margin: 0;">
+            Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a>
+            <button onclick="openModal('college-streetModal')" style="background-color: white; border: 1px solid #ccc; padding: 5px 12px; cursor: pointer; margin-left: 10px; border-radius: 4px; font-family: 'At Hauss Std Light'; font-size: 0.9rem;">More Information</button>
+          </p>
+        </div>
+      </div>
+      <div class="property-widget" style="background: white; padding: 20px; border-radius: 6px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <img src="listing/1902.png" alt="Property 2" style="width: 100%; border-radius: 6px; object-fit: cover;"/>
+        <div class="property-details" style="margin-top: 15px;">
+          <h3 style="margin: 0; font-family: 'At Hauss Std Semibold'; font-size: 1.25rem;">1902 S College Street, Trenton, TN 38382</h3>
+          <p class="price" style="font-family: 'At Hauss Std Light'; font-weight: bold; font-size: 1.1rem; margin: 5px 0;">$830,000</p>
+          <p class="location" style="font-family: 'At Hauss Std Light'; margin: 0;">
+            Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a>
+            <button onclick="openModal('college-streetModal')" style="background-color: white; border: 1px solid #ccc; padding: 5px 12px; cursor: pointer; margin-left: 10px; border-radius: 4px; font-family: 'At Hauss Std Light'; font-size: 0.9rem;">More Information</button>
+          </p>
+        </div>
+      </div>
+      <div class="property-widget" style="background: white; padding: 20px; border-radius: 6px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <img src="listing/1902.png" alt="Property 2" style="width: 100%; border-radius: 6px; object-fit: cover;"/>
+        <div class="property-details" style="margin-top: 15px;">
+          <h3 style="margin: 0; font-family: 'At Hauss Std Semibold'; font-size: 1.25rem;">1902 S College Street, Trenton, TN 38382</h3>
+          <p class="price" style="font-family: 'At Hauss Std Light'; font-weight: bold; font-size: 1.1rem; margin: 5px 0;">$830,000</p>
+          <p class="location" style="font-family: 'At Hauss Std Light'; margin: 0;">
+            Agent: <a href="about.html" style="text-decoration:none; color:black;">Amy McLemore</a>
+            <button onclick="openModal('college-streetModal')" style="background-color: white; border: 1px solid #ccc; padding: 5px 12px; cursor: pointer; margin-left: 10px; border-radius: 4px; font-family: 'At Hauss Std Light'; font-size: 0.9rem;">More Information</button>
+          </p>
+        </div>
+      </div>
+      
+      <!-- Add more listing cards as needed -->
+
+    </div>
+
+    <!-- Filter Sidebar -->
+    <div id="filterSidebar" class="filter-sidebar" style="width: 25%; padding: 20px; background: #eee; height: 100%; box-sizing: border-box; overflow-y: auto; position: relative; transition: right 0.3s ease;">
+      <button class="close-filter" onclick="toggleFilter()" style="display:none; margin-bottom: 10px; background:#0058a3; color:white; border:none; padding: 8px 12px; cursor:pointer; border-radius: 4px; font-family: 'At Hauss Std Light';">Close Filter</button>
+      <h2 style="font-family: 'At Hauss Std Semibold'; margin-top: 0;">Filter Listings</h2>
+      <!-- Filter controls here -->
+      <label style="display: block; margin-bottom: 8px; font-family: 'At Hauss Std Light';">
+        Price Range:
+        <input type="text" placeholder="$500,000 - $1,000,000" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-family: 'At Hauss Std Light';" />
+      </label>
+      <label style="display: block; margin-bottom: 8px; font-family: 'At Hauss Std Light';">
+        Beds:
+        <select style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-family: 'At Hauss Std Light';">
+          <option value="">Any</option>
+          <option value="1">1+</option>
+          <option value="2">2+</option>
+          <option value="3">3+</option>
+          <option value="4">4+</option>
+        </select>
+      </label>
+      <label style="display: block; margin-bottom: 8px; font-family: 'At Hauss Std Light';">
+        Baths:
+        <select style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-family: 'At Hauss Std Light';">
+          <option value="">Any</option>
+          <option value="1">1+</option>
+          <option value="2">2+</option>
+          <option value="3">3+</option>
+        </select>
+      </label>
+
+      <!-- Add more filter options as you like -->
+
+    </div>
+
+  </div>
+
+  <!-- Mobile Filter Button -->
+  <button id="mobileFilterBtn" class="mobile-filter-btn" onclick="toggleFilter()" 
+    style="position: fixed; bottom: 20px; right: 20px; background: #0058a3; color: white; border: none; padding: 10px 20px; z-index: 1000; border-radius: 4px; font-family: 'At Hauss Std Light'; display: none; cursor: pointer;">
+    Filter
+  </button>
+
+  <!-- Modal -->
+  <div id="college-streetModal" class="custom-modal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+    <div class="custom-modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative; font-family: 'At Hauss Std Light';">
+      
+      <span class="close" onclick="closeModal()" style="position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer;">&times;</span>
+      
+      <!-- Carousel placeholder -->
+      <div class="carousel" style="position: relative; margin-bottom: 20px;">
+        <img class="slide" src="listing/1902.png" style="width: 100%; max-height: 450px; object-fit: cover; border-radius: 6px;" />
+        <!-- Add JS carousel functionality here if needed -->
+      </div>
+
+      <h2 style="margin-top: 0; font-family: 'At Hauss Std Semibold'; font-size: 25px;">1902 S College Street, Trenton, TN 38382</h2>
+      <p style="font-size: 23px; font-weight: bold; margin: 5px 0 10px; font-family: 'At Hauss Std Light'">$830,000</p>
+
+      <!-- Details -->
+      <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 1em; font-family: 'At Hauss Std Light'; margin-bottom: 25px;">
+        <div><strong>Beds:</strong> 3</div>
+        <div><strong>Baths:</strong> 2 (2 Full, 0 Half)</div>
+        <div><strong>Sqft:</strong> 3,482</div>
+        <div><strong>Lot:</strong> 22.5 acres</div>
+        <div><strong>Year Built:</strong> 1957</div>
+        <div><strong>Style:</strong> Single Family Residence</div>
+        <div><strong>Pool:</strong> Yes</div>
+        <div><strong>Garage:</strong> No garage, 2-car carport, 10 total parking spaces</div>
+      </div>
+
+      <!-- Features -->
+      <div style="margin-bottom: 25px;">
+        <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 5px; font-family: 'At Hauss Std Semibold';">Key Features</h3>
+        <ul style="list-style: none; padding-left: 0; column-count: 2; gap: 20px; margin: 0; font-family: 'At Hauss Std Light';">
+          <li><strong>Cooling:</strong> Ceiling Fan(s), Central Air, Electric</li>
+          <li><strong>Heating:</strong> Central, Forced Air, Natural Gas</li>
+          <li><strong>Fireplaces:</strong> 0 (Living Room)</li>
+          <li><strong>Exterior:</strong> Brick, Rain Gutters</li>
+          <li><strong>Interior:</strong> Blown/Textured Ceilings, Ceiling Fan(s), Eat-in Kitchen, Fiber Glass Shower, Laminate Counters, Pantry, Primary Downstairs, Tub Shower Combo</li>
+          <li><strong>Kitchen:</strong> Laminate Counters, Kitchen Island, Single-Basin Sink, Dishwasher, Electric Range, Microwave, Microwave Vent Hood, Gas Water Heater, Pantry</li>
+          <li><strong>Parking:</strong> Attached, Driveway, Garage, Garage Door Opener, Garage Faces Front, Open Parking (2 spaces)</li>
+          <li><strong>Basement:</strong> No</li>
+          <li><strong>Additional Structures:</strong> Shed(s)</li>
+          <li><strong>Garage:</strong> 2-Car Garage, Attached</li>
+          <li><strong>Water & Sewer:</strong> Public Water, Public Sewer</li>
+        </ul>
+      </div>
+
+      <!-- Description -->
+      <div style="margin-bottom: 25px;">
+        <h3 style="border-bottom: 1px solid #ccc; padding-top:1px; padding-bottom:5px; font-family:'At Hauss Std Semibold'">Property Description</h3>
+        <p style="line-height: 1.6; margin-top: 15px;">
+          Welcome to "Oaklea Farm", where timeless architecture blends with unique potential...a rare offering of character, versatility, and future opportunity! Nestled on 22.5 scenic acres at the corner of College St & Industrial Blvd in Trenton, TN, this mid-century modern ranch is a rare gem! This 3BR/2BA home exudes timeless character with wood, stone, and brick construction, flagstone and hardwood floors, vaulted ceilings with exposed beams, and a double-sided masonry fireplace in the sunroom and den.
+        </p>
+        <p style="line-height: 1.6; margin-top: 15px;">
+          The circular drive leads to a 2-car carport with a built-in potting station featuring custom cabinetry, tiled workspace, and sink. Enjoy a beautifully remodeled kitchen (approx. 2005) with granite counters, custom cabinetry, dual sinks, built-in SubZero fridge, a separate Dacor cooktop. Outside, relax by the 20x42 in-ground pool (liner ~4 yrs old), entertain in the 36x20 pool house with kitchenette and wood stove (also has 2 full baths), or explore the picturesque pond and creek lined by split rail fencing.
+        </p>
+        <p style="line-height: 1.6; margin-top: 15px;">
+          The 36x20 pool house features two full baths, a kitchenette, and a spacious great room with a wood stove — offering incredible potential to convert into a loft-style guest house, studio, or ADU (Accessory Dwelling Unit) with minimal modification. Outbuildings include: 20x20 wired shop, 18x32 dairy barn, 48x78 loft barn, 22x80 implement shed, metal storage, 2 grain silos, and 2 pole barns—perfect for hobby farming or storage. With a mix of vintage charm and practical space, this one-of-a-kind property is a true legacy estate! The rear section along Industrial Blvd presents exceptional commercial real estate potential, making this property ideal for mixed-use development, hobby farming, or as a private estate. Priced at recent appraised value. Owner willing to subdivide.
+        </p>
+      </div>
+
+      <!-- Agent + Share -->
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-top: 1px solid #ccc; padding-top: 20px; gap: 20px;">
+        <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
+          <img src="agent/amywork.png" alt="Amy McLemore" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;" />
+          <div>
+            <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Amy McLemore</strong></p>
+            <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
+            <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 234-0049</p>
+            <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-end; flex: 1 1 200px;">
+          <p style="margin: 0; font-family: 'At Hauss Std Semibold'; font-size: 1rem;">Share this Listing:</p>
+          <div style="display: flex; align-items: center; gap: 15px; margin-top: 5px;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://totalrealtysource.com/college-street.html"
+              target="_blank" title="Share on Facebook" style="color:#3b5998; font-size: 1.8rem;">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+            <a href="https://www.instagram.com/totalrealtysource"
+              target="_blank" title="View on Instagram" style="color:#e1306c; font-size: 1.8rem;">
+              <i class="fa fa-instagram"></i>
+            </a>
+            <a href="mailto:?subject=Check out this listing&body=Take a look at this property: https://totalrealtysource.com/college-street.html"
+              title="Share by Email" style="color:#007bff; font-size: 1.8rem;">
+              <i class="fa fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  // Modal open/close
+  function openModal(id) {
+    document.getElementById(id).style.display = 'block';
+  }
+  function closeModal() {
+    const modals = document.querySelectorAll('.custom-modal');
+    modals.forEach(modal => modal.style.display = 'none');
+  }
+
+  // Filter toggle for mobile
+  const filterSidebar = document.getElementById('filterSidebar');
+  const mobileFilterBtn = document.getElementById('mobileFilterBtn');
+
+  function toggleFilter() {
+    if(window.innerWidth <= 768){
+      if(filterSidebar.style.position !== 'fixed'){
+        filterSidebar.style.position = 'fixed';
+        filterSidebar.style.top = '0';
+        filterSidebar.style.right = '0';
+        filterSidebar.style.width = '80%';
+        filterSidebar.style.height = '100%';
+        filterSidebar.style.zIndex = '10000';
+        filterSidebar.style.background = '#eee';
+        filterSidebar.querySelector('.close-filter').style.display = 'block';
+        mobileFilterBtn.style.display = 'none';
+        filterSidebar.style.overflowY = 'auto';
+      } else if(filterSidebar.style.right === '0px' || filterSidebar.style.right === '0'){
+        filterSidebar.style.right = '-100%';
+        filterSidebar.querySelector('.close-filter').style.display = 'none';
+        mobileFilterBtn.style.display = 'block';
+        setTimeout(() => {
+          filterSidebar.style.position = 'relative';
+          filterSidebar.style.width = '25%';
+          filterSidebar.style.right = '0';
+          filterSidebar.style.height = '100%';
+          filterSidebar.style.zIndex = '';
+          filterSidebar.style.background = '#eee';
+        }, 300);
+      } else {
+        filterSidebar.style.right = '0';
+        filterSidebar.querySelector('.close-filter').style.display = 'block';
+        mobileFilterBtn.style.display = 'none';
+      }
+    }
+  }
+
+  // Show/hide mobile filter button on resize
+  function handleResize() {
+    if(window.innerWidth <= 768){
+      mobileFilterBtn.style.display = 'block';
+      filterSidebar.style.position = 'fixed';
+      filterSidebar.style.right = '-100%';
+      filterSidebar.querySelector('.close-filter').style.display = 'none';
+    } else {
+      mobileFilterBtn.style.display = 'none';
+      filterSidebar.style.position = 'relative';
+      filterSidebar.style.right = '0';
+      filterSidebar.style.width = '25%';
+      filterSidebar.style.height = '100%';
+      filterSidebar.querySelector('.close-filter').style.display = 'none';
+    }
+  }
+  window.addEventListener('resize', handleResize);
+  window.addEventListener('load', handleResize);
+</script>
+
+</body>
+</html>
