@@ -224,126 +224,262 @@ function toggleOtherLinks() {
 }
 
 // 
+
 function filterProperties() {
-  try {
-    // ✅ Helpers
-    function extractFirstInt(text) {
-      const match = text?.match(/\d+/);
-      return match ? parseInt(match[0]) : 0;
+  const addressVal = document.getElementById("searchAddress").value.toLowerCase();
+  const agentVal = document.getElementById("filterAgent").value.toLowerCase();
+  const priceRange = document.getElementById("priceRange").value;
+  const bedVal = parseInt(document.getElementById("filterBeds").value) || 0;
+  const bathVal = parseInt(document.getElementById("filterBaths").value) || 0;
+  const needsGarage = document.getElementById("hasGarage").checked;
+  const needsPool = document.getElementById("hasPool").checked;
+
+  let minPrice = 0, maxPrice = Infinity;
+  if (priceRange.includes("-")) {
+    const parts = priceRange.split("-");
+    minPrice = parseInt(parts[0].replace(/\D/g, '')) || 0;
+    maxPrice = parseInt(parts[1].replace(/\D/g, '')) || Infinity;
+  }
+
+  const listings = document.querySelectorAll(".property-widget");
+
+  listings.forEach(listing => {
+    const address = listing.querySelector("h3")?.innerText.toLowerCase() || "";
+    const agent = listing.querySelector(".location a")?.innerText.toLowerCase() || "";
+
+    const priceText = listing.querySelector(".price")?.innerText.replace(/\D/g, '') || "0";
+    const price = parseInt(priceText);
+
+    const beds = parseInt(listing.querySelector(".bedrooms")?.innerText || "0");
+    const baths = parseInt(listing.querySelector(".bathrooms")?.innerText || "0");
+
+    const garageText = listing.querySelector(".garage")?.innerText.toLowerCase() || "";
+    const poolText = listing.querySelector(".pool")?.innerText.toLowerCase() || "";
+
+    const hasGarage = garageText.includes("garage") && !garageText.includes("no garage");
+    const hasPool = poolText.includes("pool") && !poolText.includes("no");
+
+    const matchesAddress = address.includes(addressVal);
+    const matchesAgent = agent.includes(agentVal);
+    const matchesPrice = price >= minPrice && price <= maxPrice;
+    const matchesBeds = beds >= bedVal;
+    const matchesBaths = baths >= bathVal;
+    const matchesGarage = !needsGarage || hasGarage;
+    const matchesPool = !needsPool || hasPool;
+
+    if (matchesAddress && matchesAgent && matchesPrice && matchesBeds && matchesBaths && matchesGarage && matchesPool) {
+      listing.style.display = "";
+    } else {
+      listing.style.display = "none";
     }
+  });
+}
+function getAllAddresses() {
+  const modals = document.querySelectorAll(".property-modal");
+  const addresses = [];
 
-    function extractFirstFloat(text) {
-      const match = text?.match(/\d+(\.\d+)?/);
-      return match ? parseFloat(match[0]) : 0;
+  modals.forEach(modal => {
+    const address = modal.querySelector("h3")?.innerText?.trim();
+    if (address && !addresses.includes(address)) {
+      addresses.push(address);
     }
+  });
 
-    function hasFeature(text, mustHave) {
-      if (!mustHave) return true;
-      if (!text) return false;
-      text = text.toLowerCase().trim();
-      return text !== '' && !text.includes('no') && !text.includes('none');
-    }
+  return addresses;
+}
 
-    function filterPrice(propertyPrice, priceFilter) {
-      if (priceFilter === '<100000') return propertyPrice < 100000;
-      if (priceFilter === '100000-500000') return propertyPrice >= 100000 && propertyPrice <= 500000;
-      if (priceFilter === '>500000') return propertyPrice > 500000;
-      return true;
-    }
+function showSuggestions() {
+  const input = document.getElementById("searchAddress");
+  const query = input.value.toLowerCase();
+  const suggestionsBox = document.getElementById("suggestionsBox");
 
-    // 🔍 Inputs
-    const addressInput = document.getElementById('addressInput')?.value.toLowerCase() || '';
-    const priceFilter = document.getElementById('price')?.value || '';
-    const agentFilter = document.getElementById('agent')?.value.toLowerCase() || '';
+  suggestionsBox.innerHTML = "";
+  if (!query) {
+    suggestionsBox.style.display = "none";
+    return;
+  }
 
-    const mustHavePool = document.getElementById('filterPool')?.checked;
-    const mustHaveGarage = document.getElementById('filterGarage')?.checked;
-    const minBeds = parseInt(document.getElementById('filterBeds')?.value) || 0;
-    const minBaths = parseFloat(document.getElementById('filterBaths')?.value) || 0;
-    const sqftOver2000 = document.getElementById('filterLargeSqft')?.checked;
-    const sqftUnder2000 = document.getElementById('filterSmallSqft')?.checked;
-    const builtAfter2000 = document.getElementById('filterAfter2000')?.checked;
-    const builtBefore2000 = document.getElementById('filterBefore2000')?.checked;
-    const minAcreage = parseFloat(document.getElementById('filterAcreage')?.value) || 0;
-    const mustHaveBasement = document.getElementById('filterBasement')?.checked;
+  const allAddresses = getAllAddresses();
+  const filtered = allAddresses.filter(addr => addr.toLowerCase().includes(query));
 
-    // ✅ Only target cards, not modals
-    const propertyWidgets = document.querySelectorAll('.property-widget');
+  if (filtered.length === 0) {
+    suggestionsBox.style.display = "none";
+    return;
+  }
 
-    for (let i = 0; i < propertyWidgets.length; i++) {
-      const widget = propertyWidgets[i];
+  filtered.forEach(address => {
+    const div = document.createElement("div");
+    div.textContent = address;
+    div.style.padding = "8px";
+    div.style.cursor = "pointer";
+    div.addEventListener("click", () => {
+      input.value = address;
+      suggestionsBox.style.display = "none";
+      filterProperties(); // optional: trigger filter immediately
+    });
+    suggestionsBox.appendChild(div);
+  });
 
-      // 🏡 Basic content
-      const address = widget.querySelector('.property-details h3')?.textContent.toLowerCase() || '';
-      const priceText = widget.querySelector('.price')?.textContent || '';
-      const price = parseFloat(priceText.replace(/[^\d]/g, '')) || 0;
-      const agentText = widget.querySelector('.location')?.textContent.toLowerCase() || '';
+  suggestionsBox.style.display = "block";
+}
 
-      // 📊 Detail spans
-      const bedText = widget.querySelector('.bedrooms')?.textContent || '';
-      const bathText = widget.querySelector('.bathrooms')?.textContent || '';
-      const sqftText = widget.querySelector('.sqft')?.textContent.replace(/,/g, '') || '';
-      const yearText = widget.querySelector('.year-built')?.textContent || '';
-      const lotText = widget.querySelector('.lot')?.textContent || '';
-      const poolText = widget.querySelector('.pool')?.textContent || '';
-      const garageText = widget.querySelector('.garage')?.textContent || '';
-      const basementText = widget.querySelector('.basement')?.textContent || '';
-
-      // 🧮 Cleaned values
-      const beds = extractFirstInt(bedText);
-      const baths = extractFirstFloat(bathText);
-      const sqft = extractFirstInt(sqftText);
-      const year = parseInt(yearText) || 0;
-      const lot = extractFirstFloat(lotText);
-
-      // ✅ Matching checks
-      const addressMatch = address.includes(addressInput);
-      const priceMatch = filterPrice(price, priceFilter);
-      const agentMatch = agentText.includes(agentFilter);
-      const bedMatch = beds >= minBeds;
-      const bathMatch = baths >= minBaths;
-      const sqftMatch = (!sqftOver2000 || sqft >= 2000) && (!sqftUnder2000 || sqft < 2000);
-      const yearMatch = (!builtAfter2000 || year >= 2000) && (!builtBefore2000 || year < 2000);
-      const lotMatch = lot >= minAcreage;
-      const poolMatch = hasFeature(poolText, mustHavePool);
-      const garageMatch = hasFeature(garageText, mustHaveGarage);
-      const basementMatch = hasFeature(basementText, mustHaveBasement);
-
-      const shouldShow = (
-        addressMatch &&
-        priceMatch &&
-        agentMatch &&
-        bedMatch &&
-        bathMatch &&
-        sqftMatch &&
-        yearMatch &&
-        lotMatch &&
-        poolMatch &&
-        garageMatch &&
-        basementMatch
-      );
-
-      widget.style.display = shouldShow ? 'block' : 'none';
-    }
-
-    updateShowingResults(); // your UI result updater
-
-  } catch (error) {
-    console.error("Error in filterProperties:", error);
+// Optional: hide suggestions on Enter or Esc
+function handleKey(event) {
+  const box = document.getElementById("suggestionsBox");
+  if (event.key === "Enter" || event.key === "Escape") {
+    box.style.display = "none";
   }
 }
 
+// Optional: hide suggestions when clicking outside
+document.addEventListener("click", (e) => {
+  if (!document.getElementById("searchAddress").contains(e.target) &&
+      !document.getElementById("suggestionsBox").contains(e.target)) {
+    document.getElementById("suggestionsBox").style.display = "none";
+  }
+});
+function clearFilters() {
+  document.getElementById("searchAddress").value = "";
+  document.getElementById("filterAgent").value = "";
+  document.getElementById("priceRange").value = "";
+  document.getElementById("filterBeds").value = "";
+  document.getElementById("filterBaths").value = "";
+  document.getElementById("hasGarage").checked = false;
+  document.getElementById("hasPool").checked = false;
 
+  document.getElementById("suggestionsBox").style.display = "none"; // hide suggestions if visible
 
+  filterProperties();
+}
+function parseBaths(text) {
+  // Extract numeric part from string like "4 (3 Full, 1 Half)" or "3.5"
+  const match = text.match(/[\d\.]+/);
+  return match ? parseFloat(match[0]) : 0;
+}
 
+function filterProperties() {
+  const bedsFilter = document.getElementById('filterBeds').value;
+  const bathsFilter = document.getElementById('filterBaths').value;
 
+  const properties = document.querySelectorAll('.property-widget');
+  let countVisible = 0;
 
-function toggleFeatureFilters() {
-  var box = document.getElementById('featureFilterBox');
-  if (!box) return; // safety check
-  if (box.style.display === 'none' || box.style.display === '') {
-    box.style.display = 'block';
-  } else {
-    box.style.display = 'none';
+  properties.forEach(prop => {
+    // Find the modal ID from the button inside the property widget
+    const modalBtn = prop.querySelector('button[onclick^="openModal"]');
+    if (!modalBtn) {
+      prop.style.display = 'none';
+      return;
+    }
+
+    // Extract modal ID from button onclick attribute: e.g. openModal('stanworthModal')
+    const onclickAttr = modalBtn.getAttribute('onclick');
+    const modalIdMatch = onclickAttr.match(/openModal\('(.+?)'\)/);
+    if (!modalIdMatch) {
+      prop.style.display = 'none';
+      return;
+    }
+    const modalId = modalIdMatch[1];
+    const modal = document.getElementById(modalId);
+    if (!modal) {
+      prop.style.display = 'none';
+      return;
+    }
+
+    // Find bedrooms and bathrooms spans inside the modal
+    const bedroomsSpan = modal.querySelector('.bedrooms');
+    const bathroomsSpan = modal.querySelector('.bathrooms');
+
+    // Parse bedrooms and bathrooms count
+    const beds = bedroomsSpan ? parseInt(bedroomsSpan.textContent.trim()) || 0 : 0;
+    const baths = bathroomsSpan ? parseBaths(bathroomsSpan.textContent.trim()) : 0;
+
+    let show = true;
+
+    if (bedsFilter) {
+      if (beds < parseInt(bedsFilter)) show = false;
+    }
+
+    if (bathsFilter) {
+      if (baths < parseFloat(bathsFilter)) show = false;
+    }
+
+    if (show) {
+      prop.style.display = 'block';
+      countVisible++;
+    } else {
+      prop.style.display = 'none';
+    }
+  });
+
+  const resultsMessage = document.getElementById('resultsMessage');
+  if (resultsMessage) {
+    resultsMessage.textContent = `Showing ${countVisible} result${countVisible !== 1 ? 's' : ''}`;
+  }
+}
+function parseBaths(text) {
+  // Extract numeric part from string like "4 (3 Full, 1 Half)" or "3.5"
+  const match = text.match(/[\d\.]+/);
+  return match ? parseFloat(match[0]) : 0;
+}
+
+function filterProperties() {
+  const bedsFilter = document.getElementById('filterBeds').value;
+  const bathsFilter = document.getElementById('filterBaths').value;
+
+  const properties = document.querySelectorAll('.property-widget');
+  let countVisible = 0;
+
+  properties.forEach(prop => {
+    // Find the modal ID from the button inside the property widget
+    const modalBtn = prop.querySelector('button[onclick^="openModal"]');
+    if (!modalBtn) {
+      prop.style.display = 'none';
+      return;
+    }
+
+    // Extract modal ID from button onclick attribute: e.g. openModal('stanworthModal')
+    const onclickAttr = modalBtn.getAttribute('onclick');
+    const modalIdMatch = onclickAttr.match(/openModal\('(.+?)'\)/);
+    if (!modalIdMatch) {
+      prop.style.display = 'none';
+      return;
+    }
+    const modalId = modalIdMatch[1];
+    const modal = document.getElementById(modalId);
+    if (!modal) {
+      prop.style.display = 'none';
+      return;
+    }
+
+    // Find bedrooms and bathrooms spans inside the modal
+    const bedroomsSpan = modal.querySelector('.bedrooms');
+    const bathroomsSpan = modal.querySelector('.bathrooms');
+
+    // Parse bedrooms and bathrooms count
+    const beds = bedroomsSpan ? parseInt(bedroomsSpan.textContent.trim()) || 0 : 0;
+    const baths = bathroomsSpan ? parseBaths(bathroomsSpan.textContent.trim()) : 0;
+
+    let show = true;
+
+    if (bedsFilter) {
+      if (beds < parseInt(bedsFilter)) show = false;
+    }
+
+    if (bathsFilter) {
+      if (baths < parseFloat(bathsFilter)) show = false;
+    }
+
+    if (show) {
+      prop.style.display = 'block';
+      countVisible++;
+    } else {
+      prop.style.display = 'none';
+    }
+  });
+
+  const resultsMessage = document.getElementById('resultsMessage');
+  if (resultsMessage) {
+    resultsMessage.textContent = `Showing ${countVisible} result${countVisible !== 1 ? 's' : ''}`;
   }
 }

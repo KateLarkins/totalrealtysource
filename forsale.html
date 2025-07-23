@@ -2542,51 +2542,75 @@ input[type="checkbox"] {
               </div>
            </div>
 
-            <!-- Filter Sidebar -->
-            <div id="filterSidebar" class="filter-sidebar" style="width: 25%; padding: 20px; background: #eee; height: 100%; box-sizing: border-box; overflow-y: auto; position: relative; transition: right 0.3s ease;">
-              <button class="close-filter" onclick="toggleFilter()" style="display:none; margin-bottom: 10px; background:#0058a3; color:white; border:none; padding: 8px 12px; cursor:pointer; border-radius: 4px; font-family: 'At Hauss Std Light';">Close Filter</button>
-              <h2 style="font-family: 'At Hauss Std Semibold'; margin-top: 0;">Filter Listings</h2>
-              <!-- Filter controls here -->
-              <label style="display: block; margin-bottom: 8px; font-family: 'At Hauss Std Light';">
-                Price Range:
-                <input type="text" placeholder="$500,000 - $1,000,000" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-family: 'At Hauss Std Light';" />
-              </label>
-              <label style="display: block; margin-bottom: 8px; font-family: 'At Hauss Std Light';">
-                Beds:
-                <select style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-family: 'At Hauss Std Light';">
-                  <option value="">Any</option>
-                  <option value="1">1+</option>
-                  <option value="2">2+</option>
-                  <option value="3">3+</option>
-                  <option value="4">4+</option>
-                </select>
-              </label>
-              <label style="display: block; margin-bottom: 8px; font-family: 'At Hauss Std Light';">
-                Baths:
-                <select style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-family: 'At Hauss Std Light';">
-                  <option value="">Any</option>
-                  <option value="1">1+</option>
-                  <option value="2">2+</option>
-                  <option value="3">3+</option>
-                </select>
-              </label>
-        
-              <!-- Add more filter options as you like -->
-              <div class="search-bar" style="position: relative;">
-                <button style="font-size: 16px; margin-top:8px;" onclick="filterProperties()">Search</button>
-              </div>
-              <div id="showingResults" class="result-info" style="display: none;"></div>
-            </div>
-          </div>
-        
-          <!-- Mobile Filter Button -->
+           <div id="filterSidebar" class="filter-sidebar" style="width: 25%; padding: 20px; background: #eee; height: 100%; box-sizing: border-box; overflow-y: auto; position: relative;">
+            <h2 style="font-family: 'At Hauss Std Semibold'; margin-top: 0;">Filter Listings</h2>
           
-          <button id="mobileFilterBtn" class="mobile-filter-btn" onclick="toggleFilter()" 
-            style="position: fixed; bottom: 20px; right: 20px; background: #0058a3; color: white; border: none; padding: 10px 20px; z-index: 1000; border-radius: 4px; font-family: 'At Hauss Std Light'; display: none; cursor: pointer;">
-            Filter
-          </button>
+            <!-- Address Search -->
+            <label style="display: block; margin-bottom: 12px; font-family: 'At Hauss Std Light';">
+              Search Address:
+              <input type="text" id="searchAddress" placeholder="Search by address..." oninput="showSuggestions()" onkeydown="handleKey(event)">
+<div id="suggestionsBox" style="border: 1px solid #ccc; display: none; position: absolute; background: white; z-index: 1000;"></div>
+
+            </label>
+          
+            <!-- Agent Filter -->
+            <label style="display: block; margin-bottom: 12px; font-family: 'At Hauss Std Light';">
+              Agent Name:
+              <input type="text" id="filterAgent" placeholder="Amy McLemore..." style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;" />
+            </label>
+          
+            <!-- Price Range -->
+            <label style="display: block; margin-bottom: 12px; font-family: 'At Hauss Std Light';">
+              Price Range:
+              <input type="text" id="priceRange" placeholder="500000-1000000" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;" />
+            </label>
+          
+            <!-- Beds -->
+            <label style="display: block; margin-bottom: 12px; font-family: 'At Hauss Std Light';">
+              Beds:
+              <select id="filterBeds" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;">
+                <option value="">Any</option>
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+                <option value="4">4+</option>
+              </select>
+            </label>
+          
+            <!-- Baths -->
+            <label style="display: block; margin-bottom: 12px; font-family: 'At Hauss Std Light';">
+              Baths:
+              <select id="filterBaths" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;">
+                <option value="">Any</option>
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+              </select>
+            </label>
+          
+            <!-- Garage -->
+            <label style="display: block; font-family: 'At Hauss Std Light';">
+              <input type="checkbox" id="hasGarage" /> Has Garage
+            </label>
+          
+            <!-- Pool -->
+            <label style="display: block; margin-bottom: 12px; font-family: 'At Hauss Std Light';">
+              <input type="checkbox" id="hasPool" /> Has Pool
+            </label>
+          
+            <!-- Search Button -->
+            <div class="search-bar" style="position: relative;">
+              <button onclick="filterProperties()" style="font-size: 16px; margin-top: 8px; padding: 8px 12px;">Search</button>
+            </div>
+            <button onclick="clearFilters()" style="margin-top: 12px; padding: 8px 12px; font-family: 'At Hauss Std Light'; cursor: pointer;">
+              Clear Filters
+            </button>
+          </div>
+       
+          
+          
         
-        </div>
+</div></div>
     <!-- Gradient Background -->
     <div style="width:100%; height:140px; background:linear-gradient(-135deg, transparent 40%, #ffffff 40%),radial-gradient(#1d5b8c 1.5px, transparent 1.5px); background-size: cover, 24px 24px; clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%);"></div>
 
