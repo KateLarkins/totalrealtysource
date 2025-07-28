@@ -508,6 +508,21 @@ iframe {
   border-radius: 50%;
   object-fit: cover;
 }
+@media (max-width: 768px) {
+  .property-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .property-card {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+.image-wrapper, .property-widget {
+  width: 100%;
+  min-height: 150px; /* or whatever minimum makes sense */
+}
 
 @media (max-width: 768px) {
   /* About Us Agent Modals */
