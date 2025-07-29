@@ -1626,15 +1626,12 @@ background-color: #ccc;
   transform: scale(1.1);
 }
 /* Make the widget responsive */
-@media screen and (max-width: 768px) {
-  .property-widget {
-    width: calc(50% - 20px); /* Adjust width for smaller screens */
-  }
-}
+
 
 @media screen and (max-width: 480px) {
   .property-widget {
     width: 100%; /* Adjust width for even smaller screens */
+    align-items:center;
   }
 }
 
