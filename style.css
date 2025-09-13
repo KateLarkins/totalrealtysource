@@ -1677,6 +1677,9 @@ background-color: #ccc;
   display: inline-block;
 }
 
+strong {
+  font-weight:bolder;
+}
 .text {
   color: #000;
   font-size: 20px;
