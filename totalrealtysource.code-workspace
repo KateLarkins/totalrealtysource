@@ -4,7 +4,11 @@
 			"path": "."
 		},
 		{
-			"path": "."
+			"path": "../../../Desktop/Memphis"
 		}
-	]
+	],
+	"settings": {
+		"liveServer.settings.port": 5501,
+		"liveServer.settings.multiRootWorkspaceName": "totalrealtysource"
+	}
 }
