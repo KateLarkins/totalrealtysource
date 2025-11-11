@@ -126,116 +126,7 @@ function toggleText(id) {
   }
 }
 
-// search bar// Function to toggle the menu for mobile view// Function to filter properties based on address, price range, and agent
-function filterProperties() {
-  // Get input values
-  var addressInput = document.getElementById('addressInput').value.toLowerCase();
-  var priceFilter = document.getElementById('price').value;
-  var agentFilter = document.getElementById('agent').value.toLowerCase();
-
-  // Get all property widgets
-  var propertyWidgets = document.getElementsByClassName('property-widget');
-
-  // Loop through property widgets
-  for (var i = 0; i < propertyWidgets.length; i++) {
-      var propertyWidget = propertyWidgets[i];
-      var propertyAddress = propertyWidget.querySelector('.property-details h3').textContent.toLowerCase();
-      var propertyPrice = parseFloat(
-        propertyWidget.querySelector('.price').childNodes[0].textContent.replace(/\D/g, '')
-    );
-    
-
-      // Check if property matches filters
-      var addressMatch = propertyAddress.includes(addressInput);
-      var priceMatch = filterPrice(propertyPrice, priceFilter);
-      var agentMatch = propertyWidget.querySelector('.location').textContent.toLowerCase().includes(agentFilter);
-
-      // Show or hide property based on filter matches
-      if (addressMatch && priceMatch && agentMatch) {
-          propertyWidget.style.display = 'block';
-      } else {
-          propertyWidget.style.display = 'none';
-      }
-  }
-
-  // Update showing results info
-  updateShowingResults();
-}
-
-// Function to filter properties based on price range
-// Function to filter properties based on price range
-function filterPrice(propertyPrice, priceFilter) {
-  if (priceFilter === '<100000') {
-      return propertyPrice < 100000;
-  } else if (priceFilter === '100000-500000') {
-      return propertyPrice >= 100000 && propertyPrice <= 500000;
-  } else if (priceFilter === '>500000') {
-      return propertyPrice > 500000; // Fix: This ensures prices over 500,000 are included
-  } else {
-      return true; // No price filter selected, show all properties
-  }
-}
-
-
-
-// Function to update showing results info
-function updateShowingResults() {
-  var visibleProperties = document.querySelectorAll('.property-widget[style="display: block;"]').length;
-  var totalProperties = document.getElementsByClassName('property-widget').length;
-  var showingResults = document.getElementById('showingResults');
-
-  showingResults.innerHTML = "Showing " + visibleProperties + " out of " + totalProperties + " results.";
-  showingResults.style.display = 'block';
-}
-
-// Function to clear all filters
-function clearFilters() {
-  document.getElementById('addressInput').value = '';
-  document.getElementById('price').value = '';
-  document.getElementById('agent').value = '';
-  filterProperties(); // Reapply filters to show all properties
-}
-
-// Add event listeners
-document.getElementById('clearPriceFilter').addEventListener('click', clearFilters);
-document.getElementById('clearAgentFilter').addEventListener('click', clearFilters);
-
-
-// type
-
-// New navbar
-
-function toggleMenu() {
-  var navLinks = document.getElementById("navLinks");
-  if (navLinks.classList.contains("show")) {
-    navLinks.classList.remove("show");
-  } else {
-    navLinks.classList.add("show");
-  }
-}
-
-function toggleOtherLinks() {
-  var otherLinks = document.getElementById("otherLinks");
-  if (otherLinks.style.display === "block") {
-    otherLinks.style.display = "none";
-  } else {
-    otherLinks.style.display = "block";
-  }
-}
-
-// 
-
-
-document.getElementById("searchAddress").addEventListener("keypress", function (e) {
-  if (e.key === "Enter") filterProperties();
-});
-document.getElementById("priceRange").addEventListener("keypress", function (e) {
-  if (e.key === "Enter") filterProperties();
-});
-document.getElementById("filterAgent").addEventListener("keypress", function (e) {
-  if (e.key === "Enter") filterProperties();
-});
-
+// new filter bar
 function filterProperties() {
   const addressVal = document.getElementById("searchAddress").value.toLowerCase();
   const agentVal = document.getElementById("filterAgent").value.toLowerCase();
@@ -255,18 +146,11 @@ function filterProperties() {
   const listings = document.querySelectorAll(".property-widget");
 
   listings.forEach(listing => {
-    const address = listing.querySelector("h3").innerText.toLowerCase();
+    const address = listing.querySelector("h3")?.innerText.toLowerCase() || "";
     const agent = listing.querySelector(".location")?.innerText.toLowerCase() || "";
-
-    const priceText = listing.querySelector(".price")?.innerText.replace(/\D/g, '') || "0";
-    const price = parseInt(priceText);
-
-    const bedText = listing.querySelector(".bedrooms")?.innerText || "0";
-    const beds = parseInt(bedText);
-
-    const bathText = listing.querySelector(".bathrooms")?.innerText || "0";
-    const baths = parseInt(bathText);
-
+    const price = parseInt(listing.querySelector(".price")?.innerText.replace(/\D/g, '') || "0");
+    const beds = parseInt(listing.querySelector(".bedrooms")?.innerText || "0");
+    const baths = parseInt(listing.querySelector(".bathrooms")?.innerText || "0");
     const garageText = listing.querySelector(".garage")?.innerText.toLowerCase() || "";
     const poolText = listing.querySelector(".pool")?.innerText.toLowerCase() || "";
 
@@ -278,10 +162,27 @@ function filterProperties() {
     const matchesGarage = !needsGarage || garageText.includes("garage");
     const matchesPool = !needsPool || poolText.includes("pool");
 
-    if (matchesAddress && matchesAgent && matchesPrice && matchesBeds && matchesBaths && matchesGarage && matchesPool) {
-      listing.style.display = "";
-    } else {
-      listing.style.display = "none";
-    }
+    listing.style.display = (matchesAddress && matchesAgent && matchesPrice && matchesBeds && matchesBaths && matchesGarage && matchesPool) ? "" : "none";
   });
+}
+
+
+// New navbar
+
+function toggleMenu() {
+  var navLinks = document.getElementById("navLinks");
+  if (navLinks.classList.contains("show")) {
+    navLinks.classList.remove("show");
+  } else {
+    navLinks.classList.add("show");
+  }
+}
+
+function toggleOtherLinks() {
+  var otherLinks = document.getElementById("otherLinks");
+  if (otherLinks.style.display === "block") {
+    otherLinks.style.display = "none";
+  } else {
+    otherLinks.style.display = "block";
+  }
 }
