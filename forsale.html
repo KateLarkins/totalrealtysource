@@ -307,7 +307,7 @@ input[type="checkbox"] {
                     <div><strong>Lot:</strong> <span class="lot">10.8 acres</span></div>
                     <div><strong>Year Built:</strong> <span class="year-built">1946</span></div>
                     <div><strong>Style:</strong> <span class="style">Ranch / Other</span></div>
-                    <div><strong>Pool:</strong> <span class="pool">Saltwater, In-Ground, Gunite</span></div>
+                    <div><strong>Pool:</strong> <span class="pool">Yes Saltwater, In-Ground, Gunite</span></div>
                     <div><strong>Garage:</strong> <span class="garage">5 covered, 21 total</span></div>
                   </div>      
                 </div>
@@ -2697,9 +2697,19 @@ input[type="checkbox"] {
         
             <label style="display:block; margin-bottom:12px; font-family:'At Hauss Std Light';">
               Agent Name:
-              <input type="text" id="filterAgent" placeholder="Amy McLemore..." style="width:100%; padding:6px; border-radius:4px; border:1px solid #ccc;" />
+              <select id="filterAgent" style="width:100%; padding:6px; border-radius:4px; border:1px solid #ccc;">
+                <option value="">Select an agent...</option>
+                <option value="Amy McLemore">Amy McLemore</option>
+                <option value="Brandie Bassett">Brandie Bassett</option>
+                <option value="Jackie David">Jackie David</option>
+                <option value="Lynda Climer">Lynda Climer</option>
+                <option value="Laura Burke">Laura Burke</option>
+                <option value="Tammy Jones">Tammy Jones</option>
+                <option value="Ashley McMillan">Ashley McMillan</option>
+                <option value="Lisa Ballinger">Lisa Ballinger</option>
+              </select>
             </label>
-        
+            
             <label style="display:block; margin-bottom:12px; font-family:'At Hauss Std Light';">
               Price:
               <select id="priceRange" onchange="filterProperties()" style="width:100%; padding:6px; border-radius:4px; border:1px solid #ccc;">

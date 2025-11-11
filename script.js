@@ -125,6 +125,9 @@ function toggleText(id) {
     expandLink.textContent = '...Read More';
   }
 }
+
+
+//filterfunction 
 function filterProperties() {
   const addressVal = document.getElementById("searchAddress").value.toLowerCase();
   const agentVal = document.getElementById("filterAgent").value.toLowerCase();
@@ -134,13 +137,17 @@ function filterProperties() {
   const needsGarage = document.getElementById("hasGarage").checked;
   const needsPool = document.getElementById("hasPool").checked;
 
+  // Determine min and max price from selected range
   let minPrice = 0;
   let maxPrice = Infinity;
 
   if (priceRange.includes("-")) {
     const parts = priceRange.split("-");
     minPrice = parseInt(parts[0].replace(/\D/g, '')) || 0;
-    maxPrice = parts[1] === "Infinity" ? Infinity : parseInt(parts[1].replace(/\D/g, '')) || Infinity;
+    maxPrice = parseInt(parts[1].replace(/\D/g, '')) || Infinity;
+  } else if (priceRange === "1000000+") {
+    minPrice = 1000000;
+    maxPrice = Infinity;
   }
 
   const listings = document.querySelectorAll(".property-widget");
@@ -149,22 +156,43 @@ function filterProperties() {
     const address = listing.querySelector("h3")?.innerText.toLowerCase() || "";
     const agent = listing.querySelector(".location")?.innerText.toLowerCase() || "";
     const price = parseInt(listing.querySelector(".price")?.innerText.replace(/\D/g, '') || "0");
-    const beds = parseInt(listing.querySelector(".bedrooms")?.innerText || "0");
-    const baths = parseInt(listing.querySelector(".bathrooms")?.innerText || "0");
-    const garageText = listing.querySelector(".garage")?.innerText.toLowerCase() || "";
+
+    // Beds: extract first number
+    const bedText = listing.querySelector(".bedrooms")?.innerText || "0";
+    const beds = parseInt(bedText) || 0;
+
+    // Baths: extract first number
+    const bathText = listing.querySelector(".bathrooms")?.innerText || "0";
+    const baths = parseInt(bathText) || 0;
+
+    // Pool: check if starts with "yes"
     const poolText = listing.querySelector(".pool")?.innerText.toLowerCase() || "";
+    const hasPool = poolText.startsWith("yes");
+
+    // Garage: check if any number exists or contains "garage"
+    const garageText = listing.querySelector(".garage")?.innerText.toLowerCase() || "";
+    let hasGarage = false;
+    if (garageText.includes("garage")) {
+      const match = garageText.match(/\d+/); // first number in string
+      hasGarage = match ? parseInt(match[0]) > 0 : true;
+    } else {
+      const match = garageText.match(/\d+/);
+      hasGarage = match ? parseInt(match[0]) > 0 : false;
+    }
 
     const matchesAddress = address.includes(addressVal);
     const matchesAgent = agent.includes(agentVal);
-    const matchesPrice = price >= minPrice && price <= maxPrice; // use min and max
+    const matchesPrice = price >= minPrice && price <= maxPrice;
     const matchesBeds = beds >= bedVal;
     const matchesBaths = baths >= bathVal;
-    const matchesGarage = !needsGarage || garageText.includes("garage");
-    const matchesPool = !needsPool || poolText.includes("pool");
+    const matchesGarage = !needsGarage || hasGarage;
+    const matchesPool = !needsPool || hasPool;
 
     listing.style.display = (matchesAddress && matchesAgent && matchesPrice && matchesBeds && matchesBaths && matchesGarage && matchesPool) ? "" : "none";
   });
 }
+
+
 
 
 
