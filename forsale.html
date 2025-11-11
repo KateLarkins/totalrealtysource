@@ -2701,9 +2701,16 @@ input[type="checkbox"] {
             </label>
         
             <label style="display:block; margin-bottom:12px; font-family:'At Hauss Std Light';">
-              Price Range:
-              <input type="text" id="priceRange" placeholder="500000-1000000" style="width:100%; padding:6px; border-radius:4px; border:1px solid #ccc;" />
+              Price:
+              <select id="priceRange" onchange="filterProperties()" style="width:100%; padding:6px; border-radius:4px; border:1px solid #ccc;">
+                <option value="">Any</option>
+                <option value="0-200000">$0–$200,000</option>
+                <option value="200000-500000">$200,000–$500,000</option>
+                <option value="500000-1000000">$500,000–$1,000,000</option>
+                <option value="1000000-Infinity">Over $1,000,000</option>
+              </select>
             </label>
+                               
         
             <label style="display:block; margin-bottom:12px; font-family:'At Hauss Std Light';">
               Beds:

@@ -125,8 +125,6 @@ function toggleText(id) {
     expandLink.textContent = '...Read More';
   }
 }
-
-// new filter bar
 function filterProperties() {
   const addressVal = document.getElementById("searchAddress").value.toLowerCase();
   const agentVal = document.getElementById("filterAgent").value.toLowerCase();
@@ -136,11 +134,13 @@ function filterProperties() {
   const needsGarage = document.getElementById("hasGarage").checked;
   const needsPool = document.getElementById("hasPool").checked;
 
-  let minPrice = 0, maxPrice = Infinity;
+  let minPrice = 0;
+  let maxPrice = Infinity;
+
   if (priceRange.includes("-")) {
     const parts = priceRange.split("-");
     minPrice = parseInt(parts[0].replace(/\D/g, '')) || 0;
-    maxPrice = parseInt(parts[1].replace(/\D/g, '')) || Infinity;
+    maxPrice = parts[1] === "Infinity" ? Infinity : parseInt(parts[1].replace(/\D/g, '')) || Infinity;
   }
 
   const listings = document.querySelectorAll(".property-widget");
@@ -156,7 +156,7 @@ function filterProperties() {
 
     const matchesAddress = address.includes(addressVal);
     const matchesAgent = agent.includes(agentVal);
-    const matchesPrice = price >= minPrice && price <= maxPrice;
+    const matchesPrice = price >= minPrice && price <= maxPrice; // use min and max
     const matchesBeds = beds >= bedVal;
     const matchesBaths = baths >= bathVal;
     const matchesGarage = !needsGarage || garageText.includes("garage");
@@ -165,6 +165,9 @@ function filterProperties() {
     listing.style.display = (matchesAddress && matchesAgent && matchesPrice && matchesBeds && matchesBaths && matchesGarage && matchesPool) ? "" : "none";
   });
 }
+
+
+
 
 
 // New navbar
