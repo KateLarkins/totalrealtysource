@@ -408,7 +408,7 @@ iframe {
 .slide {
   position: relative;
   z-index: 0 !important;
-  pointer-events: none; /* <--- Add this temporarily if needed */
+  pointer-events: none; 
 }
 
 
@@ -531,6 +531,7 @@ iframe {
     min-width: unset;
     margin: 10px auto;
     text-align: center;
+    
   }
 
   .card h2,

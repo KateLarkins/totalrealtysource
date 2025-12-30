@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -20,253 +21,382 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="style.css">  
-  </head>
 
-<body style="background-color:#ffffff;">
-  <!-- Top Navigation Bar -->
-  <div class="topnav">
-    <div class="links-row">
-      <!-- Logo -->
-      <a href="index.html" style="display: block;">
-        <img src="logo.png/horizontallogo.png" style="max-height: 100px; display: block; object-fit: contain;">
-      </a>
-      <!-- Hamburger menu (visible only on small screens) -->
-      <div class="hamburger-menu" onclick="toggleNav()">
-        <span style="font-size: 17px; color: black; margin-right: 9px;">Menu</span>
-        <div class="hamburger-icon">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
-    </div>
-    <!-- Hidden nav links, toggled by hamburger -->
-    <div class="nav-links" id="navLinks">
-        <a href="index.html" class="nav-link">Home</a>
-    <!-- Dropdown for 'For Sale' -->
-    <div style="position: relative;">
-      <a href="forsale.html" class="nav-link" 
-        onmouseover="showDropdown('forsale-dropdown')" 
-        onmouseout="hideDropdown('forsale-dropdown')">For Sale ▾</a>
-      <div id="forsale-dropdown" class="dropdown"
-          onmouseover="showDropdown('forsale-dropdown')" 
-          onmouseout="hideDropdown('forsale-dropdown')">
-        <a href="forsale.html"
-          style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-family: 'At Hauss Std Light';"
-          onmouseover="this.style.backgroundColor='#f0f0f0'"
-          onmouseout="this.style.backgroundColor='white'">
-          Current Listings
-        </a>
-      </div>
-    </div>
-    <!-- Dropdown for 'About' -->
-    <div style="position: relative;">
-      <a href="about.html" class="nav-link" 
-        onmouseover="showDropdown('about-dropdown')" 
-        onmouseout="hideDropdown('about-dropdown')">About ▾</a>
-
-      <div id="about-dropdown" class="dropdown"
-          onmouseover="showDropdown('about-dropdown')" 
-          onmouseout="hideDropdown('about-dropdown')">
-        <a href="about.html"
-          style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-family: 'At Hauss Std Light';"
-          onmouseover="this.style.backgroundColor='#f0f0f0'"
-          onmouseout="this.style.backgroundColor='white'">
-          Our Team
-        </a>
-        <a href="events.html"
-          style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-family: 'At Hauss Std Light';"
-          onmouseover="this.style.backgroundColor='#f0f0f0'"
-          onmouseout="this.style.backgroundColor='white'">
-          Events
-        </a>
-      </div>
-    </div>
-      <a href="contact.html" class="nav-link">Contact</a>
-    </div>
-  </div>
 <style>
-  button {
-    color: white;
-  border: none;
-  border-radius: 20px;
+/* Global */
+body {
+  margin: 0;
+  background-color: #ffffff;
+}
+a { text-decoration: none; }
+
+/* Team Section */
+/* Responsive Team Cards */
+@media (max-width: 768px) {
+  .team-cards {
+    grid-template-columns: 1fr; /* single column */
+    justify-items: center;       /* center the cards */
+  }
+
+  .team-card {
+    width: 90%; /* optional: make cards slightly smaller than full width */
+    max-width: 300px;
+  }
+}
+
+.team {
+  padding: 80px 20px;
+  text-align: center;
+  color: #000;
+  position: relative;
+  background: url('') center/cover no-repeat;
+  background-size: cover;
+}
+.team::before {
+  content: '';
+  position: absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(240,240,240,0.7); /* overlay so text/cards are readable */
+  z-index: 0;
+}
+.team h2 {
+  font-family: 'At Hauss Std Semibold';
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #000000;
+  position: relative;
+  z-index: 1;
+}
+
+/* Team Cards Grid */
+.team-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+
+  /* Center the cards when there's extra space */
+  justify-content: center;
+}
+
+
+.team-card {
+  background-color: rgba(255, 255, 255, 0);
+  padding: 30px 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.team-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+.team-card h3 {
+  margin: 10px 0 20px 0;
+  color: #000000;
+  font-size: 20px ;
+  font-family: 'At Hauss Std Semibold';
+}
+.team-card button {
   padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  background-color: #11456F;
+  color: #ffffff;
+  font-weight: bold;
   cursor: pointer;
-  font-size: 14px;
-  margin: 10px;
-  transition: background 0.3s;
-  }
-  @media (max-width: 768px) {
-    .card {
-      width: 100% !important;
-      margin: 10px 0 !important;
-    }
-  }
+  transition: 0.3s;
+}
+.team-card button:hover {
+  background-color: #0d3454;
+}
+
+/* Contact Section */
+.contact {
+  padding: 80px 20px;
+  text-align: center;
+  background-color: #f0f4f8;
+}
+.contact h2 {
+  font-family: 'At Hauss Std Semibold';
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #000000;
+}
+.contact p { font-size: 1.1rem; margin-bottom: 40px; font-family: 'At Hauss Std Light' ; }
+.contact-info { font-size: 1rem; line-height: 1.6; font-family: 'At Hauss Std Light' ; }
+
 </style>
+</head>
+<body>
 
-
-<div class="team-header-section" style="background-color:#023E6C; display: flex; flex-wrap: wrap; padding: 40px 20px; align-items: flex-start; gap: 40px;">
-  
-  <!-- Text Content -->
-  <div class="team-header-text" style="flex: 1 1 400px; box-sizing: border-box; margin-left: 5%; margin-right: 5%;">
-    <h1 style="font-family:'At Hauss Std Semibold'; font-size: 25px; color:white; margin-bottom: 20px; margin-top:25px;">Meet Our Team</h1>
-    
-    <p style="font-family:'At Hauss Std Light'; font-size: 17px; color:white; line-height: 1.7; margin: 0;">
-      Our agents specialize in buying and selling properties throughout West Tennessee. We bring local expertise, personalized service, and years of experience to make your real estate journey smooth and successful. Whether you're a first-time homebuyer, a seasoned investor, or simply exploring your options, our team is ready to provide the guidance and support you need every step of the way.<br><br>
-      Ready to get started? Contact us at 
-      <a href="tel:7315749340" style="color: white; text-decoration: underline;">731-574-9340</a> or explore our most frequently asked questions below.
-    </p>
-
-    <button id="viewmore" style="margin-top: 24px; padding: 10px 24px; background-color: transparent; font-family: 'At Hauss Std Light'; font-size: 17px; border: 2px solid white; border-radius: 25px; cursor: pointer;">
-      <a href="#anchor" style="color: white; text-decoration: none;">Click here to read!</a>
-    </button>
+ <!-- Top Navigation Bar -->
+ <div class="topnav">
+  <div class="links-row">
+    <!-- Logo -->
+    <a href="index.html" style="display: block;">
+      <img src="logo.png/horizontallogo.png" style="max-height: 100px; display: block; object-fit: contain;">
+    </a>
+    <!-- Hamburger menu (visible only on small screens) -->
+    <div class="hamburger-menu" onclick="toggleNav()">
+      <span style="font-size: 17px; color: black; margin-right: 9px;">Menu</span>
+      <div class="hamburger-icon">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
   </div>
+  <!-- Hidden nav links, toggled by hamburger -->
+  <div class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-link">Home</a>
+  <!-- Dropdown for 'For Sale' -->
+  <div style="position: relative;">
+    <a href="forsale.html" class="nav-link" 
+      onmouseover="showDropdown('forsale-dropdown')" 
+      onmouseout="hideDropdown('forsale-dropdown')">For Sale ▾</a>
+    <div id="forsale-dropdown" class="dropdown"
+        onmouseover="showDropdown('forsale-dropdown')" 
+        onmouseout="hideDropdown('forsale-dropdown')">
+      <a href="forsale.html"
+        style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-family: 'At Hauss Std Light';"
+        onmouseover="this.style.backgroundColor='#f0f0f0'"
+        onmouseout="this.style.backgroundColor='white'">
+        Current Listings
+      </a>
+    </div>
+  </div>
+  <!-- Dropdown for 'About' -->
+  <div style="position: relative;">
+    <a href="about.html" class="nav-link" 
+      onmouseover="showDropdown('about-dropdown')" 
+      onmouseout="hideDropdown('about-dropdown')">About ▾</a>
 
-  <!-- Image Content -->
-  <div class="team-header-image" style="flex: 1 1 600px; text-align: center; box-sizing: border-box;">
-    <img src="team/team.png" alt="Our Team" style="width: 100%; max-width: 600px; height: auto; border-radius: 20px;">
+    <div id="about-dropdown" class="dropdown"
+        onmouseover="showDropdown('about-dropdown')" 
+        onmouseout="hideDropdown('about-dropdown')">
+      <a href="about.html"
+        style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-family: 'At Hauss Std Light';"
+        onmouseover="this.style.backgroundColor='#f0f0f0'"
+        onmouseout="this.style.backgroundColor='white'">
+        Our Team
+      </a>
+      <a href="events.html"
+        style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-family: 'At Hauss Std Light';"
+        onmouseover="this.style.backgroundColor='#f0f0f0'"
+        onmouseout="this.style.backgroundColor='white'">
+        Events
+      </a>
+    </div>
+  </div>
+    <a href="contact.html" class="nav-link">Contact</a>
   </div>
 </div>
-  <div class="container" style="display: flex; flex-wrap: wrap; justify-content: center; background-color: #fafafa; padding: 20px; margin-top: 20px;">
-    <!-- Lynda Agent Card -->
-    <div class="card" style="width: 22%; min-width: 250px; box-sizing: border-box; margin: 10px; text-align: center; position: relative; border: none; background-color: #fafafa;">
+
+<!-- Hero Section -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <h1>Helping West Tennessee Find Their Home</h1>
+    <a href="#team" class="hero-button">Meet Our Team</a>
+  </div>
+</section>
+
+<style>
+/* Hero Section */
+.hero {
+  position: relative; /* needed for overlay */
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background-image: url('unsplash/todd-kent-178j8tJrNlc-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0, 0, 0, 0.3); /* dark overlay for readability */
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative; /* above overlay */
+  z-index: 1;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-family: 'At Hauss Std Semibold', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 30px;
+  color: #ffffff; /* white text */
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 25px;
+  background-color: #11456F; /* your theme blue */
+  color: #ffffff; /* yellow text */
+  text-decoration: none;
+  transition: 0.3s;
+  font-family: 'At Hauss Std Semibold';
+}
+
+.hero-button:hover {
+  background-color: #0d3454; /* darker blue on hover */
+  color: #ffffff;
+}
+</style>
+
+<!-- Team Section -->
+<section class="team" id="team">
+  <h2>Meet Our Team</h2>
+  <div class="team-cards" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+
+    <!-- Lynda -->
+    <div class="team-card" style="position: relative; width: 22%; min-width: 250px; text-align: center; background-color: #fafafa; padding-top: 50px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
       <div style="position: relative; display: inline-block;">
-        <img src="agent/Lynda.png" alt="Agent Lynda Climer" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
-        <button 
-        style="position: absolute; bottom: -1px; left:47%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);" 
-        data-bs-toggle="modal" 
-        data-bs-target="#agentModal">
-        Contact
-      </button>
-      
+        <img src="agent/Lynda.png" alt="Lynda Climer" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
+        <button data-bs-toggle="modal" data-bs-target="#agentModal" style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+          Contact
+        </button>
       </div>
-      <div class="agent-description">
-        <h2>Lynda Climer</h2>
-        <p>Broker</p>
-      </div>
+      <h3 style="margin: 10px 0 20px 0; font-family: 'At Hauss Std Semibold'; color:#000;">Lynda Climer</h3>
+      <p style="font-family: 'At Hauss Std Light'; color:#000;">Broker</p>
     </div>
-    
-     <!-- Jackie Agent Card -->
-     <div class="card" style="width: 22%; min-width: 250px; box-sizing: border-box; margin: 10px; text-align: center; position: relative; border: none; background-color: #fafafa;">
+
+    <!-- Brandie -->
+    <div class="team-card" style="position: relative; width: 22%; min-width: 250px; text-align: center; background-color: #fafafa; padding-top: 50px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
       <div style="position: relative; display: inline-block;">
-        <img src="agent/Jackie.png" alt="Agent 1" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
-        <button 
-        data-bs-toggle="modal" 
-        data-bs-target="#jackieModal"
-        style="position: absolute; bottom: -1px; left:47%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);">
-        Contact
-      </button>
-      
+        <img src="agent/BrandieTwo.png" alt="Brandie Bassett" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
+        <button data-bs-toggle="modal" data-bs-target="#brandieModal" style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+          Contact
+        </button>
       </div>
-      <div class="agent-description">
-        <h2>Jackie David</h2>
-        <p>Real Estate Agent</p>
-      </div>
+      <h3 style="margin: 10px 0 20px 0; font-family: 'At Hauss Std Semibold'; color:#000;">Brandie Bassett</h3>
+      <p style="font-family: 'At Hauss Std Light'; color:#000;">Real Estate Agent</p>
     </div>
-   <!-- Amy Agent Card -->
-   <div class="card" style="width: 22%; min-width: 250px; box-sizing: border-box; margin: 10px; text-align: center; position: relative; border: none; background-color: #fafafa;">
-    <div style="position: relative; display: inline-block;">
-      <img src="agent/amywork.png" alt="Agent 1" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
-      <button 
-      data-bs-toggle="modal" 
-      data-bs-target="#amyModal"
-      style="position: absolute; bottom: -1px; left: 47%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);">
-      Contact
-    </button>
-    </div>
-    <div class="agent-description">
-      <h2>Amy McLemore</h2>
-      <p>Real Estate Agent</p>
-    </div>
-  </div>
-  <!-- Tammy Agent Card -->
-  <div class="card" style="width: 22%; min-width: 250px; box-sizing: border-box; margin: 10px; text-align: center; position: relative; border: none; background-color: #fafafa;">
-    <div style="position: relative; display: inline-block;">
-      <img src="agent/TammyTwo.png" alt="Agent 1" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
-      <button 
-      data-bs-toggle="modal" 
-      data-bs-target="#tammyModal"
-      style="position: absolute; bottom: -10px; left:47%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);">
-      Contact
-    </button>
-    </div>
-    <div class="agent-description">
-      <h2>Tammy Jones</h2>
-      <p>Real Estate Agent</p>
-    </div>
-  </div>
 
-  <!-- new row -->
-  <div class="container" style="display: flex; flex-wrap: wrap; justify-content: center; background-color: #fafafa; padding: 20px; margin-top: 20px;">
-    <!-- Ashley Agent Card -->
-    <div class="card" style="width: 22%; min-width: 250px; box-sizing: border-box; margin: 10px; text-align: center; position: relative; border: none; background-color: #fafafa;">
-    <div style="position: relative; display: inline-block;">
-      <img src="agent/Ashley.png" alt="Agent 1" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
-      <button 
-      data-bs-toggle="modal" 
-      data-bs-target="#ashleyModal"
-      style="position: absolute; bottom: -10px; left:47%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);">
-      Contact
-    </button>
-    </div>
-    <div class="agent-description">
-      <h2>Ashley McMillan</h2>
-      <p>Real Estate Agent</p>
-    </div>
-  </div>
-  <!-- Laura Agent Card -->
-  <div class="card" style="width: 22%; min-width: 250px; box-sizing: border-box; margin: 10px; text-align: center; position: relative; border: none; background-color: #fafafa;">
-    <div style="position: relative; display: inline-block;">
-      <img src="agent/Laura.png" alt="Agent 1" style="width: 80%; max-width: 130px; border-radius: 50%; display: block; margin: 0 auto;">
-      <button 
-      data-bs-toggle="modal" 
-      data-bs-target="#lauraModal"
-      style="position: absolute; bottom: -10px; left:47%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);">
-      Contact
-    </button>
-    </div>
-    <div class="agent-description">
-      <h2>Laura Burke</h2>
-      <p>Real Estate Agent</p>
-    </div>
-  </div>
-   <!-- Brandie Agent Card -->
-   <div class="card" style="width: 22%; min-width: 250px; box-sizing: border-box; margin: 10px; text-align: center; position: relative; border: none; background-color: #fafafa;">
-    <div style="position: relative; display: inline-block;">
-      <img src="agent/BrandieTwo.png" alt="Agent 1" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
-      <button 
-      data-bs-toggle="modal" 
-      data-bs-target="#brandieModal"
-      style="position: absolute; bottom: -10px; left:47%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);">
-      Contact
-    </button>
-    </div>
-    <div class="agent-description">
-      <h2>Brandie Bassett</h2>
-      <p>Real Estate Agent</p>
-    </div>
-  </div>
-     <!-- Lisa Agent Card -->
-     <div class="card" style="width: 22%; min-width: 250px; box-sizing: border-box; margin: 10px; text-align: center; position: relative; border: none; background-color: #fafafa;">
+    <!-- Jackie -->
+    <div class="team-card" style="position: relative; width: 22%; min-width: 250px; text-align: center; background-color: #fafafa; padding-top: 50px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
       <div style="position: relative; display: inline-block;">
-        <img src="agent/Lisatwo.png" alt="Agent 1" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
-        <button 
-        data-bs-toggle="modal" 
-        data-bs-target="#lisaModal"
-        style="position: absolute; bottom: -10px; left:47%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);">
-        Contact
-      </button>
+        <img src="agent/Jackie.png" alt="Jackie David" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
+        <button data-bs-toggle="modal" data-bs-target="#jackieModal" style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+          Contact
+        </button>
       </div>
-      <div class="agent-description">
-        <h2>Lisa Ballinger</h2>
-        <p>Real Estate Agent</p>
-      </div>
+      <h3 style="margin: 10px 0 20px 0; font-family: 'At Hauss Std Semibold'; color:#000;">Jackie David</h3>
+      <p style="font-family: 'At Hauss Std Light'; color:#000;">Real Estate Agent</p>
     </div>
 
+    <!-- Ashley -->
+    <div class="team-card" style="position: relative; width: 22%; min-width: 250px; text-align: center; background-color: #fafafa; padding-top: 50px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <div style="position: relative; display: inline-block;">
+        <img src="agent/Ashley.png" alt="Ashley McMillan" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
+        <button data-bs-toggle="modal" data-bs-target="#ashleyModal" style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+          Contact
+        </button>
+      </div>
+      <h3 style="margin: 10px 0 20px 0; font-family: 'At Hauss Std Semibold'; color:#000;">Ashley McMillan</h3>
+      <p style="font-family: 'At Hauss Std Light'; color:#000;">Real Estate Agent</p>
+    </div>
+
+    <!-- Lisa -->
+    <div class="team-card" style="position: relative; width: 22%; min-width: 250px; text-align: center; background-color: #fafafa; padding-top: 50px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <div style="position: relative; display: inline-block;">
+        <img src="agent/Lisatwo.png" alt="Lisa Ballinger" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
+        <button data-bs-toggle="modal" data-bs-target="#lisaModal" style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+          Contact
+        </button>
+      </div>
+      <h3 style="margin: 10px 0 20px 0; font-family: 'At Hauss Std Semibold'; color:#000;">Lisa Ballinger</h3>
+      <p style="font-family: 'At Hauss Std Light'; color:#000;">Real Estate Agent</p>
+    </div>
+
+    <!-- Amy -->
+    <div class="team-card" style="position: relative; width: 22%; min-width: 250px; text-align: center; background-color: #fafafa; padding-top: 50px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <div style="position: relative; display: inline-block;">
+        <img src="agent/amywork.png" alt="Amy McLemore" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
+        <button data-bs-toggle="modal" data-bs-target="#amyModal" style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+          Contact
+        </button>
+      </div>
+      <h3 style="margin: 10px 0 20px 0; font-family: 'At Hauss Std Semibold'; color:#000;">Amy McLemore</h3>
+      <p style="font-family: 'At Hauss Std Light'; color:#000;">Real Estate Agent</p>
+    </div>
+
+    <!-- Tammy -->
+    <div class="team-card" style="position: relative; width: 22%; min-width: 250px; text-align: center; background-color: #fafafa; padding-top: 50px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <div style="position: relative; display: inline-block;">
+        <img src="agent/TammyTwo.png" alt="Tammy Jones" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
+        <button data-bs-toggle="modal" data-bs-target="#tammyModal" style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+          Contact
+        </button>
+      </div>
+      <h3 style="margin: 10px 0 20px 0; font-family: 'At Hauss Std Semibold'; color:#000;">Tammy Jones</h3>
+      <p style="font-family: 'At Hauss Std Light'; color:#000;">Real Estate Agent</p>
+    </div>
+
+    <!-- Laura -->
+    <div class="team-card" style="position: relative; width: 22%; min-width: 250px; text-align: center; background-color: #fafafa; padding-top: 50px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <div style="position: relative; display: inline-block;">
+        <img src="agent/LauraTwo.png" alt="Laura Burke" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
+        <button data-bs-toggle="modal" data-bs-target="#lauraModal" style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+          Contact
+        </button>
+      </div>
+      <h3 style="margin: 10px 0 20px 0; font-family: 'At Hauss Std Semibold'; color:#000;">Laura Burke</h3>
+      <p style="font-family: 'At Hauss Std Light'; color:#000;">Real Estate Agent</p>
+    </div>
 
   </div>
+</section>
 
 
+<div>  <p> <h1 id="anchor" style="color: black; padding-top: 40px; font-size:25px; font-weight:600; text-align: center; font-family: 'At Hauss Std Semibold';">
+  Services <br><br>
+</h1></p></div>
+<div class="services-new">
+  <div class="service-item">
+    <div class="service-text">
+      <h2>Property Renovation</h2>
+      <p>We preserve charm while modernizing homes—thoughtful updates that enhance value and character.</p>
+      <a href="contact.html">Learn More</a>
+    </div>
+  </div>
+
+  <div class="service-item">
+    <div class="service-text">
+      <h2>Property Sales</h2>
+      <p>Strategic pricing. Streamlined transactions. We bring expertise to every phase of the selling process.</p>
+      <a href="contact.html">Learn More</a>
+    </div>
+  </div>
+
+  <div class="service-item">
+    <div class="service-text">
+      <h2>Property Management</h2>
+      <p>Hands-on service for hassle-free ownership. From tenants to maintenance, we take care of everything.</p>
+      <a href="contact.html">Learn More</a>
+    </div>
+  </div>
+</div>
 
 
   <!-- Modals -->
@@ -565,7 +695,7 @@
 
         <!-- Agent Photo -->
        <div class="agent-photo" style="flex: 1 1 250px; text-align: center;">
-          <img src="agent/Laura.png" alt="Laura Burke" style="width: 100%; max-width: 220px; border-radius: 10px;">
+          <img src="agent/LauraTwo.png" alt="Laura Burke" style="width: 100%; max-width: 220px; border-radius: 10px;">
         </div> 
 
         <!-- Agent Details -->
@@ -658,7 +788,7 @@
 
         <!-- Agent Photo -->
        <div class="agent-photo" style="flex: 1 1 250px; text-align: center;">
-          <img src="agent/tammy.png" alt="Tammy Jones" style="width: 100%; max-width: 220px; border-radius: 10px;">
+          <img src="agent/TammyTwo.png" alt="Tammy Jones" style="width: 100%; max-width: 220px; border-radius: 10px;">
           <p style="font-family:'At Hauss Std Light' ;"><span style="font-family: At Hauss Std Semibold;">Experience:</span> 14 years </p>
           <p style="font-family:'At Hauss Std Light' ;"><span style="font-family: At Hauss Std Semibold;">Specializations:<br></span> Buyer's Agent<br> Seller's Agent </p>
           <p style="font-family:'At Hauss Std Light' ;"><span style="font-family: At Hauss Std Semibold;">Areas Served:<br></span> Jackson<br>Jackson and West Tennessee</p>
@@ -687,204 +817,117 @@
 </div> 
 
 
+<!-- Footer -->
 
-<div>  <p> <h1 id="anchor" style="color: black; padding-top: 40px; font-size:25px; font-weight:600; text-align: center; font-family: 'At Hauss Std Semibold';">
-  Services <br><br>
-</h1></p></div>
-<div class="services-new">
-  <div class="service-item">
-    <div class="service-text">
-      <h2>Property Renovation</h2>
-      <p>We preserve charm while modernizing homes—thoughtful updates that enhance value and character.</p>
-      <a href="contact.html">Learn More</a>
-    </div>
-  </div>
-
-  <div class="service-item">
-    <div class="service-text">
-      <h2>Property Sales</h2>
-      <p>Strategic pricing. Streamlined transactions. We bring expertise to every phase of the selling process.</p>
-      <a href="contact.html">Learn More</a>
-    </div>
-  </div>
-
-  <div class="service-item">
-    <div class="service-text">
-      <h2>Property Management</h2>
-      <p>Hands-on service for hassle-free ownership. From tenants to maintenance, we take care of everything.</p>
-      <a href="contact.html">Learn More</a>
-    </div>
-  </div>
-</div>
-
-<!-- Accordion Section -->
-<section style="padding:5%; background-color:#fafafa;">
-  <h1 id="anchor" style="color: black; padding-top: 0px; padding-bottom: 40px; font-size:25px; font-weight:600; text-align: center; font-family: 'At Hauss Std Semibold';">
-    Frequently Asked Questions <br><br>
-  </h1>
-
-  <div class="accordion" id="accordionExample" style="max-width: 900px; margin: auto;">
-
-    <!-- Question 1 -->
-    <div class="accordion-item" style="margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px;">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-          aria-expanded="false" aria-controls="collapseOne"
-          style="font-family: 'At Hauss Std Light'; font-size: 18px;">
-          Who should I contact for property management and renovation?
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body" style="padding: 1rem; font-family: 'At Hauss Std Light'; font-size: 16px;">
-          For property management or renovation needs, please reach out to our broker, Mrs. Lynda Climer. With decades of experience across residential, industrial, and commercial real estate, she’s well-equipped to guide you through every step. Contact her directly at <strong>731-217-3827</strong>.
+<footer class="text-center text-lg-start text-white" style="background-color:#023E6C; font-family: 'At Hauss Std Semibold';">
+  <div class="container p-4 pb-0">
+      <div class="row">
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold">
+            Total Realty Source
+          </h6>
+          <p style="font-family: 'At Hauss Std Light';">
+            Serving Tennessee with dedication, providing expertise, personalized service, and commitment to ensuring a successful real estate experience.
+            © 2025 Copyright:
+            totalrealtysource.com | All Rights Reserved.
+          </p>
+        </div>
+        <hr class="w-100 clearfix d-md-none" />
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Contact Us</h6>
+          <p>
+            <a href="https://www.facebook.com/totalrealtysource/" style="color:white; font-family: 'At Hauss Std Light';">Facebook</a>
+          </p>
+          <p>
+            <a href="https://www.instagram.com/totalrealtysource/Instagram/" style="color:white; font-family: 'At Hauss Std Light';">Instagram</a>
+          </p>
+          <p>
+            <a href="contact.html" style="color:white; font-family: 'At Hauss Std Light';">Contact Page</a>
+          </p>
+        </div>
+        <hr class="w-100 clearfix d-md-none" />
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold" >
+            Useful links
+          </h6>
+          <p>
+            <a href="forsale.html" style="color:white; font-family: 'At Hauss Std Light';">For Sale</a>
+          </p>
+          <p>
+            <a href="about.html" style="color:white; font-family: 'At Hauss Std Light';">About</a>
+          </p>
+          <p>
+            <a href="index.html" style="color:white; font-family: 'At Hauss Std Light';">Home</a>
+          </p>
+        </div>
+        <hr class="w-100 clearfix d-md-none" />
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Location</h6>
+          <p style="font-family: 'At Hauss Std Light';">117 South Main Street, Medina, Tennessee, 38355</p>
+          <p style="font-family: 'At Hauss Std Light';"><a href="mailto:totalrealtysource@outlook.com" style="color:white;">totalrealtysource@outlook.com</a></p>
+          <p style="font-family: 'At Hauss Std Light';">+ 01 731 574 9340</p>
         </div>
       </div>
-    </div>
-
-    <!-- Question 2 -->
-    <div class="accordion-item" style="margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px;">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-          aria-expanded="false" aria-controls="collapseTwo"
-          style="font-family: 'At Hauss Std Light'; font-size: 17px;">
-          Where is your office located?
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body" style="padding: 1rem; font-family: 'At Hauss Std Light'; font-size: 16px;">
-          Our office is located at <strong>117 S Main St., Medina, TN 38355</strong>. You're welcome to stop by during business hours — we’re always happy to meet with clients in person.
-        </div>
-      </div>
-    </div>
-
-    <!-- Question 3 -->
-    <div class="accordion-item" style="margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px;">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
-          aria-expanded="false" aria-controls="collapseThree"
-          style="font-family: 'At Hauss Std Light'; font-size: 17px;">
-          Why should I choose Total Realty Source?
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body" style="padding: 1rem; font-family: 'At Hauss Std Light'; font-size: 16px;">
-          With more than 40 years of experience, our broker leads a team that’s committed to staying current through ongoing education and certifications. We provide one-on-one service tailored to your needs and proudly serve clients throughout Tennessee — from rural properties to urban neighborhoods. We're here to make your experience as smooth and successful as possible.
-        </div>
-      </div>
-    </div>
-
+    <hr class="my-3">
   </div>
-</section>
-
-    <footer class="text-center text-lg-start text-white" style="background-color:#023E6C; font-family: 'At Hauss Std Semibold';">
-      <div class="container p-4 pb-0">
-          <div class="row">
-            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">
-                Total Realty Source
-              </h6>
-              <p style="font-family: 'At Hauss Std Light';">
-                Serving Tennessee with dedication, providing expertise, personalized service, and commitment to ensuring a successful real estate experience.
-                © 2025 Copyright:
-                totalrealtysource.com | All Rights Reserved.
-              </p>
-            </div>
-            <hr class="w-100 clearfix d-md-none" />
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">Contact Us</h6>
-              <p>
-                <a href="https://www.facebook.com/totalrealtysource/" style="color:white; font-family: 'At Hauss Std Light';">Facebook</a>
-              </p>
-              <p>
-                <a href="https://www.instagram.com/totalrealtysource/Instagram/" style="color:white; font-family: 'At Hauss Std Light';">Instagram</a>
-              </p>
-              <p>
-                <a href="contact.html" style="color:white; font-family: 'At Hauss Std Light';">Contact Page</a>
-              </p>
-            </div>
-            <hr class="w-100 clearfix d-md-none" />
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold" >
-                Useful links
-              </h6>
-              <p>
-                <a href="forsale.html" style="color:white; font-family: 'At Hauss Std Light';">For Sale</a>
-              </p>
-              <p>
-                <a href="about.html" style="color:white; font-family: 'At Hauss Std Light';">About</a>
-              </p>
-              <p>
-                <a href="index.html" style="color:white; font-family: 'At Hauss Std Light';">Home</a>
-              </p>
-            </div>
-            <hr class="w-100 clearfix d-md-none" />
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">Location</h6>
-              <p style="font-family: 'At Hauss Std Light';">117 South Main Street, Medina, Tennessee, 38355</p>
-              <p style="font-family: 'At Hauss Std Light';"><a href="mailto:totalrealtysource@outlook.com" style="color:white;">totalrealtysource@outlook.com</a></p>
-              <p style="font-family: 'At Hauss Std Light';">+ 01 731 574 9340</p>
-            </div>
-          </div>
-        <hr class="my-3">
-      </div>
-    </footer>
-    <script src="script.js"></script>
-    <script>
-      function showDropdown(id) {
-        document.getElementById(id).classList.add('show');
-      }
-    
-      function hideDropdown(id) {
-        document.getElementById(id).classList.remove('show');
-      }
-    </script>
-    <script>
-      function toggleNav() {
-        const navLinks = document.getElementById("navLinks");
-        const hamburgerIcon = document.querySelector(".hamburger-icon");
-        
-        // Toggle display of nav links when clicked
-        navLinks.classList.toggle("active");
-    
-        // Toggle the X and hamburger icon
-        hamburgerIcon.classList.toggle("active");
-      }
-    </script>
+</footer>
+<script src="script.js"></script>
 <script>
-  let currentIndex = 0;
-
-  function showTestimonial(index) {
-    const slider = document.getElementById('testimonials');
-    const total = slider.children.length;
-    if (index >= total) currentIndex = 0;
-    else if (index < 0) currentIndex = total - 1;
-    else currentIndex = index;
-
-    const offset = -currentIndex * 100;
-    slider.style.transform = `translateX(${offset}%)`;
+  function showDropdown(id) {
+    document.getElementById(id).classList.add('show');
   }
 
-  function nextTestimonial() {
-    showTestimonial(currentIndex + 1);
-  }
-
-  function prevTestimonial() {
-    showTestimonial(currentIndex - 1);
+  function hideDropdown(id) {
+    document.getElementById(id).classList.remove('show');
   }
 </script>
 <script>
-  function toggleText(id) {
-    const text = document.getElementById(id).getElementsByClassName('hidden-text')[0];
-    const expandLink = document.getElementById(id).getElementsByClassName('expand-link')[0];
+  function toggleNav() {
+    const navLinks = document.getElementById("navLinks");
+    const hamburgerIcon = document.querySelector(".hamburger-icon");
+    
+    // Toggle display of nav links when clicked
+    navLinks.classList.toggle("active");
 
-    if (text.style.display === "none") {
-      text.style.display = "inline";
-      expandLink.textContent = "... Read Less";
-    } else {
-      text.style.display = "none";
-      expandLink.textContent = "... Read More";
-    }
+    // Toggle the X and hamburger icon
+    hamburgerIcon.classList.toggle("active");
   }
+</script>
+<script>
+let currentIndex = 0;
+
+function showTestimonial(index) {
+const slider = document.getElementById('testimonials');
+const total = slider.children.length;
+if (index >= total) currentIndex = 0;
+else if (index < 0) currentIndex = total - 1;
+else currentIndex = index;
+
+const offset = -currentIndex * 100;
+slider.style.transform = `translateX(${offset}%)`;
+}
+
+function nextTestimonial() {
+showTestimonial(currentIndex + 1);
+}
+
+function prevTestimonial() {
+showTestimonial(currentIndex - 1);
+}
+</script>
+<script>
+function toggleText(id) {
+const text = document.getElementById(id).getElementsByClassName('hidden-text')[0];
+const expandLink = document.getElementById(id).getElementsByClassName('expand-link')[0];
+
+if (text.style.display === "none") {
+  text.style.display = "inline";
+  expandLink.textContent = "... Read Less";
+} else {
+  text.style.display = "none";
+  expandLink.textContent = "... Read More";
+}
+}
 </script>
 </body>
 </html>
