@@ -1484,114 +1484,99 @@ iframe {
 }
 
 
+/* services */
+/* SERVICES – RELIABLE REAL ESTATE STYLE */
 
-/* Services Modern */
 .services-modern {
-  padding: 60px 20px;
+  padding: 80px 40px;
   background: #023E6C;
   text-align: center;
 }
 
-.services-title a {
+.services-title {
   font-family: 'At Hauss Std Semibold';
-  font-size: 40px;
-  color: rgb(255, 255, 255);
-  text-decoration: none;
+  font-size: 42px;
+  color: #ffffff;
+  margin-bottom: 60px;
 }
 
 .services-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
-  margin-top: 40px;
+  gap: 40px;
 }
 
+/* Card */
 .service-card {
   position: relative;
+  width: 360px;
+  height: 460px;
   overflow: hidden;
-  border-radius: 20px;
-  width: 300px;
-  height: 380px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  background: white;
+  text-decoration: none;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
 }
 
-.service-card:hover {
-  transform: translateY(-10px);
-}
-
+/* Image */
 .service-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.3s ease;
+  display: block;
 }
 
+/* Overlay ALWAYS visible */
 .card-overlay {
   position: absolute;
-  bottom: 0;
-  background: rgba(17, 69, 111, 0.85);
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(2,62,108,0.95),
+    rgba(2,62,108,0.75),
+    rgba(2,62,108,0.3)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+/* Text */
+.card-content {
   color: white;
-  width: 100%;
-  padding: 25px 20px;
-  text-align: left;
-  transform: translateY(100%);
-  transition: transform 0.3s ease;
-  font-family: 'At Hauss Std Light';
-}
-.card-overlay {
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  background: rgba(17, 69, 111, 0.75); /* your theme blue with transparency */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 280px;
 }
 
-
-.service-card:hover .card-overlay {
-  transform: translateY(0);
-}
-
-.card-overlay h2 {
-  font-size: 22px;
-  margin-bottom: 10px;
+.card-content h2 {
   font-family: 'At Hauss Std Semibold';
+  font-size: 26px;
+  margin-bottom: 14px;
 }
 
-.card-overlay p {
+.card-content p {
+  font-family: 'At Hauss Std Light';
   font-size: 16px;
-  margin-bottom: 15px;
-  font-family: At Hauss Std Light;
+  line-height: 1.5;
+  margin-bottom: 22px;
 }
 
-.card-overlay a {
-  font-weight: 600;
-  text-decoration: none;
-  color: #fff;
-  border: 1.5px solid #fff;
-  border-radius: 30px;
-  padding: 8px 18px;
+.card-content span {
+  font-family: 'At Hauss Std Semibold';
   font-size: 14px;
-  transition: background 0.3s ease, color 0.3s ease;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255,255,255,0.7);
+  padding-bottom: 4px;
 }
 
-.card-overlay a:hover {
-  background: #fff;
-  color: #11456F;
-}
+/* Mobile */
 @media (max-width: 768px) {
-  .card-overlay {
-    opacity: 1;
-    transform: translateY(0);
-    background: rgba(17, 69, 111, 0.85); /* fallback for hover color */
+  .service-card {
+    width: 100%;
+    max-width: 420px;
   }
+}
 
-  .service-card:hover .card-overlay {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}}
 
 /* For Sale */
 
