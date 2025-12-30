@@ -84,13 +84,17 @@ a { text-decoration: none; }
 }
 
 
-.team-card {
-  background-color: rgba(255, 255, 255, 0);
-  padding: 30px 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  text-align: center;
+.team-card { 
+  width: 22%; 
+  min-width: 250px; 
+  background: #fafafa; 
+  padding: 50px 20px 20px; 
+  border-radius: 15px; 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+  text-align: center; 
+  position: relative;
 }
+
 .team-card img {
   width: 150px;
   height: 150px;
@@ -219,7 +223,7 @@ a { text-decoration: none; }
   align-items: center;
   text-align: center;
 
-  background-image: url('unsplash/todd-kent-178j8tJrNlc-unsplash.jpg');
+  background-image: url('unsplash/Screenshot\ 2025-12-29\ at\ 10.49.47\ PM.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -368,35 +372,50 @@ a { text-decoration: none; }
   </div>
 </section>
 
-
-<div>  <p> <h1 id="anchor" style="color: black; padding-top: 40px; font-size:25px; font-weight:600; text-align: center; font-family: 'At Hauss Std Semibold';">
-  Services <br><br>
-</h1></p></div>
-<div class="services-new">
-  <div class="service-item">
-    <div class="service-text">
-      <h2>Property Renovation</h2>
-      <p>We preserve charm while modernizing homes—thoughtful updates that enhance value and character.</p>
-      <a href="contact.html">Learn More</a>
-    </div>
+<section style="padding: 80px 20px; background-color: #f8f8f8; text-align: center;">
+  <!-- Section Header -->
+  <div style="max-width: 800px; margin: 0 auto 60px;">
+    <h2 style="font-family: 'At Hauss Std Semibold'; font-size: 2.5rem; color: #000000; margin-bottom: 20px;">Our Services</h2>
+    <p style="font-family: 'At Hauss Std Light'; font-size: 1.2rem; color: #333; line-height: 1.8;">
+      Total Realty Source offers comprehensive real estate solutions to help you buy, sell, manage, or renovate your property with confidence.
+    </p>
   </div>
 
-  <div class="service-item">
-    <div class="service-text">
-      <h2>Property Sales</h2>
-      <p>Strategic pricing. Streamlined transactions. We bring expertise to every phase of the selling process.</p>
-      <a href="contact.html">Learn More</a>
+  <!-- Modern Service Cards -->
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; max-width: 1200px; margin: 0 auto;">
+    
+    <!-- Service 1 -->
+    <div style="flex: 1 1 300px; background-color: #fdfdfd; border: 1px solid #e0e0e0; border-radius: 12px; padding: 40px 30px; text-align: left; transition: transform 0.3s ease;">
+      <h3 style="font-family: 'At Hauss Std Semibold'; font-size: 1.5rem; color: black; margin-bottom: 15px;">Property Renovation</h3>
+      <p style="font-family: 'At Hauss Std Light'; color: #333; font-size: 1rem; margin-bottom: 20px;">
+        Thoughtful updates that enhance style and maximize property value.
+      </p>
+      <a href="contact.html" style="font-family: 'At Hauss Std Semibold'; font-size: 0.95rem; color: #11456F; text-decoration: none; border-bottom: 1px solid #11456F;">Learn More</a>
     </div>
-  </div>
 
-  <div class="service-item">
-    <div class="service-text">
-      <h2>Property Management</h2>
-      <p>Hands-on service for hassle-free ownership. From tenants to maintenance, we take care of everything.</p>
-      <a href="contact.html">Learn More</a>
+    <!-- Service 2 -->
+    <div style="flex: 1 1 300px; background-color: #fdfdfd; border: 1px solid #e0e0e0; border-radius: 12px; padding: 40px 30px; text-align: left; transition: transform 0.3s ease;">
+      <h3 style="font-family: 'At Hauss Std Semibold'; font-size: 1.5rem; color: black; margin-bottom: 15px;">Property Sales</h3>
+      <p style="font-family: 'At Hauss Std Light'; color: #333; font-size: 1rem; margin-bottom: 20px;">
+        Strategic guidance to sell your property efficiently at top value.
+      </p>
+      <a href="contact.html" style="font-family: 'At Hauss Std Semibold'; font-size: 0.95rem; color: #11456F; text-decoration: none; border-bottom: 1px solid #11456F;">Learn More</a>
     </div>
+
+    <!-- Service 3 -->
+    <div style="flex: 1 1 300px; background-color: #fdfdfd; border: 1px solid #e0e0e0; border-radius: 12px; padding: 40px 30px; text-align: left; transition: transform 0.3s ease;">
+      <h3 style="font-family: 'At Hauss Std Semibold'; font-size: 1.5rem; color: black; margin-bottom: 15px;">Property Management</h3>
+      <p style="font-family: 'At Hauss Std Light'; color: #333; font-size: 1rem; margin-bottom: 20px;">
+        Hassle-free management ensuring your property runs smoothly and profitably.
+      </p>
+      <a href="contact.html" style="font-family: 'At Hauss Std Semibold'; font-size: 0.95rem; color: #11456F; text-decoration: none; border-bottom: 1px solid #11456F;">Learn More</a>
+    </div>
+
   </div>
-</div>
+</section>
+
+
+
 
 
   <!-- Modals -->
