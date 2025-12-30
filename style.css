@@ -579,7 +579,7 @@ iframe {
   gap: 60px;
   flex-wrap: wrap;
   padding: 60px 20px;
-  margin: 0 auto 100px auto; /* Add bottom margin before footer */
+  margin: 0 auto 100px auto; 
   max-width: 1200px;
   box-sizing: border-box;
 }
