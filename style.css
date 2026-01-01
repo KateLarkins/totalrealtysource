@@ -542,23 +542,42 @@ iframe {
 }
 
 
-.carousel-controls {
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
-  z-index: 1; /* Still on top of images, but below .close */
-}
-
 .carousel-controls button {
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(255, 255, 255, 0.9); /* White with slight transparency */
   border: none;
   font-size: 24px;
   cursor: pointer;
   z-index: 1;
   position: relative;
+  width: 40px;           /* Circle width */
+  height: 40px;          /* Circle height */
+  border-radius: 50%;    /* Makes it circular */
+  display: flex;         /* Center the arrow inside */
+  align-items: center;   /* Vertically center */
+  justify-content: center; /* Horizontally center */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* Optional shadow for depth */
+}
+
+.carousel-controls button:hover {
+  background-color: rgba(255, 255, 255, 1); /* Full white on hover */
+}
+/* Target the carousel buttons directly */
+.carousel > button {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2) !important;
+  z-index: 2 !important;
+}
+
+/* Make background fully white on hover */
+.carousel > button:hover {
+  background-color: rgba(255, 255, 255, 1) !important;
 }
 
 
