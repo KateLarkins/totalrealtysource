@@ -571,13 +571,7 @@ iframe {
   }
 }
 
-@media (max-width: 768px) {
-  footer h4 {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
+
 /* About */
 .team-cards {
   display: flex;
@@ -611,14 +605,6 @@ iframe {
     max-width: 320px;
   }
 }
-/* Footer */
-@media (max-width: 768px) {
-  footer .areas-grid {
-    grid-template-columns: repeat(2, 1fr);
-    text-align: center;
-  }
-}
-
 /* Our Services Section */
 .services-new {
   display: flex;
@@ -1100,37 +1086,6 @@ iframe {
   /* Adjust margin for .buttons in mobile view */
   .buttons {
     margin-bottom: 20px; /* Adjust margin as needed */
-  }
-}
-
-@media screen and (max-width: 600px) {
-  /* Update padding for footer in mobile view */
-  footer {
-    padding: 20px 0;
-  }
-
-  /* Adjust margin for footer links in mobile view */
-  footer a {
-    margin: 0 5px; /* Adjust margin as needed */
-  }
-}
-@media (max-width: 768px) {
-  footer .row {
-    text-align: center;
-  }
-
-  footer .col-md-3,
-  footer .col-md-2,
-  footer .col-md-4 {
-    margin-top: 30px;
-  }
-
-  footer a,
-  footer p,
-  footer h6 {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
   }
 }
 
