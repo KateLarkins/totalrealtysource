@@ -136,6 +136,7 @@
 
   </div>
 </section>
+
 <style>
 .stats-divider {
   background: #ffffff;
@@ -147,23 +148,27 @@
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
 }
 
 .stat {
   text-align: center;
-  padding: 20px;
+  padding: 20px 10px;
   position: relative;
 }
 
-.stat:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 20%;
-  height: 60%;
-  width: 1px;
-  background: #e6e6e6;
+/* Remove dividers on smaller screens */
+@media (min-width: 768px) {
+  .stat:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: #e6e6e6;
+  }
 }
 
 .stat-number {
