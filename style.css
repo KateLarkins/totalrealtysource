@@ -6,10 +6,6 @@ body {
   opacity: 1; /* Default visible */
   transition: opacity 0.6s ease-in-out;
 }
-body {
-  overflow-x: hidden;
-}
-
 
 /* Navbar layout for larger screens (normal behavior) */
 .topnav {
@@ -104,14 +100,16 @@ body {
 }
 
 
+/* .work
+-sans {
+  font-family: "Work Sans", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+} */
 .homeheader {
-  background-image: url(kitchen.png/kitchen.png);
-  width: 100%;
-  height: 100vh; /* full viewport height */
-  background-size: cover;
-  background-position: center;
+  background-image:url(kitchen.png/kitchen.png);
+  height: 100%;
 }
-
 
 /* typewriter  */
 /* Define the animation */
@@ -225,7 +223,6 @@ body {
   }
 }
 
-
 #background-video {
   width: 100%;
   height: auto;
@@ -338,7 +335,7 @@ iframe {
   border-radius: 8px;
   border: 1px solid #ccc;
   width: 90%;
-  max-width: 1000px;
+  max-width: 100px;
   position: relative;
 }
 @media (max-width: 576px) {
@@ -363,14 +360,7 @@ iframe {
     width: 100% !important;
   }
 }
-@media (max-width: 768px) {
-  .nav-links {
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-}
 
-333333
 
 /* Fix for the X button */
 .close {
@@ -779,11 +769,10 @@ iframe {
   .agent-description p {
     font-size:17px;
   }
+}
 
-.fun-card-top {
-  flex-grow: 1; /* Allow cards to grow vertically to fill the space */
-}
-}
+
+
 /* Media Queries for Responsive Design */
 
 @media (max-width: 480px) {
@@ -1765,8 +1754,18 @@ strong {
 }
 
 
+/* Header video */
+@media (max-width: 768px) {
+  .header-container {
+    max-height: 50vh;
+  }
 
-.services-modern {
+  .header-container video {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}.services-modern {
   padding: 60px 20px;
   background-color: #023E6C;
   text-align: center;
@@ -1933,36 +1932,26 @@ html, body {
 .flex-container > * {
   min-width: 0;
 }
+
+/* All images and videos responsive */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* Header video container */
 .header-container {
   width: 100%;
-  max-height: 80vh; /* or whatever you want for desktop */
-  overflow: hidden;
-  position: relative; /* allows video to stay inside */
+  overflow: hidden; /* crop overflow */
 }
 
-/* Header video */
-#background-video {
+.header-container video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  position: relative; /* no longer fixed */
-  top: 0;
-  left: 0;
-  z-index: -1; /* still behind content */
+  object-fit: cover; /* fill container nicely */
 }
 
-/* Small screens */
-@media (max-width: 768px) {
-  .header-container {
-    max-height: 50vh;
-  }
-
-  #background-video {
-    height: auto;
-    object-fit: contain; /* prevents cropping on small screens */
-  }
-}
 
 /* footer */
 /* ====== Footer Base Styles ====== */
@@ -1988,48 +1977,37 @@ footer a {
 footer a:hover {
   color: #f0c14b;
 }
+
 /* Footer row container */
 footer .footer-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
   justify-content: space-between;
+  gap: 40px;
 }
 
 /* Footer columns */
 footer .footer-col {
-  flex: 1 1 200px; /* flex-grow, flex-shrink, base width */
-  min-width: 200px;
+  flex: 1;
+  min-width: 200px; /* ensures reasonable width */
 }
 
 /* ====== Responsive ====== */
-@media (max-width: 1024px) {
-  footer .footer-row {
-    justify-content: space-around;
-  }
-}
-
 @media (max-width: 768px) {
+  /* Stack columns vertically */
   footer .footer-row {
-    flex-wrap: wrap;
-    gap: 30px;
-  }
-
-  footer .footer-col {
-    flex: 1 1 45%; /* allows 2 columns side by side */
-    min-width: 150px;
-    margin-bottom: 30px;
-  }
-
-  footer h4 {
+    flex-direction: column;
+    align-items: center;
     text-align: center;
   }
-}
 
-@media (max-width: 480px) {
   footer .footer-col {
-    flex: 1 1 100%; /* stacked vertically on very small screens */
-    min-width: 100%;
+    min-width: 100%; /* full width on mobile */
+    margin-bottom: 30px;
+  }
+   /* Center headings on small screens */
+   footer h4 {
+    text-align: center;
   }
 }
 
