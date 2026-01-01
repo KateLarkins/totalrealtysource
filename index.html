@@ -330,13 +330,12 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   
   <section style="background-color:white; text-align:center; padding:0; margin-top:0;">
     <div class="containerreveal">
-  
       <div class="reveal" style="margin-bottom:5px;">
         <div class="reveal__content" style="color:white; font-family:'At Hauss Std Semibold'; font-size:24px; line-height:28px;">
           In just 2 years, we've helped clients buy and sell more than
         </div>
       </div>
-      
+  
       <div class="reveal" style="margin-bottom:5px;">
         <div class="reveal__content" style="color:#FCB741; font-family:'At Hauss Std Semibold'; font-size:24px; font-weight:600; line-height:28px;">
           $50 million
@@ -348,36 +347,27 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           in homes, land, and commercial properties.
         </div>
       </div>
-  
     </div>
   </section>
-  <style>@media screen and (max-width: 900px) {
-    .containerreveal {
-      display: inline-flex !important;    /* inline flex keeps it one line visually */
-      flex-direction: row !important;
-      flex-wrap: wrap;                    /* allow wrapping on very small screens */
-      justify-content: flex-start !important;
-      align-items: baseline;              /* aligns $50M nicely with text */
-      gap: 4px;
-      padding: 0 15px;
-      padding: 30px;
-    }
   
-    .containerreveal .reveal {
-      margin-bottom: 0 !important;
-      min-width: 0; /* allows content to shrink */
+  <style>
+  @media screen and (max-width: 900px) {
+    .containerreveal {
+      display: flex !important;
+      flex-direction: column !important; /* stack vertically */
+      align-items: center;              /* center content */
+      gap: 8px;
+      padding: 20px 15px;
     }
   
     .containerreveal .reveal .reveal__content {
-      font-size: 18px !important;        /* slightly smaller for mobile */
+      font-size: 18px !important;        /* smaller for mobile */
       line-height: 22px !important;
-      white-space: normal;               /* allow wrapping if needed */
-    }
-  
-    .containerreveal .reveal .reveal__content:first-child {
-      white-space: normal;
+      text-align: center !important;     /* ensure centered text */
     }
   }
+  </style>
+  
   </style>
 
      
