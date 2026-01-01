@@ -849,12 +849,12 @@ iframe {
 
 /* For Sale */
 
-
-.property-widget {
-  width: calc(33.33% - 20px); /* Adjust width based on your preference */
-  background-color: white;
-  overflow: hidden;
+.property-container {
+  display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 20px;
 }
 
 .property-widget img {
