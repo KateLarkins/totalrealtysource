@@ -141,39 +141,53 @@ input[type="checkbox"] {
 
 
 <body>
-<!-- Top Navigation Bar -->
-<div class="topnav">
+<!-- ======================
+       Navbar HTML
+====================== -->
+<nav class="topnav">
   <!-- Logo -->
-  <a href="index.html" class="logo">
-    <img src="logo.png/horizontallogo.png" alt="Logo">
-  </a>
+  <div class="logo">
+    <a href="index.html"><img src="logo.png/horizontallogo.png" alt="Logo"></a>
+  </div>
 
-  <!-- Desktop nav links (main 4) -->
+  <!-- Desktop links -->
   <div class="nav-links desktop-links">
     <a href="index.html" class="nav-link">Home</a>
+
     <div class="dropdown-container">
       <a href="forsale.html" class="nav-link">For Sale ▾</a>
       <div class="dropdown">
         <a href="forsale.html" class="dropdown-item">Current Listings</a>
       </div>
     </div>
+
     <div class="dropdown-container">
       <a href="about.html" class="nav-link">About ▾</a>
       <div class="dropdown">
         <a href="about.html" class="dropdown-item">Our Team</a>
+        <a href="contact.html" class="dropdown-item">Blog</a>
+        <a href="about.html" class="dropdown-item">Services</a>
+        <a href="about.html" class="dropdown-item">Testimonials</a>
+        <a href="about.html" class="dropdown-item">Extras</a>
       </div>
     </div>
+
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
 
-  <!-- Mobile nav drawer arrow -->
-  <div class="nav-arrow mobile-arrow" onclick="toggleNavDrawer()">&#9654;</div>
-</div>
+  <!-- Mobile menu arrow -->
+  <button class="nav-arrow mobile-arrow" onclick="toggleNavDrawer()">☰</button>
+</nav>
 
-<!-- Mobile navigation drawer -->
+<!-- ======================
+       Mobile Drawer
+====================== -->
 <div class="nav-drawer" id="navDrawer">
+  <!-- Back arrow -->
+  <button class="drawer-back" onclick="closeNavDrawer()">← Back</button>
+
   <a href="index.html" class="drawer-link">Home</a>
-  
+
   <div class="drawer-dropdown">
     <a href="forsale.html" class="drawer-link">For Sale ▾</a>
     <div class="drawer-submenu">
@@ -185,26 +199,36 @@ input[type="checkbox"] {
     <a href="about.html" class="drawer-link">About ▾</a>
     <div class="drawer-submenu">
       <a href="about.html" class="drawer-link">Our Team</a>
+      <a href="blog.html" class="drawer-link">Blog</a>
+      <a href="services.html" class="drawer-link">Services</a>
+      <a href="testimonials.html" class="drawer-link">Testimonials</a>
+      <a href="extras.html" class="drawer-link">Extras</a>
     </div>
   </div>
 
   <a href="contact.html" class="drawer-link">Contact</a>
-  <a href="contact.html" class="drawer-link">Extras</a>
-  <a href="contact.html" class="drawer-link">Blog</a>
-  <a href="about.html" class="drawer-link">Services</a>
-  <a href="about.html" class="drawer-link">Testimonials</a>
 </div>
 
-  
-  <script>
-  function toggleNavDrawer() {
-    const drawer = document.getElementById('navDrawer');
-    drawer.classList.toggle('open');
-  
-    const arrow = document.querySelector('.nav-arrow');
-    arrow.style.transform = drawer.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
-  }
-  </script>
+<script>
+function toggleNavDrawer() {
+  const drawer = document.getElementById('navDrawer');
+  drawer.classList.toggle('open');
+}
+
+function closeNavDrawer() {
+  const drawer = document.getElementById('navDrawer');
+  drawer.classList.remove('open');
+}
+
+// Toggle mobile drawer submenus
+document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
+  link.addEventListener('click', function(e){
+    e.preventDefault();
+    const parent = this.parentElement;
+    parent.classList.toggle('open');
+  });
+});
+</script>
 
 <!-- Gradient -->
   <div style="width:100%; height:140px; background: linear-gradient(135deg, transparent 40%, #ffffff 40%),radial-gradient(#1d5b8c 1.5px, transparent 1.5px);background-size: cover, 24px 24px; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%); "></div>
