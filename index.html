@@ -351,7 +351,34 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   
     </div>
   </section>
+  <style>@media screen and (max-width: 900px) {
+    .containerreveal {
+      display: inline-flex !important;    /* inline flex keeps it one line visually */
+      flex-direction: row !important;
+      flex-wrap: wrap;                    /* allow wrapping on very small screens */
+      justify-content: flex-start !important;
+      align-items: baseline;              /* aligns $50M nicely with text */
+      gap: 4px;
+      padding: 0 15px;
+      padding: 30px;
+    }
   
+    .containerreveal .reveal {
+      margin-bottom: 0 !important;
+      min-width: 0; /* allows content to shrink */
+    }
+  
+    .containerreveal .reveal .reveal__content {
+      font-size: 18px !important;        /* slightly smaller for mobile */
+      line-height: 22px !important;
+      white-space: normal;               /* allow wrapping if needed */
+    }
+  
+    .containerreveal .reveal .reveal__content:first-child {
+      white-space: normal;
+    }
+  }
+  </style>
 
      
 
