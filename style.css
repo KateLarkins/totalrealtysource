@@ -1989,7 +1989,7 @@ footer .footer-col {
   }
    /* Center headings on small screens */
    footer h4 {
-    text-align: center;
+    text-align: left;
   }
 }
 
