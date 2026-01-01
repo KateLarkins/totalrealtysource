@@ -111,6 +111,76 @@
   Your browser does not support the video.
 </video>
 
+<section class="stats-divider">
+  <div class="stats-container">
+
+    <div class="stat">
+      <div class="stat-number">$50M+</div>
+      <div class="stat-label">Total Sales Volume</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-number">150+</div>
+      <div class="stat-label">Closed Sales</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-number">7</div>
+      <div class="stat-label">Active Agents</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-number">6</div>
+      <div class="stat-label">Property Types</div>
+    </div>
+
+  </div>
+</section>
+<style>
+.stats-divider {
+  background: #ffffff;
+  padding: 60px 20px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.stats-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.stat {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.stat:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: #e6e6e6;
+}
+
+.stat-number {
+  font-size: 42px;
+  font-family: 'At Hauss Std Semibold';
+  color: #023E6C;
+}
+
+.stat-label {
+  margin-top: 8px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #666;
+  font-family: 'At Hauss Std Light';
+}
+</style>
 
   <section style="padding-bottom: 0px;  background-color:#023E6C; color:white; ">
     <div style="max-width: 100%; padding-left: 0; padding-right: 0; margin: 0 auto;">
