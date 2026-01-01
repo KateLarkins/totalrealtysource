@@ -22,121 +22,274 @@
 
     <link rel="stylesheet" href="style.css">  
 
-<style>
-/* Global */
+<style>/* =========================
+  Global Styles
+========================= */
 body {
-  margin: 0;
-  background-color: #ffffff;
-}
-a { text-decoration: none; }
-
-/* Team Section */
-/* Responsive Team Cards */
-@media (max-width: 768px) {
-  .team-cards {
-    grid-template-columns: 1fr; /* single column */
-    justify-items: center;       /* center the cards */
-  }
-
-  .team-card {
-    width: 90%; /* optional: make cards slightly smaller than full width */
-    max-width: 300px;
-  }
+ margin: 0;
+ font-family: 'Quicksand', sans-serif;
+ background-color: #ffffff;
+ color: #000;
 }
 
+a {
+ text-decoration: none;
+ color: inherit;
+}
+
+button {
+ cursor: pointer;
+ transition: 0.3s;
+}
+
+/* =========================
+  Hero Section
+========================= */
+.hero {
+ position: relative;
+ height: 60vh;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
+ background: url('unsplash/Screenshot 2025-12-29 at 10.49.47 PM.png') center/cover no-repeat;
+}
+
+.hero::before {
+ content: '';
+ position: absolute;
+ top:0; left:0;
+ width:100%; height:100%;
+ background: rgba(0,0,0,0.3);
+ z-index: 0;
+}
+
+.hero-content {
+ position: relative;
+ z-index: 1;
+ padding: 0 20px;
+}
+
+.hero h1 {
+ font-family: 'At Hauss Std Semibold', sans-serif;
+ font-size: 3rem;
+ margin-bottom: 30px;
+ color: #fff;
+}
+
+.hero-button {
+ display: inline-block;
+ padding: 12px 28px;
+ border-radius: 25px;
+ background-color: #11456F;
+ color: #fff;
+ font-family: 'At Hauss Std Semibold';
+}
+
+.hero-button:hover {
+ background-color: #0d3454;
+}
+
+/* =========================
+  Team Section
+========================= */
 .team {
-  padding: 80px 20px;
-  text-align: center;
-  color: #000;
-  position: relative;
-  background: url('') center/cover no-repeat;
-  background-size: cover;
+ position: relative;
+ padding: 80px 20px;
+ text-align: center;
+ background: rgba(240,240,240,0.7);
 }
+
 .team::before {
-  content: '';
-  position: absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: rgba(240,240,240,0.7); /* overlay so text/cards are readable */
-  z-index: 0;
+ content: '';
+ position: absolute;
+ top:0; left:0;
+ width:100%; height:100%;
+ background: rgba(240,240,240,0.7);
+ z-index: 0;
 }
+
 .team h2 {
-  font-family: 'At Hauss Std Semibold';
-  font-size: 2.5rem;
-  margin-bottom: 50px;
-  color: #000000;
-  position: relative;
-  z-index: 1;
+ font-family: 'At Hauss Std Semibold';
+ font-size: 2.5rem;
+ margin-bottom: 50px;
+ position: relative;
+ z-index: 1;
 }
 
 /* Team Cards Grid */
 .team-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-
-  /* Center the cards when there's extra space */
-  justify-content: center;
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+ gap: 40px;
+ max-width: 1200px;
+ margin: 0 auto;
+ justify-content: center;
+ position: relative;
+ z-index: 1;
 }
 
-
-.team-card { 
-  width: 22%; 
-  min-width: 250px; 
-  background: #fafafa; 
-  padding: 50px 20px 20px; 
-  border-radius: 15px; 
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
-  text-align: center; 
-  position: relative;
+/* Team Card */
+.team-card {
+ background: #fafafa;
+ padding: 50px 20px 20px;
+ border-radius: 15px;
+ box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+ text-align: center;
+ position: relative;
 }
 
 .team-card img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 15px;
+ width: 150px;
+ height: 150px;
+ border-radius: 50%;
+ object-fit: cover;
+ margin-bottom: 15px;
 }
+
 .team-card h3 {
-  margin: 10px 0 20px 0;
-  color: #000000;
-  font-size: 20px ;
-  font-family: 'At Hauss Std Semibold';
+ font-family: 'At Hauss Std Semibold';
+ font-size: 20px;
+ margin: 10px 0 10px;
+ color: #000;
 }
+
+.team-card p {
+ font-family: 'At Hauss Std Light';
+ margin: 0 0 15px;
+ color: #000;
+}
+
 .team-card button {
-  padding: 10px 20px;
-  border-radius: 25px;
-  border: none;
-  background-color: #11456F;
-  color: #ffffff;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+ padding: 10px 20px;
+ border-radius: 25px;
+ border: none;
+ background-color: #11456F;
+ color: #fff;
+ font-weight: bold;
 }
+
 .team-card button:hover {
-  background-color: #0d3454;
+ background-color: #0d3454;
 }
 
-/* Contact Section */
+/* =========================
+  Contact Section
+========================= */
 .contact {
-  padding: 80px 20px;
-  text-align: center;
-  background-color: #f0f4f8;
+ padding: 80px 20px;
+ text-align: center;
+ background-color: #f0f4f8;
 }
-.contact h2 {
-  font-family: 'At Hauss Std Semibold';
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #000000;
-}
-.contact p { font-size: 1.1rem; margin-bottom: 40px; font-family: 'At Hauss Std Light' ; }
-.contact-info { font-size: 1rem; line-height: 1.6; font-family: 'At Hauss Std Light' ; }
 
+.contact h2 {
+ font-family: 'At Hauss Std Semibold';
+ font-size: 2.5rem;
+ margin-bottom: 20px;
+}
+
+.contact p,
+.contact-info {
+ font-family: 'At Hauss Std Light';
+ font-size: 1.1rem;
+ margin-bottom: 40px;
+ line-height: 1.6;
+}
+
+/* =========================
+  Service Cards Section
+========================= */
+.services {
+ padding: 80px 20px;
+ background-color: #f8f8f8;
+ text-align: center;
+}
+
+.services h2 {
+ font-family: 'At Hauss Std Semibold';
+ font-size: 2.5rem;
+ margin-bottom: 20px;
+}
+
+.services p {
+ font-family: 'At Hauss Std Light';
+ font-size: 1.2rem;
+ color: #333;
+ line-height: 1.8;
+}
+
+.service-cards {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ gap: 30px;
+ max-width: 1200px;
+ margin: 0 auto;
+}
+
+.service-card {
+ flex: 1 1 300px;
+ background-color: #fdfdfd;
+ border: 1px solid #e0e0e0;
+ border-radius: 12px;
+ padding: 40px 30px;
+ text-align: left;
+ transition: transform 0.3s ease;
+}
+
+.service-card h3 {
+ font-family: 'At Hauss Std Semibold';
+ font-size: 1.5rem;
+ margin-bottom: 15px;
+}
+
+.service-card p {
+ font-family: 'At Hauss Std Light';
+ font-size: 1rem;
+ margin-bottom: 20px;
+}
+
+.service-card a {
+ font-family: 'At Hauss Std Semibold';
+ font-size: 0.95rem;
+ color: #11456F;
+ text-decoration: none;
+ border-bottom: 1px solid #11456F;
+}
+
+.service-card a:hover {
+ color: #0d3454;
+ border-bottom-color: #0d3454;
+}
+
+/* =========================
+  Responsive Adjustments
+========================= */
+@media (max-width: 768px) {
+ .team-cards {
+   grid-template-columns: 1fr;
+   justify-items: center;
+ }
+
+ .team-card {
+   width: 90%;
+   max-width: 300px;
+ }
+
+ .hero h1 {
+   font-size: 2rem;
+ }
+
+ .hero-button {
+   padding: 10px 20px;
+   font-size: 0.9rem;
+ }
+
+ .service-card {
+   flex: 1 1 100%;
+ }
+}
 </style>
 </head>
 <body>
