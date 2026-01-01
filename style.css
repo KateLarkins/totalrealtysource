@@ -611,6 +611,13 @@ iframe {
     max-width: 320px;
   }
 }
+/* Footer */
+@media (max-width: 768px) {
+  footer .areas-grid {
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+  }
+}
 
 /* Our Services Section */
 .services-new {
