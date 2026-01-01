@@ -88,170 +88,186 @@
 </div>
 
 <style>
-.topnav {
-  display: flex;
-  align-items: center;      /* vertical centering */
-  justify-content: space-between; /* logo left, arrow/right */
-  padding: 10px 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  height: 70px;            /* fix height for navbar */
-}
-
-.topnav .logo img {
-  max-height: 70px; /* default for desktop */
-  object-fit: contain;
-}
-
-/* Smaller logo on mobile */
-@media screen and (max-width: 900px) {
+  .topnav {
+    display: flex;
+    align-items: center;           /* vertical centering */
+    justify-content: space-between; /* logo left, arrow/right on desktop */
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 70px;                  /* fixed navbar height */
+  }
+  
+  /* Desktop logo */
   .topnav .logo img {
-    max-height: 50px; /* shrink to fit navbar with arrow */
+    max-height: 70px; /* desktop size */
+    object-fit: contain;
   }
-}
-
-
-/* Desktop nav links (main 4) */
-.nav-links.desktop-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-/* Prevent link text from wrapping */
-.nav-link {
-  text-decoration: none;
-  color: #000;
-  font-family: 'At Hauss Std Light';
-  padding: 8px 12px;
-  display: inline-block;
-  position: relative;
-  white-space: nowrap; /* Prevent "For Sale" / "About" from splitting */
-}
-
-/* Dropdown for desktop */
-.dropdown-container {
-  position: relative;
-  white-space: nowrap; /* Keep parent + dropdown inline */
-}
-
-.dropdown {
-  display: none;
-  position: absolute;
-  top: 100%; /* Directly below parent link */
-  left: 0;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  min-width: 180px;
-  z-index: 1000;
-}
-
-.dropdown-container:hover .dropdown {
-  display: block;
-}
-
-.dropdown-item {
-  display: block;
-  padding: 10px 15px;
-  text-decoration: none;
-  color: #000;
-  font-family: 'At Hauss Std Light';
-}
-
-.dropdown-item:hover {
-  background-color: #f0f0f0;
-}
-
-.nav-arrow {
-  font-size: 28px;
-  cursor: pointer;
-  user-select: none;
-  transition: transform 0.3s ease;
-  position: relative;
-  z-index: 1001;
-  margin-left: 10px;
-  line-height: 1;
-}
-
-/* Mobile drawer */
-.nav-drawer {
-  position: fixed;
-  top: 0;
-  right: -300px; /* hidden off-screen */
-  width: 300px;
-  height: 100%;
-  background-color: #fff;
-  box-shadow: -2px 0 8px rgba(0,0,0,0.15);
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  gap: 10px;
-  overflow-y: auto;
-  transition: right 0.3s ease;
-  z-index: 999;
-}
-
-.nav-drawer.open {
-  right: 0;
-}
-
-.drawer-link {
-  text-decoration: none;
-  color: #000;
-  font-family: 'At Hauss Std Light';
-  padding: 10px 5px;
-  display: block;
-}
-
-/* Drawer submenus */
-.drawer-submenu {
-  padding-left: 15px;
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.drawer-dropdown:hover .drawer-submenu {
-  display: flex;
-}
-
-/* Scrollbar styling */
-.nav-drawer::-webkit-scrollbar {
-  width: 6px;
-}
-.nav-drawer::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 3px;
-}
-
-/* Responsive */
-@media screen and (max-width: 900px) {
+  
+  /* Desktop nav links (main 4) */
   .nav-links.desktop-links {
-    display: none; /* Hide desktop links on small screens */
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }
-  .nav-arrow.mobile-arrow {
+  
+  /* Prevent link text from wrapping */
+  .nav-link {
+    text-decoration: none;
+    color: #000;
+    font-family: 'At Hauss Std Light';
+    padding: 8px 12px;
+    display: inline-block;
+    position: relative;
+    white-space: nowrap; /* Prevent "For Sale" / "About" from splitting */
+  }
+  
+  /* Dropdown for desktop */
+  .dropdown-container {
+    position: relative;
+    white-space: nowrap; /* Keep parent + dropdown inline */
+  }
+  
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%; /* Directly below parent link */
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    min-width: 180px;
+    z-index: 1000;
+  }
+  
+  .dropdown-container:hover .dropdown {
     display: block;
   }
-}
-@media screen and (min-width: 901px) {
-  .nav-arrow.mobile-arrow {
-    display: none; /* Hide arrow on large screens */
+  
+  .dropdown-item {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #000;
+    font-family: 'At Hauss Std Light';
   }
-}
-</style>
-
-<script>
-function toggleNavDrawer() {
-  const drawer = document.getElementById('navDrawer');
-  drawer.classList.toggle('open');
-
-  const arrow = document.querySelector('.nav-arrow');
-  arrow.style.transform = drawer.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
-}
-</script>
+  
+  .dropdown-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Mobile arrow (no circle) */
+  .nav-arrow {
+    font-size: 28px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1001;
+    line-height: 1;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  
+  /* Mobile drawer */
+  .nav-drawer {
+    position: fixed;
+    top: 0;
+    right: -300px; /* hidden off-screen */
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+    overflow-y: auto;
+    transition: right 0.3s ease;
+    z-index: 999;
+  }
+  
+  .nav-drawer.open {
+    right: 0;
+  }
+  
+  .drawer-link {
+    text-decoration: none;
+    color: #000;
+    font-family: 'At Hauss Std Light';
+    padding: 10px 5px;
+    display: block;
+  }
+  
+  /* Drawer submenus */
+  .drawer-submenu {
+    padding-left: 15px;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .drawer-dropdown:hover .drawer-submenu {
+    display: flex;
+  }
+  
+  /* Scrollbar styling */
+  .nav-drawer::-webkit-scrollbar {
+    width: 6px;
+  }
+  .nav-drawer::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+  }
+  
+  /* Responsive behavior */
+  @media screen and (max-width: 900px) {
+    /* Hide desktop links */
+    .nav-links.desktop-links {
+      display: none;
+    }
+  
+    /* Shrink logo and center it */
+    .topnav .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .topnav .logo img {
+      max-height: 50px; /* mobile size */
+    }
+  
+    /* Arrow stays on right edge */
+    .nav-arrow.mobile-arrow {
+      display: block;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  
+  @media screen and (min-width: 901px) {
+    /* Hide mobile arrow on desktop */
+    .nav-arrow.mobile-arrow {
+      display: none;
+    }
+  }
+  </style>
+  
+  <script>
+  function toggleNavDrawer() {
+    const drawer = document.getElementById('navDrawer');
+    drawer.classList.toggle('open');
+  
+    const arrow = document.querySelector('.nav-arrow');
+    arrow.style.transform = drawer.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+  }
+  </script>
+  
 
       
 <!-- Introduction Video -->
