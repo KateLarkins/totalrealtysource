@@ -88,22 +88,21 @@
 </div>
 
 <style>
-/* Top navbar */
 .topnav {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: center;      /* vertical centering */
+  justify-content: space-between; /* logo left, arrow/right */
   padding: 10px 20px;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
+  height: 70px;            /* fix height for navbar */
 }
 
-/* Logo */
 .topnav .logo img {
-  max-height: 80px;
+  max-height: 50px;         /* reduce so it doesn't cover arrow */
   object-fit: contain;
 }
 
@@ -158,12 +157,15 @@
   background-color: #f0f0f0;
 }
 
-/* Arrow for mobile */
 .nav-arrow {
   font-size: 28px;
   cursor: pointer;
   user-select: none;
   transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1001;
+  margin-left: 10px;
+  line-height: 1;
 }
 
 /* Mobile drawer */
