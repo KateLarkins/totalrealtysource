@@ -112,10 +112,10 @@ body {
 ========================= */
 .nav-drawer {
   position: fixed;
-  top: 0;
-  right: -300px;
+  top: 70px;       /* <-- make it start just below the navbar */
+  right: -300px;   /* hidden by default */
   width: 300px;
-  height: 100%;
+  height: calc(100% - 70px); /* full height minus navbar */
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -123,9 +123,9 @@ body {
   gap: 10px;
   overflow-y: auto;
   transition: right 0.3s ease;
-  z-index: 1001;
-  box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+  z-index: 999;
 }
+
 
 .nav-drawer.open {
   right: 0;
@@ -192,6 +192,7 @@ body {
     user-select: none;
     background: none;
     border: none;
+    text-decoration: none;
   }
 }
 
@@ -221,7 +222,7 @@ body {
   border: none;
   font-size: 18px;
   font-weight: bold;
-  color: #023E6C;
+  color: #000000;
   text-align: left;
   padding: 10px 0;
   cursor: pointer;
