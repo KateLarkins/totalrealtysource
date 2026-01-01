@@ -126,8 +126,10 @@ function toggleText(id) {
   }
 }
 
-
-//filterfunction 
+// filter
+// ------------------------------
+// Main Filter Function
+// ------------------------------
 function filterProperties() {
   const addressVal = document.getElementById("searchAddress").value.toLowerCase();
   const agentVal = document.getElementById("filterAgent").value.toLowerCase();
@@ -137,7 +139,7 @@ function filterProperties() {
   const needsGarage = document.getElementById("hasGarage").checked;
   const needsPool = document.getElementById("hasPool").checked;
 
-  // Determine min and max price from selected range
+  // Determine min/max price
   let minPrice = 0;
   let maxPrice = Infinity;
 
@@ -145,77 +147,81 @@ function filterProperties() {
     const parts = priceRange.split("-");
     minPrice = parseInt(parts[0].replace(/\D/g, '')) || 0;
     maxPrice = parseInt(parts[1].replace(/\D/g, '')) || Infinity;
-  } else if (priceRange === "1000000+") {
-    minPrice = 1000000;
+  } else if (priceRange.includes("+")) {
+    minPrice = parseInt(priceRange) || 1000000;
     maxPrice = Infinity;
   }
 
   const listings = document.querySelectorAll(".property-widget");
 
   listings.forEach(listing => {
+    // Safe element queries
     const address = listing.querySelector("h3")?.innerText.toLowerCase() || "";
     const agent = listing.querySelector(".location")?.innerText.toLowerCase() || "";
-    const price = parseInt(listing.querySelector(".price")?.innerText.replace(/\D/g, '') || "0");
+    const priceText = listing.querySelector(".price")?.innerText || "0";
+    const price = parseInt(priceText.replace(/\D/g, '')) || 0;
 
-    // Beds: extract first number
+    // Beds/Baths (ignore 0 or N/A)
     const bedText = listing.querySelector(".bedrooms")?.innerText || "0";
     const beds = parseInt(bedText) || 0;
-
-    // Baths: extract first number
     const bathText = listing.querySelector(".bathrooms")?.innerText || "0";
     const baths = parseInt(bathText) || 0;
 
-    // Pool: check if starts with "yes"
+    // Pool
     const poolText = listing.querySelector(".pool")?.innerText.toLowerCase() || "";
-    const hasPool = poolText.startsWith("yes");
+    const hasPool = poolText.includes("yes");
 
-    // Garage: check if any number exists or contains "garage"
+    // Garage
     const garageText = listing.querySelector(".garage")?.innerText.toLowerCase() || "";
     let hasGarage = false;
-    if (garageText.includes("garage")) {
-      const match = garageText.match(/\d+/); // first number in string
-      hasGarage = match ? parseInt(match[0]) > 0 : true;
+    if (garageText.includes("yes") || garageText.includes("garage")) {
+      hasGarage = true;
     } else {
       const match = garageText.match(/\d+/);
       hasGarage = match ? parseInt(match[0]) > 0 : false;
     }
 
+    // Matching logic
     const matchesAddress = address.includes(addressVal);
     const matchesAgent = agent.includes(agentVal);
     const matchesPrice = price >= minPrice && price <= maxPrice;
-    const matchesBeds = beds >= bedVal;
-    const matchesBaths = baths >= bathVal;
-    const matchesGarage = !needsGarage || hasGarage;
-    const matchesPool = !needsPool || hasPool;
 
+    // Beds/Baths filtering: ignore if listing is 0 or user selected 0
+    const matchesBeds = bedVal === 0 || beds === 0 || beds >= bedVal;
+    const matchesBaths = bathVal === 0 || baths === 0 || baths >= bathVal;
+
+    // Pool/Garage filtering
+    const matchesPool = !needsPool || hasPool;
+    const matchesGarage = !needsGarage || hasGarage;
+
+    // Show/hide listing
     listing.style.display = (matchesAddress && matchesAgent && matchesPrice && matchesBeds && matchesBaths && matchesGarage && matchesPool) ? "" : "none";
   });
 }
 
-
-
-
-const listingsContainer = document.querySelector('.listings');
-const allProperties = [...]; // your array of property data
-
-let start = 0;
-const batchSize = 20; // load 20 at a time
-
-function renderBatch() {
-  const batch = allProperties.slice(start, start + batchSize);
-  batch.forEach(prop => {
-    const div = document.createElement('div');
-    div.className = 'property-widget';
-    div.innerHTML = `<img src="${prop.img}" /><h3>${prop.address}</h3><p>${prop.price}</p>`;
-    listingsContainer.appendChild(div);
+// ------------------------------
+// Clear all filters
+// ------------------------------
+function clearFilters() {
+  const elements = ["searchAddress", "filterAgent", "priceRange", "filterBeds", "filterBaths"];
+  elements.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = "";
   });
-  start += batchSize;
+
+  const checkboxes = ["hasGarage", "hasPool"];
+  checkboxes.forEach(id => {
+    const cb = document.getElementById(id);
+    if (cb) cb.checked = false;
+  });
+
+  // Refresh listings immediately
+  filterProperties();
 }
 
-renderBatch();
-
-listingsContainer.addEventListener('scroll', () => {
-  if (listingsContainer.scrollTop + listingsContainer.clientHeight >= listingsContainer.scrollHeight - 100) {
-    renderBatch();
-  }
+// ------------------------------
+// Auto-filter on dropdown or checkbox change
+// ------------------------------
+document.querySelectorAll("#filterSidebar select, #filterSidebar input[type='checkbox']").forEach(el => {
+  el.addEventListener("change", filterProperties);
 });

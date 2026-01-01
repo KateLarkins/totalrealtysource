@@ -2115,3 +2115,71 @@ footer .footer-col {
     max-height: 70vh;
   }
 }
+
+
+/* filter styling */
+#filterSidebar {
+  width: 300px;
+  background: #fefefe;
+  padding: 25px;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-family: 'At Hauss Std Light';
+}
+
+#filterSidebar h2 {
+  font-family: 'At Hauss Std Semibold';
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#filterSidebar label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+#filterSidebar input[type="text"],
+#filterSidebar select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  transition: 0.2s all;
+}
+
+#filterSidebar input[type="text"]:focus,
+#filterSidebar select:focus {
+  border-color: #004080;
+  box-shadow: 0 0 5px #01264c;
+  outline: none;
+}
+
+#filterSidebar button {
+  background-color: #004080;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.2s all;
+  font-family: 'At Hauss Std Semibold';
+}
+
+#filterSidebar button:hover {
+  background-color: #004080;
+}
+
+#filterSidebar input[type="checkbox"] {
+  margin-right: 6px;
+  transform: scale(1.1);
+}
+
