@@ -1991,6 +1991,9 @@ footer .footer-col {
    footer h4 {
     text-align: left;
   }
+  footer p {
+    text-align: left;
+  }
 }
 
 
