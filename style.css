@@ -1978,36 +1978,48 @@ footer a {
 footer a:hover {
   color: #f0c14b;
 }
-
 /* Footer row container */
 footer .footer-row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   gap: 40px;
+  justify-content: space-between;
 }
 
 /* Footer columns */
 footer .footer-col {
-  flex: 1;
-  min-width: 200px; /* ensures reasonable width */
+  flex: 1 1 200px; /* flex-grow, flex-shrink, base width */
+  min-width: 200px;
 }
 
 /* ====== Responsive ====== */
-@media (max-width: 768px) {
-  /* Stack columns vertically */
+@media (max-width: 1024px) {
   footer .footer-row {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 768px) {
+  footer .footer-row {
+    flex-wrap: wrap;
+    gap: 30px;
   }
 
   footer .footer-col {
-    min-width: 100%; /* full width on mobile */
+    flex: 1 1 45%; /* allows 2 columns side by side */
+    min-width: 150px;
     margin-bottom: 30px;
   }
-   /* Center headings on small screens */
-   footer h4 {
+
+  footer h4 {
     text-align: center;
   }
 }
+
+@media (max-width: 480px) {
+  footer .footer-col {
+    flex: 1 1 100%; /* stacked vertically on very small screens */
+    min-width: 100%;
+  }
+}
+
