@@ -849,13 +849,6 @@ iframe {
 
 /* For Sale */
 
-.property-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-start;
-  gap: 20px;
-}
 
 .property-widget {
   width: calc(33.33% - 20px); /* Adjust width based on your preference */
@@ -986,7 +979,7 @@ iframe {
   align-items: center;
   overflow: hidden; /* Ensure the image does not overflow */
 }
-
+kkkkk
 .image-content-two img {
   width: auto; /* Let the image keep its aspect ratio */
   height: auto; /* Let the image keep its aspect ratio */
