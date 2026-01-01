@@ -237,10 +237,25 @@ parent.classList.toggle('open');
 
 
       <div class="page-container" style="display: flex; flex-direction: column;">
-          <div class="main-content" style="display: flex; flex-direction: row;">
-            <!-- Listings Area -->
-            <div class="listings" style="width: 75%; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 20px; height: 100%; overflow-y: auto; box-sizing: border-box; background: white;">
-              
+        <div class="main-content" style="display: flex; flex-direction: row; gap: 20px;">
+    <style>.main-content {
+      display: flex;
+      flex-direction: row; /* sidebar on right */
+      gap: 20px;           /* spacing between listings and sidebar */
+    }
+    </style>
+          <!-- Listings Area -->
+          <div class="listings" style="
+            width: 75%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 per row */
+            gap: 20px; /* your spacing */
+            padding: 20px;
+            max-height: 90vh; /* allows vertical scroll */
+            overflow-y: auto;
+            background: white;
+            box-sizing: border-box;
+          ">
             <!-- Listing Card -->
             <!-- Country Club -->
             <div class="property-widget" style="background: white; padding: 20px; border-radius: 6px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
@@ -3022,7 +3037,7 @@ parent.classList.toggle('open');
               <img class="slide" src="Raines/20251122163737676857000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
               <img class="slide" src="Raines/20251122163740158216000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
               <img class="slide" src="Raines/20251122163742469154000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-              <img class="slide" src="Raines/20251122163745146523000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px%;">
+              <img class="slide" src="Raines/20251122163745146523000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
               <img class="slide" src="Raines/20251122163750777913000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
 
               
@@ -4081,7 +4096,7 @@ parent.classList.toggle('open');
 
     <!-- 530 N McCombs Street, Martin, TN 38237 -->
     <div class="property-widget" style="background: white; padding: 20px; border-radius: 6px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-      <img src="McCombs/20251222125911531601000000-o.jpg" alt="Property 2" style="width: 100%; border-radius: 6px; object-fit: cover;"/>
+      <img src="McCombs/" alt="Property 2" style="width: 100%; border-radius: 6px; object-fit: cover;"/>
       <div class="property-details" style="margin-top: 15px;">
         <h3 style="margin: 0; font-family: 'At Hauss Std Light'; font-size: 1.25rem;">530 N McCombs Street, Martin, TN 38237</h3>
         <p class="price" style="font-family: 'At Hauss Std Light'; font-weight: bold; font-size: 1.1rem; margin: 5px 0;">$20,000</p>
@@ -4835,6 +4850,17 @@ parent.classList.toggle('open');
             <button onclick="clearFilters()" style="margin-top:12px; padding:8px 12px; font-family:'At Hauss Std Light'; cursor:pointer;">Clear Filters</button>
           </div>
             <style>
+              #filterSidebar {
+  width: 300px;
+  background: #eee;
+  padding: 20px;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;       /* stick to top */
+  height: 100vh; /* full viewport height */
+  overflow-y: auto; /* scroll if content is long */
+}
+
               @media (max-width: 900px) {
                 .page-wrapper {
                   flex-direction: column;
@@ -4982,38 +5008,7 @@ parent.classList.toggle('open');
     Trusted West Tennessee Real Estate • Local Knowledge • Proven Results
   </div>
 
-</footer>
-<script>
-  function toggleNav() {
-    const navLinks = document.getElementById("navLinks");
-    const hamburgerIcon = document.querySelector(".hamburger-icon");
-    
-    // Toggle display of nav links when clicked
-    navLinks.classList.toggle("active");
-
-    // Toggle the X and hamburger icon
-    hamburgerIcon.classList.toggle("active");
-  }
-</script>
-<script>
-  function showDropdown(id) {
-    document.getElementById(id).classList.add('show');
-  }
-
-  function hideDropdown(id) {
-    document.getElementById(id).classList.remove('show');
-  }
-</script>
-  
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<script src="script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-
-
-</script>
-<script>
+</footer><script>
   let currentSlide = 0;
 
   function openModal(modalId) {
@@ -5046,14 +5041,15 @@ parent.classList.toggle('open');
   }
 </script>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const count = document.querySelectorAll(".property-widget").length;
-      const listingText = count === 1 ? "listing" : "listings";
-      document.getElementById("listing-count").textContent =
-        `Showing ${count} ${listingText} for current listings.`;
-    });
-  </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const count = document.querySelectorAll(".property-widget").length;
+    const listingText = count === 1 ? "listing" : "listings";
+    document.getElementById("listing-count").textContent =
+      `Showing ${count} ${listingText} for current listings.`;
+  });
+</script>
+
     
 </body>
 </html>

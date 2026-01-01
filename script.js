@@ -195,25 +195,27 @@ function filterProperties() {
 
 
 
+const listingsContainer = document.querySelector('.listings');
+const allProperties = [...]; // your array of property data
 
+let start = 0;
+const batchSize = 20; // load 20 at a time
 
-
-// New navbar
-
-function toggleMenu() {
-  var navLinks = document.getElementById("navLinks");
-  if (navLinks.classList.contains("show")) {
-    navLinks.classList.remove("show");
-  } else {
-    navLinks.classList.add("show");
-  }
+function renderBatch() {
+  const batch = allProperties.slice(start, start + batchSize);
+  batch.forEach(prop => {
+    const div = document.createElement('div');
+    div.className = 'property-widget';
+    div.innerHTML = `<img src="${prop.img}" /><h3>${prop.address}</h3><p>${prop.price}</p>`;
+    listingsContainer.appendChild(div);
+  });
+  start += batchSize;
 }
 
-function toggleOtherLinks() {
-  var otherLinks = document.getElementById("otherLinks");
-  if (otherLinks.style.display === "block") {
-    otherLinks.style.display = "none";
-  } else {
-    otherLinks.style.display = "block";
+renderBatch();
+
+listingsContainer.addEventListener('scroll', () => {
+  if (listingsContainer.scrollTop + listingsContainer.clientHeight >= listingsContainer.scrollHeight - 100) {
+    renderBatch();
   }
-}
+});
