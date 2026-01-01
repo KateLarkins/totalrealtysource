@@ -222,34 +222,38 @@
     border-radius: 3px;
   }
   
-  /* Responsive adjustments */
   @media screen and (max-width: 900px) {
-    /* Hide desktop links */
-    .nav-links.desktop-links {
-      display: none;
-    }
-  
-    /* Mobile logo centered */
-    .topnav .logo {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1001; /* above drawer */
-    }
-    .topnav .logo img {
-      max-height: 50px; /* mobile logo size */
-    }
-  
-    /* Arrow on right edge */
-    .nav-arrow.mobile-arrow {
-      display: block;
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 1002; /* above logo & drawer */
-    }
+  /* Hide desktop links */
+  .nav-links.desktop-links {
+    display: none;
   }
+
+  /* Mobile logo centered */
+  .topnav .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001; /* above drawer */
+  }
+  .topnav .logo img {
+    max-height: 50px; /* mobile logo size */
+  }
+
+  /* Arrow right-aligned and vertically centered */
+  .nav-arrow.mobile-arrow {
+    display: block;
+    position: absolute;
+    right: 20px;        /* right edge spacing */
+    top: 50%;           /* vertical center */
+    transform: translateY(-50%); /* truly centered vertically */
+    z-index: 1002;      /* above logo & drawer */
+    font-size: 28px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.3s ease;
+  }
+}
+
   
   @media screen and (min-width: 901px) {
     /* Hide mobile arrow on desktop */
@@ -293,9 +297,10 @@
       <div style="display: flex; flex-wrap: wrap; align-items: stretch;">
   
         <!-- Column for the image (fills entire space) -->
-        <div style="flex: 1; padding: 0; display: flex;">
-          <img src="Unsplash/todd-kent-178j8tJrNlc-unsplash.jpg" alt="Kitchen" style="width: 100%; height: 100%; object-fit: cover; border: none;">
-        </div>
+<div class="responsive-image" style="flex: 1; padding: 0; display: flex;">
+  <img src="Unsplash/todd-kent-178j8tJrNlc-unsplash.jpg" alt="Kitchen" style="width: 100%; height: 100%; object-fit: cover; border: none;">
+</div>
+
   
         <!-- Column for the text -->
         <div style="flex: 1; padding: 0; margin-top: 0; display: flex; align-items: center;">

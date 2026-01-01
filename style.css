@@ -1810,3 +1810,12 @@ footer .footer-col {
   }
 }
 
+
+
+/* hide index image */
+/* Hide image on small screens */
+@media (max-width: 768px) {
+  .responsive-image {
+    display: none !important;
+  }
+}
