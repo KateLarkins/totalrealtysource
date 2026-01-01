@@ -295,62 +295,70 @@ button {
 </head>
 <body>
 
- <!-- Top Navigation Bar -->
- <div class="topnav">
-  <div class="links-row">
-    <!-- Logo -->
-    <a href="index.html" style="display: block;">
-      <img src="logo.png/horizontallogo.png" style="max-height: 100px; display: block; object-fit: contain;">
-    </a>
-    <!-- Hamburger menu (visible only on small screens) -->
-    <div class="hamburger-menu" onclick="toggleNav()">
-      <span style="font-size: 17px; color: black; margin-right: 9px;">Menu</span>
-      <div class="hamburger-icon">
-        <div></div>
-        <div></div>
-        <div></div>
+<!-- Top Navigation Bar -->
+<div class="topnav">
+  <!-- Logo -->
+  <a href="index.html" class="logo">
+    <img src="logo.png/horizontallogo.png" alt="Logo">
+  </a>
+
+  <!-- Desktop nav links (main 4) -->
+  <div class="nav-links desktop-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <div class="dropdown-container">
+      <a href="forsale.html" class="nav-link">For Sale ▾</a>
+      <div class="dropdown">
+        <a href="forsale.html" class="dropdown-item">Current Listings</a>
       </div>
     </div>
-  </div>
-  <!-- Hidden nav links, toggled by hamburger -->
-  <div class="nav-links" id="navLinks">
-      <a href="index.html" class="nav-link">Home</a>
-  <!-- Dropdown for 'For Sale' -->
-  <div style="position: relative;">
-    <a href="forsale.html" class="nav-link" 
-      onmouseover="showDropdown('forsale-dropdown')" 
-      onmouseout="hideDropdown('forsale-dropdown')">For Sale ▾</a>
-    <div id="forsale-dropdown" class="dropdown"
-        onmouseover="showDropdown('forsale-dropdown')" 
-        onmouseout="hideDropdown('forsale-dropdown')">
-      <a href="forsale.html"
-        style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-family: 'At Hauss Std Light';"
-        onmouseover="this.style.backgroundColor='#f0f0f0'"
-        onmouseout="this.style.backgroundColor='white'">
-        Current Listings
-      </a>
+    <div class="dropdown-container">
+      <a href="about.html" class="nav-link">About ▾</a>
+      <div class="dropdown">
+        <a href="about.html" class="dropdown-item">Our Team</a>
+      </div>
     </div>
-  </div>
-  <!-- Dropdown for 'About' -->
-  <div style="position: relative;">
-    <a href="about.html" class="nav-link" 
-      onmouseover="showDropdown('about-dropdown')" 
-      onmouseout="hideDropdown('about-dropdown')">About ▾</a>
-
-    <div id="about-dropdown" class="dropdown"
-        onmouseover="showDropdown('about-dropdown')" 
-        onmouseout="hideDropdown('about-dropdown')">
-      <a href="about.html"
-        style="display: block; padding: 12px 16px; text-decoration: none; color: black; font-family: 'At Hauss Std Light';"
-        onmouseover="this.style.backgroundColor='#f0f0f0'"
-        onmouseout="this.style.backgroundColor='white'">
-        Our Team
-      </a>
-    </div>
-  </div>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
+
+  <!-- Mobile nav drawer arrow -->
+  <div class="nav-arrow mobile-arrow" onclick="toggleNavDrawer()">&#9654;</div>
 </div>
+
+<!-- Mobile navigation drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html" class="drawer-link">Home</a>
+  
+  <div class="drawer-dropdown">
+    <a href="forsale.html" class="drawer-link">For Sale ▾</a>
+    <div class="drawer-submenu">
+      <a href="forsale.html" class="drawer-link">Current Listings</a>
+    </div>
+  </div>
+
+  <div class="drawer-dropdown">
+    <a href="about.html" class="drawer-link">About ▾</a>
+    <div class="drawer-submenu">
+      <a href="about.html" class="drawer-link">Our Team</a>
+    </div>
+  </div>
+
+  <a href="contact.html" class="drawer-link">Contact</a>
+  <a href="extras.html" class="drawer-link">Extras</a>
+  <a href="blog.html" class="drawer-link">Blog</a>
+  <a href="services.html" class="drawer-link">Services</a>
+  <a href="testimonials.html" class="drawer-link">Testimonials</a>
+</div>
+
+  
+  <script>
+  function toggleNavDrawer() {
+    const drawer = document.getElementById('navDrawer');
+    drawer.classList.toggle('open');
+  
+    const arrow = document.querySelector('.nav-arrow');
+    arrow.style.transform = drawer.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+  }
+  </script>
 
 <!-- Hero Section -->
 <section class="hero" id="hero">
