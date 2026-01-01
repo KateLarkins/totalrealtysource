@@ -102,9 +102,17 @@
 }
 
 .topnav .logo img {
-  max-height: 50px;         /* reduce so it doesn't cover arrow */
+  max-height: 70px; /* default for desktop */
   object-fit: contain;
 }
+
+/* Smaller logo on mobile */
+@media screen and (max-width: 900px) {
+  .topnav .logo img {
+    max-height: 50px; /* shrink to fit navbar with arrow */
+  }
+}
+
 
 /* Desktop nav links (main 4) */
 .nav-links.desktop-links {
