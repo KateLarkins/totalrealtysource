@@ -578,6 +578,39 @@ iframe {
     margin-right: auto;
   }
 }
+/* About */
+.team-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Desktop */
+.team-card {
+  flex: 1 1 250px;
+  max-width: 280px;
+  background: #fafafa;
+  padding: 50px 20px 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .team-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-card {
+    width: 90%;
+    max-width: 320px;
+  }
+}
 
 /* Our Services Section */
 .services-new {
