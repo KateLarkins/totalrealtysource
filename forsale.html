@@ -140,93 +140,92 @@ input[type="checkbox"] {
   Open House June 8th 2:00-4:00</span> -->
 
 
-<body>
-<!-- ======================
-       Navbar HTML
+<body><!-- ======================
+  Navbar HTML
 ====================== -->
 <nav class="topnav">
-  <!-- Logo -->
-  <div class="logo">
-    <a href="index.html"><img src="logo.png/horizontallogo.png" alt="Logo"></a>
-  </div>
+<!-- Logo -->
+<div class="logo">
+<a href="index.html"><img src="logo.png/horizontallogo.png" alt="Logo"></a>
+</div>
 
-  <!-- Desktop links -->
-  <div class="nav-links desktop-links">
-    <a href="index.html" class="nav-link">Home</a>
+<!-- Desktop links -->
+<div class="nav-links desktop-links">
+<a href="index.html" class="nav-link">Home</a>
 
-    <div class="dropdown-container">
-      <a href="forsale.html" class="nav-link">For Sale ▾</a>
-      <div class="dropdown">
-        <a href="forsale.html" class="dropdown-item">Current Listings</a>
-      </div>
-    </div>
+<div class="dropdown-container">
+ <a href="forsale.html" class="nav-link">For Sale ▾</a>
+ <div class="dropdown">
+   <a href="forsale.html" class="dropdown-item">Current Listings</a>
+ </div>
+</div>
 
-    <div class="dropdown-container">
-      <a href="about.html" class="nav-link">About ▾</a>
-      <div class="dropdown">
-        <a href="about.html" class="dropdown-item">Our Team</a>
-        <a href="contact.html" class="dropdown-item">Blog</a>
-        <a href="about.html" class="dropdown-item">Services</a>
-        <a href="about.html" class="dropdown-item">Testimonials</a>
-        <a href="about.html" class="dropdown-item">Extras</a>
-      </div>
-    </div>
+<div class="dropdown-container">
+ <a href="about.html" class="nav-link">About ▾</a>
+ <div class="dropdown">
+   <a href="about.html" class="dropdown-item">Our Team</a>
+   <a href="contact.html" class="dropdown-item">Blog</a>
+   <a href="about.html" class="dropdown-item">Services</a>
+   <a href="about.html" class="dropdown-item">Testimonials</a>
+   <a href="about.html" class="dropdown-item">Extras</a>
+ </div>
+</div>
 
-    <a href="contact.html" class="nav-link">Contact</a>
-  </div>
+<a href="contact.html" class="nav-link">Contact</a>
+</div>
 
-  <!-- Mobile menu arrow -->
-  <button class="nav-arrow mobile-arrow" onclick="toggleNavDrawer()">☰</button>
-</nav>
+<!-- Mobile menu arrow -->
+<button class="nav-arrow mobile-arrow" onclick="toggleNavDrawer()">☰</button>
+</nav>          
 
 <!-- ======================
-       Mobile Drawer
+  Mobile Drawer
 ====================== -->
 <div class="nav-drawer" id="navDrawer">
-  <!-- Back arrow -->
-  <button class="drawer-back" onclick="closeNavDrawer()">← Back</button>
+<!-- Back arrow -->
+<button class="drawer-back" onclick="closeNavDrawer()">← Back</button>
 
-  <a href="index.html" class="drawer-link">Home</a>
+<a href="index.html" class="drawer-link">Home</a>
 
-  <div class="drawer-dropdown">
-    <a href="forsale.html" class="drawer-link">For Sale ▾</a>
-    <div class="drawer-submenu">
-      <a href="forsale.html" class="drawer-link">Current Listings</a>
-    </div>
-  </div>
+<div class="drawer-dropdown">
+<a href="forsale.html" class="drawer-link">For Sale ▾</a>
+<div class="drawer-submenu">
+ <a href="forsale.html" class="drawer-link">Current Listings</a>
+</div>
+</div>
 
-  <div class="drawer-dropdown">
-    <a href="about.html" class="drawer-link">About ▾</a>
-    <div class="drawer-submenu">
-      <a href="about.html" class="drawer-link">Our Team</a>
-      <a href="blog.html" class="drawer-link">Blog</a>
-      <a href="services.html" class="drawer-link">Services</a>
-      <a href="testimonials.html" class="drawer-link">Testimonials</a>
-      <a href="extras.html" class="drawer-link">Extras</a>
-    </div>
-  </div>
+<div class="drawer-dropdown">
+<a href="about.html" class="drawer-link">About ▾</a>
+<div class="drawer-submenu">
+ <a href="about.html" class="drawer-link">Our Team</a>
+ <a href="contact.html" class="drawer-link">Blog</a>
+ <a href="about.html" class="drawer-link">Services</a>
+ <a href="about.html" class="drawer-link">Testimonials</a>
+ <a href="about.html" class="drawer-link">Extras</a>
+</div>
+</div>
 
-  <a href="contact.html" class="drawer-link">Contact</a>
+<a href="contact.html" class="drawer-link">Contact</a>
 </div>
 
 <script>
 function toggleNavDrawer() {
-  const drawer = document.getElementById('navDrawer');
-  drawer.classList.toggle('open');
+const drawer = document.getElementById('navDrawer');
+drawer.classList.toggle('open');
 }
 
 function closeNavDrawer() {
-  const drawer = document.getElementById('navDrawer');
-  drawer.classList.remove('open');
+const drawer = document.getElementById('navDrawer');
+drawer.classList.remove('open');
 }
 
 // Toggle mobile drawer submenus
 document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
-  link.addEventListener('click', function(e){
-    e.preventDefault();
-    const parent = this.parentElement;
-    parent.classList.toggle('open');
-  });
+link.addEventListener('click', function(e){
+e.preventDefault();
+const parent = this.parentElement;
+parent.classList.toggle('open');
+});
 });
 </script>
 
@@ -4781,10 +4780,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     <!-- NAVIGATION -->
     <div style="flex:0.8; min-width:200px;">
       <h4 style="margin-bottom:24px; letter-spacing:0.4px;">Navigation</h4>
-      <p><a href="index.html" style="color:white;  font-family:'At Hauss Std Light';">Home</a></p>
-      <p><a href="forsale.html" style="color:white; font-family:'At Hauss Std Light';">Homes for Sale</a></p>
-      <p><a href="about.html" style="color:white;  font-family:'At Hauss Std Light';">About Our Team</a></p>
-      <p><a href="contact.html" style="color:white; font-family:'At Hauss Std Light';">Contact</a></p>
+      <p><a href="index.html" style="color:white;  font-family:'At Hauss Std Light';text-decoration: underline;">Home</a></p>
+      <p><a href="forsale.html" style="color:white; font-family:'At Hauss Std Light';text-decoration: underline;">Homes for Sale</a></p>
+      <p><a href="about.html" style="color:white;  font-family:'At Hauss Std Light';text-decoration: underline;">About Our Team</a></p>
+      <p><a href="contact.html" style="color:white; font-family:'At Hauss Std Light';text-decoration: underline;">Contact</a></p>
     </div>
 
     <!-- CONTACT -->
