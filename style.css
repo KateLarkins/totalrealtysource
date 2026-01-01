@@ -571,6 +571,13 @@ iframe {
   }
 }
 
+@media (max-width: 768px) {
+  footer h4 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 /* Our Services Section */
 .services-new {
