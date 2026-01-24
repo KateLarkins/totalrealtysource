@@ -72,7 +72,6 @@
 
     .price {
       font-size: 18px;
-      font-weight: 600;
       margin: 0 0 4px 0;
       color: #000000 !important;
       font-family:'At Hauss Std Semibold' !important;
@@ -102,9 +101,6 @@
       margin-bottom: 2px;
     }
 
-    .stats span {
-      color: var(--text-muted);
-    }
 
     /* Button */
     .actions {
@@ -706,26 +702,7 @@
   <a href="contact.html" class="drawer-link">Contact</a>
   </div>
   
-  <script>
-  function toggleNavDrawer() {
-  const drawer = document.getElementById('navDrawer');
-  drawer.classList.toggle('open');
-  }
-  
-  function closeNavDrawer() {
-  const drawer = document.getElementById('navDrawer');
-  drawer.classList.remove('open');
-  }
-  
-  // Toggle mobile drawer submenus
-  document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
-  link.addEventListener('click', function(e){
-  e.preventDefault();
-  const parent = this.parentElement;
-  parent.classList.toggle('open');
-  });
-  });
-  </script>
+
 
 <div style="width:100%;height:140px;background-color:#ffffff;display:flex;align-items:center;justify-content:center;margin:0;padding:0;">
   <!-- Optional subtle dots -->
@@ -733,12 +710,69 @@
 </div>
 
 <section style="background-color:#ffffff;padding:2% 3%;margin:0;font-size:20px;border:none;position:relative;">
-  <p id="listing-count" style="font-size:20px;font-family:'At Hauss Std Light';margin:0 0 1% 0;text-align:left;"></p>
+  <p id="listing-count" style="font-size:18px;font-family:'At Hauss Std Light';margin:0 0 1% 0;text-align:left;"></p>
   <hr style="color:rgb(213, 213, 213);margin-bottom:0;position:relative;z-index:1;">
   
   <!-- Fade overlay -->
   <div style="position:absolute;bottom:0;left:0;width:100%;height:40px;background:linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgb(245,245,245) 100%);pointer-events:none;"></div>
-</section>
+</section><!-- Search + Agent Filter -->
+<div style="
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  padding:16px 3%;
+  background:#fafafa;
+  border-bottom:1px solid #e5e5e5;
+  align-items:center;
+">
+
+  <!-- Search -->
+  <input
+    type="text"
+    id="propertySearch"
+    placeholder="Search by address or property name"
+    style="
+      flex:1;
+      min-width:260px;
+      padding:12px 14px;
+      font-size:15px;
+      font-family:'At Hauss Std Light', Arial, sans-serif;
+      border:1px solid #dcdcdc;
+      border-radius:6px;
+      outline:none;
+      background:#ffffff;
+    "
+    onfocus="this.style.borderColor='#000000'"
+    onblur="this.style.borderColor='#dcdcdc'"
+  />
+
+  <!-- Agent Filter -->
+  <select
+    id="agentFilter"
+    style="
+      padding:12px 14px;
+      font-size:15px;
+      font-family:'At Hauss Std Light', Arial, sans-serif;
+      border:1px solid #dcdcdc;
+      border-radius:6px;
+      background:#ffffff;
+      min-width:220px;
+      cursor:pointer;
+    "
+    onfocus="this.style.borderColor='#000000'"
+    onblur="this.style.borderColor='#dcdcdc'"
+  >
+    <option value="all">All Agents</option>
+    <option value="Lisa Ballinger">Lisa Ballinger</option>
+    <option value="Amy McLemore">Amy McLemore</option>
+    <option value="Brandie Bassett">Brandie Bassett</option>
+    <option value="Lynda Climer">Lynda Climer</option>
+    <option value="Laura Burke">Laura Burke</option>
+    <option value="Tammy Jones">Tammy Jones</option>
+    <option value="Jackie David">Jackie David</option>
+  </select>
+
+</div>
 
 
 
@@ -749,7 +783,7 @@
     
 
     <div class="grid">
-      <div class="card" data-address="PROPERTY_DETAILS">
+      <div class="card" data-modal="countryclubModal">
         <img src="listing/country.png" alt="Home" onclick="openModal('countryclubModal')" />
         <div class="card-body">
           <p class="price">$1,199,000</p>
@@ -884,7 +918,7 @@
           <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
             <img src="agent/amywork.png" alt="Amy McLemore" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
             <div>
-              <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Amy McLemore</strong></p>
+              <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Amy McLemore</strong></p>
               <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
               <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 234-0049</p>
               <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -916,7 +950,7 @@
         </div>
         </div>
 
-      <div class="card" data-address="PROPERTY_DETAILS">
+      <div class="card" data-modal="">
         <img src="new16860/20250807002529605034000000-o-1.jpg" alt="Home" onclick="openModal('16860Modal')" />
         <div class="card-body">
           <p class="price">$284,900</p>
@@ -1045,7 +1079,7 @@
             <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
               <img src="agent/Lisatwo.png" alt="Lisa Ballinger" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
               <div>
-                <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Lisa Ballinger</strong></p>
+                <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Lisa Ballinger</strong></p>
                 <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                 <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 223-0919</p>
                 <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -1078,7 +1112,7 @@
           </div>
           </div>
 
-      <div class="card" data-address="PROPERTY_DETAILS">
+      <div class="card" data-modal="doeModal">
         <img src="Doe2/20251103041112989859000000-o.jpg" alt="Home" onclick="openModal('doeModal')" />
         <div class="card-body">
           <p class="price" style="color:black;">$319,500</p>
@@ -1183,7 +1217,7 @@
           <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
             <img src="agent/Tammy.png" alt="Tammy Jones" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
             <div>
-              <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Tammy Jones</strong></p>
+              <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Tammy Jones</strong></p>
               <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
               <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 225-3158</p>
               <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -1216,7 +1250,7 @@
         </div>
         </div>
 
-      <div class="card" data-address="PROPERTY_DETAILS">
+      <div class="card" data-modal="countryclubModal">
         <img src="403/20251110004313112509000000-o.jpg" alt="Home" onclick="openModal('countryclubModal')" />
         <div class="card-body">
           <p class="price">$479,000</p>
@@ -1321,7 +1355,7 @@
       <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
         <img src="agent/Tammy.png" alt="Tammy Jones" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
         <div>
-          <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Tammy Jones</strong></p>
+          <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Tammy Jones</strong></p>
           <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
           <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 225-3158</p>
           <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -1357,7 +1391,7 @@
     <section style="padding: 2%";></section>
     <!-- Home 2 Grid -->
     <div class="grid">
-      <div class="card" data-address="PROPERTY_DETAILS">
+      <div class="card" data-modal="westwoodModal">
         <img src="Westwood/20251021150318538422000000-o.jpg" alt="Home" onclick="openModal('westwoodModal')" />
         <div class="card-body">
           <p class="price">$220,000</p>
@@ -1473,7 +1507,7 @@
                 <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
                   <img src="agent/Jackie.png" alt="Jackie David" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
                   <div>
-                    <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Jackie David</strong></p>
+                    <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Jackie David</strong></p>
                     <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                     <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 487-6545</p>
                     <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -1505,7 +1539,7 @@
               </div>
               </div>
               </div>
-              <div class="card" data-address="PROPERTY_DETAILS">
+              <div class="card" data-modal="720Modal">
                 <img src="720/20260119014611920248000000-o.jpg" alt="Home" onclick="openModal('720Modal')" />
                 <div class="card-body">
                   <p class="price">$320,000</p>
@@ -1636,7 +1670,7 @@
               <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
                 <img src="agent/amywork.png" alt="Amy McLemore" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
                 <div>
-                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Amy McLemore</strong></p>
+                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Amy McLemore</strong></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 234-0049</p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -1668,7 +1702,7 @@
             </div>
             </div>
             </div>
-              <div class="card" data-address="PROPERTY_DETAILS">
+              <div class="card" data-modal="pepperModal">
                 <img src="Pepper/20251022024000728485000000-o.jpg" alt="Home" onclick="openModal('pepperModal')" />
                 <div class="card-body">
                   <p class="price">$269,500</p>
@@ -1767,7 +1801,7 @@
               <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
                 <img src="agent/Tammy.png" alt="Tammy Jones" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
                 <div>
-                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Tammy Jones</strong></p>
+                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Tammy Jones</strong></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 225-3518</p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -1799,7 +1833,7 @@
             </div>
             </div>
             </div>
-            <div class="card" data-address="PROPERTY_DETAILS">
+            <div class="card" data-modal="andersonModal">
               <img src="Anderson/Screenshot 2025-11-22 at 9.20.38 PM.png" alt="Home" onclick="openModal('andersonModal')" />
               <div class="card-body">
                 <p class="price">$219,900</p>
@@ -1888,7 +1922,7 @@
           <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
             <img src="agent/Lisatwo.png" alt="Lisa Ballinger" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
             <div>
-              <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Lisa Ballinger</strong></p>
+              <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Lisa Ballinger</strong></p>
               <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
               <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 223-0919</p>
               <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -1924,7 +1958,7 @@
           <!-- Homes Grid 3 -->
       <section style="padding: 2%";></section>
       <div class="grid">
-        <div class="card" data-address="PROPERTY_DETAILS">
+        <div class="card" data-modal="walnutModal">
           <img src="Walnut/20251115005104753516000000-o.jpg" alt="Home" onclick="openModal('walnutModal')" />
           <div class="card-body">
             <p class="price">$52,000</p>
@@ -2055,7 +2089,7 @@
               <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
                 <img src="agent/BrandieTwo.png" alt="Brandie Bassett" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
                 <div>
-                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Brandie Bassett</strong></p>
+                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Brandie Bassett</strong></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 695-2785</p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -2087,7 +2121,7 @@
             </div>
             </div>
             </div>
-          <div class="card" data-address="PROPERTY_DETAILS">
+          <div class="card" data-modal="cadesModal">
             <img src="Cades/20251115015836272016000000-o.jpg" alt="Home" onclick="openModal('cadesModal')" />
             <div class="card-body">
               <p class="price">$119,000</p>
@@ -2191,7 +2225,7 @@
             <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
               <img src="agent/BrandieTwo.png" alt="Brandie Bassett" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
               <div>
-                <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Brandie Bassett</strong></p>
+                <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Brandie Bassett</strong></p>
                 <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                 <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 695-2785</p>
                 <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -2223,7 +2257,7 @@
           </div>
           </div>
           </div>
-          <div class="card" data-address="PROPERTY_DETAILS">
+          <div class="card" data-modal="stanworthTwoModal">
             <img src="StanworthTwo/20251208223831832085000000-o.jpg" alt="Home" onclick="openModal('stanworthTwoModal')" />
             <div class="card-body">
               <p class="price">$519,000</p>
@@ -2333,7 +2367,7 @@
         <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
           <img src="agent/Lynda.png" alt="Lynda Climer" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
           <div>
-            <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Lynda Climer</strong></p>
+            <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Lynda Climer</strong></p>
             <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
             <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 217-3827</p>
             <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -2365,7 +2399,7 @@
       </div>
       </div>
     </div>
-    <div class="card" data-address="PROPERTY_DETAILS">
+    <div class="card" data-modal="stanworthModal">
       <img src="listing/stan.png" alt="Home" onclick="openModal('stanworthModal')" />
       <div class="card-body">
         <p class="price">$365,000</p>
@@ -2495,7 +2529,7 @@
           <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
             <img src="agent/amywork.png" alt="Amy McLemore" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
             <div>
-              <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Amy McLemore</strong></p>
+              <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Amy McLemore</strong></p>
               <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
               <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 234-0049</p>
               <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -2533,7 +2567,7 @@
     <!-- Homes Grid 4 -->
     <section style="padding: 2%";></section>
     <div class="grid">
-      <div class="card" data-address="PROPERTY_DETAILS">
+      <div class="card" data-modal="bakerModal">
         <img src="Baker/20260116161654047011000000-o.jpg" alt="Home" onclick="openModal('bakerModal')" />
         <div class="card-body">
           <p class="price">$135,000</p>
@@ -2640,7 +2674,7 @@
               <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
                 <img src="agent/Ashley.png" alt="Ashley McMillan" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
                 <div>
-                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Ashley McMillan</strong></p>
+                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Ashley McMillan</strong></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 414-0317</p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -2672,7 +2706,7 @@
             </div>
             </div>
             </div>
-        <div class="card" data-address="PROPERTY_DETAILS">
+        <div class="card" data-modal="turkeyModal">
           <img src="Turkey/20251125165457867348000000-o.jpg" alt="Home" onclick="openModal('turkeyModal')" />
           <div class="card-body">
             <p class="price">$459,900</p>
@@ -2780,7 +2814,7 @@
               <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
                 <img src="agent/Ashley.png" alt="Ashley McMillan" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
                 <div>
-                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Ashley McMillan</strong></p>
+                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Ashley McMillan</strong></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 414-0317</p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -2813,7 +2847,7 @@
             </div>
             </div>
       
-        <div class="card" data-address="PROPERTY_DETAILS">
+        <div class="card" data-modal="roseModal">
           <img src="Rose/20260114154812845530000000-o.jpg" alt="Home" onclick="openModal('roseModal')" />
           <div class="card-body">
             <p class="price">$334,900</p>
@@ -2933,7 +2967,7 @@
               <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
                 <img src="agent/Lisatwo.png" alt="Lisa Ballinger" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
                 <div>
-                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Lisa Ballinger</strong></p>
+                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Lisa Ballinger</strong></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 223-0919</p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -2964,7 +2998,7 @@
             </div>
             </div>
             </div>
-      <div class="card" data-address="PROPERTY_DETAILS">
+      <div class="card" data-modal="rainesModal">
         <img src="Raines/20251122163644884555000000-o.jpg" alt="Home" onclick="openModal('rainesModal')" />
         <div class="card-body">
           <p class="price">$229,000</p>
@@ -3066,7 +3100,7 @@
               <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
                 <img src="agent/Tammy.png" alt="Tammy Jones" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
                 <div>
-                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Tammy Jones</strong></p>
+                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Tammy Jones</strong></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 225-3158</p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -3103,7 +3137,7 @@
       <!-- Home 5 Grid -->
       <section style="padding: 2%";></section>
     <div class="grid">
-      <div class="card" data-address="PROPERTY_DETAILS">
+      <div class="card" data-modal="mullinsModal">
         <img src="Mullins/Screenshot 2025-11-23 at 9.49.57 AM.png" alt="Home" onclick="openModal('mullinsModal')" />
         <div class="card-body">
           <p class="price">$284,900</p>
@@ -3116,7 +3150,7 @@
           </div>
         </div>
       </div>
-      <div class="card" data-address="PROPERTY_DETAILS">
+      <div class="card" data-modal="">
         <img src="Rubin/20251222201504236619000000-o.jpg" alt="Home" onclick="openModal('rubinModal')" />
         <div class="card-body">
           <p class="price">$259,900</p>
@@ -3243,7 +3277,7 @@
               <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
                 <img src="agent/Lisatwo.png" alt="Lisa Ballinger" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
                 <div>
-                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Lisa Ballinger</strong></p>
+                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Lisa Ballinger</strong></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 223-0919</p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -3275,7 +3309,7 @@
             </div>
             </div>
           </div>
-    <div class="card" data-address="PROPERTY_DETAILS">
+    <div class="card" data-modal="harModal">
       <img src="Hargrove/20251119170054202622000000-o.jpg" alt="Home" onclick="openModal('harModal')" />
       <div class="card-body">
         <p class="price">$479,900</p>
@@ -3363,7 +3397,7 @@
         <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
           <img src="agent/Lisatwo.png" alt="Lisa Ballinger" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
           <div>
-            <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Lisa Ballinger</strong></p>
+            <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Lisa Ballinger</strong></p>
             <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
             <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 223-0919</p>
             <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -3395,7 +3429,7 @@
       </div>
       </div>
       </div>
-      <div class="card" data-address="PROPERTY_DETAILS">
+      <div class="card" data-modal="">
         <img src="Knox/20251019204042013879000000-o.jpg" alt="Home" onclick="openModal('knoxModal')" />
         <div class="card-body">
           <p class="price">$174,900</p>
@@ -3522,7 +3556,7 @@
               <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
                 <img src="agent/Lisatwo.png" alt="Lisa Ballinger" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
                 <div>
-                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Lisa Ballinger</strong></p>
+                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Lisa Ballinger</strong></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 223-0919</p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -3560,7 +3594,7 @@
        <!-- Home 6 Grid -->
        <section style="padding: 2%";></section>
        <div class="grid">
-        <div class="card" data-address="PROPERTY_DETAILS">
+        <div class="card" data-modal="memphisModal">
           <img src="Memphis/m5.png" alt="Home" onclick="openModal('memphisModal')" />
           <div class="card-body">
             <p class="price">$115,000</p>
@@ -3674,7 +3708,7 @@
         <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
           <img src="agent/amywork.png" alt="Amy McLemore" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
           <div>
-            <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Amy McLemore</strong></p>
+            <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Amy McLemore</strong></p>
             <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
             <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 234-0049</p>
             <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -3706,7 +3740,7 @@
       </div>
       </div>
       </div>
-      <div class="card" data-address="PROPERTY_DETAILS">
+      <div class="card" data-modal="westmorelandModal">
         <img src="Westmoreland/Screenshot 2025-09-14 at 5.05.44 PM.png" alt="Home" onclick="openModal('westmorelandModal')" />
         <div class="card-body">
           <p class="price">$239,000</p>
@@ -3823,7 +3857,7 @@
             <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
               <img src="agent/BrandieTwo.png" alt="Amy McLemore" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
               <div>
-                <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Brandie Bassett</strong></p>
+                <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Brandie Bassett</strong></p>
                 <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                 <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 695-2785</p>
                 <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -3867,7 +3901,7 @@
       <p></p>
     </div>
     <div class="grid">
-      <div class="card" data-address="PROPERTY_DETAILS">
+      <div class="card" data-modal="jessieModal">
         <img src="Jessie/20251129093312721076000000-o.jpg" alt="Home" onclick="openModal('jessieModal')" />
         <div class="card-body">
           <p class="price">$99,900</p>
@@ -3982,7 +4016,7 @@
                 <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
                   <img src="agent/amywork.png" alt="Amy McLemore" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
                   <div>
-                    <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Amy McLemore</strong></p>
+                    <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Amy McLemore</strong></p>
                     <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                     <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 234-0049</p>
                     <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -4014,7 +4048,7 @@
               </div>
               </div>
               </div>
-        <div class="card" data-address="PROPERTY_DETAILS">
+        <div class="card" data-modal="mcCombsModal">
           <img src="McCombs/20251222125911531601000000-o.jpg" alt="Home" onclick="openModal('mcCombsModal')" />
           <div class="card-body">
             <p class="price">$20,000</p>
@@ -4108,7 +4142,7 @@
       <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
         <img src="agent/amywork.png" alt="Amy McLemore" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
         <div>
-          <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Amy McLemore</strong></p>
+          <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Amy McLemore</strong></p>
           <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
           <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 234-0049</p>
           <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -4140,7 +4174,7 @@
     </div>
     </div>
   </div>
-          <div class="card" data-address="PROPERTY_DETAILS">
+          <div class="card" data-modal="mcCombsTwoModal">
             <img src="McCombsTwo/20251222161558453413000000-o.jpg" alt="Home" onclick="openModal('mcCombsTwoModal')" />
             <div class="card-body">
               <p class="price">$18,500</p>
@@ -4235,7 +4269,7 @@
       <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
         <img src="agent/amywork.png" alt="Amy McLemore" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
         <div>
-          <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Amy McLemore</strong></p>
+          <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Amy McLemore</strong></p>
           <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
           <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 234-0049</p>
           <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -4267,7 +4301,7 @@
     </div>
     </div>
   </div>
-            <div class="card" data-address="PROPERTY_DETAILS">
+            <div class="card" data-modal="objModal">
               <img src="OBJ/20251126225750946188000000-o.jpg" alt="Home" onclick="openModal('objModal')" />
               <div class="card-body">
                 <p class="price">$65,000</p>
@@ -4366,7 +4400,7 @@
               <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
                 <img src="agent/BrandieTwo.png" alt="Brandie Bassett" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
                 <div>
-                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Brandie Bassett</strong></p>
+                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Brandie Bassett</strong></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 695-2785</p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -4403,7 +4437,7 @@
             <!-- New line Land -->
             <section style="padding: 2%";></section>
             <div class="grid">
-            <div class="card" data-address="PROPERTY_DETAILS">
+            <div class="card" data-modal="northwindModal">
               <img src="listing/7.png" alt="Home" onclick="openModal('northwindModal')" />
               <div class="card-body">
                 <p class="price">$91,000</p>
@@ -4497,7 +4531,7 @@
             <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
               <img src="agent/Lynda.png" alt="Lynda Climer" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
               <div>
-                <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Lynda Climer</strong></p>
+                <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Lynda Climer</strong></p>
                 <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                 <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 217-3827</p>
                 <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -4529,7 +4563,7 @@
           </div>
           </div>
           </div>
-            <div class="card" data-address="PROPERTY_DETAILS">
+            <div class="card" data-modal="ncentralModal">
               <img src="NCentral/20251231015436053210000000-o.jpg" alt="Home" onclick="openModal('ncentralModal')" />
               <div class="card-body">
                 <p class="price">$174,900</p>
@@ -4622,7 +4656,7 @@
           <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
             <img src="agent/amywork.png" alt="Amy McLemore" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
             <div>
-              <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Amy McLemore</strong></p>
+              <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Amy McLemore</strong></p>
               <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
               <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 234-0049</p>
               <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -4665,7 +4699,7 @@
           </div>
 
           <div class="grid">
-            <div class="card" data-address="PROPERTY_DETAILS">
+            <div class="card" data-modal="coopModal">
               <img src="Cooper/20251020132042245935000000-o.jpg" alt="Home" onclick="openModal('coopModal')" />
               <div class="card-body">
                 <p class="price">$999,500</p>
@@ -4798,7 +4832,7 @@
               <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
                 <img src="agent/BrandieTwo.png" alt="Brandie Bassett" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
                 <div>
-                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Brandie Bassett</strong></p>
+                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Brandie Bassett</strong></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 695-2785</p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -4830,7 +4864,7 @@
             </div>
             </div>
             </div>
-            <div class="card" data-address="PROPERTY_DETAILS">
+            <div class="card" data-modal="sfultonModal">
               <img src="Fulton/20251105220928164899000000-o.jpg" alt="Home" onclick="openModal('sfultonModal')" />
               <div class="card-body">
                 <p class="price">$369,000</p>
@@ -4944,7 +4978,7 @@
               <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
                 <img src="agent/Lynda.png" alt="Lynda Climer" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
                 <div>
-                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Lynda Climer</strong></p>
+                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Lynda Climer</strong></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 217-3827</p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -4977,7 +5011,7 @@
             </div>
             </div>
 
-            <div class="card" data-address="PROPERTY_DETAILS">
+            <div class="card" data-modal="centralModal">
               <img src="listing/central.png" alt="Home" onclick="openModal('centralModal')" />
               <div class="card-body">
                 <p class="price">$379,900</p>
@@ -5068,7 +5102,7 @@
               <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
                 <img src="agent/Ashley.png" alt="Ashley McMillan" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
                 <div>
-                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Ashley McMillan</strong></p>
+                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Ashley McMillan</strong></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 414-0317</p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -5101,7 +5135,7 @@
             </div>
           </div>
 
-          <div class="card" data-address="PROPERTY_DETAILS">
+          <div class="card" data-modal="1090Modal">
             <img src="1090/20251119210952124035000000-o.jpg" alt="Home" onclick="openModal('1090Modal')" />
             <div class="card-body">
               <p class="price">$849,000</p>
@@ -5200,7 +5234,7 @@
               <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
                 <img src="agent/Lynda.png" alt="Lynda Climer" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
                 <div>
-                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong>Lynda Climer</strong></p>
+                  <p style="margin: 0; font-family: 'At Hauss Std Semibold';"><strong data-agent-name>Lynda Climer</strong></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';"><a href="about.html">View Profile</a></p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Phone: (731) 217-3827</p>
                   <p style="margin: 2px 0; font-family: 'At Hauss Std Light';">Office: (731) 574-9340</p>
@@ -5395,6 +5429,77 @@
         `Showing ${count} ${listingText} for current listings.`;
     });
   </script>
+  <script>
+    const searchInput = document.getElementById('propertySearch');
+    const agentFilter = document.getElementById('agentFilter');
+    const cards = document.querySelectorAll('.card');
+  
+    function filterListings() {
+      const search = searchInput.value.toLowerCase();
+      const agent = agentFilter.value;
+      let count = 0;
+  
+      cards.forEach(card => {
+        const name =
+          card.querySelector('.address')?.innerText.toLowerCase() || '';
+        const cardAgent = card.dataset.agent || '';
+  
+        const matchesSearch = name.includes(search);
+        const matchesAgent = agent === 'all' || cardAgent === agent;
+  
+        if (matchesSearch && matchesAgent) {
+          card.style.display = '';
+          count++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+  
+      const counter = document.getElementById('listing-count');
+      if (counter) counter.textContent = `${count} Properties`;
+    }
+  
+    searchInput.addEventListener('input', filterListings);
+    agentFilter.addEventListener('change', filterListings);
+  </script>
+  <script>
+    document.querySelectorAll('.card').forEach(card => {
+      const modalId = card.dataset.modal;
+      if (!modalId) return;
+  
+      const modal = document.getElementById(modalId);
+      if (!modal) return;
+  
+      // Find agent name inside modal
+      const agentNameEl = modal.querySelector(
+        "[style*='Semibold'] strong"
+      );
+  
+      if (agentNameEl) {
+        card.dataset.agent = agentNameEl.textContent.trim();
+      }
+    });
+  </script>
+   <script>
+    function toggleNavDrawer() {
+    const drawer = document.getElementById('navDrawer');
+    drawer.classList.toggle('open');
+    }
+    
+    function closeNavDrawer() {
+    const drawer = document.getElementById('navDrawer');
+    drawer.classList.remove('open');
+    }
+    
+    // Toggle mobile drawer submenus
+    document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
+    link.addEventListener('click', function(e){
+    e.preventDefault();
+    const parent = this.parentElement;
+    parent.classList.toggle('open');
+    });
+    });
+    </script>
   
   <script src="script.js"></script>
 
