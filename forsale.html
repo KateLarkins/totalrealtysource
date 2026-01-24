@@ -744,33 +744,22 @@
     onblur="this.style.borderColor='#dcdcdc'"
   />
 
-  <!-- Agent Filter -->
-  <select
-    id="agentFilter"
-    style="
-      padding:12px 14px;
-      font-size:15px;
-      color:white;
-      font-family:'At Hauss Std Light', Arial, sans-serif;
-      border:1px solid #023E6C;
-      border-radius:6px;
-      background:#023E6C;
-      min-width:220px;
-      cursor:pointer;
-    "
-    onfocus="this.style.borderColor='#023E6C'"
-    onblur="this.style.borderColor='#023E6C'"
-  >
-    <option value="all">All Agents</option>
-    <option value="Lisa Ballinger">Lisa Ballinger</option>
-    <option value="Amy McLemore">Amy McLemore</option>
-    <option value="Brandie Bassett">Brandie Bassett</option>
-    <option value="Lynda Climer">Lynda Climer</option>
-    <option value="Laura Burke">Laura Burke</option>
-    <option value="Tammy Jones">Tammy Jones</option>
-    <option value="Jackie David">Jackie David</option>
-  </select>
-
+  <div style="position:relative; display:inline-block; min-width:260px;">
+    <select id="agentFilter" style="padding:12px 40px 12px 14px;font-size:15px;font-family:'At Hauss Std Light', Arial, sans-serif;color:white;border:1px solid #023E6C;border-radius:6px;background-color:#023E6C;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;width:100%;">
+      <option value="all">All Agents</option>
+      <option value="Lisa Ballinger">Lisa Ballinger</option>
+      <option value="Amy McLemore">Amy McLemore</option>
+      <option value="Brandie Bassett">Brandie Bassett</option>
+      <option value="Lynda Climer">Lynda Climer</option>
+      <option value="Laura Burke">Laura Burke</option>
+      <option value="Tammy Jones">Tammy Jones</option>
+      <option value="Jackie David">Jackie David</option>
+    </select>
+    <!-- White arrow overlay -->
+    <div style="pointer-events:none;position:absolute;right:12px;top:50%;transform:translateY(-50%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:6px solid white;"></div>
+  </div>
+  
+  
 </div>
 
 
