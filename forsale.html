@@ -46,11 +46,33 @@
 
     /* Grid */
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
-    }
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Always 4 columns */
+  gap: 20px;
+  max-width: 1200px; /* optional, center content */
+  margin: 0 auto;
+  padding: 20px;
+}
+/* Small screens (tablets) */
+@media screen and (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr); /* still 4 */
+  }
+}
 
+/* Medium screens (small tablets / large phones) */
+@media screen and (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row */
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr; /* 1 per row */
+  }
+}
 
     .card {
       border: 1px solid var(--border);
