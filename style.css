@@ -776,7 +776,7 @@ iframe {
 
 .service-text h2 {
   font-family: 'At Hauss Std Semibold', sans-serif;
-  font-size: 1.8rem;
+  font-size: 25px;
   margin-bottom: 15px;
 }
 
@@ -1227,12 +1227,6 @@ iframe {
     padding-bottom: 50px;
   }
   
-  h2 {
-    font-size: 32px;
-    margin-left: 0;
-    padding-top: 5%;
-    text-align: left;
-  }
   
   p {
     font-size: 18px;
