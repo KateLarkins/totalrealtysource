@@ -25,17 +25,32 @@ body {
 /* Navbar container */
 .topnav {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  align-items: center;
+  padding: 15px 30px;
+  background: #ffffff;
   position: sticky;
   top: 0;
-  z-index: 1000;
-  height: 70px;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+/* Dropdown hover for desktop */
+.dropdown-container:hover .dropdown {
+  display: block;
 }
 
+/* Mobile drawer submenu toggle */
+.drawer-dropdown.open .drawer-submenu {
+  display: block;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #000000;
+  margin-right: 25px;
+  font-family: 'At Hauss Std Light';
+  transition: color 0.3s;
+}
 /* Logo */
 .topnav .logo img {
   max-height: 70px; 
