@@ -8,6 +8,7 @@ body {
 }
 
 
+
 @font-face {
   font-family: 'At Hauss Std Semibold';
   src: url('AtHaussStd-Semibold.ttf') format('truetype'); /* Update path as necessary */
@@ -1719,3 +1720,110 @@ footer .footer-col {
   }
 }
 
+/* Index.html section */
+  /* Full-width brand blue section */
+  .highlight-stats-blue-full {
+    background-color: #023E6C; /* brand blue */
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    font-family: 'At Hauss Std Semibold';
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Decorative circles now on the section itself */
+  .highlight-stats-blue-full::before,
+  .highlight-stats-blue-full::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08); /* subtle light blue/white */
+    z-index: 0;
+  }
+  
+  .highlight-stats-blue-full::before {
+    width: 300px;
+    height: 300px;
+    top: 20px;
+    left: -150px; /* left edge outside the page */
+  }
+  
+  .highlight-stats-blue-full::after {
+    width: 300px;
+    height: 300px;
+    bottom: 20px;
+    right: -150px; /* right edge outside the page */
+  }
+  
+  /* Inner “card” container for structure */
+  .highlight-stats-inner-blue {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    padding: 60px 40px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1; /* ensure text is above circles */
+  }
+  
+  /* Text lines */
+  .highlight-line-blue {
+    font-size: 22px;
+    line-height: 32px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s forwards;
+    font-family: 'At Hauss Std Semibold';
+  }
+  
+  .highlight-line-blue:nth-child(1) { animation-delay: 0s; }
+  .highlight-line-blue:nth-child(3) { animation-delay: 0.6s; }
+  
+  /* Highlight number */
+  .highlight-number-blue {
+    font-size: 60px;
+    font-weight: 800;
+    color: #FCB741; /* gold accent */
+    margin: 20px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s forwards;
+    animation-delay: 0.3s;
+    font-family: 'At Hauss Std Semibold';
+  }
+  
+  /* Animation keyframes */
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .highlight-number-blue { font-size: 42px; }
+    .highlight-line-blue { font-size: 18px; line-height: 28px; }
+    .highlight-stats-inner-blue { padding: 40px 20px; }
+  }
+
+  
+  @media screen and (max-width: 900px) {
+    .containerreveal {
+      display: flex !important;
+      flex-direction: column !important; /* stack vertically */
+      align-items: center;              /* center content */
+      gap: 8px;
+      padding: 20px 15px;
+    }
+  
+    .containerreveal .reveal .reveal__content {
+      font-size: 18px !important;        /* smaller for mobile */
+      line-height: 22px !important;
+      text-align: center !important;     /* ensure centered text */
+    }
+  }
