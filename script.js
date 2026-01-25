@@ -225,3 +225,19 @@ function clearFilters() {
 document.querySelectorAll("#filterSidebar select, #filterSidebar input[type='checkbox']").forEach(el => {
   el.addEventListener("change", filterProperties);
 });
+
+//filter
+const agentFilter = document.getElementById('agentFilter');
+const cards = document.querySelectorAll('.grid .card');
+
+agentFilter.addEventListener('change', function() {
+const selectedAgent = this.value;
+
+cards.forEach(card => {
+if (selectedAgent === 'all' || card.dataset.agent === selectedAgent) {
+  card.classList.remove('hidden'); // show card
+} else {
+  card.classList.add('hidden'); // hide card
+}
+});
+});
