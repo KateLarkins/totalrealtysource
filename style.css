@@ -1,29 +1,22 @@
+/* =========================
+   Base Styles
+========================= */
 body {
   margin: 0;
   padding: 0;
   font-family: 'At Hauss Std Light';
-  text-decoration: none;
-  opacity: 1; /* Default visible */
-  transition: opacity 0.6s ease-in-out;
 }
-
-
 
 @font-face {
   font-family: 'At Hauss Std Semibold';
-  src: url('AtHaussStd-Semibold.ttf') format('truetype'); /* Update path as necessary */
+  src: url('AtHaussStd-Semibold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'At Hauss Std Light';
-  src: url('AtHaussStd-Light.ttf') format('truetype'); /* Update path as necessary */
+  src: url('AtHaussStd-Light.ttf') format('truetype');
 }
-
-/* =========================
-   Navbar Base Styles
-========================= */
-
-/* Navbar container */
+/* Navbar */
 .topnav {
   display: flex;
   justify-content: space-between;
@@ -32,57 +25,47 @@ body {
   background: #ffffff;
   position: sticky;
   top: 0;
+  font-family: 'At Hauss Std Light';
   z-index: 999;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-/* Dropdown hover for desktop */
-.dropdown-container:hover .dropdown {
-  display: block;
+  flex-wrap: nowrap;
 }
 
-/* Mobile drawer submenu toggle */
-.drawer-dropdown.open .drawer-submenu {
-  display: block;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #000000;
-  margin-right: 25px;
-  font-family: 'At Hauss Std Light';
-  transition: color 0.3s;
-}
 /* Logo */
-.topnav .logo img {
-  max-height: 70px; 
-  object-fit: contain;
-}
-
-/* Desktop nav links (main 4 only) */
-.nav-links.desktop-links {
+.topnav .logo {
   display: flex;
   align-items: center;
+}
+
+.topnav .logo img {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Desktop Links */
+.nav-links.desktop-links {
+  display: flex; /* show links on desktop */
+  align-items: center;
+  font-family: 'At Hauss Std Light';
   gap: 20px;
 }
 
-/* Desktop links styling */
 .nav-link {
   text-decoration: none;
   color: #000;
-  font-family: 'At Hauss Std Light';
   padding: 8px 12px;
-  display: inline-block;
-  position: relative;
   white-space: nowrap;
+  font-family: 'At Hauss Std Light';
 }
 
-/* Dropdown container */
+/* Dropdowns */
 .dropdown-container {
   position: relative;
   white-space: nowrap;
 }
 
-/* Desktop dropdown menu */
 .dropdown {
   display: none;
   position: absolute;
@@ -100,39 +83,35 @@ body {
 }
 
 .dropdown-item {
-  display: block;
   padding: 10px 15px;
-  text-decoration: none;
   color: #000;
-  font-family: 'At Hauss Std Light';
+  text-decoration: none;
 }
 
 .dropdown-item:hover {
   background-color: #f0f0f0;
 }
 
-/* Mobile arrow button */
-.nav-arrow {
+/* Hamburger Button (Mobile Only) */
+.nav-arrow.mobile-arrow {
+  display: none; /* hidden on desktop */
   font-size: 28px;
   cursor: pointer;
-  user-select: none;
-  transition: transform 0.3s ease;
   background: none;
   border: none;
-  padding: 0;
-  line-height: 1;
+  z-index: 1002;
 }
 
 /* =========================
-   Mobile Drawer Styles
+   Mobile Drawer
 ========================= */
 .nav-drawer {
   position: fixed;
-  top: 70px;       /* <-- make it start just below the navbar */
-  right: -300px;   /* hidden by default */
+  top: 70px; 
+  right: -300px;
   width: 300px;
-  height: calc(100% - 70px); /* full height minus navbar */
-  background-color: #fff;
+  height: calc(100% - 70px);
+  background: #fff;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -142,20 +121,21 @@ body {
   z-index: 999;
 }
 
-
 .nav-drawer.open {
   right: 0;
 }
 
 .drawer-link {
-  text-decoration: none;
-  color: #000;
-  font-family: 'At Hauss Std Light';
   padding: 10px 5px;
   display: block;
+  text-decoration: none;
+  color: #000;
 }
 
-/* Drawer submenus */
+.drawer-link:hover {
+  background-color: #f5f5f5;
+}
+
 .drawer-submenu {
   padding-left: 15px;
   display: none;
@@ -167,7 +147,18 @@ body {
   display: flex;
 }
 
-/* Scrollbar styling */
+.drawer-back {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+/* Scrollbar */
 .nav-drawer::-webkit-scrollbar {
   width: 6px;
 }
@@ -178,79 +169,60 @@ body {
 }
 
 /* =========================
-   Mobile Styles (<=900px)
+   Mobile Styles
 ========================= */
 @media screen and (max-width: 900px) {
+
+  /* Hide desktop links */
   .nav-links.desktop-links {
-    display: none;
+    display: none !important;
   }
 
-  .topnav .logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1002;
+  /* Navbar */
+  .topnav {
+    padding: 10px 20px;
+    justify-content: space-between;
   }
 
+  /* Logo smaller on mobile */
   .topnav .logo img {
-    max-height: 50px;
+    height: 40px;
   }
 
+  /* Hamburger visible */
   .nav-arrow.mobile-arrow {
     display: block;
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1003;
-    font-size: 28px;
-    cursor: pointer;
-    user-select: none;
-    background: none;
-    border: none;
-    text-decoration: none;
-    color: #000;
-  }
-}
-
-/* =========================
-   Desktop Styles (>=901px)
-========================= */
-@media screen and (min-width: 901px) {
-  .nav-arrow.mobile-arrow {
-    display: none;
   }
 
-  .topnav .logo {
-    position: relative;
-    transform: none;
-    z-index: 1000;
-  }
-}
-
-/* Optional hover effect on drawer links */
-.drawer-link:hover {
-  background-color: #f5f5f5;
-}
-/* Back arrow button */
-.drawer-back {
-  display: none; /* hidden on desktop */
-  background: none;
-  border: none;
-  font-size: 18px;
-  font-weight: bold;
-  color: #000000;
-  text-align: left;
-  padding: 10px 0;
-  cursor: pointer;
-}
-
-/* Show only on mobile */
-@media screen and (max-width: 900px) {
+  /* Drawer back button visible */
   .drawer-back {
     display: block;
   }
 }
+
+/* =========================
+   Desktop Styles
+========================= */
+@media screen and (min-width: 901px) {
+  .nav-links.desktop-links {
+    display: flex !important; /* show links on desktop */
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-arrow.mobile-arrow {
+    display: none;
+  }
+
+  .topnav .logo img {
+    height: 70px;
+  }
+
+  .drawer-back {
+    display: none;
+  }
+}
+
 
 
 .homeheader {
