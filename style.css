@@ -1720,6 +1720,88 @@ footer .footer-col {
   }
 }
 /* Index.html */
+
+.city-tile {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.city-tile:hover {
+  transform: scale(1.03);
+}
+
+.city-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.city-tile-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.city-tile h2 {
+  color: #fff;
+  font-family: 'At Hauss Std Semibold';
+  font-size: 2rem;
+  text-align: center;
+}
+
+.stats-divider {
+background: #ffffff;
+padding: 60px 20px;
+border-bottom: 1px solid #e6e6e6;
+}
+
+.stats-container {
+max-width: 1200px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 20px;
+}
+
+.stat {
+text-align: center;
+padding: 20px 10px;
+position: relative;
+}
+
+/* Remove dividers on smaller screens */
+@media (min-width: 768px) {
+.stat:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: #e6e6e6;
+}
+}
+
+.stat-number {
+font-size: 35px;
+font-family: 'At Hauss Std Semibold';
+color: #023E6C;
+}
+
+.stat-label {
+margin-top: 8px;
+font-size: 14px;
+letter-spacing: 1px;
+text-transform: uppercase;
+color: #666;
+font-family: 'At Hauss Std Light';
+}
+
 /* Full-width brand blue section with geometric shapes */
 .highlight-stats-blue-full {
   background-color: #023E6C; /* brand blue */
