@@ -1719,111 +1719,125 @@ footer .footer-col {
     text-align: left;
   }
 }
+/* Index.html */
+/* Full-width brand blue section with geometric shapes */
+.highlight-stats-blue-full {
+  background-color: #023E6C; /* brand blue */
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  font-family: 'At Hauss Std Semibold';
+  position: relative;
+  overflow: hidden;
+}
 
-/* Index.html section */
-  /* Full-width brand blue section */
-  .highlight-stats-blue-full {
-    background-color: #023E6C; /* brand blue */
-    padding: 80px 20px;
-    display: flex;
-    justify-content: center;
-    border-top: 1px solid #e6e6e6;
-    border-bottom: 1px solid #e6e6e6;
-    font-family: 'At Hauss Std Semibold';
-    position: relative;
-    overflow: hidden;
-  }
-  
-  /* Decorative circles now on the section itself */
-  .highlight-stats-blue-full::before,
-  .highlight-stats-blue-full::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.08); /* subtle light blue/white */
-    z-index: 0;
-  }
-  
-  .highlight-stats-blue-full::before {
-    width: 300px;
-    height: 300px;
-    top: 20px;
-    left: -150px; /* left edge outside the page */
-  }
-  
-  .highlight-stats-blue-full::after {
-    width: 300px;
-    height: 300px;
-    bottom: 20px;
-    right: -150px; /* right edge outside the page */
-  }
-  
-  /* Inner “card” container for structure */
-  .highlight-stats-inner-blue {
-    max-width: 900px;
-    width: 100%;
-    text-align: center;
-    padding: 60px 40px;
-    border-radius: 12px;
-    position: relative;
-    overflow: hidden;
-    z-index: 1; /* ensure text is above circles */
-  }
-  
-  /* Text lines */
-  .highlight-line-blue {
-    font-size: 22px;
-    line-height: 32px;
-    color: #ffffff;
-    margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 1s forwards;
-    font-family: 'At Hauss Std Semibold';
-  }
-  
-  .highlight-line-blue:nth-child(1) { animation-delay: 0s; }
-  .highlight-line-blue:nth-child(3) { animation-delay: 0.6s; }
-  
-  /* Highlight number */
-  .highlight-number-blue {
-    font-size: 60px;
-    font-weight: 800;
-    color: #FCB741; /* gold accent */
-    margin: 20px 0;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 1s forwards;
-    animation-delay: 0.3s;
-    font-family: 'At Hauss Std Semibold';
-  }
-  
-  /* Animation keyframes */
-  @keyframes fadeUp {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .highlight-number-blue { font-size: 42px; }
-    .highlight-line-blue { font-size: 18px; line-height: 28px; }
-    .highlight-stats-inner-blue { padding: 40px 20px; }
-  }
+/* Decorative geometric shapes */
+.highlight-stats-blue-full::before,
+.highlight-stats-blue-full::after,
+.highlight-stats-blue-full .shape {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.08); /* subtle light geometric shapes */
+  z-index: 0;
+  transform: rotate(45deg);
+}
 
-  
-  @media screen and (max-width: 900px) {
-    .containerreveal {
-      display: flex !important;
-      flex-direction: column !important; /* stack vertically */
-      align-items: center;              /* center content */
-      gap: 8px;
-      padding: 20px 15px;
-    }
-  
-    .containerreveal .reveal .reveal__content {
-      font-size: 18px !important;        /* smaller for mobile */
-      line-height: 22px !important;
-      text-align: center !important;     /* ensure centered text */
-    }
-  }
+/* Left-side large square */
+.highlight-stats-blue-full::before {
+  width: 250px;
+  height: 250px;
+  top: 30px;
+  left: -125px;
+}
+
+/* Right-side large triangle (using clip-path) */
+.highlight-stats-blue-full::after {
+  width: 300px;
+  height: 300px;
+  bottom: 20px;
+  right: -150px;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+/* Smaller floating geometric shapes */
+.highlight-stats-blue-full .shape:nth-child(1) {
+  width: 100px;
+  height: 100px;
+  top: 150px;
+  left: 50px;
+  transform: rotate(15deg);
+}
+.highlight-stats-blue-full .shape:nth-child(2) {
+  width: 80px;
+  height: 80px;
+  top: 50px;
+  right: 80px;
+  transform: rotate(-30deg);
+}
+.highlight-stats-blue-full .shape:nth-child(3) {
+  width: 120px;
+  height: 120px;
+  bottom: 100px;
+  left: 150px;
+  transform: rotate(60deg);
+}
+
+/* Inner “card” container for structure */
+.highlight-stats-inner-blue {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  padding: 60px 40px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1; /* ensure text is above shapes */
+}
+
+/* Text lines */
+.highlight-line-blue {
+  font-size: 22px;
+  line-height: 32px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s forwards;
+  font-family: 'At Hauss Std Semibold';
+}
+
+.highlight-line-blue:nth-child(1) { animation-delay: 0s; }
+.highlight-line-blue:nth-child(3) { animation-delay: 0.6s; }
+
+/* Highlight number */
+.highlight-number-blue {
+  font-size: 60px;
+  font-weight: 800;
+  color: #FCB741; /* gold accent */
+  margin: 20px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s forwards;
+  animation-delay: 0.3s;
+  font-family: 'At Hauss Std Semibold';
+}
+
+/* Animation keyframes */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .highlight-number-blue { font-size: 42px; }
+  .highlight-line-blue { font-size: 18px; line-height: 28px; }
+  .highlight-stats-inner-blue { padding: 40px 20px; }
+}
+
+/* Optional mobile adjustments for multiple shapes */
+@media (max-width: 900px) {
+  .highlight-stats-blue-full .shape { display: none; }
+}
