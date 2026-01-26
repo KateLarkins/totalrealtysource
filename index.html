@@ -165,11 +165,12 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
       
 <!-- Introduction Video -->
-<video autoplay muted loop id="background-video" playsinline preload="auto" poster="video/placeholder.jpg"
+ <video autoplay muted loop id="background-video" playsinline preload="auto" poster="video/placeholder.jpg"
        style="width:100%; height:auto; object-fit:cover; position:relative; z-index:1;">
   <source src="video/Copy of headed-10.mp4" type="video/mp4">
   Your browser does not support the video.
 </video>
+
 
 
 <section class="stats-divider">
@@ -254,7 +255,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   
         <!-- Column for the image (fills entire space) -->
 <div class="responsive-image" style="flex: 1; padding: 0; display: flex;">
-  <img src="Unsplash/todd-kent-178j8tJrNlc-unsplash.jpg" alt="Kitchen" style="width: 100%; height: 100%; object-fit: cover; border: none;">
+  <img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&w=1600&q=80"
+  alt="Luxury Kitchen Interior"
+  style="width:100%; height:100%; object-fit:cover; border:none;">
+
 </div>
 
   
@@ -340,9 +344,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         <!-- Column for the image -->
         <div class="column" style="flex:1; padding: 0; background-image: '';">
           <div class="content-wrapper" style="box-sizing: border-box; background-color:#ffffff;"><br>
-            <img 
-   
-            src="people.png/people.png" alt="Your Image" style="max-width: 100%; height: auto; border:none;">
+            <img src="people.png/people.png" alt="Your Image" style="max-width: 100%; height: auto; border:none;">
           </div>
         </div>
 
@@ -400,7 +402,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
               <!-- Column for the image -->
               <div class="column" style="flex: 1; padding: 0; margin: 0; height: 100%;">
                 <div class="content-wrapper" style="width: 100%; height: 100%;">
-                  <img src="group.png/groupteam.png" alt="Your Image" style="width: 100%; height: 100%; object-fit: cover; display: block; border: none;">
+                  <img src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?auto=format&fit=crop&w=1600&q=80">
                 </div>
               </div>
               
@@ -418,7 +420,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             <!-- CARD 1 -->
             <a href="contact.html" style="width:360px;height:460px;position:relative;display:block;text-decoration:none;box-shadow:0 15px 40px rgba(0,0,0,0.3);">
         
-              <img src="brandieteam.png/brandieteam.png"
+              <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80"
+
                    style="width:100%;height:100%;object-fit:cover;display:block;">
         
               <div style="
@@ -451,7 +454,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             <!-- CARD 2 -->
             <a href="contact.html" style="width:360px;height:460px;position:relative;display:block;text-decoration:none;box-shadow:0 15px 40px rgba(0,0,0,0.3);">
         
-              <img src="bob.png/bob.png"
+              <img src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?auto=format&fit=crop&w=800&q=80"
                    style="width:100%;height:100%;object-fit:cover;display:block;">
         
               <div style="
@@ -479,7 +482,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             </a>
             <!-- CARD 3 -->
             <a href="contact.html" style="width:360px;height:460px;position:relative;display:block;text-decoration:none;box-shadow:0 15px 40px rgba(0,0,0,0.3);">
-              <img src="team/team.png"
+              <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80"
                    style="width:100%;height:100%;object-fit:cover;display:block;">
               <div style="position:absolute; top:0; left:0; right:0;bottom:0;background:rgba(0, 0, 0, 0.343); display:flex;align-items:center;justify-content:center;padding:40px;">
                 <div style="color:white;text-align:center;">
@@ -496,85 +499,109 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           </div>
         </div>
         
- 
-  <style>
-    .city-grid {
-      display: flex;
-      width: 100%;
-      min-height: 420px;
-    }
-  
-    .city-tile {
-      flex: 1;
-      position: relative;
-      text-decoration: none;
-      overflow: hidden;
-    }
-  
-    /* Mobile */
-    @media (max-width: 768px) {
-      .city-grid {
-        flex-direction: column;
-        min-height: auto;
-      }
-  
-      .city-tile {
-        height: 260px;
-      }
-    }
-  </style>
-  
-  <h1 style="font-family:'At Hauss Std Semibold';font-size:35px;color:#000000;text-align:center;padding:60px 20px 50px;">
-    Check Out Homes Near You
-    </h1>
-    
-    <div class="city-grid">
-    
-      <!-- Jackson -->
-      <a href="forsale.html" class="city-tile">
-        <img src="Unsplash/greetings-from-jackson-tennessee-mural.jpg" style="width:100%;height:100%;object-fit:cover;">
-        <div style="position:absolute;inset:0;background:rgba(0,0,0,0.35);"></div>
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-          <h2 style="color:white;font-family:'At Hauss Std Semibold';font-size:2.2rem;letter-spacing:1px;margin:0;">
-            JACKSON
-          </h2>
+        <style>
+          /* Make body margin 0 so grid can stretch fully */
+          body {
+            margin: 0;
+            padding: 0;
+          }
+        
+          .city-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+            gap: 0; /* no gaps so tiles touch each other */
+            width: 100vw; /* full viewport width */
+          }
+        
+          .city-tile {
+            position: relative;
+            overflow: hidden;
+            height: 220px; /* flatter, rectangular */
+            text-decoration: none;
+          }
+        
+          .city-tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+          }
+        
+          .city-tile:hover img {
+            transform: scale(1.05);
+          }
+        
+          .city-tile .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+          }
+        
+          .city-tile .title {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'At Hauss Std Light';
+            font-size: 2rem;
+            letter-spacing: 1px;
+            margin: 0;
+            text-transform: uppercase;
+            text-align: center;
+          }
+
+          /* Responsive - tablets: 2 per row */
+          @media (max-width: 1024px) {
+            .city-grid {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+        
+          /* Mobile: 1 per row */
+          @media (max-width: 768px) {
+            .city-grid {
+              grid-template-columns: 1fr;
+            }
+            .city-tile {
+              height: 180px;
+            }
+          }
+        </style>
+        
+        <h1 style="font-family:'At Hauss Std Semibold'; font-size:35px; color:#000; text-align:center; padding:60px 20px 50px;">
+          Check Out Homes Near You
+        </h1>
+        
+        <div class="city-grid">
+          <a href="forsale.html" class="city-tile">
+            <img src="Unsplash/greetings-from-jackson-tennessee-mural.jpg" alt="Jackson">
+            <div class="overlay"></div>
+            <div class="title">Jackson</div>
+          </a>
+        
+          <a href="forsale.html" class="city-tile">
+            <img src="Office/Medina.jpg" alt="Medina">
+            <div class="overlay"></div>
+            <div class="title">Medina</div>
+          </a>
+        
+          <a href="forsale.html" class="city-tile">
+            <img src="Unsplash/wbbj-7.png" alt="Humboldt">
+            <div class="overlay"></div>
+            <div class="title">Humboldt</div>
+          </a>
+        
+          <a href="forsale.html" class="city-tile">
+            <img src="Unsplash/Milan-mural-1.png" alt="Milan">
+            <div class="overlay"></div>
+            <div class="title">Milan</div>
+          </a>
         </div>
-      </a>
-    
-      <!-- Medina -->
-      <a href="forsale.html" class="city-tile">
-        <img src="Office/Medina.jpg" style="width:100%;height:100%;object-fit:cover;">
-        <div style="position:absolute;inset:0;background:rgba(0,0,0,0.35);"></div>
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-          <h2 style="color:white;font-family:'At Hauss Std Semibold';font-size:35px;letter-spacing:1px;margin:0;">
-            MEDINA
-          </h2>
-        </div>
-      </a>
-    
-      <!-- Humboldt -->
-      <a href="forsale.html" class="city-tile">
-        <img src="Unsplash/wbbj-7.png" style="width:100%;height:100%;object-fit:cover;">
-        <div style="position:absolute;inset:0;background:rgba(0,0,0,0.35);"></div>
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-          <h2 style="color:white;font-family:'At Hauss Std Semibold';font-size:35px;letter-spacing:1px;margin:0;">
-            HUMBOLDT
-          </h2>
-        </div>
-      </a>
-    
-      <!-- Milan -->
-      <a href="forsale.html" class="city-tile">
-        <img src="Unsplash/Milan-mural-1.png" style="width:100%;height:100%;object-fit:cover;">
-        <div style="position:absolute;inset:0;background:rgba(0,0,0,0.35);"></div>
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-          <h2 style="color:white;font-family:'At Hauss Std Semibold';font-size:35px;letter-spacing:1px;margin:0;">
-            MILAN
-          </h2>
-        </div>
-      </a>
-    </div>
-    
+
+        
   <footer style="background:#023E6C; color:white; font-family:'At Hauss Std Semibold';">
 
     <!-- TOP FOOTER -->
