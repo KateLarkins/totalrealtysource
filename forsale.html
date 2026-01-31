@@ -2523,6 +2523,21 @@
             </div>
             </div>
         <div class="card" data-modal="turkeyModal">
+             <!-- Open house -->
+                <!-- Open House Tag + Overlay -->
+                <div onclick="toggleOpenHouse(this)" style="position:absolute;top:0;left:0;width:0;height:0;border-top:90px solid rgba(218,165,32,0.75);border-right:90px solid transparent;cursor:pointer;z-index:3;">
+                  <span style="position:absolute;top:-70px;left:6px;transform:rotate(-45deg);color:#fff;font-size:12px;font-weight:600;text-transform:uppercase;pointer-events:none;font-family: 'At Hauss Std Semibold';">&nbsp;Open House</span>
+                </div>
+
+                <div class="open-house-overlay" style="position:absolute;inset:0;background:rgba(218,165,32,0.92);color:#fff;display:none;align-items:center;justify-content:center;text-align:center;padding:20px;z-index:4;font-size:16px;line-height:1.4;">
+                  <div><strong style="font-size:22px;display:block;margin-bottom:4px; font-family: 'At Hauss Std Light';">Open House</strong><strong style="display:block;font-size:16px;margin-bottom:4px;">In-Person Public Open House</strong><span style="display:block;font-size:15px;margin-bottom:8px;">Sunday Feb 1 • 2:00 – 4:00</span><span style="display:block;font-size:14px;margin-bottom:14px;opacity:0.95;">Tour this inviting Medina home and discover the space and all the amazing features it has to offer!</span><hr style="border:none;border-top:1px solid rgba(255,255,255,0.4);margin:12px 0;"><span style="display:block;font-size:14px;opacity:0.95;">Custom-Built Home on 1 Acre Surrounded by Farmland <br> Built 2008</span><span style="font-size:13px;opacity:0.85;">Tap anywhere to close</span></div>
+
+                </div>
+                <script>
+                  function toggleOpenHouse(el){const card=el.closest('.card');const overlay=card.querySelector('.open-house-overlay');overlay.style.display=overlay.style.display==='flex'?'none':'flex';overlay.onclick=()=>overlay.style.display='none';}
+                </script>
+
+                <!-- Open house -->
           <img src="Turkey/20251125165457867348000000-o.jpg" alt="Home" onclick="openModal('turkeyModal')" />
           <div class="card-body">
             <p class="price">$459,900</p>
