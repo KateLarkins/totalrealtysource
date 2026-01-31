@@ -13,23 +13,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Make sure this matches both locally and online -->
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
       
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
 
     <link rel="stylesheet" href="style.css">  
 
 <style>/* =========================
   Global Styles
-========================= */
-body {
- margin: 0;
- font-family: 'Quicksand', sans-serif;
- background-color: #ffffff;
- color: #000;
+========================= */:root {
+  --primary-blue: #023E6C;
+  --bg-light: #f8f8f8;
+  --text-light: #666;
 }
 
 a {
@@ -42,54 +39,6 @@ button {
  transition: 0.3s;
 }
 
-/* =========================
-  Hero Section
-========================= */
-.hero {
- position: relative;
- height: 60vh;
- display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: center;
- text-align: center;
- background: url('unsplash/Screenshot 2025-12-29 at 10.49.47 PM.png') center/cover no-repeat;
-}
-
-.hero::before {
- content: '';
- position: absolute;
- top:0; left:0;
- width:100%; height:100%;
- background: rgba(0,0,0,0.3);
- z-index: 0;
-}
-
-.hero-content {
- position: relative;
- z-index: 1;
- padding: 0 20px;
-}
-
-.hero h1 {
- font-family: 'At Hauss Std Semibold', sans-serif;
- font-size: 3rem;
- margin-bottom: 30px;
- color: #fff;
-}
-
-.hero-button {
- display: inline-block;
- padding: 12px 28px;
- border-radius: 25px;
- background-color: #11456F;
- color: #fff;
- font-family: 'At Hauss Std Semibold';
-}
-
-.hero-button:hover {
- background-color: #0d3454;
-}
 
 /* =========================
   Team Section
@@ -198,71 +147,7 @@ button {
  line-height: 1.6;
 }
 
-/* =========================
-  Service Cards Section
-========================= */
-.services {
- padding: 80px 20px;
- background-color: #f8f8f8;
- text-align: center;
-}
 
-.services h2 {
- font-family: 'At Hauss Std Semibold';
- font-size: 2.5rem;
- margin-bottom: 20px;
-}
-
-.services p {
- font-family: 'At Hauss Std Light';
- font-size: 1.2rem;
- color: #333;
- line-height: 1.8;
-}
-
-.service-cards {
- display: flex;
- flex-wrap: wrap;
- justify-content: center;
- gap: 30px;
- max-width: 1200px;
- margin: 0 auto;
-}
-
-.service-card {
- flex: 1 1 300px;
- background-color: #fdfdfd;
- border: 1px solid #e0e0e0;
- border-radius: 12px;
- padding: 40px 30px;
- text-align: left;
- transition: transform 0.3s ease;
-}
-
-.service-card h3 {
- font-family: 'At Hauss Std Semibold';
- font-size: 1.5rem;
- margin-bottom: 15px;
-}
-
-.service-card p {
- font-family: 'At Hauss Std Light';
- font-size: 1rem;
- margin-bottom: 20px;
-}
-
-.service-card a {
- font-family: 'At Hauss Std Semibold';
- font-size: 0.95rem;
- color: #11456F;
- text-decoration: none;
- border-bottom: 1px solid #11456F;
-}
-
-.service-card a:hover {
- color: #0d3454;
- border-bottom-color: #0d3454;
-}
 
 /* =========================
   Responsive Adjustments
@@ -281,6 +166,15 @@ button {
  .hero h1 {
    font-size: 2rem;
  }
+ .herotwo p {
+  font-family: 'At Hauss Std Light';
+  font-size: 1.15rem;
+  color: #333;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
 
  .hero-button {
    padding: 10px 20px;
@@ -290,6 +184,63 @@ button {
  .service-card {
    flex: 1 1 100%;
  }
+}
+/* New styles */
+/* Hero Section */
+.herotwo {
+  padding: 100px 5%;
+  text-align: center;
+  background: linear-gradient(rgba(2, 62, 108, 0.05), rgba(2, 62, 108, 0.05));
+}
+
+.herotwo h1 {
+  font-weight: 600;
+  font-size: 3rem;
+  color: var(--primary-blue);
+  margin-bottom: 10px;
+  font-family: 'At Hauss Std Semibold';
+}
+
+/* Services Section */
+.section-padding { padding: 80px 10%; }
+.section-header { text-align: center; margin-bottom: 50px; }
+.section-header h2 {  font-family: 'At Hauss Std Semibold'; font-size: 2rem; color: black; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.service-card h3 { color:#000; font-family:'At Hauss Std Semibold';}
+.service-card p { font-weight: 300; color: var(--text-light);font-family:'At Hauss Std Light'; }
+
+/* Property Listings (4-column grid) */
+.propertytwo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.propertytwo-card { background: var(--bg-light); border-bottom: 4px solid #023E6C; }
+.propertytwo-img { width: 100%; height: 200px; background: #ddd; object-fit: cover; }
+.propertytwo-info { padding: 15px;}
+.propertytwo-info h4 { margin: 0; font-family: 'At Hauss Std Semibold'; }
+.propertytwo-info p { margin: 5px 0; font-weight: 300; font-size: 0.9rem; }
+
+/* Agent Section (Circular Images) */
+.agenttwo-list { display: flex; flex-direction: column; gap: 40px; max-width: 900px; margin: 0 auto; }
+.agenttwo-row { display: flex; align-items: center; gap: 30px; }
+.agenttwo-img { width: 150px; height: 150px; border-radius: 50%; background: #eee; flex-shrink: 0; }
+.agenttwo-details h3 { margin: 0; color: black; font-family: 'At Hauss Std Semibold'; font-size: 20px;}
+.agenttwo-details span { color: var(--text-light); font-weight: 300; font-size: 0.9rem; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .services-grid, .social-container { flex-direction: column; text-align: center; }
+  .agent-row { flex-direction: column; text-align: center; }
+  .mural-img { margin-left: 0; width: 100%; margin-bottom: 20px; }
+  .social-text { padding-left: 0; }
 }
 </style>
 </head>
@@ -383,229 +334,150 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 });
 </script>
 
-<!-- Hero Section -->
-<section class="hero" id="hero">
-  <div class="hero-content">
-    <h1>Helping West Tennessee Find Their Home</h1>
-    <a href="#team" class="hero-button">Meet Our Team</a>
-  </div>
-</section>
-
-<style>
-/* Hero Section */
-.hero {
-  position: relative; /* needed for overlay */
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  background-image: url('unsplash/Screenshot\ 2025-12-29\ at\ 10.49.47\ PM.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: rgba(0, 0, 0, 0.3); /* dark overlay for readability */
-  z-index: 0;
-}
-
-.hero-content {
-  position: relative; /* above overlay */
-  z-index: 1;
-  padding: 0 20px;
-}
-
-.hero h1 {
-  font-family: 'At Hauss Std Semibold', sans-serif;
-  font-size: 3rem;
-  margin-bottom: 30px;
-  color: #ffffff; /* white text */
-}
-
-.hero-button {
-  display: inline-block;
-  padding: 12px 28px;
-  border-radius: 25px;
-  background-color: #11456F; /* your theme blue */
-  color: #ffffff; /* yellow text */
-  text-decoration: none;
-  transition: 0.3s;
-  font-family: 'At Hauss Std Semibold';
-}
-
-.hero-button:hover {
-  background-color: #0d3454; /* darker blue on hover */
-  color: #ffffff;
-}
-</style>
-
-<!-- Team Section -->
-<section class="team" id="team">
-  <h2>Meet Our Team</h2>
-  <div class="team-cards">
-
-    <!-- Lynda -->
-    <div class="team-card" style="position: relative; text-align: center; background-color: #fafafa; padding-top: 50px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-      <div style="position: relative; display: inline-block;">
-        <img src="agent/Lynda.png" alt="Lynda Climer" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
-        <button data-bs-toggle="modal" data-bs-target="#agentModal" style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
-          Contact
-        </button>
-      </div>
-      <h3 style="margin: 10px 0 20px 0; font-family: 'At Hauss Std Semibold'; color:#000;">Lynda Climer</h3>
-      <p style="font-family: 'At Hauss Std Light'; color:#000;">Broker</p>
-    </div>
-
-    <!-- Brandie -->
-    <div class="team-card" style="position: relative;  text-align: center; background-color: #fafafa; padding-top: 50px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-      <div style="position: relative; display: inline-block;">
-        <img src="agent/BrandieTwo.png" alt="Brandie Bassett" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
-        <button data-bs-toggle="modal" data-bs-target="#brandieModal" style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
-          Contact
-        </button>
-      </div>
-      <h3 style="margin: 10px 0 20px 0; font-family: 'At Hauss Std Semibold'; color:#000;">Brandie Bassett</h3>
-      <p style="font-family: 'At Hauss Std Light'; color:#000;">Real Estate Agent</p>
-    </div>
-
-    <!-- Jackie -->
-    <div class="team-card" style="position: relative; text-align: center; background-color: #fafafa; padding-top: 50px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-      <div style="position: relative; display: inline-block;">
-        <img src="agent/Jackie.png" alt="Jackie David" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
-        <button data-bs-toggle="modal" data-bs-target="#jackieModal" style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
-          Contact
-        </button>
-      </div>
-      <h3 style="margin: 10px 0 20px 0; font-family: 'At Hauss Std Semibold'; color:#000;">Jackie David</h3>
-      <p style="font-family: 'At Hauss Std Light'; color:#000;">Real Estate Agent</p>
-    </div>
-
-    <!-- Ashley -->
-    <div class="team-card" style="position: relative; text-align: center; background-color: #fafafa; padding-top: 50px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-      <div style="position: relative; display: inline-block;">
-        <img src="agent/Ashley.png" alt="Ashley McMillan" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
-        <button data-bs-toggle="modal" data-bs-target="#ashleyModal" style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
-          Contact
-        </button>
-      </div>
-      <h3 style="margin: 10px 0 20px 0; font-family: 'At Hauss Std Semibold'; color:#000;">Ashley McMillan</h3>
-      <p style="font-family: 'At Hauss Std Light'; color:#000;">Real Estate Agent</p>
-    </div>
-
-    <!-- Lisa -->
-    <div class="team-card" style="position: relative; text-align: center; background-color: #fafafa; padding-top: 50px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-      <div style="position: relative; display: inline-block;">
-        <img src="agent/Lisatwo.png" alt="Lisa Ballinger" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
-        <button data-bs-toggle="modal" data-bs-target="#lisaModal" style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
-          Contact
-        </button>
-      </div>
-      <h3 style="margin: 10px 0 20px 0; font-family: 'At Hauss Std Semibold'; color:#000;">Lisa Ballinger</h3>
-      <p style="font-family: 'At Hauss Std Light'; color:#000;">Real Estate Agent</p>
-    </div>
-
-    <!-- Amy -->
-    <div class="team-card" style="position: relative;  text-align: center; background-color: #fafafa; padding-top: 50px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-      <div style="position: relative; display: inline-block;">
-        <img src="agent/amywork.png" alt="Amy McLemore" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
-        <button data-bs-toggle="modal" data-bs-target="#amyModal" style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
-          Contact
-        </button>
-      </div>
-      <h3 style="margin: 10px 0 20px 0; font-family: 'At Hauss Std Semibold'; color:#000;">Amy McLemore</h3>
-      <p style="font-family: 'At Hauss Std Light'; color:#000;">Real Estate Agent</p>
-    </div>
-
-    <!-- Tammy -->
-    <div class="team-card" style="position: relative;  text-align: center; background-color: #fafafa; padding-top: 50px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-      <div style="position: relative; display: inline-block;">
-        <img src="agent/TammyTwo.png" alt="Tammy Jones" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
-        <button data-bs-toggle="modal" data-bs-target="#tammyModal" style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
-          Contact
-        </button>
-      </div>
-      <h3 style="margin: 10px 0 20px 0; font-family: 'At Hauss Std Semibold'; color:#000;">Tammy Jones</h3>
-      <p style="font-family: 'At Hauss Std Light'; color:#000;">Real Estate Agent</p>
-    </div>
-
-    <!-- Laura -->
-    <div class="team-card" style="position: relative; text-align: center; background-color: #fafafa; padding-top: 50px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-      <div style="position: relative; display: inline-block;">
-        <img src="agent/LauraTwo.png" alt="Laura Burke" style="width: 100%; max-width: 150px; border-radius: 50%; display: block; margin: 0 auto;">
-        <button data-bs-toggle="modal" data-bs-target="#lauraModal" style="position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); padding: 6px 16px; font-size: 0.85rem; background-color: #023E6C; color: white; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
-          Contact
-        </button>
-      </div>
-      <h3 style="margin: 10px 0 20px 0; font-family: 'At Hauss Std Semibold'; color:#000;">Laura Burke</h3>
-      <p style="font-family: 'At Hauss Std Light'; color:#000;">Real Estate Agent</p>
-    </div>
-
-  </div>
-</section>
-<section style="padding:100px 20px; background:#ffffff; font-family:'At Hauss Std Light', sans-serif;">
-
-  <!-- Section Header -->
-  <div style="max-width:900px; margin:0 auto 80px; text-align:center;">
-    <h2 style="font-family:'At Hauss Std Semibold'; font-size:2.6rem; color:#000; margin-bottom:22px;">
-      Our Services
-    </h2>
-    <p style="font-size:1.15rem; color:#333; line-height:1.9; margin:0;font-family: 'At Hauss Std Light';">
-      Total Realty Source provides full-service real estate expertise designed to support every stage of ownership—from acquisition to enhancement and beyond.
+<header style="position: relative; height: 60vh; min-height: 450px; background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop') center/cover no-repeat; display: flex; align-items: center; justify-content: center; text-align: center;">
+  <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(2, 62, 108, 0.65);"></div>
+  <div style="position: relative; z-index: 1; padding: 0 20px;">
+    <h1 style="font-size: 35px; color: #ffffff; margin: 0; font-family: 'At Hauss Std Semibold', sans-serif; letter-spacing: 5px; text-transform: uppercase;">Total Realty Source</h1>
+    <div style="width: 60px; height: 3px; background: #ffffff; margin: 25px auto;"></div>
+    <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto; color: #ffffff; font-family: 'At Hauss Std Light', sans-serif; letter-spacing: 2px; font-style: italic; opacity: 0.95;">
+      Building Better Lives & Stronger Communities in West Tennessee
     </p>
   </div>
+</header>
 
-  <!-- Services -->
-  <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:70px;">
+<section class="team" id="team" style="background: #ffffff; padding: 100px 5%;">
+  <div style="max-width: 1300px; margin: 0 auto;">
+    <h2 style="font-size: 32px; font-family: 'At Hauss Std Semibold', sans-serif; text-align: center; margin-bottom: 10px; color: #023E6C; text-transform: uppercase; letter-spacing: 3px;">Meet Our Team</h2>
+    <div style="width: 40px; height: 2px; background: #023E6C; margin: 0 auto 60px; opacity: 0.2;"></div>
+    
+    <div class="team-cards" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px 20px;">
 
-    <!-- Service -->
-    <div>
-      <h3 style="font-family:'At Hauss Std Semibold'; font-size:1.6rem; margin-bottom:14px; color:#000;">
-        Property Renovation
-      </h3>
-      <p style="font-size:1.05rem; line-height:1.8; color:#333; margin-bottom:18px;font-family: 'At Hauss Std Light';">
-        Curated renovations that elevate presentation, enhance livability, and increase long-term property value.
-      </p>
-      <a href="contact.html" style="font-family:'At Hauss Std Semibold'; font-size:0.9rem; color:#11456F; text-decoration:none; letter-spacing:0.5px;">
-        Learn More →
-      </a>
+      <div class="team-card" style="text-align: center; padding: 20px;">
+        <img src="agent/Lynda.png" alt="Lynda" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
+        <h3 style="margin: 0; font-family: 'At Hauss Std Semibold', sans-serif; color: #023E6C; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Lynda Climer</h3>
+        <p style="font-family: 'At Hauss Std Light', sans-serif; color: #888; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin: 8px 0 20px;">Broker</p>
+        <button data-bs-toggle="modal" data-bs-target="#agentModal" style="width: 160px; padding: 12px; background: #023E6C; border: none; color: #fff; font-family: 'At Hauss Std Semibold', sans-serif; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; letter-spacing: 1px; border-radius: 25px; margin: 0 auto; display: block;">View Profile</button>
+      </div>
+
+      <div class="team-card" style="text-align: center; padding: 20px;">
+        <img src="agent/BrandieTwo.png" alt="Brandie" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
+        <h3 style="margin: 0; font-family: 'At Hauss Std Semibold', sans-serif; color: #023E6C; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Brandie Bassett</h3>
+        <p style="font-family: 'At Hauss Std Light', sans-serif; color: #888; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin: 8px 0 20px;">Real Estate Agent</p>
+        <button data-bs-toggle="modal" data-bs-target="#brandieModal" style="width: 160px; padding: 12px; background: #023E6C; border: none; color: #fff; font-family: 'At Hauss Std Semibold', sans-serif; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; letter-spacing: 1px; border-radius: 25px; margin: 0 auto; display: block;">View Profile</button>
+      </div>
+
+      <div class="team-card" style="text-align: center; padding: 20px;">
+        <img src="agent/Jackie.png" alt="Jackie" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
+        <h3 style="margin: 0; font-family: 'At Hauss Std Semibold', sans-serif; color: #023E6C; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Jackie David</h3>
+        <p style="font-family: 'At Hauss Std Light', sans-serif; color: #888; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin: 8px 0 20px;">Real Estate Agent</p>
+        <button data-bs-toggle="modal" data-bs-target="#jackieModal" style="width: 160px; padding: 12px; background: #023E6C; border: none; color: #fff; font-family: 'At Hauss Std Semibold', sans-serif; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; letter-spacing: 1px; border-radius: 25px; margin: 0 auto; display: block;">View Profile</button>
+      </div>
+
+      <div class="team-card" style="text-align: center; padding: 20px;">
+        <img src="agent/Ashley.png" alt="Ashley" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
+        <h3 style="margin: 0; font-family: 'At Hauss Std Semibold', sans-serif; color: #023E6C; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Ashley McMillan</h3>
+        <p style="font-family: 'At Hauss Std Light', sans-serif; color: #888; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin: 8px 0 20px;">Real Estate Agent</p>
+        <button data-bs-toggle="modal" data-bs-target="#ashleyModal" style="width: 160px; padding: 12px; background: #023E6C; border: none; color: #fff; font-family: 'At Hauss Std Semibold', sans-serif; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; letter-spacing: 1px; border-radius: 25px; margin: 0 auto; display: block;">View Profile</button>
+      </div>
+
+      <div class="team-card" style="text-align: center; padding: 20px;">
+        <img src="agent/Lisatwo.png" alt="Lisa" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
+        <h3 style="margin: 0; font-family: 'At Hauss Std Semibold', sans-serif; color: #023E6C; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Lisa Ballinger</h3>
+        <p style="font-family: 'At Hauss Std Light', sans-serif; color: #888; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin: 8px 0 20px;">Real Estate Agent</p>
+        <button data-bs-toggle="modal" data-bs-target="#lisaModal" style="width: 160px; padding: 12px; background: #023E6C; border: none; color: #fff; font-family: 'At Hauss Std Semibold', sans-serif; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; letter-spacing: 1px; border-radius: 25px; margin: 0 auto; display: block;">View Profile</button>
+      </div>
+
+      <div class="team-card" style="text-align: center; padding: 20px;">
+        <img src="agent/amywork.png" alt="Amy" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
+        <h3 style="margin: 0; font-family: 'At Hauss Std Semibold', sans-serif; color: #023E6C; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Amy McLemore</h3>
+        <p style="font-family: 'At Hauss Std Light', sans-serif; color: #888; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin: 8px 0 20px;">Real Estate Agent</p>
+        <button data-bs-toggle="modal" data-bs-target="#amyModal" style="width: 160px; padding: 12px; background: #023E6C; border: none; color: #fff; font-family: 'At Hauss Std Semibold', sans-serif; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; letter-spacing: 1px; border-radius: 25px; margin: 0 auto; display: block;">View Profile</button>
+      </div>
+
+      <div class="team-card" style="text-align: center; padding: 20px;">
+        <img src="agent/TammyTwo.png" alt="Tammy" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
+        <h3 style="margin: 0; font-family: 'At Hauss Std Semibold', sans-serif; color: #023E6C; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Tammy Jones</h3>
+        <p style="font-family: 'At Hauss Std Light', sans-serif; color: #888; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin: 8px 0 20px;">Real Estate Agent</p>
+        <button data-bs-toggle="modal" data-bs-target="#tammyModal" style="width: 160px; padding: 12px; background: #023E6C; border: none; color: #fff; font-family: 'At Hauss Std Semibold', sans-serif; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; letter-spacing: 1px; border-radius: 25px; margin: 0 auto; display: block;">View Profile</button>
+      </div>
+
+      <div class="team-card" style="text-align: center; padding: 20px;">
+        <img src="agent/LauraTwo.png" alt="Laura" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
+        <h3 style="margin: 0; font-family: 'At Hauss Std Semibold', sans-serif; color: #023E6C; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Laura Burke</h3>
+        <p style="font-family: 'At Hauss Std Light', sans-serif; color: #888; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin: 8px 0 20px;">Real Estate Agent</p>
+        <button data-bs-toggle="modal" data-bs-target="#lauraModal" style="width: 160px; padding: 12px; background: #023E6C; border: none; color: #fff; font-family: 'At Hauss Std Semibold', sans-serif; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; letter-spacing: 1px; border-radius: 25px; margin: 0 auto; display: block;">View Profile</button>
+      </div>
+
     </div>
-
-    <!-- Service -->
-    <div>
-      <h3 style="font-family:'At Hauss Std Semibold'; font-size:1.6rem; margin-bottom:14px; color:#000;">
-        Property Sales
-      </h3>
-      <p style="font-size:1.05rem; line-height:1.8; color:#333; margin-bottom:18px; font-family: 'At Hauss Std Light';">
-        Strategic pricing, refined marketing, and skilled negotiation focused on delivering optimal outcomes.
-      </p>
-      <a href="contact.html" style="font-family:'At Hauss Std Semibold'; font-size:0.9rem; color:#11456F; text-decoration:none; letter-spacing:0.5px;">
-        Learn More →
-      </a>
-    </div>
-
-    <!-- Service -->
-    <div>
-      <h3 style="font-family:'At Hauss Std Semibold'; font-size:1.6rem; margin-bottom:14px; color:#000;">
-        Property Management
-      </h3>
-      <p style="font-size:1.05rem; line-height:1.8; color:#333; margin-bottom:18px;font-family: 'At Hauss Std Light';">
-        Professional oversight that protects your investment while ensuring consistent performance and peace of mind.
-      </p>
-      <a href="contact.html" style="font-family:'At Hauss Std Semibold'; font-size:0.9rem; color:#11456F; text-decoration:none; letter-spacing:0.5px;">
-        Learn More →
-      </a>
-    </div>
-
   </div>
+</section>
 
+<section style="position: relative; background: #023E6C; color: white; padding: 100px 5%; margin-top: 50px; clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);">
+  <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:40px; text-align:center;">
+    <div>
+      <p style="font-family:'At Hauss Std Semibold'; font-size:42px; margin:0; color:#ffffff;">$50M+</p>
+      <p style="font-family:'At Hauss Std Light'; font-size:12px; text-transform: uppercase; letter-spacing: 2px; color:rgba(255,255,255,0.7);">Total Sales Volume</p>
+    </div>
+    <div>
+      <p style="font-family:'At Hauss Std Semibold'; font-size:42px; margin:0; color:#ffffff;">150+</p>
+      <p style="font-family:'At Hauss Std Light'; font-size:12px; text-transform: uppercase; letter-spacing: 2px; color:rgba(255,255,255,0.7);">Closed Sales</p>
+    </div>
+    <div>
+      <p style="font-family:'At Hauss Std Semibold'; font-size:42px; margin:0; color:#ffffff;">8</p>
+      <p style="font-family:'At Hauss Std Light'; font-size:12px; text-transform: uppercase; letter-spacing: 2px; color:rgba(255,255,255,0.7);">Active Agents</p>
+    </div>
+    <div>
+      <p style="font-family:'At Hauss Std Semibold'; font-size:42px; margin:0; color:#ffffff;">6</p>
+      <p style="font-family:'At Hauss Std Light'; font-size:12px; text-transform: uppercase; letter-spacing: 2px; color:rgba(255,255,255,0.7);">Property Types</p>
+    </div>
+  </div>
+</section>
+
+<section style="position: relative; padding: 120px 5%; background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat fixed;">
+  <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(255, 255, 255, 0.92);"></div>
+  
+  <div style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto;">
+    <div style="max-width: 800px; margin: 0 auto 70px; text-align: center;">
+      <h2 style="font-family: 'At Hauss Std Semibold', sans-serif; font-size: 32px; color: #023E6C; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px;">Our Services</h2>
+      <div style="width: 30px; height: 1px; background: #023E6C; margin: 0 auto 25px; opacity: 0.3;"></div>
+      <p style="font-family: 'At Hauss Std Light', sans-serif; font-size: 1.1rem; color: #444; line-height: 1.8;">
+        Expert real estate guidance for every stage of ownership in West Tennessee.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+      <div style="padding: 50px 40px; background: #ffffff; border: 1px solid #eee; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05); transition: transform 0.3s ease;">
+        <h3 style="font-family: 'At Hauss Std Semibold'; color: #023E6C; margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Property Renovation</h3>
+        <p style="font-family: 'At Hauss Std Light'; font-size: 0.95rem; color: #666; line-height: 1.7;">Elevating presentation and increasing long-term property value through curated enhancements.</p>
+      </div>
+      <div style="padding: 50px 40px; background: #ffffff; border: 1px solid #eee; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05);">
+        <h3 style="font-family: 'At Hauss Std Semibold'; color: #023E6C; margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Property Sales</h3>
+        <p style="font-family: 'At Hauss Std Light'; font-size: 0.95rem; color: #666; line-height: 1.7;">Strategic pricing and refined marketing focused on delivering optimal sales outcomes.</p>
+      </div>
+      <div style="padding: 50px 40px; background: #ffffff; border: 1px solid #eee; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05);">
+        <h3 style="font-family: 'At Hauss Std Semibold'; color: #023E6C; margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Property Management</h3>
+        <p style="font-family: 'At Hauss Std Light'; font-size: 0.95rem; color: #666; line-height: 1.7;">Professional oversight ensuring consistent performance and total peace of mind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 120px 5%; background-color: #fdfdfd; display: flex; justify-content: center; align-items: center;">
+  <div style="display: flex; align-items: center; max-width: 1100px; gap: 60px; flex-wrap: wrap; justify-content: center;">
+    
+    <div style="position: relative; flex-shrink: 0;">
+      <div style="position: absolute; top: -20px; left: -20px; width: 100%; height: 100%; background: #EBF4F8; z-index: 1;"></div>
+      <img src="team/team.png" alt="Local Community" style="width: 100%; max-width: 450px; height: auto; display: block; position: relative; z-index: 2; border: 10px solid #ffffff; box-shadow: 0 15px 30px rgba(0,0,0,0.1);">
+    </div>
+    
+    <div style="flex: 1; min-width: 300px; text-align: left;">
+      <h2 style="font-family: 'At Hauss Std Semibold', sans-serif; font-size: 2.2rem; color: #023E6C; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase;">Stronger Communities</h2>
+      <div style="width: 40px; height: 3px; background: #023E6C; margin-bottom: 30px;"></div>
+      <p style="font-family: 'At Hauss Std Light', sans-serif; font-style: italic; font-size: 1.25rem; line-height: 1.8; color: #444; border-left: 2px solid #023E6C; padding-left: 25px;">
+        "Total Realty Source is more than just property sales; we are your neighbors, committed to the growth and success of West Tennessee."
+      </p>
+    </div>
+  </div>
 </section>
 
 
@@ -1029,149 +901,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     </div>
   </div>
 </div> 
-
-
-<section style="background-color:#f5f5f5; padding:60px 20px;">
-  <div style="max-width:1200px; margin:auto;">
-    <h2 style="font-family:'At Hauss Std Semibold', serif; font-size:2.5rem; text-align:center; color:#111; margin-bottom:40px;">Featured Sales</h2>
-    
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px;">
-      
-      <div style="position:relative;  overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
-        <img src="113-crosswynd/20250516224841409208000000-o.jpg" alt="HOME 1" style="width:100%; height:250px; object-fit:cover; transition:transform 0.3s;">
-        <div style="position:absolute; bottom:0; left:0; width:100%; padding:15px; background:linear-gradient(to top, rgba(0,0,0,0.6), transparent); color:#fff; font-family:'At Hauss Std Light'; font-size:1rem;">
-          113 Crosswynd Dr, Medina, TN
-        </div>
-      </div>
-
-      <div style="position:relative;  overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
-        <img src="6088-Meadowbrook/20241012003742345574000000-o.jpg" alt="Home 2" style="width:100%; height:250px; object-fit:cover; transition:transform 0.3s;">
-        <div style="position:absolute; bottom:0; left:0; width:100%; padding:15px; background:linear-gradient(to top, rgba(0,0,0,0.6), transparent); color:#fff; font-family:'At Hauss Std Light'; font-size:1rem;">
-          6088 Meadowbrook Cv, Milan, TN
-        </div>
-      </div>
-
-      <div style="position:relative; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
-        <img src="Berrywood/20250514174029343163000000-o.jpg" alt="Home 3" style="width:100%; height:250px; object-fit:cover; transition:transform 0.3s;">
-        <div style="position:absolute; bottom:0; left:0; width:100%; padding:15px; background:linear-gradient(to top, rgba(0,0,0,0.6), transparent); color:#fff; font-family:'At Hauss Std Light'; font-size:1rem;">
-          3002 Berrywood Dr, Humboldt, TN
-        </div>
-      </div>
-
-      <div style="position:relative; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
-        <img src="listing/1902.png" alt="Home 4" style="width:100%; height:250px; object-fit:cover; transition:transform 0.3s;">
-        <div style="position:absolute; bottom:0; left:0; width:100%; padding:15px; background:linear-gradient(to top, rgba(0,0,0,0.6), transparent); color:#fff; font-family:'At Hauss Std Light'; font-size:1rem;">
-          1902 S College St, Trenton, TN
-        </div>
-      </div>
-
-    </div>
-  </div>
 </section>
-
-<section style="background:#ffffff; padding:120px 20px; font-family:'At Hauss Std Light', sans-serif; color:#000;">
-<!-- SALES OVERVIEW -->
-<div style="max-width:900px; margin:0 auto 80px; font-family:'At Hauss Std Light', sans-serif; color:#000;">
-
-  <!-- Headline -->
-  <h2 style="font-family:'At Hauss Std Semibold'; font-size:2.5rem; margin-bottom:12px; text-align: center;">
-    Total Sales Volume
-  </h2>
-
-  <!-- Figure -->
-  <p style="font-family:'At Hauss Std Semibold'; font-size:3rem; color:rgb(255, 187, 0); margin:0 0 50px;text-align: center;">
-    $50,000,000+
-  </p>
-
-  <!-- Property Breakdown -->
-  <div style="max-width:700px; margin:0 auto;">
-
-    <div style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #eee;">
-      <span style="font-family:'At Hauss Std Semibold'; font-size:1.15rem;">Residential</span>
-      <span style="font-size:1.15rem;">$23M+</span>
-    </div>
-
-    <div style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #eee;">
-      <span style="font-family:'At Hauss Std Semibold'; font-size:1.15rem;">Residential Income</span>
-      <span style="font-size:1.15rem;">$325K+</span>
-    </div>
-
-    <div style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #eee;">
-      <span style="font-family:'At Hauss Std Semibold'; font-size:1.15rem;">Land</span>
-      <span style="font-size:1.15rem;">$1.1M+</span>
-    </div>
-
-    <div style="display:flex; justify-content:space-between; padding:12px 0;">
-      <span style="font-family:'At Hauss Std Semibold'; font-size:1.15rem;">Commercial</span>
-      <span style="font-size:1.15rem;">$645K+</span>
-    </div>
-
-  </div>
-
-</div>
-
-
-  <!-- Top Agents -->
-  <div style="max-width:1100px; margin:0 auto;">
-    <h2 style="font-family:'At Hauss Std Semibold'; font-size:2.6rem; margin-bottom:70px; text-align:center;">
-      Top Agents
-    </h2>
-
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:80px;">
-
-      <!-- Agent -->
-      <div style="display:flex; align-items:center; gap:30px;">
-        <img src="agent/amywork.png" alt="Amy McLemore" style="width:140px; height:140px; object-fit:cover;">
-        <div>
-          <p style="margin:0; font-family:'At Hauss Std Semibold'; font-size:1.4rem;">
-            Amy McLemore
-          </p>
-          <p style="margin:8px 0 0; font-family:'At Hauss Std Semibold'; font-size:1.6rem; color:rgb(255, 187, 0);">
-            $16.6M
-          </p>
-          <p style="margin:10px 0 0; font-size:0.9rem; letter-spacing:1px; text-transform:uppercase;font-family: 'At Hauss Std Light';">
-            Top Performer
-          </p>
-        </div>
-      </div>
-
-      <!-- Agent -->
-      <div style="display:flex; align-items:center; gap:30px;">
-        <img src="agent/Lisatwo.png" alt="Lisa Ballinger" style="width:140px; height:140px; object-fit:cover;">
-        <div>
-          <p style="margin:0; font-family:'At Hauss Std Semibold'; font-size:1.4rem;">
-            Lisa Ballinger
-          </p>
-          <p style="margin:8px 0 0; font-family:'At Hauss Std Semibold'; font-size:1.6rem; color:rgb(255, 187, 0);">
-            $6.8M
-          </p>
-          <p style="margin:10px 0 0; font-size:0.9rem; letter-spacing:1px; text-transform:uppercase; font-family: 'At Hauss Std Light';">
-            Top Performer
-          </p>
-        </div>
-      </div>
-
-      <!-- Agent -->
-      <div style="display:flex; align-items:center; gap:30px;">
-        <img src="agent/Jackie.png" alt="Jackie David" style="width:140px; height:140px; object-fit:cover;">
-        <div>
-          <p style="margin:0; font-family:'At Hauss Std Semibold'; font-size:1.4rem;">
-            Jackie David
-          </p>
-          <p style="margin:8px 0 0; font-family:'At Hauss Std Semibold'; font-size:1.6rem; color:rgb(255, 187, 0);">
-            $6.5M
-          </p>
-          <p style="margin:10px 0 0; font-size:0.9rem; letter-spacing:1px; text-transform:uppercase; font-family: 'At Hauss Std Light';">
-            Top Performer
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-</section>
-
 
 
 <!-- Footer -->

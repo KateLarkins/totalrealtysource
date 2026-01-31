@@ -241,3 +241,13 @@ if (selectedAgent === 'all' || card.dataset.agent === selectedAgent) {
 }
 });
 });
+
+function searchAgents() {
+  let input = document.getElementById('agentSearch').value.toLowerCase();
+  let cards = document.getElementsByClassName('team-card');
+  
+  for (let i = 0; i < cards.length; i++) {
+    let name = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+    cards[i].style.display = name.includes(input) ? "" : "none";
+  }
+}

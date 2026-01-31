@@ -16,6 +16,22 @@ body {
   font-family: 'At Hauss Std Light';
   src: url('AtHaussStd-Light.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'At Hauss Std Semibold';
+  src: url('fonts/AtHaussStd-Semibold.woff2') format('woff2'),
+       url('fonts/AtHaussStd-Semibold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'At Hauss Std Light';
+  src: url('fonts/AtHaussStd-Light.woff2') format('woff2'),
+       url('fonts/AtHaussStd-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
 /* Navbar */
 .topnav {
   display: flex;
@@ -350,9 +366,6 @@ body {
 
 body.fade-in {
   opacity: 1;
-}
-p {
-  font-family: 'Open Sans';
 }
 
 
@@ -847,6 +860,7 @@ iframe {
     text-decoration: none;
   }
 }
+
 
 @media (max-width: 768px) { /* Adjust breakpoint as needed */
   .listing-item {
