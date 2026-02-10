@@ -285,11 +285,19 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     </div>
 </section>
 
-<section style="width: 100%; background-color: #023E6C; padding: 80px 20px; text-align: center; color: #ffffff; font-family: 'At Hauss Std Semibold', Arial, sans-serif;">
-    <p style="font-family: 'At Hauss Std Light'; font-size: 20px; opacity: 0.8; letter-spacing: 1px; margin-bottom: 10px;">In just 2 years, we've helped clients move over</p>
-    <h2 style="font-size: clamp(60px, 10vw, 100px); margin: 0; line-height: 1;">$50,000,000</h2>
-    <p style="font-family: 'At Hauss Std Light'; font-size: 20px; opacity: 0.8; letter-spacing: 1px; margin-top: 10px;">in West Tennessee real estate.</p>
+<section style="width:100%;background-color:#023E6C;padding:clamp(40px,6vw,80px) 16px;text-align:center;color:#ffffff;font-family:'At Hauss Std Semibold',Arial,sans-serif;">
+  <p style="font-family:'At Hauss Std Light',Arial,sans-serif;font-size:clamp(14px,3.5vw,20px);opacity:.8;letter-spacing:.08em;margin:0 0 8px;text-align:center;">
+    In just 2 years, we've helped clients move over
+  </p>
+  <h2 style="font-size:clamp(36px,9vw,100px);margin:0;line-height:1.05;word-break:break-word;text-align:center;">
+    $50,000,000
+  </h2>
+  <p style="font-family:'At Hauss Std Light',Arial,sans-serif;font-size:clamp(14px,3.5vw,20px);opacity:.8;letter-spacing:.08em;margin:8px auto 0;max-width:28ch;text-align:center;">
+    in West Tennessee real estate.
+  </p>
 </section>
+
+
 
 <section style="width: 100%; background-color: #ffffff; margin: 0; padding: 0; display: flex; flex-wrap: wrap-reverse; align-items: stretch; font-family: 'At Hauss Std Semibold', Arial, sans-serif;">
     <div style="flex: 1; min-width: 350px; display: flex; align-items: center; padding: 60px;">
@@ -499,24 +507,42 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   }
 
   .carousel-arrow {
-    display: none;
-    position: absolute;
-    top: 55%;
-    transform: translateY(-50%);
-    z-index: 20;
-    width: 44px;
-    height: 44px;
-    border: 0;
-    border-radius: 999px;
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    color: #fff;
-    font-size: 26px;
-    line-height: 44px;
-    text-align: center;
-  }
+  display: none;
+  position: absolute;
+  top: 56%;
+  transform: translateY(-50%);
+  z-index: 20;
+
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  color: #fff;
+  font-size: 26px;
+  font-weight: 300;
+
+  /* 🔑 THIS is the fix */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.carousel-arrow {
+  line-height: 1;
+}
+
+.carousel-arrow span {
+  transform: translateY(-1px);
+  display: inline-block;
+}
+
+
 
   .carousel-arrow:hover {
     background: rgba(0, 0, 0, 0.65);
@@ -529,6 +555,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   .carousel-arrow.right {
     right: 14px;
   }
+
+
 
   /* Show arrows only on mobile */
   @media (max-width: 768px) {
@@ -557,9 +585,9 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   </h2>
 
   <!-- Mobile arrows -->
-  <button class="carousel-arrow left" aria-label="Previous">‹</button>
-  <button class="carousel-arrow right" aria-label="Next">›</button>
-
+  <button class="carousel-arrow left"><span>‹</span></button>
+  <button class="carousel-arrow right"><span>›</span></button>
+  
   <div
     id="cityCarousel"
     style="
