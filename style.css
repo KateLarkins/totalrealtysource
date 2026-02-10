@@ -1909,3 +1909,100 @@ font-family: 'At Hauss Std Light';
 @media (max-width: 900px) {
   .highlight-stats-blue-full .shape { display: none; }
 }
+
+
+/* =========================
+   FOOTER RESPONSIVE STYLES
+   ========================= */
+
+/* Tablets & below */
+@media (max-width: 1024px) {
+  footer > div:first-child {
+    padding: 70px 40px 50px !important;
+    gap: 60px !important;
+  }
+
+  footer h2,
+  footer h4 {
+    text-align: center;
+  }
+
+  footer p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  footer img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  footer .areas-grid {
+    grid-template-columns: repeat(2, minmax(120px, 1fr)) !important;
+    justify-items: center;
+  }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+  footer > div:first-child {
+    flex-direction: column !important;
+    padding: 60px 30px 40px !important;
+    gap: 50px !important;
+  }
+
+  footer > div:first-child > div {
+    flex: 1 !important;
+    min-width: 100% !important;
+    text-align: center;
+  }
+
+  footer a {
+    display: inline-block;
+  }
+
+  footer .areas-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px 20px !important;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  footer {
+    font-size: 15px;
+  }
+
+  footer > div:first-child {
+    padding: 50px 20px 30px !important;
+    gap: 40px !important;
+  }
+
+  footer h2 {
+    font-size: 22px;
+  }
+
+  footer h4 {
+    font-size: 16px;
+  }
+
+  footer p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  footer img {
+    height: auto;
+    max-height: 70px;
+  }
+
+  footer .areas-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  footer > div:last-child {
+    font-size: 13px;
+    padding: 20px 15px !important;
+  }
+}
