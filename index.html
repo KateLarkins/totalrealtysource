@@ -394,128 +394,246 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
                 });
             });
         </script>
-        <style>
-          /* Make body margin 0 so grid can stretch fully */
-          body {
-            margin: 0;
-            padding: 0;
-          }
-        
-          .city-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
-            gap: 0; /* no gaps so tiles touch each other */
-            width: 100vw; /* full viewport width */
-          }
-        
-          .city-tile {
-            position: relative;
-            overflow: hidden;
-            height: 220px; /* flatter, rectangular */
-            text-decoration: none;
-          }
-        
-          .city-tile img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.3s ease;
-          }
-        
-          .city-tile:hover img {
-            transform: scale(1.05);
-          }
-        
-          .city-tile .overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.35);
-          }
-        
-          .city-tile .title {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-family: 'At Hauss Std Light';
-            font-size: 2rem;
-            letter-spacing: 1px;
-            margin: 0;
-            text-transform: uppercase;
-            text-align: center;
-          }
 
-          /* Responsive - tablets: 2 per row */
-          @media (max-width: 1024px) {
-            .city-grid {
-              grid-template-columns: repeat(2, 1fr);
-            }
-          }
-        
-          /* Mobile: 1 per row */
-          @media (max-width: 768px) {
-            .city-grid {
-              grid-template-columns: 1fr;
-            }
-            .city-tile {
-              height: 180px;
-            }
-          }
-        </style>
-        
-        <section id="city-explorer-section" style="width: 100%; background-color: #ffffff; padding: 80px 0 0 0; margin: 0; font-family: 'At Hauss Std Semibold', Arial, sans-serif;">
-    
-          <h2 style="font-size: clamp(24px, 5vw, 35px); color: #023E6C; text-transform: uppercase; letter-spacing: 4px; text-align: center; margin-bottom: 50px; padding: 0 20px;">
-              Check Out Homes Near You
-          </h2>
-      
-          <div id="cityCarousel" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; width: 100%; border-top: 1px solid #eee;">
-              
-              <a href="forsale.html" class="modern-tile" style="flex: 0 0 100%; min-width: 300px; height: 450px; position: relative; text-decoration: none; overflow: hidden; scroll-snap-align: start; display: block;">
-                  <div class="image-container" style="width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);">
-                      <img src="Unsplash/greetings-from-jackson-tennessee-mural.jpg" alt="Jackson Homes" style="width: 100%; height: 100%; object-fit: cover;">
-                  </div>
-                  <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.1) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 40px;">
-                      <span style="color: #fff; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Explore Properties</span>
-                      <h3 style="color: #fff; font-size: 40px; margin: 0; border-left: 4px solid #fff; padding-left: 15px;">JACKSON</h3>
-                  </div>
-              </a>
-      
-              <a href="forsale.html" class="modern-tile" style="flex: 0 0 100%; min-width: 300px; height: 450px; position: relative; text-decoration: none; overflow: hidden; scroll-snap-align: start; display: block;">
-                  <div class="image-container" style="width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);">
-                      <img src="Office/Medina.jpg" alt="Medina Homes" style="width: 100%; height: 100%; object-fit: cover;">
-                  </div>
-                  <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.1) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 40px;">
-                      <span style="color: #fff; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Explore Properties</span>
-                      <h3 style="color: #fff; font-size: 40px; margin: 0; border-left: 4px solid #fff; padding-left: 15px;">MEDINA</h3>
-                  </div>
-              </a>
-      
-              <a href="forsale.html" class="modern-tile" style="flex: 0 0 100%; min-width: 300px; height: 450px; position: relative; text-decoration: none; overflow: hidden; scroll-snap-align: start; display: block;">
-                  <div class="image-container" style="width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);">
-                      <img src="Unsplash/wbbj-7.png" alt="Humboldt Homes" style="width: 100%; height: 100%; object-fit: cover;">
-                  </div>
-                  <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.1) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 40px;">
-                      <span style="color: #fff; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Explore Properties</span>
-                      <h3 style="color: #fff; font-size: 40px; margin: 0; border-left: 4px solid #fff; padding-left: 15px;">HUMBOLDT</h3>
-                  </div>
-              </a>
-      
-              <a href="forsale.html" class="modern-tile" style="flex: 0 0 100%; min-width: 300px; height: 450px; position: relative; text-decoration: none; overflow: hidden; scroll-snap-align: start; display: block;">
-                  <div class="image-container" style="width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);">
-                      <img src="Unsplash/Milan-mural-1.png" alt="Milan Homes" style="width: 100%; height: 100%; object-fit: cover;">
-                  </div>
-                  <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.1) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 40px;">
-                      <span style="color: #fff; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Explore Properties</span>
-                      <h3 style="color: #fff; font-size: 40px; margin: 0; border-left: 4px solid #fff; padding-left: 15px;">MILAN</h3>
-                  </div>
-              </a>
-      
-          </div>
-      </section>
+<style>
+  /* Make body margin 0 so grid can stretch fully */
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ---------- CITY GRID (if you use it elsewhere) ---------- */
+  .city-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    width: 100vw;
+  }
+
+  .city-tile {
+    position: relative;
+    overflow: hidden;
+    height: 220px;
+    text-decoration: none;
+  }
+
+  .city-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .city-tile:hover img {
+    transform: scale(1.05);
+  }
+
+  .city-tile .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  .city-tile .title {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'At Hauss Std Light';
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin: 0;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  /* ---------- RESPONSIVE GRID ---------- */
+  @media (max-width: 1024px) {
+    .city-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .city-grid {
+      grid-template-columns: 1fr;
+    }
+    .city-tile {
+      height: 180px;
+    }
+  }
+
+  /* ---------- CAROUSEL ARROWS ---------- */
+  #city-explorer-section {
+    position: relative;
+  }
+
+  .carousel-arrow {
+    display: none;
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    z-index: 20;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #fff;
+    font-size: 26px;
+    line-height: 44px;
+    text-align: center;
+  }
+
+  .carousel-arrow:hover {
+    background: rgba(0, 0, 0, 0.65);
+  }
+
+  .carousel-arrow.left {
+    left: 14px;
+  }
+
+  .carousel-arrow.right {
+    right: 14px;
+  }
+
+  /* Show arrows only on mobile */
+  @media (max-width: 768px) {
+    .carousel-arrow {
+      display: block;
+    }
+  }
+
+  /* Hide scrollbar but keep scroll */
+  #cityCarousel {
+    scrollbar-width: none;
+  }
+  #cityCarousel::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<section
+  id="city-explorer-section"
+  style="width: 100%; background-color: #ffffff; padding: 80px 0 0 0; margin: 0; font-family: 'At Hauss Std Semibold', Arial, sans-serif;"
+>
+  <h2
+    style="font-size: clamp(24px, 5vw, 35px); color: #023E6C; text-transform: uppercase; letter-spacing: 4px; text-align: center; margin-bottom: 50px; padding: 0 20px;"
+  >
+    Check Out Homes Near You
+  </h2>
+
+  <!-- Mobile arrows -->
+  <button class="carousel-arrow left" aria-label="Previous">‹</button>
+  <button class="carousel-arrow right" aria-label="Next">›</button>
+
+  <div
+    id="cityCarousel"
+    style="
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+      border-top: 1px solid #eee;
+    "
+  >
+    <!-- JACKSON -->
+    <a
+      href="forsale.html"
+      class="modern-tile"
+      style="flex: 0 0 100%; min-width: 300px; height: 450px; position: relative; text-decoration: none; overflow: hidden; scroll-snap-align: start; display: block;"
+    >
+      <img src="Unsplash/greetings-from-jackson-tennessee-mural.jpg" alt="Jackson Homes" style="width:100%;height:100%;object-fit:cover;">
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.1)); display:flex; flex-direction:column; justify-content:flex-end; padding:40px;">
+        <span style="color:#fff; font-size:14px; letter-spacing:2px; text-transform:uppercase;">Explore Properties</span>
+        <h3 style="color:#fff; font-size:40px; margin:0; border-left:4px solid #fff; padding-left:15px;">JACKSON</h3>
+      </div>
+    </a>
+
+    <!-- MEDINA -->
+    <a
+      href="forsale.html"
+      class="modern-tile"
+      style="flex: 0 0 100%; min-width: 300px; height: 450px; position: relative; text-decoration: none; overflow: hidden; scroll-snap-align: start; display: block;"
+    >
+      <img src="Office/Medina.jpg" alt="Medina Homes" style="width:100%;height:100%;object-fit:cover;">
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.1)); display:flex; flex-direction:column; justify-content:flex-end; padding:40px;">
+        <span style="color:#fff; font-size:14px; letter-spacing:2px; text-transform:uppercase;">Explore Properties</span>
+        <h3 style="color:#fff; font-size:40px; margin:0; border-left:4px solid #fff; padding-left:15px;">MEDINA</h3>
+      </div>
+    </a>
+
+    <!-- HUMBOLDT -->
+    <a
+      href="forsale.html"
+      class="modern-tile"
+      style="flex: 0 0 100%; min-width: 300px; height: 450px; position: relative; text-decoration: none; overflow: hidden; scroll-snap-align: start; display: block;"
+    >
+      <img src="Unsplash/wbbj-7.png" alt="Humboldt Homes" style="width:100%;height:100%;object-fit:cover;">
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.1)); display:flex; flex-direction:column; justify-content:flex-end; padding:40px;">
+        <span style="color:#fff; font-size:14px; letter-spacing:2px; text-transform:uppercase;">Explore Properties</span>
+        <h3 style="color:#fff; font-size:40px; margin:0; border-left:4px solid #fff; padding-left:15px;">HUMBOLDT</h3>
+      </div>
+    </a>
+
+    <!-- MILAN -->
+    <a
+      href="forsale.html"
+      class="modern-tile"
+      style="flex: 0 0 100%; min-width: 300px; height: 450px; position: relative; text-decoration: none; overflow: hidden; scroll-snap-align: start; display: block;"
+    >
+      <img src="Unsplash/Milan-mural-1.png" alt="Milan Homes" style="width:100%;height:100%;object-fit:cover;">
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.1)); display:flex; flex-direction:column; justify-content:flex-end; padding:40px;">
+        <span style="color:#fff; font-size:14px; letter-spacing:2px; text-transform:uppercase;">Explore Properties</span>
+        <h3 style="color:#fff; font-size:40px; margin:0; border-left:4px solid #fff; padding-left:15px;">MILAN</h3>
+      </div>
+    </a>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const carousel = document.getElementById("cityCarousel");
+    const section = document.getElementById("city-explorer-section");
+    const leftArrow = section.querySelector(".carousel-arrow.left");
+    const rightArrow = section.querySelector(".carousel-arrow.right");
+
+    function getSlideWidth() {
+      const slide = carousel.querySelector(".modern-tile");
+      return slide ? slide.getBoundingClientRect().width : carousel.clientWidth;
+    }
+
+    leftArrow.addEventListener("click", () => {
+      carousel.scrollBy({ left: -getSlideWidth(), behavior: "smooth" });
+    });
+
+    rightArrow.addEventListener("click", () => {
+      carousel.scrollBy({ left: getSlideWidth(), behavior: "smooth" });
+    });
+
+    /* Subtle auto-nudge on first mobile visit */
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      if (!sessionStorage.getItem("cityCarouselHint")) {
+        sessionStorage.setItem("cityCarouselHint", "1");
+        setTimeout(() => {
+          carousel.scrollBy({ left: 80, behavior: "smooth" });
+          setTimeout(() => {
+            carousel.scrollBy({ left: -80, behavior: "smooth" });
+          }, 700);
+        }, 800);
+      }
+    }
+  })();
+</script>
+
       
       <script>
           document.querySelectorAll('.modern-tile').forEach(tile => {
