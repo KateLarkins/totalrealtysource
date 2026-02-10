@@ -344,13 +344,65 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     </p>
   </div>
 </header>
-
 <section class="team" id="team" style="background: #ffffff; padding: 100px 5%;">
+  <style>
+    /* Only affects THIS team section */
+    #team .team-cards{
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 40px 20px;
+      align-items: start;
+    }
+
+    /* Prevent cards from creating overflow on small screens */
+    #team .team-card{
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #team img{
+      max-width: 100%;
+    }
+
+    /* Tablet: 2 per row */
+    @media (max-width: 1024px){
+      #team .team-cards{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* Mobile: 1 per row */
+    @media (max-width: 768px){
+      #team{
+        padding: 80px 6%;
+      }
+
+      #team .team-cards{
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      /* Optional: tighten spacing so it looks cleaner on mobile */
+      #team .team-card{
+        padding: 18px 12px !important;
+      }
+
+      #team .team-card img{
+        width: 140px !important;
+        height: 140px !important;
+      }
+
+      #team .team-card button{
+        width: 170px !important;
+      }
+    }
+  </style>
+
   <div style="max-width: 1300px; margin: 0 auto;">
     <h2 style="font-size: 32px; font-family: 'At Hauss Std Semibold', sans-serif; text-align: center; margin-bottom: 10px; color: #023E6C; text-transform: uppercase; letter-spacing: 3px;">Meet Our Team</h2>
     <div style="width: 40px; height: 2px; background: #023E6C; margin: 0 auto 60px; opacity: 0.2;"></div>
-    
-    <div class="team-cards" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px 20px;">
+
+    <div class="team-cards">
 
       <div class="team-card" style="text-align: center; padding: 20px;">
         <img src="agent/Lynda.png" alt="Lynda" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
@@ -411,6 +463,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     </div>
   </div>
 </section>
+
 
 <section style="position: relative; background: #023E6C; color: white; padding: 100px 5%; margin-top: 50px; clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);">
   <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:40px; text-align:center;">
