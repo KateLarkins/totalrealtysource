@@ -315,6 +315,33 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         100% { transform: translateY(0); opacity: 1; }
     }
 </style>
+<style>
+  /* Center service cards on small screens */
+  @media (max-width: 900px) {
+    #services-section > div > div {
+      justify-content: center !important;
+    }
+
+    #services-section .service-card {
+      flex: 1 1 100% !important;
+      max-width: 600px !important;   /* keeps cards centered and not stretched */
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    #services-section .service-card > div:last-child {
+      align-items: center !important;
+      text-align: center !important;
+    }
+
+    #services-section .service-card p {
+      max-width: 100% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }
+</style>
+
         <div style="padding:80px 20px;background:#023E6C;text-align:center;">
           <section id="services-section" style="width: 100%; background-color: #023E6C; padding: 100px 0; margin: 0; font-family: 'At Hauss Std Semibold', Arial, sans-serif;">
     
