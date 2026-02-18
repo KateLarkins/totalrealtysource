@@ -51,22 +51,14 @@
     /* Grid */
     .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Always 4 columns */
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  max-width: 1200px; /* optional, center content */
-  margin: 0 auto;
-  padding: 20px;
 }
+
 .card.hidden {
   display: none; /* completely removes it from the grid flow */
 }
 
-/* Small screens (tablets) */
-@media screen and (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr); /* still 4 */
-  }
-}
 
 /* Medium screens (small tablets / large phones) */
 @media screen and (max-width: 768px) {
