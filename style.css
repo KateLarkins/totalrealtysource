@@ -1028,32 +1028,37 @@ iframe {
 
 /* Media query for iPhones */
 @media only screen 
-    and (max-device-width: 480px) 
-    and (-webkit-device-pixel-ratio: 2) {
-    .centered-content {
-        display: none;
-    }
-    .indexheader {
-      background-image: none;
-  }
-  @media only screen and (max-width: 768px) {
-    .learnmorediv {
-      padding: 2% 0; /* Adjust padding for smaller screens */
-    }
+  and (max-device-width: 480px) 
+  and (-webkit-device-pixel-ratio: 2) {
+
+  .centered-content {
+    display: none;
   }
 
+  .indexheader {
+    background-image: none;
+  }
+}
+
+/* Separate mobile adjustments */
 @media only screen and (max-width: 768px) {
+  .learnmorediv {
+    padding: 2% 0;
+  }
+
   .column {
     margin: 0;
-    /* Removed text-align: center; */
   }
+
   .column:nth-child(2) {
     margin-top: 50px;
   }
+
   .text-container {
     text-align: left; 
   }
 }
+
 
 
 /* Media query for smaller screens */
@@ -1070,7 +1075,7 @@ iframe {
     flex: 0 0 calc(100% - 20px);
     max-width: calc(100% - 50px);
   }
-}}
+}
 
 /* Responsive adjustments for tablets and smaller screens */
 @media (max-width: 1024px) {
