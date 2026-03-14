@@ -442,8 +442,7 @@ iframe {
 }
 
 
-
-/* Modal for For Sale */
+/* Modal general */
 .custom-modal {
   display: none;
   position: fixed;
@@ -451,7 +450,7 @@ iframe {
   left: 0; top: 0;
   width: 100%; height: 100%;
   background-color: rgba(0,0,0,0.8);
-  overflow: auto;
+  overflow-y: auto;
 }
 
 .custom-modal-content {
@@ -461,214 +460,195 @@ iframe {
   border-radius: 8px;
   border: 1px solid #ccc;
   width: 90%;
-  max-width: 100px;
+  max-width: 1000px;
   position: relative;
-}
-@media (max-width: 576px) {
-  .custom-modal-content {
-    width: 95% !important;
-    padding: 20px !important;
-  }
-}
-@media (max-width: 576px) {
-  h3, p, .property-details {
-    font-size: 0.95rem !important;
-  }
-}
-.slide {
-  width: 100%;
-  height: auto;
-  max-height: 60vh;
-  object-fit: cover;
-}
-@media (max-width: 576px) {
-  .search-bar {
-    width: 100% !important;
-  }
+  box-sizing: border-box;
 }
 
-
-/* Fix for the X button */
+/* Close button */
 .close {
   position: absolute;
   top: 15px;
-  right: 15px;  /* or left: 15px if you want */
+  right: 15px;
   font-size: 28px;
   font-weight: bold;
-  color: rgb(0, 0, 0);
+  color: rgb(0,0,0);
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255,255,255,0.85);
   padding: 6px 14px;
-  border-radius: 20px;
-  z-index: 9999 !important;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  user-select: none;
+  z-index: 9999;
   box-shadow: 0 0 8px rgba(0,0,0,0.15);
-  width: 40px;
-  height: 40px;
-  line-height: 1;
 }
 
-
-.carousel,
-.carousel img {
-  position: relative; /* or static */
-  z-index: 0;         /* lower than .close */
-}
-
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-}
+/* Carousel images */
 .carousel {
   position: relative;
   max-height: 500px;
   overflow: hidden;
-  z-index: 0; /* Ensure it's beneath the close button */
 }
 
 .slide {
-  position: relative;
-  z-index: 0 !important;
-  pointer-events: none; 
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+  display: none;
+  border-radius: 6px;
 }
 
-
-.carousel-controls button {
-  background-color: rgba(255, 255, 255, 0.9); /* White with slight transparency */
+/* Carousel buttons */
+.carousel > button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.9);
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 24px;
   cursor: pointer;
-  z-index: 1;
-  position: relative;
-  width: 40px;           /* Circle width */
-  height: 40px;          /* Circle height */
-  border-radius: 50%;    /* Makes it circular */
-  display: flex;         /* Center the arrow inside */
-  align-items: center;   /* Vertically center */
-  justify-content: center; /* Horizontally center */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* Optional shadow for depth */
+  z-index: 2;
 }
 
-.carousel-controls button:hover {
-  background-color: rgba(255, 255, 255, 1); /* Full white on hover */
-}
-/* Target the carousel buttons directly */
-.carousel > button {
-  width: 40px !important;
-  height: 40px !important;
-  border-radius: 50% !important;
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  border: none !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2) !important;
-  z-index: 2 !important;
-}
-
-/* Make background fully white on hover */
 .carousel > button:hover {
-  background-color: rgba(255, 255, 255, 1) !important;
+  background-color: rgba(255,255,255,1);
 }
 
+.carousel > button:first-of-type {
+  left: 10px;
+}
+.carousel > button:last-of-type {
+  right: 10px;
+}
 
+/* Modal content layout */
 .modal-body {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 20px;
-}
-
-.listing-info {
-  flex: 2;
-  padding-right: 20px;
-}
-
-.agent-info {
-  flex: 1;
-  background-color: #f2f2f2;
-  padding: 20px;
-  border-radius: 8px;
-}
-.agent-details h3 {
-  font-family: 'At Hauss Std Semibold';
-  font-size: 26px;
-  margin-bottom: 5px;
-}
-.agent-details p {
-  font-family: 'At Hauss Std Semibold';
-  font-size: 26px;
-  margin-bottom: 5px;
-}
-
-@media (max-width: 768px) {
-  .agent-details h3 {
-    font-size: 22px; 
-  }
-}
-
-@media (max-width: 768px) {
-  .content-flex {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .agent-photo img {
-    margin-top: 20px;
-  }
-}
-.modal-body {
-  padding: 20px;
-}
-
-.content-flex {
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
-  align-items: flex-start;
-  justify-content: space-between;
+  padding: 20px 0 0 0;
 }
 
 .listing-info {
-  flex: 1 1 40%;
-  min-width: 250px;
+  flex: 2 1 60%;
 }
 
 .agent-info {
-  flex: 1 1 25%;
-  min-width: 200px;
+  flex: 1 1 30%;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
-.agent-photo {
-  flex: 1 1 150px;
-  text-align: center;
-}
-
+/* Agent photo */
 .agent-photo img {
   max-width: 120px;
   border-radius: 50%;
   object-fit: cover;
 }
+
+/* Property details list */
+ul {
+  list-style: none;
+  padding-left: 0;
+  column-count: 2;
+  gap: 20px;
+}
+
+/* Media Queries for Small Screens (Mobile-first) */
 @media (max-width: 768px) {
-  .property-wrapper {
+  .custom-modal-content {
+    width: 95%;
+    padding: 15px;
+    margin: 5% auto;
+  }
+
+  /* Stack modal body vertically */
+  .modal-body {
     flex-direction: column;
-    align-items: stretch;
+    gap: 20px;
   }
 
-  .property-card {
-    width: 100%;
-    margin-bottom: 1rem;
+  .listing-info, .agent-info {
+    flex: 1 1 100%;
+    min-width: auto;
+    padding: 10px;
+  }
+
+  /* Stack agent info */
+  .agent-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .agent-photo {
+    flex: 0 0 auto;
+    text-align: center;
+  }
+
+  /* Images scale better on mobile */
+  .carousel {
+    max-height: 300px;
+  }
+
+  .slide {
+    max-height: 300px;
+  }
+
+  /* Text resizing */
+  h2 { font-size: 20px; }
+  h3 { font-size: 18px; }
+  p, li { font-size: 0.9rem; }
+
+  /* Feature list columns */
+  ul {
+    column-count: 1;
+  }
+
+  /* Close button smaller */
+  .close {
+    width: 35px;
+    height: 35px;
+    font-size: 24px;
+    padding: 4px 10px;
+  }
+
+  /* Carousel arrows smaller */
+  .carousel > button {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
   }
 }
-.image-wrapper, .property-widget {
-  width: 100%;
-  min-height: 150px; /* or whatever minimum makes sense */
-}
 
+@media (max-width: 480px) {
+  .modal-body {
+    padding: 10px 0 0 0;
+  }
+
+  h2 { font-size: 18px; }
+  h3 { font-size: 16px; }
+  p, li { font-size: 0.85rem; }
+
+  .agent-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .agent-info div { text-align: center; }
+}
 @media (max-width: 768px) {
   /* About Us Agent Modals */
   .card {
