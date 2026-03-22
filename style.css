@@ -8,6 +8,17 @@ body {
 body {
   font-family: 'Bodoni Moda', serif;
 }
+@media screen and (max-width: 900px) {
+  /* Reduce gap between stacked flex items */
+  section div[style*="display: flex"][style*="flex-wrap: wrap"] {
+    gap: 10px !important;
+  }
+
+  /* Optional: make image height more reasonable */
+  section div[style*="flex: 1 1 500px"]:last-child img {
+    height: auto;
+  }
+}
 /* @font-face {
   font-family: 'At Hauss Std Semibold';
   src: url('AtHaussStd-Semibold.ttf') format('truetype');
@@ -124,10 +135,10 @@ body {
 ========================= */
 .nav-drawer {
   position: fixed;
-  top: 70px; 
+  top: 0; /* attach to top of viewport */
   right: -300px;
   width: 300px;
-  height: calc(100% - 70px);
+  height: 100%; /* full viewport height */
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -135,7 +146,12 @@ body {
   gap: 10px;
   overflow-y: auto;
   transition: right 0.3s ease;
-  z-index: 999;
+  z-index: 1000;
+}
+@media screen and (max-width: 900px) {
+  .nav-drawer {
+    padding-top: 60px; /* roughly the mobile navbar height */
+  }
 }
 
 .nav-drawer.open {
