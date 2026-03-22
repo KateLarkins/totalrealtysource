@@ -4,10 +4,11 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'At Hauss Std Light';
 }
-
-@font-face {
+body {
+  font-family: 'Bodoni Moda', serif;
+}
+/* @font-face {
   font-family: 'At Hauss Std Semibold';
   src: url('AtHaussStd-Semibold.ttf') format('truetype');
 }
@@ -30,7 +31,7 @@ body {
        url('fonts/AtHaussStd-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
-}
+} */
 
 /* Navbar */
 .topnav {
@@ -64,7 +65,7 @@ body {
 .nav-links.desktop-links {
   display: flex; /* show links on desktop */
   align-items: center;
-  font-family: 'At Hauss Std Light';
+  font-family: 'Bodoni Moda';
   gap: 20px;
 }
 
@@ -73,7 +74,7 @@ body {
   color: #000;
   padding: 8px 12px;
   white-space: nowrap;
-  font-family: 'At Hauss Std Light';
+  font-family: 'Bodoni Moda';
 }
 
 /* Dropdowns */
@@ -427,7 +428,7 @@ iframe {
 
 #viewmore {
   background-color: transparent;
-  font-family: 'At Hauss Std Light';
+  font-family: 'Bodoni Moda';
   border: 1px solid black;
   border-radius: 20px;
   padding: 10px 20px;
@@ -751,13 +752,13 @@ ul {
 }
 
 .service-text h2 {
-  font-family: 'At Hauss Std Semibold', sans-serif;
+  font-family: 'Bodoni Moda', sans-serif;
   font-size: 25px;
   margin-bottom: 15px;
 }
 
 .service-text p {
-  font-family: 'At Hauss Std Light', sans-serif;
+  font-family: 'Lora', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 20px;
@@ -1631,12 +1632,13 @@ footer {
   background-color: #11456F;
   color: white;
   padding: 60px 20px;
-  font-family: 'At Hauss Std Light', sans-serif;
 }
 
 footer h4 {
   margin-bottom: 24px;
   letter-spacing: 0.4px;
+  font-family:'Bodoni Moda';
+  font-weight:700;
 }
 
 footer a {
@@ -1680,6 +1682,9 @@ footer .footer-col {
    /* Center headings on small screens */
    footer h4 {
     text-align: left;
+    font-size: 16px;
+    font-family:'Bodoni Moda';
+    font-weight:700;
   }
   footer p {
     text-align: left;
@@ -1715,7 +1720,7 @@ footer .footer-col {
 
 .city-tile h2 {
   color: #fff;
-  font-family: 'At Hauss Std Semibold';
+  font-family: 'Bodoni Moda';
   font-size: 2rem;
   text-align: center;
 }
@@ -1755,7 +1760,8 @@ position: relative;
 
 .stat-number {
 font-size: 35px;
-font-family: 'At Hauss Std Semibold';
+font-family: 'Bodoni Moda';
+font-weight:700;
 color: #023E6C;
 }
 
@@ -1765,7 +1771,7 @@ font-size: 14px;
 letter-spacing: 1px;
 text-transform: uppercase;
 color: #666;
-font-family: 'Bauer Bodoni';
+font-family: 'Bodoni Moda';
 }
 
 /* Full-width brand blue section with geometric shapes */
@@ -1776,7 +1782,7 @@ font-family: 'Bauer Bodoni';
   justify-content: center;
   border-top: 1px solid #e6e6e6;
   border-bottom: 1px solid #e6e6e6;
-  font-family: 'At Hauss Std Semibold';
+  font-family: 'Bodoni Moda';
   position: relative;
   overflow: hidden;
 }
@@ -1853,7 +1859,7 @@ font-family: 'Bauer Bodoni';
   opacity: 0;
   transform: translateY(20px);
   animation: fadeUp 1s forwards;
-  font-family: 'At Hauss Std Semibold';
+  font-family: 'Bodoni Moda';
 }
 
 .highlight-line-blue:nth-child(1) { animation-delay: 0s; }
@@ -1869,7 +1875,7 @@ font-family: 'Bauer Bodoni';
   transform: translateY(20px);
   animation: fadeUp 1s forwards;
   animation-delay: 0.3s;
-  font-family: 'At Hauss Std Semibold';
+  font-family: 'Bodoni Moda';
 }
 
 /* Animation keyframes */
@@ -1906,6 +1912,7 @@ font-family: 'Bauer Bodoni';
   footer h4 {
     text-align: center;
   }
+
 
   footer p {
     text-align: center;
@@ -1965,6 +1972,8 @@ font-family: 'Bauer Bodoni';
 
   footer h4 {
     font-size: 16px;
+    font-family:'Bodoni Moda';
+    font-weight:700;
   }
 
   footer p {
