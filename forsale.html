@@ -100,6 +100,7 @@
       margin: 0 0 4px 0;
       color: #000000 !important;
       font-family:'Bodoni Moda' !important;
+      font-weight:600;
     }
 
     .address {
@@ -188,9 +189,9 @@
     }
 
     .modal-content p {
-      font-size: 14px;
+      font-size: 18px;
       color: black;
-
+      font-family: 'Lora';
     }
 
     @media (max-width: 640px) {
@@ -595,7 +596,6 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       <br>
 
     <div class="grid">
-   
         <div class="card" data-modal="mullinsModal">
           <img src="Mullins/Screenshot 2025-11-23 at 9.49.57 AM.png" alt="Home" onclick="openModal('mullinsModal')" />
           <div class="card-body">
@@ -674,7 +674,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
                     <!-- Description Section -->
                     <div style="margin-bottom: 25px;">
                       <h3 style="border-bottom: 1px solid #ccc; padding-top:1px; padding-bottom:5px; font-family:'Bodoni Moda';">Property Description</h3>
-                      <p style="line-height: 1.6; margin-top: 15px; font-family:'Lora';">
+                      <p style="line-height: 1.6; margin-top: 15px; font-family:'Lora'; font-size: 16px;">
                         Investor Package Deal - 3 Homes & 1 Lot Included! All 3 Homes are Currently Rented. This home features 2 Bedrooms, 1 Bathroom with a Dining Room that could function as a 3rd Bedroom if needed. Large Living Room. Conveniently located close to City Amenities and Highway Access for Easy Commute to Jackson. Second Home is 1923 N Street, Humboldt and is a 3 BR, 1 BA Brick Home built in 1958 and has approx. 1570 Square Feet. Corner Lot. Third Home is 1120 S High Street, Trenton with the Lot right Behind it on Alco Street Included. The home is a 3 BR, 1 BA Home built in 1939 and has 1256 Square Feet. <br><br>Great Investment Opportunity with Rental Income. Please call for further details. All Homes sold "As Is".
                       </p>
                     </div>
@@ -3887,7 +3887,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         <div class="card" data-modal="hunterjModal">
           <img src="hunterj/20260302184353381566000000-o.jpg" alt="Home" onclick="openModal('hunterjModal')" />
           <div class="card-body">
-            <p class="price">199,900</p>
+            <p class="price">$199,900</p>
             <p class="address">152 Hunter Jones Road<br>Milan, TN</p>
             <a href="#" class="details-link" onclick="openModal('hunterjModal');">View Details</a>
             <div class="stats">
@@ -4035,11 +4035,164 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             </div>
             </div>
             </div>
-
-            
             </div>
 
-            
+            <div class="card" data-modal="rollingModal">
+              <img src="rolling/20260320191513746776000000-o.jpg" alt="Home" onclick="openModal('rollingModal')" />
+              <div class="card-body">
+                <p class="price">$305,000</p>
+                <p class="address">116 Rolling Hills Drive<br>Jackson, TN</p>
+                <a href="#" class="details-link" onclick="openModal('rollingModal');">View Details</a>
+                <div class="stats">
+                  <div><strong>5</strong><span>Beds</span></div>
+                  <div><strong>2,940</strong><span>Sq.Ft.</span></div>
+                  <div><strong>3</strong><span>Baths</span></div>
+                </div>
+              </div>
+            </div>
+    
+    
+    
+                <!-- Modal -->
+                <div id="rollingModal" class="custom-modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+                  <div class="custom-modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
+                
+                  <!-- Close Button -->
+                  <span class="close" onclick="closeModal()">&times;</span>
+                
+                  <!-- Carousel -->
+                  <div class="carousel" style="position: relative; margin-bottom: 20px;">
+                
+                  <!-- For Sale Badge -->
+                  <div style="position: absolute; top: 15px; left: 15px; background-color: rgba(255, 255, 255, 0.85); padding: 6px 14px; border-radius: 20px; font-size: 16px; font-family: 'Bodoni Moda'; display: flex; align-items: center; gap: 8px; z-index: 10;">
+                    <span style="display:inline-block; width:13px; height:13px; background-color:green; border-radius:50%;"></span>
+                    <span>For Sale</span>
+                  </div>
+                
+                  <!-- Image Slides -->
+                  <img class="slide" src="rolling/20260320191513746776000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191517645330000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191444830258000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191257844706000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191300496096000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191303073428000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191305628491000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191308533811000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191311338872000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191314554376000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191318536942000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191322887147000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191327031720000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191334466112000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191344025700000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191358385978000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191423345525000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191427029813000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191430639322000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191433936367000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191437371687000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191441224081000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191448538260000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191452522005000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191456389534000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191500388522000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191504565710000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191509684263000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191522744482000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191526247587000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191530104206000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191533804505000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191537487805000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191540785274000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <img class="slide" src="rolling/20260320191543815077000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+                  <!-- Carousel Arrows -->
+                  <button onclick="plusSlides(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); font-size: 24px; background: none; border: none; cursor: pointer;">❮</button>
+                  <button onclick="plusSlides(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); font-size: 24px; background: none; border: none; cursor: pointer;">❯</button>
+                </div>
+                
+                    <!-- Property Overview -->
+                 <div style="margin-bottom: 25px;">
+                      <h2 style="margin-bottom: 5px; font-family:'Bodoni Moda'; font-size: 25px;">116 Rolling Hills Drive, Jackson, TN 38305</h2>
+                      <p style="font-size: 23px; font-weight: bold; margin: 5px 0 10px; font-family:'Lora'">$305,000</p>
+                
+                      <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 1em; font-family:'Lora'">
+                        <div><strong>Beds:</strong> 5</div>
+                        <div><strong>Baths:</strong> 3 (3 full)</div>
+                        <div><strong>Sqft:</strong> 2,940</div>
+                        <div><strong>Lot:</strong> 115 X 318.25 IRR</div>
+                        <div><strong>Year Built:</strong> 1977</div>
+                        <div><strong>Style:</strong> Single Family Residence</div>
+                        <div><strong>Pool:</strong> No</div>
+                        <div><strong>Garage:</strong> Yes (Attached, 2 spaces)</div>                                                                                                                            
+                      </div>
+                
+                    <!-- Features Section -->
+                    <div style="margin-bottom: 25px;">
+                      <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;font-family:'Bodoni Moda';">Key Features</h3>
+                      <ul style="list-style: none; padding-left: 0; column-count: 2; gap: 20px; margin: 0;">
+                       <li><strong>Cooling:</strong> Central Air; Electric</li>
+                       <li><strong>Heating:</strong> Central; Electric; Fireplace(s)</li>
+                       <li><strong>Fireplaces:</strong> Yes</li>
+                       <li><strong>Exterior:</strong> Courtyard; Rain Gutters; Other</li>
+                       <li><strong>Interior:</strong> Ceiling Fan(s); Double Vanity; Eat-in Kitchen; Laminate Counters; Tub Shower Combo; Walk-In Closet(s); Other</li>
+                       <li><strong>Kitchen:</strong> Electric Range; Refrigerator</li>
+                       <li><strong>Parking:</strong> Garage Faces Side</li>
+                       <li><strong>Basement:</strong> No</li>
+                       <li><strong>Additional Structures:</strong> Gazebo; Shed(s)</li>
+                       <li><strong>Water & Sewer:</strong> Public Water, Public Sewer</li>                                                                                                  
+                        </ul>                    
+                    </div>
+                
+                    <!-- Description Section -->
+                    <div style="margin-bottom: 25px;">
+                      <h3 style="border-bottom: 1px solid #ccc; padding-top:1px; padding-bottom:5px; font-family:'Bodoni Moda'">Property Description</h3>
+                      <p style="line-height: 1.6; margin-top: 15px; font-family:'Lora';">
+                        If you're tired of cookie cutter houses, here you go! 116 Rolling Hills offers 5 bedrooms, 3 baths, and nearly 3,000 square feet with a split-level layout full of personality. Inside, you've got space to spread out, a roomy kitchen, and a gorgeous stone fireplace. Outside, the backyard feels private and peaceful, with a zen-like setup and a gazebo that would be perfect for yoga, relaxing, or your own little escape from the world. Call Listing Agent today for your private showing!
+                        <br><br>
+                        Square footage is based on tax record. Additional flex space is shown on floor plan. All information deemed reliable but not guaranteed. Buyer to verify all information important to them.
+                      </p>
+                    </div>
+                
+                <!-- Agent + Share Section -->
+                <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-top: 1px solid #ccc; padding-top: 20px; gap: 20px;">
+                
+                  <!-- Column 1: Agent Info -->
+                  <div style="display: flex; align-items: center; gap: 20px; flex: 1 1 300px;">
+                    <img src="agent/BrandieTwo.png" alt="Brandie Bassett" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
+                    <div>
+                      <p style="margin: 0; font-family: 'Bodoni Moda';"><strong>Brandie Bassett</strong></p>
+                      <p style="margin: 2px 0; font-family: 'Lora';"><a href="about.html">View Profile</a></p>
+                      <p style="margin: 2px 0; font-family: 'Lora';">Phone: (731) 695-2785</p>
+                      <p style="margin: 2px 0; font-family: 'Lora';">Office: (731) 574-9340</p>
+                    </div>
+                  </div>
+                
+                  <!-- Column 2: Share Icons + Title -->
+                  <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-end; flex: 1 1 200px;">
+                    <p style="margin: 0; font-family: 'Bodoni Moda'; font-size: 1rem;">Share this Listing:</p>
+                    <div style="display: flex; align-items: center; gap: 15px; margin-top: 5px;">
+                      <a href="https://www.facebook.com/sharer/sharer.php?u=https://totalrealtysource.com/rolling.html"
+                      target="_blank" title="Share on Facebook" style="color:#3b5998; font-size: 1.8rem;">
+                      <i class="fa fa-facebook-official"></i>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/totalrealtysource"
+                      target="_blank" title="View on Instagram" style="color:#e1306c; font-size: 1.8rem;">
+                      <i class="fa fa-instagram"></i>
+                    </a>
+                    
+                    <a href="mailto:?subject=Check out this listing&body=Take a look at this property: https://totalrealtysource.com/rolling.html"
+                      title="Share by Email" style="color:#007bff; font-size: 1.8rem;">
+                      <i class="fa fa-envelope"></i>
+                    </a>
+                    
+                    </div>
+                  </div>
+                </div>
+                </div>
+                </div>
+                </div>
+    
      
 
         <!-- close grid div -->
