@@ -4,9 +4,7 @@
 body {
   margin: 0;
   padding: 0;
-}
-body {
-  font-family: 'Bodoni Moda', serif;
+  font-family: 'Lora';
 }
 @media screen and (max-width: 900px) {
   /* Reduce gap between stacked flex items */
@@ -53,7 +51,6 @@ body {
   background: #ffffff;
   position: sticky;
   top: 0;
-  font-family: 'At Hauss Std Light';
   z-index: 999;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   flex-wrap: nowrap;
@@ -894,7 +891,7 @@ ul {
   margin: 10%;
   line-height: 1.5em;
   font-size: 17px;
-  font-family: 'At Hauss Std Light';
+  font-family: 'Lora';
   color: rgb(0, 0, 0);
   text-align:center;
 
@@ -902,11 +899,11 @@ ul {
 .agent-description h2 {
   font-weight:500;
   font-size: 20px;
-  font-family: 'At Hauss Std Semibold';
+  font-family: 'Bodoni Moda';
 }
 .agent-description p {
   font-weight:300;
-  font-family: 'At Hauss Std Light';
+  font-family: 'Lora';
 }
 @media (max-width: 768px) {
   .agent-description p {
@@ -1299,7 +1296,7 @@ ul {
 }
 
 .services-title {
-  font-family: 'At Hauss Std Semibold';
+  font-family: 'Bodoni Moda';
   font-size: 42px;
   color: #ffffff;
   margin-bottom: 60px;
@@ -1354,20 +1351,20 @@ ul {
 }
 
 .card-content h2 {
-  font-family: 'At Hauss Std Semibold';
+  font-family: 'Bodoni Moda';
   font-size: 26px;
   margin-bottom: 14px;
 }
 
 .card-content p {
-  font-family: 'At Hauss Std Light';
+  font-family: 'Lora';
   font-size: 16px;
   line-height: 1.5;
   margin-bottom: 22px;
 }
 
 .card-content span {
-  font-family: 'At Hauss Std Semibold';
+  font-family: 'Bodoni Moda';
   font-size: 14px;
   letter-spacing: 0.5px;
   border-bottom: 1px solid rgba(255,255,255,0.7);
@@ -1387,13 +1384,13 @@ ul {
   max-width: 1000px;
   margin: 60px auto;
   padding: 20px;
-  font-family: 'At Hauss Std Light', sans-serif;
+  font-family: 'Lora', sans-serif;
   background-color: #fff;
 }
 
 .events-header {
   text-align: center;
-  font-family: 'At Hauss Std Semibold', serif;
+  font-family: 'Bodoni Moda', serif;
   font-size: 2em;
   margin-bottom: 40px;
 }
@@ -1420,7 +1417,7 @@ ul {
 }
 
 .event-details h3 {
-  font-family: 'At Hauss Std Semibold', serif;
+  font-family: 'Bodoni Moda', serif;
   font-size: 1.5em;
   margin-bottom: 10px;
 }
@@ -1428,7 +1425,7 @@ ul {
 .event-details p {
   font-size: 1em;
   margin-bottom: 10px;
-  font-family: 'At Hauss Std Light', serif;
+  font-family: 'Lora', serif;
 }
 
 .event-button {
@@ -1467,7 +1464,7 @@ ul {
 .services-title {
   font-size: 2.5em;
   margin-bottom: 40px;
-  font-family: 'At Hauss Std Semibold', sans-serif;
+  font-family: 'Bodoni Moda', sans-serif;
 }
 
 .services-title a {
@@ -1521,14 +1518,14 @@ ul {
 
 .card-bottom-bar h2 {
   margin: 0 0 6px 0;
-  font-family: 'At Hauss Std Semibold', sans-serif;
+  font-family: 'Bodoni Moda', sans-serif;
   font-size: 1.4em;
   color: #ffffff;
   line-height: 1.1;
 }
 
 .learn-more-hint {
-  font-family: 'At Hauss Std Semibold', sans-serif;
+  font-family: 'Bodoni Moda', sans-serif;
   font-size: 1em;
   color: white;
   cursor: pointer;
@@ -1575,7 +1572,7 @@ ul {
 
 .card-overlay p {
   margin: 0 0 20px 0;
-  font-family: 'At Hauss Std Light', sans-serif;
+  font-family: 'Lora', sans-serif;
   font-size: 1.15em;
 }
 
@@ -1583,7 +1580,7 @@ ul {
   color: #1a1a1a;
   text-decoration: underline;
   font-weight: bold;
-  font-family: 'At Hauss Std Semibold', sans-serif;
+  font-family: 'Bodoni Moda', sans-serif;
   font-size: 1.1em;
 }
 
