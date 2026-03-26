@@ -2008,3 +2008,7 @@ font-family: 'Bodoni Moda';
     padding: 20px 15px !important;
   }
 }
+/* Modals on About */
+.agent-details h3 {
+  font-weight: 700;
+}
