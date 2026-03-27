@@ -197,39 +197,30 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   </div>
 </section>
 <!-- New Featured Property Section -->
-<section style="width: 100%; background-color: #ffffff; padding: 80px 20px; box-sizing: border-box; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
-<!-- Container -->
-<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;">
-
-  <!-- Property Info -->
-  <div style="flex: 1 1 500px; min-width: 300px; display: flex; flex-direction: column; gap: 16px;">
-
-    <h2 style="font-family: 'Bodoni Moda', serif; font-weight: 700; font-size: clamp(28px, 4vw, 36px); color: #000; margin: 0;">
-      Cozy Country Living
-    </h2>
-
-    <p style="font-family: 'Lora', serif; font-size: 16px; color: #777; margin: 0;">
-      Residential • 3 Beds • 2 Baths • 1,508 sqft
-    </p>
-
-    <p style="font-family: 'Lora', serif; font-size: 18px; color: #444; line-height: 1.6;">
-      Welcome to 246 Thomas St! This move-in ready 3BR/2BA home showcases modern farmhouse style with thoughtful updates throughout, offering small-town charm with convenient in-town access and convenient access to Hwy 45W.
-    </p>
-
-    <a href="forsale.html" style="align-self: flex-start; background-color: #023E6C; color: white; font-family: 'Bodoni Moda', serif; font-weight: 700; padding: 12px 24px; border-radius: 6px; text-decoration: none; transition: transform 0.2s; cursor: pointer;">
-      Explore Listings
-    </a>
-
+<section style="width:100%;background:#fff;padding:80px 20px;box-sizing:border-box;border-top:1px solid #eee;border-bottom:1px solid #eee;">
+  <style>
+  @media (max-width:768px){
+  .property-container{flex-direction:column;gap:0;}
+  .property-image{order:-1;line-height:0;}
+  .property-image img{width:100%;height:auto;max-height:none;object-fit:cover;display:block;}
+  }
+  </style>
+  
+  <div class="property-container" style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px;align-items:stretch;">
+  
+  <div style="flex:1 1 500px;min-width:300px;display:flex;flex-direction:column;gap:16px;">
+  <h2 style="font-family:'Bodoni Moda',serif;font-weight:700;font-size:clamp(28px,4vw,36px);color:#000;margin:0;">Cozy Country Living</h2>
+  <p style="font-family:'Lora',serif;font-size:16px;color:#777;margin:0;">Residential • 3 Beds • 2 Baths • 1,508 sqft</p>
+  <p style="font-family:'Lora',serif;font-size:18px;color:#444;line-height:1.6;margin:0;">Welcome to 246 Thomas St! This move-in ready 3BR/2BA home showcases modern farmhouse style with thoughtful updates throughout, offering small-town charm with convenient in-town access and convenient access to Hwy 45W.</p>
+  <a href="forsale.html" style="align-self:flex-start;background:#023E6C;color:#fff;font-family:'Bodoni Moda',serif;font-weight:700;padding:12px 24px;border-radius:6px;text-decoration:none;">Explore Listings</a>
   </div>
-
-  <!-- Property Image -->
-  <div style="flex: 1 1 500px; min-width: 300px; border-radius: 1px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.08);">
-    <img src="thomas/20260302153021063130000000-o.jpg" alt="Retreat" style="width: 100%; display: block; object-fit: cover;">
+  
+  <div class="property-image" style="flex:1 1 500px;min-width:300px;border-radius:1px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.08);line-height:0;">
+  <img src="thomas/20260302153021063130000000-o.jpg" alt="Retreat" style="width:100%;max-height:400px;object-fit:cover;display:block;">
   </div>
-
-</div>
-
-</section>
+  
+  </div>
+  </section>
 <section style="padding-bottom: 0px; background-color: #023E6C; color: white; margin: 0;">
   <div style="max-width: 100%; padding-left: 0; padding-right: 0; margin: 0 auto;">
       <div style="display: flex; flex-wrap: wrap; align-items: stretch;">
