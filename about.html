@@ -37,103 +37,13 @@ a {
  color: inherit;
 }
 
-button {
- cursor: pointer;
- transition: 0.3s;
-}
-
-
-/* =========================
-  Team Section
-========================= */
-.team {
- position: relative;
- padding: 80px 20px;
- text-align: center;
- background: rgba(240,240,240,0.7);
-}
-
-.team::before {
- content: '';
- position: absolute;
- top:0; left:0;
- width:100%; height:100%;
- background: rgba(240,240,240,0.7);
- z-index: 0;
-}
-
-.team h2 {
- font-family: 'Bodoni Moda';
- font-size: 2.5rem;
- margin-bottom: 50px;
- position: relative;
- z-index: 1;
-}
-
-/* Team Cards Grid */
-.team-cards {
- display: grid;
- grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
- gap: 40px;
- max-width: 1200px;
- margin: 0 auto;
- justify-content: center;
- position: relative;
- z-index: 1;
-}
-
-/* Team Card */
-.team-card {
- background: #fafafa;
- padding: 50px 20px 20px;
- border-radius: 15px;
- box-shadow: 0 4px 12px rgba(0,0,0,0.1);
- text-align: center;
- position: relative;
-}
-
-.team-card img {
- width: 150px;
- height: 150px;
- border-radius: 50%;
- object-fit: cover;
- margin-bottom: 15px;
-}
-
-.team-card h3 {
- font-family: 'Bodoni Moda';
- font-size: 20px;
- margin: 10px 0 10px;
- color: #000;
-}
-
-.team-card p {
- font-family: 'Lora';
- margin: 0 0 15px;
- color: #000;
- text-align: center;
-}
-
-.team-card button {
- padding: 10px 20px;
- border-radius: 25px;
- border: none;
- background-color: #11456F;
- color: #fff;
- font-weight: bold;
-}
-
-.team-card button:hover {
- background-color: #0d3454;
-}
-
 /* =========================
   Contact Section
 ========================= */
 .contact {
  padding: 80px 20px;
  text-align: center;
- background-color: #f0f4f8;
+ background-color: #ffffff;
 }
 
 .contact h2 {
@@ -336,131 +246,92 @@ parent.classList.toggle('open');
 });
 </script>
 
+<header style="height:180px;background:#023E6C;display:flex;align-items:center;justify-content:center;text-align:center;">
 
-<header style="position: relative; height: 60vh; min-height: 450px; background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop') center/cover no-repeat; display: flex; align-items: center; justify-content: center; text-align: center;">
-  <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(111, 111, 111, 0.65);"></div>
-  <div style="position: relative; z-index: 1; padding: 0 20px;">
-    <h1 style="font-size: 35px; color: #ffffff; margin: 0; font-family: 'Bodoni Moda'; letter-spacing: 2px; text-transform: uppercase; font-weight:700;">Total Realty Source</h1>
-    <div style="width: 60px; height: 3px; background: #ffffff; margin: 25px auto;"></div>
-    <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto; color: #ffffff; font-family: 'Lora'; letter-spacing: 2px; font-style: italic; opacity: 0.95;">
-      Building Better Lives & Stronger Communities in West Tennessee
-    </p>
+  <div>
+
+    <img src="logo.png/logo.png" alt="Total Realty Source Logo"
+      style="width:36px;height:36px;border-radius:50%;object-fit:cover;margin:0 auto 6px auto;display:block;border:1px solid rgba(255,255,255,0.8);">
+
+    <div style="font-family:'Lora';font-size:0.75rem;color:#ffffff;opacity:0.85;letter-spacing:1px;">
+      West Tennessee Real Estate
+    </div>
+
+    <h1 style="margin:6px 0 0 0;font-size:28px;font-family:'Bodoni Moda';letter-spacing:3px;text-transform:uppercase;font-weight:600;color:#ffffff;">
+      About Us
+    </h1>
+
+    <div style="width:55px;height:1px;background:#ffffff;margin:10px auto;"></div>
+
   </div>
+
 </header>
-<section class="team" id="team" style="background: #ffffff; padding: 100px 5%;">
-  <style>
-    /* Only affects THIS team section */
-    #team .team-cards{
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 40px 20px;
-      align-items: start;
-    }
 
-    /* Prevent cards from creating overflow on small screens */
-    #team .team-card{
-      width: 100%;
-      box-sizing: border-box;
-    }
+<section id="team" style="background:#ffffff;padding:60px 2%;position:relative;">
+  <div style="max-width:900px;margin:0 auto;">
 
-    #team img{
-      max-width: 100%;
-    }
+    <h2 style="font-size:30px;font-family:'Bodoni Moda';text-align:center;margin:0 0 8px 0;color:#023E6C;text-transform:uppercase;letter-spacing:3px;font-weight:300;">
+      Meet Our Team
+    </h2>
 
-    /* Tablet: 2 per row */
-    @media (max-width: 1024px){
-      #team .team-cards{
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
+    <div style="width:60px;height:2px;background:#023E6C;margin:0 auto 0px auto;opacity:0.2;"></div>
 
-    /* Mobile: 1 per row */
-    @media (max-width: 768px){
-      #team{
-        padding: 80px 6%;
-      }
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:30px; padding-top: 20px;">
 
-      #team .team-cards{
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-
-      /* Optional: tighten spacing so it looks cleaner on mobile */
-      #team .team-card{
-        padding: 18px 12px !important;
-      }
-
-      #team .team-card img{
-        width: 140px !important;
-        height: 140px !important;
-      }
-
-      #team .team-card button{
-        width: 170px !important;
-      }
-    }
-  </style>
-
-  <div style="max-width: 1300px; margin: 0 auto;">
-    <h2 style="font-size: 32px; font-family: 'Bodoni Moda'; text-align: center; margin-bottom: 10px; color: #000000; text-transform: uppercase; letter-spacing: 3px; font-weight:700;">Meet Our Team</h2>
-    <div style="width: 40px; height: 2px; background: #023E6C; margin: 0 auto 60px; opacity: 0.2;"></div>
-
-    <div class="team-cards">
-
-      <div class="team-card" style="text-align: center; padding: 20px;">
-        <img src="agent/Lynda.png" alt="Lynda" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
-        <h3 style="margin: 0; font-family: 'Bodoni Moda'; color: #000000; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Lynda Climer</h3>
-        <p style="font-family: 'Lora'; color: #888; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin: 8px 0 20px;">Broker</p>
-        <button data-bs-toggle="modal" data-bs-target="#agentModal" style="width: 160px; padding: 12px; background: #023E6C; border: none; color: #fff; font-family: 'Bodoni Moda'; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; letter-spacing: 1px; border-radius: 25px; margin: 0 auto; display: block;">View Profile</button>
+      <div style="text-align:center;">
+        <img src="Untitled design-10/5.png" style="width:185px;height:185px;border-radius:50%;object-fit:cover;margin:0 auto 8px auto;display:block;">
+        <h3 style="margin:0;font-family:'Bodoni Moda';font-size:18px;">Lynda Climer</h3>
+        <p style="margin:3px 0 10px 0;font-family:'Lora';color:#888;text-transform:uppercase;font-size:0.75rem;">Broker</p>
+        <button style="padding:9px 18px;border-radius:40px;background:#0B4068;color:#fff;border:none;font-family:'Bodoni Moda';font-weight:600;font-size:13px;cursor:pointer;">View Profile</button>
       </div>
 
-      <div class="team-card" style="text-align: center; padding: 20px;">
-        <img src="agent/BrandieTwo.png" alt="Brandie" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
-        <h3 style="margin: 0; font-family: 'Bodoni Moda'; color: #000000; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Brandie Bassett</h3>
-        <p style="font-family: 'Lora'; color: #888; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin: 8px 0 20px;">Real Estate Agent</p>
-        <button data-bs-toggle="modal" data-bs-target="#brandieModal" style="width: 160px; padding: 12px; background: #023E6C; border: none; color: #fff; font-family: 'Bodoni Moda'; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; letter-spacing: 1px; border-radius: 25px; margin: 0 auto; display: block;">View Profile</button>
+      <div style="text-align:center;">
+        <img src="Untitled design-10/7.png" style="width:185px;height:185px;border-radius:50%;object-fit:cover;margin:0 auto 8px auto;display:block;">
+        <h3 style="margin:0;font-family:'Bodoni Moda';font-size:18px;">Brandie Bassett</h3>
+        <p style="margin:3px 0 10px 0;font-family:'Lora';color:#888;text-transform:uppercase;font-size:0.75rem;">Real Estate Agent</p>
+        <button style="padding:9px 18px;border-radius:40px;background:#0B4068;color:#fff;border:none;font-family:'Bodoni Moda';font-weight:600;font-size:13px;cursor:pointer;">View Profile</button>
       </div>
 
-      <div class="team-card" style="text-align: center; padding: 20px;">
-        <img src="agent/Jackie.png" alt="Jackie" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
-        <h3 style="margin: 0; font-family: 'Bodoni Moda'; color: #000000; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Jackie David</h3>
-        <p style="font-family: 'Lora'; color: #888; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin: 8px 0 20px;">Real Estate Agent</p>
-        <button data-bs-toggle="modal" data-bs-target="#jackieModal" style="width: 160px; padding: 12px; background: #023E6C; border: none; color: #fff; font-family: 'Bodoni Moda'; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; letter-spacing: 1px; border-radius: 25px; margin: 0 auto; display: block;">View Profile</button>
+      <div style="text-align:center;">
+        <img src="Untitled design-10/8.png" style="width:185px;height:185px;border-radius:50%;object-fit:cover;margin:0 auto 8px auto;display:block;">
+        <h3 style="margin:0;font-family:'Bodoni Moda';font-size:18px;">Jackie David</h3>
+        <p style="margin:3px 0 10px 0;font-family:'Lora';color:#888;text-transform:uppercase;font-size:0.75rem;">Real Estate Agent</p>
+        <button style="padding:9px 18px;border-radius:40px;background:#0B4068;color:#fff;border:none;font-family:'Bodoni Moda';font-weight:600;font-size:13px;cursor:pointer;">View Profile</button>
       </div>
 
-      <div class="team-card" style="text-align: center; padding: 20px;">
-        <img src="agent/ashleytwo.png" alt="Ashley" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
-        <h3 style="margin: 0; font-family: 'Bodoni Moda'; color: #000000; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Ashley McMillan</h3>
-        <p style="font-family: 'Lora'; color: #888; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin: 8px 0 20px;">Real Estate Agent</p>
-        <button data-bs-toggle="modal" data-bs-target="#ashleyModal" style="width: 160px; padding: 12px; background: #023E6C; border: none; color: #fff; font-family: 'Bodoni Moda'; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; letter-spacing: 1px; border-radius: 25px; margin: 0 auto; display: block;">View Profile</button>
+      <div style="text-align:center;">
+        <img src="Untitled design-10/2ashley.png" style="width:185px;height:185px;border-radius:50%;object-fit:cover;margin:0 auto 8px auto;display:block;">
+        <h3 style="margin:0;font-family:'Bodoni Moda';font-size:18px;">Ashley McMillan</h3>
+        <p style="margin:3px 0 10px 0;font-family:'Lora';color:#888;text-transform:uppercase;font-size:0.75rem;">Real Estate Agent</p>
+        <button style="padding:9px 18px;border-radius:40px;background:#0B4068;color:#fff;border:none;font-family:'Bodoni Moda';font-weight:600;font-size:13px;cursor:pointer;">View Profile</button>
       </div>
 
-      <div class="team-card" style="text-align: center; padding: 20px;">
-        <img src="agent/Lisatwo.png" alt="Lisa" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
-        <h3 style="margin: 0; font-family: 'Bodoni Moda'; color: #000000; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Lisa Ballinger</h3>
-        <p style="font-family: 'Lora'; color: #888; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin: 8px 0 20px;">Real Estate Agent</p>
-        <button data-bs-toggle="modal" data-bs-target="#lisaModal" style="width: 160px; padding: 12px; background: #023E6C; border: none; color: #fff; font-family: 'Bodoni Moda'; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; letter-spacing: 1px; border-radius: 25px; margin: 0 auto; display: block;">View Profile</button>
+      <div style="text-align:center;">
+        <img src="Untitled design-10/6.png" style="width:185px;height:185px;border-radius:50%;object-fit:cover;margin:0 auto 8px auto;display:block;">
+        <h3 style="margin:0;font-family:'Bodoni Moda';font-size:18px;">Lisa Ballinger</h3>
+        <p style="margin:3px 0 10px 0;font-family:'Lora';color:#888;text-transform:uppercase;font-size:0.75rem;">Real Estate Agent</p>
+        <button style="padding:9px 18px;border-radius:40px;background:#0B4068;color:#fff;border:none;font-family:'Bodoni Moda';font-weight:600;font-size:13px;cursor:pointer;">View Profile</button>
       </div>
 
-      <div class="team-card" style="text-align: center; padding: 20px;">
-        <img src="agent/Amyone.png" alt="Amy" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
-        <h3 style="margin: 0; font-family: 'Bodoni Moda'; color: #000000; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Amy McLemore</h3>
-        <p style="font-family: 'Lora'; color: #888; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin: 8px 0 20px;">Real Estate Agent</p>
-        <button data-bs-toggle="modal" data-bs-target="#amyModal" style="width: 160px; padding: 12px; background: #023E6C; border: none; color: #fff; font-family: 'Bodoni Moda'; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; letter-spacing: 1px; border-radius: 25px; margin: 0 auto; display: block;">View Profile</button>
+      <div style="text-align:center;">
+        <img src="Untitled design-10/1amy.png" style="width:185px;height:185px;border-radius:50%;object-fit:cover;margin:0 auto 8px auto;display:block;">
+        <h3 style="margin:0;font-family:'Bodoni Moda';font-size:18px;">Amy McLemore</h3>
+        <p style="margin:3px 0 10px 0;font-family:'Lora';color:#888;text-transform:uppercase;font-size:0.75rem;">Real Estate Agent</p>
+        <button style="padding:9px 18px;border-radius:40px;background:#0B4068;color:#fff;border:none;font-family:'Bodoni Moda';font-weight:600;font-size:13px;cursor:pointer;">View Profile</button>
       </div>
 
-      <div class="team-card" style="text-align: center; padding: 20px;">
-        <img src="agent/TammyTwo.png" alt="Tammy" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
-        <h3 style="margin: 0; font-family: 'Bodoni Moda'; color: #000000; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Tammy Jones</h3>
-        <p style="font-family: 'Lora'; color: #888; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin: 8px 0 20px;">Real Estate Agent</p>
-        <button data-bs-toggle="modal" data-bs-target="#tammyModal" style="width: 160px; padding: 12px; background: #023E6C; border: none; color: #fff; font-family: 'Bodoni Moda'; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; letter-spacing: 1px; border-radius: 25px; margin: 0 auto; display: block;">View Profile</button>
+      <div style="text-align:center;">
+        <img src="Untitled design-10/3tammy.png" style="width:185px;height:185px;border-radius:50%;object-fit:cover;margin:0 auto 8px auto;display:block;">
+        <h3 style="margin:0;font-family:'Bodoni Moda';font-size:18px;">Tammy Jones</h3>
+        <p style="margin:3px 0 10px 0;font-family:'Lora';color:#888;text-transform:uppercase;font-size:0.75rem;">Real Estate Agent</p>
+        <button style="padding:9px 18px;border-radius:40px;background:#0B4068;color:#fff;border:none;font-family:'Bodoni Moda';font-weight:600;font-size:13px;cursor:pointer;">View Profile</button>
       </div>
 
-      <div class="team-card" style="text-align: center; padding: 20px;">
-        <img src="agent/LauraTwo.png" alt="Laura" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
-        <h3 style="margin: 0; font-family: 'Bodoni Moda'; color: #000000; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Laura Burke</h3>
-        <p style="font-family: 'Lora'; color: #888; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin: 8px 0 20px;">Real Estate Agent</p>
-        <button data-bs-toggle="modal" data-bs-target="#lauraModal" style="width: 160px; padding: 12px; background: #023E6C; border: none; color: #fff; font-family: 'Bodoni Moda'; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; letter-spacing: 1px; border-radius: 25px; margin: 0 auto; display: block;">View Profile</button>
+      <div style="text-align:center;">
+        <img src="Untitled design-10/4.png" style="width:185px;height:185px;border-radius:50%;object-fit:cover;margin:0 auto 8px auto;display:block;">
+        <h3 style="margin:0;font-family:'Bodoni Moda';font-size:18px;">Laura Burke</h3>
+        <p style="margin:3px 0 10px 0;font-family:'Lora';color:#888;text-transform:uppercase;font-size:0.75rem;">Real Estate Agent</p>
+        <button style="padding:9px 18px;border-radius:40px;background:#0B4068;color:#fff;border:none;font-family:'Bodoni Moda';font-weight:600;font-size:13px;cursor:pointer;">View Profile</a></button>
       </div>
 
     </div>

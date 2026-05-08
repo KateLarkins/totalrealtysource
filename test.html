@@ -1,87 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Total Realty Source Showcase</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Total Realty Source</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&family=Lora&display=swap" rel="stylesheet">
+<link href="style.css">
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Lora';
+}
+
+/* ================= NAV ================= */
+.topnav{
+  background:#023E6C;
+  color:white;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 40px;
+}
+
+.nav-links{
+  display:flex;
+  gap:25px;
+  font-family:'Bodoni Moda';
+  font-size:14px;
+}
+
+.nav-links a{
+  color:white;
+  text-decoration:none;
+}
+
+/* ================= HEADER ================= */
+header{
+  position:relative;
+  height:60vh;
+  min-height:420px;
+  background:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop') center/cover no-repeat;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+header::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(2,62,108,0.55);
+}
+
+header div{
+  position:relative;
+  color:white;
+}
+
+header h1{
+  font-family:'Bodoni Moda';
+  font-size:30px;
+  letter-spacing:2px;
+}
+
+header p{
+  margin-top:10px;
+  font-size:15px;
+}
+
+/* ================= TEAM WRAPPER (KEY FIX) ================= */
+.team-section{
+  padding:90px 20px;
+  background:white;
+}
+
+/* CENTERED CONTENT (NOT FULL WIDTH GRID) */
+.team-inner{
+  max-width:850px;
+  margin:0 auto;
+}
+
+/* INTRO */
+.team-intro h2{
+  font-family:'Bodoni Moda';
+  font-size:26px;
+  color:#023E6C;
+  margin-bottom:10px;
+}
+
+.team-intro p{
+  font-size:15px;
+  line-height:1.8;
+  color:#333;
+  margin-bottom:50px;
+}
+
+/* ================= TIGHT “CLUSTER” LAYOUT ================= */
+.team-grid{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:25px;
+}
+
+/* CARD STYLE (closer, bigger, not spaced grid) */
+.team-card{
+  width:170px;
+  text-align:center;
+}
+
+.team-card img{
+  width:150px;
+  height:150px;
+  object-fit:cover;
+  margin-bottom:10px;
+}
+
+.team-card h3{
+  font-family:'Bodoni Moda';
+  font-size:15px;
+  margin-bottom:4px;
+}
+
+.team-card p{
+  font-size:12px;
+  color:#666;
+  margin-bottom:8px;
+}
+
+.team-card button{
+  background:#023E6C;
+  color:white;
+  border:none;
+  padding:7px 12px;
+  font-size:12px;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:600px){
+  .team-card{
+    width:100%;
+  }
+
+  .team-card img{
+    width:220px;
+    height:220px;
+  }
+}
+
+/* ================= FOOTER ================= */
+footer{
+  background:#023E6C;
+  color:white;
+  padding:70px 30px;
+  text-align:center;
+}
+</style>
 </head>
-<body style="font-family: 'Arial', sans-serif; background-color:#f5f7fa; margin:20px;">
 
-    <div style="max-width:900px; margin:auto; background-color:#fff; padding:30px; border-radius:12px; box-shadow:0 6px 15px rgba(0,0,0,0.15);">
-        <h1 style="text-align:center; color:#1f3c88; margin-bottom:10px;">Total Realty Source Achievements</h1>
-        <p style="text-align:center; color:#555; font-size:1.1em; margin-bottom:30px;">
-            Proven results in residential, commercial, land, and investment properties across West Tennessee.
-        </p>
+<body>
 
-        <!-- Luxury Real Estate Banner -->
-        <div style="text-align:center; margin-bottom:30px;">
-            <img src="https://images.unsplash.com/photo-1598928506311-7c7f8f37b7d3?auto=format&fit=crop&w=900&q=80" 
-                 style="width:100%; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.2);" 
-                 alt="Luxury home">
-        </div>
+<!-- NAV -->
+<nav class="topnav">
+<div>
+<img src="logo.png/horizontallogo.png" style="height:45px;">
+</div>
 
-        <div style="text-align:center; margin-bottom:30px;">
-            <h2 style="color:#1f3c88;">Total Sales Volume</h2>
-            <p id="totalSales" style="font-size:2.5em; color:#f1c40f; font-weight:bold;">$50,000,000+</p>
-        </div>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="forsale.html">For Sale</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</div>
+</nav>
 
-        <div style="margin-bottom:30px;">
-            <h2 style="color:#1f3c88;">Property Types Sold</h2>
-            <ul id="propertyList" style="list-style:none; padding:0; font-size:1.1em; color:#333;">
-                <li style="padding:10px; border-bottom:1px solid #ddd;">Residential: $23M+</li>
-                <li style="padding:10px; border-bottom:1px solid #ddd;">Residential Income: $325K+</li>
-                <li style="padding:10px; border-bottom:1px solid #ddd;">Land: $1.1M+</li>
-                <li style="padding:10px;">Commercial Sales: $645K+</li>
-            </ul>
-        </div>
+<!-- HEADER -->
+<header>
+<div>
+<h1>Total Realty Source</h1>
+<p>West Tennessee Real Estate With Heart & Local Care</p>
+</div>
+</header>
 
-        <div style="margin-bottom:30px;">
-            <h2 style="color:#1f3c88;">Top Agents</h2>
-            <div id="agentList" style="display:flex; flex-wrap:wrap; gap:15px; justify-content:center;">
-                <!-- Agent 1 -->
-                <div style="flex:1; min-width:150px; padding:15px; background-color:#e9f0fb; border-radius:10px; text-align:center; color:#1f3c88; font-weight:bold;">
-                    <img src="https://randomuser.me/api/portraits/women/65.jpg" 
-                         alt="Amy McLemore" 
-                         style="width:80px; height:80px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
-                    <br>Amy McLemore<br><span style="color:#f1c40f;">$16.6M</span>
-                </div>
-                <!-- Agent 2 -->
-                <div style="flex:1; min-width:150px; padding:15px; background-color:#e9f0fb; border-radius:10px; text-align:center; color:#1f3c88; font-weight:bold;">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg" 
-                         alt="Lisa Ballinger" 
-                         style="width:80px; height:80px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
-                    <br>Lisa Ballinger<br><span style="color:#f1c40f;">$6.8M</span>
-                </div>
-                <!-- Agent 3 -->
-                <div style="flex:1; min-width:150px; padding:15px; background-color:#e9f0fb; border-radius:10px; text-align:center; color:#1f3c88; font-weight:bold;">
-                    <img src="https://randomuser.me/api/portraits/women/68.jpg" 
-                         alt="Jackie David" 
-                         style="width:80px; height:80px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
-                    <br>Jackie David<br><span style="color:#f1c40f;">$6.5M</span>
-                </div>
-            </div>
-        </div>
+<!-- TEAM -->
+<section class="team-section">
 
-        <div style="text-align:center;">
-            <button onclick="highlightAgents()" style="padding:12px 25px; font-size:16px; background-color:#1f3c88; color:#fff; border:none; border-radius:8px; cursor:pointer; transition: background 0.3s;">
-                Highlight Top Agent
-            </button>
-        </div>
-    </div>
+<div class="team-inner">
 
-    <script>
-        function highlightAgents() {
-            const agents = document.querySelectorAll('#agentList div');
-            agents.forEach(agent => {
-                agent.style.backgroundColor = '#e9f0fb'; // reset
-                agent.style.color = '#1f3c88';
-            });
-            let topAgent = agents[0]; // Amy McLemore
-            topAgent.style.backgroundColor = '#f1c40f';
-            topAgent.style.color = '#1f3c88';
-            topAgent.style.fontWeight = 'bold';
-            alert('Top Agent: Amy McLemore with $16.6M in sales!');
-        }
-    </script>
+<div class="team-intro">
+<h2>Meet Our Team</h2>
+<p>
+Our agents live and work across West Tennessee. This is a people-first business, not a property-first one.
+Every agent here brings local knowledge, real relationships, and care for the community.
+</p>
+</div>
+
+<div class="team-grid">
+
+<div class="team-card">
+<img src="agent/Lynda.png">
+<h3>Lynda Climer</h3>
+<p>Broker</p>
+<button>View</button>
+</div>
+
+<div class="team-card">
+<img src="agent/BrandieTwo.png">
+<h3>Brandie Bassett</h3>
+<p>Agent</p>
+<button>View</button>
+</div>
+
+<div class="team-card">
+<img src="agent/Jackie.png">
+<h3>Jackie David</h3>
+<p>Agent</p>
+<button>View</button>
+</div>
+
+<div class="team-card">
+<img src="agent/ashleytwo.png">
+<h3>Ashley McMillan</h3>
+<p>Agent</p>
+<button>View</button>
+</div>
+
+<div class="team-card">
+<img src="agent/Lisatwo.png">
+<h3>Lisa Ballinger</h3>
+<p>Agent</p>
+<button>View</button>
+</div>
+
+<div class="team-card">
+<img src="agent/Amyone.png">
+<h3>Amy McLemore</h3>
+<p>Agent</p>
+<button>View</button>
+</div>
+
+<div class="team-card">
+<img src="agent/TammyTwo.png">
+<h3>Tammy Jones</h3>
+<p>Agent</p>
+<button>View</button>
+</div>
+
+<div class="team-card">
+<img src="agent/LauraTwo.png">
+<h3>Laura Burke</h3>
+<p>Agent</p>
+<button>View</button>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- FOOTER (UNCHANGED STYLE) -->
+<footer>
+<p>Trusted West Tennessee Real Estate • Local Knowledge • Real Results</p>
+</footer>
 
 </body>
 </html>
