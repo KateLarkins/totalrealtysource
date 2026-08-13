@@ -1528,22 +1528,14 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   </div>
 </div>
 
-<header id="featured-listings-header" class="container featured-listings-header">
-  <p class="property-hero-kicker">TOTAL REALTY SOURCE</p>
-  <h2>Find a Place That Feels Right</h2>
-  <p class="property-hero-copy">Browse homes, land, and properties throughout West Tennessee.</p>
-</header>
-
 <script>
   (function placeMapAboveFilters() {
     const mapSection = document.querySelector('.listing-map-section');
-    const featuredHeader = document.getElementById('featured-listings-header');
     const filterBar = document.getElementById('listing-filter-bar');
     const resultsSummary = document.getElementById('listing-results-summary');
-    if (!mapSection || !featuredHeader || !filterBar || !resultsSummary) return;
+    if (!mapSection || !filterBar || !resultsSummary) return;
     resultsSummary.parentNode.insertBefore(mapSection, resultsSummary);
-    mapSection.insertAdjacentElement('afterend', featuredHeader);
-    featuredHeader.insertAdjacentElement('afterend', filterBar);
+    mapSection.insertAdjacentElement('afterend', filterBar);
     filterBar.insertAdjacentElement('afterend', resultsSummary);
     document.addEventListener('DOMContentLoaded', function buildPropertyWorkspace() {
       const categorySections = ['homes-listing-grid','land-listing-grid','other-listing-grid']
@@ -7669,6 +7661,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         mapLayer.selectAll('.regional-state-label')
           .attr('font-size', 12 / zoomScale)
           .attr('stroke-width', 3 / zoomScale);
+        mapLayer.selectAll('.tn-city-label')
+          .attr('font-size', 9.5 / zoomScale)
+          .attr('stroke-width', 2.8 / zoomScale)
+          .style('display', zoomScale >= 4 ? null : 'none');
         updateMarkerClutter();
       }
 
@@ -8077,6 +8073,54 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           .attr('font-size', 8)
           .attr('font-weight', 700)
           .text(shield => shield.name);
+
+        const selectedAreaName = selectedLocationName.split(',')[0].trim().toLowerCase();
+        const regionalCityLabels = [
+          {name:'Memphis',longitude:-90.0490,latitude:35.1495},
+          {name:'Jackson',longitude:-88.8139,latitude:35.6145},
+          {name:'Camden',longitude:-88.0978,latitude:36.0589},
+          {name:'Paris',longitude:-88.3267,latitude:36.3020},
+          {name:'Milan',longitude:-88.7589,latitude:35.9198},
+          {name:'Humboldt',longitude:-88.9159,latitude:35.8198},
+          {name:'Dyersburg',longitude:-89.3856,latitude:36.0345},
+          {name:'Lexington',longitude:-88.4181,latitude:35.6509},
+          {name:'Brownsville',longitude:-89.2623,latitude:35.5939},
+          {name:'Huntingdon',longitude:-88.4281,latitude:36.0006},
+          {name:'Martin',longitude:-88.8503,latitude:36.3434},
+          {name:'Union City',longitude:-89.0570,latitude:36.4242}
+        ];
+        const listingCityLabels = Array.from(d3.group(currentListings, listing => listing.city.replace(/,\s*TN$/i, '').trim()), ([name, listings]) => ({
+          name,
+          longitude: d3.mean(listings, listing => listing.longitude),
+          latitude: d3.mean(listings, listing => listing.latitude),
+          count: listings.length
+        }));
+        const cityLabelMap = new Map(regionalCityLabels.map(city => [city.name.toLowerCase(), city]));
+        listingCityLabels.forEach(city => { if (city.name) cityLabelMap.set(city.name.toLowerCase(), city); });
+        const cityLabels = Array.from(cityLabelMap.values())
+          .filter(city => d3.geoContains(state, [city.longitude, city.latitude]))
+          .filter(city => !(boundaryVisible && city.name.toLowerCase() === selectedAreaName));
+
+        mapLayer.selectAll('.tn-city-label')
+          .data(cityLabels)
+          .join('text')
+          .attr('class', 'tn-city-label')
+          .attr('x', city => projection([city.longitude, city.latitude])[0])
+          .attr('y', city => projection([city.longitude, city.latitude])[1] - 9)
+          .attr('text-anchor', 'middle')
+          .attr('fill', '#4A4A4A')
+          .attr('font-family', 'Arial, sans-serif')
+          .attr('font-size', 9.5)
+          .attr('font-weight', 600)
+          .attr('paint-order', 'stroke')
+          .attr('stroke', '#F7F7F5')
+          .attr('stroke-width', 2.8)
+          .attr('stroke-linejoin', 'round')
+          .attr('vector-effect', 'non-scaling-stroke')
+          .attr('clip-path', 'url(#tennessee-road-clip)')
+          .style('display', 'none')
+          .style('pointer-events', 'none')
+          .text(city => city.name);
 
         mapLayer.append('path')
           .datum(selectedBoundary)
