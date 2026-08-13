@@ -226,6 +226,13 @@
       font: 14px 'Lora';
     }
 
+    #map-location-query::-webkit-search-cancel-button,
+    #map-location-query::-webkit-search-decoration {
+      display: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
     .map-search-input-wrap {
       position: relative;
       min-width: 0;
@@ -6790,26 +6797,34 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       }
 
       function markerHeightForZoom(zoomScale) {
-        if (zoomScale <= 1.5) return 14;
-        if (zoomScale <= 4) return 16;
-        if (zoomScale <= 14) return 20;
+        if (zoomScale <= 10) return 12;
+        if (zoomScale <= 20) return 14;
+        if (zoomScale <= 40) return 18;
         return 22;
+      }
+
+      function markerSpreadForZoom(zoomScale) {
+        if (zoomScale <= 10) return 1;
+        if (zoomScale <= 20) return 0.7;
+        if (zoomScale <= 40) return 0.4;
+        return 0.2;
       }
 
       function updateMarkerScale() {
         if (!mapLayer) return;
         const zoomScale = Math.max(1, currentTransform.k || 1);
+        const spread = markerSpreadForZoom(zoomScale);
         const normalScale = markerHeightForZoom(zoomScale) / 26 / zoomScale;
         mapLayer.selectAll('.listing-pin')
           .attr('transform', listing => {
             const selectedScale = listing.modalId === selectedModalId ? 1.12 : 1;
-            const x = listing.x + listing.offsetX / zoomScale;
-            const y = listing.y + listing.offsetY / zoomScale;
+            const x = listing.x + listing.offsetX * spread / zoomScale;
+            const y = listing.y + listing.offsetY * spread / zoomScale;
             return `translate(${x},${y}) scale(${normalScale * selectedScale})`;
           });
         mapLayer.selectAll('.listing-pin-halo')
-          .attr('cx', listing => listing.x + listing.offsetX / zoomScale)
-          .attr('cy', listing => listing.y + listing.offsetY / zoomScale)
+          .attr('cx', listing => listing.x + listing.offsetX * spread / zoomScale)
+          .attr('cy', listing => listing.y + listing.offsetY * spread / zoomScale)
           .attr('r', 13 / zoomScale)
           .attr('display', listing => listing.modalId === selectedModalId ? null : 'none');
         mapLayer.selectAll('.jackson-map-label')
@@ -6833,22 +6848,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
       function updateMarkerClutter() {
         if (!mapLayer) return;
-        const zoomScale = Math.max(1, currentTransform.k || 1);
-        const occupiedCells = new Set();
-        const cellSize = markerHeightForZoom(zoomScale) + 3;
         mapLayer.selectAll('.listing-pin-link')
-          .style('display', listing => {
-            if (listing.card.dataset.mapVisible === 'false') return 'none';
-            if (zoomScale > 4) return null;
-            const point = currentTransform.apply([
-              listing.x + listing.offsetX / zoomScale,
-              listing.y + listing.offsetY / zoomScale
-            ]);
-            const cell = `${Math.round(point[0] / cellSize)},${Math.round(point[1] / cellSize)}`;
-            if (occupiedCells.has(cell)) return 'none';
-            occupiedCells.add(cell);
-            return null;
-          });
+          .style('display', listing => listing.card.dataset.mapVisible === 'false' ? 'none' : null);
       }
 
       function closePopup() {
@@ -6875,7 +6876,12 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
         const rootRect = mapRoot.getBoundingClientRect();
         const popupWidth = Math.min(280, rootRect.width - 24);
-        const point = currentTransform.apply([listing.x, listing.y]);
+        const zoomScale = Math.max(1, currentTransform.k || 1);
+        const spread = markerSpreadForZoom(zoomScale);
+        const point = currentTransform.apply([
+          listing.x + listing.offsetX * spread / zoomScale,
+          listing.y + listing.offsetY * spread / zoomScale
+        ]);
         popup.style.left = `${Math.max(12, Math.min(point[0] + 14, rootRect.width - popupWidth - 12))}px`;
         popup.style.top = `${Math.max(12, Math.min(point[1] - 80, rootRect.height - 225))}px`;
       }
@@ -7229,11 +7235,11 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const locationCounts = new Map();
         currentListings.forEach(listing => {
           const point = projection([listing.longitude, listing.latitude]);
-          const key = `${listing.latitude.toFixed(4)},${listing.longitude.toFixed(4)}`;
+          const key = listing.city || `${listing.latitude.toFixed(4)},${listing.longitude.toFixed(4)}`;
           const duplicateIndex = locationCounts.get(key) || 0;
           locationCounts.set(key, duplicateIndex + 1);
-          const angle = duplicateIndex * 2.4;
-          const radius = duplicateIndex ? Math.min(12, 5 + duplicateIndex * 1.5) : 0;
+          const angle = duplicateIndex * 2.399963;
+          const radius = duplicateIndex ? 9 + Math.sqrt(duplicateIndex) * 7 : 0;
           listing.x = point[0];
           listing.y = point[1];
           listing.offsetX = Math.cos(angle) * radius;
