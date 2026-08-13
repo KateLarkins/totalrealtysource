@@ -8077,8 +8077,15 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
         function abbreviatedPrice(value) {
           const amount = Number(String(value).replace(/[^0-9.]/g, '')) || 0;
-          if (amount >= 1000000) return `$${(amount / 1000000).toFixed(amount >= 10000000 ? 0 : 1).replace('.0','')}M`;
-          return `$${Math.round(amount / 1000)}K`;
+          if (amount >= 1000000) {
+            const millions = amount / 1000000;
+            return `$${millions.toFixed(3).replace(/\.?0+$/, '')}M`;
+          }
+          if (amount >= 1000) {
+            const thousands = amount / 1000;
+            return `$${thousands.toFixed(3).replace(/\.?0+$/, '')}K`;
+          }
+          return `$${amount.toLocaleString('en-US')}`;
         }
         const pricePins = pinLinks.append('g')
           .attr('class', 'listing-pin listing-price-pin')
