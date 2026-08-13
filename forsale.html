@@ -1191,6 +1191,8 @@
 .map-search-area[hidden] { display:none; }
 .map-search-area:hover,.map-search-area:focus-visible { background:#082F4D; }
 .map-return-list { display:none; position:absolute; top:12px; left:50%; z-index:7; min-height:42px; padding:9px 18px; color:#fff; background:#0B4068; border:1px solid #fff; border-radius:6px; transform:translateX(-50%); font:700 14px 'Lora'; cursor:pointer; }
+body.workspace-view-map .map-return-list { display:inline-flex; align-items:center; justify-content:center; gap:7px; white-space:nowrap; box-shadow:0 2px 8px rgba(0,0,0,.18); }
+body.workspace-view-map .map-return-list:hover,body.workspace-view-map .map-return-list:focus-visible { background:#082F4D; }
 .mobile-filters-toggle { display:none; min-height:46px; padding:10px 16px; color:#fff; background:#0B4068; border:1px solid #0B4068; border-radius:9px; font:600 14px 'Lora'; cursor:pointer; }
 .listing-price-pin rect { stroke:#fff; stroke-width:1.5; vector-effect:non-scaling-stroke; filter:drop-shadow(0 1px 2px rgba(0,0,0,.28)); }
 .listing-price-pin text { fill:#fff; font:700 10px Arial,sans-serif; text-anchor:middle; pointer-events:none; }
@@ -1445,7 +1447,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     <div id="tennessee-listing-map" role="region" aria-label="Interactive map of current property listings in Tennessee">
       <button id="map-remove-boundary" class="map-remove-boundary" type="button" hidden><span aria-hidden="true">&times;</span> Clear search</button>
       <button id="map-search-area" class="map-search-area" type="button" hidden>Search this area</button>
-      <button id="map-return-list" class="map-return-list" type="button">List</button>
+      <button id="map-return-list" class="map-return-list" type="button"><span aria-hidden="true">&larr;</span> Back to listings</button>
       <div class="map-zoom-controls" aria-label="Map zoom controls">
         <button id="map-zoom-in" type="button" aria-label="Zoom in">+</button>
         <button id="map-zoom-out" type="button" aria-label="Zoom out">&minus;</button>
