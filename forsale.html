@@ -6,7 +6,7 @@
   <!--CSS Stylesheet-->
   <link rel="stylesheet" href="style.css"> 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
   <!-- Font Awesome CDN -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
@@ -381,6 +381,36 @@
     .map-location-search button:hover,
     .map-location-search button:focus-visible {
       background: #082F4D;
+    }
+
+    .map-location-search .use-current-location {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      margin-left: auto;
+      color: #0B4068;
+      background: #FFFFFF;
+      border-color: #9FB0BC;
+      white-space: nowrap;
+    }
+
+    .use-current-location .location-target-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border: 1.5px solid currentColor;
+      border-radius: 50%;
+      font-size: 11px;
+      line-height: 1;
+    }
+
+    .map-location-search .use-current-location:hover,
+    .map-location-search .use-current-location:focus-visible {
+      color: #FFFFFF;
+      background: #0B4068;
     }
 
     .map-search-message {
@@ -1010,6 +1040,232 @@
   min-height: 150px; /* or whatever minimum makes sense */
 }
 
+/* Unified property-search experience */
+#listing-filter-bar { position:relative; padding:18px max(24px,calc((100vw - 1200px)/2 + 24px)) 20px !important; background:#fff !important; align-items:center !important; gap:10px !important; border-bottom:1px solid #E2E0DC !important; }
+#listing-filter-bar select,#listing-filter-bar input,#listing-filter-bar button,#listing-filter-bar summary,#listing-filter-bar .price-entry-field > span,.popular-property-searches,.popular-property-searches button { font-family:'Lora',serif !important; }
+#listing-filter-bar select,#listing-filter-bar select:focus,#listing-filter-bar select:active { color:#111 !important; background-color:#fff !important; }
+#listing-filter-bar select option { color:#111 !important; background:#fff !important; font-family:'Lora',serif !important; }
+.listing-filter-field { display:block; min-width:0; flex:0 1 auto; color:#2A2A33; font-family:'Lora',serif; }
+.listing-filter-field > span { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.listing-filter-field select,
+#agentFilter,#domSort { width:auto !important; min-width:128px; min-height:46px; padding:10px 40px 10px 16px !important; color:#111 !important; background-color:#fff !important; border:1px solid #C9D0D5 !important; border-radius:8px !important; box-shadow:none !important; font:500 16px 'Lora',serif !important; cursor:pointer; appearance:none !important; }
+#typeFilter { min-width:154px; }
+#agentFilter { min-width:150px; }
+#domSort { min-width:170px; }
+.listing-filter-field select:hover,#agentFilter:hover,#domSort:hover { background-color:#F8F7F5 !important; border-color:#8A8782 !important; }
+.listing-filter-field select:focus-visible,#agentFilter:focus-visible,#domSort:focus-visible { outline:2px solid #0B4068; outline-offset:2px; border-color:#0B4068 !important; }
+.listing-filter-field select option,#agentFilter option,#domSort option { color:#111; background:#fff; font:400 16px 'Lora',serif; }
+#listing-filter-bar > div[style*="min-width:260px"] { min-width:0 !important; flex:0 1 auto; }
+#listing-filter-bar > div[style*="min-width:260px"] > div { border-top-color:#333 !important; }
+.saved-homes-filter,.clear-listing-filters,.results-view-toggle button,.listing-empty-state button { min-height:46px; padding:10px 16px; border:1px solid #0B4068; border-radius:9px; font:600 14px 'Lora'; cursor:pointer; white-space:nowrap; }
+.saved-homes-filter { color:#0B4068; background:#fff; border-color:#9FB0BC; }
+.clear-listing-filters,.results-view-toggle button,.listing-empty-state button { color:#fff; background:#0B4068; }
+.saved-homes-filter:hover,.saved-homes-filter:focus-visible { color:#0B4068; background:#F2F6F9; border-color:#0B4068; }
+.clear-listing-filters:hover,.results-view-toggle button:hover,.listing-empty-state button:hover,
+.clear-listing-filters:focus-visible,.results-view-toggle button:focus-visible,.listing-empty-state button:focus-visible { color:#fff; background:#082F4D; border-color:#082F4D; }
+.saved-homes-filter[aria-pressed="true"],.results-view-toggle button[aria-pressed="true"] { color:#fff; background:#082F4D; box-shadow:inset 0 0 0 2px rgba(255,255,255,.28); }
+.results-view-toggle { display:flex; }
+.results-view-toggle button { border-radius:0; }
+.results-view-toggle button:first-child { border-radius:6px 0 0 6px; }
+.results-view-toggle button:last-child { border-radius:0 6px 6px 0; border-left:0; }
+.active-filter-chips { display:none; }
+.active-filter-chip { padding:7px 10px; color:#111; background:#F5F7F9; border:1px solid #D6DCE1; border-radius:999px; font:13px 'Lora'; }
+.listing-empty-state { max-width:1200px; margin:24px auto 48px; padding:48px 24px; text-align:center; background:#fff; }
+.listing-empty-state h2 { margin:0 0 10px; font:600 28px 'Bodoni Moda'; }
+.listing-empty-state p { margin:0 0 20px; color:#5f6368; font:15px/1.6 'Lora'; }
+.card { position:relative; cursor:pointer; }
+.card:focus-visible { outline:3px solid #0B4068; outline-offset:3px; }
+.favorite-listing,.modal-favorite-listing { display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px; padding:0; color:#B8BDC2; background:rgba(255,255,255,.98); border:1.5px solid #D2D6DA; border-radius:999px; box-shadow:0 2px 8px rgba(0,0,0,.1); font:27px/1 Arial,sans-serif; cursor:pointer; }
+.favorite-listing { position:absolute; top:10px; right:10px; z-index:5; }
+.favorite-listing:hover,.favorite-listing:focus-visible,.modal-favorite-listing:hover,.modal-favorite-listing:focus-visible { color:#969DA3; background:#fff; border-color:#B8BDC2; }
+.favorite-listing[aria-pressed="true"],.modal-favorite-listing[aria-pressed="true"] { color:#B00B0B; background:#fff; border-color:#D2D6DA; }
+.modal-favorite-listing { position:static; width:auto; min-width:112px; min-height:44px; height:44px; margin:0; padding:8px 16px; gap:8px; color:#111; background:#fff; border:1px solid #C9D0D5; box-shadow:none; font:600 14px/1 'Lora',serif; }
+.modal-favorite-listing .modal-heart-symbol { color:#B8BDC2; font:25px/1 Arial,sans-serif; }
+.modal-favorite-listing[aria-pressed="true"] .modal-heart-symbol { color:#B00B0B; }
+.modal-contact-actions { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:18px 0; }
+.modal-contact-actions a { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:10px 16px; color:#fff; background:#0B4068; border:1px solid #0B4068; border-radius:6px; font:600 14px 'Lora'; text-decoration:none; }
+.modal-contact-actions a[href^="tel:"] { color:#fff; background:#0B4068; }
+.modal-contact-actions a:hover,.modal-contact-actions a:focus-visible { color:#fff; background:#082F4D; border-color:#082F4D; }
+.map-remove-boundary,.map-zoom-controls button,.map-location-search > button[type="submit"] { color:#fff !important; background:#0B4068 !important; border-color:#0B4068 !important; }
+.map-remove-boundary:hover,.map-remove-boundary:focus-visible,.map-zoom-controls button:hover,.map-zoom-controls button:focus-visible,
+.map-location-search > button[type="submit"]:hover,.map-location-search > button[type="submit"]:focus-visible { color:#fff !important; background:#082F4D !important; border-color:#082F4D !important; }
+.map-location-search .map-clear-search { color:#fff !important; background:#0B4068 !important; width:26px; height:26px; right:6px; font-size:18px; }
+.map-location-search .map-clear-search:hover,.map-location-search .map-clear-search:focus-visible { color:#fff !important; background:#082F4D !important; }
+.featured-listings-header { position:relative; padding-top:26px; padding-bottom:18px; border:0; background:#FFFFFF; }
+.featured-listings-header::before { content:""; position:absolute; left:max(24px,calc((100vw - 1200px)/2 + 24px)); top:31px; bottom:25px; width:3px; background:#0B4068; }
+.featured-listings-header h2 { max-width:760px; margin-left:16px; padding-left:0; border-left:0; color:#111; font-size:clamp(26px,2.6vw,34px); line-height:1.12; }
+.property-hero-kicker { margin:0 0 7px 16px; color:#0B4068; font:600 11px/1.2 'Lora'; letter-spacing:.15em; }
+.property-hero-copy { max-width:700px; margin:8px 0 0 16px; color:#2A2A2A; font:15px/1.5 'Lora'; }
+.popular-property-searches { flex:1 0 100%; display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin:1px 0 9px; }
+.popular-property-searches > span { color:#111; font:600 14px 'Lora'; }
+.popular-property-searches > div { display:flex; flex-wrap:wrap; gap:8px; }
+.popular-property-searches button { min-height:38px; padding:7px 11px; color:#0B4068; background:#fff; border:1px solid #C9D2D9; border-radius:6px; font:500 14px 'Lora'; cursor:pointer; }
+.popular-property-searches button:hover,.popular-property-searches button:focus-visible { color:#fff; background:#0B4068; border-color:#0B4068; }
+.popular-property-searches button.is-active,.popular-property-searches button[aria-pressed="true"] { color:#fff; background:#0B4068; border-color:#0B4068; }
+.popular-property-searches button.is-active::after,.popular-property-searches button[aria-pressed="true"]::after { content:"\00d7"; display:inline-flex; align-items:center; justify-content:center; width:17px; height:17px; margin-left:7px; color:#fff; border:1px solid rgba(255,255,255,.9); border-radius:50%; font:400 15px/1 Arial,sans-serif; }
+.explore-current-header { max-width:1600px; margin:0 auto; padding:34px max(24px,calc((100vw - 1200px)/2 + 24px)) 20px; background:#fff; }
+.explore-current-header p { margin:0 0 7px; color:#0B4068; font:700 11px 'Lora'; letter-spacing:.14em; }
+.explore-current-header h2 { margin:0; font:600 clamp(24px,2.2vw,32px)/1.15 'Bodoni Moda'; }
+.property-search-workspace { display:grid; grid-template-columns:minmax(0,1.04fr) minmax(520px,.96fr); gap:0; width:calc(100% - 64px); max-width:1400px; height:min(760px,calc(100vh - 190px)); min-height:600px; margin:0 auto 46px; overflow:hidden; background:#fff; }
+.property-search-workspace .listing-map-section { position:relative; top:auto; align-self:stretch; width:100%; max-width:100%; min-width:0; height:100%; margin:0; padding:0; overflow:hidden; background:#F7F7F5; box-shadow:none; clip-path:none; }
+.property-search-workspace .listing-map-header { display:none; }
+.property-search-workspace .listing-map-layout { display:block; width:100%; height:100%; min-width:0; overflow:hidden; }
+.property-search-workspace #tennessee-listing-map { width:100%; max-width:100%; min-width:0; height:100%; min-height:0; border-width:0 1px 0 0; box-shadow:none; }
+.property-search-workspace .listing-map-navigation { display:none; }
+.property-results-panel { min-width:0; height:100%; padding:24px 24px 50px; overflow-y:auto; overscroll-behavior:contain; background:#fff; }
+.property-results-heading { margin:0 0 4px; }
+.property-results-heading p { margin:0 0 5px; color:#6A6864; font:700 11px 'Lora'; letter-spacing:.12em; }
+.property-results-heading h2 { margin:0; color:#111; font:600 clamp(25px,2.4vw,34px)/1.15 'Bodoni Moda'; }
+.property-results-heading .property-results-price { margin:6px 0 0; color:#777; font:400 14px/1.4 'Lora'; letter-spacing:0; }
+.property-results-tools { display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin:12px 0 4px; }
+.property-results-tools #listing-results-summary { flex:1 1 170px; min-width:150px; padding:0 !important; background:transparent !important; }
+.property-results-tools #listing-results-summary hr,.property-results-tools #listing-results-summary > div { display:none; }
+.property-results-tools #listing-count { font-size:16px !important; }
+.property-results-tools > div:has(#domSort) { min-width:170px !important; }
+.property-results-panel #listing-results-summary { padding:10px 0 16px !important; }
+.property-results-panel > section.container { width:100%; max-width:none; padding:18px 0; }
+.property-results-panel .section-header { margin-bottom:15px; }
+.property-results-panel .section-header h1 { font:600 22px 'Bodoni Moda'; }
+.property-results-panel .grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.property-results-panel .card { border:1px solid #E1E5E8; border-radius:6px; overflow:hidden; box-shadow:0 2px 10px rgba(15,35,50,.05); }
+.property-results-panel .card:hover { border-color:#AEB9C1; }
+.property-results-panel .card.map-selected { border-color:#0B4068; box-shadow:0 0 0 2px rgba(11,64,104,.2); }
+.property-type-badge { position:absolute; top:12px; left:12px; z-index:4; padding:5px 8px; color:#fff; border-radius:4px; font:700 11px 'Lora'; letter-spacing:.04em; text-transform:uppercase; }
+.property-type-badge.homes { background:#B00B0B; }
+.property-type-badge.land { background:#22B455; }
+.property-type-badge.other { background:#E7850A; }
+.explore-west-tennessee { margin-top:28px; padding-top:24px; border-top:1px solid #E2E0DC; }
+.explore-west-tennessee h2 { margin:0 0 14px; font:600 24px 'Bodoni Moda'; }
+.explore-west-tennessee div { display:flex; flex-wrap:wrap; gap:8px; }
+.explore-west-tennessee button { min-height:40px; padding:8px 12px; color:#0B4068; background:#fff; border:1px solid #BFC8CE; border-radius:6px; font:600 13px 'Lora'; cursor:pointer; }
+.explore-west-tennessee button:hover,.explore-west-tennessee button:focus-visible { background:#F3F7FA; border-color:#0B4068; }
+.saved-properties-section { margin-top:24px; padding:24px 0 6px; border-top:1px solid #DDE3E7; }
+.saved-properties-section[hidden] { display:none; }
+.saved-properties-section header { margin-bottom:16px; }
+.saved-properties-section header p { margin:0 0 5px; color:#0B4068; font:700 11px 'Lora'; letter-spacing:.12em; }
+.saved-properties-section header h2 { margin:0; color:#111; font:600 27px/1.15 'Bodoni Moda'; }
+.saved-properties-section .grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.saved-properties-empty { margin:0; padding:28px 20px; color:#4B5359; background:#F5F7F9; text-align:center; font:15px/1.5 'Lora'; }
+#listing-filter-bar { position:sticky !important; top:0; z-index:30; }
+#listing-filter-bar .map-location-search { flex:0 1 1050px; width:78%; max-width:1050px; margin:0 0 2px; }
+#listing-filter-bar .map-location-search input { min-height:58px; padding:13px 48px 13px 18px; color:#111; background:#fff; border:1px solid #BEC7CE; border-radius:8px; box-shadow:0 2px 10px rgba(15,35,50,.06); font-size:17px; }
+#listing-filter-bar .map-location-search input:focus { border-color:#0B4068; outline:2px solid rgba(11,64,104,.18); outline-offset:1px; }
+#listing-filter-bar .map-location-search > button[type="submit"] { min-width:88px; padding-inline:14px; border-radius:8px; }
+.filter-popover { position:relative; }
+.filter-popover summary { display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:44px; padding:9px 14px; color:#111; background:#fff; border:1px solid #C9D0D5; border-radius:8px; list-style:none; font:500 16px 'Lora'; cursor:pointer; }
+.filter-popover summary::-webkit-details-marker { display:none; }
+.filter-popover summary::after { content:'⌄'; color:#0B4068; font:700 16px Arial; }
+.filter-popover[open] summary { border-color:#0B4068; }
+.filter-popover.filter-active summary { color:#fff; background:#0B4068; border-color:#0B4068; }
+.filter-popover.filter-active summary::after { color:#fff; }
+.listing-filter-field select.filter-active,#agentFilter.filter-active { color:#0B4068 !important; background:#EEF4F8 !important; border-color:#0B4068 !important; }
+.filter-popover-panel { position:absolute; top:calc(100% + 7px); left:0; z-index:40; display:grid; grid-template-columns:repeat(2,minmax(180px,1fr)); gap:10px; min-width:390px; padding:14px; background:#fff; border:1px solid #C9D0D5; border-radius:8px; box-shadow:0 10px 24px rgba(15,35,50,.14); }
+.filter-popover-panel .listing-filter-field select { width:100% !important; }
+.filter-popover-panel .price-entry-field > span { position:static; width:auto; height:auto; margin:0 0 6px; overflow:visible; clip:auto; white-space:normal; color:#25282A; font:600 13px 'Lora'; }
+.price-entry-field input { width:100%; min-height:46px; padding:10px 12px; color:#111; background:#fff; border:1px solid #C9D0D5; border-radius:7px; font:500 16px 'Lora',serif; }
+.price-entry-field { position:relative; }
+.price-entry-field input { padding-right:38px; }
+.price-entry-clear { position:absolute; right:8px; bottom:9px; display:none; align-items:center; justify-content:center; width:28px; min-height:28px; height:28px; padding:0; color:#111; background:#fff; border:1px solid #C9D0D5; border-radius:50%; font:400 19px/1 Arial,sans-serif !important; cursor:pointer; }
+.price-entry-clear.is-visible { display:inline-flex; }
+.price-entry-clear:hover,.price-entry-clear:focus-visible { color:#fff; background:#0B4068; border-color:#0B4068; }
+.price-entry-field input::placeholder { color:#676E73; opacity:1; }
+.price-entry-field input:focus { border-color:#0B4068; outline:2px solid rgba(11,64,104,.16); outline-offset:1px; }
+.category-filter-tabs { display:flex; align-items:center; gap:7px; }
+.category-filter-tabs button { min-height:44px; padding:9px 14px; color:#111; background:#fff; border:1px solid #CCD3D8; border-radius:6px; font:500 15px 'Lora'; cursor:pointer; }
+.category-filter-tabs button { display:inline-flex; align-items:center; justify-content:center; white-space:nowrap; }
+.category-filter-tabs button:hover,.category-filter-tabs button:focus-visible { color:#0B4068; background:#F5F8FA; border-color:#8FA3B1; }
+.category-filter-tabs button[aria-pressed="true"] { color:#fff; background:#0B4068; border-color:#0B4068; }
+.category-filter-tabs i { display:inline-block; width:8px; height:8px; margin-right:5px; border:1px solid rgba(255,255,255,.65); border-radius:50%; }
+.category-filter-tabs [data-property-type="homes"] i { background:#B00B0B; }
+.category-filter-tabs [data-property-type="land"] i { background:#22B455; }
+.category-filter-tabs [data-property-type="other"] i { background:#FF9F1C; }
+.results-view-toggle { gap:3px; padding:3px; background:#F0F3F5; border-radius:7px; }
+.results-view-toggle button { min-height:38px; padding:7px 11px; color:#333; background:transparent; border:0; border-radius:5px !important; }
+.results-view-toggle button[aria-pressed="true"] { color:#fff; background:#0B4068; box-shadow:none; }
+.featured-listings-header,.featured-listings-header + #listing-filter-bar,.explore-current-header,.property-search-workspace { animation:propertyEntrance .42s ease both; }
+.featured-listings-header + #listing-filter-bar { animation-delay:.08s; }
+.explore-current-header,.property-search-workspace { animation-delay:.14s; }
+@keyframes propertyEntrance { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+@media (prefers-reduced-motion:reduce) { .featured-listings-header,.featured-listings-header + #listing-filter-bar,.explore-current-header,.property-search-workspace { animation:none; } }
+.map-search-area { position:absolute; left:18px; right:auto; top:auto; bottom:18px; z-index:6; min-height:42px; padding:9px 16px; color:#fff; background:#0B4068; border:1px solid #fff; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.18); transform:none; font:700 14px 'Lora'; cursor:pointer; }
+.map-search-area[hidden] { display:none; }
+.map-search-area:hover,.map-search-area:focus-visible { background:#082F4D; }
+.map-return-list { display:none; position:absolute; top:12px; left:50%; z-index:7; min-height:42px; padding:9px 18px; color:#fff; background:#0B4068; border:1px solid #fff; border-radius:6px; transform:translateX(-50%); font:700 14px 'Lora'; cursor:pointer; }
+.mobile-filters-toggle { display:none; min-height:46px; padding:10px 16px; color:#fff; background:#0B4068; border:1px solid #0B4068; border-radius:9px; font:600 14px 'Lora'; cursor:pointer; }
+.listing-price-pin rect { stroke:#fff; stroke-width:1.5; vector-effect:non-scaling-stroke; filter:drop-shadow(0 1px 2px rgba(0,0,0,.28)); }
+.listing-price-pin text { fill:#fff; font:700 10px Arial,sans-serif; text-anchor:middle; pointer-events:none; }
+body.workspace-view-list .property-search-workspace { grid-template-columns:1fr; max-width:1400px; height:auto; min-height:0; overflow:visible; }
+body.workspace-view-list .property-search-workspace .listing-map-section { display:none; }
+body.workspace-view-list .property-results-panel { height:auto; overflow:visible; }
+body.workspace-view-list .property-results-panel .grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+body.workspace-view-map .property-search-workspace { grid-template-columns:1fr; max-width:1600px; }
+body.workspace-view-map .property-results-panel { display:none; }
+body.workspace-view-map .property-search-workspace .listing-map-section { position:relative; top:auto; }
+.card > img { aspect-ratio:4/3; height:auto !important; object-fit:cover; }
+.card .address { color:#666 !important; line-height:1.45; }
+#listing-count { max-width:1200px; margin:0 auto !important; font-weight:600; }
+section.listing-category-empty { }
+.property-results-panel > section.container:not(:has(.card:not([hidden]))) { display:none; }
+@media (min-width:769px) { .results-view-toggle { display:flex; } }
+@media (min-width:1300px) { body.workspace-view-list .property-results-panel .grid { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+@media (min-width:769px) and (max-width:1100px) { #showSplitView { display:none; } }
+@media (max-width:768px) {
+  .property-search-workspace { display:block; width:100%; max-width:100%; height:auto; min-height:0; margin-bottom:24px; overflow:hidden; }
+  .featured-listings-header { padding:28px 16px 20px; }
+  .featured-listings-header::before { left:16px; top:28px; bottom:20px; }
+  .featured-listings-header h2 { font-size:clamp(27px,7.5vw,30px); }
+  .property-hero-kicker { font-size:11px; }
+  .property-hero-copy { font-size:14px; }
+  #listing-filter-bar .map-location-search input { min-height:54px; font-size:16px; }
+  .property-search-workspace .listing-map-section { position:relative; top:auto; }
+  body.workspace-view-map .property-search-workspace { height:65vh; min-height:420px; }
+  body.workspace-view-map .map-return-list { display:block; }
+  .property-search-workspace #tennessee-listing-map { width:100%; max-width:100%; min-width:0; height:100%; min-height:0; }
+  .property-results-panel { padding:18px 16px 44px; }
+  .property-results-panel .grid,body.workspace-view-list .property-results-panel .grid { grid-template-columns:1fr; }
+  body.workspace-view-map .property-search-workspace .listing-map-section { display:block; }
+  .listing-map-section { padding-top:28px; }
+  .listing-map-layout { display:block; }
+  .listing-map-navigation { margin-top:12px; }
+  .map-location-search { flex-wrap:wrap; gap:8px; }
+  #listing-filter-bar .map-location-search { flex:1 0 100%; width:100%; max-width:none; }
+  .map-location-search .map-search-input-wrap { flex:1 1 100%; }
+  .map-location-search > button[type="submit"] { width:100%; margin:0; }
+  .map-location-search .use-current-location { width:100%; margin-left:0; }
+  body.mobile-list-view .listing-map-layout { display:none; }
+  body.mobile-map-view #featured-listings-header, body.mobile-map-view #listing-results-summary,
+  body.mobile-map-view section.container:has(.grid) { display:none !important; }
+  #listing-filter-bar { padding:18px 16px !important; gap:12px 10px !important; align-items:flex-end !important; }
+  .mobile-filters-toggle { display:block; flex:1 1 calc(50% - 5px); }
+  .category-filter-tabs { flex:1 0 100%; justify-content:space-between; }
+  .category-filter-tabs button { flex:1; padding-inline:6px; }
+  .category-filter-tabs button { min-height:44px; height:44px; padding-inline:4px; font-size:14px !important; }
+  .category-filter-tabs i { margin-right:3px; }
+  #showSplitView { display:none; }
+  body:not(.mobile-filters-open) #listing-filter-bar .listing-filter-field,
+  body:not(.mobile-filters-open) #listing-filter-bar .filter-popover,
+  body:not(.mobile-filters-open) #listing-filter-bar > div:has(#agentFilter),
+  body:not(.mobile-filters-open) #savedHomesFilter,
+  body:not(.mobile-filters-open) #clearListingFilters { display:none !important; }
+  .listing-filter-field { min-width:calc(50% - 5px); }
+  .filter-popover { flex:1 1 calc(50% - 5px); }
+  .filter-popover-panel { min-width:min(330px,calc(100vw - 32px)); }
+  .filter-popover:has(.price-entry-field) .filter-popover-panel { grid-template-columns:1fr; }
+  .listing-filter-field select { width:100% !important; min-width:0; }
+  #agentFilter { min-width:0; }
+  #listing-filter-bar > div[style*="min-width:260px"] { min-width:calc(50% - 5px) !important; flex:1; }
+  #agentFilter,#domSort { width:100% !important; min-width:0; }
+  .grid { grid-template-columns:1fr !important; }
+  .saved-homes-filter,.clear-listing-filters,.results-view-toggle { flex:1 1 calc(50% - 5px); margin:0; }
+  .results-view-toggle button { flex:1; }
+  .modal-contact-actions { gap:8px; margin:16px 0; }
+  .modal-contact-actions a,.modal-contact-actions .modal-favorite-listing { flex:1 1 100%; width:100%; }
+}
+@media (max-width:420px) {
+  .listing-filter-field { min-width:calc(50% - 5px); flex:1 1 calc(50% - 5px); }
+  .saved-homes-filter,.clear-listing-filters,.results-view-toggle { flex-basis:100%; width:100%; }
+}
+
 
   </style>
 </head>
@@ -1105,9 +1361,9 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 
 
-<div style="width:100%;height:108px;background:linear-gradient(180deg,#ffffff 0%,#fffdf8 100%);display:flex;align-items:center;justify-content:center;margin:0;padding:0;">
+<div style="width:100%;height:36px;background:#ffffff;display:flex;align-items:center;justify-content:center;margin:0;padding:0;">
   <!-- Optional subtle dots -->
-  <div style="width:100%;height:100%;background-image:radial-gradient(#eadfce 1.25px, transparent 1.25px);background-size:24px 24px;"></div>
+  <div style="width:100%;height:100%;background-image:radial-gradient(#dbe2e7 1px, transparent 1px);background-size:24px 24px;"></div>
 </div>
 
 <section id="listing-results-summary" style="background-color:#ffffff;padding:2% 3%;margin:0;font-size:20px;border:none;position:relative;">
@@ -1116,7 +1372,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   <div style="position:absolute;bottom:0;left:0;width:100%;height:40px;background:linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgb(245,245,245) 100%);pointer-events:none;"></div>
 </section>
 
-<!-- Search + Agent Filter -->
+<!-- Unified listing filters -->
 <div id="listing-filter-bar" style="
   display:flex;
   flex-wrap:wrap;
@@ -1126,24 +1382,13 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   border-bottom:1px solid #e5e5e5;
   align-items:center;
 ">
+  <input id="propertySearch" type="hidden" value="">
 
-  <!-- Search -->
-  <input
-    type="text"
-    id="propertySearch"
-    placeholder="Search by address or property name"
-    style="
-      flex:1; min-width:260px; padding:12px 14px;
-      font-size:15px;
-      font-family:'Lora';
-      border:1px solid #dcdcdc;
-      border-radius:6px;
-      outline:none;
-      background:#ffffff;
-    "
-    onfocus="this.style.borderColor='#000000'"
-    onblur="this.style.borderColor='#dcdcdc'"
-  />
+  <label class="listing-filter-field price-entry-field"><span>Minimum price</span><input id="minPrice" type="number" min="0" step="1000" inputmode="numeric" placeholder="No minimum" aria-label="Minimum price"></label>
+  <label class="listing-filter-field price-entry-field"><span>Maximum price</span><input id="maxPrice" type="number" min="0" step="1000" inputmode="numeric" placeholder="No maximum" aria-label="Maximum price"></label>
+  <label class="listing-filter-field"><span>Beds</span><select id="bedsFilter"><option value="0">Beds</option><option value="2">2+ beds</option><option value="3">3+ beds</option><option value="4">4+ beds</option></select></label>
+  <label class="listing-filter-field"><span>Baths</span><select id="bathsFilter"><option value="0">Baths</option><option value="1">1+ baths</option><option value="2">2+ baths</option><option value="3">3+ baths</option></select></label>
+  <label class="listing-filter-field" hidden style="display:none"><span>Property type</span><select id="typeFilter"><option value="all">Property type</option><option value="homes">Homes</option><option value="land">Land</option><option value="other">Commercial / Other</option></select></label>
 
   <div style="position:relative; display:inline-block; min-width:260px;">
     <select id="agentFilter" style="padding:12px 40px 12px 14px;font-size:15px;font-family:'Lora', Arial, sans-serif;color:white;border:1px solid #023E6C;border-radius:6px;background-color:#023E6C;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;width:100%;">
@@ -1162,33 +1407,51 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
   <div style="position:relative; display:inline-block; min-width:260px;">
     <select id="domSort" aria-label="Sort by days on market" style="padding:12px 40px 12px 14px;font-size:15px;font-family:'Lora', Arial, sans-serif;color:white;border:1px solid #023E6C;border-radius:6px;background-color:#023E6C;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;width:100%;">
-      <option value="dom-desc" selected>Sort by: DOM (Oldest First)</option>
-      <option value="dom-asc">Sort by: DOM (Newest First)</option>
+      <option value="recommended" selected>Sort: Recommended</option>
+      <option value="dom-asc">Sort: Newest</option>
+      <option value="dom-desc">Sort: Oldest</option>
       <option value="price-asc">Sort by: Price (Low to High)</option>
       <option value="price-desc">Sort by: Price (High to Low)</option>
     </select>
     <div style="pointer-events:none;position:absolute;right:12px;top:50%;transform:translateY(-50%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:6px solid white;"></div>
   </div>
-  
-  
+  <button id="mobileFiltersToggle" class="mobile-filters-toggle" type="button" aria-expanded="false">Filters</button>
+  <div class="category-filter-tabs" role="group" aria-label="Property category">
+    <button type="button" data-property-type="all" aria-pressed="true">All</button>
+    <button type="button" data-property-type="homes" aria-pressed="false"><i></i> Homes</button>
+    <button type="button" data-property-type="land" aria-pressed="false"><i></i> Land</button>
+    <button type="button" data-property-type="other" aria-pressed="false"><i></i> Other</button>
+  </div>
+  <button id="savedHomesFilter" class="saved-homes-filter" type="button" aria-pressed="false">Saved Homes ♡</button>
+  <button id="clearListingFilters" class="clear-listing-filters" type="button"><span aria-hidden="true">&times;</span> Clear All</button>
+  <div class="results-view-toggle" role="group" aria-label="Results view"><button id="showSplitView" type="button" aria-pressed="true">Split</button><button id="showListView" type="button" aria-pressed="false">List</button><button id="showMapView" type="button" aria-pressed="false">Map</button></div>
+  <div id="active-filter-chips" class="active-filter-chips" aria-label="Active filters"></div>
+</div>
+
+<div id="listing-empty-state" class="listing-empty-state" hidden>
+  <h2>No properties found in this area</h2>
+  <p>Try expanding the map, changing your filters, or removing the location boundary.</p>
+  <button type="button" data-clear-all-filters>Clear Filters</button>
 </div>
 
 
 <section class="container listing-map-section" aria-labelledby="listing-map-title">
   <header class="listing-map-header">
     <p class="listing-map-kicker">Property Search</p>
-    <h2 id="listing-map-title" class="listing-map-title">Explore properties across Tennessee</h2>
-    <p class="listing-map-intro">Search by city, ZIP code, county, or address, then explore the matching homes and land directly on the map.</p>
+    <h2 id="listing-map-title" class="listing-map-title">Find Your Next Property</h2>
+    <p class="listing-map-intro">Search homes, land, and other properties across West Tennessee.</p>
   </header>
   <div class="listing-map-layout">
     <div id="tennessee-listing-map" role="region" aria-label="Interactive map of current property listings in Tennessee">
-      <button id="map-remove-boundary" class="map-remove-boundary" type="button"><span aria-hidden="true">&times;</span> Clear search</button>
+      <button id="map-remove-boundary" class="map-remove-boundary" type="button" hidden><span aria-hidden="true">&times;</span> Clear search</button>
+      <button id="map-search-area" class="map-search-area" type="button" hidden>Search this area</button>
+      <button id="map-return-list" class="map-return-list" type="button">List</button>
       <div class="map-zoom-controls" aria-label="Map zoom controls">
         <button id="map-zoom-in" type="button" aria-label="Zoom in">+</button>
         <button id="map-zoom-out" type="button" aria-label="Zoom out">&minus;</button>
       </div>
       <div class="listing-map-legend" aria-label="Property type legend">
-        <span><i style="background:#FF2D2D;"></i>Homes for Sale</span>
+        <span><i style="background:#B00B0B;"></i>Homes for Sale</span>
         <span><i style="background:#22B455;"></i>Land</span>
         <span><i style="background:#FF9F1C;"></i>Other</span>
       </div>
@@ -1206,14 +1469,15 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       <form id="map-location-search" class="map-location-search" role="search">
         <label for="map-location-query" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Search by address, ZIP code, county, or city</label>
         <span class="map-search-input-wrap">
-          <input id="map-location-query" type="search" value="Jackson, TN" placeholder="Address, ZIP, county, or city" autocomplete="off" aria-controls="map-location-suggestions" aria-expanded="false">
+          <input id="map-location-query" type="search" value="All West Tennessee Properties" placeholder="City, ZIP, county, neighborhood, or address" autocomplete="off" aria-controls="map-location-suggestions" aria-expanded="false">
           <div id="map-location-suggestions" class="map-search-suggestions" role="listbox" hidden></div>
-          <button id="map-clear-location" class="map-clear-search" type="button" aria-label="Clear Jackson search">&times;</button>
+          <button id="map-clear-location" class="map-clear-search" type="button" aria-label="Clear location search" hidden>&times;</button>
         </span>
         <button type="submit">Search</button>
+        <button id="use-current-location" class="use-current-location" type="button">Use my location <span class="location-target-icon" aria-hidden="true"><i class="fa fa-location-arrow"></i></span></button>
       </form>
       <p id="map-search-message" class="map-search-message" aria-live="polite"></p>
-      <p id="map-selected-location" class="listing-map-location">Jackson, TN</p>
+      <p id="map-selected-location" class="listing-map-location">West Tennessee</p>
       <p id="listing-map-status" aria-live="polite">Properties in the current map view.</p>
       <div id="map-area-listings" class="map-area-listings" aria-label="Listings in the selected area"></div>
     </aside>
@@ -1221,7 +1485,9 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </section>
 
 <header id="featured-listings-header" class="container featured-listings-header">
-  <h2>Featured Listings</h2>
+  <p class="property-hero-kicker">TOTAL REALTY SOURCE</p>
+  <h2>Find a Place That Feels Right</h2>
+  <p class="property-hero-copy">Browse homes, land, and properties throughout West Tennessee.</p>
 </header>
 
 <script>
@@ -1235,6 +1501,92 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     mapSection.insertAdjacentElement('afterend', featuredHeader);
     featuredHeader.insertAdjacentElement('afterend', filterBar);
     filterBar.insertAdjacentElement('afterend', resultsSummary);
+    document.addEventListener('DOMContentLoaded', function buildPropertyWorkspace() {
+      const categorySections = ['homes-listing-grid','land-listing-grid','other-listing-grid']
+        .map(id => document.getElementById(id)?.closest('section.container')).filter(Boolean);
+      if (!categorySections.length || document.querySelector('.property-search-workspace')) return;
+      const workspace = document.createElement('div');
+      workspace.className = 'property-search-workspace';
+      const resultsPanel = document.createElement('main');
+      resultsPanel.className = 'property-results-panel';
+      const resultsHeading = document.createElement('div');
+      resultsHeading.className = 'property-results-heading';
+      resultsHeading.innerHTML = '<p>PROPERTY RESULTS</p><h2 id="workspace-results-title">All West Tennessee Properties</h2><p id="workspace-results-price" class="property-results-price" hidden></p>';
+      const resultsTools = document.createElement('div');
+      resultsTools.className = 'property-results-tools';
+      const savedControl = document.getElementById('savedHomesFilter');
+      const viewControl = document.querySelector('.results-view-toggle');
+      const sortControl = document.getElementById('domSort')?.parentElement;
+      resultsTools.append(resultsSummary, savedControl, viewControl, sortControl);
+      resultsPanel.append(resultsHeading, resultsTools, ...categorySections);
+      const explore = document.createElement('nav');
+      explore.id = 'explore-west-tennessee';
+      explore.className = 'explore-west-tennessee';
+      explore.setAttribute('aria-label','Explore more West Tennessee properties');
+      explore.innerHTML = '<h2>Explore More West Tennessee Properties</h2><div></div>';
+      const savedSection = document.createElement('section');
+      savedSection.id = 'saved-properties-section';
+      savedSection.className = 'saved-properties-section';
+      savedSection.hidden = true;
+      savedSection.innerHTML = '<header><p>SAVED ACROSS WEST TENNESSEE</p><h2>Saved Homes</h2></header><div id="saved-properties-grid" class="grid"></div><p class="saved-properties-empty" hidden>No saved properties yet. Select the heart on any listing to keep it here.</p>';
+      resultsPanel.appendChild(savedSection);
+      resultsPanel.appendChild(explore);
+      filterBar.insertAdjacentElement('afterend', workspace);
+      workspace.append(mapSection, resultsPanel);
+      document.querySelectorAll('.custom-modal').forEach(modal => document.body.appendChild(modal));
+      const locationForm = document.getElementById('map-location-search');
+      if (locationForm) {
+        filterBar.insertBefore(locationForm, filterBar.firstElementChild);
+        const popular = document.createElement('div');
+        popular.id = 'popular-property-searches';
+        popular.className = 'popular-property-searches';
+        popular.innerHTML = '<span>Popular searches</span><div></div>';
+        locationForm.insertAdjacentElement('afterend', popular);
+      }
+      function groupFilters(label, ids) {
+        const details = document.createElement('details');
+        details.className = 'filter-popover';
+        const summary = document.createElement('summary');
+        summary.textContent = label;
+        const panel = document.createElement('div');
+        panel.className = 'filter-popover-panel';
+        ids.forEach(id => {
+          const field = document.getElementById(id)?.closest('.listing-filter-field');
+          if (field) panel.appendChild(field);
+        });
+        details.append(summary, panel);
+        filterBar.insertBefore(details, document.getElementById('typeFilter')?.closest('.listing-filter-field'));
+      }
+      groupFilters('Price', ['minPrice','maxPrice']);
+      groupFilters('Beds & Baths', ['bedsFilter','bathsFilter']);
+      [
+        {input:document.getElementById('minPrice'), label:'Clear minimum price'},
+        {input:document.getElementById('maxPrice'), label:'Clear maximum price'}
+      ].forEach(({input,label}) => {
+        if (!input) return;
+        const clearButton = document.createElement('button');
+        clearButton.type = 'button';
+        clearButton.className = 'price-entry-clear';
+        clearButton.innerHTML = '<span aria-hidden="true">&times;</span>';
+        clearButton.setAttribute('aria-label', label);
+        const syncClearButton = () => clearButton.classList.toggle('is-visible', Boolean(input.value));
+        clearButton.addEventListener('click', event => {
+          event.preventDefault();
+          event.stopPropagation();
+          input.value = '';
+          syncClearButton();
+          applyFilters();
+          input.focus();
+        });
+        input.addEventListener('input', syncClearButton);
+        input.closest('.price-entry-field')?.appendChild(clearButton);
+        syncClearButton();
+      });
+      const exploreHeader = document.createElement('header');
+      exploreHeader.className = 'explore-current-header';
+      exploreHeader.innerHTML = '<p>WEST TENNESSEE REAL ESTATE</p><h2>Explore Current Properties</h2>';
+      workspace.insertAdjacentElement('beforebegin', exploreHeader);
+    });
   })();
 </script>
 
@@ -1412,7 +1764,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           
 
           <div class="card" data-modal="BryceCoveModal" data-dom="91" data-lat="35.803253" data-lng="-88.768225" data-map-category="homes">
-            <img src="Bryce/20260514033339824316000000-o.jpg" alt="Home" onclick="openModal('BryceCoveModal')" />
+            <img src="https://cdn.photos.sparkplatform.com/ctn/20260813020004027437000000.jpg" alt="205 Bryce Cove" onclick="openModal('BryceCoveModal')" />
             <div class="card-body">
               <p class="price">$215,000</p>
               <p class="address">205 Bryce Cove<br>Medina, TN</p>
@@ -1438,7 +1790,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             </div>
             <!-- Image Slides -->
             
-            <img class="slide" src="Bryce/20260514033339824316000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="https://cdn.photos.sparkplatform.com/ctn/20260813020004027437000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
             <img class="slide" src="Bryce/20260514033048515580000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
             <img class="slide" src="Bryce/20260514033055232857000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
             <img class="slide" src="Bryce/20260514033058735298000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
@@ -1781,7 +2133,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603159 -->
 <div class="card" data-modal="listing2603159Modal" data-agent="Tamra L Jones" data-dom="40" data-lat="35.644958" data-lng="-88.822146" data-map-category="homes">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705213645314226000000.jpg" alt="1256 Campbell Street" onclick="openModal('listing2603159Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260813040523968825000000.jpg" alt="1256 Campbell Street" onclick="openModal('listing2603159Modal')" />
   <div class="card-body">
     <p class="price">$185,000</p>
     <p class="address">1256 Campbell Street<br>Jackson, TN</p>
@@ -1801,7 +2153,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       <div style="position: absolute; top: 15px; left: 15px; background-color: rgba(255,255,255,0.85); padding: 6px 14px; border-radius: 20px; font-size: 16px; font-family: 'Bodoni Moda'; display: flex; align-items: center; gap: 8px; z-index: 10;">
         <span style="display:inline-block; width:13px; height:13px; background-color:green; border-radius:50%;"></span><span>For Sale</span>
       </div>
-      <img class="slide" src="https://cdn.photos.sparkplatform.com/ctn/20260705213645314226000000-o.jpg" alt="1256 Campbell Street" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+      <img class="slide" src="https://cdn.photos.sparkplatform.com/ctn/20260813040523968825000000-o.jpg" alt="1256 Campbell Street" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
       <button onclick="plusSlides(-1)" style="position:absolute; top:50%; left:10px; transform:translateY(-50%); font-size:24px; background:none; border:none; cursor:pointer;">&#10094;</button>
       <button onclick="plusSlides(1)" style="position:absolute; top:50%; right:10px; transform:translateY(-50%); font-size:24px; background:none; border:none; cursor:pointer;">&#10095;</button>
     </div>
@@ -5822,7 +6174,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             </div>
 
                      <!-- Modal -->
-                     <div id="EnnisStreetModal" class="custom-modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+                     <div id="1110Modal" class="custom-modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
                       <div class="custom-modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
                       <!-- Close Button -->
                       <span class="close" onclick="closeModal()">&times;</span>
@@ -6268,12 +6620,6 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 
 <!-- Footer -->
-<div style="background-color:rgb(255, 255, 255);">
-  <p style="text-align: center; color:black; font-family: 'Lora';"> 
-<br>
-    <span style="font-family:'Bodoni Moda' ;">Disclaimer</span>: This page may not include all available properties.<br><br></p>
-</div>
- 
 <footer style="background:#023E6C; color:white; font-family:'Bodoni Moda';">
 
   <!-- TOP FOOTER -->
@@ -6462,6 +6808,25 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const modalHeading = modal?.querySelector('h2');
         if (modalHeading) modalHeading.textContent = modalHeading.textContent.replace(/^0\s+/, `Lot ${lotNumber}, 0 `);
       });
+      document.querySelectorAll('.custom-modal').forEach(modal => {
+        const modalBody = modal.querySelector('.modal-body') || modal.querySelector('.custom-modal-content') || modal.querySelector('.modal-content');
+        if (!modalBody || modal.querySelector('.modal-contact-actions')) return;
+        const heading = modal.querySelector('h2')?.textContent.trim() || 'this property';
+        const phoneMatch = modal.innerText.match(/(?:Phone|Office):\s*([()\d\s-]{10,})/i);
+        const phone = (phoneMatch?.[1] || '731-574-9340').replace(/[^\d+]/g, '');
+        const actions = document.createElement('div');
+        actions.className = 'modal-contact-actions';
+        const schedule = document.createElement('a');
+        schedule.href = `contact.html?property=${encodeURIComponent(heading)}`;
+        schedule.textContent = 'Schedule a Showing';
+        const call = document.createElement('a');
+        call.href = `tel:${phone}`;
+        call.textContent = 'Call an Agent';
+        actions.append(schedule, call);
+        const gallery = modalBody.querySelector('.carousel');
+        if (gallery) gallery.insertAdjacentElement('afterend', actions);
+        else modalBody.appendChild(actions);
+      });
 
       // Overview cards must use the same full-resolution lead photo as their modal.
       // The listing feed's default card URLs are only 300px wide and look soft on
@@ -6475,10 +6840,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         cardImage.decoding = 'async';
       });
 
-      cards.forEach(card => card.dataset.mapVisible = 'true');
+      cards.forEach((card, index) => { card.dataset.mapVisible = 'true'; card.dataset.preferredOrder = index; });
       searchInput.value = '';
       agentFilter.value = 'all';
-      domSort.value = 'dom-desc';
+      domSort.value = 'recommended';
 
       cards.forEach(card => {
         card.dataset.listingGroup = categoryGroups[card.dataset.mapCategory] || '2';
@@ -6502,6 +6867,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           cards
             .filter(card => card.dataset.listingGroup === group)
             .sort((a, b) => {
+              if (sortMode === 'recommended') return Number(a.dataset.preferredOrder) - Number(b.dataset.preferredOrder);
               if (sortMode === 'price-asc') return cardPrice(a) - cardPrice(b);
               if (sortMode === 'price-desc') return cardPrice(b) - cardPrice(a);
 
@@ -6512,11 +6878,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
               const addressB = b.querySelector('.address')?.textContent.trim() || '';
               return addressA.localeCompare(addressB);
             })
-            .forEach(card => {
-              grid.appendChild(card);
-              const modal = document.getElementById(card.dataset.modal);
-              if (modal) grid.appendChild(modal);
-            });
+            .forEach(card => grid.appendChild(card));
         });
 
         primaryGrids.forEach(grid => {
@@ -6563,6 +6925,398 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   </script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      const cards = Array.from(document.querySelectorAll('.card[data-map-category]'));
+      const controls = {
+        min: document.getElementById('minPrice'), max: document.getElementById('maxPrice'),
+        beds: document.getElementById('bedsFilter'), baths: document.getElementById('bathsFilter'),
+        type: document.getElementById('typeFilter'), agent: document.getElementById('agentFilter'),
+        sort: document.getElementById('domSort'), saved: document.getElementById('savedHomesFilter')
+      };
+      const count = document.getElementById('listing-count');
+      const chips = document.getElementById('active-filter-chips');
+      const emptyState = document.getElementById('listing-empty-state');
+      const savedKey = 'trs-saved-listings';
+      let savedOnly = false;
+      let mapBoundaryActive = true;
+      let saved = new Set();
+      try { saved = new Set(JSON.parse(localStorage.getItem(savedKey) || '[]')); } catch (_) {}
+
+      function numeric(text) { return Number(String(text || '').replace(/[^0-9.]/g, '')) || 0; }
+      function stat(card, label) {
+        const text = card.innerText.replace(/\s+/g, ' ');
+        const patterns = label === 'beds'
+          ? [/(\d+(?:\.\d+)?)\s*Beds?\b/i, /Beds?\s*(\d+(?:\.\d+)?)/i]
+          : [/(\d+(?:\.\d+)?)\s*Baths?\b/i, /Baths?\s*(\d+(?:\.\d+)?)/i];
+        return numeric(patterns.map(pattern => text.match(pattern)?.[1]).find(Boolean));
+      }
+      function syncFavoriteButtons(id) {
+        document.querySelectorAll(`[data-favorite-id="${CSS.escape(id)}"]`).forEach(button => {
+          const isSaved = saved.has(id);
+          button.setAttribute('aria-pressed', String(isSaved));
+          if (button.classList.contains('modal-favorite-listing')) {
+            const label = document.createElement('span');
+            label.textContent = isSaved ? 'Saved' : 'Save';
+            const heart = document.createElement('span');
+            heart.className = 'modal-heart-symbol';
+            heart.setAttribute('aria-hidden', 'true');
+            heart.textContent = isSaved ? '♥' : '♡';
+            button.replaceChildren(label, heart);
+          } else {
+            button.textContent = isSaved ? '♥' : '♡';
+          }
+          button.setAttribute('aria-label', `${isSaved ? 'Remove' : 'Save'} ${button.dataset.favoriteAddress || 'property'}${isSaved ? ' from saved homes' : ''}`);
+        });
+      }
+      function toggleFavorite(id) {
+        saved.has(id) ? saved.delete(id) : saved.add(id);
+        try { localStorage.setItem(savedKey, JSON.stringify([...saved])); } catch (_) {}
+        syncFavoriteButtons(id);
+        applyFilters();
+      }
+      cards.forEach(card => {
+        card.dataset.filterVisible = 'true';
+        card.dataset.priceValue = numeric(card.querySelector('.price')?.textContent);
+        card.dataset.bedsValue = stat(card, 'beds');
+        card.dataset.bathsValue = stat(card, 'baths');
+        card.tabIndex = 0;
+        card.setAttribute('role', 'button');
+        const address = card.querySelector('.address')?.innerText.replace(/\n/g, ', ') || 'listing';
+        card.setAttribute('aria-label', `View ${address}`);
+        const typeBadge = document.createElement('span');
+        typeBadge.className = `property-type-badge ${card.dataset.mapCategory}`;
+        typeBadge.textContent = card.dataset.mapCategory === 'homes' ? 'House for Sale' : card.dataset.mapCategory === 'land' ? 'Land' : 'Commercial / Other';
+        card.appendChild(typeBadge);
+        const favorite = document.createElement('button');
+        favorite.type = 'button';
+        favorite.className = 'favorite-listing';
+        favorite.dataset.favoriteId = card.dataset.modal;
+        favorite.dataset.favoriteAddress = address;
+        favorite.setAttribute('aria-label', `Save ${address}`);
+        favorite.setAttribute('aria-pressed', String(saved.has(card.dataset.modal)));
+        favorite.textContent = saved.has(card.dataset.modal) ? '♥' : '♡';
+        card.appendChild(favorite);
+        favorite.addEventListener('click', event => {
+          event.stopPropagation();
+          toggleFavorite(card.dataset.modal);
+        });
+        card.addEventListener('click', event => {
+          if (event.target.closest('a,button')) return;
+          openModal(card.dataset.modal);
+        });
+        card.addEventListener('keydown', event => {
+          if ((event.key === 'Enter' || event.key === ' ') && !event.target.closest('a,button')) {
+            event.preventDefault(); openModal(card.dataset.modal);
+          }
+        });
+      });
+      cards.forEach(card => {
+        const modal = document.getElementById(card.dataset.modal);
+        const modalContent = modal?.querySelector('.custom-modal-content');
+        if (!modalContent || modalContent.querySelector('.modal-favorite-listing')) return;
+        const address = card.querySelector('.address')?.innerText.replace(/\n/g, ', ') || 'property';
+        const favorite = document.createElement('button');
+        favorite.type = 'button';
+        favorite.className = 'modal-favorite-listing';
+        favorite.dataset.favoriteId = card.dataset.modal;
+        favorite.dataset.favoriteAddress = address;
+        favorite.setAttribute('aria-label', `Save ${address}`);
+        favorite.addEventListener('click', event => {
+          event.stopPropagation();
+          toggleFavorite(card.dataset.modal);
+        });
+        const actions = modalContent.querySelector('.modal-contact-actions');
+        if (actions) actions.appendChild(favorite);
+        else modalContent.appendChild(favorite);
+        syncFavoriteButtons(card.dataset.modal);
+      });
+      const exploreLinks = document.querySelector('#explore-west-tennessee > div');
+      if (exploreLinks) {
+        const cityCounts = new Map();
+        cards.forEach(card => {
+          const city = (card.querySelector('.address')?.innerText.split('\n')[1] || '').trim();
+          if (city) cityCounts.set(city, (cityCounts.get(city) || 0) + 1);
+        });
+        const shortcuts = Array.from(cityCounts, ([label, count]) => ({label:label.replace(/,\s*TN$/i,'') + ' Properties', value:label, type:'location', count}))
+          .sort((a,b) => b.count-a.count).slice(0,4);
+        if (cards.some(card => +card.dataset.priceValue <= 250000)) shortcuts.push({label:'Homes Under $250K',type:'price'});
+        if (cards.some(card => card.dataset.mapCategory === 'land')) shortcuts.push({label:'Land for Sale',type:'land'});
+        const popularLinks = document.querySelector('#popular-property-searches > div');
+        const activePopularSearches = new Set();
+        const renderPopularSearches = () => {
+          document.querySelectorAll('#popular-property-searches button').forEach(popularButton => {
+            const selected = activePopularSearches.has(popularButton.dataset.shortcutLabel);
+            popularButton.classList.toggle('is-active', selected);
+            popularButton.setAttribute('aria-pressed', String(selected));
+            popularButton.setAttribute('aria-label', selected ? `${popularButton.dataset.shortcutLabel}, clear search` : popularButton.dataset.shortcutLabel);
+          });
+        };
+        const clearPopularShortcut = shortcut => {
+          activePopularSearches.delete(shortcut.label);
+          if (shortcut.type === 'location') document.getElementById('map-remove-boundary')?.click();
+          if (shortcut.type === 'price') {
+            controls.min.value = '';
+            controls.max.value = '';
+            if (controls.type.value === 'homes') controls.type.value = 'all';
+            applyFilters();
+          }
+          if (shortcut.type === 'land') {
+            if (controls.type.value === 'land') controls.type.value = 'all';
+            applyFilters();
+          }
+          renderPopularSearches();
+        };
+        const applyPopularShortcut = shortcut => {
+          if (shortcut.type === 'location') {
+            shortcuts.filter(item => item.type === 'location').forEach(item => activePopularSearches.delete(item.label));
+          }
+          if (shortcut.type === 'price') activePopularSearches.delete('Land for Sale');
+          if (shortcut.type === 'land') activePopularSearches.delete('Homes Under $250K');
+          activePopularSearches.add(shortcut.label);
+          renderPopularSearches();
+          if (shortcut.type === 'location') {
+            const query = document.getElementById('map-location-query'); query.value = shortcut.value;
+            document.getElementById('map-location-search').requestSubmit();
+          } else if (shortcut.type === 'price') {
+            controls.type.value = 'homes'; controls.min.value = ''; controls.max.value = '250000'; applyFilters();
+            document.querySelector('.property-results-panel').scrollTop = 0;
+          } else {
+            controls.type.value = 'land'; controls.min.value = ''; controls.max.value = ''; applyFilters();
+          }
+        };
+        const handlePopularShortcut = (button, shortcut) => {
+          if (activePopularSearches.has(shortcut.label)) clearPopularShortcut(shortcut);
+          else applyPopularShortcut(shortcut);
+        };
+        shortcuts.forEach(shortcut => {
+          const button = document.createElement('button');
+          button.type = 'button'; button.textContent = shortcut.label; button.dataset.shortcutLabel = shortcut.label;
+          button.addEventListener('click', () => {
+            handlePopularShortcut(button, shortcut);
+            document.getElementById('listing-filter-bar').scrollIntoView({behavior:'smooth'});
+          });
+          exploreLinks.appendChild(button);
+          if (popularLinks && popularLinks.children.length < 5) popularLinks.appendChild(button.cloneNode(true));
+        });
+        popularLinks?.querySelectorAll('button').forEach((button,index) => {
+          const shortcut = shortcuts[index];
+          button.addEventListener('click', () => {
+            handlePopularShortcut(button, shortcut);
+          });
+        });
+        document.getElementById('clearListingFilters')?.addEventListener('click', () => {
+          activePopularSearches.clear();
+          renderPopularSearches();
+        });
+      }
+
+      function renderChips() {
+        const values = [];
+        const location = document.getElementById('map-selected-location')?.textContent.trim();
+        const resultsTitle = document.getElementById('workspace-results-title');
+        const resultsPrice = document.getElementById('workspace-results-price');
+        const fullPrice = value => `$${(Number(value) || 0).toLocaleString('en-US')}`;
+        if (resultsTitle) {
+          let areaName = mapBoundaryActive && location && location !== 'Tennessee'
+            ? (location === 'Map area' ? 'Map Area' : location)
+            : 'West Tennessee';
+          if (/^[^,]+,\s*[^,]+ County$/i.test(areaName)) areaName = `${areaName.split(',')[0].trim()}, TN`;
+          const propertyName = controls.type.value === 'homes' ? 'Homes'
+            : controls.type.value === 'land' ? 'Land'
+              : controls.type.value === 'other' ? 'Commercial / Other Properties'
+                : 'Properties';
+          const minimum = Number(controls.min.value) || 0;
+          const maximum = Number(controls.max.value) || 0;
+          const priceDescription = minimum && maximum
+            ? `From ${fullPrice(minimum)} to ${fullPrice(maximum)}`
+            : minimum ? `From ${fullPrice(minimum)}`
+              : maximum ? `Up to ${fullPrice(maximum)}` : '';
+          resultsTitle.textContent = savedOnly
+            ? 'Saved Properties'
+            : areaName === 'West Tennessee' && controls.type.value === 'all'
+              ? 'All West Tennessee Properties'
+              : `${areaName} ${propertyName}`;
+          if (resultsPrice) {
+            resultsPrice.textContent = savedOnly ? '' : priceDescription;
+            resultsPrice.hidden = savedOnly || !priceDescription;
+          }
+        }
+        if (mapBoundaryActive && location && location !== 'Tennessee') values.push(location);
+        if (+controls.min.value) values.push(`From $${(+controls.min.value).toLocaleString()}`);
+        if (controls.max.value && +controls.max.value > 0) values.push(`Under $${(+controls.max.value).toLocaleString()}`);
+        if (+controls.beds.value) values.push(`${controls.beds.value}+ Beds`);
+        if (+controls.baths.value) values.push(`${controls.baths.value}+ Baths`);
+        if (controls.type.value !== 'all') values.push(controls.type.options[controls.type.selectedIndex].text);
+        if (controls.agent.value !== 'all') values.push(controls.agent.value);
+        if (savedOnly) values.push('Saved Homes');
+        chips.replaceChildren();
+        const priceDetails = document.getElementById('minPrice').closest('.filter-popover');
+        const priceActive = +controls.min.value > 0 || (controls.max.value && +controls.max.value > 0);
+        priceDetails?.classList.toggle('filter-active', priceActive);
+        const priceSummary = priceDetails?.querySelector('summary');
+        if (priceSummary) priceSummary.textContent = 'Price';
+        const bedsDetails = document.getElementById('bedsFilter').closest('.filter-popover');
+        const bedsActive = +controls.beds.value > 0 || +controls.baths.value > 0;
+        bedsDetails?.classList.toggle('filter-active', bedsActive);
+        const bedsSummary = bedsDetails?.querySelector('summary');
+        if (bedsSummary) bedsSummary.textContent = bedsActive
+          ? [ +controls.beds.value ? `${controls.beds.value}+ Beds` : '', +controls.baths.value ? `${controls.baths.value}+ Baths` : '' ].filter(Boolean).join(' · ')
+          : 'Beds & Baths';
+        controls.type.classList.toggle('filter-active', controls.type.value !== 'all');
+        controls.agent.classList.toggle('filter-active', controls.agent.value !== 'all');
+        document.getElementById('clearListingFilters').hidden = values.length < 2;
+      }
+
+      function updateCategories() {
+        ['homes-listing-grid','land-listing-grid','other-listing-grid'].forEach(id => {
+          const grid = document.getElementById(id);
+          const section = grid?.closest('section.container');
+          if (section) section.classList.toggle('listing-category-empty', !Array.from(grid.querySelectorAll(':scope > .card')).some(card => card.style.display !== 'none'));
+        });
+      }
+
+      function renderSavedSection() {
+        const section = document.getElementById('saved-properties-section');
+        const savedGrid = document.getElementById('saved-properties-grid');
+        const emptyMessage = section?.querySelector('.saved-properties-empty');
+        if (!section || !savedGrid) return;
+        const targetGrids = {
+          homes: document.getElementById('homes-listing-grid'),
+          land: document.getElementById('land-listing-grid'),
+          other: document.getElementById('other-listing-grid')
+        };
+        Array.from(savedGrid.querySelectorAll(':scope > .card')).forEach(card => {
+          targetGrids[card.dataset.mapCategory]?.appendChild(card);
+        });
+        section.hidden = !savedOnly;
+        if (!savedOnly) return;
+        const savedCards = cards.filter(card => saved.has(card.dataset.modal));
+        savedCards.forEach(card => savedGrid.appendChild(card));
+        if (emptyMessage) emptyMessage.hidden = savedCards.length !== 0;
+      }
+
+      function applyFilters() {
+        document.querySelectorAll('.price-entry-field').forEach(field => {
+          field.querySelector('.price-entry-clear')?.classList.toggle('is-visible', Boolean(field.querySelector('input')?.value));
+        });
+        let visible = 0;
+        const visibleByCategory = {homes:0, land:0, other:0};
+        cards.forEach(card => {
+          const residential = card.dataset.mapCategory === 'homes';
+          const maximumPrice = controls.max.value && +controls.max.value > 0 ? +controls.max.value : Number.POSITIVE_INFINITY;
+          const matches = +card.dataset.priceValue >= (+controls.min.value || 0) && +card.dataset.priceValue <= maximumPrice &&
+            (controls.type.value === 'all' || card.dataset.mapCategory === controls.type.value) &&
+            (controls.agent.value === 'all' || card.dataset.agent === controls.agent.value) &&
+            (!+controls.beds.value || (residential && +card.dataset.bedsValue >= +controls.beds.value)) &&
+            (!+controls.baths.value || (residential && +card.dataset.bathsValue >= +controls.baths.value)) &&
+            (!savedOnly || saved.has(card.dataset.modal));
+          card.dataset.filterVisible = matches ? 'true' : 'false';
+          const shown = matches && card.dataset.mapVisible !== 'false';
+          card.style.display = shown ? '' : 'none';
+          card.hidden = !shown;
+          if (shown) { visible++; visibleByCategory[card.dataset.mapCategory]++; }
+        });
+        const selectedType = controls.type.value;
+        const typeName = selectedType === 'homes' ? 'Home' : selectedType === 'land' ? 'Land' : selectedType === 'other' ? 'Other' : 'Property';
+        const countLabel = selectedType === 'all'
+          ? (visible === 1 ? 'Property' : 'Properties')
+          : (visible === 1 ? `${typeName} Property` : `${typeName} Properties`);
+        count.textContent = `${visible} ${countLabel}`;
+        document.querySelectorAll('.category-filter-tabs button').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.propertyType === selectedType)));
+        const mobileToggle = document.getElementById('mobileFiltersToggle');
+        if (mobileToggle) mobileToggle.textContent = document.body.classList.contains('mobile-filters-open')
+          ? `Show ${visible} ${visible === 1 ? 'Property' : 'Properties'}`
+          : 'Filters';
+        emptyState.hidden = visible !== 0;
+        renderSavedSection();
+        const categoryGridIds = {homes:'homes-listing-grid',land:'land-listing-grid',other:'other-listing-grid'};
+        Object.entries(categoryGridIds).forEach(([category,id]) => {
+          const section = document.getElementById(id)?.closest('section.container');
+          if (!section) return;
+          const shouldHide = savedOnly || visibleByCategory[category] === 0;
+          section.classList.toggle('listing-category-empty', shouldHide);
+          section.style.removeProperty('display');
+        });
+        requestAnimationFrame(() => {
+          Object.entries(categoryGridIds).forEach(([category,id]) => {
+            const grid = document.getElementById(id);
+            const section = grid?.closest('section.container');
+            if (!grid || !section) return;
+            const hasMatchingCard = Array.from(grid.querySelectorAll(':scope > .card')).some(card =>
+              card.dataset.filterVisible !== 'false' && card.dataset.mapVisible !== 'false');
+            section.style.removeProperty('display');
+            section.classList.toggle('listing-category-empty', savedOnly || !hasMatchingCard);
+          });
+        });
+        renderChips();
+        document.dispatchEvent(new CustomEvent('listingfilterchange', {detail:{count:visible}}));
+        try {
+          sessionStorage.setItem('trs-listing-filters', JSON.stringify({min:controls.min.value,max:controls.max.value,beds:controls.beds.value,baths:controls.baths.value,type:controls.type.value,agent:controls.agent.value,sort:controls.sort.value,savedOnly}));
+        } catch (_) {}
+      }
+      try {
+        const rawState = sessionStorage.getItem('trs-listing-filters');
+        const state = JSON.parse(rawState || '{}');
+        ['min','max'].forEach(key => {
+          if (state[key] != null) controls[key].value = String(state[key]) === '999999999' || String(state[key]) === '0' ? '' : state[key];
+        });
+        ['beds','baths','type','agent','sort'].forEach(key => { if (state[key] != null && controls[key]?.querySelector(`option[value="${CSS.escape(String(state[key]))}"]`)) controls[key].value = state[key]; });
+        savedOnly = Boolean(state.savedOnly);
+        if (!rawState) controls.sort.value = 'recommended';
+      } catch (_) {}
+      const linkedSearchParameters = new URLSearchParams(window.location.search);
+      const linkedPropertyType = linkedSearchParameters.get('type');
+      if (linkedPropertyType && controls.type?.querySelector(`option[value="${CSS.escape(linkedPropertyType)}"]`)) {
+        controls.type.value = linkedPropertyType;
+      }
+      controls.sort.value = controls.sort.value || 'recommended';
+      controls.sort.dispatchEvent(new Event('change'));
+      Object.values(controls).filter(control => control && control !== controls.saved).forEach(control => control.addEventListener('change', applyFilters));
+      controls.min.addEventListener('input', applyFilters);
+      controls.max.addEventListener('input', applyFilters);
+      document.querySelectorAll('.category-filter-tabs button').forEach(button => button.addEventListener('click', () => {
+        controls.type.value = button.dataset.propertyType;
+        applyFilters();
+      }));
+      controls.saved.addEventListener('click', () => {
+        savedOnly = !savedOnly;
+        controls.saved.setAttribute('aria-pressed', String(savedOnly));
+        controls.saved.textContent = `Saved Homes ${savedOnly ? '♥' : '♡'}`;
+        if (savedOnly && document.getElementById('map-selected-location')?.textContent.trim() !== 'Tennessee') {
+          document.getElementById('map-remove-boundary')?.click();
+        }
+        applyFilters();
+      });
+      document.getElementById('clearListingFilters').addEventListener('click', () => {
+        controls.min.value=''; controls.max.value=''; controls.beds.value='0'; controls.baths.value='0'; controls.type.value='all'; controls.agent.value='all'; savedOnly=false; controls.saved.setAttribute('aria-pressed','false'); controls.saved.textContent='Saved Homes ♡';
+        document.getElementById('map-remove-boundary')?.click(); applyFilters();
+      });
+      document.querySelector('[data-clear-all-filters]').addEventListener('click', () => document.getElementById('clearListingFilters').click());
+      document.addEventListener('mapboundarychange', event => { mapBoundaryActive = Boolean(event.detail?.active); applyFilters(); });
+      function setWorkspaceView(view) {
+        document.body.classList.remove('workspace-view-split','workspace-view-list','workspace-view-map','mobile-list-view','mobile-map-view');
+        document.body.classList.add(`workspace-view-${view}`);
+        if (view === 'list') document.body.classList.add('mobile-list-view');
+        if (view === 'map') document.body.classList.add('mobile-map-view');
+        ['Split','List','Map'].forEach(name => document.getElementById(`show${name}View`)?.setAttribute('aria-pressed', String(name.toLowerCase() === view)));
+        if (view === 'map') document.querySelector('.property-search-workspace')?.scrollIntoView({behavior:'smooth'});
+      }
+      document.getElementById('showSplitView').addEventListener('click', () => setWorkspaceView('split'));
+      document.getElementById('showListView').addEventListener('click', () => setWorkspaceView('list'));
+      document.getElementById('showMapView').addEventListener('click', () => setWorkspaceView('map'));
+      document.getElementById('map-return-list').addEventListener('click', () => setWorkspaceView('list'));
+      setWorkspaceView(window.matchMedia('(max-width: 1100px)').matches ? 'list' : 'split');
+      document.getElementById('mobileFiltersToggle').addEventListener('click', function () {
+        const open = document.body.classList.toggle('mobile-filters-open');
+        this.setAttribute('aria-expanded', String(open));
+        applyFilters();
+      });
+      controls.saved.setAttribute('aria-pressed', String(savedOnly));
+      controls.saved.textContent = `Saved Homes ${savedOnly ? '♥' : '♡'}`;
+      applyFilters();
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
       const mapRoot = document.getElementById('tennessee-listing-map');
       const popup = document.getElementById('listing-map-popup');
       const popupImage = document.getElementById('listing-map-popup-image');
@@ -6578,8 +7332,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       const removeBoundaryButton = document.getElementById('map-remove-boundary');
       const zoomInButton = document.getElementById('map-zoom-in');
       const zoomOutButton = document.getElementById('map-zoom-out');
+      const searchAreaButton = document.getElementById('map-search-area');
       const locationSuggestions = document.getElementById('map-location-suggestions');
       const areaListings = document.getElementById('map-area-listings');
+      const useCurrentLocationButton = document.getElementById('use-current-location');
       let selectedModalId = '';
       let popupPinned = false;
       let popupCloseTimer = 0;
@@ -6588,9 +7344,9 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       let mapSvgSelection = null;
       let mapLayer;
       let currentListings = [];
-      let locationSearchActive = true;
-      let selectedLocationName = 'Jackson, TN';
-      let boundaryVisible = true;
+      let locationSearchActive = false;
+      let selectedLocationName = 'West Tennessee';
+      let boundaryVisible = false;
       let focusedListingModalId = '';
       let zoomAnimationFrame = 0;
       let secondaryRoadDetailVisible = null;
@@ -6639,7 +7395,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         }
       };
       let selectedBoundary = jacksonBoundary;
-      const markerColors = {homes: '#FF2D2D', land: '#22B455', other: '#FF9F1C'};
+      const markerColors = {homes: '#B00B0B', land: '#22B455', other: '#FF9F1C'};
       const locationPinPath = 'M0,-11C-6.1,-11-10,-6.8-10,-1.3C-10,5.5,0,15,0,15S10,5.5,10,-1.3C10,-6.8,6.1,-11,0,-11ZM0,-6A4,4,0,1,0,0,2A4,4,0,1,0,0,-6Z';
 
       function getListings() {
@@ -6748,8 +7504,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         if (matches.length) {
           const heading = document.createElement('p');
           heading.className = 'map-suggestion-heading';
-          heading.textContent = 'Suggestions';
-          content.push(heading, ...matches.map(item => suggestionButton(item.value, item.type)));
+          heading.textContent = 'Suggested searches';
+          content.push(heading, ...matches.map(item => suggestionButton(item.value, `Suggested search · ${item.type}`)));
         }
         locationSuggestions.replaceChildren(...content);
         locationSuggestions.hidden = content.length === 0;
@@ -6757,7 +7513,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       }
 
       function renderAreaListings() {
-        const visibleListings = currentListings.filter(listing => listing.card.dataset.mapVisible !== 'false');
+        const visibleListings = currentListings.filter(listing => listing.card.dataset.mapVisible !== 'false' && listing.card.dataset.filterVisible !== 'false');
         const listingsToShow = !locationSearchActive && !focusedListingModalId
           ? visibleListings.slice(0, 8)
           : visibleListings;
@@ -6797,7 +7553,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       }
 
       function markerHeightForZoom(zoomScale) {
-        if (zoomScale <= 10) return 12;
+        if (zoomScale <= 3) return 7;
+        if (zoomScale <= 10) return 10;
         if (zoomScale <= 20) return 14;
         if (zoomScale <= 40) return 18;
         return 22;
@@ -6822,6 +7579,12 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             const y = listing.y + listing.offsetY * spread / zoomScale;
             return `translate(${x},${y}) scale(${normalScale * selectedScale})`;
           });
+        mapLayer.selectAll('.listing-price-pin rect')
+          .attr('fill', listing => markerColors[listing.category] || markerColors.other)
+          .attr('stroke', listing => listing.modalId === selectedModalId ? '#0B4068' : '#FFFFFF')
+          .attr('stroke-width', listing => listing.modalId === selectedModalId ? 3 : 1.5);
+        mapLayer.selectAll('.listing-price-pin text')
+          .attr('fill', '#FFFFFF');
         mapLayer.selectAll('.listing-pin-halo')
           .attr('cx', listing => listing.x + listing.offsetX * spread / zoomScale)
           .attr('cy', listing => listing.y + listing.offsetY * spread / zoomScale)
@@ -6849,7 +7612,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       function updateMarkerClutter() {
         if (!mapLayer) return;
         mapLayer.selectAll('.listing-pin-link')
-          .style('display', listing => listing.card.dataset.mapVisible === 'false' ? 'none' : null);
+          .style('display', listing => listing.card.dataset.mapVisible === 'false' || listing.card.dataset.filterVisible === 'false' ? 'none' : null);
       }
 
       function closePopup() {
@@ -6858,6 +7621,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         popup.hidden = true;
         selectedModalId = '';
         popupPinned = false;
+        document.querySelectorAll('.card.map-selected').forEach(card => card.classList.remove('map-selected'));
         if (hadSelection) updateMarkerSelection();
       }
 
@@ -6873,6 +7637,11 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         popupAddress.textContent = listing.address;
         popupPrice.textContent = listing.price;
         popup.hidden = false;
+        if (pinPopup) {
+          document.querySelectorAll('.card.map-selected').forEach(card => card.classList.remove('map-selected'));
+          listing.card.classList.add('map-selected');
+          listing.card.scrollIntoView({block:'nearest',behavior:'smooth'});
+        }
 
         const rootRect = mapRoot.getBoundingClientRect();
         const popupWidth = Math.min(280, rootRect.width - 24);
@@ -6921,7 +7690,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           if (visible) resultCount++;
         });
         mapLayer.selectAll('.listing-pin-link')
-          .style('display', listing => listing.card.dataset.mapVisible === 'false' ? 'none' : null);
+          .style('display', listing => listing.card.dataset.mapVisible === 'false' || listing.card.dataset.filterVisible === 'false' ? 'none' : null);
         updateMarkerClutter();
         mapStatus.textContent = resultCount
           ? `${resultCount} ${resultCount === 1 ? 'property' : 'properties'} in ${selectedLocationName}.`
@@ -6975,14 +7744,39 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           west: Number.isFinite(west) ? Math.min(west, longitude - longitudePadding) : longitude - longitudePadding,
           east: Number.isFinite(east) ? Math.max(east, longitude + longitudePadding) : longitude + longitudePadding
         };
+        const centerLatitude = (bounds.south + bounds.north) / 2;
+        const centerLongitude = (bounds.west + bounds.east) / 2;
+        const latitudeRadius = Math.max(0.015, (bounds.north - bounds.south) / 2);
+        const longitudeRadius = Math.max(0.02, (bounds.east - bounds.west) / 2);
+        const ring = Array.from({length: 49}, (_, index) => {
+          const angle = -index / 48 * Math.PI * 2;
+          return [
+            centerLongitude + Math.cos(angle) * longitudeRadius,
+            centerLatitude + Math.sin(angle) * latitudeRadius
+          ];
+        });
         return {
           type: 'Feature',
           properties: {},
           geometry: {
             type: 'Polygon',
-            coordinates: [[[bounds.west, bounds.south], [bounds.west, bounds.north], [bounds.east, bounds.north], [bounds.east, bounds.south], [bounds.west, bounds.south]]]
+            coordinates: [ring]
           }
         };
+      }
+
+      async function censusZipBoundary(zipCode) {
+        const parameters = new URLSearchParams({
+          where: `ZCTA5='${zipCode}'`,
+          outFields: 'ZCTA5',
+          returnGeometry: 'true',
+          outSR: '4326',
+          f: 'geojson'
+        });
+        const response = await fetch(`https://tigerweb.geo.census.gov/arcgis/rest/services/Census2020/PUMA_TAD_TAZ_UGA_ZCTA/MapServer/2/query?${parameters}`);
+        if (!response.ok) throw new Error('ZIP boundary unavailable');
+        const collection = await response.json();
+        return normalizeSearchGeometry(collection.features?.[0]);
       }
 
       popup.addEventListener('click', event => event.stopPropagation());
@@ -6996,6 +7790,16 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       function renderMap() {
         mapRoot.querySelector('svg')?.remove();
         currentListings = getListings();
+        currentListings.forEach(listing => {
+          if (listing.card.dataset.mapLinked === 'true') return;
+          listing.card.dataset.mapLinked = 'true';
+          const activate = () => { selectedModalId = listing.modalId; updateMarkerSelection(); };
+          const deactivate = () => { if (!popupPinned) { selectedModalId = ''; updateMarkerSelection(); } };
+          listing.card.addEventListener('mouseenter', activate);
+          listing.card.addEventListener('mouseleave', deactivate);
+          listing.card.addEventListener('focusin', activate);
+          listing.card.addEventListener('focusout', deactivate);
+        });
         updateLocationSuggestions();
         const width = mapRoot.clientWidth;
         const height = mapRoot.clientHeight;
@@ -7235,11 +8039,12 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const locationCounts = new Map();
         currentListings.forEach(listing => {
           const point = projection([listing.longitude, listing.latitude]);
-          const key = listing.city || `${listing.latitude.toFixed(4)},${listing.longitude.toFixed(4)}`;
+          const collisionCellSize = 8;
+          const key = `${Math.round(point[0] / collisionCellSize)},${Math.round(point[1] / collisionCellSize)}`;
           const duplicateIndex = locationCounts.get(key) || 0;
           locationCounts.set(key, duplicateIndex + 1);
           const angle = duplicateIndex * 2.399963;
-          const radius = duplicateIndex ? 9 + Math.sqrt(duplicateIndex) * 7 : 0;
+          const radius = duplicateIndex ? 3 + Math.sqrt(duplicateIndex) * 3 : 0;
           listing.x = point[0];
           listing.y = point[1];
           listing.offsetX = Math.cos(angle) * radius;
@@ -7270,17 +8075,18 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           .attr('display', 'none')
           .style('filter', 'drop-shadow(0 1px 2px rgba(42,42,51,.35))');
 
-        pinLinks.append('path')
-          .attr('class', 'listing-pin')
-          .attr('d', locationPinPath)
-          .attr('fill-rule', 'evenodd')
+        function abbreviatedPrice(value) {
+          const amount = Number(String(value).replace(/[^0-9.]/g, '')) || 0;
+          if (amount >= 1000000) return `$${(amount / 1000000).toFixed(amount >= 10000000 ? 0 : 1).replace('.0','')}M`;
+          return `$${Math.round(amount / 1000)}K`;
+        }
+        const pricePins = pinLinks.append('g')
+          .attr('class', 'listing-pin listing-price-pin')
           .attr('transform', listing => `translate(${listing.x},${listing.y})`)
-          .attr('fill', listing => markerColors[listing.category] || markerColors.other)
-          .attr('stroke', '#FFFFFF')
-          .attr('stroke-width', 1.5)
-          .attr('vector-effect', 'non-scaling-stroke')
-          .style('cursor', 'pointer')
-          .style('filter', 'drop-shadow(0 1px 1px rgba(42,42,51,.28))');
+          .style('cursor', 'pointer');
+        pricePins.append('rect').attr('x',-29).attr('y',-12).attr('width',58).attr('height',24).attr('rx',12)
+          .attr('fill', listing => markerColors[listing.category] || markerColors.other);
+        pricePins.append('text').attr('y',3.5).text(listing => abbreviatedPrice(listing.price));
 
         if (boundaryVisible) {
           const boundaryBounds = path.bounds(selectedBoundary);
@@ -7295,7 +8101,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         } else {
           const stateScale = Math.max(1, Math.min(
             256,
-            0.94 / Math.max(tennesseeMapWidth / width, tennesseeMapHeight / height)
+            0.97 / Math.max(tennesseeMapWidth / width, tennesseeMapHeight / height)
           ));
           const tennesseeCenter = [
             (tennesseeMapBounds[0][0] + tennesseeMapBounds[1][0]) / 2,
@@ -7338,9 +8144,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             updateMarkerScale();
             updateRoadDetailVisibility();
             if (!event.sourceEvent) return;
-            if (focusedListingModalId) applyFocusedListing();
-            else if (boundaryVisible && locationSearchActive) applyGeographicBoundaryFilter();
-            else applyViewportFilter(true);
+            searchAreaButton.hidden = false;
           });
 
         mapZoomBehavior = zoom;
@@ -7358,15 +8162,90 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         boundaryVisible = false;
         locationSearchActive = false;
         focusedListingModalId = '';
-        selectedLocationName = 'Tennessee';
-        locationQuery.value = '';
-        selectedLocationLabel.textContent = 'Tennessee';
+        selectedLocationName = 'West Tennessee';
+        locationQuery.value = 'All West Tennessee Properties';
+        selectedLocationLabel.textContent = 'West Tennessee';
         searchMessage.textContent = '';
         removeBoundaryButton.hidden = true;
         clearLocationButton.hidden = true;
+        searchAreaButton.hidden = true;
         renderMap();
       }
 
+      function currentLocationBoundary(latitude, longitude) {
+        const latitudeRadius = 0.22;
+        const longitudeRadius = latitudeRadius / Math.max(0.55, Math.cos(latitude * Math.PI / 180));
+        return {
+          type: 'Feature',
+          properties: {source: 'browser-location'},
+          geometry: {
+            type: 'Polygon',
+            coordinates: [Array.from({length:49}, (_, index) => {
+              const angle = -index / 48 * Math.PI * 2;
+              return [longitude + Math.cos(angle) * longitudeRadius, latitude + Math.sin(angle) * latitudeRadius];
+            })]
+          }
+        };
+      }
+
+      function requestCurrentLocation(automatic = false) {
+        if (!navigator.geolocation) {
+          if (!automatic) searchMessage.textContent = 'Location services are not available in this browser.';
+          return;
+        }
+        useCurrentLocationButton.disabled = true;
+        if (!automatic) searchMessage.textContent = 'Finding your location…';
+        navigator.geolocation.getCurrentPosition(position => {
+          localStorage.setItem('trs-location-preference', 'enabled');
+          const latitude = Number(position.coords.latitude);
+          const longitude = Number(position.coords.longitude);
+          const isNearWestTennessee = latitude >= 34.7 && latitude <= 36.8 && longitude >= -90.6 && longitude <= -87;
+          if (!isNearWestTennessee) {
+            clearLocationBoundary();
+            selectedLocationName = 'West Tennessee';
+            selectedLocationLabel.textContent = 'West Tennessee';
+            searchMessage.textContent = 'Showing all West Tennessee properties near our service area.';
+            useCurrentLocationButton.disabled = false;
+            return;
+          }
+          selectedBoundary = currentLocationBoundary(latitude, longitude);
+          selectedLocationName = 'Near your current location';
+          selectedLocationLabel.textContent = selectedLocationName;
+          locationQuery.value = 'Near me';
+          locationSearchActive = true;
+          boundaryVisible = true;
+          focusedListingModalId = '';
+          removeBoundaryButton.hidden = false;
+          clearLocationButton.hidden = false;
+          clearLocationButton.setAttribute('aria-label', 'Clear current location search');
+          searchAreaButton.hidden = true;
+          searchMessage.textContent = 'Showing properties near your current location.';
+          renderMap();
+          useCurrentLocationButton.disabled = false;
+        }, error => {
+          if (error.code === error.PERMISSION_DENIED) localStorage.setItem('trs-location-preference', 'denied');
+          if (!automatic) searchMessage.textContent = 'We could not use your location. You can search by city, ZIP code, county, or address instead.';
+          useCurrentLocationButton.disabled = false;
+        }, {enableHighAccuracy:false, timeout:7000, maximumAge:300000});
+      }
+
+      useCurrentLocationButton.addEventListener('click', () => requestCurrentLocation(false));
+
+      searchAreaButton.addEventListener('click', function (event) {
+        event.stopPropagation();
+        boundaryVisible = false;
+        locationSearchActive = false;
+        focusedListingModalId = '';
+        selectedLocationName = 'Map area';
+        selectedLocationLabel.textContent = 'Map area';
+        locationQuery.value = '';
+        searchMessage.textContent = '';
+        removeBoundaryButton.hidden = false;
+        clearLocationButton.hidden = true;
+        searchAreaButton.hidden = true;
+        mapLayer.selectAll('.jackson-location-boundary,.jackson-map-label').attr('display','none');
+        applyViewportFilter(true);
+      });
       clearLocationButton.addEventListener('click', clearLocationBoundary);
       removeBoundaryButton.addEventListener('click', clearLocationBoundary);
       function zoomMap(factor) {
@@ -7379,13 +8258,17 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       zoomInButton.addEventListener('click', event => {
         event.stopPropagation();
         zoomMap(1.35);
+        searchAreaButton.hidden = false;
       });
       zoomOutButton.addEventListener('click', event => {
         event.stopPropagation();
         zoomMap(1 / 1.35);
+        searchAreaButton.hidden = false;
       });
       locationQuery.addEventListener('focus', () => {
-        const isCurrentArea = locationQuery.value.trim() === selectedLocationName;
+        const isDefaultScope = locationQuery.value.trim() === 'All West Tennessee Properties';
+        const isCurrentArea = locationQuery.value.trim() === selectedLocationName || isDefaultScope;
+        if (isDefaultScope) locationQuery.select();
         renderSearchSuggestions(isCurrentArea ? '' : locationQuery.value);
       });
       locationQuery.addEventListener('input', () => renderSearchSuggestions());
@@ -7434,12 +8317,35 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           removeBoundaryButton.hidden = false;
           clearLocationButton.hidden = false;
           clearLocationButton.setAttribute('aria-label', `Clear ${selectedLocationName} search`);
+          searchAreaButton.hidden = true;
           renderMap();
           submitButton.disabled = false;
           return;
         }
 
         try {
+          const zipCode = query.match(/^\s*(\d{5})(?:-\d{4})?\s*$/)?.[1];
+          if (zipCode) {
+            const zipBoundary = await censusZipBoundary(zipCode);
+            if (!zipBoundary) {
+              searchMessage.textContent = `No Census ZIP boundary was found for ${zipCode}.`;
+              mapStatus.textContent = 'No properties in this ZIP Code Tabulation Area.';
+              return;
+            }
+            selectedBoundary = zipBoundary;
+            selectedLocationName = zipCode;
+            selectedLocationLabel.textContent = `ZIP ${zipCode}`;
+            searchMessage.textContent = '';
+            locationSearchActive = true;
+            boundaryVisible = true;
+            focusedListingModalId = '';
+            removeBoundaryButton.hidden = false;
+            clearLocationButton.hidden = false;
+            clearLocationButton.setAttribute('aria-label', `Clear ${zipCode} search`);
+            searchAreaButton.hidden = true;
+            renderMap();
+            return;
+          }
           const parameters = new URLSearchParams({
             q: `${query}, Tennessee`,
             format: 'jsonv2',
@@ -7453,8 +8359,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           });
           if (!response.ok) throw new Error('Location search unavailable');
           const results = await response.json();
-          const result = results.find(item =>
+          const tennesseeResults = results.filter(item =>
             item.address?.state_code === 'TN' || /Tennessee/i.test(item.display_name || ''));
+          const result = tennesseeResults.find(item =>
+            item.geojson?.type === 'Polygon' || item.geojson?.type === 'MultiPolygon') || tennesseeResults[0];
 
           if (!result) {
             searchMessage.textContent = `No location found for “${query}”.`;
@@ -7476,6 +8384,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           removeBoundaryButton.hidden = false;
           clearLocationButton.hidden = false;
           clearLocationButton.setAttribute('aria-label', `Clear ${selectedLocationName} search`);
+          searchAreaButton.hidden = true;
           renderMap();
         } catch (error) {
           searchMessage.textContent = 'Location search is temporarily unavailable. Please try again.';
@@ -7484,7 +8393,16 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         }
       });
 
+      document.addEventListener('listingfilterchange', function () {
+        updateMarkerClutter();
+        renderAreaListings();
+      });
       renderMap();
+      const linkedLocation = new URLSearchParams(window.location.search).get('location');
+      if (linkedLocation) {
+        locationQuery.value = linkedLocation;
+        requestAnimationFrame(() => locationSearch.requestSubmit());
+      }
       new ResizeObserver(renderMap).observe(mapRoot);
 
       let mapUpdateFrame;
