@@ -407,6 +407,18 @@
       line-height: 1;
     }
 
+    .location-permission-modal[hidden] { display:none; }
+    .location-permission-modal { position:fixed; inset:0; z-index:10020; display:flex; align-items:center; justify-content:center; padding:20px; background:rgba(10,25,38,.52); }
+    .location-permission-dialog { position:relative; width:min(430px,100%); padding:28px; color:#111; background:#fff; border:1px solid #D2D7DB; border-radius:10px; box-shadow:0 18px 50px rgba(0,0,0,.22); font-family:'Lora',serif; }
+    .location-permission-dialog h2 { margin:0 32px 10px 0; color:#111; font:600 27px/1.15 'Bodoni Moda',serif; }
+    .location-permission-dialog p { margin:0 0 18px; color:#4F5559; font:14px/1.6 'Lora',serif; }
+    .location-permission-close { position:absolute; top:12px; right:12px; display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; padding:0; color:#111; background:#fff; border:1px solid #D2D7DB; border-radius:50%; font:22px/1 Arial,sans-serif; cursor:pointer; }
+    .location-permission-actions { display:flex; justify-content:flex-end; flex-wrap:wrap; gap:10px; }
+    .location-permission-actions button { min-height:44px; padding:10px 16px; border-radius:7px; font:600 14px 'Lora',serif; cursor:pointer; }
+    .location-permission-cancel { color:#111; background:#fff; border:1px solid #C9D0D5; }
+    .location-permission-continue { color:#fff; background:#0B4068; border:1px solid #0B4068; }
+    .location-permission-continue:hover,.location-permission-continue:focus-visible { background:#082F4D; }
+
     .map-location-search .use-current-location:hover,
     .map-location-search .use-current-location:focus-visible {
       color: #FFFFFF;
@@ -1121,6 +1133,7 @@
 .property-results-tools #listing-results-summary { flex:1 1 170px; min-width:150px; padding:0 !important; background:transparent !important; }
 .property-results-tools #listing-results-summary hr,.property-results-tools #listing-results-summary > div { display:none; }
 .property-results-tools #listing-count { font-size:16px !important; }
+.property-results-tools .listing-results-description { margin:4px 0 0; color:#777; font:400 12px/1.45 'Lora',serif; }
 .property-results-tools > div:has(#domSort) { min-width:170px !important; }
 .property-results-panel #listing-results-summary { padding:10px 0 16px !important; }
 .property-results-panel > section.container { width:100%; max-width:none; padding:18px 0; }
@@ -1370,6 +1383,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <section id="listing-results-summary" style="background-color:#ffffff;padding:2% 3%;margin:0;font-size:20px;border:none;position:relative;">
   <p id="listing-count" style="font-size:18px;font-family:'Lora';margin:0 0 1% 0;text-align:left;"></p>
+  <p id="listing-results-description" class="listing-results-description" aria-live="polite">Showing results for: All West Tennessee properties</p>
   <hr style="color:rgb(213, 213, 213);margin-bottom:0;position:relative;z-index:1;">
   <div style="position:absolute;bottom:0;left:0;width:100%;height:40px;background:linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgb(245,245,245) 100%);pointer-events:none;"></div>
 </section>
@@ -1397,6 +1411,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       <option value="all">All Agents</option>
       <option value="Lisa Ballinger">Lisa Ballinger</option>
       <option value="Amy McLemore">Amy McLemore</option>
+      <option value="Ashley McMillan">Ashley McMillan</option>
       <option value="Brandie Bassett">Brandie Bassett</option>
       <option value="Lynda Climer">Lynda Climer</option>
       <option value="Laura Burke">Laura Burke</option>
@@ -1485,6 +1500,18 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     </aside>
   </div>
 </section>
+
+<div id="location-permission-modal" class="location-permission-modal" role="dialog" aria-modal="true" aria-labelledby="location-permission-title" hidden>
+  <div class="location-permission-dialog">
+    <button id="location-permission-close" class="location-permission-close" type="button" aria-label="Close location window">&times;</button>
+    <h2 id="location-permission-title">Use your current location?</h2>
+    <p id="location-permission-message">Your browser will ask whether Total Realty Source can use your approximate location. Your current property filters will remain unchanged.</p>
+    <div class="location-permission-actions">
+      <button id="location-permission-cancel" class="location-permission-cancel" type="button">Cancel</button>
+      <button id="location-permission-continue" class="location-permission-continue" type="button">Continue</button>
+    </div>
+  </div>
+</div>
 
 <header id="featured-listings-header" class="container featured-listings-header">
   <p class="property-hero-kicker">TOTAL REALTY SOURCE</p>
@@ -3068,7 +3095,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     <!-- Homes Grid 4 -->
     <section style="padding: 2%";></section>
     <div class="grid">
-        <div class="card" data-modal="turkeyModal" data-dom="113" data-lat="35.806131" data-lng="-88.810749" data-map-category="homes">
+        <div class="card" data-modal="turkeyModal" data-agent="Ashley McMillan" data-dom="113" data-lat="35.806131" data-lng="-88.810749" data-map-category="homes">
           <!-- Open house -->
         <!-- Open House Tag + Overlay -->
         <!-- <div onclick="toggleOpenHouse(this)" style="position:absolute;top:0;left:0;width:0;height:0;border-top:90px solid rgba(218,165,32,0.75);border-right:90px solid transparent;cursor:pointer;z-index:3;">
@@ -3225,7 +3252,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             </div>
 
 
-                    <div class="card" data-modal="306WileyParkerRoadModal" data-dom="89" data-lat="35.661564" data-lng="-88.841709" data-map-category="homes">
+                    <div class="card" data-modal="306WileyParkerRoadModal" data-agent="Ashley McMillan" data-dom="89" data-lat="35.661564" data-lng="-88.841709" data-map-category="homes">
                       <img src="306wileyparker/20260516144455956554000000-o.jpg" alt="Home" onclick="openModal('306WileyParkerRoadModal')" />
                       <div class="card-body">
                         <p class="price">$575,000</p>
@@ -7150,6 +7177,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         if (controls.type.value !== 'all') values.push(controls.type.options[controls.type.selectedIndex].text);
         if (controls.agent.value !== 'all') values.push(controls.agent.value);
         if (savedOnly) values.push('Saved Homes');
+        const resultsDescription = document.getElementById('listing-results-description');
+        if (resultsDescription) {
+          resultsDescription.textContent = `Showing results for: ${values.length ? values.join(' · ') : 'All West Tennessee properties'}`;
+        }
         chips.replaceChildren();
         const priceDetails = document.getElementById('minPrice').closest('.filter-popover');
         const priceActive = +controls.min.value > 0 || (controls.max.value && +controls.max.value > 0);
@@ -7165,7 +7196,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           : 'Beds & Baths';
         controls.type.classList.toggle('filter-active', controls.type.value !== 'all');
         controls.agent.classList.toggle('filter-active', controls.agent.value !== 'all');
-        document.getElementById('clearListingFilters').hidden = values.length < 2;
+        document.getElementById('clearListingFilters').hidden = values.length === 0;
       }
 
       function updateCategories() {
@@ -7341,6 +7372,11 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       const locationSuggestions = document.getElementById('map-location-suggestions');
       const areaListings = document.getElementById('map-area-listings');
       const useCurrentLocationButton = document.getElementById('use-current-location');
+      const locationPermissionModal = document.getElementById('location-permission-modal');
+      const locationPermissionMessage = document.getElementById('location-permission-message');
+      const locationPermissionContinue = document.getElementById('location-permission-continue');
+      const locationPermissionClose = document.getElementById('location-permission-close');
+      const locationPermissionCancel = document.getElementById('location-permission-cancel');
       let selectedModalId = '';
       let popupPinned = false;
       let popupCloseTimer = 0;
@@ -8202,13 +8238,14 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
       function requestCurrentLocation(automatic = false) {
         if (!navigator.geolocation) {
-          if (!automatic) searchMessage.textContent = 'Location services are not available in this browser.';
+          locationPermissionMessage.textContent = 'Location services are not available in this browser. Your existing filters have not been changed.';
           return;
         }
-        useCurrentLocationButton.disabled = true;
-        if (!automatic) searchMessage.textContent = 'Finding your location…';
+        locationPermissionContinue.disabled = true;
+        locationPermissionContinue.textContent = 'Locating…';
+        locationPermissionMessage.textContent = 'Your browser may now ask you to allow location access. Your existing filters will remain unchanged.';
         navigator.geolocation.getCurrentPosition(position => {
-          localStorage.setItem('trs-location-preference', 'enabled');
+          try { localStorage.setItem('trs-location-preference', 'enabled'); } catch (_) {}
           const latitude = Number(position.coords.latitude);
           const longitude = Number(position.coords.longitude);
           const isNearWestTennessee = latitude >= 34.7 && latitude <= 36.8 && longitude >= -90.6 && longitude <= -87;
@@ -8216,8 +8253,9 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             clearLocationBoundary();
             selectedLocationName = 'West Tennessee';
             selectedLocationLabel.textContent = 'West Tennessee';
-            searchMessage.textContent = 'Showing all West Tennessee properties near our service area.';
-            useCurrentLocationButton.disabled = false;
+            locationPermissionMessage.textContent = 'You are outside our service area, so all West Tennessee properties are shown. Your other filters remain active.';
+            locationPermissionContinue.textContent = 'Done';
+            locationPermissionContinue.disabled = false;
             return;
           }
           selectedBoundary = currentLocationBoundary(latitude, longitude);
@@ -8231,17 +8269,46 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           clearLocationButton.hidden = false;
           clearLocationButton.setAttribute('aria-label', 'Clear current location search');
           searchAreaButton.hidden = true;
-          searchMessage.textContent = 'Showing properties near your current location.';
+          searchMessage.textContent = '';
           renderMap();
-          useCurrentLocationButton.disabled = false;
+          locationPermissionModal.hidden = true;
+          locationPermissionContinue.textContent = 'Continue';
+          locationPermissionContinue.disabled = false;
         }, error => {
-          if (error.code === error.PERMISSION_DENIED) localStorage.setItem('trs-location-preference', 'denied');
-          if (!automatic) searchMessage.textContent = 'We could not use your location. You can search by city, ZIP code, county, or address instead.';
-          useCurrentLocationButton.disabled = false;
+          if (error.code === error.PERMISSION_DENIED) {
+            try { localStorage.setItem('trs-location-preference', 'denied'); } catch (_) {}
+          }
+          locationPermissionMessage.textContent = error.code === error.PERMISSION_DENIED
+            ? 'Location access was blocked. Allow location access in your browser settings, then try again. Your existing filters have not been changed.'
+            : 'We could not find your location. Your existing filters have not been changed; you can still search by city, ZIP code, county, or address.';
+          locationPermissionContinue.textContent = 'Try again';
+          locationPermissionContinue.disabled = false;
         }, {enableHighAccuracy:false, timeout:7000, maximumAge:300000});
       }
 
-      useCurrentLocationButton.addEventListener('click', () => requestCurrentLocation(false));
+      function closeLocationPermissionModal() {
+        locationPermissionModal.hidden = true;
+        locationPermissionMessage.textContent = 'Your browser will ask whether Total Realty Source can use your approximate location. Your current property filters will remain unchanged.';
+        locationPermissionContinue.textContent = 'Continue';
+        locationPermissionContinue.disabled = false;
+        useCurrentLocationButton.focus();
+      }
+      useCurrentLocationButton.addEventListener('click', () => {
+        locationPermissionModal.hidden = false;
+        locationPermissionContinue.focus();
+      });
+      locationPermissionContinue.addEventListener('click', () => {
+        if (locationPermissionContinue.textContent === 'Done') closeLocationPermissionModal();
+        else requestCurrentLocation(false);
+      });
+      locationPermissionClose.addEventListener('click', closeLocationPermissionModal);
+      locationPermissionCancel.addEventListener('click', closeLocationPermissionModal);
+      locationPermissionModal.addEventListener('click', event => {
+        if (event.target === locationPermissionModal) closeLocationPermissionModal();
+      });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && !locationPermissionModal.hidden) closeLocationPermissionModal();
+      });
 
       searchAreaButton.addEventListener('click', function (event) {
         event.stopPropagation();
