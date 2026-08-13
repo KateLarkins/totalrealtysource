@@ -8267,9 +8267,26 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         };
       }
 
-      function requestCurrentLocation(automatic = false) {
+      const blockedLocationInstructions = 'Location access is blocked for this site. In Safari, open Settings › Websites › Location and choose Allow. In Chrome, select the site controls beside the address, set Location to Allow, then reload this page. Your filters have not been changed.';
+
+      async function locationPermissionState() {
+        try { return (await navigator.permissions.query({name:'geolocation'})).state; }
+        catch (_) { return 'unknown'; }
+      }
+
+      async function requestCurrentLocation(automatic = false) {
         if (!navigator.geolocation) {
           locationPermissionMessage.textContent = 'Location services are not available in this browser. Your existing filters have not been changed.';
+          return;
+        }
+        if (!window.isSecureContext) {
+          locationPermissionMessage.textContent = 'Current location requires a secure HTTPS page. Your existing filters have not been changed.';
+          locationPermissionContinue.textContent = 'Close';
+          return;
+        }
+        if (await locationPermissionState() === 'denied') {
+          locationPermissionMessage.textContent = blockedLocationInstructions;
+          locationPermissionContinue.textContent = 'Close';
           return;
         }
         locationPermissionContinue.disabled = true;
@@ -8310,9 +8327,9 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             try { localStorage.setItem('trs-location-preference', 'denied'); } catch (_) {}
           }
           locationPermissionMessage.textContent = error.code === error.PERMISSION_DENIED
-            ? 'Location access was blocked. Allow location access in your browser settings, then try again. Your existing filters have not been changed.'
+            ? blockedLocationInstructions
             : 'We could not find your location. Your existing filters have not been changed; you can still search by city, ZIP code, county, or address.';
-          locationPermissionContinue.textContent = 'Try again';
+          locationPermissionContinue.textContent = error.code === error.PERMISSION_DENIED ? 'Close' : 'Try again';
           locationPermissionContinue.disabled = false;
         }, {enableHighAccuracy:false, timeout:7000, maximumAge:300000});
       }
@@ -8324,12 +8341,16 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         locationPermissionContinue.disabled = false;
         useCurrentLocationButton.focus();
       }
-      useCurrentLocationButton.addEventListener('click', () => {
+      useCurrentLocationButton.addEventListener('click', async () => {
         locationPermissionModal.hidden = false;
+        if (await locationPermissionState() === 'denied') {
+          locationPermissionMessage.textContent = blockedLocationInstructions;
+          locationPermissionContinue.textContent = 'Close';
+        }
         locationPermissionContinue.focus();
       });
       locationPermissionContinue.addEventListener('click', () => {
-        if (locationPermissionContinue.textContent === 'Done') closeLocationPermissionModal();
+        if (locationPermissionContinue.textContent === 'Done' || locationPermissionContinue.textContent === 'Close') closeLocationPermissionModal();
         else requestCurrentLocation(false);
       });
       locationPermissionClose.addEventListener('click', closeLocationPermissionModal);
