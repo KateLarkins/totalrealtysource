@@ -7305,7 +7305,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       document.getElementById('showSplitView').addEventListener('click', () => setWorkspaceView('split'));
       document.getElementById('showListView').addEventListener('click', () => setWorkspaceView('list'));
       document.getElementById('showMapView').addEventListener('click', () => setWorkspaceView('map'));
-      document.getElementById('map-return-list').addEventListener('click', () => setWorkspaceView('list'));
+      document.getElementById('map-return-list').addEventListener('click', () => {
+        setWorkspaceView('split');
+        requestAnimationFrame(() => document.querySelector('.property-search-workspace')?.scrollIntoView({behavior:'smooth',block:'start'}));
+      });
       setWorkspaceView(window.matchMedia('(max-width: 1100px)').matches ? 'list' : 'split');
       document.getElementById('mobileFiltersToggle').addEventListener('click', function () {
         const open = document.body.classList.toggle('mobile-filters-open');
