@@ -15,6 +15,7 @@
 <script defer src="jackson-boundary-data.js"></script>
 <script defer src="tennessee-primary-roads-data.js"></script>
 <script defer src="west-tennessee-secondary-roads-data.js"></script>
+<script defer src="tennessee-hydrography-data.js"></script>
 <script defer src="us-states-map-data.js"></script>
 
   <title>Homes for Sale</title>
@@ -153,6 +154,23 @@
       margin: 0;
       color: #5F6368;
       font: 15px/1.6 'Lora';
+    }
+
+    .featured-listings-header {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 36px max(24px, calc((100vw - 1200px) / 2 + 24px)) 22px;
+      background: #FFFFFF;
+      border-top: 1px solid #E7DFD3;
+    }
+
+    .featured-listings-header h2 {
+      margin: 0;
+      padding-left: 16px;
+      color: #111111;
+      border-left: 3px solid #FCB43C;
+      font: 600 clamp(28px, 3vw, 38px)/1.15 'Bodoni Moda';
     }
 
     #tennessee-listing-map {
@@ -312,6 +330,34 @@
     .map-remove-boundary:hover,
     .map-remove-boundary:focus-visible {
       background: #F5F5F5;
+    }
+
+    .map-zoom-controls {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      z-index: 4;
+      display: grid;
+      gap: 6px;
+    }
+
+    .map-zoom-controls button {
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      color: #111111;
+      background: #FFFFFF;
+      border: 1px solid #BDBDBD;
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(42, 42, 51, 0.16);
+      font: 24px/1 Arial, sans-serif;
+      cursor: pointer;
+    }
+
+    .map-zoom-controls button:hover,
+    .map-zoom-controls button:focus-visible {
+      background: #F5F5F5;
+      border-color: #909090;
     }
 
     .map-location-search button {
@@ -525,6 +571,10 @@
         padding-left: 12px;
       }
 
+      .featured-listings-header {
+        padding: 28px 16px 16px;
+      }
+
       .listing-map-layout {
         grid-template-columns: 1fr;
         gap: 12px;
@@ -559,6 +609,11 @@
       .map-remove-boundary {
         top: 8px;
         right: 8px;
+      }
+
+      .map-zoom-controls {
+        right: 8px;
+        bottom: 58px;
       }
 
     }
@@ -1114,13 +1169,17 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <section class="container listing-map-section" aria-labelledby="listing-map-title">
   <header class="listing-map-header">
-    <p class="listing-map-kicker">Interactive property map</p>
+    <p class="listing-map-kicker">Property Search</p>
     <h2 id="listing-map-title" class="listing-map-title">Explore properties across Tennessee</h2>
     <p class="listing-map-intro">Search by city, ZIP code, county, or address, then explore the matching homes and land directly on the map.</p>
   </header>
   <div class="listing-map-layout">
     <div id="tennessee-listing-map" role="region" aria-label="Interactive map of current property listings in Tennessee">
       <button id="map-remove-boundary" class="map-remove-boundary" type="button"><span aria-hidden="true">&times;</span> Clear search</button>
+      <div class="map-zoom-controls" aria-label="Map zoom controls">
+        <button id="map-zoom-in" type="button" aria-label="Zoom in">+</button>
+        <button id="map-zoom-out" type="button" aria-label="Zoom out">&minus;</button>
+      </div>
       <div class="listing-map-legend" aria-label="Property type legend">
         <span><i style="background:#FF2D2D;"></i>Homes for Sale</span>
         <span><i style="background:#22B455;"></i>Land</span>
@@ -1154,13 +1213,20 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   </div>
 </section>
 
+<header id="featured-listings-header" class="container featured-listings-header">
+  <h2>Featured Listings</h2>
+</header>
+
 <script>
   (function placeMapAboveFilters() {
     const mapSection = document.querySelector('.listing-map-section');
+    const featuredHeader = document.getElementById('featured-listings-header');
     const filterBar = document.getElementById('listing-filter-bar');
     const resultsSummary = document.getElementById('listing-results-summary');
-    if (!mapSection || !filterBar || !resultsSummary) return;
+    if (!mapSection || !featuredHeader || !filterBar || !resultsSummary) return;
     resultsSummary.parentNode.insertBefore(mapSection, resultsSummary);
+    mapSection.insertAdjacentElement('afterend', featuredHeader);
+    featuredHeader.insertAdjacentElement('afterend', filterBar);
     filterBar.insertAdjacentElement('afterend', resultsSummary);
   })();
 </script>
@@ -2657,7 +2723,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         </script> -->
 
         <!-- Open house -->
-          <img src="Turkey/20251125165457867348000000-o.jpg" alt="Home" onclick="openModal('turkeyModal')" />
+          <img src="https://cdn.photos.sparkplatform.com/ctn/20260421130226732366000000-o.jpg" alt="31 Turkey Creek Road" onclick="openModal('turkeyModal')" />
           <div class="card-body">
             <p class="price">$405,000</p>
             <p class="address">31 Turkey Creek Road<br>Medina, TN</p>
@@ -2687,7 +2753,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
               </div>
             
               <!-- Image Slides -->
-              <img class="slide" src="Turkey/20251125165457867348000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+              <img class="slide" src="https://cdn.photos.sparkplatform.com/ctn/20260421130226732366000000-o.jpg" alt="31 Turkey Creek Road" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
               <img class="slide" src="Turkey/20251125165501556150000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
               <img class="slide" src="Turkey/20251125165505174695000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
               <img class="slide" src="Turkey/20251125165509179489000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
@@ -6503,12 +6569,16 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       const selectedLocationLabel = document.getElementById('map-selected-location');
       const clearLocationButton = document.getElementById('map-clear-location');
       const removeBoundaryButton = document.getElementById('map-remove-boundary');
+      const zoomInButton = document.getElementById('map-zoom-in');
+      const zoomOutButton = document.getElementById('map-zoom-out');
       const locationSuggestions = document.getElementById('map-location-suggestions');
       const areaListings = document.getElementById('map-area-listings');
       let selectedModalId = '';
       let popupPinned = false;
       let popupCloseTimer = 0;
       let currentTransform = d3.zoomIdentity;
+      let mapZoomBehavior = null;
+      let mapSvgSelection = null;
       let mapLayer;
       let currentListings = [];
       let locationSearchActive = true;
@@ -6531,12 +6601,27 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       const state = topojson.feature(atlas, atlas.objects.states);
       const primaryRoads = window.TENNESSEE_PRIMARY_ROADS || {type: 'FeatureCollection', features: []};
       const secondaryRoads = window.WEST_TENNESSEE_SECONDARY_ROADS || {type: 'FeatureCollection', features: []};
+      const hydrography = window.TENNESSEE_HYDROGRAPHY || {
+        areas: {type: 'FeatureCollection', features: []},
+        rivers: {type: 'FeatureCollection', features: []}
+      };
       const usStates = window.US_STATES_ATLAS
         ? topojson.feature(window.US_STATES_ATLAS, window.US_STATES_ATLAS.objects.states)
         : {type: 'FeatureCollection', features: []};
-      const regionalStateIds = new Set(['01', '05', '13', '17', '21', '28', '29', '37', '45', '47', '51']);
-      const regionalStates = usStates.features.filter(feature => regionalStateIds.has(String(feature.id).padStart(2, '0')));
-      const stateAbbreviations = {'01':'AL','05':'AR','13':'GA','17':'IL','21':'KY','28':'MS','29':'MO','37':'NC','45':'SC','47':'TN','51':'VA'};
+      const regionalStates = usStates.features.filter(feature => {
+        const id = String(feature.id).padStart(2, '0');
+        return Number(id) <= 56 && !['02', '15'].includes(id);
+      });
+      const stateAbbreviations = {
+        '01':'AL','05':'AR','12':'FL','13':'GA','17':'IL','18':'IN','20':'KS','21':'KY',
+        '22':'LA','28':'MS','29':'MO','37':'NC','39':'OH','40':'OK','45':'SC','47':'TN',
+        '51':'VA','54':'WV'
+      };
+      const regionalGreenPalette = ['#E8F5EA', '#E2F3E7', '#DCF0E1', '#E5F4E9'];
+      function regionalStateFill(feature) {
+        const id = String(feature.id).padStart(2, '0');
+        return id === '47' ? '#D0F0E0' : regionalGreenPalette[Number(id) % regionalGreenPalette.length];
+      }
       const jacksonBoundarySource = window.JACKSON_TN_BOUNDARY.features[0];
       const jacksonBoundary = {
         ...jacksonBoundarySource,
@@ -6923,8 +7008,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         svg.append('desc').text(`${selectedLocationName} is outlined in blue. Drag and zoom to explore nearby properties.`);
         mapLayer = svg.append('g');
 
-        svg.append('defs')
-          .append('clipPath')
+        const mapDefs = svg.append('defs');
+        mapDefs.append('clipPath')
           .attr('id', 'tennessee-road-clip')
           .attr('clipPathUnits', 'userSpaceOnUse')
           .selectAll('path')
@@ -6932,19 +7017,38 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           .join('path')
           .attr('d', path);
 
+        const countyGreenGradients = [
+          ['#DDF6E6', '#D2F1DD', '#C9ECD5'],
+          ['#D7F7E2', '#CEF2DA', '#C5EBD1'],
+          ['#DDF4E5', '#D2EDDC', '#C8E7D3'],
+          ['#D5F3DF', '#CBECD6', '#C1E5CD'],
+          ['#E1F7E9', '#D5F1E1', '#CCEBD8']
+        ];
+        countyGreenGradients.forEach((colors, index) => {
+          const gradient = mapDefs.append('linearGradient')
+            .attr('id', `tn-county-green-${index}`)
+            .attr('x1', '0%')
+            .attr('y1', '0%')
+            .attr('x2', '100%')
+            .attr('y2', '100%');
+          gradient.append('stop').attr('offset', '0%').attr('stop-color', colors[0]);
+          gradient.append('stop').attr('offset', '56%').attr('stop-color', colors[1]);
+          gradient.append('stop').attr('offset', '100%').attr('stop-color', colors[2]);
+        });
+
         mapLayer.selectAll('.regional-state')
           .data(regionalStates)
           .join('path')
           .attr('class', 'regional-state')
           .attr('data-state', feature => stateAbbreviations[String(feature.id).padStart(2, '0')] || '')
           .attr('d', path)
-          .attr('fill', feature => String(feature.id).padStart(2, '0') === '47' ? '#D0F0E0' : '#E8F5EA')
+          .attr('fill', regionalStateFill)
           .attr('stroke', '#D5D5D2')
           .attr('stroke-width', 1)
           .style('cursor', 'default')
           .on('mouseenter', function () { d3.select(this).attr('fill', '#B8DDBF'); })
           .on('mouseleave', function (event, feature) {
-            d3.select(this).attr('fill', String(feature.id).padStart(2, '0') === '47' ? '#D0F0E0' : '#E8F5EA');
+            d3.select(this).attr('fill', regionalStateFill(feature));
           });
 
         mapLayer.selectAll('.regional-state-label')
@@ -6969,11 +7073,38 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           .join('path')
           .attr('class', 'tn-county')
           .attr('d', path)
-          .attr('fill', county => ['#F7F7F5', '#D0F8E0', '#D0F0E0', '#C8F0D8', '#D8F8E8'][Number(county.id) % 5])
+          .attr('fill', county => `url(#tn-county-green-${Number(county.id) % 5})`)
           .attr('stroke', '#E2E2DF')
           .attr('stroke-width', 0.42)
           .attr('stroke-opacity', 0.62)
           .attr('vector-effect', 'non-scaling-stroke')
+          .style('pointer-events', 'none');
+
+        mapLayer.selectAll('.tn-water-area')
+          .data(hydrography.areas.features)
+          .join('path')
+          .attr('class', 'tn-water-area')
+          .attr('d', path)
+          .attr('fill', '#CDE8F5')
+          .attr('stroke', '#B8DAEA')
+          .attr('stroke-width', 0.38)
+          .attr('stroke-linejoin', 'round')
+          .attr('vector-effect', 'non-scaling-stroke')
+          .attr('clip-path', 'url(#tennessee-road-clip)')
+          .style('pointer-events', 'none');
+
+        mapLayer.selectAll('.tn-river-line')
+          .data(hydrography.rivers.features)
+          .join('path')
+          .attr('class', 'tn-river-line')
+          .attr('d', path)
+          .attr('fill', 'none')
+          .attr('stroke', '#AFCFDF')
+          .attr('stroke-width', 0.72)
+          .attr('stroke-linecap', 'round')
+          .attr('stroke-linejoin', 'round')
+          .attr('vector-effect', 'non-scaling-stroke')
+          .attr('clip-path', 'url(#tennessee-road-clip)')
           .style('pointer-events', 'none');
 
         mapLayer.selectAll('.tn-state-outline')
@@ -7069,7 +7200,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           .datum(selectedBoundary)
           .attr('class', 'jackson-location-boundary')
           .attr('d', path)
-          .attr('fill', 'rgba(0, 106, 255, 0.008)')
+          .attr('fill', 'rgba(174, 229, 194, 0.025)')
           .attr('stroke', '#006AFF')
           .attr('stroke-width', 2)
           .attr('stroke-opacity', 0.52)
@@ -7206,6 +7337,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             else applyViewportFilter(true);
           });
 
+        mapZoomBehavior = zoom;
+        mapSvgSelection = svg;
         svg.call(zoom).call(zoom.transform, currentTransform);
         updateRoadDetailVisibility();
         if (focusedListing) {
@@ -7230,6 +7363,21 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
       clearLocationButton.addEventListener('click', clearLocationBoundary);
       removeBoundaryButton.addEventListener('click', clearLocationBoundary);
+      function zoomMap(factor) {
+        if (!mapZoomBehavior || !mapSvgSelection) return;
+        mapSvgSelection
+          .transition()
+          .duration(220)
+          .call(mapZoomBehavior.scaleBy, factor);
+      }
+      zoomInButton.addEventListener('click', event => {
+        event.stopPropagation();
+        zoomMap(1.35);
+      });
+      zoomOutButton.addEventListener('click', event => {
+        event.stopPropagation();
+        zoomMap(1 / 1.35);
+      });
       locationQuery.addEventListener('focus', () => {
         const isCurrentArea = locationQuery.value.trim() === selectedLocationName;
         renderSearchSuggestions(isCurrentArea ? '' : locationQuery.value);
