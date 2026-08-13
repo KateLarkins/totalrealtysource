@@ -1243,8 +1243,15 @@ body.workspace-view-map .property-search-workspace .listing-map-section { positi
   .property-search-workspace .listing-map-section { position:relative; top:auto; }
   body.workspace-view-map .property-search-workspace { height:65vh; min-height:420px; }
   body.workspace-view-map .map-return-list { display:block; }
+  body.workspace-view-map .map-return-list { top:8px; right:auto; left:8px; min-height:38px; padding:8px 11px; border-radius:4px; transform:none; font-size:13px; box-shadow:0 1px 4px rgba(42,42,51,.14); }
   .property-search-workspace #tennessee-listing-map { width:100%; max-width:100%; min-width:0; height:100%; min-height:0; }
   .property-results-panel { padding:18px 16px 44px; }
+  .explore-current-header { display:none; }
+  .property-results-heading { margin:0 -16px 12px; padding:18px 16px 16px; background:#F4F6F8; border-bottom:1px solid #DCE2E6; border-left:3px solid #0B4068; }
+  .property-results-heading > p:first-child { display:none; }
+  .property-results-heading h2 { font-size:clamp(24px,7vw,29px); }
+  .property-results-tools { margin-top:6px; }
+  .property-results-panel #listing-results-summary { padding:8px 0 12px !important; }
   .property-results-panel .grid,body.workspace-view-list .property-results-panel .grid { grid-template-columns:1fr; }
   body.workspace-view-map .property-search-workspace .listing-map-section { display:block; }
   .listing-map-section { padding-top:28px; }
@@ -7177,7 +7184,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           const propertyName = controls.type.value === 'homes' ? 'Homes'
             : controls.type.value === 'land' ? 'Land'
               : controls.type.value === 'other' ? 'Commercial / Other Properties'
-                : 'Properties';
+                : 'Listings';
           const minimum = Number(controls.min.value) || 0;
           const maximum = Number(controls.max.value) || 0;
           const priceDescription = minimum && maximum
