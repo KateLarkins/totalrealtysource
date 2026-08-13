@@ -117,6 +117,7 @@ function closeNavDrawer() {
 // Toggle mobile drawer submenus
 document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   link.addEventListener('click', function(e){
+    if (this.getAttribute('href') === 'about.html') return;
     e.preventDefault();
     const parent = this.parentElement;
     parent.classList.toggle('open');

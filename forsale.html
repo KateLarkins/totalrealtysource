@@ -1382,6 +1382,7 @@ function closeNavDrawer() {
 // Toggle mobile drawer submenus
 document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   link.addEventListener('click', function(e){
+    if (this.getAttribute('href') === 'about.html') return;
     e.preventDefault();
     const parent = this.parentElement;
     parent.classList.toggle('open');
@@ -7673,15 +7674,16 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           .attr('r', 13 / zoomScale)
           .attr('display', listing => listing.modalId === selectedModalId ? null : 'none');
         mapLayer.selectAll('.jackson-map-label')
-          .attr('font-size', 11 / zoomScale);
+          .attr('font-size', 10 / zoomScale)
+          .attr('stroke-width', 3.5 / zoomScale);
         mapLayer.selectAll('.interstate-shield')
           .attr('transform', shield => `translate(${shield.x + shield.insetX / zoomScale},${shield.y + shield.insetY / zoomScale}) scale(${1 / zoomScale})`);
         mapLayer.selectAll('.regional-state-label')
           .attr('font-size', 12 / zoomScale)
           .attr('stroke-width', 3 / zoomScale);
         mapLayer.selectAll('.tn-city-label')
-          .attr('font-size', 9.5 / zoomScale)
-          .attr('stroke-width', 2.8 / zoomScale)
+          .attr('font-size', 9 / zoomScale)
+          .attr('stroke-width', 3.4 / zoomScale)
           .style('display', zoomScale >= 4 ? null : 'none');
         updateMarkerClutter();
       }
@@ -8105,7 +8107,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           {name:'Brownsville',longitude:-89.2623,latitude:35.5939},
           {name:'Huntingdon',longitude:-88.4281,latitude:36.0006},
           {name:'Martin',longitude:-88.8503,latitude:36.3434},
-          {name:'Union City',longitude:-89.0570,latitude:36.4242}
+          {name:'Union City',longitude:-89.0570,latitude:36.4242},
+          {name:'South Fulton',longitude:-88.8742,latitude:36.4740}
         ];
         const listingCityLabels = Array.from(d3.group(currentListings, listing => listing.city.replace(/,\s*TN$/i, '').trim()), ([name, listings]) => ({
           name,
@@ -8114,7 +8117,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           count: listings.length
         }));
         const cityLabelMap = new Map(regionalCityLabels.map(city => [city.name.toLowerCase(), city]));
-        listingCityLabels.forEach(city => { if (city.name) cityLabelMap.set(city.name.toLowerCase(), city); });
+        listingCityLabels.forEach(city => {
+          const key = city.name.toLowerCase();
+          if (city.name && !cityLabelMap.has(key)) cityLabelMap.set(key, city);
+        });
         const cityLabels = Array.from(cityLabelMap.values())
           .filter(city => d3.geoContains(state, [city.longitude, city.latitude]))
           .filter(city => !(boundaryVisible && city.name.toLowerCase() === selectedAreaName));
@@ -8126,13 +8132,15 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           .attr('x', city => projection([city.longitude, city.latitude])[0])
           .attr('y', city => projection([city.longitude, city.latitude])[1] - 9)
           .attr('text-anchor', 'middle')
-          .attr('fill', '#4A4A4A')
-          .attr('font-family', 'Arial, sans-serif')
-          .attr('font-size', 9.5)
-          .attr('font-weight', 600)
+          .attr('fill', '#747B80')
+          .attr('font-family', 'Lora, serif')
+          .attr('font-size', 9)
+          .attr('font-weight', 400)
+          .attr('letter-spacing', '0.01em')
           .attr('paint-order', 'stroke')
-          .attr('stroke', '#F7F7F5')
-          .attr('stroke-width', 2.8)
+          .attr('stroke', '#FAFBFA')
+          .attr('stroke-width', 3.4)
+          .attr('stroke-opacity', 0.92)
           .attr('stroke-linejoin', 'round')
           .attr('vector-effect', 'non-scaling-stroke')
           .attr('clip-path', 'url(#tennessee-road-clip)')
@@ -8158,13 +8166,14 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           .attr('x', jacksonCenter[0])
           .attr('y', jacksonCenter[1])
           .attr('text-anchor', 'middle')
-          .attr('fill', '#4A4A4A')
-          .attr('font-family', 'Arial, sans-serif')
+          .attr('fill', '#747B80')
+          .attr('font-family', 'Lora, serif')
           .attr('font-size', 10)
-          .attr('font-weight', 700)
+          .attr('font-weight', 500)
           .attr('paint-order', 'stroke')
-          .attr('stroke', '#F7F7F5')
-          .attr('stroke-width', 3)
+          .attr('stroke', '#FAFBFA')
+          .attr('stroke-width', 3.5)
+          .attr('stroke-opacity', 0.92)
           .attr('vector-effect', 'non-scaling-stroke')
           .style('pointer-events', 'none')
           .attr('display', boundaryVisible ? null : 'none')
@@ -8623,6 +8632,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     // Toggle mobile drawer submenus
     document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     link.addEventListener('click', function(e){
+    if (this.getAttribute('href') === 'about.html') return;
     e.preventDefault();
     const parent = this.parentElement;
     parent.classList.toggle('open');
