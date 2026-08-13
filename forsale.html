@@ -1501,7 +1501,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       <form id="map-location-search" class="map-location-search" role="search">
         <label for="map-location-query" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Search by address, ZIP code, county, or city</label>
         <span class="map-search-input-wrap">
-          <input id="map-location-query" type="search" value="All West Tennessee Properties" placeholder="City, ZIP, county, neighborhood, or address" autocomplete="off" aria-controls="map-location-suggestions" aria-expanded="false">
+          <input id="map-location-query" type="search" value="Search All West Tennessee Properties" placeholder="City, ZIP, county, neighborhood, or address" autocomplete="off" aria-controls="map-location-suggestions" aria-expanded="false">
           <div id="map-location-suggestions" class="map-search-suggestions" role="listbox" hidden></div>
           <button id="map-clear-location" class="map-clear-search" type="button" aria-label="Clear location search" hidden>&times;</button>
         </span>
@@ -7094,7 +7094,9 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         if (cards.some(card => +card.dataset.priceValue <= 250000)) shortcuts.push({label:'Homes Under $250K',type:'price'});
         if (cards.some(card => card.dataset.mapCategory === 'land')) shortcuts.push({label:'Land for Sale',type:'land'});
         const popularLinks = document.querySelector('#popular-property-searches > div');
-        const activePopularSearches = new Set();
+        const popularShortcuts = [{label:'Default',type:'default'}, ...shortcuts.filter(shortcut => shortcut.type !== 'land')];
+        const hasActiveSavedFilters = Boolean(+controls.min.value || +controls.max.value || +controls.beds.value || +controls.baths.value || controls.type.value !== 'all' || controls.agent.value !== 'all' || savedOnly);
+        const activePopularSearches = new Set(hasActiveSavedFilters ? [] : ['Default']);
         const renderPopularSearches = () => {
           document.querySelectorAll('#popular-property-searches button').forEach(popularButton => {
             const selected = activePopularSearches.has(popularButton.dataset.shortcutLabel);
@@ -7116,9 +7118,18 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             if (controls.type.value === 'land') controls.type.value = 'all';
             applyFilters();
           }
+          if (activePopularSearches.size === 0) activePopularSearches.add('Default');
           renderPopularSearches();
         };
         const applyPopularShortcut = shortcut => {
+          if (shortcut.type === 'default') {
+            document.getElementById('clearListingFilters')?.click();
+            activePopularSearches.clear();
+            activePopularSearches.add('Default');
+            renderPopularSearches();
+            return;
+          }
+          activePopularSearches.delete('Default');
           if (shortcut.type === 'location') {
             shortcuts.filter(item => item.type === 'location').forEach(item => activePopularSearches.delete(item.label));
           }
@@ -7137,6 +7148,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           }
         };
         const handlePopularShortcut = (button, shortcut) => {
+          if (shortcut.type === 'default') { applyPopularShortcut(shortcut); return; }
           if (activePopularSearches.has(shortcut.label)) clearPopularShortcut(shortcut);
           else applyPopularShortcut(shortcut);
         };
@@ -7148,18 +7160,24 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             document.getElementById('listing-filter-bar').scrollIntoView({behavior:'smooth'});
           });
           exploreLinks.appendChild(button);
-          if (popularLinks && popularLinks.children.length < 5) popularLinks.appendChild(button.cloneNode(true));
         });
-        popularLinks?.querySelectorAll('button').forEach((button,index) => {
-          const shortcut = shortcuts[index];
+        popularShortcuts.forEach(shortcut => {
+          if (!popularLinks) return;
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.textContent = shortcut.label;
+          button.dataset.shortcutLabel = shortcut.label;
           button.addEventListener('click', () => {
             handlePopularShortcut(button, shortcut);
           });
+          popularLinks.appendChild(button);
         });
         document.getElementById('clearListingFilters')?.addEventListener('click', () => {
           activePopularSearches.clear();
+          activePopularSearches.add('Default');
           renderPopularSearches();
         });
+        renderPopularSearches();
       }
 
       function renderChips() {
@@ -8286,7 +8304,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         locationSearchActive = false;
         focusedListingModalId = '';
         selectedLocationName = 'West Tennessee';
-        locationQuery.value = 'All West Tennessee Properties';
+        locationQuery.value = 'Search All West Tennessee Properties';
         selectedLocationLabel.textContent = 'West Tennessee';
         searchMessage.textContent = '';
         removeBoundaryButton.hidden = true;
@@ -8441,7 +8459,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         searchAreaButton.hidden = false;
       });
       locationQuery.addEventListener('focus', () => {
-        const isDefaultScope = locationQuery.value.trim() === 'All West Tennessee Properties';
+        const isDefaultScope = locationQuery.value.trim() === 'Search All West Tennessee Properties';
         const isCurrentArea = locationQuery.value.trim() === selectedLocationName || isDefaultScope;
         if (isDefaultScope) locationQuery.select();
         renderSearchSuggestions(isCurrentArea ? '' : locationQuery.value);
@@ -8466,6 +8484,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         if (!query) {
           searchMessage.textContent = 'Enter an address, ZIP code, county, or city.';
           locationQuery.focus();
+          return;
+        }
+        if (query === 'Search All West Tennessee Properties') {
+          clearLocationBoundary();
           return;
         }
 
