@@ -1124,6 +1124,7 @@ body.workspace-view-split .property-back-to-top-wrap { display:flex; }
 .property-back-to-top { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:46px; padding:10px 18px; color:#fff; background:#0B4068; border:1px solid #0B4068; border-radius:7px; box-shadow:0 2px 8px rgba(15,35,50,.12); font:600 14px 'Lora',serif; cursor:pointer; }
 .property-back-to-top:hover,.property-back-to-top:focus-visible { color:#fff; background:#082F4D; border-color:#082F4D; }
 .property-back-to-top .back-to-top-arrow { font:700 19px/1 Arial,sans-serif; }
+.property-back-to-top .back-to-top-label { display:inline; }
 .property-search-workspace .listing-map-section { position:relative; top:auto; align-self:stretch; width:100%; max-width:100%; min-width:0; height:100%; margin:0; padding:0; overflow:hidden; background:#F7F7F5; box-shadow:none; clip-path:none; }
 .property-search-workspace .listing-map-header { display:none; }
 .property-search-workspace .listing-map-layout { display:block; width:100%; height:100%; min-width:0; overflow:hidden; }
@@ -1232,8 +1233,13 @@ body.workspace-view-map .property-search-workspace .listing-map-section { positi
 @media (min-width:769px) and (max-width:1100px) { #showSplitView { display:none; } }
 @media (max-width:768px) {
   .property-search-workspace { display:block; width:100%; max-width:100%; height:auto; min-height:0; margin-bottom:24px; overflow:hidden; }
-  .property-back-to-top-wrap { justify-content:center; width:100%; margin:0 auto 28px; padding:0 16px; }
-  .property-back-to-top { width:auto; min-height:44px; padding:9px 14px; }
+  .property-back-to-top-wrap,
+  body.workspace-view-split .property-back-to-top-wrap,
+  body.workspace-view-list .property-back-to-top-wrap,
+  body.workspace-view-map .property-back-to-top-wrap { position:fixed; right:max(16px,env(safe-area-inset-right)); bottom:max(16px,env(safe-area-inset-bottom)); z-index:90; display:flex; justify-content:center; width:48px; height:48px; margin:0; padding:0; }
+  .property-back-to-top { width:48px; min-width:48px; height:48px; min-height:48px; padding:0; border-radius:50%; box-shadow:0 4px 14px rgba(15,35,50,.24); }
+  .property-back-to-top .back-to-top-arrow { font-size:23px; transform:translateY(-1px); }
+  .property-back-to-top .back-to-top-label { position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
   .featured-listings-header { padding:28px 16px 20px; }
   .featured-listings-header::before { left:16px; top:28px; bottom:20px; }
   .featured-listings-header h2 { font-size:clamp(27px,7.5vw,30px); }
@@ -1583,7 +1589,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       const backToTopButton = document.createElement('button');
       backToTopButton.type = 'button';
       backToTopButton.className = 'property-back-to-top';
-      backToTopButton.innerHTML = '<span class="back-to-top-arrow" aria-hidden="true">&uarr;</span> Back to top';
+      backToTopButton.setAttribute('aria-label', 'Back to top');
+      backToTopButton.innerHTML = '<span class="back-to-top-arrow" aria-hidden="true">&uarr;</span><span class="back-to-top-label">Back to top</span>';
       backToTopButton.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
       backToTopWrap.appendChild(backToTopButton);
       workspace.insertAdjacentElement('afterend', backToTopWrap);
@@ -7426,6 +7433,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       let mapZoomBehavior = null;
       let mapSvgSelection = null;
       let mapLayer;
+      let mapProjection;
       let currentListings = [];
       let locationSearchActive = false;
       let selectedLocationName = 'West Tennessee';
@@ -7685,7 +7693,78 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           .attr('font-size', 9 / zoomScale)
           .attr('stroke-width', 3.4 / zoomScale)
           .style('display', zoomScale >= 4 ? null : 'none');
+        updateCityLabelLayout(zoomScale);
         updateMarkerClutter();
+      }
+
+      function updateCityLabelLayout(zoomScale) {
+        const labels = mapLayer.selectAll('.tn-city-label');
+        if (zoomScale < 4) {
+          labels.style('display', 'none');
+          return;
+        }
+
+        const markerHeight = markerHeightForZoom(zoomScale);
+        const markerWidth = markerHeight * (58 / 24);
+        const padding = 4;
+        const occupied = currentListings.map(listing => {
+          const point = currentTransform.apply([listing.x, listing.y]);
+          return {
+            left: point[0] - markerWidth / 2 - padding,
+            right: point[0] + markerWidth / 2 + padding,
+            top: point[1] - markerHeight / 2 - padding,
+            bottom: point[1] + markerHeight / 2 + padding
+          };
+        });
+        const candidateOffsets = [
+          [0, -15], [0, 15], [20, 0], [-20, 0],
+          [18, -14], [-18, -14], [18, 14], [-18, 14],
+          [0, -27], [0, 27], [32, 0], [-32, 0]
+        ];
+        const overlaps = (a, b) =>
+          a.left < b.right && a.right > b.left &&
+          a.top < b.bottom && a.bottom > b.top;
+
+        const labelNodes = Array.from(document.querySelectorAll('#tennessee-listing-map .tn-city-label')).sort((a, b) =>
+          Number(b.dataset.listingCount || 0) - Number(a.dataset.listingCount || 0)
+        );
+        labelNodes.forEach(node => {
+          const city = {
+            name: node.textContent,
+            longitude: Number(node.dataset.longitude),
+            latitude: Number(node.dataset.latitude)
+          };
+          const projectedAnchor = mapProjection([city.longitude, city.latitude]);
+          const anchor = [
+            currentTransform.x + projectedAnchor[0] * zoomScale,
+            currentTransform.y + projectedAnchor[1] * zoomScale
+          ];
+          const labelWidth = Math.max(24, city.name.length * 5.4 + 8);
+          const labelHeight = 14;
+          let placement = null;
+          for (const [offsetX, offsetY] of candidateOffsets) {
+            const box = {
+              left: anchor[0] + offsetX - labelWidth / 2,
+              right: anchor[0] + offsetX + labelWidth / 2,
+              top: anchor[1] + offsetY - labelHeight / 2,
+              bottom: anchor[1] + offsetY + labelHeight / 2
+            };
+            if (!occupied.some(item => overlaps(box, item))) {
+              placement = {offsetX, offsetY, box};
+              break;
+            }
+          }
+          if (!placement) {
+            node.style.display = 'none';
+            return;
+          }
+          const projected = mapProjection([city.longitude, city.latitude]);
+          node.style.removeProperty('display');
+          node.setAttribute('x', projected[0] + placement.offsetX / zoomScale);
+          node.setAttribute('y', projected[1] + placement.offsetY / zoomScale);
+          node.removeAttribute('dy');
+          occupied.push(placement.box);
+        });
       }
 
       function updateRoadDetailVisibility() {
@@ -7896,6 +7975,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           coordinates: [[[-95.0, 30.0], [-95.0, 41.0], [-75.0, 41.0], [-75.0, 30.0], [-95.0, 30.0]]]
         };
         const projection = d3.geoMercator().fitExtent([[18, 14], [width - 18, height - 14]], regionalExtent);
+        mapProjection = projection;
         const path = d3.geoPath(projection);
         const tennesseeMapBounds = path.bounds(state);
         const tennesseeMapWidth = tennesseeMapBounds[1][0] - tennesseeMapBounds[0][0];
@@ -8102,13 +8182,47 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           {name:'Paris',longitude:-88.3267,latitude:36.3020},
           {name:'Milan',longitude:-88.7589,latitude:35.9198},
           {name:'Humboldt',longitude:-88.9159,latitude:35.8198},
+          {name:'Medina',longitude:-88.7809,latitude:35.8054},
+          {name:'Dyer',longitude:-88.9916,latitude:36.0693},
+          {name:'Trenton',longitude:-88.9414,latitude:35.9806},
+          {name:'McKenzie',longitude:-88.5187,latitude:36.1326},
           {name:'Dyersburg',longitude:-89.3856,latitude:36.0345},
+          {name:'Pinson',longitude:-88.7206,latitude:35.4901},
+          {name:'Beech Bluff',longitude:-88.6256,latitude:35.5962},
           {name:'Lexington',longitude:-88.4181,latitude:35.6509},
           {name:'Brownsville',longitude:-89.2623,latitude:35.5939},
           {name:'Huntingdon',longitude:-88.4281,latitude:36.0006},
           {name:'Martin',longitude:-88.8503,latitude:36.3434},
           {name:'Union City',longitude:-89.0570,latitude:36.4242},
-          {name:'South Fulton',longitude:-88.8742,latitude:36.4740}
+          {name:'South Fulton',longitude:-88.8742,latitude:36.4740},
+          {name:'Clifton',longitude:-87.9921,latitude:35.3828},
+          {name:'Clarksville',longitude:-87.3595,latitude:36.5298},
+          {name:'Dickson',longitude:-87.3878,latitude:36.0770},
+          {name:'Nashville',longitude:-86.7816,latitude:36.1627},
+          {name:'Franklin',longitude:-86.8689,latitude:35.9251},
+          {name:'Murfreesboro',longitude:-86.3903,latitude:35.8456},
+          {name:'Columbia',longitude:-87.0353,latitude:35.6151},
+          {name:'Lawrenceburg',longitude:-87.3347,latitude:35.2423},
+          {name:'Pulaski',longitude:-87.0308,latitude:35.1998},
+          {name:'Fayetteville',longitude:-86.5706,latitude:35.1520},
+          {name:'Shelbyville',longitude:-86.4603,latitude:35.4834},
+          {name:'Tullahoma',longitude:-86.2094,latitude:35.3620},
+          {name:'Gallatin',longitude:-86.4467,latitude:36.3884},
+          {name:'Lebanon',longitude:-86.2911,latitude:36.2081},
+          {name:'Cookeville',longitude:-85.5016,latitude:36.1628},
+          {name:'Crossville',longitude:-85.0269,latitude:35.9490},
+          {name:'Chattanooga',longitude:-85.3097,latitude:35.0456},
+          {name:'Cleveland',longitude:-84.8766,latitude:35.1595},
+          {name:'Athens',longitude:-84.5930,latitude:35.4429},
+          {name:'Knoxville',longitude:-83.9207,latitude:35.9606},
+          {name:'Oak Ridge',longitude:-84.2696,latitude:36.0104},
+          {name:'Maryville',longitude:-83.9705,latitude:35.7565},
+          {name:'Sevierville',longitude:-83.5618,latitude:35.8681},
+          {name:'Morristown',longitude:-83.2949,latitude:36.2140},
+          {name:'Greeneville',longitude:-82.8310,latitude:36.1632},
+          {name:'Johnson City',longitude:-82.3535,latitude:36.3134},
+          {name:'Kingsport',longitude:-82.5618,latitude:36.5484},
+          {name:'Bristol',longitude:-82.1887,latitude:36.5951}
         ];
         const listingCityLabels = Array.from(d3.group(currentListings, listing => listing.city.replace(/,\s*TN$/i, '').trim()), ([name, listings]) => ({
           name,
@@ -8116,10 +8230,12 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           latitude: d3.mean(listings, listing => listing.latitude),
           count: listings.length
         }));
-        const cityLabelMap = new Map(regionalCityLabels.map(city => [city.name.toLowerCase(), city]));
+        const cityLabelMap = new Map(regionalCityLabels.map(city => [city.name.toLowerCase(), {...city, count: 0}]));
         listingCityLabels.forEach(city => {
           const key = city.name.toLowerCase();
-          if (city.name && !cityLabelMap.has(key)) cityLabelMap.set(key, city);
+          if (!city.name) return;
+          if (cityLabelMap.has(key)) cityLabelMap.get(key).count = city.count;
+          else cityLabelMap.set(key, city);
         });
         const cityLabels = Array.from(cityLabelMap.values())
           .filter(city => d3.geoContains(state, [city.longitude, city.latitude]))
@@ -8129,8 +8245,12 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           .data(cityLabels)
           .join('text')
           .attr('class', 'tn-city-label')
+          .attr('data-longitude', city => city.longitude)
+          .attr('data-latitude', city => city.latitude)
+          .attr('data-listing-count', city => city.count || 0)
           .attr('x', city => projection([city.longitude, city.latitude])[0])
-          .attr('y', city => projection([city.longitude, city.latitude])[1] - 9)
+          .attr('y', city => projection([city.longitude, city.latitude])[1])
+          .attr('dy', city => city.latitude >= 36.44 ? '1.2em' : '0.35em')
           .attr('text-anchor', 'middle')
           .attr('fill', '#747B80')
           .attr('font-family', 'Lora, serif')
@@ -8300,6 +8420,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         mapZoomBehavior = zoom;
         mapSvgSelection = svg;
         svg.call(zoom).call(zoom.transform, currentTransform);
+        updateMarkerScale();
         updateRoadDetailVisibility();
         if (focusedListing) {
           applyFocusedListing();

@@ -97,6 +97,36 @@ a {
  .service-card {
    flex: 1 1 100%;
  }
+
+ #team {
+   padding: 42px 18px !important;
+ }
+
+ #team > div {
+   width: 100%;
+ }
+
+ #team > div > div[style*="display:grid"] {
+   grid-template-columns: 1fr !important;
+   gap: 34px !important;
+   width: 100%;
+   max-width: 420px;
+   margin: 0 auto;
+ }
+
+ #team > div > div[style*="display:grid"] > div {
+   width: 100%;
+   min-width: 0;
+   padding: 4px 0;
+ }
+
+ #team > div > div[style*="display:grid"] img {
+   width: min(66vw, 240px) !important;
+   height: min(66vw, 240px) !important;
+   aspect-ratio: 1;
+   object-fit: cover !important;
+   object-position: center top;
+ }
 }
 /* New styles */
 /* Hero Section */
