@@ -2,6 +2,7 @@
 window.addEventListener("resize", function() {
   const navbar = document.getElementById("myTopnav");
   const windowWidth = window.innerWidth;
+  if (!navbar) return;
 
   if (windowWidth <= 768) {
     navbar.classList.add("responsive", "collapsed"); // Add both responsive and collapsed classes
@@ -13,6 +14,7 @@ window.addEventListener("resize", function() {
 // Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon
 function toggleMenu() {
   var x = document.getElementById("myTopnav");
+  if (!x) return;
   if (x.classList.contains("responsive")) {
     x.classList.remove("responsive");
   } else {

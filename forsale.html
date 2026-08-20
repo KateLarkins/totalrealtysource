@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>document.documentElement.classList.add('listing-page-loading');</script>
   <!--CSS Stylesheet-->
   <link rel="stylesheet" href="style.css"> 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,6 +21,9 @@
 
   <title>Homes for Sale</title>
   <style>
+    html.listing-page-loading body {
+      visibility: hidden;
+    }
     
     :root {
       --border: #e5e5e5;
@@ -93,6 +97,10 @@
   width: 100%;
   min-width: 0;
   grid-column: auto !important;
+}
+.card.removed-listing,
+.custom-modal.removed-listing {
+  display: none !important;
 }
 
 .grid > :not(.card):not(.custom-modal) {
@@ -1232,6 +1240,16 @@ body.workspace-view-map .property-search-workspace .listing-map-section { positi
 @media (min-width:1300px) { body.workspace-view-list .property-results-panel .grid { grid-template-columns:repeat(4,minmax(0,1fr)); } }
 @media (min-width:769px) and (max-width:1100px) { #showSplitView { display:none; } }
 @media (max-width:768px) {
+  .custom-modal .carousel > button {
+    z-index: 20 !important;
+    width: 48px !important;
+    height: 48px !important;
+    padding: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,.88) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,.24);
+    touch-action: manipulation;
+  }
   .property-search-workspace { display:block; width:100%; max-width:100%; height:auto; min-height:0; margin-bottom:24px; overflow:hidden; }
   .property-back-to-top-wrap,
   body.workspace-view-split .property-back-to-top-wrap,
@@ -1547,7 +1565,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     document.addEventListener('DOMContentLoaded', function buildPropertyWorkspace() {
       const categorySections = ['homes-listing-grid','land-listing-grid','other-listing-grid']
         .map(id => document.getElementById(id)?.closest('section.container')).filter(Boolean);
-      if (!categorySections.length || document.querySelector('.property-search-workspace')) return;
+      if (!categorySections.length || document.querySelector('.property-search-workspace')) {
+        document.documentElement.classList.remove('listing-page-loading');
+        return;
+      }
       ['homes-listing-grid','land-listing-grid','other-listing-grid'].forEach(id => {
         const grid = document.getElementById(id);
         if (!grid || grid.nextElementSibling?.classList.contains('listing-category-empty-message')) return;
@@ -1595,6 +1616,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       backToTopWrap.appendChild(backToTopButton);
       workspace.insertAdjacentElement('afterend', backToTopWrap);
       document.querySelectorAll('.custom-modal').forEach(modal => document.body.appendChild(modal));
+      document.documentElement.classList.remove('listing-page-loading');
       const locationForm = document.getElementById('map-location-search');
       if (locationForm) {
         filterBar.insertBefore(locationForm, filterBar.firstElementChild);
@@ -1824,7 +1846,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
           
 
-          <div class="card" data-modal="BryceCoveModal" data-dom="91" data-lat="35.803253" data-lng="-88.768225" data-map-category="homes">
+          <div class="removed-listing" data-modal="BryceCoveModal" data-dom="91" hidden>
             <img src="https://cdn.photos.sparkplatform.com/ctn/20260813020004027437000000.jpg" alt="205 Bryce Cove" onclick="openModal('BryceCoveModal')" />
             <div class="card-body">
               <p class="price">$215,000</p>
@@ -1838,7 +1860,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             </div>
           </div>
           <!-- Modal -->
-          <div id="BryceCoveModal" class="custom-modal" style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
+          <div id="BryceCoveModal" class="custom-modal removed-listing" hidden style="display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
             <div class="custom-modal-content" style="background-color: white; margin: 3% auto; padding: 30px; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 1000px; position: relative;">
             <!-- Close Button -->
             <span class="close" onclick="closeModal()">&times;</span>
@@ -1959,7 +1981,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 <div class="card" data-modal="listing2603288Modal" data-agent="Amy McLemore" data-dom="30" data-lat="36.060588" data-lng="-88.995757" data-map-category="homes">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260714021516238057000000.jpg" alt="310 Elm Street" onclick="openModal('listing2603288Modal')" />
   <div class="card-body">
-    <p class="price">$209,900</p>
+    <p class="price">$204,900</p>
     <p class="address">310 Elm Street<br>Dyer, TN</p>
     <a href="#" class="details-link" onclick="openModal('listing2603288Modal'); return false;">View Details</a>
     <div class="stats">
@@ -1983,7 +2005,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     </div>
     <div style="margin-bottom: 25px;">
       <h2 style="margin-bottom:5px; font-family:'Bodoni Moda'; font-size:25px;">310 Elm Street, Dyer, TN 38330</h2>
-      <p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Lora'">$209,900</p>
+      <p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Lora'">$204,900</p>
       <div style="display:flex; flex-wrap:wrap; gap:20px; font-size:1em; font-family:'Lora'">
         <div><strong>MLS:</strong> 2603288</div><div><strong>Type:</strong> Single Family Residence</div>
         <div><strong>Beds:</strong> 3</div><div><strong>Baths:</strong> 2</div><div><strong>Sqft:</strong> 1,260</div>
@@ -2483,7 +2505,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
                 <div class="card" data-modal="1555ShortRoadModal" data-dom="85" data-lat="35.454821" data-lng="-88.745391" data-map-category="homes">
                   <img src="1555short/20260518172057437888000000-o.jpg" alt="Home" onclick="openModal('1555ShortRoadModal')" />
                   <div class="card-body">
-                    <p class="price">$399,000</p>
+                    <p class="price">$398,000</p>
                     <p class="address">1555 Short Road<br>Pinson, TN</p>
                     <a href="#" class="details-link" onclick="openModal('1555ShortRoadModal');">View Details</a>
                     <div class="stats">
@@ -2542,7 +2564,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
                     <!-- Property Overview -->
                     <div style="margin-bottom: 25px;">
                       <h2 style="margin-bottom: 5px; font-family:'Bodoni Moda'; font-size: 25px;">1555 Short Road, Pinson, TN 38366</h2>
-                      <p style="font-size: 23px; font-weight: bold; margin: 5px 0 10px; font-family:'Lora'">$399,000</p>
+                      <p style="font-size: 23px; font-weight: bold; margin: 5px 0 10px; font-family:'Lora'">$398,000</p>
                       <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 1em; font-family:'Lora'">
                         <div><strong>Beds:</strong> 3</div>
                         <div><strong>Baths:</strong> 3 (2 Full)</div>
@@ -3145,7 +3167,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         <!-- Open house -->
           <img src="https://cdn.photos.sparkplatform.com/ctn/20260421130226732366000000-o.jpg" alt="31 Turkey Creek Road" onclick="openModal('turkeyModal')" />
           <div class="card-body">
-            <p class="price">$405,000</p>
+            <p class="price">$395,000</p>
             <p class="address">31 Turkey Creek Road<br>Medina, TN</p>
             <a href="#" class="details-link" onclick="openModal('turkeyModal');">View Details</a>
             <div class="stats">
@@ -3205,7 +3227,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
                 <!-- Property Overview -->
               <div style="margin-bottom: 25px;">
                   <h2 style="margin-bottom: 5px; font-family:'Bodoni Moda'; font-size: 25px;">31 Turkey Creek Road, Medina, TN 38355</h2>
-                  <p style="font-size: 23px; font-weight: bold; margin: 5px 0 10px; font-family:'Lora'">$405,000</p>
+                  <p style="font-size: 23px; font-weight: bold; margin: 5px 0 10px; font-family:'Lora'">$395,000</p>
             
                   <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 1em; font-family:'Lora'">
                     <div><strong>Beds:</strong> 4</div>
@@ -4020,11 +4042,60 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           </div>
           </div>
 
+<!-- Active listing MLS 2603840 -->
+<div class="card" data-modal="listing2603840Modal" data-agent="Jackie David" data-dom="7" data-lat="35.926788" data-lng="-88.76766" data-map-category="homes">
+  <img src="https://cdn1.photos.sparkplatform.com/ctn/20260813174217292676000000.jpg" alt="4011 Creswell Street" onclick="openModal('listing2603840Modal')" />
+  <div class="card-body">
+    <p class="price">$1,500/month</p>
+    <p class="address">4011 Creswell Street<br>Milan, TN</p>
+    <a href="#" class="details-link" onclick="openModal('listing2603840Modal'); return false;">View Details</a>
+    <div class="stats">
+      <div><strong>3</strong><span>Beds</span></div>
+      <div><strong>1,353</strong><span>Sq.Ft.</span></div>
+      <div><strong>2</strong><span>Baths</span></div>
+    </div>
+  </div>
+</div>
+<div id="listing2603840Modal" class="custom-modal" style="display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.5);">
+  <div class="custom-modal-content" style="background-color:white; margin:3% auto; padding:30px; border-radius:8px; border:1px solid #ccc; width:90%; max-width:1000px; position:relative;">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="carousel" style="position:relative; margin-bottom:20px;">
+      <div style="position:absolute; top:15px; left:15px; background-color:rgba(255,255,255,.85); padding:6px 14px; border-radius:20px; font-family:'Bodoni Moda'; z-index:10;"><span style="display:inline-block; width:13px; height:13px; background-color:green; border-radius:50%; margin-right:8px;"></span>For Lease</div>
+      <img class="slide" src="https://cdn1.photos.sparkplatform.com/ctn/20260813174217292676000000.jpg" alt="4011 Creswell Street" style="width:100%; max-height:450px; object-fit:cover; border-radius:6px;">
+    </div>
+    <h2 style="margin-bottom:5px; font-family:'Bodoni Moda'; font-size:25px;">4011 Creswell Street, Milan, TN 38358</h2>
+    <p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Lora'">$1,500/month</p>
+    <div style="display:flex; flex-wrap:wrap; gap:20px; font-family:'Lora'">
+      <div><strong>MLS:</strong> 2603840</div><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 3</div><div><strong>Baths:</strong> 2</div><div><strong>Sqft:</strong> 1,353</div><div><strong>Year Built:</strong> 1964</div><div><strong>Lease Term:</strong> 12 Months</div>
+    </div>
+    <h3 style="border-bottom:1px solid #ccc; padding-bottom:5px; font-family:'Bodoni Moda'">Property Description</h3>
+    <p style="line-height:1.6; font-family:'Lora'">Owner/Agent. Lovely 3 bedroom, 2 full bath home in Milan featuring a dining room and a fully fenced backyard with storage shed. $1,500/month, $1,500 deposit. Text 731-487-6545.</p>
+    <div style="border-top:1px solid #ccc; padding-top:20px; font-family:'Lora'"><strong data-agent-name>Jackie David</strong> · <a href="about.html">View Profile</a> · (731) 487-6545</div>
+  </div>
+</div>
 
-
-
-
-
+<!-- Active listing MLS 2602665 -->
+<div class="card" data-modal="listing2602665Modal" data-agent="Amy McLemore" data-dom="17" data-lat="35.708434" data-lng="-88.777231" data-map-category="homes">
+  <img src="46oakfield/20260607191152818476000000-o.jpg" alt="46 Oakfield Road" onclick="openModal('listing2602665Modal')" />
+  <div class="card-body">
+    <p class="price">$639,900</p>
+    <p class="address">46 Oakfield Road<br>Oakfield, TN</p>
+    <a href="#" class="details-link" onclick="openModal('listing2602665Modal'); return false;">View Details</a>
+    <div class="stats"><div><strong>4</strong><span>Beds</span></div><div><strong>4,156</strong><span>Sq.Ft.</span></div><div><strong>3.5</strong><span>Baths</span></div></div>
+  </div>
+</div>
+<div id="listing2602665Modal" class="custom-modal" style="display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.5);">
+  <div class="custom-modal-content" style="background-color:white; margin:3% auto; padding:30px; border-radius:8px; border:1px solid #ccc; width:90%; max-width:1000px; position:relative;">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="carousel" style="position:relative; margin-bottom:20px;"><img class="slide" src="46oakfield/20260607191152818476000000-o.jpg" alt="46 Oakfield Road" style="width:100%; max-height:450px; object-fit:cover; border-radius:6px;"></div>
+    <h2 style="margin-bottom:5px; font-family:'Bodoni Moda'; font-size:25px;">46 Oakfield Road, Oakfield, TN 38362</h2>
+    <p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Lora'">$639,900</p>
+    <div style="display:flex; flex-wrap:wrap; gap:20px; font-family:'Lora'"><div><strong>MLS:</strong> 2602665</div><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 4</div><div><strong>Baths:</strong> 3.5</div><div><strong>Sqft:</strong> 4,156</div><div><strong>Lot:</strong> 1.39 Acres</div><div><strong>Year Built:</strong> 1973</div><div><strong>Pool:</strong> Yes</div><div><strong>Garage:</strong> 2 spaces</div></div>
+    <h3 style="border-bottom:1px solid #ccc; padding-bottom:5px; font-family:'Bodoni Moda'">Property Description</h3>
+    <p style="line-height:1.6; font-family:'Lora'">Welcome to 46 Oakfield Rd — a stately brick home nestled on 1.39 beautifully landscaped acres in NE Madison County. This one-of-a-kind property offers over 4,100 heated square feet, a main-level owner's suite, formal dining room, two living areas, two gas log fireplaces, a finished walk-out basement, screened porch, deck, covered patio, and a private in-ground pool.</p>
+    <div style="border-top:1px solid #ccc; padding-top:20px; font-family:'Lora'"><strong data-agent-name>Amy McLemore</strong> · <a href="about.html">View Profile</a> · (731) 234-0049</div>
+  </div>
+</div>
 
       <!-- close grid div -->
         </div>
@@ -6615,7 +6686,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 <div class="card" data-modal="listing2603618Modal" data-agent="Lynda C Climer" data-dom="13" data-lat="35.632712" data-lng="-88.846441" data-map-category="other">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260731205514704012000000.jpg" alt="1082 US-45 Bypass" onclick="openModal('listing2603618Modal')" />
   <div class="card-body">
-    <p class="price">$549,000</p>
+    <p class="price">$749,000</p>
     <p class="address">1082 US-45 Bypass<br>Jackson, TN</p>
     <a href="#" class="details-link" onclick="openModal('listing2603618Modal'); return false;">View Details</a>
     <div class="stats">
@@ -6639,7 +6710,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     </div>
     <div style="margin-bottom: 25px;">
       <h2 style="margin-bottom:5px; font-family:'Bodoni Moda'; font-size:25px;">1082 US-45 Bypass, Jackson, TN 38301</h2>
-      <p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Lora'">$549,000</p>
+      <p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Lora'">$749,000</p>
       <div style="display:flex; flex-wrap:wrap; gap:20px; font-size:1em; font-family:'Lora'">
         <div><strong>MLS:</strong> 2603618</div><div><strong>Type:</strong> Business</div>
         <div><strong>Beds:</strong> N/A</div><div><strong>Baths:</strong> N/A</div><div><strong>Sqft:</strong> 5,940</div>
@@ -6700,10 +6771,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         <!-- Replace src with your logo files -->
         <img src="Logos/546-5466842_realtor-mls-logo-no-background-hd-png-download.png-removebg-preview.png" alt="MLS Logo" style="height:90px;">
         <a href="https://www.facebook.com/totalrealtysource/" target="_blank">
-          <img src="logos/facebook-app-round-white-icon.webp" alt="Facebook" style="height:38px;">
+          <img src="Logos/facebook-app-round-white-icon.webp" alt="Facebook" style="height:38px;">
         </a>
         <a href="https://www.instagram.com/totalrealtysource/" target="_blank">
-          <img src="logos/Screenshot_2025-12-30_at_1.45.15_PM-removebg-preview.png" alt="Instagram" style="height:38px;">
+          <img src="Logos/Screenshot_2025-12-30_at_1.45.15_PM-removebg-preview.png" alt="Instagram" style="height:38px;">
         </a>
       </div>
     </div>
@@ -6776,28 +6847,36 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </footer>
   <script>
     let currentSlide = 0;
+    let activeModalId = null;
   
     function openModal(modalId) {
-      document.getElementById(modalId).style.display = "block";
+      const modal = document.getElementById(modalId);
+      if (!modal) return;
+      currentSlide = 0;
+      activeModalId = modalId;
+      modal.style.display = "block";
       showSlide(currentSlide, modalId);
     }
   
     function closeModal() {
       const modals = document.querySelectorAll(".custom-modal");
       modals.forEach(modal => modal.style.display = "none");
+      activeModalId = null;
     }
   
     function plusSlides(n) {
+      const openModalEl = (activeModalId && document.getElementById(activeModalId)) ||
+        Array.from(document.querySelectorAll(".custom-modal")).find(modal => getComputedStyle(modal).display !== "none");
+      if (!openModalEl) return;
       currentSlide += n;
-      const openModalEl = document.querySelector(".custom-modal[style*='display: block']");
-      if (openModalEl) {
-        showSlide(currentSlide, openModalEl.id);
-      }
+      showSlide(currentSlide, openModalEl.id);
     }
   
     function showSlide(index, modalId) {
       const modal = document.getElementById(modalId);
+      if (!modal) return;
       const slides = modal.querySelectorAll(".slide");
+      if (!slides.length) return;
   
       if (index >= slides.length) currentSlide = 0;
       if (index < 0) currentSlide = slides.length - 1;
