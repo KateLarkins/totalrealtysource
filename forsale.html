@@ -1345,6 +1345,8 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-meta-copy p { margin:2px 0; }
 .modal-share-wrap { position:relative; align-self:start; }
 .modal-zillow-summary > .modal-share-wrap,.modal-property-facts + .modal-share-wrap { margin:14px 0 22px; }
+.modal-back-button { position:relative; z-index:12; display:inline-flex; align-items:center; gap:8px; margin:0 0 18px; padding:8px 12px; color:#111; background:#fff; border:1px solid #C5CDD2; border-radius:5px; font:700 13px 'Lora',serif; cursor:pointer; }
+.modal-back-button:hover,.modal-back-button:focus-visible { background:#F1F3F4; }
 .modal-share-toggle { display:inline-flex; align-items:center; gap:8px; min-height:42px; padding:9px 15px; color:#111; background:#fff; border:1px solid #9FAAAF; border-radius:5px; font:700 13px 'Lora',serif; cursor:pointer; }
 .modal-share-panel { position:absolute; top:49px; right:0; z-index:20; width:290px; padding:14px; background:#fff; border:1px solid #C9D0D5; border-radius:8px; box-shadow:0 12px 30px rgba(0,0,0,.18); }
 .modal-share-panel[hidden] { display:none; }
@@ -7530,6 +7532,25 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       });
     }
 
+    function addModalBackButtons() {
+      document.querySelectorAll('.card[data-modal]').forEach(card => {
+        const modal = document.getElementById(card.dataset.modal);
+        const content = modal?.querySelector('.custom-modal-content');
+        if (!content || content.querySelector('.modal-back-button')) return;
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'modal-back-button';
+        button.innerHTML = '<span aria-hidden="true">←</span> Back';
+        button.addEventListener('click', () => {
+          const linkedListing = new URLSearchParams(location.search).get('listing');
+          if (linkedListing && history.length > 1) history.back();
+          else if (linkedListing) location.assign('forsale.html');
+          else closeModal();
+        });
+        content.prepend(button);
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       const safelyRunModalSetup = setup => {
         try { setup(); }
@@ -7537,6 +7558,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       };
       safelyRunModalSetup(addListingMarketingDetails);
       safelyRunModalSetup(addModalPropertyFacts);
+      safelyRunModalSetup(addModalBackButtons);
       setTimeout(() => {
         safelyRunModalSetup(addReliableSharingAndCompleteFacts);
         safelyRunModalSetup(ensureEveryModalHasShareControl);
