@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "forsale.html"
 OUTPUT = ROOT / "listing-share"
 SITE = "https://totalrealtysource.com"
+SHARE_VERSION = "20260821-property-preview"
 
 
 def clean(value: str) -> str:
@@ -68,8 +69,10 @@ def main() -> None:
         image = first(r'<img[^>]+class="slide"[^>]+src="([^"]+)"', modal) or first(r'<img[^>]+src="([^"]+)"', card)
         if image and not re.match(r"https?://", image, flags=re.I):
             image = f"{SITE}/{quote(image, safe='/')}"
+        image_path = image.lower().split("?", 1)[0]
+        image_type = "image/png" if image_path.endswith(".png") else "image/webp" if image_path.endswith(".webp") else "image/jpeg"
         description = sentence(address, card, modal)
-        canonical = f"{SITE}/listing-share/{quote(modal_id)}.html"
+        canonical = f"{SITE}/listing-share/{quote(modal_id)}.html?v={SHARE_VERSION}"
         destination = f"{SITE}/forsale.html?listing={quote(modal_id)}#{quote(modal_id)}"
         page = f'''<!doctype html>
 <html lang="en">
@@ -83,6 +86,10 @@ def main() -> None:
   <meta property="og:title" content="{escape(address, quote=True)}">
   <meta property="og:description" content="{escape(price + '. ' + description, quote=True)}">
   <meta property="og:image" content="{escape(image, quote=True)}">
+  <meta property="og:image:secure_url" content="{escape(image, quote=True)}">
+  <meta property="og:image:type" content="{image_type}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="{escape(address, quote=True)}">
   <meta property="og:url" content="{escape(canonical, quote=True)}">
   <meta name="twitter:card" content="summary_large_image">

@@ -366,7 +366,7 @@ parent.classList.toggle('open');
         <img src="Untitled design-10/4.png" style="width:185px;height:185px;border-radius:50%;object-fit:cover;margin:0 auto 8px auto;display:block;">
         <h3 style="margin:0;font-family:'Bodoni Moda';font-size:18px;">Laura Burke</h3>
         <p style="margin:3px 0 10px 0;font-family:'Lora';color:#888;text-transform:uppercase;font-size:0.75rem;">Real Estate Agent</p>
-        <button style="padding:9px 18px;border-radius:40px;background:#0B4068;color:#fff;border:none;font-family:'Bodoni Moda';font-weight:600;font-size:13px;cursor:pointer;">View Profile</a></button>
+        <button style="padding:9px 18px;border-radius:40px;background:#0B4068;color:#fff;border:none;font-family:'Bodoni Moda';font-weight:600;font-size:13px;cursor:pointer;">View Profile</button>
       </div>
 
     </div>
@@ -963,6 +963,29 @@ parent.classList.toggle('open');
 
 </footer>
 <script src="script.js"></script>
+<script>
+  (() => {
+    const profileLinks = {
+      'Lynda Climer': 'agent-profile.html?agent=lynda-climer',
+      'Brandie Bassett': 'agent-profile.html?agent=brandie-bassett',
+      'Jackie David': 'agent-profile.html?agent=jackie-david',
+      'Ashley McMillan': 'agent-profile.html?agent=ashley-mcmillan',
+      'Lisa Ballinger': 'agent-profile.html?agent=lisa-ballinger',
+      'Amy McLemore': 'amy-mclemore.html',
+      'Tammy Jones': 'agent-profile.html?agent=tammy-jones',
+      'Laura Burke': 'agent-profile.html?agent=laura-burke'
+    };
+
+    document.querySelectorAll('#team h3').forEach(nameHeading => {
+      const profileLink = profileLinks[nameHeading.textContent.trim()];
+      const profileButton = nameHeading.parentElement.querySelector('button');
+      if (!profileLink || !profileButton) return;
+      profileButton.type = 'button';
+      profileButton.setAttribute('aria-label', `View ${nameHeading.textContent.trim()}'s profile`);
+      profileButton.addEventListener('click', () => window.location.assign(profileLink));
+    });
+  })();
+</script>
 <script>
   function showDropdown(id) {
     document.getElementById(id).classList.add('show');

@@ -1344,6 +1344,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-meta-copy { color:#333; font:13px/1.75 'Lora',serif; }
 .modal-meta-copy p { margin:2px 0; }
 .modal-share-wrap { position:relative; align-self:start; }
+.modal-zillow-summary > .modal-share-wrap,.modal-property-facts + .modal-share-wrap { margin:14px 0 22px; }
 .modal-share-toggle { display:inline-flex; align-items:center; gap:8px; min-height:42px; padding:9px 15px; color:#111; background:#fff; border:1px solid #9FAAAF; border-radius:5px; font:700 13px 'Lora',serif; cursor:pointer; }
 .modal-share-panel { position:absolute; top:49px; right:0; z-index:20; width:290px; padding:14px; background:#fff; border:1px solid #C9D0D5; border-radius:8px; box-shadow:0 12px 30px rgba(0,0,0,.18); }
 .modal-share-panel[hidden] { display:none; }
@@ -1367,16 +1368,8 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-complete-facts > h3 { margin:0 0 22px; color:#111; font:600 28px/1.2 'Bodoni Moda',serif; }
 .modal-complete-facts .modal-facts-group ul { columns:2; }
 .modal-map-tools { display:flex; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-top:17px; }
-.modal-travel-times { flex:1 1 480px; padding:16px; background:#F7F8F8; border:1px solid #D8DEE2; border-radius:7px; }
-.modal-travel-title { display:flex; align-items:center; gap:9px; margin:0 0 12px; color:#111; font:700 15px/1.2 'Lora',serif; }
-.modal-travel-title svg { width:22px; height:22px; fill:none; stroke:#111; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
-.modal-travel-form { display:flex; gap:8px; }
-.modal-travel-form label { flex:1; min-width:0; }
-.modal-travel-form .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
-.modal-travel-form input { width:100%; min-height:44px; padding:10px 12px; color:#111; background:#fff; border:1px solid #AEB8BE; border-radius:5px; box-sizing:border-box; font:14px 'Lora',serif; }
-.modal-travel-form input:focus { outline:2px solid #0B4068; outline-offset:1px; border-color:#0B4068; }
-.modal-travel-submit,.modal-virtual-tour { display:inline-flex; align-items:center; justify-content:center; gap:7px; min-height:44px; padding:9px 15px; color:#fff; background:#0B4068; border:1px solid #0B4068; border-radius:5px; font:700 13px/1 'Lora',serif; text-decoration:none; cursor:pointer; white-space:nowrap; }
-.modal-travel-submit:hover,.modal-travel-submit:focus-visible,.modal-virtual-tour:hover,.modal-virtual-tour:focus-visible { color:#fff; background:#082F4D; border-color:#082F4D; }
+.modal-virtual-tour { display:inline-flex; align-items:center; justify-content:center; gap:7px; min-height:44px; padding:9px 15px; color:#fff; background:#0B4068; border:1px solid #0B4068; border-radius:5px; font:700 13px/1 'Lora',serif; text-decoration:none; cursor:pointer; white-space:nowrap; }
+.modal-virtual-tour:hover,.modal-virtual-tour:focus-visible { color:#fff; background:#082F4D; border-color:#082F4D; }
 .modal-virtual-tour { flex:0 0 auto; }
 #listing-count { max-width:1200px; margin:0 auto !important; font-weight:600; }
 .grid.listing-category-empty { display:none; }
@@ -1408,8 +1401,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   .modal-map-frame { height:300px; }
   .modal-map-expand { min-height:38px; padding:7px 10px; font-size:12px; }
   .modal-map-tools { display:block; }
-  .modal-travel-form { display:grid; grid-template-columns:1fr; }
-  .modal-travel-submit,.modal-virtual-tour { width:100%; }
+  .modal-virtual-tour { width:100%; }
   .modal-virtual-tour { margin-top:10px; }
   .modal-primary-stat { min-width:74px; padding:0 14px; }
   .modal-listing-meta { grid-template-columns:1fr; }
@@ -7124,18 +7116,9 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         section.className = 'modal-neighborhood-map';
         const virtualTourUrl = card.dataset.virtualTourUrl?.trim();
         const virtualTour = virtualTourUrl ? `<a class="modal-virtual-tour" href="${virtualTourUrl}" target="_blank" rel="noopener"><span aria-hidden="true">▶</span> Virtual tour</a>` : '';
-        section.innerHTML = `<div class="modal-neighborhood-map-header"><div><h3>Location &amp; Neighborhood</h3><p>${address}</p></div><a class="modal-map-expand" href="https://www.google.com/maps/search/?api=1&query=${encodedAddress}" target="_blank" rel="noopener" aria-label="Expand map for ${address}"><span aria-hidden="true">↗</span> Expand map</a></div><div class="modal-map-frame"><iframe title="Map of ${address}" data-map-src="https://www.google.com/maps?q=${encodedAddress}&amp;output=embed&amp;z=15" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><div class="modal-map-home-marker" aria-hidden="true"><span>🏠</span></div></div><p class="modal-map-note">Google Maps shows nearby shops, restaurants, churches, and other neighborhood places when available.</p><div class="modal-map-tools"><div class="modal-travel-times"><p class="modal-travel-title"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 24V8a3 3 0 0 1 3-3h16a3 3 0 0 1 3 3v16"/><path d="M8 20h16M10 25h12M10 10h12v6H10z"/><circle cx="10" cy="25" r="2"/><circle cx="22" cy="25" r="2"/></svg>Travel times</p><form class="modal-travel-form" data-property-address="${address}"><label><span class="visually-hidden">Add a destination</span><input type="text" name="destination" placeholder="Add a destination" autocomplete="street-address" required></label><button class="modal-travel-submit" type="submit">Get travel time</button></form></div>${virtualTour}</div>`;
+        const virtualTourControls = virtualTour ? `<div class="modal-map-tools">${virtualTour}</div>` : '';
+        section.innerHTML = `<div class="modal-neighborhood-map-header"><div><h3>Location &amp; Neighborhood</h3><p>${address}</p></div><a class="modal-map-expand" href="https://www.google.com/maps/search/?api=1&query=${encodedAddress}" target="_blank" rel="noopener" aria-label="Expand map for ${address}"><span aria-hidden="true">↗</span> Expand map</a></div><div class="modal-map-frame"><iframe title="Map of ${address}" data-map-src="https://www.google.com/maps?q=${encodedAddress}&amp;output=embed&amp;z=15" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><div class="modal-map-home-marker" aria-hidden="true"><span>🏠</span></div></div><p class="modal-map-note">Google Maps shows nearby shops, restaurants, churches, and other neighborhood places when available.</p>${virtualTourControls}`;
         content.appendChild(section);
-      });
-
-      document.querySelectorAll('.modal-travel-form').forEach(form => {
-        form.addEventListener('submit', event => {
-          event.preventDefault();
-          const destination = new FormData(form).get('destination')?.toString().trim();
-          if (!destination) return;
-          const directionsUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(form.dataset.propertyAddress)}&destination=${encodeURIComponent(destination)}&travelmode=driving`;
-          window.open(directionsUrl, '_blank', 'noopener');
-        });
       });
     }
 
@@ -7220,7 +7203,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const agentName = agentNameElement?.textContent.trim() || card.dataset.agent || 'Total Realty Source';
         const agentText = agentSection?.textContent.replace(/\s+/g,' ') || '';
         const phone = agentText.match(/(?:Phone|Office):\s*([()\d\s-]{10,})/i)?.[1]?.trim() || '731-574-9340';
-        const shareUrl = `https://totalrealtysource.com/listing-share/${encodeURIComponent(card.dataset.modal)}.html`;
+        const shareUrl = `https://totalrealtysource.com/listing-share/${encodeURIComponent(card.dataset.modal)}.html?v=20260821-property-preview`;
         const leadImage = modal.querySelector('.slide')?.getAttribute('src') || card.querySelector(':scope > img')?.getAttribute('src') || '';
         const propertyType = factValue('Type') || ({homes:'Single Family Residence',land:'Land',other:'Commercial Property'}[card.dataset.mapCategory] || 'Property');
         const shareDetails = [[statValue('Beds'),'bedrooms'],[statValue('Baths'),'bathrooms'],[statValue('Sq'),'square feet']].filter(([value]) => value && value !== '—').map(([value,label]) => `${value} ${label}`);
@@ -7230,6 +7213,9 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const meta = document.createElement('section');
         meta.className = 'modal-listing-meta';
         meta.innerHTML = `<div class="modal-meta-copy"><p><strong>${escapeHtml(card.dataset.dom || '—')} days</strong> on Total Realty Source</p><p class="modal-meta-updated"></p><p><strong>Listed by:</strong> ${escapeHtml(agentName)} · Total Realty Source · ${escapeHtml(phone)}</p><p>Source: CWTAR · MLS#: ${escapeHtml(mls)}</p></div><div class="modal-share-wrap"><button class="modal-share-toggle" type="button" aria-expanded="false">↗ Share</button><div class="modal-share-panel" hidden><div class="modal-share-preview"><img src="${escapeHtml(leadImage)}" alt=""><div><strong>${escapeHtml(address)}</strong><span>${escapeHtml(priceText)}</span><span>${escapeHtml(shareDescription)}</span></div></div><div class="modal-share-links"><a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}" target="_blank" rel="noopener" aria-label="Share ${escapeHtml(address)} on X" title="Share on X"><span class="modal-share-icon" aria-hidden="true">𝕏</span><span class="modal-share-accessible-label">X</span></a><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&amp;display=popup" target="_blank" rel="noopener" aria-label="Share ${escapeHtml(address)} on Facebook" title="Share on Facebook"><span class="modal-share-icon" aria-hidden="true">f</span><span class="modal-share-accessible-label">Facebook</span></a><button class="modal-instagram-share" type="button" aria-label="Share ${escapeHtml(address)} to Instagram" title="Share to Instagram"><span class="modal-share-icon" aria-hidden="true">◎</span><span class="modal-share-accessible-label">Instagram</span></button></div></div></div>`;
+        const shareControl = meta.querySelector('.modal-share-wrap');
+        const propertyIconRow = factsRow || summary.querySelector('.modal-primary-stats');
+        if (propertyIconRow && shareControl) propertyIconRow.insertAdjacentElement('afterend', shareControl);
         if (updateRow) meta.querySelector('.modal-meta-updated').appendChild(updateRow);
         if (agentSection) agentSection.insertAdjacentElement('beforebegin', meta);
         else special.insertAdjacentElement('afterend', meta);
@@ -7300,6 +7286,26 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const modal = document.getElementById(card.dataset.modal);
         const content = modal?.querySelector('.custom-modal-content');
         if (!modal || !content) return;
+        const modalAgentName = modal.querySelector('[data-agent-name]')?.textContent.trim();
+        const agentProfileLinks = {
+          'Amy McLemore': 'amy-mclemore.html',
+          'Lynda Climer': 'agent-profile.html?agent=lynda-climer',
+          'Lynda C Climer': 'agent-profile.html?agent=lynda-climer',
+          'Brandie Bassett': 'agent-profile.html?agent=brandie-bassett',
+          'Jackie David': 'agent-profile.html?agent=jackie-david',
+          'Ashley McMillan': 'agent-profile.html?agent=ashley-mcmillan',
+          'Lisa Ballinger': 'agent-profile.html?agent=lisa-ballinger',
+          'Lisa Ann Ballinger': 'agent-profile.html?agent=lisa-ballinger',
+          'Tammy Jones': 'agent-profile.html?agent=tammy-jones',
+          'Tamra L Jones': 'agent-profile.html?agent=tammy-jones',
+          'Laura Burke': 'agent-profile.html?agent=laura-burke'
+        };
+        const agentProfileLink = agentProfileLinks[modalAgentName];
+        if (agentProfileLink) {
+          modal.querySelectorAll('a').forEach(link => {
+            if (link.textContent.trim() === 'View Profile') link.href = agentProfileLink;
+          });
+        }
         const address = modal.querySelector('h2')?.textContent.replace(/\s+/g,' ').trim() || card.querySelector('.address')?.textContent.replace(/\s+/g,' ').trim() || 'Property listing';
         const price = card.querySelector('.price')?.childNodes[0]?.textContent.trim() || card.querySelector('.price')?.textContent.trim() || 'Price available on listing';
         const rawFacts = Array.from(modal.querySelectorAll('div')).find(div => /\bMLS:/i.test(div.textContent) && /\bType:/i.test(div.textContent) && div.querySelector('strong'));
@@ -7317,18 +7323,21 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const details = [[statValue('Beds'),'bedrooms'],[statValue('Baths'),'bathrooms'],[statValue('Sq'),'square feet']].filter(([value]) => value).map(([value,label]) => `${value} ${label}`);
         const propertyType = factValue('Type') || ({homes:'Single Family Residence',land:'Land',other:'Commercial Property'}[card.dataset.mapCategory] || 'Property');
         const description = `${address} is a ${propertyType}${details.length ? ` with ${details.join(', ')}` : ''}${amenities.length ? `${details.length ? ' and features' : ' featuring'} ${amenities.join(', ')}` : ''}.`.replace(/[—–]/g,',').replace(/\s+/g,' ');
-        const shareUrl = `https://totalrealtysource.com/listing-share/${encodeURIComponent(card.dataset.modal)}.html`;
+        const shareUrl = `https://totalrealtysource.com/listing-share/${encodeURIComponent(card.dataset.modal)}.html?v=20260821-property-preview`;
         const shareText = `${address}\n${price}\n${description}`;
         const leadImage = modal.querySelector('.slide')?.getAttribute('src') || card.querySelector(':scope > img')?.getAttribute('src') || '';
 
         modal.querySelectorAll('a[href*="facebook.com/sharer"]').forEach(link => link.closest('div[style*="flex-direction:column"]')?.remove());
         const agentSection = directSection(modal.querySelector('[data-agent-name]'), content);
-        const shareHost = agentSection || content;
-        if (!shareHost.querySelector('.modal-share-wrap')) {
+        const propertyIconRow = modal.querySelector('.modal-property-facts');
+        const existingShare = modal.querySelector('.modal-share-wrap');
+        if (propertyIconRow && existingShare) propertyIconRow.insertAdjacentElement('afterend', existingShare);
+        if (!existingShare) {
           const share = document.createElement('div');
           share.className = 'modal-share-wrap';
           share.innerHTML = `<button class="modal-share-toggle" type="button" aria-expanded="false">↗ Share</button><div class="modal-share-panel" hidden><div class="modal-share-preview"><img src="${escapeHtml(leadImage)}" alt=""><div><strong>${escapeHtml(address)}</strong><span>${escapeHtml(price)}</span><span>${escapeHtml(description)}</span></div></div><div class="modal-share-links"><a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}" target="_blank" rel="noopener" aria-label="Share on X" title="Share on X"><span class="modal-share-icon" aria-hidden="true">𝕏</span><span class="modal-share-accessible-label">X</span></a><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&amp;display=popup" target="_blank" rel="noopener" aria-label="Share on Facebook" title="Share on Facebook"><span class="modal-share-icon" aria-hidden="true">f</span><span class="modal-share-accessible-label">Facebook</span></a><button class="modal-instagram-share" type="button" aria-label="Share to Instagram" title="Share to Instagram"><span class="modal-share-icon" aria-hidden="true">◎</span><span class="modal-share-accessible-label">Instagram</span></button></div></div>`;
-          shareHost.appendChild(share);
+          if (propertyIconRow) propertyIconRow.insertAdjacentElement('afterend', share);
+          else (agentSection || content).appendChild(share);
           const toggle = share.querySelector('.modal-share-toggle');
           const panel = share.querySelector('.modal-share-panel');
           toggle.addEventListener('click', () => {
@@ -7473,11 +7482,67 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       });
     }
 
+    function normalizeModalSharePlacement() {
+      document.querySelectorAll('.card[data-modal]').forEach(card => {
+        const modal = document.getElementById(card.dataset.modal);
+        const propertyIconRow = modal?.querySelector('.modal-property-facts');
+        const shareControls = Array.from(modal?.querySelectorAll('.modal-share-wrap') || []);
+        if (!propertyIconRow || !shareControls.length) return;
+        shareControls.slice(1).forEach(duplicate => duplicate.remove());
+        propertyIconRow.insertAdjacentElement('afterend', shareControls[0]);
+      });
+    }
+
+    function ensureEveryModalHasShareControl() {
+      const escapeHtml = value => String(value || '').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+      document.querySelectorAll('.card[data-modal]').forEach(card => {
+        const modal = document.getElementById(card.dataset.modal);
+        const content = modal?.querySelector('.custom-modal-content');
+        if (!modal || !content || modal.querySelector('.modal-share-wrap')) return;
+        const address = modal.querySelector('h2')?.textContent.replace(/\s+/g,' ').trim() || card.querySelector('.address')?.textContent.replace(/\s+/g,' ').trim() || 'Property listing';
+        const price = card.querySelector('.price')?.childNodes[0]?.textContent.trim() || card.querySelector('.price')?.textContent.trim() || 'Price available on listing';
+        const image = modal.querySelector('.slide')?.getAttribute('src') || card.querySelector(':scope > img')?.getAttribute('src') || '';
+        const description = `${address} is available through Total Realty Source.`;
+        const shareUrl = `https://totalrealtysource.com/listing-share/${encodeURIComponent(card.dataset.modal)}.html?v=20260821-property-preview`;
+        const shareText = `${address}\n${price}\n${description}`;
+        const share = document.createElement('div');
+        share.className = 'modal-share-wrap';
+        share.innerHTML = `<button class="modal-share-toggle" type="button" aria-expanded="false">↗ Share</button><div class="modal-share-panel" hidden><div class="modal-share-preview"><img src="${escapeHtml(image)}" alt=""><div><strong>${escapeHtml(address)}</strong><span>${escapeHtml(price)}</span><span>${escapeHtml(description)}</span></div></div><div class="modal-share-links"><a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}" target="_blank" rel="noopener" aria-label="Share on X"><span class="modal-share-icon" aria-hidden="true">𝕏</span><span class="modal-share-accessible-label">X</span></a><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}" target="_blank" rel="noopener" aria-label="Share on Facebook"><span class="modal-share-icon" aria-hidden="true">f</span><span class="modal-share-accessible-label">Facebook</span></a><button class="modal-instagram-share" type="button" aria-label="Share to Instagram"><span class="modal-share-icon" aria-hidden="true">◎</span><span class="modal-share-accessible-label">Instagram</span></button></div></div>`;
+        const iconRow = modal.querySelector('.modal-property-facts');
+        if (iconRow) iconRow.insertAdjacentElement('afterend', share);
+        else content.prepend(share);
+        const toggle = share.querySelector('.modal-share-toggle');
+        const panel = share.querySelector('.modal-share-panel');
+        toggle.addEventListener('click', () => {
+          panel.hidden = !panel.hidden;
+          toggle.setAttribute('aria-expanded', String(!panel.hidden));
+        });
+        share.querySelector('.modal-instagram-share').addEventListener('click', async () => {
+          try {
+            if (navigator.share) await navigator.share({title:address,text:`${price}\n${description}`,url:shareUrl});
+            else throw new Error('Native sharing unavailable');
+          } catch (error) {
+            if (error?.name === 'AbortError') return;
+            try { await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`); } catch (_) {}
+            alert('Listing details copied. Paste them into Instagram to share.');
+          }
+        });
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
-      addListingMarketingDetails();
-      addModalPropertyFacts();
-      addModalNeighborhoodMaps();
-      setTimeout(addReliableSharingAndCompleteFacts, 0);
+      const safelyRunModalSetup = setup => {
+        try { setup(); }
+        catch (error) { console.error('Listing modal setup error:', error); }
+      };
+      safelyRunModalSetup(addListingMarketingDetails);
+      safelyRunModalSetup(addModalPropertyFacts);
+      setTimeout(() => {
+        safelyRunModalSetup(addReliableSharingAndCompleteFacts);
+        safelyRunModalSetup(ensureEveryModalHasShareControl);
+        safelyRunModalSetup(normalizeModalSharePlacement);
+      }, 0);
+      safelyRunModalSetup(addModalNeighborhoodMaps);
     });
   
     function openModal(modalId) {
@@ -7929,7 +7994,6 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             if (controls.type.value === 'land') controls.type.value = 'all';
             applyFilters();
           }
-          if (activePopularSearches.size === 0) activePopularSearches.add('Default');
           renderPopularSearches();
         };
         const applyPopularShortcut = shortcut => {
@@ -7959,7 +8023,15 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           }
         };
         const handlePopularShortcut = (button, shortcut) => {
-          if (shortcut.type === 'default') { applyPopularShortcut(shortcut); return; }
+          if (shortcut.type === 'default') {
+            if (activePopularSearches.has('Default')) {
+              activePopularSearches.delete('Default');
+              const locationInput = document.getElementById('map-location-query');
+              if (locationInput?.value.trim() === 'Search All West Tennessee Properties') locationInput.value = '';
+              renderPopularSearches();
+            } else applyPopularShortcut(shortcut);
+            return;
+          }
           if (activePopularSearches.has(shortcut.label)) clearPopularShortcut(shortcut);
           else applyPopularShortcut(shortcut);
         };
