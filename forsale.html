@@ -1133,6 +1133,33 @@ body.workspace-view-split .property-back-to-top-wrap { display:flex; }
 .property-back-to-top:hover,.property-back-to-top:focus-visible { color:#fff; background:#082F4D; border-color:#082F4D; }
 .property-back-to-top .back-to-top-arrow { font:700 19px/1 Arial,sans-serif; }
 .property-back-to-top .back-to-top-label { display:inline; }
+.recently-viewed-section { width:calc(100% - 64px); max-width:1400px; margin:0 auto 54px; padding:28px; background:#fff; border:1px solid #DDE3E7; border-radius:10px; box-shadow:0 5px 20px rgba(15,35,50,.07); }
+.recently-viewed-section[hidden] { display:none; }
+.recently-viewed-header { display:flex; align-items:center; justify-content:space-between; gap:18px; margin-bottom:20px; }
+.recently-viewed-header p { margin:0 0 5px; color:#0B4068; font:700 11px 'Lora'; letter-spacing:.13em; }
+.recently-viewed-header h2 { margin:0; color:#111; font:600 29px/1.15 'Bodoni Moda'; }
+.show-view-history { display:inline-flex; align-items:center; gap:7px; min-height:42px; padding:9px 14px; color:#0B4068; background:#fff; border:1px solid #9FB0BC; border-radius:7px; font:600 14px 'Lora'; cursor:pointer; }
+.show-view-history:hover,.show-view-history:focus-visible { color:#fff; background:#0B4068; border-color:#0B4068; }
+.recently-viewed-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; }
+.recently-viewed-card { min-width:0; padding:0; overflow:hidden; color:#111; background:#fff; border:1px solid #DDE3E7; border-radius:8px; text-align:left; cursor:pointer; }
+.recently-viewed-card:hover,.recently-viewed-card:focus-visible { border-color:#0B4068; box-shadow:0 4px 14px rgba(15,35,50,.12); }
+.recently-viewed-card img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; }
+.recently-viewed-card-copy { display:block; padding:13px 14px 15px; }
+.recently-viewed-card-price { display:block; margin-bottom:5px; font:700 17px 'Lora'; }
+.recently-viewed-card-address { display:block; color:#555; font:14px/1.45 'Lora'; }
+.view-history-modal { display:none; position:fixed; inset:0; z-index:1200; padding:24px; overflow:auto; background:rgba(0,0,0,.55); }
+.view-history-modal.is-open { display:block; }
+.view-history-dialog { position:relative; width:min(680px,100%); margin:6vh auto; padding:28px; background:#fff; border-radius:11px; box-shadow:0 18px 50px rgba(0,0,0,.25); }
+.view-history-dialog h2 { margin:0 42px 6px 0; font:600 30px 'Bodoni Moda'; }
+.view-history-dialog > p { margin:0 0 20px; color:#666; font:14px/1.5 'Lora'; }
+.close-view-history { position:absolute; top:16px; right:17px; width:40px; height:40px; padding:0; color:#111; background:#fff; border:1px solid #CCD3D8; border-radius:50%; font:27px/1 Arial; cursor:pointer; }
+.view-history-list { display:grid; gap:10px; }
+.view-history-item { display:flex; align-items:center; gap:13px; width:100%; padding:10px; color:#111; background:#F7F9FA; border:1px solid #DCE2E6; border-radius:8px; text-align:left; cursor:pointer; }
+.view-history-item:hover,.view-history-item:focus-visible { background:#EEF4F8; border-color:#0B4068; }
+.view-history-item img { width:76px; height:58px; object-fit:cover; border-radius:5px; }
+.view-history-item strong,.view-history-item span { display:block; font-family:'Lora'; }
+.view-history-item strong { margin-bottom:3px; font-size:14px; }
+.view-history-item span { color:#5D6266; font-size:13px; }
 .property-search-workspace .listing-map-section { position:relative; top:auto; align-self:stretch; width:100%; max-width:100%; min-width:0; height:100%; margin:0; padding:0; overflow:hidden; background:#F7F7F5; box-shadow:none; clip-path:none; }
 .property-search-workspace .listing-map-header { display:none; }
 .property-search-workspace .listing-map-layout { display:block; width:100%; height:100%; min-width:0; overflow:hidden; }
@@ -1168,9 +1195,12 @@ body.workspace-view-split .property-back-to-top-wrap { display:flex; }
 .explore-west-tennessee button:hover,.explore-west-tennessee button:focus-visible { background:#F3F7FA; border-color:#0B4068; }
 .saved-properties-section { margin-top:24px; padding:24px 0 6px; border-top:1px solid #DDE3E7; }
 .saved-properties-section[hidden] { display:none; }
-.saved-properties-section header { margin-bottom:16px; }
+.saved-properties-section header { display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:18px; margin-bottom:16px; }
 .saved-properties-section header p { margin:0 0 5px; color:#0B4068; font:700 11px 'Lora'; letter-spacing:.12em; }
 .saved-properties-section header h2 { margin:0; color:#111; font:600 27px/1.15 'Bodoni Moda'; }
+.clear-saved-listings { display:inline-flex; align-items:center; justify-content:center; gap:7px; min-height:42px; padding:9px 14px; color:#fff; background:#0B4068; border:1px solid #0B4068; border-radius:7px; font:600 14px 'Lora',serif; cursor:pointer; white-space:nowrap; }
+.clear-saved-listings:hover,.clear-saved-listings:focus-visible { color:#fff; background:#082F4D; border-color:#082F4D; }
+.clear-saved-listings .clear-saved-x { font:700 20px/1 Arial,sans-serif; transform:translateY(-1px); }
 .saved-properties-section .grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
 .saved-properties-empty { margin:0; padding:28px 20px; color:#4B5359; background:#F5F7F9; text-align:center; font:15px/1.5 'Lora'; }
 #listing-filter-bar { position:sticky !important; top:0; z-index:30; }
@@ -1227,11 +1257,127 @@ body.workspace-view-list .property-search-workspace { grid-template-columns:1fr;
 body.workspace-view-list .property-search-workspace .listing-map-section { display:none; }
 body.workspace-view-list .property-results-panel { height:auto; overflow:visible; }
 body.workspace-view-list .property-results-panel .grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
-body.workspace-view-map .property-search-workspace { grid-template-columns:1fr; max-width:1600px; }
+body.workspace-view-map .property-search-workspace {
+  grid-template-columns:1fr;
+  width:calc(100% - 96px);
+  max-width:1320px;
+  height:min(700px,calc(100vh - 230px));
+  min-height:520px;
+  margin:24px auto 56px;
+  padding:12px;
+  background:#F3F5F6;
+  border:1px solid #D9E0E4;
+  border-radius:16px;
+  box-shadow:0 12px 34px rgba(15,35,50,.12);
+}
 body.workspace-view-map .property-results-panel { display:none; }
-body.workspace-view-map .property-search-workspace .listing-map-section { position:relative; top:auto; }
+body.workspace-view-map .property-search-workspace .listing-map-section {
+  position:relative;
+  top:auto;
+  border:1px solid #D5DDE2;
+  border-radius:11px;
+  box-shadow:0 3px 12px rgba(15,35,50,.08);
+}
+body.workspace-view-map .property-search-workspace #tennessee-listing-map {
+  border:0;
+  border-radius:10px;
+}
 .card > img { aspect-ratio:4/3; height:auto !important; object-fit:cover; }
 .card .address { color:#666 !important; line-height:1.45; }
+.price.is-price-drop,.modal-price-drop { color:inherit !important; }
+.price-drop-arrow { display:inline-block; margin-left:9px; margin-right:2px; color:#168447; font:900 .9em/1 Arial,sans-serif; transform:translateY(-1px); }
+.price-drop-amount { display:inline-block; margin-left:0; color:#168447; font-weight:700; white-space:nowrap; }
+.open-house-bubble { display:inline-flex; align-items:center; gap:7px; padding:7px 11px; color:#fff; background:#0B4068; border:2px solid #fff; border-radius:999px; box-shadow:0 3px 10px rgba(15,35,50,.24); font:700 12px/1.15 'Lora',serif; letter-spacing:.02em; }
+.card > .open-house-bubble { position:absolute; top:12px; left:12px; z-index:6; max-width:calc(100% - 72px); }
+.custom-modal .carousel > .open-house-bubble { position:absolute; top:15px; right:15px; z-index:12; max-width:55%; }
+.modal-open-house-details { margin:0 0 24px; padding:18px 20px; color:#163647; background:#EFF7F2; border:1px solid #B7D9C4; border-left:5px solid #168447; border-radius:8px; font:15px/1.55 'Lora',serif; }
+.modal-open-house-details h3 { margin:0 0 6px; color:#116B3A; font:700 20px/1.2 'Bodoni Moda',serif; }
+.modal-open-house-details p { margin:4px 0 0; }
+.modal-property-facts { display:grid; grid-template-columns:repeat(5,minmax(140px,1fr)); gap:0; margin:22px 0 10px; padding:20px 0; border-top:1px solid #D8DEE2; border-bottom:1px solid #D8DEE2; }
+.modal-property-fact { display:flex; align-items:flex-start; gap:10px; min-width:0; padding:5px 12px; border-right:1px solid #E1E5E8; }
+.modal-property-fact:first-child { padding-left:0; }
+.modal-property-fact:last-child { padding-right:0; border-right:0; }
+.modal-property-fact svg { flex:0 0 25px; width:25px; height:25px; fill:none; stroke:#111; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.modal-property-fact-copy { min-width:0; }
+.modal-property-fact-value,.modal-property-fact-label { display:block; overflow:visible; overflow-wrap:anywhere; white-space:normal; font-family:'Lora',serif; }
+.modal-property-fact-value { color:#111; font-size:14px; font-weight:700; line-height:1.35; }
+.modal-property-fact-label { margin-top:3px; color:#585858; font-size:11px; line-height:1.3; }
+.modal-listing-updated { margin:10px 0 0; color:#5A5A5A; font:12px/1.5 'Lora',serif; }
+.modal-neighborhood-map { margin:30px 0 4px; padding-top:25px; border-top:1px solid #D8DEE2; }
+.modal-neighborhood-map-header { display:flex; align-items:flex-end; justify-content:space-between; gap:18px; margin-bottom:14px; }
+.modal-neighborhood-map-header h3 { margin:0; color:#111; font:600 25px/1.2 'Bodoni Moda',serif; }
+.modal-neighborhood-map-header p { margin:5px 0 0; color:#555; font:13px/1.45 'Lora',serif; }
+.modal-map-expand { display:inline-flex; align-items:center; justify-content:center; gap:7px; min-height:40px; padding:8px 13px; color:#fff; background:#0B4068; border-radius:5px; font:700 13px/1 'Lora',serif; text-decoration:none; white-space:nowrap; }
+.modal-map-expand:hover,.modal-map-expand:focus-visible { color:#fff; background:#082F4D; }
+.modal-map-frame { position:relative; width:100%; height:360px; overflow:hidden; background:#E8ECEE; border:1px solid #CDD5DA; border-radius:8px; }
+.modal-map-frame iframe { display:block; width:100%; height:100%; border:0; }
+.modal-map-home-marker { position:absolute; left:50%; top:50%; z-index:2; display:grid; place-items:center; width:45px; height:45px; background:#fff; border:3px solid #0B4068; border-radius:50% 50% 50% 0; box-shadow:0 4px 12px rgba(0,0,0,.28); font-size:23px; line-height:1; pointer-events:none; transform:translate(-50%,-100%) rotate(-45deg); }
+.modal-map-home-marker span { transform:rotate(45deg); }
+.modal-map-note { margin:8px 0 0; color:#666; font:11px/1.45 'Lora',serif; }
+.modal-zillow-summary { margin:4px 0 28px; font-family:'Lora',serif; }
+.modal-price-cut { margin:0 0 7px; color:#168447; font-size:14px; font-weight:700; }
+.modal-summary-price { margin:0 0 7px; color:#111; font:700 clamp(30px,5vw,42px)/1.1 'Lora',serif; }
+.modal-summary-address-row { display:flex; align-items:flex-start; justify-content:space-between; gap:15px; }
+.modal-summary-address { margin:0; color:#111; font:700 clamp(20px,3vw,27px)/1.3 'Lora',serif; }
+.modal-summary-address-row .modal-favorite-listing { flex:0 0 auto; min-width:98px; }
+.modal-primary-stats { display:flex; flex-wrap:wrap; gap:0; margin:22px 0; }
+.modal-primary-stat { min-width:90px; padding:0 25px; border-right:1px solid #D7DCE0; text-align:center; }
+.modal-primary-stat:first-child { padding-left:0; }
+.modal-primary-stat strong,.modal-primary-stat span { display:block; }
+.modal-primary-stat strong { color:#111; font:700 23px/1.1 'Lora',serif; }
+.modal-primary-stat span { margin-top:5px; color:#555; font:12px 'Lora',serif; text-transform:lowercase; }
+.modal-payment-row { display:flex; align-items:center; flex-wrap:wrap; gap:14px; margin:16px 0 8px; }
+.modal-payment-estimate { margin:0; color:#333; font:14px 'Lora',serif; }
+.modal-payment-estimate strong { color:#111; font-size:18px; }
+.modal-prequalify { color:#0B4068; font:700 14px 'Lora',serif; text-decoration:underline; }
+.modal-whats-special { margin:30px 0; padding:26px 0; border-top:1px solid #D8DEE2; border-bottom:1px solid #D8DEE2; }
+.modal-whats-special h3,.modal-facts-features h3 { margin:0 0 18px; color:#111; font:600 29px/1.2 'Bodoni Moda',serif; }
+.modal-special-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:17px; }
+.modal-special-tag { padding:7px 10px; color:#111; background:#F1F2F2; border-radius:3px; font:700 11px/1.2 'Lora',serif; letter-spacing:.05em; text-transform:uppercase; }
+.modal-description-collapse { position:relative; max-height:155px; overflow:hidden; transition:max-height .3s ease; }
+.modal-description-collapse::after,.modal-facts-collapse::after { content:""; position:absolute; right:0; bottom:0; left:0; height:72px; pointer-events:none; background:linear-gradient(to bottom,rgba(255,255,255,0),#fff); }
+.modal-description-collapse.is-expanded { max-height:3000px; }
+.modal-description-collapse.is-expanded::after,.modal-facts-collapse.is-expanded::after { display:none; }
+.modal-description-collapse p { margin:0; color:#222; font:15px/1.7 'Lora',serif; }
+.modal-show-more { margin-top:10px; padding:0; color:#111; background:none; border:0; border-bottom:1px solid #111; font:700 14px 'Lora',serif; cursor:pointer; }
+.modal-listing-meta { display:grid; grid-template-columns:1fr auto; gap:24px; margin:28px 0; padding:22px 0; border-bottom:1px solid #D8DEE2; }
+.modal-meta-copy { color:#333; font:13px/1.75 'Lora',serif; }
+.modal-meta-copy p { margin:2px 0; }
+.modal-share-wrap { position:relative; align-self:start; }
+.modal-share-toggle { display:inline-flex; align-items:center; gap:8px; min-height:42px; padding:9px 15px; color:#111; background:#fff; border:1px solid #9FAAAF; border-radius:5px; font:700 13px 'Lora',serif; cursor:pointer; }
+.modal-share-panel { position:absolute; top:49px; right:0; z-index:20; width:290px; padding:14px; background:#fff; border:1px solid #C9D0D5; border-radius:8px; box-shadow:0 12px 30px rgba(0,0,0,.18); }
+.modal-share-panel[hidden] { display:none; }
+.modal-share-preview { display:grid; grid-template-columns:84px 1fr; gap:10px; margin-bottom:12px; }
+.modal-share-preview img { width:84px; height:68px; object-fit:cover; border-radius:5px; }
+.modal-share-preview strong,.modal-share-preview span { display:block; font-family:'Lora',serif; }
+.modal-share-preview strong { font-size:12px; line-height:1.35; }
+.modal-share-preview span { margin-top:3px; color:#555; font-size:11px; }
+.modal-share-links { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; }
+.modal-share-links a,.modal-instagram-share { display:flex; align-items:center; justify-content:center; min-height:38px; padding:7px; color:#fff; background:#0B4068; border:0; border-radius:4px; font:700 12px 'Lora',serif; text-decoration:none; cursor:pointer; }
+.modal-share-icon { font:700 19px/1 Arial,sans-serif; }
+.modal-share-accessible-label { position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+.modal-facts-features { margin:34px 0 12px; padding-top:26px; border-top:1px solid #D8DEE2; }
+.modal-facts-collapse { position:relative; max-height:520px; overflow:hidden; transition:max-height .35s ease; }
+.modal-facts-collapse.is-expanded { max-height:10000px; }
+.modal-facts-group { margin:0 0 27px; }
+.modal-facts-group h4 { margin:0 0 12px; color:#111; font:700 18px 'Lora',serif; }
+.modal-facts-group ul { margin:0; padding-left:21px; columns:2; column-gap:34px; }
+.modal-facts-group li { break-inside:avoid; margin:0 0 9px; color:#222; font:14px/1.55 'Lora',serif; }
+.modal-complete-facts { margin:34px 0 12px; padding:28px 0 4px; border-top:1px solid #D8DEE2; }
+.modal-complete-facts > h3 { margin:0 0 22px; color:#111; font:600 28px/1.2 'Bodoni Moda',serif; }
+.modal-complete-facts .modal-facts-group ul { columns:2; }
+.modal-map-tools { display:flex; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-top:17px; }
+.modal-travel-times { flex:1 1 480px; padding:16px; background:#F7F8F8; border:1px solid #D8DEE2; border-radius:7px; }
+.modal-travel-title { display:flex; align-items:center; gap:9px; margin:0 0 12px; color:#111; font:700 15px/1.2 'Lora',serif; }
+.modal-travel-title svg { width:22px; height:22px; fill:none; stroke:#111; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.modal-travel-form { display:flex; gap:8px; }
+.modal-travel-form label { flex:1; min-width:0; }
+.modal-travel-form .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.modal-travel-form input { width:100%; min-height:44px; padding:10px 12px; color:#111; background:#fff; border:1px solid #AEB8BE; border-radius:5px; box-sizing:border-box; font:14px 'Lora',serif; }
+.modal-travel-form input:focus { outline:2px solid #0B4068; outline-offset:1px; border-color:#0B4068; }
+.modal-travel-submit,.modal-virtual-tour { display:inline-flex; align-items:center; justify-content:center; gap:7px; min-height:44px; padding:9px 15px; color:#fff; background:#0B4068; border:1px solid #0B4068; border-radius:5px; font:700 13px/1 'Lora',serif; text-decoration:none; cursor:pointer; white-space:nowrap; }
+.modal-travel-submit:hover,.modal-travel-submit:focus-visible,.modal-virtual-tour:hover,.modal-virtual-tour:focus-visible { color:#fff; background:#082F4D; border-color:#082F4D; }
+.modal-virtual-tour { flex:0 0 auto; }
 #listing-count { max-width:1200px; margin:0 auto !important; font-weight:600; }
 .grid.listing-category-empty { display:none; }
 .listing-category-empty-message { display:none; margin:4px 0 8px; padding:20px; color:#666; background:#F7F8F9; border:1px solid #E2E5E7; border-radius:6px; font:400 14px/1.5 'Lora',serif; }
@@ -1250,6 +1396,27 @@ body.workspace-view-map .property-search-workspace .listing-map-section { positi
     box-shadow: 0 2px 8px rgba(0,0,0,.24);
     touch-action: manipulation;
   }
+  .custom-modal .carousel > .open-house-bubble { top:10px; right:10px; max-width:62%; padding:6px 9px; font-size:11px; }
+  .modal-open-house-details { padding:15px 16px; }
+  .modal-property-facts { grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px 0; padding:18px 0; }
+  .modal-property-fact { padding:3px 12px; }
+  .modal-property-fact:nth-child(2n) { border-right:0; }
+  .modal-property-fact:nth-child(2n+1) { padding-left:0; }
+  .modal-property-fact:last-child { grid-column:1 / -1; padding-left:0; border-right:0; }
+  .modal-neighborhood-map-header { align-items:flex-start; }
+  .modal-neighborhood-map-header h3 { font-size:22px; }
+  .modal-map-frame { height:300px; }
+  .modal-map-expand { min-height:38px; padding:7px 10px; font-size:12px; }
+  .modal-map-tools { display:block; }
+  .modal-travel-form { display:grid; grid-template-columns:1fr; }
+  .modal-travel-submit,.modal-virtual-tour { width:100%; }
+  .modal-virtual-tour { margin-top:10px; }
+  .modal-primary-stat { min-width:74px; padding:0 14px; }
+  .modal-listing-meta { grid-template-columns:1fr; }
+  .modal-share-wrap { justify-self:start; }
+  .modal-share-panel { right:auto; left:0; width:min(290px,calc(100vw - 76px)); }
+  .modal-facts-group ul { columns:1; }
+  .modal-complete-facts .modal-facts-group ul { columns:1; }
   .property-search-workspace { display:block; width:100%; max-width:100%; height:auto; min-height:0; margin-bottom:24px; overflow:hidden; }
   .property-back-to-top-wrap,
   body.workspace-view-split .property-back-to-top-wrap,
@@ -1258,6 +1425,13 @@ body.workspace-view-map .property-search-workspace .listing-map-section { positi
   .property-back-to-top { width:48px; min-width:48px; height:48px; min-height:48px; padding:0; border-radius:50%; box-shadow:0 4px 14px rgba(15,35,50,.24); }
   .property-back-to-top .back-to-top-arrow { font-size:23px; transform:translateY(-1px); }
   .property-back-to-top .back-to-top-label { position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  .recently-viewed-section { width:calc(100% - 28px); margin:0 auto 34px; padding:20px 16px; }
+  .recently-viewed-header { align-items:flex-start; }
+  .recently-viewed-header h2 { font-size:25px; }
+  .show-view-history { min-height:40px; padding:8px 10px; font-size:13px; }
+  .recently-viewed-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+  .view-history-modal { padding:12px; }
+  .view-history-dialog { margin:3vh auto; padding:22px 18px; }
   .featured-listings-header { padding:28px 16px 20px; }
   .featured-listings-header::before { left:16px; top:28px; bottom:20px; }
   .featured-listings-header h2 { font-size:clamp(27px,7.5vw,30px); }
@@ -1265,7 +1439,16 @@ body.workspace-view-map .property-search-workspace .listing-map-section { positi
   .property-hero-copy { font-size:14px; }
   #listing-filter-bar .map-location-search input { min-height:54px; font-size:16px; }
   .property-search-workspace .listing-map-section { position:relative; top:auto; }
-  body.workspace-view-map .property-search-workspace { height:65vh; min-height:420px; }
+  body.workspace-view-map .property-search-workspace {
+    width:calc(100% - 28px);
+    height:60vh;
+    min-height:420px;
+    margin:14px auto 32px;
+    padding:7px;
+    border-radius:12px;
+  }
+  body.workspace-view-map .property-search-workspace .listing-map-section { border-radius:8px; }
+  body.workspace-view-map .property-search-workspace #tennessee-listing-map { border-radius:7px; }
   body.workspace-view-map .map-return-list { display:block; }
   body.workspace-view-map .map-return-list { top:8px; right:auto; left:8px; min-height:38px; padding:8px 11px; border-radius:4px; transform:none; font-size:13px; box-shadow:0 1px 4px rgba(42,42,51,.14); }
   .property-search-workspace #tennessee-listing-map { width:100%; max-width:100%; min-width:0; height:100%; min-height:0; }
@@ -1344,6 +1527,8 @@ body.workspace-view-map .property-search-workspace .listing-map-section { positi
       </div>
     </div>
 
+    <a href="events.html" class="nav-link">Events</a>
+
     <div class="dropdown-container">
       <a href="about.html" class="nav-link">About ▾</a>
       <div class="dropdown">
@@ -1377,6 +1562,8 @@ body.workspace-view-map .property-search-workspace .listing-map-section { positi
       <a href="forsale.html" class="drawer-link">Current Listings</a>
     </div>
   </div>
+
+  <a href="events.html" class="drawer-link">Events</a>
 
   <div class="drawer-dropdown">
     <a href="about.html" class="drawer-link">About ▾</a>
@@ -1600,7 +1787,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       savedSection.id = 'saved-properties-section';
       savedSection.className = 'saved-properties-section';
       savedSection.hidden = true;
-      savedSection.innerHTML = '<header><p>SAVED ACROSS WEST TENNESSEE</p><h2>Saved Homes</h2></header><div id="saved-properties-grid" class="grid"></div><p class="saved-properties-empty" hidden>No saved properties yet. Select the heart on any listing to keep it here.</p>';
+      savedSection.innerHTML = '<header><div><p>SAVED ACROSS WEST TENNESSEE</p><h2>Saved Homes</h2></div><button id="clear-saved-listings" class="clear-saved-listings" type="button"><span class="clear-saved-x" aria-hidden="true">&times;</span> Clear All</button></header><div id="saved-properties-grid" class="grid"></div><p class="saved-properties-empty" hidden>No saved properties yet. Select the like button on any property to save.</p>';
       resultsPanel.appendChild(savedSection);
       resultsPanel.appendChild(explore);
       filterBar.insertAdjacentElement('afterend', workspace);
@@ -1615,6 +1802,20 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       backToTopButton.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
       backToTopWrap.appendChild(backToTopButton);
       workspace.insertAdjacentElement('afterend', backToTopWrap);
+      const recentlyViewedSection = document.createElement('section');
+      recentlyViewedSection.id = 'recently-viewed-section';
+      recentlyViewedSection.className = 'recently-viewed-section';
+      recentlyViewedSection.hidden = true;
+      recentlyViewedSection.innerHTML = '<header class="recently-viewed-header"><div><p>YOUR PROPERTY HISTORY</p><h2>Recently Viewed</h2></div><button id="show-view-history" class="show-view-history" type="button"><span aria-hidden="true">↺</span> Show History</button></header><div id="recently-viewed-grid" class="recently-viewed-grid"></div>';
+      const historyModal = document.createElement('div');
+      historyModal.id = 'view-history-modal';
+      historyModal.className = 'view-history-modal';
+      historyModal.setAttribute('role', 'dialog');
+      historyModal.setAttribute('aria-modal', 'true');
+      historyModal.setAttribute('aria-labelledby', 'view-history-title');
+      historyModal.innerHTML = '<div class="view-history-dialog"><button class="close-view-history" type="button" aria-label="Close viewing history">&times;</button><h2 id="view-history-title">Viewing History</h2><p>Your most recently viewed properties, newest first.</p><div id="view-history-list" class="view-history-list"></div></div>';
+      backToTopWrap.insertAdjacentElement('afterend', recentlyViewedSection);
+      document.body.appendChild(historyModal);
       document.querySelectorAll('.custom-modal').forEach(modal => document.body.appendChild(modal));
       document.documentElement.classList.remove('listing-page-loading');
       const locationForm = document.getElementById('map-location-search');
@@ -1978,7 +2179,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 
 <!-- Active listing MLS 2603288 -->
-<div class="card" data-modal="listing2603288Modal" data-agent="Amy McLemore" data-dom="30" data-lat="36.060588" data-lng="-88.995757" data-map-category="homes">
+<div class="card" data-modal="listing2603288Modal" data-agent="Amy McLemore" data-dom="30" data-lat="36.060588" data-lng="-88.995757" data-map-category="homes" data-previous-price="$209,900" data-promotion-date="2026-08-15">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260714021516238057000000.jpg" alt="310 Elm Street" onclick="openModal('listing2603288Modal')" />
   <div class="card-body">
     <p class="price">$204,900</p>
@@ -6783,6 +6984,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       <h4 style="margin-bottom:24px; letter-spacing:0.4px;">Navigation</h4>
       <p><a href="index.html" style="color:white;text-decoration: underline; font-family:'Lora;">Home</a></p>
       <p><a href="forsale.html" style="color:white; text-decoration: underline; font-family:'Lora';">Homes for Sale</a></p>
+      <p><a href="events.html" style="color:white; text-decoration: underline; font-family:'Lora';">Events</a></p>
       <p><a href="about.html" style="color:white; text-decoration: underline; font-family:'Lora';">About Our Team</a></p>
       <p><a href="contact.html" style="color:white; text-decoration: underline; font-family:'Lora';">Contact</a></p>
     </div>
@@ -6848,6 +7050,435 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   <script>
     let currentSlide = 0;
     let activeModalId = null;
+    const listingMachineUpdatedAt = '2026-08-20T21:08:37-05:00';
+
+    function addModalPropertyFacts() {
+      const icons = {
+        type: '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 14 16 4l12 10v14H19v-9h-6v9H4V14Z"/></svg>',
+        year: '<svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="21" rx="2"/><path d="M9 3v8M23 3v8M4 13h24"/></svg>',
+        lot: '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="m5 24 5-16 17 5-5 16-17-5Z"/><path d="m10 8 4 6 7-3 1 7 5-5"/></svg>',
+        sqft: '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 9V5h4M23 5h4v4M27 23v4h-4M9 27H5v-4M11 16h10M16 11v10"/></svg>',
+        hoa: '<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 9v14M20 12.5c0-2-1.8-3.5-4-3.5s-4 1.3-4 3.2c0 4.8 8 2 8 7 0 2.2-1.8 3.8-4 3.8s-4-1.5-4-3.5"/></svg>'
+      };
+      const cleanValue = value => {
+        const cleaned = String(value || '').replace(/\s+/g, ' ').trim();
+        return /^(n\/?a|none|not listed|0)$/i.test(cleaned) ? '' : cleaned;
+      };
+      const numericValue = value => Number(String(value || '').replace(/[^0-9.]/g, ''));
+      const updatedFormatter = new Intl.DateTimeFormat('en-US', {
+        timeZone:'America/Chicago', month:'long', day:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit', hour12:true
+      });
+
+      document.querySelectorAll('.card[data-modal]').forEach(card => {
+        const modal = document.getElementById(card.dataset.modal);
+        if (!modal || modal.querySelector('.modal-property-facts')) return;
+        const values = {};
+        modal.querySelectorAll('strong').forEach(strong => {
+          const label = strong.textContent.replace(':', '').trim().toLowerCase();
+          if (!['type','year built','lot','sqft','hoa','hoa fee','association fee'].includes(label)) return;
+          const parentText = strong.parentElement?.textContent || '';
+          values[label] = cleanValue(parentText.replace(strong.textContent, ''));
+        });
+
+        const overview = modal.querySelector('h2')?.parentElement;
+        if (!overview) return;
+
+        const type = values.type || ({ homes:'Single Family Residence', land:'Land', other:'Commercial Property' }[card.dataset.mapCategory] || 'Property');
+        const year = values['year built'];
+        const lot = values.lot;
+        const sqftStat = Array.from(card.querySelectorAll('.stats > div')).find(stat => /sq\.?\s*ft/i.test(stat.querySelector('span')?.textContent || ''));
+        const sqft = numericValue(values.sqft || sqftStat?.querySelector('strong')?.textContent);
+        const price = numericValue(card.querySelector('.price')?.childNodes[0]?.textContent || card.querySelector('.price')?.textContent);
+        const pricePerSqft = price > 0 && sqft > 0 ? `$${Math.round(price / sqft).toLocaleString('en-US')}/sqft` : '—';
+        const hoaRaw = values.hoa || values['hoa fee'] || values['association fee'];
+        const hoa = hoaRaw ? (/month|\/mo/i.test(hoaRaw) ? hoaRaw : `${hoaRaw}/mo`) : '—';
+        const facts = [
+          { icon:icons.type, value:type, label:'Property type' },
+          { icon:icons.year, value:year ? `Built in ${year}` : '—', label:'Year built' },
+          { icon:icons.lot, value:lot || '—', label:'Lot size' },
+          { icon:icons.sqft, value:pricePerSqft, label:'Price per sqft' },
+          { icon:icons.hoa, value:hoa, label:'HOA' }
+        ];
+        const factsRow = document.createElement('section');
+        factsRow.className = 'modal-property-facts';
+        factsRow.setAttribute('aria-label', 'Property facts');
+        factsRow.innerHTML = facts.map(fact => `<div class="modal-property-fact">${fact.icon}<span class="modal-property-fact-copy"><span class="modal-property-fact-value">${fact.value}</span><span class="modal-property-fact-label">${fact.label}</span></span></div>`).join('');
+
+        const updated = new Date(card.dataset.listingUpdated || listingMachineUpdatedAt);
+        const updateRow = document.createElement('p');
+        updateRow.className = 'modal-listing-updated';
+        updateRow.textContent = `Listing updated: ${updatedFormatter.format(updated).replace(' AM','am').replace(' PM','pm')}`;
+        overview.prepend(factsRow, updateRow);
+      });
+    }
+
+    function addModalNeighborhoodMaps() {
+      document.querySelectorAll('.card[data-modal]').forEach(card => {
+        const modal = document.getElementById(card.dataset.modal);
+        const content = modal?.querySelector('.custom-modal-content');
+        if (!modal || !content || modal.querySelector('.modal-neighborhood-map')) return;
+        const address = modal.querySelector('h2')?.textContent.replace(/\s+/g, ' ').trim() || card.querySelector('.address')?.textContent.replace(/\s+/g, ' ').trim();
+        if (!address) return;
+        const encodedAddress = encodeURIComponent(address);
+        const section = document.createElement('section');
+        section.className = 'modal-neighborhood-map';
+        const virtualTourUrl = card.dataset.virtualTourUrl?.trim();
+        const virtualTour = virtualTourUrl ? `<a class="modal-virtual-tour" href="${virtualTourUrl}" target="_blank" rel="noopener"><span aria-hidden="true">▶</span> Virtual tour</a>` : '';
+        section.innerHTML = `<div class="modal-neighborhood-map-header"><div><h3>Location &amp; Neighborhood</h3><p>${address}</p></div><a class="modal-map-expand" href="https://www.google.com/maps/search/?api=1&query=${encodedAddress}" target="_blank" rel="noopener" aria-label="Expand map for ${address}"><span aria-hidden="true">↗</span> Expand map</a></div><div class="modal-map-frame"><iframe title="Map of ${address}" data-map-src="https://www.google.com/maps?q=${encodedAddress}&amp;output=embed&amp;z=15" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><div class="modal-map-home-marker" aria-hidden="true"><span>🏠</span></div></div><p class="modal-map-note">Google Maps shows nearby shops, restaurants, churches, and other neighborhood places when available.</p><div class="modal-map-tools"><div class="modal-travel-times"><p class="modal-travel-title"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 24V8a3 3 0 0 1 3-3h16a3 3 0 0 1 3 3v16"/><path d="M8 20h16M10 25h12M10 10h12v6H10z"/><circle cx="10" cy="25" r="2"/><circle cx="22" cy="25" r="2"/></svg>Travel times</p><form class="modal-travel-form" data-property-address="${address}"><label><span class="visually-hidden">Add a destination</span><input type="text" name="destination" placeholder="Add a destination" autocomplete="street-address" required></label><button class="modal-travel-submit" type="submit">Get travel time</button></form></div>${virtualTour}</div>`;
+        content.appendChild(section);
+      });
+
+      document.querySelectorAll('.modal-travel-form').forEach(form => {
+        form.addEventListener('submit', event => {
+          event.preventDefault();
+          const destination = new FormData(form).get('destination')?.toString().trim();
+          if (!destination) return;
+          const directionsUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(form.dataset.propertyAddress)}&destination=${encodeURIComponent(destination)}&travelmode=driving`;
+          window.open(directionsUrl, '_blank', 'noopener');
+        });
+      });
+    }
+
+    function loadModalNeighborhoodMap(modal) {
+      const iframe = modal?.querySelector('.modal-map-frame iframe[data-map-src]');
+      if (!iframe || iframe.getAttribute('src')) return;
+      iframe.src = iframe.dataset.mapSrc;
+    }
+
+    function enhanceListingModalLayouts() {
+      const escapeHtml = value => String(value || '').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+      const number = value => Number(String(value || '').replace(/[^0-9.]/g, '')) || 0;
+      const directSection = (element, content) => {
+        let current = element;
+        while (current?.parentElement && current.parentElement !== content) current = current.parentElement;
+        return current;
+      };
+      const monthlyPrincipalAndInterest = price => {
+        if (!price) return 0;
+        const principal = price * .8;
+        const monthlyRate = .0675 / 12;
+        const payments = 360;
+        return Math.round(principal * monthlyRate * Math.pow(1 + monthlyRate, payments) / (Math.pow(1 + monthlyRate, payments) - 1));
+      };
+
+      document.querySelectorAll('.card[data-modal]').forEach(card => {
+        const modal = document.getElementById(card.dataset.modal);
+        const content = modal?.querySelector('.custom-modal-content');
+        const heading = modal?.querySelector('h2');
+        const overview = heading?.parentElement;
+        if (!modal || !content || !heading || !overview || modal.querySelector('.modal-zillow-summary')) return;
+
+        const address = heading.textContent.replace(/\s+/g, ' ').trim();
+        const cardPrice = card.querySelector('.price');
+        const priceText = cardPrice?.childNodes[0]?.textContent.trim() || cardPrice?.textContent.trim() || 'Price unavailable';
+        const price = number(priceText);
+        const rawFacts = Array.from(overview.querySelectorAll(':scope > div')).find(div => /\bMLS:/i.test(div.textContent) && /\bType:/i.test(div.textContent));
+        const factValue = label => {
+          const strong = Array.from(rawFacts?.querySelectorAll('strong') || []).find(item => item.textContent.replace(':','').trim().toLowerCase() === label.toLowerCase());
+          return strong ? strong.parentElement.textContent.replace(strong.textContent, '').replace(/\s+/g, ' ').trim() : '';
+        };
+        const statValue = label => {
+          const stat = Array.from(card.querySelectorAll('.stats > div')).find(item => new RegExp(label, 'i').test(item.querySelector('span')?.textContent || ''));
+          return stat?.querySelector('strong')?.textContent.trim() || '—';
+        };
+        const mls = factValue('MLS') || card.dataset.modal.match(/\d{7}/)?.[0] || '—';
+        const priceDrop = number(card.dataset.previousPrice) - price;
+        const promotionDate = card.dataset.promotionDate ? new Date(`${card.dataset.promotionDate}T00:00:00`) : null;
+        const priceCutDate = promotionDate && !Number.isNaN(promotionDate.getTime()) ? `${promotionDate.getMonth()+1}/${promotionDate.getDate()}` : '';
+        const priceCut = priceDrop > 0 ? `<p class="modal-price-cut">Price cut: $${priceDrop.toLocaleString('en-US')}${priceCutDate ? ` (${priceCutDate})` : ''}</p>` : '';
+        const favorite = modal.querySelector('.modal-favorite-listing');
+        const factsRow = modal.querySelector('.modal-property-facts');
+        const payment = monthlyPrincipalAndInterest(price);
+
+        const summary = document.createElement('section');
+        summary.className = 'modal-zillow-summary';
+        summary.innerHTML = `${priceCut}<p class="modal-summary-price">${escapeHtml(priceText)}</p><div class="modal-summary-address-row"><p class="modal-summary-address">${escapeHtml(address)}</p><div class="modal-summary-save-slot"></div></div><div class="modal-primary-stats"><div class="modal-primary-stat"><strong>${escapeHtml(statValue('Beds'))}</strong><span>beds</span></div><div class="modal-primary-stat"><strong>${escapeHtml(statValue('Baths'))}</strong><span>baths</span></div><div class="modal-primary-stat"><strong>${escapeHtml(statValue('Sq'))}</strong><span>sqft</span></div></div><div class="modal-payment-row"><p class="modal-payment-estimate">Est. principal &amp; interest: <strong>${payment ? `$${payment.toLocaleString('en-US')}/mo` : '—'}</strong></p><a class="modal-prequalify" href="contact.html?property=${encodeURIComponent(address)}&amp;request=prequalification">Get pre-qualified</a></div>`;
+        if (favorite) summary.querySelector('.modal-summary-save-slot').appendChild(favorite);
+        if (factsRow) summary.appendChild(factsRow);
+        overview.prepend(summary);
+        heading.hidden = true;
+        Array.from(overview.children).forEach(child => {
+          if (child === summary || child.classList.contains('modal-listing-updated')) return;
+          if (child.tagName === 'P' || child === rawFacts) child.hidden = true;
+        });
+
+        const featureSection = Array.from(modal.querySelectorAll('h3')).find(item => /Key Features/i.test(item.textContent))?.parentElement;
+        const descriptionSection = Array.from(modal.querySelectorAll('h3')).find(item => /Property Description/i.test(item.textContent))?.parentElement;
+        const descriptionText = descriptionSection?.querySelector('p')?.textContent.replace(/Information deemed reliable[\s\S]*$/i,'').trim() || 'Contact the listing agent for additional property details.';
+        const featureItems = Array.from(featureSection?.querySelectorAll('li') || []).map(item => item.textContent.replace(/\s+/g,' ').trim()).filter(Boolean);
+        const specialTags = featureItems.flatMap(item => (item.split(':')[1] || '').split(';')).map(item => item.trim()).filter(item => item && !/^n\/?a$/i.test(item)).slice(0,3);
+        const special = document.createElement('section');
+        special.className = 'modal-whats-special';
+        special.innerHTML = `<h3>What's special</h3>${specialTags.length ? `<div class="modal-special-tags">${specialTags.map(tag => `<span class="modal-special-tag">${escapeHtml(tag)}</span>`).join('')}</div>` : ''}<div class="modal-description-collapse"><p>${escapeHtml(descriptionText)}</p></div><button class="modal-show-more" type="button" aria-expanded="false">Show more</button>`;
+        overview.insertAdjacentElement('afterend', special);
+        if (featureSection) featureSection.hidden = true;
+        if (descriptionSection) descriptionSection.hidden = true;
+
+        const updateRow = modal.querySelector('.modal-listing-updated');
+        const agentNameElement = modal.querySelector('[data-agent-name]');
+        const agentSection = directSection(agentNameElement, content);
+        const agentName = agentNameElement?.textContent.trim() || card.dataset.agent || 'Total Realty Source';
+        const agentText = agentSection?.textContent.replace(/\s+/g,' ') || '';
+        const phone = agentText.match(/(?:Phone|Office):\s*([()\d\s-]{10,})/i)?.[1]?.trim() || '731-574-9340';
+        const shareUrl = `https://totalrealtysource.com/listing-share/${encodeURIComponent(card.dataset.modal)}.html`;
+        const leadImage = modal.querySelector('.slide')?.getAttribute('src') || card.querySelector(':scope > img')?.getAttribute('src') || '';
+        const propertyType = factValue('Type') || ({homes:'Single Family Residence',land:'Land',other:'Commercial Property'}[card.dataset.mapCategory] || 'Property');
+        const shareDetails = [[statValue('Beds'),'bedrooms'],[statValue('Baths'),'bathrooms'],[statValue('Sq'),'square feet']].filter(([value]) => value && value !== '—').map(([value,label]) => `${value} ${label}`);
+        const amenities = specialTags.length ? `${shareDetails.length ? ' and features' : ' featuring'} ${specialTags.join(', ')}` : '';
+        const shareDescription = `${address} is a ${propertyType}${shareDetails.length ? ` with ${shareDetails.join(', ')}` : ''}${amenities}.`.replace(/[—–]/g, ',').replace(/\s+/g,' ');
+        const shareText = `${address}\n${priceText}\n${shareDescription}`;
+        const meta = document.createElement('section');
+        meta.className = 'modal-listing-meta';
+        meta.innerHTML = `<div class="modal-meta-copy"><p><strong>${escapeHtml(card.dataset.dom || '—')} days</strong> on Total Realty Source</p><p class="modal-meta-updated"></p><p><strong>Listed by:</strong> ${escapeHtml(agentName)} · Total Realty Source · ${escapeHtml(phone)}</p><p>Source: CWTAR · MLS#: ${escapeHtml(mls)}</p></div><div class="modal-share-wrap"><button class="modal-share-toggle" type="button" aria-expanded="false">↗ Share</button><div class="modal-share-panel" hidden><div class="modal-share-preview"><img src="${escapeHtml(leadImage)}" alt=""><div><strong>${escapeHtml(address)}</strong><span>${escapeHtml(priceText)}</span><span>${escapeHtml(shareDescription)}</span></div></div><div class="modal-share-links"><a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}" target="_blank" rel="noopener" aria-label="Share ${escapeHtml(address)} on X" title="Share on X"><span class="modal-share-icon" aria-hidden="true">𝕏</span><span class="modal-share-accessible-label">X</span></a><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&amp;display=popup" target="_blank" rel="noopener" aria-label="Share ${escapeHtml(address)} on Facebook" title="Share on Facebook"><span class="modal-share-icon" aria-hidden="true">f</span><span class="modal-share-accessible-label">Facebook</span></a><button class="modal-instagram-share" type="button" aria-label="Share ${escapeHtml(address)} to Instagram" title="Share to Instagram"><span class="modal-share-icon" aria-hidden="true">◎</span><span class="modal-share-accessible-label">Instagram</span></button></div></div></div>`;
+        if (updateRow) meta.querySelector('.modal-meta-updated').appendChild(updateRow);
+        if (agentSection) agentSection.insertAdjacentElement('beforebegin', meta);
+        else special.insertAdjacentElement('afterend', meta);
+
+        modal.querySelectorAll('a[href*="facebook.com/sharer"]').forEach(link => {
+          if (!link.closest('.modal-share-panel')) link.closest('div[style*="flex-direction:column"]')?.remove();
+        });
+
+        const overviewFacts = Array.from(rawFacts?.children || []).map(item => item.textContent.replace(/\s+/g,' ').trim()).filter(Boolean);
+        const facts = document.createElement('section');
+        facts.className = 'modal-facts-features';
+        facts.innerHTML = `<h3>Facts &amp; features</h3><div class="modal-facts-collapse"><section class="modal-facts-group"><h4>Property</h4><ul>${overviewFacts.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>${featureItems.length ? `<section class="modal-facts-group"><h4>Interior, exterior &amp; utilities</h4><ul>${featureItems.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>` : ''}</div><button class="modal-show-more" type="button" aria-expanded="false">Show more</button>`;
+        const map = modal.querySelector('.modal-neighborhood-map');
+        if (map) map.insertAdjacentElement('afterend', facts);
+        else content.appendChild(facts);
+
+        modal.querySelectorAll('.modal-show-more').forEach(button => {
+          button.addEventListener('click', () => {
+            const collapse = button.previousElementSibling;
+            const expanded = collapse.classList.toggle('is-expanded');
+            button.setAttribute('aria-expanded', String(expanded));
+            button.textContent = expanded ? 'Hide' : 'Show more';
+          });
+        });
+        const shareToggle = modal.querySelector('.modal-share-toggle');
+        const sharePanel = modal.querySelector('.modal-share-panel');
+        shareToggle?.addEventListener('click', () => {
+          const open = sharePanel.hidden;
+          sharePanel.hidden = !open;
+          shareToggle.setAttribute('aria-expanded', String(open));
+        });
+        modal.querySelector('.modal-instagram-share')?.addEventListener('click', async () => {
+          try {
+            let files = [];
+            if (leadImage && navigator.share) {
+              try {
+                const response = await fetch(leadImage);
+                const blob = await response.blob();
+                const extension = blob.type.includes('png') ? 'png' : blob.type.includes('webp') ? 'webp' : 'jpg';
+                const file = new File([blob], `total-realty-source-listing.${extension}`, {type:blob.type || 'image/jpeg'});
+                if (navigator.canShare?.({files:[file]})) files = [file];
+              } catch (_) {}
+            }
+            if (navigator.share) await navigator.share({ title:address, text:`${priceText}\n${shareDescription}`, url:shareUrl, ...(files.length ? {files} : {}) });
+            else throw new Error('Native sharing unavailable');
+          } catch (error) {
+            if (error?.name === 'AbortError') return;
+            try { await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`); } catch (_) {}
+            alert('The listing image, address, price, description, and link are ready. Paste them into Instagram to share.');
+            window.open('https://www.instagram.com/', '_blank', 'noopener');
+          }
+        });
+      });
+
+      const linkedModalId = new URLSearchParams(window.location.search).get('listing') || window.location.hash.slice(1);
+      if (linkedModalId && document.getElementById(linkedModalId)) openModal(linkedModalId);
+    }
+
+    function addReliableSharingAndCompleteFacts() {
+      const escapeHtml = value => String(value || '').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+      const directSection = (element, content) => {
+        let current = element;
+        while (current?.parentElement && current.parentElement !== content) current = current.parentElement;
+        return current;
+      };
+
+      document.querySelectorAll('.card[data-modal]').forEach(card => {
+        const modal = document.getElementById(card.dataset.modal);
+        const content = modal?.querySelector('.custom-modal-content');
+        if (!modal || !content) return;
+        const address = modal.querySelector('h2')?.textContent.replace(/\s+/g,' ').trim() || card.querySelector('.address')?.textContent.replace(/\s+/g,' ').trim() || 'Property listing';
+        const price = card.querySelector('.price')?.childNodes[0]?.textContent.trim() || card.querySelector('.price')?.textContent.trim() || 'Price available on listing';
+        const rawFacts = Array.from(modal.querySelectorAll('div')).find(div => /\bMLS:/i.test(div.textContent) && /\bType:/i.test(div.textContent) && div.querySelector('strong'));
+        const factValue = label => {
+          const strong = Array.from(rawFacts?.querySelectorAll('strong') || []).find(item => item.textContent.replace(':','').trim().toLowerCase() === label.toLowerCase());
+          return strong ? strong.parentElement.textContent.replace(strong.textContent,'').replace(/\s+/g,' ').trim() : '';
+        };
+        const statValue = label => {
+          const stat = Array.from(card.querySelectorAll('.stats > div')).find(item => new RegExp(label,'i').test(item.querySelector('span')?.textContent || ''));
+          return stat?.querySelector('strong')?.textContent.trim() || '';
+        };
+        const featureSection = Array.from(modal.querySelectorAll('h3')).find(item => /Key Features/i.test(item.textContent))?.parentElement;
+        const featureItems = Array.from(featureSection?.querySelectorAll('li') || []).map(item => item.textContent.replace(/\s+/g,' ').trim()).filter(Boolean);
+        const amenities = featureItems.flatMap(item => (item.split(':')[1] || '').split(';')).map(item => item.trim()).filter(item => item && !/^n\/?a$/i.test(item)).slice(0,3);
+        const details = [[statValue('Beds'),'bedrooms'],[statValue('Baths'),'bathrooms'],[statValue('Sq'),'square feet']].filter(([value]) => value).map(([value,label]) => `${value} ${label}`);
+        const propertyType = factValue('Type') || ({homes:'Single Family Residence',land:'Land',other:'Commercial Property'}[card.dataset.mapCategory] || 'Property');
+        const description = `${address} is a ${propertyType}${details.length ? ` with ${details.join(', ')}` : ''}${amenities.length ? `${details.length ? ' and features' : ' featuring'} ${amenities.join(', ')}` : ''}.`.replace(/[—–]/g,',').replace(/\s+/g,' ');
+        const shareUrl = `https://totalrealtysource.com/listing-share/${encodeURIComponent(card.dataset.modal)}.html`;
+        const shareText = `${address}\n${price}\n${description}`;
+        const leadImage = modal.querySelector('.slide')?.getAttribute('src') || card.querySelector(':scope > img')?.getAttribute('src') || '';
+
+        modal.querySelectorAll('a[href*="facebook.com/sharer"]').forEach(link => link.closest('div[style*="flex-direction:column"]')?.remove());
+        const agentSection = directSection(modal.querySelector('[data-agent-name]'), content);
+        const shareHost = agentSection || content;
+        if (!shareHost.querySelector('.modal-share-wrap')) {
+          const share = document.createElement('div');
+          share.className = 'modal-share-wrap';
+          share.innerHTML = `<button class="modal-share-toggle" type="button" aria-expanded="false">↗ Share</button><div class="modal-share-panel" hidden><div class="modal-share-preview"><img src="${escapeHtml(leadImage)}" alt=""><div><strong>${escapeHtml(address)}</strong><span>${escapeHtml(price)}</span><span>${escapeHtml(description)}</span></div></div><div class="modal-share-links"><a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}" target="_blank" rel="noopener" aria-label="Share on X" title="Share on X"><span class="modal-share-icon" aria-hidden="true">𝕏</span><span class="modal-share-accessible-label">X</span></a><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&amp;display=popup" target="_blank" rel="noopener" aria-label="Share on Facebook" title="Share on Facebook"><span class="modal-share-icon" aria-hidden="true">f</span><span class="modal-share-accessible-label">Facebook</span></a><button class="modal-instagram-share" type="button" aria-label="Share to Instagram" title="Share to Instagram"><span class="modal-share-icon" aria-hidden="true">◎</span><span class="modal-share-accessible-label">Instagram</span></button></div></div>`;
+          shareHost.appendChild(share);
+          const toggle = share.querySelector('.modal-share-toggle');
+          const panel = share.querySelector('.modal-share-panel');
+          toggle.addEventListener('click', () => {
+            panel.hidden = !panel.hidden;
+            toggle.setAttribute('aria-expanded', String(!panel.hidden));
+          });
+          share.querySelector('.modal-instagram-share').addEventListener('click', async () => {
+            try {
+              let files = [];
+              if (leadImage && navigator.share) {
+                try {
+                  const response = await fetch(leadImage);
+                  const blob = await response.blob();
+                  const file = new File([blob], 'total-realty-source-listing.jpg', {type:blob.type || 'image/jpeg'});
+                  if (navigator.canShare?.({files:[file]})) files = [file];
+                } catch (_) {}
+              }
+              if (navigator.share) await navigator.share({title:address,text:`${price}\n${description}`,url:shareUrl,...(files.length ? {files} : {})});
+              else throw new Error('Native sharing unavailable');
+            } catch (error) {
+              if (error?.name === 'AbortError') return;
+              try { await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`); } catch (_) {}
+              alert('Listing details copied. Paste them into Instagram to share.');
+              window.open('https://www.instagram.com/','_blank','noopener');
+            }
+          });
+        }
+
+        if (!modal.querySelector('.modal-complete-facts')) {
+          const overviewItems = Array.from(rawFacts?.children || []).map(item => item.textContent.replace(/\s+/g,' ').trim()).filter(Boolean);
+          const facts = document.createElement('section');
+          facts.className = 'modal-complete-facts';
+          facts.innerHTML = `<h3>Facts &amp; features</h3><section class="modal-facts-group"><h4>Property details</h4><ul>${overviewItems.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>${featureItems.length ? `<section class="modal-facts-group"><h4>Interior, exterior &amp; utilities</h4><ul>${featureItems.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>` : ''}`;
+          const map = modal.querySelector('.modal-neighborhood-map');
+          if (map) map.insertAdjacentElement('afterend', facts);
+          else content.appendChild(facts);
+        }
+      });
+
+      const linkedModalId = new URLSearchParams(window.location.search).get('listing') || window.location.hash.slice(1);
+      if (linkedModalId && document.getElementById(linkedModalId)) openModal(linkedModalId);
+    }
+
+    function addListingMarketingDetails() {
+      const parsePrice = value => Number(String(value || '').replace(/[^0-9.]/g, ''));
+      const formatPriceDrop = amount => {
+        if (amount >= 1000) {
+          const thousands = amount / 1000;
+          return `$${Number.isInteger(thousands) ? thousands : thousands.toFixed(1)}K`;
+        }
+        return `$${Math.round(amount).toLocaleString('en-US')}`;
+      };
+
+      document.querySelectorAll('.card[data-modal]').forEach(card => {
+        const promotionDate = card.dataset.promotionDate;
+        let pricePromotionActive = true;
+        if (promotionDate) {
+          const activityDate = new Date(`${promotionDate}T00:00:00`);
+          const ageInDays = Math.floor((Date.now() - activityDate.getTime()) / 86400000);
+          pricePromotionActive = Number.isFinite(ageInDays) && ageInDays >= 0 && ageInDays < 7;
+        }
+
+        const modal = document.getElementById(card.dataset.modal);
+        const cardPrice = card.querySelector('.price');
+        const currentPrice = cardPrice?.textContent.trim();
+        const priceDrop = parsePrice(card.dataset.previousPrice) - parsePrice(currentPrice);
+
+        if (pricePromotionActive && card.dataset.previousPrice && cardPrice && priceDrop > 0) {
+          cardPrice.classList.add('is-price-drop');
+          if (!cardPrice.querySelector('.price-drop-arrow')) {
+            const arrow = document.createElement('span');
+            arrow.className = 'price-drop-arrow';
+            arrow.setAttribute('aria-hidden', 'true');
+            arrow.textContent = '▼';
+            cardPrice.append(arrow);
+          }
+          if (!cardPrice.querySelector('.price-drop-amount')) {
+            const amount = document.createElement('span');
+            amount.className = 'price-drop-amount';
+            amount.textContent = formatPriceDrop(priceDrop);
+            cardPrice.append(amount);
+          }
+          cardPrice.setAttribute('aria-label', `Price reduced from ${card.dataset.previousPrice} to ${currentPrice}`);
+
+          if (modal && currentPrice) {
+            const modalPrice = Array.from(modal.querySelectorAll('p')).find(paragraph => paragraph.textContent.trim() === currentPrice);
+            if (modalPrice) {
+              modalPrice.classList.add('modal-price-drop');
+              if (!modalPrice.querySelector('.price-drop-arrow')) {
+                const arrow = document.createElement('span');
+                arrow.className = 'price-drop-arrow';
+                arrow.setAttribute('aria-hidden', 'true');
+                arrow.textContent = '▼';
+                modalPrice.append(arrow);
+              }
+              if (!modalPrice.querySelector('.price-drop-amount')) {
+                const amount = document.createElement('span');
+                amount.className = 'price-drop-amount';
+                amount.textContent = formatPriceDrop(priceDrop);
+                modalPrice.append(amount);
+              }
+              modalPrice.setAttribute('aria-label', `Price reduced from ${card.dataset.previousPrice} to ${currentPrice}`);
+            }
+          }
+        }
+
+        const openHouseStart = card.dataset.openHouseStart ? new Date(card.dataset.openHouseStart) : null;
+        const openHouseEnd = card.dataset.openHouseEnd ? new Date(card.dataset.openHouseEnd) : null;
+        if (!openHouseStart || !openHouseEnd || Number.isNaN(openHouseStart.getTime()) || Number.isNaN(openHouseEnd.getTime()) || openHouseEnd.getTime() <= Date.now()) return;
+        const dateFormatter = new Intl.DateTimeFormat('en-US', { timeZone:'America/Chicago', weekday:'short', month:'short', day:'numeric' });
+        const timeFormatter = new Intl.DateTimeFormat('en-US', { timeZone:'America/Chicago', hour:'numeric', minute:'2-digit' });
+        const openHouseDate = card.dataset.openHouseDate?.trim() || `${dateFormatter.format(openHouseStart)} · ${timeFormatter.format(openHouseStart)}–${timeFormatter.format(openHouseEnd)}`;
+
+        const createBubble = () => {
+          const bubble = document.createElement('div');
+          bubble.className = 'open-house-bubble';
+          bubble.innerHTML = '<span aria-hidden="true">●</span><span></span>';
+          bubble.lastElementChild.textContent = `Open House · ${openHouseDate}`;
+          return bubble;
+        };
+
+        if (!card.querySelector(':scope > .open-house-bubble')) card.prepend(createBubble());
+        if (!modal) return;
+
+        const carousel = modal.querySelector('.carousel');
+        if (carousel && !carousel.querySelector(':scope > .open-house-bubble')) carousel.appendChild(createBubble());
+
+        if (!modal.querySelector('.modal-open-house-details')) {
+          const details = document.createElement('section');
+          details.className = 'modal-open-house-details';
+          const heading = document.createElement('h3');
+          heading.textContent = 'Open House';
+          const date = document.createElement('p');
+          const strong = document.createElement('strong');
+          strong.textContent = openHouseDate;
+          date.appendChild(strong);
+          const description = document.createElement('p');
+          description.textContent = card.dataset.openHouseDescription?.trim() || 'Tour the property in person, explore its features, and ask questions about the home.';
+          details.append(heading, date, description);
+          carousel?.insertAdjacentElement('afterend', details);
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      addListingMarketingDetails();
+      addModalPropertyFacts();
+      addModalNeighborhoodMaps();
+      setTimeout(addReliableSharingAndCompleteFacts, 0);
+    });
   
     function openModal(modalId) {
       const modal = document.getElementById(modalId);
@@ -6855,7 +7486,9 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       currentSlide = 0;
       activeModalId = modalId;
       modal.style.display = "block";
+      loadModalNeighborhoodMap(modal);
       showSlide(currentSlide, modalId);
+      document.dispatchEvent(new CustomEvent('listingviewed', { detail: { modalId } }));
     }
   
     function closeModal() {
@@ -6884,6 +7517,97 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       slides.forEach(slide => slide.style.display = "none");
       slides[currentSlide].style.display = "block";
     }
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function setupRecentlyViewedListings() {
+      const storageKey = 'trs-recently-viewed-listings';
+      const section = document.getElementById('recently-viewed-section');
+      const grid = document.getElementById('recently-viewed-grid');
+      const historyModal = document.getElementById('view-history-modal');
+      const historyList = document.getElementById('view-history-list');
+      const showHistory = document.getElementById('show-view-history');
+      const closeHistory = historyModal?.querySelector('.close-view-history');
+      const cards = new Map(Array.from(document.querySelectorAll('.card[data-modal]')).map(card => [card.dataset.modal, card]));
+      let history = [];
+
+      try {
+        history = JSON.parse(localStorage.getItem(storageKey) || '[]').filter(id => cards.has(id)).slice(0, 20);
+      } catch (_) {}
+
+      function listingData(id) {
+        const card = cards.get(id);
+        if (!card) return null;
+        return {
+          id,
+          image: card.querySelector(':scope > img')?.src || card.querySelector('img')?.src || '',
+          price: card.querySelector('.price')?.childNodes[0]?.textContent.trim() || card.querySelector('.price')?.textContent.trim() || '',
+          address: card.querySelector('.address')?.innerText.replace(/\n/g, ', ') || 'Property'
+        };
+      }
+
+      function createListingButton(listing, className) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = className;
+        button.setAttribute('aria-label', `View ${listing.address}`);
+        const image = document.createElement('img');
+        image.src = listing.image;
+        image.alt = '';
+        image.loading = 'lazy';
+        const copy = document.createElement('span');
+        if (className === 'recently-viewed-card') {
+          copy.className = 'recently-viewed-card-copy';
+          const price = document.createElement('strong');
+          price.className = 'recently-viewed-card-price';
+          price.textContent = listing.price;
+          const address = document.createElement('span');
+          address.className = 'recently-viewed-card-address';
+          address.textContent = listing.address;
+          copy.append(price, address);
+        } else {
+          const address = document.createElement('strong');
+          address.textContent = listing.address;
+          const price = document.createElement('span');
+          price.textContent = listing.price;
+          copy.append(address, price);
+        }
+        button.append(image, copy);
+        button.addEventListener('click', () => {
+          historyModal?.classList.remove('is-open');
+          openModal(listing.id);
+        });
+        return button;
+      }
+
+      function renderRecentlyViewed() {
+        const listings = history.map(listingData).filter(Boolean);
+        if (section) section.hidden = listings.length === 0;
+        if (grid) grid.replaceChildren(...listings.slice(0, 4).map(listing => createListingButton(listing, 'recently-viewed-card')));
+        if (historyList) historyList.replaceChildren(...listings.map(listing => createListingButton(listing, 'view-history-item')));
+      }
+
+      document.addEventListener('listingviewed', event => {
+        const id = event.detail?.modalId;
+        if (!cards.has(id)) return;
+        history = [id, ...history.filter(item => item !== id)].slice(0, 20);
+        try { localStorage.setItem(storageKey, JSON.stringify(history)); } catch (_) {}
+        renderRecentlyViewed();
+      });
+
+      showHistory?.addEventListener('click', () => {
+        renderRecentlyViewed();
+        historyModal?.classList.add('is-open');
+      });
+      closeHistory?.addEventListener('click', () => historyModal?.classList.remove('is-open'));
+      historyModal?.addEventListener('click', event => {
+        if (event.target === historyModal) historyModal.classList.remove('is-open');
+      });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') historyModal?.classList.remove('is-open');
+      });
+
+      renderRecentlyViewed();
+    });
   </script>
   
   <script>
@@ -7339,6 +8063,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const section = document.getElementById('saved-properties-section');
         const savedGrid = document.getElementById('saved-properties-grid');
         const emptyMessage = section?.querySelector('.saved-properties-empty');
+        const clearSavedButton = document.getElementById('clear-saved-listings');
         if (!section || !savedGrid) return;
         const targetGrids = {
           homes: document.getElementById('homes-listing-grid'),
@@ -7353,6 +8078,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const savedCards = cards.filter(card => saved.has(card.dataset.modal));
         savedCards.forEach(card => savedGrid.appendChild(card));
         if (emptyMessage) emptyMessage.hidden = savedCards.length !== 0;
+        if (clearSavedButton) clearSavedButton.hidden = savedCards.length === 0;
       }
 
       function applyFilters() {
@@ -7447,6 +8173,13 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         }
         applyFilters();
       });
+      document.getElementById('clear-saved-listings')?.addEventListener('click', () => {
+        const savedIds = [...saved];
+        saved.clear();
+        try { localStorage.setItem(savedKey, '[]'); } catch (_) {}
+        savedIds.forEach(syncFavoriteButtons);
+        applyFilters();
+      });
       document.getElementById('clearListingFilters').addEventListener('click', () => {
         controls.min.value=''; controls.max.value=''; controls.beds.value='0'; controls.baths.value='0'; controls.type.value='all'; controls.agent.value='all'; savedOnly=false; controls.saved.setAttribute('aria-pressed','false'); controls.saved.textContent='Saved Homes ♡';
         document.getElementById('map-remove-boundary')?.click(); applyFilters();
@@ -7459,7 +8192,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         if (view === 'list') document.body.classList.add('mobile-list-view');
         if (view === 'map') document.body.classList.add('mobile-map-view');
         ['Split','List','Map'].forEach(name => document.getElementById(`show${name}View`)?.setAttribute('aria-pressed', String(name.toLowerCase() === view)));
-        if (view === 'map') document.querySelector('.property-search-workspace')?.scrollIntoView({behavior:'smooth'});
+        if (view === 'map') {
+          document.querySelector('.property-search-workspace')?.scrollIntoView({behavior:'smooth'});
+          document.dispatchEvent(new CustomEvent('listingmapviewchange'));
+        }
       }
       document.getElementById('showSplitView').addEventListener('click', () => setWorkspaceView('split'));
       document.getElementById('showListView').addEventListener('click', () => setWorkspaceView('list'));
@@ -7723,11 +8459,11 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       }
 
       function markerHeightForZoom(zoomScale) {
-        if (zoomScale <= 3) return 7;
-        if (zoomScale <= 10) return 10;
-        if (zoomScale <= 20) return 14;
-        if (zoomScale <= 40) return 18;
-        return 22;
+        if (zoomScale <= 3) return 16;
+        if (zoomScale <= 10) return 20;
+        if (zoomScale <= 20) return 24;
+        if (zoomScale <= 40) return 28;
+        return 32;
       }
 
       function markerSpreadForZoom(zoomScale) {
@@ -8034,6 +8770,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       mapRoot.addEventListener('click', closePopup);
 
       function renderMap() {
+        if (mapRoot.clientWidth < 2 || mapRoot.clientHeight < 2) return;
         mapRoot.querySelector('svg')?.remove();
         currentListings = getListings();
         currentListings.forEach(listing => {
@@ -8059,6 +8796,20 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const tennesseeMapBounds = path.bounds(state);
         const tennesseeMapWidth = tennesseeMapBounds[1][0] - tennesseeMapBounds[0][0];
         const tennesseeMapHeight = tennesseeMapBounds[1][1] - tennesseeMapBounds[0][1];
+        // Initial view: West Tennessee through Franklin, which stays near the eastern edge.
+        const westTennesseeInitialExtent = {
+          type: 'Polygon',
+          coordinates: [[
+            [-90.45, 34.82],
+            [-90.45, 36.68],
+            [-86.62, 36.68],
+            [-86.62, 34.82],
+            [-90.45, 34.82]
+          ]]
+        };
+        const westTennesseeBounds = path.bounds(westTennesseeInitialExtent);
+        const westTennesseeWidth = westTennesseeBounds[1][0] - westTennesseeBounds[0][0];
+        const westTennesseeHeight = westTennesseeBounds[1][1] - westTennesseeBounds[0][1];
 
         const svg = d3.select(mapRoot).insert('svg', ':first-child').attr('viewBox', `0 0 ${width} ${height}`);
         svg.append('title').text(`${selectedLocationName} property search map with ${currentListings.length} current listings`);
@@ -8448,18 +9199,18 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             .scale(initialScale)
             .translate(-boundaryCenter[0], -boundaryCenter[1]);
         } else {
-          const stateScale = Math.max(1, Math.min(
+          const westTennesseeScale = Math.max(1, Math.min(
             256,
-            0.97 / Math.max(tennesseeMapWidth / width, tennesseeMapHeight / height)
+            0.94 / Math.max(westTennesseeWidth / width, westTennesseeHeight / height)
           ));
-          const tennesseeCenter = [
-            (tennesseeMapBounds[0][0] + tennesseeMapBounds[1][0]) / 2,
-            (tennesseeMapBounds[0][1] + tennesseeMapBounds[1][1]) / 2
+          const westTennesseeCenter = [
+            (westTennesseeBounds[0][0] + westTennesseeBounds[1][0]) / 2,
+            (westTennesseeBounds[0][1] + westTennesseeBounds[1][1]) / 2
           ];
           currentTransform = d3.zoomIdentity
             .translate(width / 2, height / 2)
-            .scale(stateScale)
-            .translate(-tennesseeCenter[0], -tennesseeCenter[1]);
+            .scale(westTennesseeScale)
+            .translate(-westTennesseeCenter[0], -westTennesseeCenter[1]);
         }
 
         const focusedListing = currentListings.find(listing => listing.modalId === focusedListingModalId);
@@ -8802,6 +9553,9 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       document.addEventListener('listingfilterchange', function () {
         updateMarkerClutter();
         renderAreaListings();
+      });
+      document.addEventListener('listingmapviewchange', () => {
+        requestAnimationFrame(() => requestAnimationFrame(renderMap));
       });
       renderMap();
       const linkedLocation = new URLSearchParams(window.location.search).get('location');
