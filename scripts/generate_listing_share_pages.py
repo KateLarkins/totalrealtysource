@@ -10,7 +10,6 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "forsale.html"
 OUTPUT = ROOT / "listing-share"
 SITE = "https://totalrealtysource.com"
-SHARE_VERSION = "20260821-property-preview"
 
 
 def clean(value: str) -> str:
@@ -72,7 +71,7 @@ def main() -> None:
         image_path = image.lower().split("?", 1)[0]
         image_type = "image/png" if image_path.endswith(".png") else "image/webp" if image_path.endswith(".webp") else "image/jpeg"
         description = sentence(address, card, modal)
-        canonical = f"{SITE}/listing-share/{quote(modal_id)}.html?v={SHARE_VERSION}"
+        canonical = f"{SITE}/listing-share/{quote(modal_id)}.html"
         destination = f"{SITE}/forsale.html?listing={quote(modal_id)}#{quote(modal_id)}"
         page = f'''<!doctype html>
 <html lang="en">
