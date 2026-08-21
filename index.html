@@ -181,8 +181,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     </div>
 
     <div class="stat">
-      <div class="stat-number">150+</div>
-      <div class="stat-label">Closed Sales</div>
+      <div class="stat-number" data-closed-listings>192</div>
+      <div class="stat-label">Closed Listings</div>
     </div>
 
     <div class="stat">
@@ -250,10 +250,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           
                   <!-- STAT 2 -->
                   <div style="display: flex; flex-direction: column; gap: 6px; min-width: 90px; align-items: center;">
-                      <div style="display: flex; gap: 4px; align-items: center; font-family:'Bodoni Moda', serif; font-size: 26px;">
-                          <span style="opacity:0; transform:translateY(20px); animation:slotMachine 1.2s ease-out forwards;">3</span>
-                          <span style="opacity:0; transform:translateY(20px); animation:slotMachine 1.2s ease-out forwards; animation-delay:.1s;">7</span>
-                      </div>
+                      <div id="homepage-property-count" style="font-family:'Bodoni Moda', serif; font-size: 26px; opacity:0; transform:translateY(20px); animation:slotMachine 1.2s ease-out forwards;">52</div>
                       <span style="font-size: 12px; color: rgba(255,255,255,0.75); font-family: 'Lora', serif; letter-spacing:.08em;">
                           Properties for sale
                       </span>
@@ -261,27 +258,17 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           
                   <!-- STAT 3 -->
                   <div style="display: flex; flex-direction: column; gap: 6px; min-width: 120px; align-items: center;">
-                    <div style="display: flex; gap: 2px; align-items: center; font-family:'Bodoni Moda', serif; font-size: 26px;">
-                        <span>$</span>
-                        <span style="opacity:0; transform:translateY(20px); animation:slotMachine 1.2s ease-out forwards;">3</span>
-                        <span style="opacity:0; transform:translateY(20px); animation:slotMachine 1.2s ease-out forwards; animation-delay:.1s;">1</span>
-                        <span style="opacity:0; transform:translateY(20px); animation:slotMachine 1.2s ease-out forwards; animation-delay:.2s;">8</span>
-                        <span>,</span>
-                        <span style="opacity:0; transform:translateY(20px); animation:slotMachine 1.2s ease-out forwards; animation-delay:.3s;">6</span>
-                        <span style="opacity:0; transform:translateY(20px); animation:slotMachine 1.2s ease-out forwards; animation-delay:.4s;">0</span>
-                        <span style="opacity:0; transform:translateY(20px); animation:slotMachine 1.2s ease-out forwards; animation-delay:.5s;">0</span>
-                    </div>
+                    <!-- Verified in Flexmls office-listing statistics on 2026-08-20. -->
+                    <div id="homepage-average-list-price" style="font-family:'Bodoni Moda', serif; font-size: 26px; opacity:0; transform:translateY(20px); animation:slotMachine 1.2s ease-out forwards;">$222,426</div>
                     <span style="font-size: 12px; color: rgba(255,255,255,0.75); font-family: 'Lora', serif; letter-spacing:.08em;">
                         Avg. listing price
                     </span>
                 </div>
                   <!-- STAT 2 -->
                   <div style="display: flex; flex-direction: column; gap: 6px; min-width: 90px; align-items: center;">
-                      <div style="display: flex; gap: 4px; align-items: center; font-family:'Bodoni Moda', serif; font-size: 26px;">
-                          <span style="opacity:0; transform:translateY(20px); animation:slotMachine 1.2s ease-out forwards;">9</span>
-                      </div>
+                      <div data-closed-listings style="font-family:'Bodoni Moda', serif; font-size: 26px; opacity:0; transform:translateY(20px); animation:slotMachine 1.2s ease-out forwards;">192</div>
                       <span style="font-size: 12px; color: rgba(255,255,255,0.75); font-family: 'Lora', serif; letter-spacing:.08em;">
-                          Pending Sales
+                          Closed Listings
                       </span>
                   </div>
           
@@ -933,6 +920,30 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   </script>
       <!--House, Property, Renovation Icons-->
       <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+      <script>
+        // Update this once whenever the Flexmls reconciliation finds another closed listing.
+        const homepageListingMetrics = { closedListings: 192 };
+        document.querySelectorAll('[data-closed-listings]').forEach((metric) => {
+          metric.textContent = homepageListingMetrics.closedListings.toLocaleString('en-US');
+        });
+
+        // Keep this metric in sync with the inventory cards maintained on forsale.html.
+        (async function syncHomepagePropertyCount() {
+          const count = document.getElementById('homepage-property-count');
+          if (!count) return;
+
+          try {
+            const response = await fetch('forsale.html', { cache: 'no-store' });
+            if (!response.ok) return;
+
+            const listingPage = new DOMParser().parseFromString(await response.text(), 'text/html');
+            const activeCards = listingPage.querySelectorAll('.card[data-map-category]');
+            count.textContent = activeCards.length.toLocaleString('en-US');
+          } catch (error) {
+            // The rendered fallback remains visible if the inventory page is unavailable.
+          }
+        })();
+      </script>
       <script src="script.js"></script>
       <script>
         // Get the container element
