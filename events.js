@@ -87,7 +87,13 @@ const MANUAL_EVENTS = [];
         const startDate = dateValue(card.dataset.openHouseStart);
         const endDate = dateValue(card.dataset.openHouseEnd);
         if (!startDate || !endDate) return null;
-        const address = card.querySelector('.address')?.textContent.replace(/\s+/g, ' ').trim() || 'Open House';
+        const addressElement = card.querySelector('.address');
+        const address = addressElement
+          ? Array.from(addressElement.childNodes)
+              .map(node => node.textContent.replace(/\s+/g, ' ').trim())
+              .filter(Boolean)
+              .join(', ')
+          : 'Open House';
         return {
           type: 'open-house',
           title: address,

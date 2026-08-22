@@ -50,6 +50,7 @@ body {
   .events-page .topnav .logo { width:auto; margin:0 auto; }
   .events-page .topnav .nav-arrow.mobile-arrow { position:absolute; right:20px; }
   .events-hero { padding:78px 20px 72px; }
+  .events-hero .events-eyebrow { display:flex; width:100%; align-items:center; justify-content:center; text-align:center; }
   .events-section { padding:58px 18px 10px; }
   .event-card { grid-template-columns:1fr; }
   .event-image,.event-image img,.event-image-placeholder { min-height:235px; max-height:300px; }
