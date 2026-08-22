@@ -97,7 +97,7 @@ const MANUAL_EVENTS = [];
           host: card.dataset.agent || modal?.querySelector('[data-agent-name]')?.textContent.trim() || 'Total Realty Source',
           description: card.dataset.openHouseDescription || 'Tour this home in person, explore its features, and ask the listing agent your questions.',
           image: card.querySelector(':scope > img')?.getAttribute('src') || '',
-          url: `forsale.html#${card.dataset.modal || ''}`
+          url: `forsale.html?listing=${encodeURIComponent(card.dataset.modal || '')}&from=events#${encodeURIComponent(card.dataset.modal || '')}`
         };
       }).filter(Boolean);
     } catch (error) {
