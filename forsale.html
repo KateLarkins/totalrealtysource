@@ -7102,7 +7102,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         timeZone:'America/Chicago', month:'long', day:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit', hour12:true
       });
 
-      document.querySelectorAll('.card[data-modal]').forEach(card => {
+      document.querySelectorAll('.card[data-modal],.removed-listing[data-modal]').forEach(card => {
         const modal = document.getElementById(card.dataset.modal);
         if (!modal || modal.querySelector('.modal-property-facts')) return;
         const values = {};
@@ -7552,10 +7552,19 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     }
 
     function normalizeModalSharePlacement() {
-      document.querySelectorAll('.card[data-modal]').forEach(card => {
+      document.querySelectorAll('.card[data-modal],.removed-listing[data-modal]').forEach(card => {
         const modal = document.getElementById(card.dataset.modal);
+        const content = modal?.querySelector('.custom-modal-content');
+        if (!modal || !content) return;
+        modal.querySelectorAll('a[href*="facebook.com/sharer"], a[href^="mailto:?subject"], a[title*="Instagram"]')
+          .forEach(link => {
+            if (link.closest('.modal-share-wrap')) return;
+            const legacyShare = link.closest('div[style*="flex-direction: column"]');
+            if (legacyShare) legacyShare.remove();
+            else link.remove();
+          });
         const shareControls = Array.from(modal?.querySelectorAll('.modal-share-wrap') || []);
-        if (!modal || !shareControls.length) return;
+        if (!shareControls.length) return;
         shareControls.slice(1).forEach(duplicate => duplicate.remove());
         const share = shareControls[0];
         const panel = share.querySelector('.modal-share-panel');
@@ -7568,17 +7577,54 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           share.prepend(title);
         }
         if (links && links.parentElement === panel) share.insertBefore(links, toggle || panel);
-        const content = modal.querySelector('.custom-modal-content');
-        const agentName = modal.querySelector('[data-agent-name]');
-        let agentSection = agentName;
-        while (agentSection?.parentElement && agentSection.parentElement !== content) agentSection = agentSection.parentElement;
-        if (agentSection && agentSection !== share.parentElement) agentSection.appendChild(share);
+        content.appendChild(share);
+      });
+    }
+
+    function ensureEveryModalHasFactsAndFeatures() {
+      document.querySelectorAll('.card[data-modal],.removed-listing[data-modal]').forEach(card => {
+        const modal = document.getElementById(card.dataset.modal);
+        const content = modal?.querySelector('.custom-modal-content');
+        if (!modal || !content || modal.querySelector('.modal-complete-facts,.modal-facts-features')) return;
+        const details = [];
+        modal.querySelectorAll('strong').forEach(strong => {
+          const label = strong.textContent.replace(':', '').trim();
+          if (!/^(MLS|Type|Beds|Baths|Sqft|Lot|Year Built|Style|Pool|Garage|Basement|Lease Term)$/i.test(label)) return;
+          const value = strong.parentElement?.textContent.replace(/\s+/g, ' ').trim();
+          if (value && !details.includes(value)) details.push(value);
+        });
+        if (!details.length) {
+          card.querySelectorAll('.stats > div').forEach(stat => {
+            const value = stat.querySelector('strong')?.textContent.trim();
+            const label = stat.querySelector('span')?.textContent.trim();
+            if (value && label) details.push(`${label}: ${value}`);
+          });
+        }
+        const facts = document.createElement('section');
+        facts.className = 'modal-complete-facts';
+        const heading = document.createElement('h3');
+        heading.textContent = 'Facts & features';
+        const group = document.createElement('section');
+        group.className = 'modal-facts-group';
+        const groupHeading = document.createElement('h4');
+        groupHeading.textContent = 'Property details';
+        const list = document.createElement('ul');
+        (details.length ? details : ['Contact the listing agent for complete property details.']).forEach(detail => {
+          const item = document.createElement('li');
+          item.textContent = detail;
+          list.appendChild(item);
+        });
+        group.append(groupHeading, list);
+        facts.append(heading, group);
+        const share = modal.querySelector('.modal-share-wrap');
+        if (share) share.insertAdjacentElement('beforebegin', facts);
+        else content.appendChild(facts);
       });
     }
 
     function ensureEveryModalHasShareControl() {
       const escapeHtml = value => String(value || '').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
-      document.querySelectorAll('.card[data-modal]').forEach(card => {
+      document.querySelectorAll('.card[data-modal],.removed-listing[data-modal]').forEach(card => {
         const modal = document.getElementById(card.dataset.modal);
         const content = modal?.querySelector('.custom-modal-content');
         if (!modal || !content || modal.querySelector('.modal-share-wrap')) return;
@@ -7649,6 +7695,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       setTimeout(() => {
         safelyRunModalSetup(addReliableSharingAndCompleteFacts);
         safelyRunModalSetup(ensureEveryModalHasShareControl);
+        safelyRunModalSetup(ensureEveryModalHasFactsAndFeatures);
         safelyRunModalSetup(normalizeModalSharePlacement);
       }, 0);
       safelyRunModalSetup(addModalNeighborhoodMaps);
