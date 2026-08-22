@@ -1,0 +1,7 @@
+.dev.vars
+.dev.vars.*
+.env
+.env.*
+cloudflare/node_modules/
+cloudflare/.wrangler/
+.pnpm-store/

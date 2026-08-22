@@ -78,6 +78,7 @@ def main() -> None:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,follow">
   <title>{escape(address)} | Total Realty Source</title>
   <meta name="description" content="{escape(description, quote=True)}">
   <meta property="og:type" content="website">

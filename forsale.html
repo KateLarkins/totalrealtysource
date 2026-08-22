@@ -19,7 +19,9 @@
 <script defer src="tennessee-hydrography-data.js"></script>
 <script defer src="us-states-map-data.js"></script>
 
-  <title>Homes for Sale</title>
+  <title>Homes &amp; Land for Sale in West Tennessee | Total Realty Source</title>
+  <meta name="description" content="Browse current homes, land, and commercial property for sale across Jackson, Medina, Milan, Humboldt, and West Tennessee.">
+  <link rel="canonical" href="https://totalrealtysource.com/forsale.html">
   <style>
     html.listing-page-loading body {
       visibility: hidden;
@@ -1343,12 +1345,16 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-listing-meta { display:grid; grid-template-columns:1fr auto; gap:24px; margin:28px 0; padding:22px 0; border-bottom:1px solid #D8DEE2; }
 .modal-meta-copy { color:#333; font:13px/1.75 'Lora',serif; }
 .modal-meta-copy p { margin:2px 0; }
-.modal-share-wrap { position:relative; align-self:start; }
+.modal-share-wrap { position:relative; align-self:start; display:grid; grid-template-columns:auto auto; align-items:center; gap:7px 10px; width:max-content; max-width:100%; margin-top:12px; }
+.modal-share-title { grid-column:1/-1; margin:0; color:#222; font:700 13px 'Lora',serif; }
+.modal-share-wrap > .modal-share-links { display:flex; grid-column:1; gap:7px; }
+.modal-share-wrap > .modal-share-links a,.modal-share-wrap > .modal-share-links button { width:42px; min-height:42px; }
+.modal-share-wrap > .modal-share-toggle { grid-column:2; }
 .modal-zillow-summary > .modal-share-wrap,.modal-property-facts + .modal-share-wrap { margin:14px 0 22px; }
 .modal-back-button { position:relative; z-index:12; display:inline-flex; align-items:center; gap:8px; margin:0 0 18px; padding:8px 12px; color:#111; background:#fff; border:1px solid #C5CDD2; border-radius:5px; font:700 13px 'Lora',serif; cursor:pointer; }
 .modal-back-button:hover,.modal-back-button:focus-visible { background:#F1F3F4; }
 .modal-share-toggle { display:inline-flex; align-items:center; gap:8px; min-height:42px; padding:9px 15px; color:#111; background:#fff; border:1px solid #9FAAAF; border-radius:5px; font:700 13px 'Lora',serif; cursor:pointer; }
-.modal-share-panel { position:absolute; top:49px; right:0; z-index:20; width:290px; padding:14px; background:#fff; border:1px solid #C9D0D5; border-radius:8px; box-shadow:0 12px 30px rgba(0,0,0,.18); }
+.modal-share-panel { position:absolute; top:calc(100% + 8px); right:0; z-index:20; width:290px; padding:14px; background:#fff; border:1px solid #C9D0D5; border-radius:8px; box-shadow:0 12px 30px rgba(0,0,0,.18); }
 .modal-share-panel[hidden] { display:none; }
 .modal-share-preview { display:grid; grid-template-columns:84px 1fr; gap:10px; margin-bottom:12px; }
 .modal-share-preview img { width:84px; height:68px; object-fit:cover; border-radius:5px; }
@@ -1370,9 +1376,10 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-complete-facts > h3 { margin:0 0 22px; color:#111; font:600 28px/1.2 'Bodoni Moda',serif; }
 .modal-complete-facts .modal-facts-group ul { columns:2; }
 .modal-map-tools { display:flex; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-top:17px; }
-.modal-virtual-tour { display:inline-flex; align-items:center; justify-content:center; gap:7px; min-height:44px; padding:9px 15px; color:#fff; background:#0B4068; border:1px solid #0B4068; border-radius:5px; font:700 13px/1 'Lora',serif; text-decoration:none; cursor:pointer; white-space:nowrap; }
-.modal-virtual-tour:hover,.modal-virtual-tour:focus-visible { color:#fff; background:#082F4D; border-color:#082F4D; }
-.modal-virtual-tour { flex:0 0 auto; }
+.modal-virtual-tour,.modal-directions { display:inline-flex; align-items:center; justify-content:center; gap:7px; min-height:44px; padding:9px 15px; color:#fff; background:#0B4068; border:1px solid #0B4068; border-radius:5px; font:700 13px/1 'Lora',serif; text-decoration:none; cursor:pointer; white-space:nowrap; }
+.modal-virtual-tour:hover,.modal-virtual-tour:focus-visible,.modal-directions:hover,.modal-directions:focus-visible { color:#fff; background:#082F4D; border-color:#082F4D; }
+.modal-virtual-tour,.modal-directions { flex:0 0 auto; }
+.modal-view-count{font-weight:700}
 #listing-count { max-width:1200px; margin:0 auto !important; font-weight:600; }
 .grid.listing-category-empty { display:none; }
 .listing-category-empty-message { display:none; margin:4px 0 8px; padding:20px; color:#666; background:#F7F8F9; border:1px solid #E2E5E7; border-radius:6px; font:400 14px/1.5 'Lora',serif; }
@@ -1403,8 +1410,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   .modal-map-frame { height:300px; }
   .modal-map-expand { min-height:38px; padding:7px 10px; font-size:12px; }
   .modal-map-tools { display:block; }
-  .modal-virtual-tour { width:100%; }
-  .modal-virtual-tour { margin-top:10px; }
+  .modal-virtual-tour,.modal-directions { width:100%; margin-top:10px; }
   .modal-primary-stat { min-width:74px; padding:0 14px; }
   .modal-listing-meta { grid-template-columns:1fr; }
   .modal-share-wrap { justify-self:start; }
@@ -6990,11 +6996,6 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         117 South Main Street<br>
         Medina, Tennessee 38355
       </p>
-      <p style="font-family:'Lora';">
-        <a href="mailto:totalrealtysource@outlook.com" style="color:white; text-decoration:none;">
-          totalrealtysource@outlook.com
-        </a>
-      </p>
       <p style="font-family:'Lora';">731&nbsp;574&nbsp;9340</p>
     </div>
 
@@ -7118,7 +7119,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         section.className = 'modal-neighborhood-map';
         const virtualTourUrl = card.dataset.virtualTourUrl?.trim();
         const virtualTour = virtualTourUrl ? `<a class="modal-virtual-tour" href="${virtualTourUrl}" target="_blank" rel="noopener"><span aria-hidden="true">▶</span> Virtual tour</a>` : '';
-        const virtualTourControls = virtualTour ? `<div class="modal-map-tools">${virtualTour}</div>` : '';
+        const directions = `<a class="modal-directions" href="https://www.google.com/maps/dir/?api=1&amp;destination=${encodedAddress}&amp;travelmode=driving" target="_blank" rel="noopener" aria-label="Get directions from your current location to ${address}"><span aria-hidden="true">⌖</span> Directions from my location</a>`;
+        const virtualTourControls = `<div class="modal-map-tools">${directions}${virtualTour}</div>`;
         section.innerHTML = `<div class="modal-neighborhood-map-header"><div><h3>Location &amp; Neighborhood</h3><p>${address}</p></div><a class="modal-map-expand" href="https://www.google.com/maps/search/?api=1&query=${encodedAddress}" target="_blank" rel="noopener" aria-label="Expand map for ${address}"><span aria-hidden="true">↗</span> Expand map</a></div><div class="modal-map-frame"><iframe title="Map of ${address}" data-map-src="https://www.google.com/maps?q=${encodedAddress}&amp;output=embed&amp;z=15" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><div class="modal-map-home-marker" aria-hidden="true"><span>🏠</span></div></div><p class="modal-map-note">Google Maps shows nearby shops, restaurants, churches, and other neighborhood places when available.</p>${virtualTourControls}`;
         content.appendChild(section);
       });
@@ -7128,6 +7130,23 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       const iframe = modal?.querySelector('.modal-map-frame iframe[data-map-src]');
       if (!iframe || iframe.getAttribute('src')) return;
       iframe.src = iframe.dataset.mapSrc;
+    }
+
+    async function updateListingViewCount(modalId) {
+      const modal=document.getElementById(modalId);
+      if(!modal)return;
+      const storageKey=`trs-counted-view-${modalId}`;
+      let alreadyCounted=false;
+      try{alreadyCounted=sessionStorage.getItem(storageKey)==='1';}catch(_){}
+      try{
+        const response=await fetch(`https://total-realty-source-api.total-realty-source.workers.dev/api/views/${encodeURIComponent(modalId)}`,{method:alreadyCounted?'GET':'POST',headers:{'Accept':'application/json'}});
+        if(!response.ok)return;
+        const result=await response.json();
+        if(!alreadyCounted)try{sessionStorage.setItem(storageKey,'1');}catch(_){}
+        let count=modal.querySelector('.modal-view-count');
+        if(!count){count=document.createElement('p');count.className='modal-view-count';const meta=modal.querySelector('.modal-meta-copy');(meta||modal.querySelector('.custom-modal-content'))?.appendChild(count);}
+        count.textContent=`${Number(result.views||0).toLocaleString('en-US')} views`;
+      }catch(_){}
     }
 
     function enhanceListingModalLayouts() {
@@ -7487,11 +7506,25 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     function normalizeModalSharePlacement() {
       document.querySelectorAll('.card[data-modal]').forEach(card => {
         const modal = document.getElementById(card.dataset.modal);
-        const propertyIconRow = modal?.querySelector('.modal-property-facts');
         const shareControls = Array.from(modal?.querySelectorAll('.modal-share-wrap') || []);
-        if (!propertyIconRow || !shareControls.length) return;
+        if (!modal || !shareControls.length) return;
         shareControls.slice(1).forEach(duplicate => duplicate.remove());
-        propertyIconRow.insertAdjacentElement('afterend', shareControls[0]);
+        const share = shareControls[0];
+        const panel = share.querySelector('.modal-share-panel');
+        const links = panel?.querySelector('.modal-share-links');
+        const toggle = share.querySelector('.modal-share-toggle');
+        if (!share.querySelector(':scope > .modal-share-title')) {
+          const title = document.createElement('p');
+          title.className = 'modal-share-title';
+          title.textContent = 'Share this listing';
+          share.prepend(title);
+        }
+        if (links && links.parentElement === panel) share.insertBefore(links, toggle || panel);
+        const content = modal.querySelector('.custom-modal-content');
+        const agentName = modal.querySelector('[data-agent-name]');
+        let agentSection = agentName;
+        while (agentSection?.parentElement && agentSection.parentElement !== content) agentSection = agentSection.parentElement;
+        if (agentSection && agentSection !== share.parentElement) agentSection.appendChild(share);
       });
     }
 
@@ -7576,6 +7609,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       loadModalNeighborhoodMap(modal);
       showSlide(currentSlide, modalId);
       document.dispatchEvent(new CustomEvent('listingviewed', { detail: { modalId } }));
+      updateListingViewCount(modalId);
     }
   
     function closeModal() {
