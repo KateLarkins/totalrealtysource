@@ -1291,7 +1291,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .price-drop-arrow { display:inline-block; margin-left:9px; margin-right:2px; color:#168447; font:900 .9em/1 Arial,sans-serif; transform:translateY(-1px); }
 .price-drop-amount { display:inline-block; margin-left:0; color:#168447; font-weight:700; white-space:nowrap; }
 .open-house-bubble { display:inline-flex; align-items:center; gap:7px; padding:7px 11px; color:#fff; background:#0B4068; border:2px solid #fff; border-radius:999px; box-shadow:0 3px 10px rgba(15,35,50,.24); font:700 12px/1.15 'Lora',serif; letter-spacing:.02em; }
-.card > .open-house-bubble { position:absolute; top:12px; right:12px; left:auto; z-index:6; max-width:calc(100% - 72px); }
+.card > .open-house-bubble { position:absolute; top:43px; right:auto; left:12px; z-index:6; max-width:calc(100% - 24px); }
 .custom-modal .carousel > .open-house-bubble { position:absolute; top:15px; right:15px; z-index:12; max-width:55%; }
 .modal-open-house-details { margin:0 0 24px; padding:18px 20px; color:#163647; background:#EFF7F2; border:1px solid #B7D9C4; border-left:5px solid #168447; border-radius:8px; font:15px/1.55 'Lora',serif; }
 .modal-open-house-details h3 { margin:0 0 6px; color:#116B3A; font:700 20px/1.2 'Bodoni Moda',serif; }
@@ -1352,6 +1352,8 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-share-wrap > .modal-share-links a,.modal-share-wrap > .modal-share-links button { width:42px; min-height:42px; }
 .modal-share-wrap > .modal-share-toggle { grid-column:2; }
 .modal-zillow-summary > .modal-share-wrap,.modal-property-facts + .modal-share-wrap { margin:14px 0 22px; }
+.modal-agent-share-row { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:24px; margin-top:24px; }
+.modal-agent-share-row > .modal-share-wrap { justify-self:end; margin-top:0; }
 .modal-back-button { position:relative; z-index:12; display:inline-flex; align-items:center; gap:8px; margin:0 0 18px; padding:8px 12px; color:#111; background:#fff; border:1px solid #C5CDD2; border-radius:5px; font:700 13px 'Lora',serif; cursor:pointer; }
 .modal-back-button:hover,.modal-back-button:focus-visible { background:#F1F3F4; }
 .modal-from-events { overflow:hidden; }
@@ -1417,6 +1419,8 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   .modal-virtual-tour,.modal-directions { width:100%; margin-top:10px; }
   .modal-primary-stat { min-width:74px; padding:0 14px; }
   .modal-listing-meta { grid-template-columns:1fr; }
+  .modal-agent-share-row { grid-template-columns:1fr; gap:18px; }
+  .modal-agent-share-row > .modal-share-wrap { justify-self:start; }
   .modal-share-wrap { justify-self:start; }
   .modal-share-panel { right:auto; left:0; width:min(290px,calc(100vw - 76px)); }
   .modal-facts-group ul { columns:1; }
@@ -7529,12 +7533,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         };
 
         if (!card.querySelector(':scope > .open-house-bubble')) card.prepend(createBubble(false));
-        if (!modal) return;
-
-        const carousel = modal.querySelector('.carousel');
+        const carousel = modal?.querySelector('.carousel');
         if (carousel && !carousel.querySelector(':scope > .open-house-bubble')) carousel.appendChild(createBubble(true));
 
-        if (!modal.querySelector('.modal-open-house-details')) {
+        if (modal && !modal.querySelector('.modal-open-house-details')) {
           const details = document.createElement('section');
           details.className = 'modal-open-house-details';
           const heading = document.createElement('h3');
@@ -7548,6 +7550,23 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           details.append(heading, date, description);
           carousel?.insertAdjacentElement('afterend', details);
         }
+
+        const removeExpiredOpenHouse = () => {
+          card.querySelector(':scope > .open-house-bubble')?.remove();
+          modal?.querySelector('.carousel > .open-house-bubble')?.remove();
+          modal?.querySelector('.modal-open-house-details')?.remove();
+          document.querySelectorAll(`[data-recent-listing-id="${CSS.escape(card.dataset.modal)}"] .recently-viewed-open-house`)
+            .forEach(badge => badge.remove());
+        };
+        const scheduleExpiration = () => {
+          const remaining = openHouseEnd.getTime() - Date.now();
+          if (remaining <= 0) {
+            removeExpiredOpenHouse();
+            return;
+          }
+          window.setTimeout(scheduleExpiration, Math.min(remaining + 100, 2147483647));
+        };
+        scheduleExpiration();
       });
     }
 
@@ -7577,7 +7596,23 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           share.prepend(title);
         }
         if (links && links.parentElement === panel) share.insertBefore(links, toggle || panel);
-        content.appendChild(share);
+        const agentName = modal.querySelector('[data-agent-name]');
+        let agentSection = agentName;
+        while (agentSection?.parentElement && agentSection.parentElement !== content) agentSection = agentSection.parentElement;
+        if (agentSection && agentSection !== content) {
+          let agentShareRow = agentSection.parentElement?.classList.contains('modal-agent-share-row')
+            ? agentSection.parentElement
+            : null;
+          if (!agentShareRow) {
+            agentShareRow = document.createElement('section');
+            agentShareRow.className = 'modal-agent-share-row';
+            agentSection.insertAdjacentElement('beforebegin', agentShareRow);
+            agentShareRow.appendChild(agentSection);
+          }
+          agentShareRow.appendChild(share);
+        } else {
+          content.appendChild(share);
+        }
       });
     }
 
@@ -7619,6 +7654,96 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const share = modal.querySelector('.modal-share-wrap');
         if (share) share.insertAdjacentElement('beforebegin', facts);
         else content.appendChild(facts);
+      });
+    }
+
+    function standardizeNativeModalSharing() {
+      const propertyCards = document.querySelectorAll('.card[data-modal],.removed-listing[data-modal]');
+      propertyCards.forEach(card => {
+        const modal = document.getElementById(card.dataset.modal);
+        const share = modal?.querySelector('.modal-share-wrap');
+        if (!modal || !share) return;
+
+        const address = modal.querySelector('h2')?.textContent.replace(/\s+/g, ' ').trim()
+          || card.querySelector('.address')?.textContent.replace(/\s+/g, ' ').trim()
+          || 'Total Realty Source property';
+        const agentName = modal.querySelector('[data-agent-name]')?.textContent.replace(/\s+/g, ' ').trim()
+          || card.dataset.agent
+          || 'Total Realty Source';
+        const descriptionHeading = Array.from(modal.querySelectorAll('h3')).find(heading => /Property Description/i.test(heading.textContent));
+        const rawDescription = descriptionHeading?.parentElement?.querySelector('p')?.textContent.replace(/\s+/g, ' ').trim()
+          || `${address} is available through Total Realty Source.`;
+        const firstSentence = rawDescription.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim() || rawDescription;
+        const shortDescription = (firstSentence.length > 180 ? `${firstSentence.slice(0, 177).trim()}...` : firstSentence)
+          .replace(/[—–]/g, ',')
+          .replace(/\s+/g, ' ');
+        const image = modal.querySelector('.slide')?.getAttribute('src')
+          || card.querySelector(':scope > img')?.getAttribute('src')
+          || '';
+        const shareUrl = `https://totalrealtysource.com/listing-share/${encodeURIComponent(card.dataset.modal)}.html`;
+        const shareText = `${address}\n${shortDescription}\nREALTOR® ${agentName}`;
+
+        share.querySelector('.modal-share-panel')?.remove();
+        let title = share.querySelector('.modal-share-title');
+        if (!title) {
+          title = document.createElement('p');
+          title.className = 'modal-share-title';
+          share.prepend(title);
+        }
+        title.textContent = 'Share this listing';
+
+        let links = share.querySelector('.modal-share-links');
+        if (!links) {
+          links = document.createElement('div');
+          links.className = 'modal-share-links';
+          share.appendChild(links);
+        }
+        links.innerHTML = `<a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}" target="_blank" rel="noopener" aria-label="Share listing on X" title="Share on X"><span class="modal-share-icon" aria-hidden="true">𝕏</span><span class="modal-share-accessible-label">X</span></a><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&display=popup" target="_blank" rel="noopener" aria-label="Share listing on Facebook" title="Share on Facebook"><span class="modal-share-icon" aria-hidden="true">f</span><span class="modal-share-accessible-label">Facebook</span></a><button class="modal-instagram-share modal-native-share-option" type="button" aria-label="Share listing to Instagram" title="Share to Instagram"><i class="fa fa-instagram" aria-hidden="true"></i><span class="modal-share-accessible-label">Instagram</span></button><a href="mailto:?subject=${encodeURIComponent(address)}&body=${encodeURIComponent(`${shareText}\n${shareUrl}`)}" aria-label="Share listing by email" title="Share by email"><i class="fa fa-envelope" aria-hidden="true"></i><span class="modal-share-accessible-label">Mail</span></a>`;
+
+        share.querySelector('.modal-share-toggle')?.remove();
+        const nativeButton = document.createElement('button');
+        nativeButton.type = 'button';
+        nativeButton.className = 'modal-share-toggle modal-native-share';
+        nativeButton.innerHTML = '<i class="fa fa-share-square-o" aria-hidden="true"></i><span>Share</span>';
+        nativeButton.setAttribute('aria-label', 'Share listing using Messages or another app');
+        nativeButton.title = 'Share using Messages or another app';
+        share.appendChild(nativeButton);
+
+        const nativeShare = async () => {
+          const payload = { title: address, text: `${shortDescription}\nREALTOR® ${agentName}`, url: shareUrl };
+          if (navigator.share) {
+            if (image && typeof File === 'function') {
+              try {
+                const response = await fetch(image);
+                if (response.ok) {
+                  const blob = await response.blob();
+                  const extension = blob.type.includes('png') ? 'png' : blob.type.includes('webp') ? 'webp' : 'jpg';
+                  const file = new File([blob], `total-realty-source-listing.${extension}`, { type: blob.type || 'image/jpeg' });
+                  if (navigator.canShare?.({ files: [file] })) {
+                    payload.files = [file];
+                    payload.text = `${payload.text}\n${shareUrl}`;
+                    delete payload.url;
+                  }
+                }
+              } catch (_) {}
+            }
+            await navigator.share(payload);
+            return;
+          }
+          try {
+            await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
+            alert('Listing details and link copied. Paste them into Messages or another app.');
+          } catch (_) {
+            prompt('Copy this listing link:', shareUrl);
+          }
+        };
+
+        nativeButton.addEventListener('click', () => nativeShare().catch(error => {
+          if (error?.name !== 'AbortError') console.error('Unable to share listing:', error);
+        }));
+        links.querySelector('.modal-instagram-share')?.addEventListener('click', () => nativeShare().catch(error => {
+          if (error?.name !== 'AbortError') console.error('Unable to share listing:', error);
+        }));
       });
     }
 
@@ -7697,6 +7822,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         safelyRunModalSetup(ensureEveryModalHasShareControl);
         safelyRunModalSetup(ensureEveryModalHasFactsAndFeatures);
         safelyRunModalSetup(normalizeModalSharePlacement);
+        safelyRunModalSetup(standardizeNativeModalSharing);
       }, 0);
       safelyRunModalSetup(addModalNeighborhoodMaps);
     });
@@ -7776,6 +7902,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const button = document.createElement('button');
         button.type = 'button';
         button.className = className;
+        button.dataset.recentListingId = listing.id;
         button.setAttribute('aria-label', `View ${listing.address}`);
         const image = document.createElement('img');
         image.src = listing.image;
