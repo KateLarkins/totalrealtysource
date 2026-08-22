@@ -65,7 +65,7 @@
   testimonialCarousel.addEventListener('touchend',event=>{const endX=event.changedTouches[0]?.clientX || testimonialTouchX;const distance=testimonialTouchX-endX;if(Math.abs(distance)>45)moveTestimonials(distance>0?1:-1);},{passive:true});
   requestAnimationFrame(updateTestimonialArrows);
   const actions = document.getElementById('agent-actions');
-  actions.innerHTML = `<a class="profile-button" href="#agent-contact-form">Contact ${agent.name.split(' ')[0]}</a><a class="profile-button secondary" href="tel:${agent.phone.replace(/\D/g,'')}">${agent.phone}</a><button class="profile-button secondary" type="button" id="share-agent-profile">↗ Share Profile</button>${agent.website ? `<a class="profile-button secondary" href="${agent.website}" target="_blank" rel="noopener">Visit website</a>` : ''}`;
+  actions.innerHTML = `<a class="profile-button" href="#agent-contact-form">Contact ${agent.name.split(' ')[0]}</a><a class="profile-button secondary" href="tel:${agent.phone.replace(/\D/g,'')}">${agent.phone}</a><button class="profile-button secondary" type="button" id="share-agent-profile"><svg class="profile-share-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"></path></svg>Share Profile</button>${agent.website ? `<a class="profile-button secondary" href="${agent.website}" target="_blank" rel="noopener">Visit website</a>` : ''}`;
   document.getElementById('share-agent-profile').addEventListener('click', async () => {
     const shareUrl=`https://totalrealtysource.com/agent-share/${slug || 'lynda-climer'}.html`;
     const shareData={title:`REALTOR® ${agent.name}`,text:`Meet REALTOR® ${agent.name} with Total Realty Source.`,url:shareUrl};
@@ -99,7 +99,7 @@
     button.disabled=true;status.textContent='Sending your message…';
     fetch('https://total-realty-source-api.total-realty-source.workers.dev/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({agent:slug||'lynda-climer',name:clean(data.get('name')),phone:clean(data.get('phone')),email:clean(data.get('email')),message:clean(data.get('message')),website:clean(data.get('website'))})})
       .then(async response=>{const result=await response.json().catch(()=>({}));if(!response.ok)throw new Error(result.error||'Message could not be sent.');form.reset();form.querySelector('textarea').value=`I'm interested in working with ${agent.name}.`;status.textContent=`Your message was sent privately to ${agent.name}.`;})
-      .catch(error=>{status.textContent=`${error.message} Please call ${agent.phone}.`;})
+      .catch(error=>{status.textContent=`${String(error.message||'Load failed').replace(/[.!?]+$/,'')}. Please call ${agent.phone}.`;})
       .finally(()=>{button.disabled=false;});
   });
   loadListings();

@@ -101,7 +101,8 @@ a {
  }
 
  #team {
-   padding: 42px 18px !important;
+   padding: 42px 14px !important;
+   background: #f5f6f7 !important;
  }
 
  #team > div {
@@ -109,26 +110,43 @@ a {
  }
 
  #team > div > div[style*="display:grid"] {
-   grid-template-columns: 1fr !important;
-   gap: 34px !important;
+   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+   gap: 14px !important;
    width: 100%;
-   max-width: 420px;
+   max-width: 520px;
    margin: 0 auto;
  }
 
  #team > div > div[style*="display:grid"] > div {
    width: 100%;
    min-width: 0;
-   padding: 4px 0;
+   box-sizing: border-box;
+   padding: 16px 8px 18px;
+   background: rgba(255,255,255,.72);
+   border: 1px solid #e3e6e8;
+   border-radius: 16px;
  }
 
  #team > div > div[style*="display:grid"] img {
-   width: min(66vw, 240px) !important;
-   height: min(66vw, 240px) !important;
+   width: min(31vw, 132px) !important;
+   height: min(31vw, 132px) !important;
    aspect-ratio: 1;
    object-fit: cover !important;
    object-position: center top;
+   border-radius: 18px !important;
+   box-shadow: 0 6px 18px rgba(2,62,108,.12);
  }
+
+ #team h3,
+ #team h3 + p { width:100%; text-align:center !important; }
+ #team h3 { min-height:44px; display:flex; align-items:center; justify-content:center; line-height:1.2; }
+ #team h3 + p { min-height:30px; display:flex; align-items:center; justify-content:center; line-height:1.25; }
+}
+
+@media (max-width: 380px) {
+ #team > div > div[style*="display:grid"] { gap:10px !important; }
+ #team > div > div[style*="display:grid"] > div { padding:13px 5px 16px; }
+ #team > div > div[style*="display:grid"] img { width:108px !important; height:108px !important; }
 }
 /* New styles */
 /* Hero Section */

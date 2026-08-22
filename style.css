@@ -46,6 +46,9 @@ body {
 .events-empty p { margin:0 auto 28px; max-width:550px; color:#000; font:400 17px/1.7 'Lora',serif; }
 .events-page footer a { color:#fff; text-decoration:underline; font-family:'Lora',serif; }
 @media (max-width:760px) {
+  .events-page .topnav { position:sticky; justify-content:center; }
+  .events-page .topnav .logo { width:auto; margin:0 auto; }
+  .events-page .topnav .nav-arrow.mobile-arrow { position:absolute; right:20px; }
   .events-hero { padding:78px 20px 72px; }
   .events-section { padding:58px 18px 10px; }
   .event-card { grid-template-columns:1fr; }

@@ -60,7 +60,7 @@
     button.disabled=true;status.textContent='Sending your message…';
     fetch('https://total-realty-source-api.total-realty-source.workers.dev/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({agent:'amy-mclemore',name:clean(data.get('name')),phone:clean(data.get('phone')),email:clean(data.get('email')),message:clean(data.get('message')),website:clean(data.get('website'))})})
       .then(async response=>{const result=await response.json().catch(()=>({}));if(!response.ok)throw new Error(result.error||'Message could not be sent.');form.reset();form.querySelector('textarea').value="I'm interested in working with Amy McLemore.";status.textContent='Your message was sent privately to Amy McLemore.';})
-      .catch(error=>{status.textContent=`${error.message} Please call 731-234-0049.`;})
+      .catch(error=>{status.textContent=`${String(error.message||'Load failed').replace(/[.!?]+$/,'')}. Please call 731-234-0049.`;})
       .finally(()=>{button.disabled=false;});
   });
 
