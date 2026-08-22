@@ -18,6 +18,7 @@
   document.getElementById('agent-name').textContent = agent.name;
   document.getElementById('agent-first-name').textContent = agent.name.split(' ')[0];
   document.getElementById('agent-title').textContent = `${agent.title} · Total Realty Source`;
+  document.getElementById('agent-highlight-role').textContent = agent.title;
   document.getElementById('agent-photo').src = agent.photo;
   document.getElementById('agent-photo').alt = agent.name;
   document.getElementById('agent-bio').textContent = agent.bio;
