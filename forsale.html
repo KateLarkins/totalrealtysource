@@ -1143,9 +1143,10 @@ body.workspace-view-split .property-back-to-top-wrap { display:flex; }
 .show-view-history { display:inline-flex; align-items:center; gap:7px; min-height:42px; padding:9px 14px; color:#0B4068; background:#fff; border:1px solid #9FB0BC; border-radius:7px; font:600 14px 'Lora'; cursor:pointer; }
 .show-view-history:hover,.show-view-history:focus-visible { color:#fff; background:#0B4068; border-color:#0B4068; }
 .recently-viewed-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; }
-.recently-viewed-card { min-width:0; padding:0; overflow:hidden; color:#111; background:#fff; border:1px solid #DDE3E7; border-radius:8px; text-align:left; cursor:pointer; }
+.recently-viewed-card { position:relative; min-width:0; padding:0; overflow:hidden; color:#111; background:#fff; border:1px solid #DDE3E7; border-radius:8px; text-align:left; cursor:pointer; }
 .recently-viewed-card:hover,.recently-viewed-card:focus-visible { border-color:#0B4068; box-shadow:0 4px 14px rgba(15,35,50,.12); }
 .recently-viewed-card img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; }
+.recently-viewed-open-house { position:absolute; top:10px; left:10px; z-index:2; display:inline-flex; padding:7px 10px; color:#fff; background:#0B4068; border:2px solid #fff; border-radius:999px; box-shadow:0 3px 9px rgba(15,35,50,.22); font:700 11px/1 'Lora'; letter-spacing:.04em; text-transform:uppercase; }
 .recently-viewed-card-copy { display:block; padding:13px 14px 15px; }
 .recently-viewed-card-price { display:block; margin-bottom:5px; font:700 17px 'Lora'; }
 .recently-viewed-card-address { display:block; color:#555; font:14px/1.45 'Lora'; }
@@ -1353,6 +1354,9 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-zillow-summary > .modal-share-wrap,.modal-property-facts + .modal-share-wrap { margin:14px 0 22px; }
 .modal-back-button { position:relative; z-index:12; display:inline-flex; align-items:center; gap:8px; margin:0 0 18px; padding:8px 12px; color:#111; background:#fff; border:1px solid #C5CDD2; border-radius:5px; font:700 13px 'Lora',serif; cursor:pointer; }
 .modal-back-button:hover,.modal-back-button:focus-visible { background:#F1F3F4; }
+.modal-from-events { overflow:hidden; }
+.modal-from-events .custom-modal { background:#fff !important; }
+.modal-from-events .custom-modal-content { width:100% !important; max-width:1100px !important; min-height:100vh; margin:0 auto !important; border:0 !important; border-radius:0 !important; box-shadow:none !important; }
 .modal-share-toggle { display:inline-flex; align-items:center; gap:8px; min-height:42px; padding:9px 15px; color:#111; background:#fff; border:1px solid #9FAAAF; border-radius:5px; font:700 13px 'Lora',serif; cursor:pointer; }
 .modal-share-panel { position:absolute; top:calc(100% + 8px); right:0; z-index:20; width:290px; padding:14px; background:#fff; border:1px solid #C9D0D5; border-radius:8px; box-shadow:0 12px 30px rgba(0,0,0,.18); }
 .modal-share-panel[hidden] { display:none; }
@@ -1499,6 +1503,13 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   .modal-contact-actions a,.modal-contact-actions .modal-favorite-listing { flex:1 1 100%; width:100%; }
 }
 @media (max-width:420px) {
+  .recently-viewed-grid { grid-template-columns:1fr; }
+  .recently-viewed-open-house { top:9px; left:9px; }
+  .modal-from-events .custom-modal { padding:0 !important; }
+  .modal-from-events .custom-modal-content { padding:18px 14px 38px !important; }
+  .card > .open-house-bubble { max-width:calc(100% - 24px); }
+  .modal-property-facts.open-house-property-facts { grid-template-columns:1fr; gap:10px; }
+  .modal-property-facts.open-house-property-facts .modal-property-fact { padding:5px 0; border-right:0; }
   .listing-filter-field { min-width:calc(50% - 5px); flex:1 1 calc(50% - 5px); }
   .saved-homes-filter,.clear-listing-filters,.results-view-toggle { flex-basis:100%; width:100%; }
 }
@@ -4244,7 +4255,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           </div>
 
 <!-- Active listing MLS 2603840 -->
-<div class="card" data-modal="listing2603840Modal" data-agent="Jackie David" data-dom="7" data-lat="35.926788" data-lng="-88.76766" data-map-category="homes" data-open-house-start="2026-08-23T12:00:00-05:00" data-open-house-end="2026-08-23T14:00:00-05:00" data-open-house-description="Tour this three-bedroom, two-bath Milan rental featuring a dining room, fully fenced backyard, and storage shed.">
+<div class="card" data-modal="listing2603840Modal" data-agent="Jackie David" data-dom="7" data-lat="35.926788" data-lng="-88.76766" data-map-category="homes" data-open-house-start="2026-08-23T12:00:00-05:00" data-open-house-end="2026-08-23T14:00:00-05:00" data-open-house-description="Tour this three-bedroom, two-bath Milan rental featuring a dining room, fully fenced backyard, and storage shed." data-open-house-image="https://cdn1.photos.sparkplatform.com/ctn/20260813174217292676000000-o.jpg">
   <img src="https://cdn1.photos.sparkplatform.com/ctn/20260813174217292676000000.jpg" alt="4011 Creswell Street" onclick="openModal('listing2603840Modal')" />
   <div class="card-body">
     <p class="price">$1,500/month</p>
@@ -7130,7 +7141,15 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const updateRow = document.createElement('p');
         updateRow.className = 'modal-listing-updated';
         updateRow.textContent = `Listing updated: ${updatedFormatter.format(updated).replace(' AM','am').replace(' PM','pm')}`;
-        overview.prepend(factsRow, updateRow);
+        if (card.dataset.openHouseStart) {
+          factsRow.classList.add('open-house-property-facts');
+          const heading = modal.querySelector('h2');
+          const price = heading?.nextElementSibling;
+          if (price) {
+            price.insertAdjacentElement('afterend', factsRow);
+            factsRow.insertAdjacentElement('afterend', updateRow);
+          } else overview.prepend(factsRow, updateRow);
+        } else overview.prepend(factsRow, updateRow);
       });
     }
 
@@ -7499,19 +7518,19 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const timeFormatter = new Intl.DateTimeFormat('en-US', { timeZone:'America/Chicago', hour:'numeric', minute:'2-digit' });
         const openHouseDate = card.dataset.openHouseDate?.trim() || `${dateFormatter.format(openHouseStart)} · ${timeFormatter.format(openHouseStart)}–${timeFormatter.format(openHouseEnd)}`;
 
-        const createBubble = () => {
+        const createBubble = showSchedule => {
           const bubble = document.createElement('div');
           bubble.className = 'open-house-bubble';
           bubble.innerHTML = '<span aria-hidden="true">●</span><span></span>';
-          bubble.lastElementChild.textContent = `Open House · ${openHouseDate}`;
+          bubble.lastElementChild.textContent = showSchedule ? `Open House · ${openHouseDate}` : 'Open House';
           return bubble;
         };
 
-        if (!card.querySelector(':scope > .open-house-bubble')) card.prepend(createBubble());
+        if (!card.querySelector(':scope > .open-house-bubble')) card.prepend(createBubble(false));
         if (!modal) return;
 
         const carousel = modal.querySelector('.carousel');
-        if (carousel && !carousel.querySelector(':scope > .open-house-bubble')) carousel.appendChild(createBubble());
+        if (carousel && !carousel.querySelector(':scope > .open-house-bubble')) carousel.appendChild(createBubble(true));
 
         if (!modal.querySelector('.modal-open-house-details')) {
           const details = document.createElement('section');
@@ -7596,6 +7615,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       const modalLinkParams = new URLSearchParams(location.search);
       const linkedListing = modalLinkParams.get('listing');
       const returnToEvents = modalLinkParams.get('from') === 'events';
+      document.body.classList.toggle('modal-from-events', returnToEvents);
       document.querySelectorAll('.card[data-modal]').forEach(card => {
         const modal = document.getElementById(card.dataset.modal);
         const content = modal?.querySelector('.custom-modal-content');
@@ -7694,7 +7714,12 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           id,
           image: card.querySelector(':scope > img')?.src || card.querySelector('img')?.src || '',
           price: card.querySelector('.price')?.childNodes[0]?.textContent.trim() || card.querySelector('.price')?.textContent.trim() || '',
-          address: card.querySelector('.address')?.innerText.replace(/\n/g, ', ') || 'Property'
+          address: card.querySelector('.address')?.innerText.replace(/\n/g, ', ') || 'Property',
+          openHouse: (() => {
+            const start = new Date(card.dataset.openHouseStart || '');
+            const end = new Date(card.dataset.openHouseEnd || '');
+            return !Number.isNaN(start.getTime()) && !Number.isNaN(end.getTime()) && end.getTime() > Date.now();
+          })()
         };
       }
 
@@ -7707,6 +7732,12 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         image.src = listing.image;
         image.alt = '';
         image.loading = 'lazy';
+        if (className === 'recently-viewed-card' && listing.openHouse) {
+          const openHouse = document.createElement('span');
+          openHouse.className = 'recently-viewed-open-house';
+          openHouse.textContent = 'Open House';
+          button.appendChild(openHouse);
+        }
         const copy = document.createElement('span');
         if (className === 'recently-viewed-card') {
           copy.className = 'recently-viewed-card-copy';
