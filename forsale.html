@@ -1291,7 +1291,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .price-drop-arrow { display:inline-block; margin-left:9px; margin-right:2px; color:#168447; font:900 .9em/1 Arial,sans-serif; transform:translateY(-1px); }
 .price-drop-amount { display:inline-block; margin-left:0; color:#168447; font-weight:700; white-space:nowrap; }
 .open-house-bubble { display:inline-flex; align-items:center; gap:7px; padding:7px 11px; color:#fff; background:#0B4068; border:2px solid #fff; border-radius:999px; box-shadow:0 3px 10px rgba(15,35,50,.24); font:700 12px/1.15 'Lora',serif; letter-spacing:.02em; }
-.card > .open-house-bubble { position:absolute; top:48px; left:12px; z-index:6; max-width:calc(100% - 72px); }
+.card > .open-house-bubble { position:absolute; top:12px; right:12px; left:auto; z-index:6; max-width:calc(100% - 72px); }
 .custom-modal .carousel > .open-house-bubble { position:absolute; top:15px; right:15px; z-index:12; max-width:55%; }
 .modal-open-house-details { margin:0 0 24px; padding:18px 20px; color:#163647; background:#EFF7F2; border:1px solid #B7D9C4; border-left:5px solid #168447; border-radius:8px; font:15px/1.55 'Lora',serif; }
 .modal-open-house-details h3 { margin:0 0 6px; color:#116B3A; font:700 20px/1.2 'Bodoni Moda',serif; }
@@ -7521,8 +7521,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const createBubble = showSchedule => {
           const bubble = document.createElement('div');
           bubble.className = 'open-house-bubble';
-          bubble.innerHTML = '<span aria-hidden="true">●</span><span></span>';
-          bubble.lastElementChild.textContent = showSchedule ? `Open House · ${openHouseDate}` : 'Open House';
+          if (showSchedule) {
+            bubble.innerHTML = '<span aria-hidden="true">●</span><span></span>';
+            bubble.lastElementChild.textContent = `Open House · ${openHouseDate}`;
+          } else bubble.textContent = 'Open House';
           return bubble;
         };
 
