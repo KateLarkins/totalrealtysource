@@ -48,7 +48,8 @@
     .agent-property-address{margin-top:9px!important}.agent-property-address>span{display:block;margin-top:2px!important;line-height:1.4}
     .contact-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
     .required-marker{color:#c62828;font-weight:700}
-    .agent-profile-button{gap:8px}.agent-share-icon{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+    .agent-photo-column{display:flex;flex-direction:column;align-items:center}.agent-role-badge{position:static;width:max-content;max-width:100%;margin:12px auto 0}
+    .agent-profile-button{gap:8px}.agent-share-icon{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}.agent-review-stars{color:#FDDA0D}
     @media(max-width:620px){#reviews .agent-review-grid{grid-template-columns:minmax(0,1fr);padding:0 44px}}
   </style>
 </head>
@@ -58,8 +59,7 @@
   <div style="background:#fff;border-bottom:1px solid #d8dde1;"><div style="max-width:1380px;margin:auto;padding:16px 28px;"><button class="agent-back-button" type="button" onclick="history.length>1?history.back():location.href='about.html'" style="display:inline-flex;align-items:center;gap:9px;padding:0;color:#111;background:none;border:0;font:700 14px 'Lora';cursor:pointer;">← Back</button></div></div>
   <main class="agent-profile-shell">
     <header class="agent-profile-hero">
-      <span class="agent-role-badge">Buyer &amp; Seller Agent</span>
-      <img class="agent-profile-photo" src="Untitled design-10/1amy.png" alt="Amy McLemore">
+      <div class="agent-photo-column"><img class="agent-profile-photo" src="Untitled design-10/1amy.png" alt="Amy McLemore"><span class="agent-role-badge">Buyer &amp; Seller Agent</span></div>
       <div class="agent-profile-copy"><h1>Amy McLemore</h1><p class="agent-profile-company">Total Realty Source · Licensed Real Estate Agent</p><div class="agent-rating"><span>★★★★★</span><strong>5.0</strong><a href="#reviews">21 reviews</a></div><div class="agent-profile-links"><a class="agent-profile-button" href="#contact-amy">Contact Amy</a><a class="agent-profile-button secondary" href="tel:7312340049">(731) 234-0049</a><button class="agent-profile-button secondary" id="share-amy-profile" type="button"><svg class="agent-share-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"></path></svg>Share Profile</button><a class="agent-profile-button secondary" href="https://amymclemore.com/" target="_blank" rel="noopener">Visit website</a></div></div>
     </header>
     <section class="agent-metrics" aria-label="Amy McLemore sales statistics"><div class="agent-metric"><strong>42</strong><span>sales last 12 months</span></div><div class="agent-metric"><strong>240</strong><span>total sales</span></div><div class="agent-metric"><strong>$24K–$1.1M</strong><span>price range</span></div><div class="agent-metric"><strong>$276K</strong><span>average price</span></div><div class="agent-metric"><strong>23</strong><span>years of experience</span></div></section>
