@@ -1354,6 +1354,8 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-zillow-summary > .modal-share-wrap,.modal-property-facts + .modal-share-wrap { margin:14px 0 22px; }
 .modal-agent-share-row { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:24px; margin-top:24px; }
 .modal-agent-share-row > .modal-share-wrap { justify-self:end; margin-top:0; }
+.modal-agent-contact-card { display:flex !important; align-items:center; gap:20px; min-width:0; padding-top:20px; border-top:1px solid #ccc; font-family:'Lora',serif; }
+.modal-agent-contact-card > img,.modal-agent-headshot { flex:0 0 100px; width:100px !important; height:100px !important; object-fit:cover; border-radius:50%; }
 .modal-back-button { position:relative; z-index:12; display:inline-flex; align-items:center; gap:8px; margin:0 0 18px; padding:8px 12px; color:#111; background:#fff; border:1px solid #C5CDD2; border-radius:5px; font:700 13px 'Lora',serif; cursor:pointer; }
 .modal-back-button:hover,.modal-back-button:focus-visible { background:#F1F3F4; }
 .modal-from-events { overflow:hidden; }
@@ -1421,6 +1423,8 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   .modal-listing-meta { grid-template-columns:1fr; }
   .modal-agent-share-row { grid-template-columns:1fr; gap:18px; }
   .modal-agent-share-row > .modal-share-wrap { justify-self:start; }
+  .modal-agent-contact-card { align-items:flex-start; gap:14px; }
+  .modal-agent-contact-card > img,.modal-agent-headshot { flex-basis:82px; width:82px !important; height:82px !important; }
   .modal-share-wrap { justify-self:start; }
   .modal-share-panel { right:auto; left:0; width:min(290px,calc(100vw - 76px)); }
   .modal-facts-group ul { columns:1; }
@@ -7379,7 +7383,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         }
         const address = modal.querySelector('h2')?.textContent.replace(/\s+/g,' ').trim() || card.querySelector('.address')?.textContent.replace(/\s+/g,' ').trim() || 'Property listing';
         const price = card.querySelector('.price')?.childNodes[0]?.textContent.trim() || card.querySelector('.price')?.textContent.trim() || 'Price available on listing';
-        const rawFacts = Array.from(modal.querySelectorAll('div')).find(div => /\bMLS:/i.test(div.textContent) && /\bType:/i.test(div.textContent) && div.querySelector('strong'));
+        const rawFacts = Array.from(modal.querySelectorAll('div')).find(div => {
+          const directLabels = Array.from(div.children).map(child => child.querySelector(':scope > strong')?.textContent || '');
+          return directLabels.some(label => /^MLS:/i.test(label.trim())) && directLabels.some(label => /^Type:/i.test(label.trim()));
+        });
         const factValue = label => {
           const strong = Array.from(rawFacts?.querySelectorAll('strong') || []).find(item => item.textContent.replace(':','').trim().toLowerCase() === label.toLowerCase());
           return strong ? strong.parentElement.textContent.replace(strong.textContent,'').replace(/\s+/g,' ').trim() : '';
@@ -7616,11 +7623,53 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       });
     }
 
+    function ensureEveryModalHasAgentPhoto() {
+      const agentPhotos = {
+        'Amy McLemore': 'Untitled design-10/1amy.png',
+        'Brandie Bassett': 'Untitled design-10/7.png',
+        'Jackie David': 'Untitled design-10/8.png',
+        'Lisa Ballinger': 'Untitled design-10/6.png',
+        'Lisa Ann Ballinger': 'Untitled design-10/6.png',
+        'Lynda Climer': 'Untitled design-10/5.png',
+        'Lynda C Climer': 'Untitled design-10/5.png',
+        'Ashley McMillan': 'Untitled design-10/2ashley.png',
+        'Tammy Jones': 'Untitled design-10/3tammy.png',
+        'Tamra L Jones': 'Untitled design-10/3tammy.png',
+        'Laura Burke': 'Untitled design-10/4.png'
+      };
+      document.querySelectorAll('.card[data-modal],.removed-listing[data-modal]').forEach(card => {
+        const modal = document.getElementById(card.dataset.modal);
+        const content = modal?.querySelector('.custom-modal-content');
+        const agentNameElement = modal?.querySelector('[data-agent-name]');
+        if (!modal || !content || !agentNameElement) return;
+        const agentName = agentNameElement.textContent.replace(/\s+/g, ' ').trim();
+        const photoSource = agentPhotos[agentName] || agentPhotos[card.dataset.agent];
+        if (!photoSource) return;
+        let agentSection = agentNameElement;
+        while (agentSection.parentElement && agentSection.parentElement !== content) agentSection = agentSection.parentElement;
+        agentSection.classList.add('modal-agent-contact-card');
+        let photo = agentSection.querySelector('img');
+        if (!photo) {
+          const details = document.createElement('div');
+          details.className = 'modal-agent-contact-details';
+          while (agentSection.firstChild) details.appendChild(agentSection.firstChild);
+          photo = document.createElement('img');
+          agentSection.append(photo, details);
+        }
+        photo.classList.add('modal-agent-headshot');
+        photo.src = photoSource;
+        photo.alt = agentName;
+        photo.loading = 'lazy';
+        photo.decoding = 'async';
+      });
+    }
+
     function ensureEveryModalHasFactsAndFeatures() {
       document.querySelectorAll('.card[data-modal],.removed-listing[data-modal]').forEach(card => {
         const modal = document.getElementById(card.dataset.modal);
         const content = modal?.querySelector('.custom-modal-content');
-        if (!modal || !content || modal.querySelector('.modal-complete-facts,.modal-facts-features')) return;
+        if (!modal || !content) return;
+        let facts = modal.querySelector('.modal-complete-facts,.modal-facts-features');
         const details = [];
         modal.querySelectorAll('strong').forEach(strong => {
           const label = strong.textContent.replace(':', '').trim();
@@ -7635,25 +7684,62 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             if (value && label) details.push(`${label}: ${value}`);
           });
         }
-        const facts = document.createElement('section');
-        facts.className = 'modal-complete-facts';
-        const heading = document.createElement('h3');
-        heading.textContent = 'Facts & features';
-        const group = document.createElement('section');
-        group.className = 'modal-facts-group';
-        const groupHeading = document.createElement('h4');
-        groupHeading.textContent = 'Property details';
-        const list = document.createElement('ul');
-        (details.length ? details : ['Contact the listing agent for complete property details.']).forEach(detail => {
-          const item = document.createElement('li');
-          item.textContent = detail;
-          list.appendChild(item);
-        });
-        group.append(groupHeading, list);
-        facts.append(heading, group);
-        const share = modal.querySelector('.modal-share-wrap');
-        if (share) share.insertAdjacentElement('beforebegin', facts);
-        else content.appendChild(facts);
+        if (!facts) {
+          facts = document.createElement('section');
+          facts.className = 'modal-complete-facts';
+          const heading = document.createElement('h3');
+          heading.textContent = 'Facts & features';
+          const group = document.createElement('section');
+          group.className = 'modal-facts-group';
+          const groupHeading = document.createElement('h4');
+          groupHeading.textContent = 'Property details';
+          const list = document.createElement('ul');
+          (details.length ? details : ['Contact the listing agent for complete property details.']).forEach(detail => {
+            const item = document.createElement('li');
+            item.textContent = detail;
+            list.appendChild(item);
+          });
+          group.append(groupHeading, list);
+          facts.append(heading, group);
+        }
+        facts.hidden = false;
+        facts.style.removeProperty('display');
+        if (facts.classList.contains('modal-complete-facts')) {
+          let collapse = facts.querySelector(':scope > .modal-facts-collapse');
+          if (!collapse) {
+            collapse = document.createElement('div');
+            collapse.className = 'modal-facts-collapse';
+            const groups = Array.from(facts.querySelectorAll(':scope > .modal-facts-group'));
+            if (groups.length) groups[0].insertAdjacentElement('beforebegin', collapse);
+            groups.forEach(group => collapse.appendChild(group));
+          }
+          let showMore = facts.querySelector(':scope > .modal-show-more');
+          if (!showMore) {
+            showMore = document.createElement('button');
+            showMore.type = 'button';
+            showMore.className = 'modal-show-more';
+            showMore.setAttribute('aria-expanded', 'false');
+            showMore.textContent = 'Show more';
+            facts.appendChild(showMore);
+          }
+          if (!showMore.dataset.factsToggleReady) {
+            showMore.dataset.factsToggleReady = 'true';
+            showMore.addEventListener('click', () => {
+              const expanded = collapse.classList.toggle('is-expanded');
+              showMore.setAttribute('aria-expanded', String(expanded));
+              showMore.textContent = expanded ? 'Hide' : 'Show more';
+            });
+          }
+        }
+        const map = modal.querySelector('.modal-neighborhood-map');
+        if (map) map.insertAdjacentElement('afterend', facts);
+        else {
+          const agentName = modal.querySelector('[data-agent-name]');
+          let agentSection = agentName;
+          while (agentSection?.parentElement && agentSection.parentElement !== content) agentSection = agentSection.parentElement;
+          if (agentSection && agentSection !== content) agentSection.insertAdjacentElement('beforebegin', facts);
+          else content.appendChild(facts);
+        }
       });
     }
 
@@ -7821,6 +7907,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         safelyRunModalSetup(addReliableSharingAndCompleteFacts);
         safelyRunModalSetup(ensureEveryModalHasShareControl);
         safelyRunModalSetup(ensureEveryModalHasFactsAndFeatures);
+        safelyRunModalSetup(ensureEveryModalHasAgentPhoto);
         safelyRunModalSetup(normalizeModalSharePlacement);
         safelyRunModalSetup(standardizeNativeModalSharing);
       }, 0);
