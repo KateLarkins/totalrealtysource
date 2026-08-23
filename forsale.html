@@ -7604,9 +7604,19 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         }
         if (links && links.parentElement === panel) share.insertBefore(links, toggle || panel);
         const agentName = modal.querySelector('[data-agent-name]');
-        let agentSection = agentName;
-        while (agentSection?.parentElement && agentSection.parentElement !== content) agentSection = agentSection.parentElement;
-        if (agentSection && agentSection !== content) {
+        let agentSection = agentName?.closest('div');
+        let currentAgentSection = agentSection;
+        while (currentAgentSection && currentAgentSection !== content) {
+          if (currentAgentSection.querySelector(':scope > img')) {
+            agentSection = currentAgentSection;
+            break;
+          }
+          currentAgentSection = currentAgentSection.parentElement;
+        }
+        const safeAgentSection = agentSection
+          && agentSection !== content
+          && !agentSection.querySelector('.carousel,h2,.modal-whats-special,.modal-listing-meta');
+        if (safeAgentSection) {
           let agentShareRow = agentSection.parentElement?.classList.contains('modal-agent-share-row')
             ? agentSection.parentElement
             : null;
@@ -7642,19 +7652,30 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const content = modal?.querySelector('.custom-modal-content');
         const agentNameElement = modal?.querySelector('[data-agent-name]');
         if (!modal || !content || !agentNameElement) return;
+        modal.querySelectorAll('.modal-agent-contact-card').forEach(element => element.classList.remove('modal-agent-contact-card'));
         const agentName = agentNameElement.textContent.replace(/\s+/g, ' ').trim();
         const photoSource = agentPhotos[agentName] || agentPhotos[card.dataset.agent];
         if (!photoSource) return;
-        let agentSection = agentNameElement;
-        while (agentSection.parentElement && agentSection.parentElement !== content) agentSection = agentSection.parentElement;
-        agentSection.classList.add('modal-agent-contact-card');
-        let photo = agentSection.querySelector('img');
+        let contactBlock = agentNameElement.closest('div');
+        let photo = null;
+        let current = contactBlock;
+        while (current && current !== content) {
+          const candidatePhoto = current.querySelector(':scope > img');
+          if (candidatePhoto) {
+            contactBlock = current;
+            photo = candidatePhoto;
+            break;
+          }
+          current = current.parentElement;
+        }
+        if (!contactBlock || contactBlock === content || contactBlock.querySelector('.carousel,h2')) return;
+        contactBlock.classList.add('modal-agent-contact-card');
         if (!photo) {
           const details = document.createElement('div');
           details.className = 'modal-agent-contact-details';
-          while (agentSection.firstChild) details.appendChild(agentSection.firstChild);
+          while (contactBlock.firstChild) details.appendChild(contactBlock.firstChild);
           photo = document.createElement('img');
-          agentSection.append(photo, details);
+          contactBlock.append(photo, details);
         }
         photo.classList.add('modal-agent-headshot');
         photo.src = photoSource;
