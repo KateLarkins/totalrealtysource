@@ -1716,6 +1716,23 @@ footer a:hover {
   color: #f0c14b;
 }
 
+.footer-social-link { display:inline-grid !important; width:40px; height:40px; place-items:center; color:#023E6C !important; background:#fff; border-radius:50%; text-decoration:none !important; }
+.footer-social-link svg { width:23px; height:23px; overflow:visible; fill:currentColor; stroke:none; }
+.footer-social-link svg rect,.footer-social-link svg circle:not(.footer-social-dot) { fill:none; stroke:currentColor; stroke-width:2; }
+.footer-social-link .footer-social-dot { fill:currentColor; }
+
+@media (max-width:700px) {
+  .stronger-communities-section { padding:64px 20px !important; }
+  .stronger-communities-layout { display:grid !important; grid-template-columns:1fr !important; gap:28px !important; width:100%; }
+  .stronger-communities-image { width:100%; }
+  .stronger-communities-image img { width:100% !important; max-width:none !important; border-width:0 !important; border-radius:8px; box-shadow:none !important; }
+  .stronger-communities-accent { display:none; }
+  .stronger-communities-copy { min-width:0 !important; text-align:center !important; }
+  .stronger-communities-copy h2 { margin-top:0 !important; font-size:clamp(28px,8vw,36px) !important; letter-spacing:1px !important; }
+  .stronger-communities-copy > div { margin-inline:auto !important; }
+  .stronger-communities-copy > p { padding-left:0 !important; border-left:0 !important; font-size:17px !important; line-height:1.7 !important; }
+}
+
 /* Footer row container */
 footer .footer-row {
   display: flex;

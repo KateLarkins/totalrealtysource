@@ -1580,6 +1580,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
     <div class="dropdown-container">
       <a href="forsale.html" class="nav-link">For Sale ▾</a>
       <div class="dropdown">
+        <a href="forsale.html" class="dropdown-item">All Listings</a>
         <a href="forsale.html?type=homes" class="dropdown-item">Homes for Sale</a>
         <a href="forsale.html?type=land" class="dropdown-item">Land for Sale</a>
         <a href="forsale.html?type=other" class="dropdown-item">Other Properties</a>
@@ -1590,9 +1591,9 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
     <a href="events.html" class="nav-link">Events</a>
 
     <div class="dropdown-container">
-      <a href="about.html" class="nav-link">About ▾</a>
+      <a href="about.html" class="nav-link">Agents ▾</a>
       <div class="dropdown">
-        <a href="about.html" class="dropdown-item">Our Team</a>
+        <a href="about.html" class="dropdown-item">Meet Our Agents</a>
         <!-- <a href="contact.html" class="dropdown-item">Blog</a>
         <a href="about.html" class="dropdown-item">Services</a>
         <a href="about.html" class="dropdown-item">Testimonials</a>
@@ -1619,6 +1620,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   <div class="drawer-dropdown">
     <a href="forsale.html" class="drawer-link">For Sale ▾</a>
     <div class="drawer-submenu">
+      <a href="forsale.html" class="drawer-link">All Listings</a>
       <a href="forsale.html?type=homes" class="drawer-link">Homes for Sale</a>
       <a href="forsale.html?type=land" class="drawer-link">Land for Sale</a>
       <a href="forsale.html?type=other" class="drawer-link">Other Properties</a>
@@ -1629,9 +1631,9 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   <a href="events.html" class="drawer-link">Events</a>
 
   <div class="drawer-dropdown">
-    <a href="about.html" class="drawer-link">About ▾</a>
+    <a href="about.html" class="drawer-link">Agents</a>
     <div class="drawer-submenu">
-      <a href="about.html" class="drawer-link">Our Team</a>
+      <a href="about.html" class="drawer-link">Meet Our Agents</a>
       <!-- <a href="contact.html" class="drawer-link">Blog</a>
       <a href="about.html" class="drawer-link">Services</a>
       <a href="about.html" class="drawer-link">Testimonials</a>
@@ -7102,11 +7104,11 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       <div style="display:flex; gap:25px; align-items:center; margin-top:40px; flex-wrap:wrap;">
         <!-- Replace src with your logo files -->
         <img src="Logos/546-5466842_realtor-mls-logo-no-background-hd-png-download.png-removebg-preview.png" alt="MLS Logo" style="height:90px;">
-        <a href="https://www.facebook.com/totalrealtysource/" target="_blank">
-          <img src="Logos/facebook-app-round-white-icon.webp" alt="Facebook" style="height:38px;">
+        <a class="footer-social-link" href="https://www.facebook.com/totalrealtysource/" target="_blank" rel="noopener" aria-label="Total Realty Source on Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5V7c0-.8.5-1 1-1h2V2.1C16.4 2 15.3 2 14 2c-3 0-5 1.8-5 5.2v1.3H6V13h3v9h4.5v-9h3l.5-4.5h-3z"/></svg>
         </a>
-        <a href="https://www.instagram.com/totalrealtysource/" target="_blank">
-          <img src="Logos/Screenshot_2025-12-30_at_1.45.15_PM-removebg-preview.png" alt="Instagram" style="height:38px;">
+        <a class="footer-social-link" href="https://www.instagram.com/totalrealtysource/" target="_blank" rel="noopener" aria-label="Total Realty Source on Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" class="footer-social-dot"/></svg>
         </a>
       </div>
     </div>
@@ -7114,9 +7116,9 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     <div style="flex:0.8; min-width:200px;">
       <h4 style="margin-bottom:24px; letter-spacing:0.4px;">Navigation</h4>
       <p><a href="index.html" style="color:white;text-decoration: underline; font-family:'Lora;">Home</a></p>
-      <p><a href="forsale.html" style="color:white; text-decoration: underline; font-family:'Lora';">Homes for Sale</a></p>
+      <p><a href="forsale.html" style="color:white; text-decoration: underline; font-family:'Lora';">For Sale</a></p>
       <p><a href="events.html" style="color:white; text-decoration: underline; font-family:'Lora';">Events</a></p>
-      <p><a href="about.html" style="color:white; text-decoration: underline; font-family:'Lora';">About Our Team</a></p>
+      <p><a href="about.html" style="color:white; text-decoration: underline; font-family:'Lora';">Meet Our Agents</a></p>
       <p><a href="contact.html" style="color:white; text-decoration: underline; font-family:'Lora';">Contact</a></p>
     </div>
 
@@ -10443,31 +10445,6 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       requestAnimationFrame(() => renderListingPage(false));
     });
   </script>
-   <script>
-    function toggleNavDrawer() {
-    const drawer = document.getElementById('navDrawer');
-    drawer.classList.toggle('open');
-    }
-    
-    function closeNavDrawer() {
-    const drawer = document.getElementById('navDrawer');
-    drawer.classList.remove('open');
-    }
-    
-    // Toggle mobile drawer submenus
-    document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
-    link.addEventListener('click', function(e){
-    if (this.getAttribute('href') === 'about.html') return;
-    e.preventDefault();
-    const parent = this.parentElement;
-    parent.classList.toggle('open');
-    });
-    });
-  </script>
- 
-  
-    
-  
   <script src="script.js"></script>
 
 </body>
