@@ -41,13 +41,18 @@
   const testimonialNext=document.querySelector('[data-testimonial-direction="next"]');
   const testimonialCards=Array.from(testimonialCarousel.querySelectorAll('.profile-testimonial'));
   let testimonialStart=0;
+  const testimonialPageSize=()=>window.matchMedia('(max-width:620px)').matches ? 1 : 4;
   const updateTestimonialArrows=()=>{
-    testimonialCards.forEach((card,index)=>{card.hidden=index<testimonialStart || index>=testimonialStart+4;});
+    const pageSize=testimonialPageSize();
+    testimonialStart=Math.min(testimonialStart,Math.max(0,testimonialCards.length-pageSize));
+    testimonialCards.forEach((card,index)=>{card.hidden=index<testimonialStart || index>=testimonialStart+pageSize;});
     testimonialPrevious.classList.toggle('is-hidden',testimonialStart===0);
-    testimonialNext.classList.toggle('is-hidden',testimonialStart+4>=testimonialCards.length);
+    testimonialNext.classList.toggle('is-hidden',testimonialStart+pageSize>=testimonialCards.length);
   };
   const moveTestimonials=direction=>{
-    testimonialStart=direction>0 ? Math.min(testimonialStart+2,Math.max(0,testimonialCards.length-4)) : Math.max(0,testimonialStart-2);
+    const pageSize=testimonialPageSize();
+    const step=pageSize===1 ? 1 : 2;
+    testimonialStart=direction>0 ? Math.min(testimonialStart+step,Math.max(0,testimonialCards.length-pageSize)) : Math.max(0,testimonialStart-step);
     updateTestimonialArrows();
   };
   document.querySelectorAll('[data-testimonial-direction]').forEach(button => button.addEventListener('click', () => {
@@ -63,7 +68,8 @@
   },{passive:false});
   let testimonialTouchX=0;
   testimonialCarousel.addEventListener('touchstart',event=>{testimonialTouchX=event.touches[0]?.clientX || 0;},{passive:true});
-  testimonialCarousel.addEventListener('touchend',event=>{const endX=event.changedTouches[0]?.clientX || testimonialTouchX;const distance=testimonialTouchX-endX;if(Math.abs(distance)>45)moveTestimonials(distance>0?1:-1);},{passive:true});
+  testimonialCarousel.addEventListener('touchend',event=>{const endX=event.changedTouches[0]?.clientX || testimonialTouchX;const distance=testimonialTouchX-endX;if(Math.abs(distance)>30)moveTestimonials(distance>0?1:-1);},{passive:true});
+  window.addEventListener('resize',updateTestimonialArrows,{passive:true});
   requestAnimationFrame(updateTestimonialArrows);
   const actions = document.getElementById('agent-actions');
   actions.innerHTML = `<a class="profile-button" href="#agent-contact-form">Contact ${agent.name.split(' ')[0]}</a><a class="profile-button secondary" href="tel:${agent.phone.replace(/\D/g,'')}">${agent.phone}</a><button class="profile-button secondary" type="button" id="share-agent-profile"><svg class="profile-share-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"></path></svg>Share Profile</button>${agent.website ? `<a class="profile-button secondary" href="${agent.website}" target="_blank" rel="noopener">Visit website</a>` : ''}`;

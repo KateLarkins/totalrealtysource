@@ -76,13 +76,18 @@
   const reviewNext = document.querySelector('[data-amy-review="next"]');
   const reviewCards = Array.from(reviewCarousel.querySelectorAll('.agent-review-card'));
   let reviewStart = 0;
+  const reviewPageSize = () => window.matchMedia('(max-width:620px)').matches ? 1 : 4;
   const updateReviewArrows = () => {
-    reviewCards.forEach((card, index) => { card.hidden = index < reviewStart || index >= reviewStart + 4; });
+    const pageSize = reviewPageSize();
+    reviewStart = Math.min(reviewStart, Math.max(0, reviewCards.length - pageSize));
+    reviewCards.forEach((card, index) => { card.hidden = index < reviewStart || index >= reviewStart + pageSize; });
     reviewPrevious.classList.toggle('is-hidden', reviewStart === 0);
-    reviewNext.classList.toggle('is-hidden', reviewStart + 4 >= reviewCards.length);
+    reviewNext.classList.toggle('is-hidden', reviewStart + pageSize >= reviewCards.length);
   };
   const moveReviews = direction => {
-    reviewStart = direction > 0 ? Math.min(reviewStart + 2, Math.max(0, reviewCards.length - 4)) : Math.max(0, reviewStart - 2);
+    const pageSize = reviewPageSize();
+    const step = pageSize === 1 ? 1 : 2;
+    reviewStart = direction > 0 ? Math.min(reviewStart + step, Math.max(0, reviewCards.length - pageSize)) : Math.max(0, reviewStart - step);
     updateReviewArrows();
   };
   document.querySelectorAll('[data-amy-review]').forEach(button => button.addEventListener('click', () => {
@@ -98,7 +103,8 @@
   }, {passive:false});
   let reviewTouchX = 0;
   reviewCarousel.addEventListener('touchstart', event => { reviewTouchX = event.touches[0]?.clientX || 0; }, {passive:true});
-  reviewCarousel.addEventListener('touchend', event => { const endX = event.changedTouches[0]?.clientX || reviewTouchX; const distance = reviewTouchX - endX; if (Math.abs(distance) > 45) moveReviews(distance > 0 ? 1 : -1); }, {passive:true});
+  reviewCarousel.addEventListener('touchend', event => { const endX = event.changedTouches[0]?.clientX || reviewTouchX; const distance = reviewTouchX - endX; if (Math.abs(distance) > 30) moveReviews(distance > 0 ? 1 : -1); }, {passive:true});
+  window.addEventListener('resize', updateReviewArrows, {passive:true});
   requestAnimationFrame(updateReviewArrows);
 
   loadListings();
