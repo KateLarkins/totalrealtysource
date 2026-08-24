@@ -1473,11 +1473,13 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   .property-back-to-top { width:48px; min-width:48px; height:48px; min-height:48px; padding:0; border-radius:50%; box-shadow:0 4px 14px rgba(15,35,50,.24); }
   .property-back-to-top .back-to-top-arrow { font-size:23px; transform:translateY(-1px); }
   .property-back-to-top .back-to-top-label { position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
-  .recently-viewed-section { width:calc(100% - 28px); margin:0 auto 34px; padding:20px 16px; }
+  .recently-viewed-section { width:calc(100% - 28px); margin:0 auto 34px; padding:20px 16px; overflow:hidden; }
   .recently-viewed-header { align-items:flex-start; }
   .recently-viewed-header h2 { font-size:25px; }
   .show-view-history { min-height:40px; padding:8px 10px; font-size:13px; }
-  .recently-viewed-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+  .recently-viewed-grid { display:flex; grid-template-columns:none; gap:12px; margin-inline:-16px; padding:0 16px 8px; overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-inline:contain; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  .recently-viewed-grid::-webkit-scrollbar { display:none; }
+  .recently-viewed-card { flex:0 0 min(82%,320px); scroll-snap-align:start; }
   .view-history-modal { padding:12px; }
   .view-history-dialog { margin:3vh auto; padding:22px 18px; }
   .featured-listings-header { padding:28px 16px 20px; }
@@ -1547,7 +1549,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   .modal-contact-actions a,.modal-contact-actions .modal-favorite-listing { flex:1 1 100%; width:100%; }
 }
 @media (max-width:420px) {
-  .recently-viewed-grid { grid-template-columns:1fr; }
+  .recently-viewed-card { flex:0 0 86%; scroll-snap-align:start; }
   .recently-viewed-open-house { top:9px; left:9px; }
   .modal-from-events .custom-modal { padding:0 !important; }
   .modal-from-events .custom-modal-content { padding:18px 14px 38px !important; }
@@ -2115,7 +2117,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           
 
           <div class="removed-listing" data-modal="BryceCoveModal" data-dom="91" hidden>
-            <img src="https://cdn.photos.sparkplatform.com/ctn/20260813020004027437000000.jpg" alt="205 Bryce Cove" onclick="openModal('BryceCoveModal')" />
+            <img src="https://cdn.photos.sparkplatform.com/ctn/20260813020004027437000000-o.jpg" alt="205 Bryce Cove" onclick="openModal('BryceCoveModal')" />
             <div class="card-body">
               <p class="price">$215,000</p>
               <p class="address">205 Bryce Cove<br>Medina, TN</p>
@@ -2247,7 +2249,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603288 -->
 <div class="card" data-modal="listing2603288Modal" data-agent="Amy McLemore" data-dom="30" data-lat="36.060588" data-lng="-88.995757" data-map-category="homes" data-previous-price="$209,900" data-promotion-date="2026-08-15">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260714021516238057000000.jpg" alt="310 Elm Street" onclick="openModal('listing2603288Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260714021516238057000000-o.jpg" alt="310 Elm Street" onclick="openModal('listing2603288Modal')" />
   <div class="card-body">
     <p class="price">$204,900</p>
     <p class="address">310 Elm Street<br>Dyer, TN</p>
@@ -2306,7 +2308,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603386 -->
 <div class="card" data-modal="listing2603386Modal" data-agent="Lisa Ann Ballinger" data-dom="26" data-lat="35.801455" data-lng="-88.769253" data-map-category="homes">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260717154234723718000000.jpg" alt="514 E Church Street" onclick="openModal('listing2603386Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260717154234723718000000-o.jpg" alt="514 E Church Street" onclick="openModal('listing2603386Modal')" />
   <div class="card-body">
     <p class="price">$269,900</p>
     <p class="address">514 E Church Street<br>Medina, TN</p>
@@ -2365,7 +2367,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603387 -->
 <div class="card" data-modal="listing2603387Modal" data-agent="Lisa Ann Ballinger" data-dom="26" data-lat="35.801591" data-lng="-88.769092" data-map-category="homes">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260717150509079215000000.jpg" alt="520 E Church Street" onclick="openModal('listing2603387Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260717150509079215000000-o.jpg" alt="520 E Church Street" onclick="openModal('listing2603387Modal')" />
   <div class="card-body">
     <p class="price">$269,900</p>
     <p class="address">520 E Church Street<br>Medina, TN</p>
@@ -2424,7 +2426,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Pending listing MLS 2603442: retained only for cleanup compatibility and never displayed -->
 <div class="removed-listing" data-modal="listing2603442Modal" data-agent="Jackie David" data-dom="21" data-lat="35.631964" data-lng="-88.819354" data-map-category="homes" hidden>
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260722133608075367000000.jpg" alt="111 Westwood Avenue" onclick="openModal('listing2603442Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260722133608075367000000-o.jpg" alt="111 Westwood Avenue" onclick="openModal('listing2603442Modal')" />
   <div class="card-body">
     <p class="price">$199,000</p>
     <p class="address">111 Westwood Avenue<br>Jackson, TN</p>
@@ -2484,7 +2486,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603159 -->
 <div class="card" data-modal="listing2603159Modal" data-agent="Tamra L Jones" data-dom="40" data-lat="35.644958" data-lng="-88.822146" data-map-category="homes">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260813040523968825000000.jpg" alt="1256 Campbell Street" onclick="openModal('listing2603159Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260813040523968825000000-o.jpg" alt="1256 Campbell Street" onclick="openModal('listing2603159Modal')" />
   <div class="card-body">
     <p class="price">$185,000</p>
     <p class="address">1256 Campbell Street<br>Jackson, TN</p>
@@ -2543,7 +2545,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Pending listing MLS 2603775: retained only for cleanup compatibility and never displayed -->
 <div class="removed-listing" data-modal="listing2603775Modal" data-agent="Jackie David" data-dom="2" data-lat="35.824485" data-lng="-88.899178" data-map-category="homes" hidden>
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260810160133428318000000.jpg" alt="2902 Vine Street" onclick="openModal('listing2603775Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260810160133428318000000-o.jpg" alt="2902 Vine Street" onclick="openModal('listing2603775Modal')" />
   <div class="card-body">
     <p class="price">$125,000</p>
     <p class="address">2902 Vine Street<br>Humboldt, TN</p>
@@ -4155,7 +4157,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 
       <div class="card" data-modal="rollingModal" data-agent="Brandie Bassett" data-dom="164" data-lat="35.671098" data-lng="-88.892185" data-map-category="homes">
-        <img src="rolling/20260320191513746776000000-o.jpg" alt="Home" onclick="openModal('rollingModal')" />
+        <img src="Rolling/20260320191513746776000000-o.jpg" alt="Home" onclick="openModal('rollingModal')" />
         <div class="card-body">
           <p class="price">$289,900</p>
           <p class="address">116 Rolling Hills Drive<br>Jackson, TN</p>
@@ -4187,41 +4189,41 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             </div>
           
             <!-- Image Slides -->
-            <img class="slide" src="rolling/20260320191513746776000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191517645330000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191444830258000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191257844706000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191300496096000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191303073428000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191305628491000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191308533811000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191311338872000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191314554376000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191318536942000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191322887147000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191327031720000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191334466112000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191344025700000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191358385978000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191423345525000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191427029813000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191430639322000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191433936367000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191437371687000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191441224081000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191448538260000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191452522005000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191456389534000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191500388522000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191504565710000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191509684263000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191522744482000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191526247587000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191530104206000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191533804505000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191537487805000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191540785274000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
-            <img class="slide" src="rolling/20260320191543815077000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191513746776000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191517645330000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191444830258000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191257844706000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191300496096000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191303073428000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191305628491000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191308533811000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191311338872000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191314554376000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191318536942000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191322887147000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191327031720000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191334466112000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191344025700000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191358385978000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191423345525000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191427029813000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191430639322000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191433936367000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191437371687000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191441224081000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191448538260000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191452522005000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191456389534000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191500388522000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191504565710000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191509684263000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191522744482000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191526247587000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191530104206000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191533804505000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191537487805000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191540785274000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
+            <img class="slide" src="Rolling/20260320191543815077000000-o.jpg" style="width: 100%; max-height: 450px; object-fit: cover; display: none; border-radius: 6px;">
             <!-- Carousel Arrows -->
             <button onclick="plusSlides(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); font-size: 24px; background: none; border: none; cursor: pointer;">❮</button>
             <button onclick="plusSlides(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); font-size: 24px; background: none; border: none; cursor: pointer;">❯</button>
@@ -4312,7 +4314,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603840 -->
 <div class="card" data-modal="listing2603840Modal" data-agent="Jackie David" data-dom="7" data-lat="35.926788" data-lng="-88.76766" data-map-category="homes" data-open-house-start="2026-08-23T12:00:00-05:00" data-open-house-end="2026-08-23T14:00:00-05:00" data-open-house-description="Tour this three-bedroom, two-bath Milan rental featuring a dining room, fully fenced backyard, and storage shed." data-open-house-image="https://cdn1.photos.sparkplatform.com/ctn/20260813174217292676000000-o.jpg">
-  <img src="https://cdn1.photos.sparkplatform.com/ctn/20260813174217292676000000.jpg" alt="4011 Creswell Street" onclick="openModal('listing2603840Modal')" />
+  <img src="https://cdn1.photos.sparkplatform.com/ctn/20260813174217292676000000-o.jpg" alt="4011 Creswell Street" onclick="openModal('listing2603840Modal')" />
   <div class="card-body">
     <p class="price">$1,500/month</p>
     <p class="address">4011 Creswell Street<br>Milan, TN</p>
@@ -4344,29 +4346,29 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603986 -->
 <div class="card" data-modal="listing2603986Modal" data-agent="Lisa Ann Ballinger" data-dom="0" data-lat="36.3691534" data-lng="-88.3590159" data-map-category="homes" data-promotion-date="2026-08-21">
-  <img src="https://cdn2.photos.sparkplatform.com/ctn/20260821132435063282000000.jpg" alt="210 Tatertown Road" onclick="openModal('listing2603986Modal')" />
+  <img src="https://cdn2.photos.sparkplatform.com/ctn/20260821132435063282000000-o.jpg" alt="210 Tatertown Road" onclick="openModal('listing2603986Modal')" />
   <div class="card-body"><p class="price">$129,900</p><p class="address">210 Tatertown Road<br>Paris, TN</p><a href="#" class="details-link" onclick="openModal('listing2603986Modal'); return false;">View Details</a><div class="stats"><div><strong>3</strong><span>Beds</span></div><div><strong>1,408</strong><span>Sq.Ft.</span></div><div><strong>1</strong><span>Bath</span></div></div></div>
 </div>
 <div id="listing2603986Modal" class="custom-modal" style="display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.5);">
-  <div class="custom-modal-content" style="background-color:white; margin:3% auto; padding:30px; border-radius:8px; border:1px solid #ccc; width:90%; max-width:1000px; position:relative;"><span class="close" onclick="closeModal()">&times;</span><div class="carousel" style="position:relative; margin-bottom:20px;"><img class="slide" src="https://cdn2.photos.sparkplatform.com/ctn/20260821132435063282000000.jpg" alt="210 Tatertown Road" style="width:100%; max-height:450px; object-fit:cover; border-radius:6px;"></div><h2 style="margin-bottom:5px; font-family:'Bodoni Moda'; font-size:25px;">210 Tatertown Road, Paris, TN 38242</h2><p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Lora'">$129,900</p><div style="display:flex; flex-wrap:wrap; gap:20px; font-family:'Lora'"><div><strong>MLS:</strong> 2603986</div><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 3</div><div><strong>Baths:</strong> 1</div><div><strong>Sqft:</strong> 1,408</div><div><strong>Lot:</strong> 0.98 acres</div><div><strong>Year Built:</strong> 1909</div></div><h3 style="border-bottom:1px solid #ccc; padding-bottom:5px; font-family:'Bodoni Moda'">Property Description</h3><p style="line-height:1.6; font-family:'Lora'">This three-bedroom home features new electrical and plumbing, a new water heater, updated luxury vinyl flooring, original hardwood floors, stainless steel kitchen appliances, two fireplaces, and a two-year-old HVAC system. The large deck overlooks a fully fenced yard with an outbuilding and shed that both have electricity and water.</p><div style="border-top:1px solid #ccc; padding-top:20px; font-family:'Lora'"><strong data-agent-name>Lisa Ann Ballinger</strong> · <a href="agent-profile.html?agent=lisa-ballinger">View Profile</a> · (731) 223-0919</div></div>
+  <div class="custom-modal-content" style="background-color:white; margin:3% auto; padding:30px; border-radius:8px; border:1px solid #ccc; width:90%; max-width:1000px; position:relative;"><span class="close" onclick="closeModal()">&times;</span><div class="carousel" style="position:relative; margin-bottom:20px;"><img class="slide" src="https://cdn2.photos.sparkplatform.com/ctn/20260821132435063282000000-o.jpg" alt="210 Tatertown Road" style="width:100%; max-height:450px; object-fit:cover; border-radius:6px;"></div><h2 style="margin-bottom:5px; font-family:'Bodoni Moda'; font-size:25px;">210 Tatertown Road, Paris, TN 38242</h2><p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Lora'">$129,900</p><div style="display:flex; flex-wrap:wrap; gap:20px; font-family:'Lora'"><div><strong>MLS:</strong> 2603986</div><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 3</div><div><strong>Baths:</strong> 1</div><div><strong>Sqft:</strong> 1,408</div><div><strong>Lot:</strong> 0.98 acres</div><div><strong>Year Built:</strong> 1909</div></div><h3 style="border-bottom:1px solid #ccc; padding-bottom:5px; font-family:'Bodoni Moda'">Property Description</h3><p style="line-height:1.6; font-family:'Lora'">This three-bedroom home features new electrical and plumbing, a new water heater, updated luxury vinyl flooring, original hardwood floors, stainless steel kitchen appliances, two fireplaces, and a two-year-old HVAC system. The large deck overlooks a fully fenced yard with an outbuilding and shed that both have electricity and water.</p><div style="border-top:1px solid #ccc; padding-top:20px; font-family:'Lora'"><strong data-agent-name>Lisa Ann Ballinger</strong> · <a href="agent-profile.html?agent=lisa-ballinger">View Profile</a> · (731) 223-0919</div></div>
 </div>
 
 <!-- Active listing MLS 2603985 -->
 <div class="card" data-modal="listing2603985Modal" data-agent="Brandie Bassett" data-dom="1" data-lat="35.7123558" data-lng="-88.792942" data-map-category="homes" data-promotion-date="2026-08-21">
-  <img src="https://cdn2.photos.sparkplatform.com/ctn/20260821141223719620000000.jpg" alt="23 Chestnut Cove" onclick="openModal('listing2603985Modal')" />
+  <img src="https://cdn2.photos.sparkplatform.com/ctn/20260821141223719620000000-o.jpg" alt="23 Chestnut Cove" onclick="openModal('listing2603985Modal')" />
   <div class="card-body"><p class="price">$229,000</p><p class="address">23 Chestnut Cove<br>Oakfield, TN</p><a href="#" class="details-link" onclick="openModal('listing2603985Modal'); return false;">View Details</a><div class="stats"><div><strong>4</strong><span>Beds</span></div><div><strong>1,465</strong><span>Sq.Ft.</span></div><div><strong>2</strong><span>Baths</span></div></div></div>
 </div>
 <div id="listing2603985Modal" class="custom-modal" style="display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.5);">
-  <div class="custom-modal-content" style="background-color:white; margin:3% auto; padding:30px; border-radius:8px; border:1px solid #ccc; width:90%; max-width:1000px; position:relative;"><span class="close" onclick="closeModal()">&times;</span><div class="carousel" style="position:relative; margin-bottom:20px;"><img class="slide" src="https://cdn2.photos.sparkplatform.com/ctn/20260821141223719620000000.jpg" alt="23 Chestnut Cove" style="width:100%; max-height:450px; object-fit:cover; border-radius:6px;"></div><h2 style="margin-bottom:5px; font-family:'Bodoni Moda'; font-size:25px;">23 Chestnut Cove, Oakfield, TN 38362</h2><p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Lora'">$229,000</p><div style="display:flex; flex-wrap:wrap; gap:20px; font-family:'Lora'"><div><strong>MLS:</strong> 2603985</div><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 4</div><div><strong>Baths:</strong> 2</div><div><strong>Sqft:</strong> 1,465</div><div><strong>Year Built:</strong> 1992</div></div><h3 style="border-bottom:1px solid #ccc; padding-bottom:5px; font-family:'Bodoni Moda'">Property Description</h3><p style="line-height:1.6; font-family:'Lora'">Warmth and character fill this one-level Oakfield home with hardwood floors, wood walls and ceilings, exposed beams, and a vaulted living space. It offers a spacious kitchen, covered front porch, large back deck, fenced backyard, storage building, and an attached unfinished space ready for a workshop, hobby room, or future living area.</p><div style="border-top:1px solid #ccc; padding-top:20px; font-family:'Lora'"><strong data-agent-name>Brandie Bassett</strong> · <a href="agent-profile.html?agent=brandie-bassett">View Profile</a> · (731) 695-2785</div></div>
+  <div class="custom-modal-content" style="background-color:white; margin:3% auto; padding:30px; border-radius:8px; border:1px solid #ccc; width:90%; max-width:1000px; position:relative;"><span class="close" onclick="closeModal()">&times;</span><div class="carousel" style="position:relative; margin-bottom:20px;"><img class="slide" src="https://cdn2.photos.sparkplatform.com/ctn/20260821141223719620000000-o.jpg" alt="23 Chestnut Cove" style="width:100%; max-height:450px; object-fit:cover; border-radius:6px;"></div><h2 style="margin-bottom:5px; font-family:'Bodoni Moda'; font-size:25px;">23 Chestnut Cove, Oakfield, TN 38362</h2><p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Lora'">$229,000</p><div style="display:flex; flex-wrap:wrap; gap:20px; font-family:'Lora'"><div><strong>MLS:</strong> 2603985</div><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 4</div><div><strong>Baths:</strong> 2</div><div><strong>Sqft:</strong> 1,465</div><div><strong>Year Built:</strong> 1992</div></div><h3 style="border-bottom:1px solid #ccc; padding-bottom:5px; font-family:'Bodoni Moda'">Property Description</h3><p style="line-height:1.6; font-family:'Lora'">Warmth and character fill this one-level Oakfield home with hardwood floors, wood walls and ceilings, exposed beams, and a vaulted living space. It offers a spacious kitchen, covered front porch, large back deck, fenced backyard, storage building, and an attached unfinished space ready for a workshop, hobby room, or future living area.</p><div style="border-top:1px solid #ccc; padding-top:20px; font-family:'Lora'"><strong data-agent-name>Brandie Bassett</strong> · <a href="agent-profile.html?agent=brandie-bassett">View Profile</a> · (731) 695-2785</div></div>
 </div>
 
 <!-- Active listing MLS 2601160 -->
 <div class="card" data-modal="listing2601160Modal" data-agent="Brandie Bassett" data-dom="148" data-lat="35.9320769" data-lng="-88.5778777" data-map-category="homes">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260320155427360304000000.jpg" alt="3875 Terry Road" onclick="openModal('listing2601160Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260320155427360304000000-o.jpg" alt="3875 Terry Road" onclick="openModal('listing2601160Modal')" />
   <div class="card-body"><p class="price">$340,000</p><p class="address">3875 Terry Road<br>Huntingdon, TN</p><a href="#" class="details-link" onclick="openModal('listing2601160Modal'); return false;">View Details</a><div class="stats"><div><strong>5</strong><span>Beds</span></div><div><strong>3,715</strong><span>Sq.Ft.</span></div><div><strong>3.5</strong><span>Baths</span></div></div></div>
 </div>
 <div id="listing2601160Modal" class="custom-modal" style="display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.5);">
-  <div class="custom-modal-content" style="background-color:white; margin:3% auto; padding:30px; border-radius:8px; border:1px solid #ccc; width:90%; max-width:1000px; position:relative;"><span class="close" onclick="closeModal()">&times;</span><div class="carousel" style="position:relative; margin-bottom:20px;"><img class="slide" src="https://cdn.photos.sparkplatform.com/ctn/20260320155427360304000000.jpg" alt="3875 Terry Road" style="width:100%; max-height:450px; object-fit:cover; border-radius:6px;"></div><h2 style="margin-bottom:5px; font-family:'Bodoni Moda'; font-size:25px;">3875 Terry Road, Huntingdon, TN 38344</h2><p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Lora'">$340,000</p><div style="display:flex; flex-wrap:wrap; gap:20px; font-family:'Lora'"><div><strong>MLS:</strong> 2601160</div><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 5</div><div><strong>Baths:</strong> 3.5</div><div><strong>Sqft:</strong> 3,715</div><div><strong>Lot:</strong> 4 acres</div><div><strong>Year Built:</strong> 1956</div></div><h3 style="border-bottom:1px solid #ccc; padding-bottom:5px; font-family:'Bodoni Moda'">Property Description</h3><p style="line-height:1.6; font-family:'Lora'">One-level living with country charm on four acres in Huntingdon. The home includes oversized rooms, a spacious kitchen, large primary suite, sunroom, wet bar area, and flexible spaces for storage, hobbies, an office, or additional living space. Fruit-bearing trees, garden areas, and open land complete the property.</p><div style="border-top:1px solid #ccc; padding-top:20px; font-family:'Lora'"><strong data-agent-name>Brandie Bassett</strong> · <a href="agent-profile.html?agent=brandie-bassett">View Profile</a> · (731) 695-2785</div></div>
+  <div class="custom-modal-content" style="background-color:white; margin:3% auto; padding:30px; border-radius:8px; border:1px solid #ccc; width:90%; max-width:1000px; position:relative;"><span class="close" onclick="closeModal()">&times;</span><div class="carousel" style="position:relative; margin-bottom:20px;"><img class="slide" src="https://cdn.photos.sparkplatform.com/ctn/20260320155427360304000000-o.jpg" alt="3875 Terry Road" style="width:100%; max-height:450px; object-fit:cover; border-radius:6px;"></div><h2 style="margin-bottom:5px; font-family:'Bodoni Moda'; font-size:25px;">3875 Terry Road, Huntingdon, TN 38344</h2><p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Lora'">$340,000</p><div style="display:flex; flex-wrap:wrap; gap:20px; font-family:'Lora'"><div><strong>MLS:</strong> 2601160</div><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 5</div><div><strong>Baths:</strong> 3.5</div><div><strong>Sqft:</strong> 3,715</div><div><strong>Lot:</strong> 4 acres</div><div><strong>Year Built:</strong> 1956</div></div><h3 style="border-bottom:1px solid #ccc; padding-bottom:5px; font-family:'Bodoni Moda'">Property Description</h3><p style="line-height:1.6; font-family:'Lora'">One-level living with country charm on four acres in Huntingdon. The home includes oversized rooms, a spacious kitchen, large primary suite, sunroom, wet bar area, and flexible spaces for storage, hobbies, an office, or additional living space. Fruit-bearing trees, garden areas, and open land complete the property.</p><div style="border-top:1px solid #ccc; padding-top:20px; font-family:'Lora'"><strong data-agent-name>Brandie Bassett</strong> · <a href="agent-profile.html?agent=brandie-bassett">View Profile</a> · (731) 695-2785</div></div>
 </div>
 <div id="listing2603840Modal" class="custom-modal" style="display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.5);">
   <div class="custom-modal-content" style="background-color:white; margin:3% auto; padding:30px; border-radius:8px; border:1px solid #ccc; width:90%; max-width:1000px; position:relative;">
@@ -4441,7 +4443,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603158 -->
 <div class="card" data-modal="listing2603158Modal" data-agent="Tamra L Jones" data-dom="41" data-lat="36.087530" data-lng="-88.114863" data-map-category="land">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705183023198131000000.jpg" alt="0 McKelvey Road" onclick="openModal('listing2603158Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705183023198131000000-o.jpg" alt="0 McKelvey Road" onclick="openModal('listing2603158Modal')" />
   <div class="card-body">
     <p class="price">$55,000</p>
     <p class="address">0 McKelvey Road<br>Camden, TN</p>
@@ -4500,7 +4502,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603156 -->
 <div class="card" data-modal="listing2603156Modal" data-agent="Tamra L Jones" data-dom="41" data-lat="36.089265" data-lng="-88.112604" data-map-category="land">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705162720050954000000.jpg" alt="0 McKelvey Road" onclick="openModal('listing2603156Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705162720050954000000-o.jpg" alt="0 McKelvey Road" onclick="openModal('listing2603156Modal')" />
   <div class="card-body">
     <p class="price">$42,000</p>
     <p class="address">0 McKelvey Road<br>Camden, TN</p>
@@ -4559,7 +4561,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603157 -->
 <div class="card" data-modal="listing2603157Modal" data-agent="Tamra L Jones" data-dom="41" data-lat="36.087559" data-lng="-88.114794" data-map-category="land">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705182343527877000000.jpg" alt="0 McKelvey Road" onclick="openModal('listing2603157Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705182343527877000000-o.jpg" alt="0 McKelvey Road" onclick="openModal('listing2603157Modal')" />
   <div class="card-body">
     <p class="price">$47,000</p>
     <p class="address">0 McKelvey Road<br>Camden, TN</p>
@@ -4619,7 +4621,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603133 -->
 <div class="card" data-modal="listing2603133Modal" data-agent="Tamra L Jones" data-dom="41" data-lat="36.088462" data-lng="-88.115799" data-map-category="land">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260704023528937740000000.jpg" alt="0 Quiet Oak Lane" onclick="openModal('listing2603133Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260704023528937740000000-o.jpg" alt="0 Quiet Oak Lane" onclick="openModal('listing2603133Modal')" />
   <div class="card-body">
     <p class="price">$34,000</p>
     <p class="address">0 Quiet Oak Lane<br>Camden, TN</p>
@@ -4678,7 +4680,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603134 -->
 <div class="card" data-modal="listing2603134Modal" data-agent="Tamra L Jones" data-dom="41" data-lat="36.080869" data-lng="-88.121278" data-map-category="land">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260704025913342755000000.jpg" alt="0 Quiet Oak Lane" onclick="openModal('listing2603134Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260704025913342755000000-o.jpg" alt="0 Quiet Oak Lane" onclick="openModal('listing2603134Modal')" />
   <div class="card-body">
     <p class="price">$47,000</p>
     <p class="address">0 Quiet Oak Lane<br>Camden, TN</p>
@@ -4737,7 +4739,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603135 -->
 <div class="card" data-modal="listing2603135Modal" data-agent="Tamra L Jones" data-dom="41" data-lat="36.088032" data-lng="-88.114502" data-map-category="land">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260704031113473234000000.jpg" alt="0 Quiet Oak Lane" onclick="openModal('listing2603135Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260704031113473234000000-o.jpg" alt="0 Quiet Oak Lane" onclick="openModal('listing2603135Modal')" />
   <div class="card-body">
     <p class="price">$34,000</p>
     <p class="address">0 Quiet Oak Lane<br>Camden, TN</p>
@@ -4796,7 +4798,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603136 -->
 <div class="card" data-modal="listing2603136Modal" data-agent="Tamra L Jones" data-dom="41" data-lat="36.087825" data-lng="-88.114497" data-map-category="land">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260704032639725470000000.jpg" alt="0 Quiet Oak Lane" onclick="openModal('listing2603136Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260704032639725470000000-o.jpg" alt="0 Quiet Oak Lane" onclick="openModal('listing2603136Modal')" />
   <div class="card-body">
     <p class="price">$31,000</p>
     <p class="address">0 Quiet Oak Lane<br>Camden, TN</p>
@@ -4855,7 +4857,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603143 -->
 <div class="card" data-modal="listing2603143Modal" data-agent="Tamra L Jones" data-dom="41" data-lat="36.088021" data-lng="-88.114559" data-map-category="land">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705002658687410000000.jpg" alt="0 Zachary Lane" onclick="openModal('listing2603143Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705002658687410000000-o.jpg" alt="0 Zachary Lane" onclick="openModal('listing2603143Modal')" />
   <div class="card-body">
     <p class="price">$31,000</p>
     <p class="address">0 Zachary Lane<br>Camden, TN</p>
@@ -4914,7 +4916,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603146 -->
 <div class="card" data-modal="listing2603146Modal" data-agent="Tamra L Jones" data-dom="41" data-lat="36.087851" data-lng="-88.114762" data-map-category="land">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705010431866185000000.jpg" alt="0 Zachary Lane" onclick="openModal('listing2603146Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705010431866185000000-o.jpg" alt="0 Zachary Lane" onclick="openModal('listing2603146Modal')" />
   <div class="card-body">
     <p class="price">$33,000</p>
     <p class="address">0 Zachary Lane<br>Camden, TN</p>
@@ -4973,7 +4975,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603147 -->
 <div class="card" data-modal="listing2603147Modal" data-agent="Tamra L Jones" data-dom="41" data-lat="36.087992" data-lng="-88.114406" data-map-category="land">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705014230217023000000.jpg" alt="0 Zachary Lane" onclick="openModal('listing2603147Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705014230217023000000-o.jpg" alt="0 Zachary Lane" onclick="openModal('listing2603147Modal')" />
   <div class="card-body">
     <p class="price">$31,000</p>
     <p class="address">0 Zachary Lane<br>Camden, TN</p>
@@ -5032,7 +5034,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603145 -->
 <div class="card" data-modal="listing2603145Modal" data-agent="Tamra L Jones" data-dom="41" data-lat="36.087923" data-lng="-88.114843" data-map-category="land">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705004549061066000000.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603145Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705004549061066000000-o.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603145Modal')" />
   <div class="card-body">
     <p class="price">$35,000</p>
     <p class="address">0 Whispering Hills Drive<br>Camden, TN</p>
@@ -5091,7 +5093,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603148 -->
 <div class="card" data-modal="listing2603148Modal" data-agent="Tamra L Jones" data-dom="41" data-lat="36.090104" data-lng="-88.113236" data-map-category="land">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705015603233371000000.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603148Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705015603233371000000-o.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603148Modal')" />
   <div class="card-body">
     <p class="price">$33,000</p>
     <p class="address">0 Whispering Hills Drive<br>Camden, TN</p>
@@ -5150,7 +5152,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603149 -->
 <div class="card" data-modal="listing2603149Modal" data-agent="Tamra L Jones" data-dom="41" data-lat="36.088093" data-lng="-88.115025" data-map-category="land">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705021100479665000000.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603149Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705021100479665000000-o.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603149Modal')" />
   <div class="card-body">
     <p class="price">$31,000</p>
     <p class="address">0 Whispering Hills Drive<br>Camden, TN</p>
@@ -5209,7 +5211,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603150 -->
 <div class="card" data-modal="listing2603150Modal" data-agent="Tamra L Jones" data-dom="41" data-lat="36.087889" data-lng="-88.114607" data-map-category="land">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705022021443716000000.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603150Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705022021443716000000-o.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603150Modal')" />
   <div class="card-body">
     <p class="price">$34,000</p>
     <p class="address">0 Whispering Hills Drive<br>Camden, TN</p>
@@ -5268,7 +5270,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603152 -->
 <div class="card" data-modal="listing2603152Modal" data-agent="Tamra L Jones" data-dom="41" data-lat="36.087655" data-lng="-88.114983" data-map-category="land">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705041525827445000000.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603152Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705041525827445000000-o.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603152Modal')" />
   <div class="card-body">
     <p class="price">$32,000</p>
     <p class="address">0 Whispering Hills Drive<br>Camden, TN</p>
@@ -5327,7 +5329,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603153 -->
 <div class="card" data-modal="listing2603153Modal" data-agent="Tamra L Jones" data-dom="41" data-lat="36.090670" data-lng="-88.113268" data-map-category="land">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705042510749879000000.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603153Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705042510749879000000-o.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603153Modal')" />
   <div class="card-body">
     <p class="price">$30,000</p>
     <p class="address">0 Whispering Hills Drive<br>Camden, TN</p>
@@ -6878,7 +6880,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             
 <!-- Active listing MLS 2603649 -->
 <div class="card" data-modal="listing2603649Modal" data-agent="Tamra L Jones" data-dom="11" data-lat="35.669115" data-lng="-88.840363" data-map-category="other">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260803025709154178000000.jpg" alt="375 VANN Drive Unit D" onclick="openModal('listing2603649Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260803025709154178000000-o.jpg" alt="375 VANN Drive Unit D" onclick="openModal('listing2603649Modal')" />
   <div class="card-body">
     <p class="price">$2,000</p>
     <p class="address">375 VANN Drive Unit D<br>Jackson, TN</p>
@@ -6954,7 +6956,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603063 -->
 <div class="card" data-modal="listing2603063Modal" data-agent="Lynda C Climer" data-dom="43" data-lat="36.494757" data-lng="-88.895612" data-map-category="other">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705194307171827000000.jpg" alt="1203 Industrial Park Road" onclick="openModal('listing2603063Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260705194307171827000000-o.jpg" alt="1203 Industrial Park Road" onclick="openModal('listing2603063Modal')" />
   <div class="card-body">
     <p class="price">$339,000</p>
     <p class="address">1203 Industrial Park Road<br>South Fulton, TN</p>
@@ -7013,7 +7015,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 <!-- Active listing MLS 2603618 -->
 <div class="card" data-modal="listing2603618Modal" data-agent="Lynda C Climer" data-dom="13" data-lat="35.632712" data-lng="-88.846441" data-map-category="other">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260731205514704012000000.jpg" alt="1082 US-45 Bypass" onclick="openModal('listing2603618Modal')" />
+  <img src="https://cdn.photos.sparkplatform.com/ctn/20260731205514704012000000-o.jpg" alt="1082 US-45 Bypass" onclick="openModal('listing2603618Modal')" />
   <div class="card-body">
     <p class="price">$749,000</p>
     <p class="address">1082 US-45 Bypass<br>Jackson, TN</p>
@@ -7080,7 +7082,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   </section>
 
 
-<section class="seo-link-matrix" aria-labelledby="seo-links-title"><div><h2 id="seo-links-title">Explore West Tennessee Real Estate</h2><nav aria-label="West Tennessee real estate searches"><a href="homes-for-sale/jackson-tn/">Jackson Homes for Sale</a><a href="homes-for-sale/humboldt-tn/">Humboldt Homes for Sale</a><a href="homes-for-sale/medina-tn/">Medina Homes for Sale</a><a href="jackson-tn/north-jackson/">North Jackson Homes</a><a href="jackson-tn/midtown/">Midtown Jackson Real Estate</a><a href="jackson-tn/homes-with-land/">Jackson Homes with Land</a><a href="jackson-tn/new-construction/">New Homes in Jackson</a><a href="jackson-tn/under-300k/">Jackson Homes Under $300K</a><a href="west-tennessee/land-acreage/">West Tennessee Land and Acreage</a><a href="homes-for-rent/west-tennessee/">West Tennessee Homes for Rent</a></nav></div></section>
+<section class="seo-link-matrix" aria-labelledby="seo-links-title"><div><h2 id="seo-links-title">Explore West Tennessee Real Estate</h2><nav aria-label="West Tennessee real estate searches"><a href="homes-for-sale/jackson-tn/">Jackson Homes for Sale</a><a href="homes-for-sale/medina-tn/">Medina Homes for Sale</a><a href="homes-for-sale/milan-tn/">Milan Homes for Sale</a><a href="homes-for-sale/humboldt-tn/">Humboldt Homes for Sale</a><a href="homes-for-sale/dyer-tn/">Dyer Homes for Sale</a><a href="homes-for-sale/martin-tn/">Martin Homes for Sale</a><a href="forsale.html?type=homes">West Tennessee Homes</a><a href="west-tennessee/land-acreage/">Land and Acreage</a><a href="forsale.html?type=other">Commercial and Other Properties</a><a href="homes-for-rent/west-tennessee/">West Tennessee Homes for Rent</a></nav></div></section>
 <!-- Footer -->
 <footer style="background:#023E6C; color:white; font-family:'Bodoni Moda';">
 
