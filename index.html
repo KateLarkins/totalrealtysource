@@ -204,18 +204,28 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   </div>
 </section>
 <!-- New Featured Property Section -->
-<section style="width:100%;background:#fff;padding:80px 20px;box-sizing:border-box;border-top:1px solid #eee;border-bottom:1px solid #eee;">
+<section class="featured-property-section" style="width:100%;background:#fff;padding:80px 20px;box-sizing:border-box;border-top:1px solid #eee;border-bottom:1px solid #eee;">
   <style>
   @media (max-width:768px){
-  .property-container{flex-direction:column;gap:0;}
-  .property-image{order:-1;line-height:0;}
-  .property-image img{width:100%;height:auto;max-height:none;object-fit:cover;display:block;}
+  #background-video{display:block;}
+  .stats-divider{padding:28px 16px 32px;}
+  .stats-container{grid-template-columns:repeat(2,minmax(0,1fr));gap:0;}
+  .stat{padding:18px 6px;}
+  .stat-number{font-size:30px;}
+  .stat-label{font-size:12px;line-height:1.4;}
+  .featured-property-section{padding:0 18px 48px !important;border-top:0 !important;}
+  .property-container{flex-direction:column;gap:0 !important;width:100%;}
+  .featured-property-copy{flex:none !important;min-width:0 !important;width:100%;padding:30px 2px 0;gap:13px !important;box-sizing:border-box;}
+  .featured-property-copy h2{font-size:30px !important;line-height:1.15;}
+  .featured-property-copy p{line-height:1.55 !important;}
+  .property-image{order:-1;flex:none !important;min-width:0 !important;width:100%;height:260px;line-height:0;box-shadow:none !important;}
+  .property-image img{width:100%;height:100% !important;max-height:none;object-fit:cover;display:block;}
   }
   </style>
   
   <div class="property-container" style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px;align-items:stretch;">
   
-  <div style="flex:1 1 500px;min-width:300px;display:flex;flex-direction:column;gap:16px;">
+  <div class="featured-property-copy" style="flex:1 1 500px;min-width:300px;display:flex;flex-direction:column;gap:16px;">
   <h2 style="font-family:'Bodoni Moda',serif;font-weight:700;font-size:clamp(28px,4vw,36px);color:#000;margin:0;">Cozy Country Living</h2>
   <p style="font-family:'Lora',serif;font-size:16px;color:#777;margin:0;">Residential • 3 Beds • 2 Baths • 1,508 sqft</p>
   <p style="font-family:'Lora',serif;font-size:18px;color:#444;line-height:1.6;margin:0;">Welcome to 246 Thomas St! This move-in ready 3BR/2BA home showcases modern farmhouse style with thoughtful updates throughout, offering small-town charm with convenient in-town access and convenient access to Hwy 45W.</p>

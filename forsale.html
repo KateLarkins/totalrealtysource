@@ -1358,6 +1358,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-agent-share-row > .modal-share-wrap .modal-share-links { justify-content:flex-end; }
 .modal-agent-contact-card { display:flex !important; align-items:center; gap:20px; min-width:0; padding-top:20px; border-top:1px solid #ccc; font-family:'Lora',serif; }
 .modal-agent-contact-card > img,.modal-agent-headshot { flex:0 0 100px; width:100px !important; height:100px !important; object-fit:cover; border-radius:50%; }
+.mobile-listing-pagination { display:none; }
 .modal-back-button { position:relative; z-index:12; display:inline-flex; align-items:center; gap:8px; margin:0 0 18px; padding:8px 12px; color:#111; background:#fff; border:1px solid #C5CDD2; border-radius:5px; font:700 13px 'Lora',serif; cursor:pointer; }
 .modal-back-button:hover,.modal-back-button:focus-visible { background:#F1F3F4; }
 .modal-from-events { overflow:hidden; }
@@ -1398,6 +1399,13 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 @media (min-width:1300px) { body.workspace-view-list .property-results-panel .grid { grid-template-columns:repeat(4,minmax(0,1fr)); } }
 @media (min-width:769px) and (max-width:1100px) { #showSplitView { display:none; } }
 @media (max-width:768px) {
+  .mobile-page-hidden { display:none !important; }
+  .property-results-panel > section.container.mobile-page-empty { display:none !important; }
+  .mobile-listing-pagination { display:flex; align-items:center; justify-content:center; gap:22px; width:100%; margin:28px 0 8px; padding:18px 12px; border-top:1px solid #D8DEE2; border-bottom:1px solid #D8DEE2; }
+  .mobile-listing-pagination[hidden] { display:none !important; }
+  .mobile-listing-pagination button { display:grid; place-items:center; width:44px; height:44px; padding:0; color:#fff; background:#023E6C; border:0; border-radius:50%; font:700 24px/1 Arial,sans-serif; cursor:pointer; }
+  .mobile-listing-pagination button:disabled { color:#89949B; background:#E8ECEE; cursor:default; }
+  .mobile-listing-page-status { min-width:76px; color:#111; font:700 15px 'Lora',serif; text-align:center; }
   .custom-modal .carousel > button {
     z-index: 20 !important;
     width: 48px !important;
@@ -1801,6 +1809,12 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       const sortControl = document.getElementById('domSort')?.parentElement;
       resultsTools.append(resultsSummary, savedControl, viewControl, sortControl);
       resultsPanel.append(resultsHeading, resultsTools, ...categorySections);
+      const mobilePagination = document.createElement('nav');
+      mobilePagination.id = 'mobile-listing-pagination';
+      mobilePagination.className = 'mobile-listing-pagination';
+      mobilePagination.setAttribute('aria-label', 'Listing pages');
+      mobilePagination.innerHTML = '<button class="mobile-listing-prev" type="button" aria-label="Previous listing page">&larr;</button><span class="mobile-listing-page-status" aria-live="polite">1 of 1</span><button class="mobile-listing-next" type="button" aria-label="Next listing page">&rarr;</button>';
+      resultsPanel.appendChild(mobilePagination);
       const explore = document.createElement('nav');
       explore.id = 'explore-west-tennessee';
       explore.className = 'explore-west-tennessee';
@@ -2378,8 +2392,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   </div>
 </div>
 
-<!-- Active listing MLS 2603442 -->
-<div class="card" data-modal="listing2603442Modal" data-agent="Jackie David" data-dom="21" data-lat="35.631964" data-lng="-88.819354" data-map-category="homes">
+<!-- Pending listing MLS 2603442: retained only for cleanup compatibility and never displayed -->
+<div class="removed-listing" data-modal="listing2603442Modal" data-agent="Jackie David" data-dom="21" data-lat="35.631964" data-lng="-88.819354" data-map-category="homes" hidden>
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260722133608075367000000.jpg" alt="111 Westwood Avenue" onclick="openModal('listing2603442Modal')" />
   <div class="card-body">
     <p class="price">$199,000</p>
@@ -2497,7 +2511,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   </div>
 </div>
 
-<!-- Active listing MLS 2603775 -->
+<!-- Pending listing MLS 2603775: retained only for cleanup compatibility and never displayed -->
 <div class="removed-listing" data-modal="listing2603775Modal" data-agent="Jackie David" data-dom="2" data-lat="35.824485" data-lng="-88.899178" data-map-category="homes" hidden>
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260810160133428318000000.jpg" alt="2902 Vine Street" onclick="openModal('listing2603775Modal')" />
   <div class="card-body">
@@ -10091,6 +10105,77 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         cancelAnimationFrame(mapUpdateFrame);
         mapUpdateFrame = requestAnimationFrame(renderMap);
       }).observe(document.querySelector('section.container:not(.listing-map-section)'), {childList: true, subtree: true});
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function initializeMobileListingPagination() {
+      const pagination = document.getElementById('mobile-listing-pagination');
+      const previousButton = pagination?.querySelector('.mobile-listing-prev');
+      const nextButton = pagination?.querySelector('.mobile-listing-next');
+      const status = pagination?.querySelector('.mobile-listing-page-status');
+      const phoneViewport = window.matchMedia('(max-width: 768px)');
+      if (!pagination || !previousButton || !nextButton || !status) return;
+
+      const listingsPerPage = 10;
+      let currentPage = 1;
+
+      function eligibleCards() {
+        return Array.from(document.querySelectorAll('.property-results-panel .card[data-modal]')).filter(card =>
+          card.dataset.filterVisible !== 'false' && card.dataset.mapVisible !== 'false'
+        );
+      }
+
+      function renderListingPage(scrollToListings = false) {
+        const allCards = Array.from(document.querySelectorAll('.property-results-panel .card[data-modal]'));
+        allCards.forEach(card => card.classList.remove('mobile-page-hidden'));
+        document.querySelectorAll('.property-results-panel > section.container').forEach(section => section.classList.remove('mobile-page-empty'));
+
+        if (!phoneViewport.matches) {
+          pagination.hidden = true;
+          return;
+        }
+
+        const cards = eligibleCards();
+        const pageCount = Math.max(1, Math.ceil(cards.length / listingsPerPage));
+        currentPage = Math.min(Math.max(1, currentPage), pageCount);
+        const firstIndex = (currentPage - 1) * listingsPerPage;
+        const pageCards = cards.slice(firstIndex, firstIndex + listingsPerPage);
+        const pageSet = new Set(pageCards);
+
+        cards.forEach(card => card.classList.toggle('mobile-page-hidden', !pageSet.has(card)));
+        document.querySelectorAll('.property-results-panel > section.container').forEach(section => {
+          const sectionCards = Array.from(section.querySelectorAll(':scope .card[data-modal]'));
+          if (sectionCards.length) section.classList.toggle('mobile-page-empty', !sectionCards.some(card => pageSet.has(card)));
+        });
+
+        pagination.hidden = cards.length <= listingsPerPage;
+        status.textContent = `${currentPage} of ${pageCount}`;
+        previousButton.disabled = currentPage === 1;
+        nextButton.disabled = currentPage === pageCount;
+
+        if (scrollToListings && pageCards[0]) {
+          pageCards[0].scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      }
+
+      previousButton.addEventListener('click', () => {
+        if (currentPage <= 1) return;
+        currentPage--;
+        renderListingPage(true);
+      });
+      nextButton.addEventListener('click', () => {
+        const pageCount = Math.max(1, Math.ceil(eligibleCards().length / listingsPerPage));
+        if (currentPage >= pageCount) return;
+        currentPage++;
+        renderListingPage(true);
+      });
+      document.addEventListener('listingfilterchange', () => {
+        currentPage = 1;
+        requestAnimationFrame(() => renderListingPage(false));
+      });
+      phoneViewport.addEventListener('change', () => renderListingPage(false));
+      requestAnimationFrame(() => renderListingPage(false));
     });
   </script>
    <script>
