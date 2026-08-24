@@ -150,7 +150,7 @@ def write_city_pages(listings):
         nearby = [other for other in cities if other != city][:6]
         canonical = f"{SITE}/homes-for-sale/{city_slug}/"
         title = f"Homes for Sale in {city}, TN | Total Realty Source"
-        description = f"Browse current homes, land, and real estate for sale in {city}, Tennessee. View local listings and connect with Total Realty Source."
+        description = f"Search homes for sale in {city}, TN. View current listings with large photos, prices, maps, property details, and local Total Realty Source agent information."
         breadcrumb = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":SITE},{"@type":"ListItem","position":2,"name":"Homes for Sale","item":f"{SITE}/forsale.html"},{"@type":"ListItem","position":3,"name":f"{city}, TN","item":canonical}]}
         market_copy = {
             "Jackson": "Search active houses in Jackson, including properties in the 38301 and 38305 ZIP codes. Compare prices, bedrooms, bathrooms, photos, maps, and listing details, then connect with a Total Realty Source agent who works across Madison County.",
