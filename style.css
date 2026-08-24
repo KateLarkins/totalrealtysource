@@ -1731,7 +1731,7 @@ footer a:hover {
   display:grid;
   grid-template-columns:minmax(0, .92fr) minmax(0, 1.08fr);
   min-height:680px;
-  background:#f4f6f7;
+  background:#fff;
   align-items:stretch;
 }
 .contact-page .contact-hero-copy {
@@ -1789,6 +1789,18 @@ footer a:hover {
   text-decoration:none;
   transition:background .2s ease,color .2s ease,transform .2s ease;
 }
+.contact-page .contact-quick-link svg {
+  flex:0 0 20px;
+  width:20px;
+  height:20px;
+  margin-right:9px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.contact-page .contact-quick-link span { color:inherit !important; }
 .contact-page .contact-quick-link:hover { background:#e8ecef; color:#000 !important; transform:translateY(-1px); }
 .contact-page .contact-quick-link-primary { border-color:#023E6C; background:#023E6C; color:#fff !important; }
 .contact-page .contact-quick-link-primary:hover { background:#012f53; color:#fff !important; }
@@ -1857,7 +1869,7 @@ footer a:hover {
   .contact-page .contact-hero-location { right:20px; bottom:22px; left:20px; }
   .contact-page .contact-hero-location strong { font-size:22px; }
 
-  .contact-page .contact-office-section { padding:58px 20px 64px !important; background:#f4f6f7 !important; }
+  .contact-page .contact-office-section { padding:58px 20px 64px !important; background:#fff !important; }
   .contact-page .contact-office-grid { grid-template-columns:1fr !important; gap:36px !important; }
   .contact-page .contact-office-details { text-align:center !important; }
   .contact-page .contact-office-details h2 { margin-bottom:24px !important; font-size:28px !important; }
@@ -2294,6 +2306,8 @@ font-family: 'Bodoni Moda';
   text-align:center !important;
 }
 .contact-page section a.contact-quick-link-primary,
+.contact-page section a.contact-quick-link-primary span,
+.contact-page section a.contact-quick-link-primary svg,
 .contact-page section a[style*="background:#023E6C"],
 .contact-page section a[style*="background: #023E6C"] {
   color:#fff !important;
