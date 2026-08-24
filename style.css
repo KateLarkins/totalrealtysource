@@ -1858,7 +1858,7 @@ footer a:hover {
 
 @media (max-width:700px) {
   .contact-page .contact-hero { grid-template-columns:1fr; min-height:0; }
-  .contact-page .contact-hero-copy { padding:50px 20px 44px; }
+  .contact-page .contact-hero-copy { padding:50px 20px 28px; }
   .contact-page .contact-hero-eyebrow { margin-bottom:14px; font-size:11px !important; }
   .contact-page .contact-hero h1 { margin-bottom:20px; font-size:clamp(34px,10vw,46px) !important; line-height:1.08; letter-spacing:-.5px; }
   .contact-page .contact-hero-intro { margin-bottom:14px; font-size:16px !important; line-height:1.7 !important; }
@@ -1869,9 +1869,9 @@ footer a:hover {
   .contact-page .contact-hero-location { right:20px; bottom:22px; left:20px; }
   .contact-page .contact-hero-location strong { font-size:22px; }
 
-  .contact-page .contact-office-section { padding:58px 20px 64px !important; background:#fff !important; }
+  .contact-page .contact-office-section { padding:28px 20px 64px !important; background:#fff !important; }
   .contact-page .contact-office-grid { grid-template-columns:1fr !important; gap:36px !important; }
-  .contact-page .contact-office-details { text-align:center !important; }
+  .contact-page .contact-office-details { text-align:left !important; }
   .contact-page .contact-office-details h2 { margin-bottom:24px !important; font-size:28px !important; }
   .contact-page .contact-office-details > div { padding-left:0 !important; border-left:0 !important; }
   .contact-page .contact-office-details p { font-size:16px !important; line-height:1.65 !important; }
