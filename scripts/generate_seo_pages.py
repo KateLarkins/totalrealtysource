@@ -124,7 +124,7 @@ def parse_listings():
 
 
 def site_header(prefix=""):
-    return f'''<header class="site-header"><a href="{prefix}index.html"><img src="{prefix}logo.png/horizontallogo.png" alt="Total Realty Source"></a><nav aria-label="Primary"><a href="{prefix}index.html">Home</a><a href="{prefix}forsale.html">For Sale</a><a href="{prefix}events.html">Events</a><a href="{prefix}about.html">Our Team</a><a href="{prefix}contact.html">Contact</a></nav></header>'''
+    return f'''<header class="site-header"><a href="{prefix}index.html"><img src="{prefix}logo.png/horizontallogo.png" alt="Total Realty Source"></a><nav aria-label="Primary"><a href="{prefix}index.html">Home</a><a href="{prefix}forsale.html">For Sale</a><a href="{prefix}events.html">Events</a><a href="{prefix}about.html">Agents</a><a href="{prefix}contact.html">Contact</a></nav></header>'''
 
 
 def site_footer(prefix=""):

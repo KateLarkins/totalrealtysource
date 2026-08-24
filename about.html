@@ -215,6 +215,33 @@ a {
  .agent-services-section { padding:62px 18px !important; background-attachment:scroll !important; }
  .agent-services-section > div > div:first-child { margin-bottom:30px !important; }
  .agent-services-section > div > div:first-child h2 { font-size:27px !important; letter-spacing:2px !important; }
+ .agent-services-carousel {
+   display:flex !important;
+   grid-template-columns:none !important;
+   gap:14px !important;
+   margin-inline:-18px;
+   padding:4px 18px 16px;
+   overflow-x:auto;
+   scroll-snap-type:x mandatory;
+   overscroll-behavior-inline:contain;
+   -webkit-overflow-scrolling:touch;
+   scrollbar-width:none;
+ }
+ .agent-services-carousel::-webkit-scrollbar { display:none; }
+ .agent-service-card {
+   flex:0 0 min(82vw,320px);
+   min-height:220px;
+   display:flex;
+   flex-direction:column;
+   justify-content:center;
+   padding:34px 26px !important;
+   border:1px solid #e0e5e8 !important;
+   border-radius:10px;
+   box-shadow:0 8px 22px rgba(0,0,0,.055) !important;
+   scroll-snap-align:center;
+ }
+ .agent-service-card h3 { margin-bottom:14px !important; font-size:17px !important; }
+ .agent-service-card p { margin:0; font-size:14px !important; line-height:1.65 !important; }
  .agent-services-section h2,
  .agent-services-section h3,
  .stronger-communities-copy h2,
@@ -305,9 +332,9 @@ a {
     <a href="events.html" class="nav-link">Events</a>
 
     <div class="dropdown-container">
- <a href="about.html" class="nav-link">About ▾</a>
+ <a href="about.html" class="nav-link">Agents ▾</a>
  <div class="dropdown">
-   <a href="about.html" class="dropdown-item">Our Team</a>
+   <a href="about.html" class="dropdown-item">Agents</a>
    <!-- <a href="contact.html" class="dropdown-item">Blog</a>
    <a href="about.html" class="dropdown-item">Services</a>
    <a href="about.html" class="dropdown-item">Testimonials</a>
@@ -344,9 +371,9 @@ a {
   <a href="events.html" class="drawer-link">Events</a>
 
   <div class="drawer-dropdown">
-<a href="about.html" class="drawer-link">About ▾</a>
+<a href="about.html" class="drawer-link">Agents ▾</a>
 <div class="drawer-submenu">
- <a href="about.html" class="drawer-link">Our Team</a>
+ <a href="about.html" class="drawer-link">Agents</a>
  <!-- <a href="contact.html" class="drawer-link">Blog</a>
  <a href="about.html" class="drawer-link">Services</a>
  <a href="about.html" class="drawer-link">Testimonials</a>
@@ -387,14 +414,12 @@ parent.classList.toggle('open');
       style="width:36px;height:36px;border-radius:50%;object-fit:cover;margin:0 auto 6px auto;display:block;border:1px solid rgba(255,255,255,0.8);">
 
     <div style="font-family:'Lora';font-size:0.75rem;color:#ffffff;opacity:0.85;letter-spacing:1px;">
-      West Tennessee Real Estate
+      Total Realty Source
     </div>
 
     <h1 style="margin:6px 0 0 0;font-size:28px;font-family:'Bodoni Moda';letter-spacing:3px;text-transform:uppercase;font-weight:600;color:#ffffff;">
       Agents
     </h1>
-
-    <div style="width:55px;height:1px;background:#ffffff;margin:10px auto;"></div>
 
   </div>
 
@@ -499,22 +524,21 @@ parent.classList.toggle('open');
   <div style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto;">
     <div style="max-width: 800px; margin: 0 auto 70px; text-align: center;">
       <h2 style="font-family: 'Bodoni Moda'; font-size: 32px; color: #000000; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px;">Our Services</h2>
-      <div style="width: 30px; height: 1px; background: #023E6C; margin: 0 auto 25px; opacity: 0.3;"></div>
       <p style="font-family: 'Lora'; font-size: 1.1rem; color: #444; line-height: 1.8;">
         Expert real estate guidance for every stage of ownership in West Tennessee.
       </p>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-      <div style="padding: 50px 40px; background: #ffffff; border: 1px solid #eee; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05); transition: transform 0.3s ease;">
+    <div class="agent-services-carousel" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+      <div class="agent-service-card" style="padding: 50px 40px; background: #ffffff; border: 1px solid #eee; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05); transition: transform 0.3s ease;">
         <h3 style="font-family: 'Bodoni Moda'; color: #023E6C; margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Property Renovation</h3>
         <p style="font-family: 'Lora'; font-size: 0.95rem; color: #666; line-height: 1.7;">Elevating presentation and increasing long-term property value through curated enhancements.</p>
       </div>
-      <div style="padding: 50px 40px; background: #ffffff; border: 1px solid #eee; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05);">
+      <div class="agent-service-card" style="padding: 50px 40px; background: #ffffff; border: 1px solid #eee; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05);">
         <h3 style="font-family: 'Bodoni Moda'; color: #023E6C; margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Property Sales</h3>
         <p style="font-family: 'Lora'; font-size: 0.95rem; color: #666; line-height: 1.7;">Strategic pricing and refined marketing focused on delivering optimal sales outcomes.</p>
       </div>
-      <div style="padding: 50px 40px; background: #ffffff; border: 1px solid #eee; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05);">
+      <div class="agent-service-card" style="padding: 50px 40px; background: #ffffff; border: 1px solid #eee; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05);">
         <h3 style="font-family: 'Bodoni Moda'; color: #023E6C; margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Property Management</h3>
         <p style="font-family: 'Lora'; font-size: 0.95rem; color: #666; line-height: 1.7;">Professional oversight ensuring consistent performance and total peace of mind.</p>
       </div>
@@ -536,7 +560,7 @@ parent.classList.toggle('open');
       <p style="font-family: 'Lora'; font-style: italic; font-size: 1.25rem; line-height: 1.8; color: #444; border-left: 2px solid #023E6C; padding-left: 25px;">
         "Total Realty Source is more than just property sales; we are your neighbors, committed to the growth and success of West Tennessee."
       </p>
-      <p><a href="about.html#team" style="color:#111;font-family:'Lora';font-weight:700;text-decoration:underline;text-underline-offset:5px;">Meet our West Tennessee agents</a></p>
+      <p><a href="contact.html" style="color:#111;font-family:'Lora';font-weight:700;text-decoration:underline;text-underline-offset:5px;">Visit Our Office</a></p>
     </div>
   </div>
 </section>
@@ -965,7 +989,7 @@ parent.classList.toggle('open');
 </section>
 
 
-<section class="seo-link-matrix" aria-labelledby="seo-links-title"><div><h2 id="seo-links-title">Explore Jackson Real Estate</h2><nav aria-label="Jackson real estate searches"><a href="jackson-tn/north-jackson/">North Jackson Homes</a><a href="jackson-tn/midtown/">Midtown Jackson Real Estate</a><a href="jackson-tn/homes-with-land/">Jackson Homes with Land</a><a href="jackson-tn/new-construction/">New Construction in Jackson</a><a href="jackson-tn/under-300k/">Jackson Homes Under $300K</a><a href="jackson-tn/luxury/">Luxury Properties in Jackson</a><a href="homes-for-sale/medina-tn/">Medina Homes for Sale</a></nav></div></section>
+<section class="seo-link-matrix" aria-labelledby="seo-links-title"><div><h2 id="seo-links-title">Explore West Tennessee Real Estate</h2><nav aria-label="West Tennessee real estate searches"><a href="homes-for-sale/jackson-tn/">Jackson Homes for Sale</a><a href="homes-for-sale/medina-tn/">Medina Homes for Sale</a><a href="homes-for-sale/milan-tn/">Milan Homes for Sale</a><a href="homes-for-sale/humboldt-tn/">Humboldt Homes for Sale</a><a href="homes-for-sale/dyer-tn/">Dyer Homes for Sale</a><a href="homes-for-sale/martin-tn/">Martin Homes for Sale</a><a href="forsale.html?type=homes">West Tennessee Homes</a><a href="west-tennessee/land-acreage/">Land and Acreage</a><a href="forsale.html?type=other">Commercial and Other Properties</a><a href="homes-for-rent/west-tennessee/">West Tennessee Homes for Rent</a></nav></div></section>
 <!-- Footer -->
 
  
@@ -1000,7 +1024,7 @@ parent.classList.toggle('open');
       <h4 style="margin-bottom:24px; letter-spacing:0.4px;">Navigation</h4>
       <p><a href="index.html" style="color:white;text-decoration: underline; font-family:'Lora;">Home</a></p>
       <p><a href="forsale.html" style="color:white; text-decoration: underline; font-family:'Lora';">Homes for Sale</a></p>
-      <p><a href="about.html" style="color:white; text-decoration: underline; font-family:'Lora';">About Our Team</a></p>
+      <p><a href="about.html" style="color:white; text-decoration: underline; font-family:'Lora';">Agents</a></p>
       <p><a href="contact.html" style="color:white; text-decoration: underline; font-family:'Lora';">Contact</a></p>
     </div>
 
