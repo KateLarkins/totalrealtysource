@@ -2122,57 +2122,8 @@ font-family: 'Bodoni Moda';
   color: #000 !important;
 }
 
-.mobile-office-actions {
-  display: none;
-}
-
 .seo-link-matrix { padding:42px 24px;border-top:1px solid #dfe3e6;background:#f5f8fa;color:#111; }
 .seo-link-matrix > div { width:min(1180px,100%);margin:auto; }
 .seo-link-matrix h2 { margin:0 0 20px;color:#111;font:600 clamp(25px,3vw,34px) 'Bodoni Moda',serif; }
 .seo-link-matrix nav { display:flex;flex-wrap:wrap;gap:12px 24px; }
 .seo-link-matrix a { color:#111 !important;font:500 14px 'Lora',serif;text-decoration:underline;text-underline-offset:4px; }
-
-@media (max-width: 700px) {
-  .office-actions-page {
-    padding-bottom: 72px !important;
-  }
-
-  .mobile-office-actions {
-    position: fixed;
-    z-index: 9998;
-    right: 10px;
-    bottom: 10px;
-    left: 10px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,.55);
-    border-radius: 999px;
-    background: #023e6c;
-    box-shadow: 0 12px 30px rgba(0,0,0,.24);
-  }
-
-  .mobile-office-actions a {
-    display: flex;
-    min-width: 0;
-    min-height: 52px;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    padding: 10px 12px;
-    color: #fff !important;
-    font: 600 13px 'Lora', serif !important;
-    text-align: center;
-    text-decoration: none !important;
-  }
-
-  .mobile-office-actions a + a {
-    border-left: 1px solid rgba(255,255,255,.35);
-  }
-
-  .mobile-office-actions span {
-    font-family: Arial, sans-serif;
-    font-size: 18px;
-    line-height: 1;
-  }
-}
