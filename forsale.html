@@ -1358,6 +1358,10 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-agent-share-row > .modal-share-wrap .modal-share-links { justify-content:flex-end; }
 .modal-agent-contact-card { display:flex !important; align-items:center; gap:20px; min-width:0; padding-top:20px; border-top:1px solid #ccc; font-family:'Lora',serif; }
 .modal-agent-contact-card > img,.modal-agent-headshot { flex:0 0 100px; width:100px !important; height:100px !important; object-fit:cover; border-radius:50%; }
+.custom-modal .carousel { touch-action:pan-y pinch-zoom; overscroll-behavior-inline:contain; }
+.custom-modal .carousel > button { isolation:isolate; width:44px !important; height:44px !important; color:#17242C !important; background:transparent !important; box-shadow:none !important; font-size:18px !important; font-weight:300 !important; }
+.custom-modal .carousel > button::before { content:""; position:absolute; inset:3px; z-index:-1; background:rgba(255,255,255,.9); border:1px solid rgba(20,35,44,.18); border-radius:50%; box-shadow:0 3px 12px rgba(0,0,0,.14); backdrop-filter:blur(5px); }
+.custom-modal .carousel > button:hover::before,.custom-modal .carousel > button:focus-visible::before { background:#fff; border-color:rgba(20,35,44,.35); }
 .mobile-listing-pagination { display:none; }
 .modal-back-button { position:relative; z-index:12; display:inline-flex; align-items:center; gap:8px; margin:0 0 18px; padding:8px 12px; color:#111; background:#fff; border:1px solid #C5CDD2; border-radius:5px; font:700 13px 'Lora',serif; cursor:pointer; }
 .modal-back-button:hover,.modal-back-button:focus-visible { background:#F1F3F4; }
@@ -1381,8 +1385,14 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-facts-collapse.is-expanded { max-height:10000px; }
 .modal-facts-group { margin:0 0 27px; }
 .modal-facts-group h4 { margin:0 0 12px; color:#111; font:700 18px 'Lora',serif; }
-.modal-facts-group ul { margin:0; padding-left:21px; columns:2; column-gap:34px; }
-.modal-facts-group li { break-inside:avoid; margin:0 0 9px; color:#222; font:14px/1.55 'Lora',serif; }
+.modal-facts-group ul { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:0; padding:0; list-style:none; columns:auto; }
+.modal-facts-group li { break-inside:avoid; margin:0; color:#222; font:14px/1.55 'Lora',serif; }
+.modal-fact-card { display:grid; grid-template-columns:34px minmax(0,1fr); gap:11px; align-items:start; min-width:0; padding:15px; background:#F7F8F8; border:1px solid #E0E4E6; border-radius:8px; }
+.modal-fact-icon { display:grid; place-items:center; width:32px; height:32px; color:#023E6C; background:#fff; border:1px solid #D8DEE2; border-radius:50%; font-size:14px; }
+.modal-fact-content { min-width:0; }
+.modal-fact-label { display:block; margin:1px 0 8px; color:#111; font:700 13px/1.3 'Lora',serif; }
+.modal-fact-values { display:flex; flex-wrap:wrap; gap:6px; }
+.modal-fact-chip { display:inline-flex; max-width:100%; padding:5px 8px; color:#37444C; background:#fff; border:1px solid #E0E4E6; border-radius:999px; font:12px/1.35 'Lora',serif; overflow-wrap:anywhere; }
 .modal-complete-facts { margin:34px 0 12px; padding:28px 0 4px; border-top:1px solid #D8DEE2; }
 .modal-complete-facts > h3 { margin:0 0 22px; color:#111; font:600 28px/1.2 'Bodoni Moda',serif; }
 .modal-complete-facts .modal-facts-group ul { columns:2; }
@@ -1408,12 +1418,12 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   .mobile-listing-page-status { min-width:76px; color:#111; font:700 15px 'Lora',serif; text-align:center; }
   .custom-modal .carousel > button {
     z-index: 20 !important;
-    width: 48px !important;
-    height: 48px !important;
+    width: 44px !important;
+    height: 44px !important;
     padding: 0;
     border-radius: 50%;
-    background: rgba(255,255,255,.88) !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,.24);
+    background: transparent !important;
+    box-shadow: none !important;
     touch-action: manipulation;
   }
   .custom-modal .carousel > .open-house-bubble { top:10px; right:10px; max-width:62%; padding:6px 9px; font-size:11px; }
@@ -1439,8 +1449,8 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   .modal-agent-contact-card > img,.modal-agent-headshot { flex-basis:82px; width:82px !important; height:82px !important; }
   .modal-share-wrap { justify-self:start; }
   .modal-share-panel { right:auto; left:0; width:min(290px,calc(100vw - 76px)); }
-  .modal-facts-group ul { columns:1; }
-  .modal-complete-facts .modal-facts-group ul { columns:1; }
+  .modal-facts-group ul,.modal-complete-facts .modal-facts-group ul { grid-template-columns:1fr; columns:auto; }
+  .modal-fact-card { padding:13px; }
   .property-search-workspace { display:block; width:100%; max-width:100%; height:auto; min-height:0; margin-bottom:24px; overflow:hidden; }
   .property-back-to-top-wrap,
   body.workspace-view-split .property-back-to-top-wrap,
@@ -1554,7 +1564,10 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
     <div class="dropdown-container">
       <a href="forsale.html" class="nav-link">For Sale ▾</a>
       <div class="dropdown">
-        <a href="forsale.html" class="dropdown-item">Current Listings</a>
+        <a href="forsale.html?type=homes" class="dropdown-item">Homes for Sale</a>
+        <a href="forsale.html?type=land" class="dropdown-item">Land for Sale</a>
+        <a href="forsale.html?type=other" class="dropdown-item">Other Properties</a>
+        <a href="forsale.html?saved=1" class="dropdown-item">Saved Homes</a>
       </div>
     </div>
 
@@ -1590,7 +1603,10 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   <div class="drawer-dropdown">
     <a href="forsale.html" class="drawer-link">For Sale ▾</a>
     <div class="drawer-submenu">
-      <a href="forsale.html" class="drawer-link">Current Listings</a>
+      <a href="forsale.html?type=homes" class="drawer-link">Homes for Sale</a>
+      <a href="forsale.html?type=land" class="drawer-link">Land for Sale</a>
+      <a href="forsale.html?type=other" class="drawer-link">Other Properties</a>
+      <a href="forsale.html?saved=1" class="drawer-link">Saved Homes</a>
     </div>
   </div>
 
@@ -2267,7 +2283,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; border-top:1px solid #ccc; padding-top:20px; gap:20px;">
       <div style="display:flex; align-items:center; gap:20px; flex:1 1 300px;">
         <img src="Untitled design-10/1amy.png" alt="Amy McLemore" style="width:100px; height:100px; object-fit:cover; border-radius:50%;">
-        <div><p style="margin:0; font-family:'Bodoni Moda';"><strong data-agent-name>Amy McLemore</strong></p><p style="margin:2px 0; font-family:'Lora';"><a href="about.html">View Profile</a></p><p style="margin:2px 0; font-family:'Lora';">Phone: (731) 574-9340</p><p style="margin:2px 0; font-family:'Lora';">Office: (731) 574-9340</p></div>
+        <div><p style="margin:0; font-family:'Bodoni Moda';"><strong data-agent-name>Amy McLemore</strong></p><p style="margin:2px 0; font-family:'Lora';"><a href="about.html">View Profile</a></p><p style="margin:2px 0; font-family:'Lora';">Phone: (731) 234-0049</p><p style="margin:2px 0; font-family:'Lora';">Office: (731) 574-9340</p></div>
       </div>
       <div style="display:flex; flex-direction:column; align-items:flex-end; flex:1 1 200px;"><p style="margin:0; font-family:'Bodoni Moda';">Share this Listing:</p><div style="display:flex; gap:15px; margin-top:5px;"><a href="https://www.facebook.com/sharer/sharer.php?u=https://totalrealtysource.com/forsale.html%23listing2603288Modal" target="_blank" title="Share on Facebook" style="color:#3b5998; font-size:1.8rem;"><i class="fa fa-facebook-official"></i></a><a href="mailto:?subject=Property%20MLS%202603288&amp;body=https://totalrealtysource.com/forsale.html%23listing2603288Modal" title="Share by Email" style="color:#007bff; font-size:1.8rem;"><i class="fa fa-envelope"></i></a></div></div>
     </div>
@@ -3352,7 +3368,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             <div>
               <p style="margin: 0; font-family: 'Bodoni Moda';"><strong data-agent-name>Amy McLemore</strong></p>
               <p style="margin: 2px 0; font-family: 'Lora';"><a href="about.html">View Profile</a></p>
-              <p style="margin: 2px 0; font-family: 'Lora';">Phone: (731) 574-9340</p>
+              <p style="margin: 2px 0; font-family: 'Lora';">Phone: (731) 234-0049</p>
               <p style="margin: 2px 0; font-family: 'Lora';">Office: (731) 574-9340</p>
             </div>
           </div>
@@ -7152,6 +7168,55 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     let currentSlide = 0;
     let activeModalId = null;
     const listingMachineUpdatedAt = '2026-08-24T09:35:28-05:00';
+    const listingAgentPhones = {
+      'Amy McLemore': '731-234-0049',
+      'Lynda Climer': '731-217-3827',
+      'Lynda C Climer': '731-217-3827',
+      'Brandie Bassett': '731-695-2785',
+      'Jackie David': '731-487-6545',
+      'Ashley McMillan': '731-414-0317',
+      'Lisa Ballinger': '731-223-0919',
+      'Lisa Ann Ballinger': '731-223-0919',
+      'Tammy Jones': '731-225-3158',
+      'Tamra L Jones': '731-225-3158',
+      'Laura Burke': '312-519-8659'
+    };
+    const listingAgentPhone = agentName => listingAgentPhones[String(agentName || '').replace(/\s+/g, ' ').trim()] || '731-574-9340';
+    const formattedAgentPhone = agentName => `(${listingAgentPhone(agentName).slice(0,3)}) ${listingAgentPhone(agentName).slice(4)}`;
+
+    function normalizeModalAgentPhones() {
+      document.querySelectorAll('.custom-modal').forEach(modal => {
+        const nameElement = modal.querySelector('[data-agent-name]');
+        if (!nameElement) return;
+        const agentName = nameElement.textContent.replace(/\s+/g, ' ').trim();
+        const phone = listingAgentPhone(agentName);
+        let contactBlock = nameElement.closest('div');
+        let current = contactBlock;
+        const content = modal.querySelector('.custom-modal-content');
+        while (current && current !== content) {
+          if (current.querySelector(':scope > img')) {
+            contactBlock = current;
+            break;
+          }
+          current = current.parentElement;
+        }
+        if (!contactBlock || contactBlock === content) return;
+        const phoneLine = Array.from(contactBlock.querySelectorAll('p')).find(line => /^\s*Phone:/i.test(line.textContent));
+        if (phoneLine) {
+          phoneLine.textContent = `Phone: ${formattedAgentPhone(agentName)}`;
+          return;
+        }
+        const walker = document.createTreeWalker(contactBlock, NodeFilter.SHOW_TEXT);
+        let textNode;
+        while ((textNode = walker.nextNode())) {
+          if (textNode.parentElement?.closest('a[href^="tel:"]')) continue;
+          if (!/(?:\(?\d{3}\)?[\s.-]*)\d{3}[\s.-]*\d{4}/.test(textNode.nodeValue || '')) continue;
+          textNode.nodeValue = textNode.nodeValue.replace(/(?:\(?\d{3}\)?[\s.-]*)\d{3}[\s.-]*\d{4}/, formattedAgentPhone(agentName));
+          break;
+        }
+        contactBlock.dataset.agentPhone = phone;
+      });
+    }
 
     function addModalPropertyFacts() {
       const icons = {
@@ -7336,8 +7401,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const agentNameElement = modal.querySelector('[data-agent-name]');
         const agentSection = directSection(agentNameElement, content);
         const agentName = agentNameElement?.textContent.trim() || card.dataset.agent || 'Total Realty Source';
-        const agentText = agentSection?.textContent.replace(/\s+/g,' ') || '';
-        const phone = agentText.match(/(?:Phone|Office):\s*([()\d\s-]{10,})/i)?.[1]?.trim() || '731-574-9340';
+        const phone = listingAgentPhone(agentName);
         const shareUrl = `https://totalrealtysource.com/listing-share/${encodeURIComponent(card.dataset.modal)}.html`;
         const leadImage = modal.querySelector('.slide')?.getAttribute('src') || card.querySelector(':scope > img')?.getAttribute('src') || '';
         const propertyType = factValue('Type') || ({homes:'Single Family Residence',land:'Land',other:'Commercial Property'}[card.dataset.mapCategory] || 'Property');
@@ -7824,6 +7888,59 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       });
     }
 
+    function enhanceModalFactsLayout() {
+      const iconForLabel = label => {
+        if (/bed/i.test(label)) return 'fa-bed';
+        if (/bath/i.test(label)) return 'fa-bath';
+        if (/cool/i.test(label)) return 'fa-snowflake-o';
+        if (/heat|fireplace/i.test(label)) return 'fa-thermometer-half';
+        if (/appliance|kitchen/i.test(label)) return 'fa-cutlery';
+        if (/parking|garage/i.test(label)) return 'fa-car';
+        if (/lot|land|yard|fenc/i.test(label)) return 'fa-tree';
+        if (/water|sewer|utilit/i.test(label)) return 'fa-tint';
+        if (/year|date/i.test(label)) return 'fa-calendar';
+        if (/exterior|roof|construction|foundation|home type/i.test(label)) return 'fa-home';
+        if (/interior|floor|window|level/i.test(label)) return 'fa-th-large';
+        if (/mls|type|style|lease/i.test(label)) return 'fa-tag';
+        return 'fa-check';
+      };
+
+      document.querySelectorAll('.modal-facts-group').forEach(group => {
+        if (!Array.from(group.querySelectorAll('li')).some(item => item.textContent.trim())) group.remove();
+      });
+
+      document.querySelectorAll('.modal-facts-group li').forEach(item => {
+        if (item.classList.contains('modal-fact-card')) return;
+        const text = item.textContent.replace(/\s+/g, ' ').trim();
+        if (!text) return;
+        const separator = text.indexOf(':');
+        const label = separator > 0 ? text.slice(0, separator).trim() : 'Property feature';
+        const value = separator > 0 ? text.slice(separator + 1).trim() : text;
+        const values = value.split(/\s*;\s*|\s*,\s*/).map(part => part.trim()).filter(Boolean);
+
+        const icon = document.createElement('span');
+        icon.className = 'modal-fact-icon';
+        icon.setAttribute('aria-hidden', 'true');
+        icon.innerHTML = `<i class="fa ${iconForLabel(label)}"></i>`;
+        const content = document.createElement('div');
+        content.className = 'modal-fact-content';
+        const title = document.createElement('strong');
+        title.className = 'modal-fact-label';
+        title.textContent = label;
+        const chips = document.createElement('div');
+        chips.className = 'modal-fact-values';
+        (values.length ? values : ['Not specified']).forEach(part => {
+          const chip = document.createElement('span');
+          chip.className = 'modal-fact-chip';
+          chip.textContent = part;
+          chips.appendChild(chip);
+        });
+        content.append(title, chips);
+        item.replaceChildren(icon, content);
+        item.classList.add('modal-fact-card');
+      });
+    }
+
     function standardizeNativeModalSharing() {
       const propertyCards = document.querySelectorAll('.card[data-modal],.removed-listing[data-modal]');
       propertyCards.forEach(card => {
@@ -7981,6 +8098,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         try { setup(); }
         catch (error) { console.error('Listing modal setup error:', error); }
       };
+      safelyRunModalSetup(normalizeModalAgentPhones);
       safelyRunModalSetup(addListingMarketingDetails);
       safelyRunModalSetup(addModalPropertyFacts);
       safelyRunModalSetup(addModalBackButtons);
@@ -7988,7 +8106,9 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         safelyRunModalSetup(addReliableSharingAndCompleteFacts);
         safelyRunModalSetup(ensureEveryModalHasShareControl);
         safelyRunModalSetup(ensureEveryModalHasFactsAndFeatures);
+        safelyRunModalSetup(enhanceModalFactsLayout);
         safelyRunModalSetup(ensureEveryModalHasAgentPhoto);
+        safelyRunModalSetup(normalizeModalAgentPhones);
         safelyRunModalSetup(normalizeModalSharePlacement);
         safelyRunModalSetup(standardizeNativeModalSharing);
       }, 0);
@@ -8033,6 +8153,51 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       slides.forEach(slide => slide.style.display = "none");
       slides[currentSlide].style.display = "block";
     }
+
+    function setupDirectionalCarouselGestures() {
+      document.querySelectorAll('.custom-modal .carousel').forEach(carousel => {
+        if (carousel.dataset.directionalSwipeReady === 'true') return;
+        carousel.dataset.directionalSwipeReady = 'true';
+        let startX = 0;
+        let startY = 0;
+        let deltaX = 0;
+        let deltaY = 0;
+        let gestureDirection = '';
+        let ignoreGesture = false;
+
+        carousel.addEventListener('touchstart', event => {
+          if (event.touches.length !== 1) return;
+          ignoreGesture = Boolean(event.target.closest('button,a'));
+          startX = event.touches[0].clientX;
+          startY = event.touches[0].clientY;
+          deltaX = 0;
+          deltaY = 0;
+          gestureDirection = '';
+        }, {passive:true});
+
+        carousel.addEventListener('touchmove', event => {
+          if (ignoreGesture || event.touches.length !== 1) return;
+          deltaX = event.touches[0].clientX - startX;
+          deltaY = event.touches[0].clientY - startY;
+          const horizontalDistance = Math.abs(deltaX);
+          const verticalDistance = Math.abs(deltaY);
+          if (!gestureDirection && Math.max(horizontalDistance, verticalDistance) >= 12) {
+            gestureDirection = horizontalDistance > verticalDistance * 1.35 ? 'horizontal' : 'vertical';
+          }
+          if (gestureDirection === 'horizontal') event.preventDefault();
+        }, {passive:false});
+
+        carousel.addEventListener('touchend', () => {
+          if (!ignoreGesture && gestureDirection === 'horizontal' && Math.abs(deltaX) >= 55 && Math.abs(deltaX) > Math.abs(deltaY) * 1.35) {
+            plusSlides(deltaX < 0 ? 1 : -1);
+          }
+          gestureDirection = '';
+          ignoreGesture = false;
+        }, {passive:true});
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', setupDirectionalCarouselGestures);
   </script>
   <script>
     document.addEventListener('DOMContentLoaded', function setupRecentlyViewedListings() {
@@ -8204,8 +8369,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const modalBody = modal.querySelector('.modal-body') || modal.querySelector('.custom-modal-content') || modal.querySelector('.modal-content');
         if (!modalBody || modal.querySelector('.modal-contact-actions')) return;
         const heading = modal.querySelector('h2')?.textContent.trim() || 'this property';
-        const phoneMatch = modal.innerText.match(/(?:Phone|Office):\s*([()\d\s-]{10,})/i);
-        const phone = (phoneMatch?.[1] || '731-574-9340').replace(/[^\d+]/g, '');
+        const modalAgentName = modal.querySelector('[data-agent-name]')?.textContent.replace(/\s+/g, ' ').trim();
+        const phone = listingAgentPhone(modalAgentName).replace(/[^\d+]/g, '');
         const actions = document.createElement('div');
         actions.className = 'modal-contact-actions';
         const schedule = document.createElement('a');
@@ -8689,6 +8854,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       const linkedPropertyType = linkedSearchParameters.get('type');
       if (linkedPropertyType && controls.type?.querySelector(`option[value="${CSS.escape(linkedPropertyType)}"]`)) {
         controls.type.value = linkedPropertyType;
+        savedOnly = false;
+      }
+      if (linkedSearchParameters.get('saved') === '1') {
+        savedOnly = true;
       }
       controls.sort.value = controls.sort.value || 'recommended';
       controls.sort.dispatchEvent(new Event('change'));
