@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /forsale-closed.html
 Sitemap: https://totalrealtysource.com/sitemap_index.xml
