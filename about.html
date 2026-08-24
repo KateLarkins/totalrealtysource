@@ -148,6 +148,78 @@ a {
  #team > div > div[style*="display:grid"] > div { padding:13px 5px 16px; }
  #team > div > div[style*="display:grid"] img { width:108px !important; height:108px !important; }
 }
+
+@media (max-width: 520px) {
+ body > header { height:146px !important; }
+ body > header h1 { font-size:25px !important; letter-spacing:2px !important; }
+
+ #team { padding:34px 14px 42px !important; background:#fff !important; }
+ #team h2 { color:#000 !important; font-size:26px !important; letter-spacing:2px !important; }
+ #team > div > div[style*="display:grid"] {
+   display:flex !important;
+   flex-wrap:wrap;
+   justify-content:center;
+   grid-template-columns:none !important;
+   gap:34px !important;
+   width:100%;
+   max-width:430px;
+   margin:0 auto;
+   padding:24px 0 8px !important;
+   overflow:visible;
+   border:0;
+   border-radius:0;
+   background:#fff;
+   box-shadow:none;
+ }
+ #team > div > div[style*="display:grid"] > div {
+   display:block;
+   flex:0 0 100%;
+   max-width:280px;
+   min-height:0;
+   padding:0 0 4px !important;
+   border:0;
+   border-radius:0;
+   background:transparent;
+   box-shadow:none;
+   text-align:center !important;
+ }
+ #team > div > div[style*="display:grid"] img {
+   width:168px !important;
+   height:168px !important;
+   aspect-ratio:1;
+   margin:0 auto 9px !important;
+   border-radius:50% !important;
+   object-position:center top;
+   box-shadow:none;
+ }
+ #team h3,
+ #team h3 + p {
+   min-height:0;
+   justify-content:center;
+   text-align:center !important;
+ }
+ #team h3 { min-height:0; align-items:center; font-size:21px !important; line-height:1.15; }
+ #team h3 + p { min-height:0; margin:6px 0 13px !important; font-size:13px !important; line-height:1.3; letter-spacing:.07em; }
+ #team h3 + p + button {
+   min-height:36px;
+   width:auto;
+   padding:8px 20px !important;
+   font-family:'Lora' !important;
+   font-size:12px !important;
+   white-space:nowrap;
+ }
+ .agent-stats-section { margin-top:18px !important; padding:64px 20px !important; clip-path:none !important; }
+ .agent-stats-section > div { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:24px 12px !important; }
+ .agent-stats-section > div > div p:first-child { font-size:34px !important; }
+ .agent-stats-section > div > div p:last-child { margin-bottom:0; font-size:10px !important; letter-spacing:1px !important; }
+ .agent-services-section { padding:62px 18px !important; background-attachment:scroll !important; }
+ .agent-services-section > div > div:first-child { margin-bottom:30px !important; }
+ .agent-services-section > div > div:first-child h2 { font-size:27px !important; letter-spacing:2px !important; }
+ .agent-services-section h2,
+ .agent-services-section h3,
+ .stronger-communities-copy h2,
+ .stronger-communities-copy a { color:#000 !important; }
+}
 /* New styles */
 /* Hero Section */
 .herotwo {
@@ -400,7 +472,7 @@ parent.classList.toggle('open');
 </section>
 
 
-<section style="position: relative; background: #023E6C; color: white; padding: 100px 5%; margin-top: 50px; clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);">
+<section class="agent-stats-section" style="position: relative; background: #023E6C; color: white; padding: 100px 5%; margin-top: 50px; clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);">
   <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:40px; text-align:center;">
     <div>
       <p style="font-family:'Bodoni Moda'; font-size:42px; margin:0; color:#ffffff;">$50M+</p>
@@ -421,7 +493,7 @@ parent.classList.toggle('open');
   </div>
 </section>
 
-<section style="position: relative; padding: 120px 5%; background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat fixed;">
+<section class="agent-services-section" style="position: relative; padding: 120px 5%; background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat fixed;">
   <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(255, 255, 255, 0.92);"></div>
   
   <div style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto;">
