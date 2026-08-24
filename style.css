@@ -1766,10 +1766,10 @@ footer a:hover {
   .contact-page .contact-map-wrap > div { display:none; }
   .contact-page .contact-office-map { width:100% !important; height:clamp(280px,78vw,380px) !important; border-radius:8px; }
 
-  .contact-page .inside-source-hero { width:100%; height:clamp(280px,76vw,390px) !important; min-height:280px; background-attachment:scroll !important; background-position:center !important; }
-  .contact-page .inside-source-hero-image { display:block !important; width:100% !important; height:100% !important; object-fit:cover !important; object-position:center 45% !important; }
-  .contact-page .inside-source-hero > div:nth-of-type(1) { background:rgba(255,255,255,.38) !important; }
-  .contact-page .inside-source-hero h2 { padding:0 18px; font-size:clamp(29px,9vw,38px) !important; line-height:1.12; }
+  .contact-page .inside-source-hero { width:100%; min-height:240px !important; padding:58px 20px !important; background:#023E6C !important; }
+  .contact-page .inside-source-title { width:100%; }
+  .contact-page .inside-source-title p { font-size:11px !important; letter-spacing:2px !important; }
+  .contact-page .inside-source-hero h2 { padding:0 10px; color:#fff !important; font-size:clamp(29px,9vw,38px) !important; line-height:1.12; }
   .contact-page .inside-source-story { padding:58px 20px 64px !important; }
   .contact-page .inside-source-story-grid { display:grid !important; grid-template-columns:1fr !important; gap:30px !important; }
   .contact-page .inside-source-story h2 { margin-top:0; font-size:27px !important; line-height:1.25 !important; }
