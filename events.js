@@ -1,6 +1,6 @@
 /*
   Listing open houses are read automatically from forsale.html cards containing
-  data-open-house-start, data-open-house-end, data-open-house-description, and data-agent.
+  data-open-house-events (or the single-event start/end fallback), description, and agent.
   Community/Facebook events belong in this array. Dates must include a timezone.
   Past events are automatically hidden after their end time.
   Example:
@@ -82,11 +82,15 @@ const MANUAL_EVENTS = [];
       const response = await fetch('forsale.html', { cache: 'no-store' });
       if (!response.ok) return [];
       const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
-      return [...doc.querySelectorAll('.card[data-open-house-start][data-open-house-end]')].map(card => {
+      return [...doc.querySelectorAll('.card[data-open-house-start][data-open-house-end]')].flatMap(card => {
         const modal = doc.getElementById(card.dataset.modal);
-        const startDate = dateValue(card.dataset.openHouseStart);
-        const endDate = dateValue(card.dataset.openHouseEnd);
-        if (!startDate || !endDate) return null;
+        let schedules = [];
+        try {
+          schedules = JSON.parse(card.dataset.openHouseEvents || '[]');
+        } catch (_) {}
+        if (!Array.isArray(schedules) || schedules.length === 0) {
+          schedules = [{ start: card.dataset.openHouseStart, end: card.dataset.openHouseEnd }];
+        }
         const addressElement = card.querySelector('.address');
         const address = addressElement
           ? Array.from(addressElement.childNodes)
@@ -94,18 +98,18 @@ const MANUAL_EVENTS = [];
               .filter(Boolean)
               .join(', ')
           : 'Open House';
-        return {
+        return schedules.map(schedule => ({
           type: 'open-house',
           title: address,
           location: address,
-          startDate,
-          endDate,
+          startDate: dateValue(schedule.start),
+          endDate: dateValue(schedule.end),
           host: card.dataset.agent || modal?.querySelector('[data-agent-name]')?.textContent.trim() || 'Total Realty Source',
           description: card.dataset.openHouseDescription || 'Tour this home in person, explore its features, and ask the listing agent your questions.',
           image: card.dataset.openHouseImage || card.querySelector(':scope > img')?.getAttribute('src') || '',
           url: `forsale.html?listing=${encodeURIComponent(card.dataset.modal || '')}&from=events#${encodeURIComponent(card.dataset.modal || '')}`
-        };
-      }).filter(Boolean);
+        })).filter(event => event.startDate && event.endDate);
+      });
     } catch (error) {
       return [];
     }
