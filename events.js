@@ -77,6 +77,11 @@ const MANUAL_EVENTS = [];
     return escapeText(value).replace(/`/g, '&#96;');
   }
 
+  function addressSlug(value) {
+    return String(value || 'property').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+      .replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+
   async function listingOpenHouses() {
     try {
       const response = await fetch('forsale.html', { cache: 'no-store' });
@@ -107,7 +112,7 @@ const MANUAL_EVENTS = [];
           host: card.dataset.agent || modal?.querySelector('[data-agent-name]')?.textContent.trim() || 'Total Realty Source',
           description: card.dataset.openHouseDescription || 'Tour this home in person, explore its features, and ask the listing agent your questions.',
           image: card.dataset.openHouseImage || card.querySelector(':scope > img')?.getAttribute('src') || '',
-          url: `forsale.html?listing=${encodeURIComponent(card.dataset.modal || '')}&from=events#${encodeURIComponent(card.dataset.modal || '')}`
+          url: `forsale.html?listing=${encodeURIComponent(addressSlug(address))}&from=events`
         })).filter(event => event.startDate && event.endDate);
       });
     } catch (error) {

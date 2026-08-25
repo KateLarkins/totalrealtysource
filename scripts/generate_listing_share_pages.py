@@ -25,6 +25,10 @@ def first(pattern: str, source: str, default: str = "") -> str:
     return clean(match.group(1)) if match else default
 
 
+def slugify(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", clean(value).lower()).strip("-")
+
+
 def sentence(address: str, card: str, modal: str) -> str:
     stats = {}
     for value, label in re.findall(r"<div[^>]*>\s*<strong[^>]*>(.*?)</strong>\s*<span[^>]*>(.*?)</span>", card, flags=re.I | re.S):
@@ -55,6 +59,7 @@ def main() -> None:
     OUTPUT.mkdir(exist_ok=True)
     cards = list(re.finditer(r'<div class="card"(?P<attrs>[^>]*)data-modal="(?P<modal>[^"]+)"[^>]*>', html, flags=re.I))
     generated = 0
+    slug_counts = {}
     for index, match in enumerate(cards):
         modal_id = match.group("modal")
         card_end = html.find(f'<div id="{modal_id}"', match.end())
@@ -63,7 +68,8 @@ def main() -> None:
         card = html[match.start():card_end]
         next_card = cards[index + 1].start() if index + 1 < len(cards) else len(html)
         modal = html[card_end:next_card]
-        address = first(r"<h2[^>]*>(.*?)</h2>", modal) or first(r'<p class="address"[^>]*>(.*?)</p>', card, "Property listing")
+        card_address = first(r'<p class="address"[^>]*>(.*?)</p>', card, "Property listing")
+        address = first(r"<h2[^>]*>(.*?)</h2>", modal) or card_address
         price = first(r'<p class="price"[^>]*>(.*?)</p>', card, "Price available on listing")
         image = first(r'<img[^>]+class="slide"[^>]+src="([^"]+)"', modal) or first(r'<img[^>]+src="([^"]+)"', card)
         if image and not re.match(r"https?://", image, flags=re.I):
@@ -71,8 +77,11 @@ def main() -> None:
         image_path = image.lower().split("?", 1)[0]
         image_type = "image/png" if image_path.endswith(".png") else "image/webp" if image_path.endswith(".webp") else "image/jpeg"
         description = sentence(address, card, modal)
-        canonical = f"{SITE}/listing-share/{quote(modal_id)}.html"
-        destination = f"{SITE}/forsale.html?listing={quote(modal_id)}#{quote(modal_id)}"
+        base_slug = slugify(card_address)
+        slug_counts[base_slug] = slug_counts.get(base_slug, 0) + 1
+        address_slug = base_slug if slug_counts[base_slug] == 1 else f"{base_slug}-{slug_counts[base_slug]}"
+        canonical = f"{SITE}/listing-share/{quote(address_slug)}.html"
+        destination = f"{SITE}/forsale.html?listing={quote(address_slug)}"
         page = f'''<!doctype html>
 <html lang="en">
 <head>
@@ -105,6 +114,8 @@ def main() -> None:
 </body>
 </html>
 '''
+        (OUTPUT / f"{address_slug}.html").write_text(page, encoding="utf-8")
+        # Retain the former internal-name URL as an invisible compatibility redirect.
         (OUTPUT / f"{modal_id}.html").write_text(page, encoding="utf-8")
         generated += 1
     print(f"Generated {generated} listing share pages in {OUTPUT}")

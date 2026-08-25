@@ -6952,9 +6952,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       <h2 style="margin-bottom:24px; letter-spacing:0.6px; font-family: 'Bodoni Moda'; font-weight:700;">Total Realty Source</h2>
 
       <p style="font-family:'Lora'; line-height:1.9; font-size:18px; max-width:460px;">
-        Helping buyers and sellers across West Tennessee navigate real estate with confidence.
-        Our team is rooted in the communities we serve and committed to guiding you home with
-        honesty, care, and local expertise.
+        Providing buyer representation, seller representation, residential and commercial property services,
+        land and acreage searches, rental searches, property management, and renovation services across West Tennessee.
       </p>
       <!-- LOGOS -->
       <div style="display:flex; gap:25px; align-items:center; margin-top:40px; flex-wrap:wrap;">
@@ -7297,7 +7296,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const agentSection = directSection(agentNameElement, content);
         const agentName = agentNameElement?.textContent.trim() || card.dataset.agent || 'Total Realty Source';
         const phone = listingAgentPhone(agentName);
-        const shareUrl = `https://totalrealtysource.com/listing-share/${encodeURIComponent(card.dataset.modal)}.html`;
+        const shareUrl = `https://totalrealtysource.com/listing-share/${encodeURIComponent(listingSlugForCard(card))}.html`;
         const leadImage = modal.querySelector('.slide')?.getAttribute('src') || card.querySelector(':scope > img')?.getAttribute('src') || '';
         const propertyType = factValue('Type') || ({homes:'Single Family Residence',land:'Land',other:'Commercial Property'}[card.dataset.mapCategory] || 'Property');
         const shareDetails = [[statValue('Beds'),'bedrooms'],[statValue('Baths'),'bathrooms'],[statValue('Sq'),'square feet']].filter(([value]) => value && value !== '—').map(([value,label]) => `${value} ${label}`);
@@ -7367,8 +7366,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         });
       });
 
-      const linkedModalId = new URLSearchParams(window.location.search).get('listing') || window.location.hash.slice(1);
-      if (linkedModalId && document.getElementById(linkedModalId)) openModal(linkedModalId);
+      const linkedModalId = resolveListingReference(new URLSearchParams(window.location.search).get('listing') || window.location.hash.slice(1));
+      if (linkedModalId) openModal(linkedModalId);
     }
 
     function addReliableSharingAndCompleteFacts() {
@@ -7423,7 +7422,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const details = [[statValue('Beds'),'bedrooms'],[statValue('Baths'),'bathrooms'],[statValue('Sq'),'square feet']].filter(([value]) => value).map(([value,label]) => `${value} ${label}`);
         const propertyType = factValue('Type') || ({homes:'Single Family Residence',land:'Land',other:'Commercial Property'}[card.dataset.mapCategory] || 'Property');
         const description = `${address} is a ${propertyType}${details.length ? ` with ${details.join(', ')}` : ''}${amenities.length ? `${details.length ? ' and features' : ' featuring'} ${amenities.join(', ')}` : ''}.`.replace(/[—–]/g,',').replace(/\s+/g,' ');
-        const shareUrl = `https://totalrealtysource.com/listing-share/${encodeURIComponent(card.dataset.modal)}.html`;
+        const shareUrl = `https://totalrealtysource.com/listing-share/${encodeURIComponent(listingSlugForCard(card))}.html`;
         const shareText = `${address}\n${price}\n${description}`;
         const leadImage = modal.querySelector('.slide')?.getAttribute('src') || card.querySelector(':scope > img')?.getAttribute('src') || '';
 
@@ -7477,8 +7476,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         }
       });
 
-      const linkedModalId = new URLSearchParams(window.location.search).get('listing') || window.location.hash.slice(1);
-      if (linkedModalId && document.getElementById(linkedModalId)) openModal(linkedModalId);
+      const linkedModalId = resolveListingReference(new URLSearchParams(window.location.search).get('listing') || window.location.hash.slice(1));
+      if (linkedModalId) openModal(linkedModalId);
     }
 
     function addListingMarketingDetails() {
@@ -7908,7 +7907,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const image = modal.querySelector('.slide')?.getAttribute('src')
           || card.querySelector(':scope > img')?.getAttribute('src')
           || '';
-        const shareUrl = `https://totalrealtysource.com/listing-share/${encodeURIComponent(card.dataset.modal)}.html`;
+        const shareUrl = `https://totalrealtysource.com/listing-share/${encodeURIComponent(listingSlugForCard(card))}.html`;
         const shareText = `${address}\n${shortDescription}\nREALTOR® ${agentName}`;
 
         share.querySelector('.modal-share-panel')?.remove();
@@ -7985,7 +7984,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const price = card.querySelector('.price')?.childNodes[0]?.textContent.trim() || card.querySelector('.price')?.textContent.trim() || 'Price available on listing';
         const image = modal.querySelector('.slide')?.getAttribute('src') || card.querySelector(':scope > img')?.getAttribute('src') || '';
         const description = `${address} is available through Total Realty Source.`;
-        const shareUrl = `https://totalrealtysource.com/listing-share/${encodeURIComponent(card.dataset.modal)}.html`;
+        const shareUrl = `https://totalrealtysource.com/listing-share/${encodeURIComponent(listingSlugForCard(card))}.html`;
         const shareText = `${address}\n${price}\n${description}`;
         const share = document.createElement('div');
         share.className = 'modal-share-wrap';
@@ -8059,12 +8058,42 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       safelyRunModalSetup(addModalNeighborhoodMaps);
     });
   
+    function listingSlugForCard(card) {
+      const addressElement = card?.querySelector('.address');
+      const address = addressElement?.innerText || addressElement?.textContent || card?.dataset.modal || 'property';
+      const base = address.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+        .replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+      const cards = Array.from(document.querySelectorAll('.card[data-modal]'));
+      const position = cards.indexOf(card);
+      const duplicateNumber = cards.slice(0, Math.max(position, 0)).filter(candidate => {
+        const element = candidate.querySelector('.address');
+        const candidateAddress = element?.innerText || element?.textContent || candidate.dataset.modal || 'property';
+        return candidateAddress.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+          .replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') === base;
+      }).length;
+      return duplicateNumber ? `${base}-${duplicateNumber + 1}` : base;
+    }
+
+    function resolveListingReference(reference) {
+      const value = decodeURIComponent(String(reference || '')).replace(/^#/, '');
+      if (!value) return '';
+      if (document.getElementById(value)) return value;
+      const card = Array.from(document.querySelectorAll('.card[data-modal]'))
+        .find(candidate => listingSlugForCard(candidate) === value);
+      return card?.dataset.modal || '';
+    }
+
     function openModal(modalId) {
       const modal = document.getElementById(modalId);
       if (!modal) return;
+      const card = document.querySelector(`.card[data-modal="${CSS.escape(modalId)}"]`);
       currentSlide = 0;
       activeModalId = modalId;
       modal.style.display = "block";
+      const modalUrl = new URL(window.location.href);
+      modalUrl.searchParams.set('listing', listingSlugForCard(card));
+      if (modalUrl.hash === `#${modalId}` || modalUrl.hash === '#') modalUrl.hash = '';
+      history.replaceState({ ...(history.state || {}), listing: modalId }, '', modalUrl);
       loadModalNeighborhoodMap(modal);
       showSlide(currentSlide, modalId);
       document.dispatchEvent(new CustomEvent('listingviewed', { detail: { modalId } }));
@@ -8075,6 +8104,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       const modals = document.querySelectorAll(".custom-modal");
       modals.forEach(modal => modal.style.display = "none");
       activeModalId = null;
+      const modalUrl = new URL(window.location.href);
+      modalUrl.searchParams.delete('listing');
+      if (/^#(?:listing)?[^/]+Modal$/i.test(modalUrl.hash)) modalUrl.hash = '';
+      history.replaceState({ ...(history.state || {}), listing: null }, '', modalUrl);
     }
   
     function plusSlides(n) {
@@ -10299,6 +10332,110 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       });
       phoneViewport.addEventListener('change', () => renderListingPage(false));
       requestAnimationFrame(() => renderListingPage(false));
+    });
+  </script>
+  <style>
+    .mobile-photo-viewer{position:fixed;inset:0;z-index:10000;display:none;background:#050505;color:#fff}
+    .mobile-photo-viewer.is-open{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+    .mobile-photo-viewer__top{display:flex;align-items:center;justify-content:space-between;min-height:68px;padding:max(10px,env(safe-area-inset-top)) 16px 8px;background:linear-gradient(#050505,rgba(5,5,5,.8))}
+    .mobile-photo-viewer__close{display:inline-flex;align-items:center;gap:9px;min-height:48px;border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:8px 17px;background:rgba(255,255,255,.12);color:#fff;font:600 16px 'Lora',serif}
+    .mobile-photo-viewer__close svg{width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none}
+    .mobile-photo-viewer__count{margin:0;font:600 16px 'Lora',serif;font-variant-numeric:tabular-nums}
+    .mobile-photo-viewer__stage{position:relative;display:grid;place-items:center;min-height:0;overflow:hidden;touch-action:pan-y pinch-zoom}
+    .mobile-photo-viewer__image{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
+    .mobile-photo-viewer__arrow{position:absolute;top:50%;display:grid;place-items:center;width:52px;height:52px;border:1px solid rgba(255,255,255,.6);border-radius:50%;background:rgba(10,10,10,.58);color:#fff;transform:translateY(-50%);box-shadow:0 4px 18px rgba(0,0,0,.35)}
+    .mobile-photo-viewer__arrow svg{width:25px;height:25px;stroke:currentColor;stroke-width:1.8;fill:none}
+    .mobile-photo-viewer__arrow--previous{left:12px}.mobile-photo-viewer__arrow--next{right:12px}
+    .mobile-photo-viewer__arrow[hidden]{display:none}
+    .mobile-photo-viewer__help{margin:0;padding:12px 20px max(18px,env(safe-area-inset-bottom));color:#fff;text-align:center;font:14px/1.4 'Lora',serif;background:linear-gradient(rgba(5,5,5,.78),#050505)}
+    @media(min-width:801px){.mobile-photo-viewer{display:none!important}}
+    @media(max-width:800px){.custom-modal .carousel .slide{cursor:zoom-in}}
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function setupMobileListingPhotoViewer() {
+      const mobileScreen = window.matchMedia('(max-width:800px)');
+      const viewer = document.createElement('div');
+      viewer.className = 'mobile-photo-viewer';
+      viewer.setAttribute('role', 'dialog');
+      viewer.setAttribute('aria-modal', 'true');
+      viewer.setAttribute('aria-label', 'Listing photos');
+      viewer.innerHTML = `<div class="mobile-photo-viewer__top"><button class="mobile-photo-viewer__close" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Close</button><p class="mobile-photo-viewer__count" aria-live="polite"></p></div><div class="mobile-photo-viewer__stage"><button class="mobile-photo-viewer__arrow mobile-photo-viewer__arrow--previous" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><img class="mobile-photo-viewer__image" alt=""><button class="mobile-photo-viewer__arrow mobile-photo-viewer__arrow--next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div><p class="mobile-photo-viewer__help">Swipe left or right to view photos</p>`;
+      document.body.appendChild(viewer);
+
+      const image = viewer.querySelector('.mobile-photo-viewer__image');
+      const count = viewer.querySelector('.mobile-photo-viewer__count');
+      const previous = viewer.querySelector('.mobile-photo-viewer__arrow--previous');
+      const next = viewer.querySelector('.mobile-photo-viewer__arrow--next');
+      const close = viewer.querySelector('.mobile-photo-viewer__close');
+      const stage = viewer.querySelector('.mobile-photo-viewer__stage');
+      let photos = [];
+      let photoIndex = 0;
+      let priorOverflow = '';
+      let touchStartX = 0;
+      let touchStartY = 0;
+
+      function renderPhoto() {
+        const photo = photos[photoIndex];
+        if (!photo) return;
+        image.src = photo.currentSrc || photo.src;
+        image.alt = photo.alt || 'Listing photo';
+        count.textContent = `${photoIndex + 1} of ${photos.length}`;
+        const onlyOne = photos.length < 2;
+        previous.hidden = onlyOne;
+        next.hidden = onlyOne;
+      }
+      function movePhoto(direction) {
+        if (photos.length < 2) return;
+        photoIndex = (photoIndex + direction + photos.length) % photos.length;
+        renderPhoto();
+      }
+      function openViewer(clickedPhoto) {
+        const carousel = clickedPhoto.closest('.carousel');
+        photos = Array.from(carousel?.querySelectorAll('.slide') || []).filter(photo => photo.src);
+        if (!photos.length) return;
+        photoIndex = Math.max(0, photos.indexOf(clickedPhoto));
+        priorOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        viewer.classList.add('is-open');
+        renderPhoto();
+        close.focus({preventScroll:true});
+      }
+      function closeViewer() {
+        if (!viewer.classList.contains('is-open')) return;
+        viewer.classList.remove('is-open');
+        image.removeAttribute('src');
+        document.body.style.overflow = priorOverflow;
+      }
+
+      document.addEventListener('click', event => {
+        const clickedPhoto = event.target.closest('.custom-modal .carousel .slide');
+        if (!clickedPhoto || !mobileScreen.matches) return;
+        event.preventDefault();
+        event.stopPropagation();
+        openViewer(clickedPhoto);
+      });
+      previous.addEventListener('click', () => movePhoto(-1));
+      next.addEventListener('click', () => movePhoto(1));
+      close.addEventListener('click', closeViewer);
+      viewer.addEventListener('click', event => { if (event.target === viewer) closeViewer(); });
+      stage.addEventListener('touchstart', event => {
+        if (event.touches.length !== 1) return;
+        touchStartX = event.touches[0].clientX;
+        touchStartY = event.touches[0].clientY;
+      }, {passive:true});
+      stage.addEventListener('touchend', event => {
+        if (event.changedTouches.length !== 1) return;
+        const deltaX = event.changedTouches[0].clientX - touchStartX;
+        const deltaY = event.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(deltaX) >= 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) movePhoto(deltaX < 0 ? 1 : -1);
+      }, {passive:true});
+      document.addEventListener('keydown', event => {
+        if (!viewer.classList.contains('is-open')) return;
+        if (event.key === 'Escape') closeViewer();
+        if (event.key === 'ArrowLeft') movePhoto(-1);
+        if (event.key === 'ArrowRight') movePhoto(1);
+      });
+      mobileScreen.addEventListener('change', event => { if (!event.matches) closeViewer(); });
     });
   </script>
   <script src="script.js"></script>
