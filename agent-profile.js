@@ -8,6 +8,15 @@
     'tammy-jones': {name:'Tammy Jones',aliases:['Tammy Jones','Tamra L Jones'],title:'Real Estate Agent',photo:'Untitled design-10/3tammy.png',phone:'731-225-3158',specialties:["Buyer's Agent","Seller's Agent"],bio:'Tammy has been a realtor since 2007 from Town and Country Realtors 2011. Prior to becoming a realtor, Tammy was in the mortgage business for over 25 years. Tammy’s been married for over 28 years, has one daughter, and is very thankful and grateful for God allowing her to have a career that she loves and enjoys. She’s met so many amazing people with this job and looks forward to meeting many more.'},
     'laura-burke': {name:'Laura Burke',aliases:['Laura Burke'],title:'Real Estate Agent',photo:'Untitled design-10/4.png',phone:'312-519-8659',specialties:["Buyer's Agent","Seller's Agent"],bio:'Meet Laura Burke, the newest addition to our team. With a strong focus on client care, Laura brings a fresh, attentive approach to every real estate journey. Whether you’re buying your first home or making your next move, she’s here to listen, guide, and help you navigate each step with confidence. Reach out to Laura at 312-519-8659 to get started.'}
   };
+  agents['amy-mclemore']={name:'Amy McLemore',aliases:['Amy McLemore'],title:'Real Estate Agent',photo:'Untitled design-10/1amy.png',phone:'731-234-0049',website:'https://amymclemore.com/',specialties:["Buyer's Agent","Seller's Agent",'Relocation','Home Staging','Residential'],bio:'Amy is a dedicated West Tennessee real estate professional with extensive local knowledge and more than two decades of experience helping buyers and sellers. She combines responsive service, market insight, and practical transaction guidance to help each client move forward confidently.'};
+  const profileReviewOverrides={
+    'lynda-climer':[["Lynda's knowledge of homes, land, and local values made the buying process reassuring.",'User review','2013-06-12'],["Lynda's experience helped sellers prepare and list their home while living out of state, resulting in a contract within about a month.",'User review','2013-05-15']],
+    'jackie-david':[['Jackie made every step easy, communicated clearly, and could be depended upon whenever transaction obstacles arose.','Mark Gibson','2026-02-12'],['Jackie was knowledgeable, honest, caring, and highly recommended for real estate needs.','Stacey Dunevant','2025-12-01'],['Jackie made a first home purchase easy and enjoyable by remaining available, honest, and focused on the right fit.','Ashley Beckham','2025-10-07'],['Jackie was efficient, devoted, and willing to help with every question and concern.','Michelle Mattix','2025-03-06'],['Jackie was kind, professional, attentive, and worked extremely hard for her clients.','Brandon Powers','2024-10-14'],['Jackie’s attentive service helped a family sell their childhood home within a few months.','Ashley Powers','2024-10-14']],
+    'amy-mclemore':[["Amy was professional, caring, and dedicated; her marketing produced a full-price offer within three days.",'Teresa West','2026-06-19'],['Amy went above and beyond, used strong local knowledge, and secured another first-day full-price offer.','Lisa Mays','2026-06-11'],['Amy remained available throughout a stressful relocation and made the purchase feel seamless.','Duvina Fisk','2025-10-27'],['Amy’s hustle and results helped sell the property in approximately 45 days.','Jeremy Dunn'],['Amy helped with two purchases and one sale while supporting changing plans.','Brittney Goode'],['A cooperating agent described a smooth transaction on Amy’s Milan listing.','Jennifer Easterday']],
+    'lisa-ballinger':[['Lisa was knowledgeable, patient, helpful, and effective when working with real-estate investors.','User review','2019-09-25'],['Lisa represented the seller throughout the complete sale and provided professional guidance from beginning to end.','Helen Wade','2019-01-15'],['Lisa supported the buyers throughout the process and advocated for them when lender problems arose.','User review','2019-01-15'],['Lisa was professional, honest, trustworthy, and committed to protecting her client’s interests.','Annette Ewell','2018-10-11'],['Lisa worked hard to secure the best offer and kept the seller informed.','User review','2018-10-10'],['Lisa succeeded in selling the home after other agents had not.','User review','2018-10-10']],
+    'tammy-jones':[["Tammy's knowledge and expertise made finding and purchasing a dream home easy and smooth.",'User review','2023-11-07'],['A repeat client praised Tammy’s experience and proactive service across personal homes, vacation homes, and investment property.','User review','2023-11-06']]
+  };
+  Object.keys(profileReviewOverrides).forEach(key=>{if(agents[key])agents[key].testimonials=profileReviewOverrides[key];});
   const slug = new URLSearchParams(location.search).get('agent') || '';
   const agent = agents[slug] || agents['lynda-climer'];
   const clean = value => String(value || '').replace(/\s+/g,' ').trim();
@@ -24,24 +33,28 @@
   document.getElementById('agent-bio').textContent = agent.bio;
   document.getElementById('agent-listings-description').textContent = `Active properties from REALTOR® ${agent.name}.`;
   document.getElementById('contact-heading').textContent = `Contact ${agent.name}`;
+  document.getElementById('profile-add-testimonial').href = `agent-reviews.html?agent=${encodeURIComponent(slug || 'lynda-climer')}#write-review`;
   document.querySelector('#agent-contact-form textarea').value = `I'm interested in working with ${agent.name}.`;
   document.getElementById('agent-specialties').replaceChildren(...agent.specialties.map(value => {const li=document.createElement('li');li.textContent=value;return li;}));
   const testimonialSection = document.getElementById('agent-testimonial-section');
   if (agent.testimonials?.length) {
-    document.getElementById('agent-testimonials').replaceChildren(...agent.testimonials.map(([quote,name]) => {
+    const orderedTestimonials=agent.testimonials.slice().sort((a,b)=>String(b[2]||'').localeCompare(String(a[2]||'')));
+    const cards=orderedTestimonials.map(([quote,name,date]) => {
       const article=document.createElement('article');article.className='profile-testimonial';
       const stars=document.createElement('strong');stars.textContent='★★★★★';
       const text=document.createElement('p');text.textContent=quote;
       const person=document.createElement('span');person.textContent=`— ${name}`;
-      article.append(stars,text,person);return article;
-    }));
+      article.append(stars,text,person);if(date){const time=document.createElement('time');time.dateTime=date;time.textContent=new Date(date+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});article.append(time);}return article;
+    });
+    const seeAll=document.createElement('a');seeAll.className='profile-testimonial profile-see-all';seeAll.href=`agent-reviews.html?agent=${encodeURIComponent(slug)}`;seeAll.innerHTML='<strong>See all reviews</strong><span>Read every available testimonial</span><b aria-hidden="true">→</b>';cards.push(seeAll);
+    document.getElementById('agent-testimonials').replaceChildren(...cards);
   } else testimonialSection.hidden = true;
   const testimonialCarousel=document.getElementById('agent-testimonials');
   const testimonialPrevious=document.querySelector('[data-testimonial-direction="previous"]');
   const testimonialNext=document.querySelector('[data-testimonial-direction="next"]');
   const testimonialCards=Array.from(testimonialCarousel.querySelectorAll('.profile-testimonial'));
   let testimonialStart=0;
-  const testimonialPageSize=()=>window.matchMedia('(max-width:620px)').matches ? 1 : 4;
+  const testimonialPageSize=()=>window.matchMedia('(max-width:620px)').matches ? 1 : 2;
   const updateTestimonialArrows=()=>{
     const pageSize=testimonialPageSize();
     testimonialStart=Math.min(testimonialStart,Math.max(0,testimonialCards.length-pageSize));
@@ -51,7 +64,7 @@
   };
   const moveTestimonials=direction=>{
     const pageSize=testimonialPageSize();
-    const step=pageSize===1 ? 1 : 2;
+    const step=pageSize;
     testimonialStart=direction>0 ? Math.min(testimonialStart+step,Math.max(0,testimonialCards.length-pageSize)) : Math.max(0,testimonialStart-step);
     updateTestimonialArrows();
   };

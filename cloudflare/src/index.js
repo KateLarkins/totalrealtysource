@@ -1,6 +1,8 @@
 const ALLOWED_ORIGINS = new Set([
   "https://totalrealtysource.com",
   "https://www.totalrealtysource.com",
+  "http://127.0.0.1:5501",
+  "http://localhost:5501",
 ]);
 
 const AGENT_SLUGS = new Set([
@@ -92,6 +94,47 @@ async function handleContact(request, env, origin) {
   return json({ ok: true }, 200, origin);
 }
 
+async function handleReview(request, env, origin) {
+  const contentLength = Number(request.headers.get("Content-Length") || 0);
+  if (contentLength > 20000) return json({ error: "Testimonial is too large." }, 413, origin);
+  let body;
+  try { body = await request.json(); }
+  catch (_) { return json({ error: "Invalid form submission." }, 400, origin); }
+  if (body.website) return json({ ok: true }, 200, origin);
+
+  const agent = String(body.agent || "").trim();
+  const name = String(body.name || "").trim().slice(0, 100);
+  const email = String(body.email || "").trim().slice(0, 160);
+  const rating = Number(body.rating);
+  const review = String(body.review || "").trim().slice(0, 4000);
+  if (!AGENT_SLUGS.has(agent) || name.length < 2 || !/^\S+@\S+\.\S+$/.test(email) || !Number.isInteger(rating) || rating < 1 || rating > 5 || review.length < 10) {
+    return json({ error: "Please complete every field with valid information." }, 400, origin);
+  }
+
+  const hash = await visitorHash(request, env.CONTACT_RATE_SALT);
+  const recent = await env.DB.prepare("SELECT COUNT(*) AS total FROM contact_attempts WHERE visitor_hash = ? AND created_at >= datetime('now', '-1 hour')").bind(hash).first("total");
+  if (Number(recent || 0) >= 5) return json({ error: "Too many submissions were received. Please try again later." }, 429, origin);
+  if (!env.REVIEW_EMAIL) return json({ error: "Testimonial delivery is not configured." }, 503, origin);
+
+  const emailResponse = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { "Authorization": `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      from: env.FROM_EMAIL,
+      to: [env.REVIEW_EMAIL],
+      reply_to: email,
+      subject: `Testimonial awaiting approval for ${agent}`,
+      text: `Reviewer: ${name}\nEmail: ${email}\nAgent: ${agent}\nRating: ${rating} of 5\n\n${review}\n\nThis testimonial has not been published. Review and verify it before adding it to the website.`,
+    }),
+  });
+  if (!emailResponse.ok) {
+    console.error(JSON.stringify({ event: "review_delivery_failed", status: emailResponse.status, agent }));
+    return json({ error: "Your testimonial could not be delivered." }, 502, origin);
+  }
+  await env.DB.prepare("INSERT INTO contact_attempts (visitor_hash) VALUES (?)").bind(hash).run();
+  return json({ ok: true }, 200, origin);
+}
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin") || "";
@@ -102,6 +145,7 @@ export default {
     try {
       if (viewMatch && (request.method === "GET" || request.method === "POST")) return await handleViews(request, env, decodeURIComponent(viewMatch[1]), origin);
       if (url.pathname === "/api/contact" && request.method === "POST") return await handleContact(request, env, origin);
+      if (url.pathname === "/api/review" && request.method === "POST") return await handleReview(request, env, origin);
       return json({ error: "Not found." }, 404, origin);
     } catch (error) {
       console.error(JSON.stringify({ event: "worker_error", message: error instanceof Error ? error.message : String(error) }));

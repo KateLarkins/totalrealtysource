@@ -2,6 +2,8 @@
 
 This Worker privately routes agent contact forms and stores listing view counts in D1. Personal agent emails and the Resend key must only be added as encrypted Cloudflare secrets.
 
+Website testimonial submissions use the fixed `REVIEW_EMAIL` Wrangler variable and are emailed for manual approval. They are never published automatically.
+
 ## Private secrets
 
 - `RESEND_API_KEY`

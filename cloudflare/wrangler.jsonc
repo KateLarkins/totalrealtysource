@@ -8,6 +8,9 @@
     "enabled": true,
     "head_sampling_rate": 1
   },
+  "vars": {
+    "REVIEW_EMAIL": "katelwork77@gmail.com"
+  },
   "d1_databases": [
     {
       "binding": "DB",
