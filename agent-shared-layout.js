@@ -34,7 +34,7 @@
         const link = document.createElement('a');
         link.className = 'agent-see-all-reviews';
         link.href = 'agent-reviews.html?agent=' + encodeURIComponent(slug);
-        link.innerHTML = '<strong>See all reviews</strong><span>Read every available client testimonial →</span>';
+        link.innerHTML = '<strong>See all reviews</strong><b aria-hidden="true">→</b>';
         existingReviews.querySelector('.agent-review-grid')?.appendChild(link);
       }
       return;
@@ -85,7 +85,7 @@
     const seeAll = document.createElement('a');
     seeAll.className = 'agent-testimonial-card agent-see-all-reviews';
     seeAll.href = 'agent-reviews.html?agent=' + encodeURIComponent(slug);
-    seeAll.innerHTML = '<strong>See all reviews</strong><span>Read ' + sortedReviews.length + ' available client testimonials</span><b aria-hidden="true">→</b>';
+    seeAll.innerHTML = '<strong>See all reviews</strong><b aria-hidden="true">→</b>';
     seeAll.style.cssText = "align-items:center;justify-content:center;justify-self:stretch;width:100%;min-height:145px;padding:24px 28px;color:#fff;background:#023e6c;border-color:#023e6c;border-radius:7px;text-align:center;text-decoration:none";
     grid.appendChild(seeAll);
     section.append(heading, grid);

@@ -46,26 +46,35 @@
       const person=document.createElement('span');person.textContent=`— ${name}`;
       article.append(stars,text,person);if(date){const time=document.createElement('time');time.dateTime=date;time.textContent=new Date(date+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});article.append(time);}return article;
     });
-    const seeAll=document.createElement('a');seeAll.className='profile-testimonial profile-see-all';seeAll.href=`agent-reviews.html?agent=${encodeURIComponent(slug)}`;seeAll.innerHTML='<strong>See all reviews</strong><span>Read every available testimonial</span><b aria-hidden="true">→</b>';cards.push(seeAll);
+    const seeAll=document.createElement('a');seeAll.className='profile-testimonial profile-see-all';seeAll.href=`agent-reviews.html?agent=${encodeURIComponent(slug)}`;seeAll.innerHTML='<strong>See all reviews</strong><b aria-hidden="true">→</b>';cards.push(seeAll);
     document.getElementById('agent-testimonials').replaceChildren(...cards);
   } else testimonialSection.hidden = true;
   const testimonialCarousel=document.getElementById('agent-testimonials');
   const testimonialPrevious=document.querySelector('[data-testimonial-direction="previous"]');
   const testimonialNext=document.querySelector('[data-testimonial-direction="next"]');
   const testimonialCards=Array.from(testimonialCarousel.querySelectorAll('.profile-testimonial'));
+  const mobileTestimonialCards=()=>{
+    const reviews=testimonialCards.filter(card=>!card.classList.contains('profile-see-all')).slice(0,4);
+    const seeAll=testimonialCards.find(card=>card.classList.contains('profile-see-all'));
+    return seeAll ? [...reviews,seeAll] : reviews;
+  };
+  const visibleTestimonialSequence=()=>window.matchMedia('(max-width:620px)').matches ? mobileTestimonialCards() : testimonialCards;
   let testimonialStart=0;
   const testimonialPageSize=()=>window.matchMedia('(max-width:620px)').matches ? 1 : 2;
   const updateTestimonialArrows=()=>{
     const pageSize=testimonialPageSize();
-    testimonialStart=Math.min(testimonialStart,Math.max(0,testimonialCards.length-pageSize));
-    testimonialCards.forEach((card,index)=>{card.hidden=index<testimonialStart || index>=testimonialStart+pageSize;});
+    const sequence=visibleTestimonialSequence();
+    testimonialStart=Math.min(testimonialStart,Math.max(0,sequence.length-pageSize));
+    testimonialCards.forEach(card=>{card.hidden=true;});
+    sequence.forEach((card,index)=>{card.hidden=index<testimonialStart || index>=testimonialStart+pageSize;});
     testimonialPrevious.classList.toggle('is-hidden',testimonialStart===0);
-    testimonialNext.classList.toggle('is-hidden',testimonialStart+pageSize>=testimonialCards.length);
+    testimonialNext.classList.toggle('is-hidden',testimonialStart+pageSize>=sequence.length);
   };
   const moveTestimonials=direction=>{
     const pageSize=testimonialPageSize();
     const step=pageSize;
-    testimonialStart=direction>0 ? Math.min(testimonialStart+step,Math.max(0,testimonialCards.length-pageSize)) : Math.max(0,testimonialStart-step);
+    const sequence=visibleTestimonialSequence();
+    testimonialStart=direction>0 ? Math.min(testimonialStart+step,Math.max(0,sequence.length-pageSize)) : Math.max(0,testimonialStart-step);
     updateTestimonialArrows();
   };
   document.querySelectorAll('[data-testimonial-direction]').forEach(button => button.addEventListener('click', () => {
