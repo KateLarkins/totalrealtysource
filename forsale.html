@@ -1494,7 +1494,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   .featured-listings-header h2 { font-size:clamp(27px,7.5vw,30px); }
   .property-hero-kicker { font-size:11px; }
   .property-hero-copy { font-size:14px; }
-  #listing-filter-bar .map-location-search input { min-height:50px; padding-inline:13px 40px; font-size:13px; }
+  #listing-filter-bar .map-location-search input { min-height:50px; padding-inline:13px 40px; font-size:16px; }
   .popular-property-searches { display:block; margin:4px 0 12px; }
   .popular-property-searches > span { display:block; margin-bottom:9px; font-size:13px; }
   .popular-property-searches > div { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
@@ -1527,7 +1527,17 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   .listing-map-navigation { margin-top:12px; }
   .map-location-search { flex-wrap:wrap; gap:8px; }
   #listing-filter-bar .map-location-search { flex:1 0 100%; width:100%; max-width:none; }
-  .map-location-search .map-search-input-wrap { flex:1 1 100%; }
+  .map-location-search .map-search-input-wrap { position:relative; z-index:30; flex:1 1 100%; width:100%; }
+  .map-location-search .map-search-suggestions {
+    top:calc(100% + 8px);
+    bottom:auto;
+    left:0;
+    width:100%;
+    max-height:min(240px,calc(100dvh - 190px));
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+    border-radius:8px;
+  }
   .map-location-search > button[type="submit"] { width:100%; margin:0; }
   .map-location-search .use-current-location { width:100%; margin-left:0; }
   body.mobile-list-view .listing-map-layout { display:none; }
