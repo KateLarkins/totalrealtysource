@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css">
+<script defer src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
 <script defer src="tennessee-map-data.js"></script>
 <script defer src="jackson-boundary-data.js"></script>
 <script defer src="tennessee-primary-roads-data.js"></script>
@@ -193,6 +195,151 @@
       background: var(--map-water);
       border: 1px solid #DED4C5;
       box-shadow: 0 8px 24px rgba(83, 62, 31, 0.08);
+    }
+
+    #trs-vector-map {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: #eef1ed;
+    }
+
+    #tennessee-listing-map.vector-map-ready > svg {
+      display: none !important;
+    }
+
+    #tennessee-listing-map.vector-map-ready .maplibregl-map,
+    #tennessee-listing-map.vector-map-ready .maplibregl-canvas-container,
+    #tennessee-listing-map.vector-map-ready .maplibregl-canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    #tennessee-listing-map .maplibregl-canvas { cursor: grab; }
+    #tennessee-listing-map .maplibregl-canvas:active { cursor: grabbing; }
+    #tennessee-listing-map .maplibregl-ctrl-attrib { color:#555; background:rgba(255,255,255,.82); font:10px/1.3 Arial,sans-serif; }
+    #tennessee-listing-map .maplibregl-ctrl-attrib a { color:#333; }
+    #tennessee-listing-map .maplibregl-ctrl-logo { opacity:.72; transform:scale(.82); transform-origin:left bottom; }
+    .trs-map-attribution {
+      position: absolute;
+      left: 7px;
+      bottom: 7px;
+      z-index: 9;
+      font-family: Arial, sans-serif;
+    }
+    .trs-map-attribution summary {
+      display: grid;
+      place-items: center;
+      width: 16px;
+      height: 16px;
+      box-sizing: border-box;
+      overflow: hidden;
+      list-style: none;
+      border: 1px solid #d1d1d1;
+      border-radius: 50%;
+      background: rgba(255,255,255,.68);
+      box-shadow: 0 1px 3px rgba(0,0,0,.12);
+      color: #888;
+      cursor: pointer;
+      font: 600 10px/1 Arial, sans-serif;
+      user-select: none;
+    }
+    .trs-map-attribution summary::-webkit-details-marker { display: none; }
+    .trs-map-attribution summary:hover,
+    .trs-map-attribution summary:focus-visible { color: #555; border-color: #aaa; }
+    .trs-map-attribution-card {
+      position: absolute;
+      left: 22px;
+      bottom: 0;
+      width: max-content;
+      max-width: min(300px, calc(100vw - 42px));
+      padding: 6px 8px;
+      border: 1px solid #d7d7d7;
+      border-radius: 4px;
+      background: rgba(255,255,255,.62);
+      box-shadow: 0 2px 7px rgba(0,0,0,.14);
+      color: #666;
+      font: 9px/1.4 Arial, sans-serif;
+      white-space: normal;
+    }
+    .trs-map-attribution-card a { color: #555; text-decoration: underline; }
+    #tennessee-listing-map .maplibregl-ctrl-attrib.maplibregl-compact {
+      min-height: 18px;
+      padding: 0;
+      background: #fff;
+      border: 1px solid #d7d7d7;
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0,0,0,.12);
+      overflow: hidden;
+    }
+    #tennessee-listing-map .maplibregl-ctrl-attrib.maplibregl-compact:not(.maplibregl-compact-show) {
+      width: 18px;
+      height: 18px;
+      font-size: 0;
+    }
+    #tennessee-listing-map .maplibregl-ctrl-attrib.maplibregl-compact-show {
+      width: auto;
+      height: auto;
+      max-width: min(310px, calc(100vw - 44px));
+      padding: 3px 22px 3px 6px;
+      border-radius: 4px;
+      overflow: visible;
+      color: #777;
+      font-size: 9px;
+      line-height: 1.35;
+    }
+    #tennessee-listing-map .maplibregl-ctrl-attrib.maplibregl-compact:not(.maplibregl-compact-show) .maplibregl-ctrl-attrib-inner {
+      display: none !important;
+    }
+    #tennessee-listing-map .maplibregl-ctrl-attrib.maplibregl-compact-show .maplibregl-ctrl-attrib-inner {
+      display: block !important;
+      visibility: visible !important;
+      color: #777;
+      font-size: 9px;
+      white-space: normal;
+    }
+    #tennessee-listing-map .maplibregl-ctrl-attrib-button {
+      width: 18px;
+      height: 18px;
+      background-color: #fff;
+      background-size: 10px 10px;
+      opacity: .42;
+    }
+    #tennessee-listing-map .maplibregl-ctrl-attrib.maplibregl-compact-show .maplibregl-ctrl-attrib-button {
+      opacity: .58;
+    }
+
+    .trs-html-map-marker {
+      border: 2px solid #fff;
+      box-shadow: 0 2px 7px rgba(20, 32, 43, .28);
+      color: #fff;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .trs-html-map-marker.property { border-radius: 999px; padding: 7px 9px; }
+    .trs-html-map-marker.homes { background: #B00B0B; }
+    .trs-html-map-marker.land { background: #22B455; }
+    .trs-html-map-marker.other { background: #FF9F1C; }
+    .trs-html-map-marker.property.selected { background: #FCB43C; color: #0B4068; }
+    .trs-html-map-marker.cluster {
+      align-items: center;
+      background: #0B4068;
+      border-radius: 50%;
+      display: flex;
+      font-size: 12px;
+      height: 40px;
+      justify-content: center;
+      width: 40px;
+    }
+    .trs-html-map-marker:hover,
+    .trs-html-map-marker:focus-visible {
+      box-shadow: 0 3px 10px rgba(20, 32, 43, .4);
+      transform: translateY(-1px);
+      z-index: 4;
     }
 
     .listing-map-navigation {
@@ -525,7 +672,7 @@
       line-height: 1.45;
     }
 
-    #tennessee-listing-map svg {
+    #tennessee-listing-map > svg {
       width: 100%;
       height: 100%;
       display: block;
@@ -533,7 +680,7 @@
       touch-action: none;
     }
 
-    #tennessee-listing-map svg:active {
+    #tennessee-listing-map > svg:active {
       cursor: grabbing;
     }
 
@@ -1283,6 +1430,7 @@ body.workspace-view-split .property-back-to-top-wrap { display:flex; }
 @keyframes propertyEntrance { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
 @media (prefers-reduced-motion:reduce) { .featured-listings-header,.featured-listings-header + #listing-filter-bar,.explore-current-header,.property-search-workspace { animation:none; } }
 .map-search-area { position:absolute; left:18px; right:auto; top:auto; bottom:18px; z-index:6; min-height:42px; padding:9px 16px; color:#fff; background:#0B4068; border:1px solid #fff; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.18); transform:none; font:700 14px 'Lora'; cursor:pointer; }
+.map-search-area { display:none !important; }
 .map-search-area[hidden] { display:none; }
 .map-search-area:hover,.map-search-area:focus-visible { background:#082F4D; }
 .map-return-list { display:none; position:absolute; top:12px; left:50%; z-index:7; min-height:42px; padding:9px 18px; color:#fff; background:#0B4068; border:1px solid #fff; border-radius:6px; transform:translateX(-50%); font:700 14px 'Lora'; cursor:pointer; }
@@ -1408,8 +1556,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-agent-share-row > .modal-share-wrap .modal-share-title { width:100%; text-align:right; }
 .modal-agent-share-row > .modal-share-wrap .modal-share-links { justify-content:flex-end; }
 .modal-agent-contact-card { display:flex !important; align-items:center; gap:20px; min-width:0; padding-top:20px; border-top:1px solid #ccc; font-family:'Lora',serif; }
-.custom-modal [style*="border-top"] > .modal-agent-contact-card { padding-top:0; border-top:0; }
-#wakefieldModal .modal-agent-contact-card { padding-top:0; border-top:0; }
+.modal-agent-contact-card.has-parent-divider { padding-top:0; border-top:0; }
 .modal-agent-contact-card > img,.modal-agent-headshot { flex:0 0 100px; width:100px !important; height:100px !important; object-fit:cover; border-radius:50%; }
 .custom-modal .carousel { touch-action:pan-y pinch-zoom; overscroll-behavior-inline:contain; }
 .custom-modal .carousel > button { isolation:isolate; width:44px !important; height:44px !important; color:#17242C !important; background:transparent !important; box-shadow:none !important; font-size:18px !important; font-weight:300 !important; }
@@ -1791,6 +1938,14 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   </header>
   <div class="listing-map-layout">
     <div id="tennessee-listing-map" role="region" aria-label="Interactive map of current property listings in Tennessee">
+      <div id="trs-vector-map" aria-hidden="true"></div>
+      <details class="trs-map-attribution" open>
+        <summary aria-label="Show map attribution" title="Map information">i</summary>
+        <div class="trs-map-attribution-card">
+          <a href="https://openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a>
+          · <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener">OpenMapTiles</a>
+        </div>
+      </details>
       <button id="map-remove-boundary" class="map-remove-boundary" type="button" hidden><span aria-hidden="true">&times;</span> Clear search</button>
       <button id="map-search-area" class="map-search-area" type="button" hidden>Search this area</button>
       <button id="map-return-list" class="map-return-list" type="button"><span aria-hidden="true">&larr;</span> Back to listings</button>
@@ -7878,6 +8033,14 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         }
         if (!contactBlock || contactBlock === content || contactBlock.querySelector('.carousel,h2')) return;
         contactBlock.classList.add('modal-agent-contact-card');
+        let dividerAncestor = contactBlock.parentElement;
+        while (dividerAncestor && dividerAncestor !== content) {
+          if (dividerAncestor.style.borderTopWidth && dividerAncestor.style.borderTopStyle !== 'none') {
+            contactBlock.classList.add('has-parent-divider');
+            break;
+          }
+          dividerAncestor = dividerAncestor.parentElement;
+        }
         if (!photo) {
           const details = document.createElement('div');
           details.className = 'modal-agent-contact-details';
@@ -10215,6 +10378,14 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           showPopup({preventDefault() {}, stopPropagation() {}}, focusedListing, true);
         } else if (locationSearchActive) applyGeographicBoundaryFilter();
         else applyViewportFilter(false);
+        window.TRS_MAP_STATE = {
+          selectedBoundary,
+          boundaryVisible,
+          locationSearchActive,
+          selectedLocationName,
+          focusedListingModalId
+        };
+        document.dispatchEvent(new CustomEvent('trsmapstatechange', {detail: window.TRS_MAP_STATE}));
       }
 
       function clearLocationBoundary() {
@@ -10602,6 +10773,355 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         cancelAnimationFrame(mapUpdateFrame);
         mapUpdateFrame = requestAnimationFrame(renderMap);
       }).observe(document.querySelector('section.container:not(.listing-map-section)'), {childList: true, subtree: true});
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function initializeVectorPropertyMap() {
+      const mapRoot = document.getElementById('tennessee-listing-map');
+      const canvasRoot = document.getElementById('trs-vector-map');
+      const zoomInButton = document.getElementById('map-zoom-in');
+      const zoomOutButton = document.getElementById('map-zoom-out');
+      const searchAreaButton = document.getElementById('map-search-area');
+      const popup = document.getElementById('listing-map-popup');
+      const popupImage = document.getElementById('listing-map-popup-image');
+      const popupAddress = document.getElementById('listing-map-popup-address');
+      const popupPrice = document.getElementById('listing-map-popup-price');
+      const popupLink = document.getElementById('listing-map-popup-link');
+      const mapStatus = document.getElementById('listing-map-status');
+      const selectedLocationLabel = document.getElementById('map-selected-location');
+      const attributionDetails = mapRoot?.querySelector('.trs-map-attribution');
+      if (attributionDetails) {
+        attributionDetails.querySelector('summary')?.addEventListener('click', () => {
+          attributionDetails.dataset.userToggled = 'true';
+        });
+        window.setTimeout(() => {
+          if (attributionDetails.dataset.userToggled !== 'true') attributionDetails.open = false;
+        }, 5000);
+      }
+      if (!mapRoot || !canvasRoot || !window.maplibregl) return;
+
+      let vectorMap = null;
+      let mapLoaded = false;
+      let selectedVectorListing = '';
+      let lastScopeSignature = '';
+      let lastState = window.TRS_MAP_STATE || null;
+      let htmlMarkers = [];
+      let previewHideTimer = 0;
+
+      const categoryColors = {homes:'#B00B0B',land:'#22B455',other:'#FF9F1C'};
+
+      function shortPrice(value) {
+        const amount = Number(String(value || '').replace(/[^0-9.]/g, '')) || 0;
+        if (amount >= 1000000) return `$${(amount / 1000000).toFixed(2).replace(/\.0+$|0$/,'')}M`;
+        if (amount >= 1000) return `$${(amount / 1000).toFixed(1).replace(/\.0$/,'')}K`;
+        return `$${amount.toLocaleString('en-US')}`;
+      }
+
+      function listingData() {
+        return Array.from(document.querySelectorAll('.card[data-modal]')).map(card => {
+          const modal = document.getElementById(card.dataset.modal);
+          const address = card.querySelector('.address')?.textContent.replace(/\s+/g,' ').trim() || modal?.querySelector('h2')?.textContent.trim() || 'Current listing';
+          const price = card.querySelector('.price')?.textContent.replace(/\s+/g,' ').trim() || '$0';
+          return {
+            card,
+            modalId: card.dataset.modal,
+            longitude: Number(card.dataset.lng),
+            latitude: Number(card.dataset.lat),
+            category: card.dataset.mapCategory || 'other',
+            address,
+            price,
+            shortPrice: shortPrice(price),
+            image: modal?.querySelector('.slide')?.getAttribute('src') || card.querySelector(':scope > img')?.getAttribute('src') || ''
+          };
+        }).filter(item => Number.isFinite(item.longitude) && Number.isFinite(item.latitude));
+      }
+
+      function visibleListings() {
+        return listingData().filter(item => item.card.dataset.filterVisible !== 'false' && item.card.dataset.mapVisible !== 'false');
+      }
+
+      function listingsGeoJSON() {
+        return {
+          type:'FeatureCollection',
+          features:visibleListings().map((item, index) => ({
+            type:'Feature',
+            id:index + 1,
+            geometry:{type:'Point',coordinates:[item.longitude,item.latitude]},
+            properties:{
+              modalId:item.modalId,
+              category:item.category,
+              address:item.address,
+              price:item.price,
+              shortPrice:item.shortPrice
+            }
+          }))
+        };
+      }
+
+      function emptyCollection() { return {type:'FeatureCollection',features:[]}; }
+
+      function pillImage(color) {
+        const width = 144;
+        const height = 58;
+        const radius = 27;
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const context = canvas.getContext('2d');
+        context.beginPath();
+        context.moveTo(radius, 2);
+        context.lineTo(width - radius, 2);
+        context.quadraticCurveTo(width - 2, 2, width - 2, radius);
+        context.quadraticCurveTo(width - 2, height - 2, width - radius, height - 2);
+        context.lineTo(radius, height - 2);
+        context.quadraticCurveTo(2, height - 2, 2, radius);
+        context.quadraticCurveTo(2, 2, radius, 2);
+        context.closePath();
+        context.fillStyle = color;
+        context.fill();
+        context.lineWidth = 4;
+        context.strokeStyle = '#FFFFFF';
+        context.stroke();
+        return context.getImageData(0, 0, width, height);
+      }
+
+      function addPillImages() {
+        Object.entries(categoryColors).forEach(([category,color]) => {
+          if (!vectorMap.hasImage(`trs-pill-${category}`)) vectorMap.addImage(`trs-pill-${category}`, pillImage(color), {pixelRatio:2});
+        });
+        if (!vectorMap.hasImage('trs-pill-selected')) vectorMap.addImage('trs-pill-selected', pillImage('#FCB43C'), {pixelRatio:2});
+      }
+
+      function addPropertyLayers() {
+        vectorMap.addSource('trs-boundary', {type:'geojson',data:emptyCollection()});
+        vectorMap.addLayer({
+          id:'trs-boundary-fill',type:'fill',source:'trs-boundary',
+          paint:{'fill-color':'#8CB8D0','fill-opacity':0.08}
+        });
+        vectorMap.addLayer({
+          id:'trs-boundary-line',type:'line',source:'trs-boundary',
+          paint:{'line-color':'#6F9DB7','line-width':2,'line-opacity':0.62}
+        });
+      }
+
+      function flattenCoordinates(geometry, output = []) {
+        if (!geometry) return output;
+        const walk = value => {
+          if (Array.isArray(value) && typeof value[0] === 'number' && typeof value[1] === 'number') output.push(value);
+          else if (Array.isArray(value)) value.forEach(walk);
+        };
+        walk(geometry.coordinates);
+        return output;
+      }
+
+      function fitCoordinates(coordinates, options = {}) {
+        if (!coordinates.length || !vectorMap) return;
+        const bounds = coordinates.reduce((result, coordinate) => result.extend(coordinate), new maplibregl.LngLatBounds(coordinates[0], coordinates[0]));
+        vectorMap.fitBounds(bounds, {padding:options.padding || 64,maxZoom:options.maxZoom || 13,duration:options.duration ?? 650});
+      }
+
+      function updateBoundary(state) {
+        const source = vectorMap?.getSource('trs-boundary');
+        if (!source) return;
+        source.setData(state?.boundaryVisible && state.selectedBoundary ? state.selectedBoundary : emptyCollection());
+      }
+
+      function updateListingSource() {
+        if (mapLoaded) renderHtmlMarkers();
+      }
+
+      function applyMapState(state, forceFit = false) {
+        if (!state || !mapLoaded) return;
+        lastState = state;
+        updateBoundary(state);
+        updateListingSource();
+        const signature = `${state.selectedLocationName}|${state.boundaryVisible}|${state.focusedListingModalId}`;
+        if (!forceFit && signature === lastScopeSignature) return;
+        lastScopeSignature = signature;
+        if (state.focusedListingModalId) {
+          const listing = listingData().find(item => item.modalId === state.focusedListingModalId);
+          if (listing) vectorMap.flyTo({center:[listing.longitude,listing.latitude],zoom:15.5,duration:650});
+          return;
+        }
+        if (state.boundaryVisible && state.selectedBoundary) {
+          fitCoordinates(flattenCoordinates(state.selectedBoundary.geometry), {padding:45,maxZoom:14});
+          return;
+        }
+        const listings = visibleListings();
+        fitCoordinates(listings.map(item => [item.longitude,item.latitude]), {padding:58,maxZoom:9.1});
+      }
+
+      function setSelectedListing(modalId) {
+        selectedVectorListing = modalId || '';
+        document.querySelectorAll('.trs-html-map-marker.property').forEach(marker => {
+          marker.classList.toggle('selected', marker.dataset.featureId === String(selectedVectorListing));
+        });
+      }
+
+      function hidePreview() {
+        window.clearTimeout(previewHideTimer);
+        popup.hidden = true;
+        setSelectedListing('');
+      }
+
+      function schedulePreviewHide() {
+        window.clearTimeout(previewHideTimer);
+        previewHideTimer = window.setTimeout(() => {
+          if (popup.dataset.pinned !== 'true' && !popup.matches(':hover')) hidePreview();
+        }, 240);
+      }
+
+      function showPreview(feature, point, pinned = false) {
+        window.clearTimeout(previewHideTimer);
+        const properties = feature.properties || {};
+        const listing = listingData().find(item => item.modalId === properties.modalId);
+        popupImage.src = listing?.image || '';
+        popupImage.alt = properties.address || 'Property';
+        popupAddress.textContent = properties.address || '';
+        popupPrice.textContent = properties.price || '';
+        popup.dataset.modalId = properties.modalId || '';
+        popup.dataset.pinned = String(pinned);
+        popup.hidden = false;
+        const width = popup.offsetWidth || 280;
+        const height = popup.offsetHeight || 245;
+        popup.style.left = `${Math.max(10,Math.min(mapRoot.clientWidth - width - 10,point.x + 15))}px`;
+        popup.style.top = `${Math.max(10,Math.min(mapRoot.clientHeight - height - 10,point.y - height / 2))}px`;
+        setSelectedListing(feature.id || '');
+      }
+
+      function clearHtmlMarkers() {
+        htmlMarkers.forEach(marker => marker.remove());
+        htmlMarkers = [];
+      }
+
+      function renderHtmlMarkers() {
+        if (!mapLoaded || !vectorMap) return;
+        clearHtmlMarkers();
+        const gridSize = vectorMap.getZoom() >= 13 ? 30 : 46;
+        const groups = new Map();
+        visibleListings().forEach((item, index) => {
+          const point = vectorMap.project([item.longitude, item.latitude]);
+          const key = `${Math.round(point.x / gridSize)}:${Math.round(point.y / gridSize)}`;
+          if (!groups.has(key)) groups.set(key, []);
+          groups.get(key).push({...item, featureId:index + 1});
+        });
+        groups.forEach(group => {
+          group.forEach((item, groupIndex) => {
+          const longitude = item.longitude;
+          const latitude = item.latitude;
+          const spreadRadius = groupIndex === 0 ? 0 : 18 * Math.sqrt(groupIndex);
+          const spreadAngle = groupIndex * 2.399963;
+          const offset = [Math.cos(spreadAngle) * spreadRadius, Math.sin(spreadAngle) * spreadRadius];
+          const element = document.createElement('button');
+          element.type = 'button';
+          element.className = `trs-html-map-marker property ${item.category}`;
+          element.textContent = item.shortPrice;
+          element.setAttribute('aria-label', `${item.price}, ${item.address}`);
+          const feature = {id:item.featureId,properties:{modalId:item.modalId,category:item.category,address:item.address,price:item.price,shortPrice:item.shortPrice}};
+            element.dataset.featureId = String(item.featureId);
+            const preview = pinned => {
+              const point = vectorMap.project([item.longitude,item.latitude]);
+              showPreview(feature, {x:point.x + offset[0],y:point.y + offset[1]}, pinned);
+            };
+            element.addEventListener('mouseenter', () => { if (popup.dataset.pinned !== 'true') preview(false); });
+            element.addEventListener('mouseleave', schedulePreviewHide);
+            element.addEventListener('focus', () => preview(false));
+            element.addEventListener('blur', schedulePreviewHide);
+            element.addEventListener('click', event => { event.stopPropagation(); preview(true); });
+          htmlMarkers.push(new maplibregl.Marker({element,anchor:'center',offset}).setLngLat([longitude,latitude]).addTo(vectorMap));
+          });
+        });
+        canvasRoot.dataset.htmlMarkers = String(htmlMarkers.length);
+        canvasRoot.dataset.htmlListings = String(visibleListings().length);
+      }
+
+      function bindMapInteractions() {
+        vectorMap.on('click',() => {
+          popup.dataset.pinned='false';
+          hidePreview();
+        });
+        vectorMap.on('movestart',() => {
+          if (popup.dataset.pinned !== 'true') hidePreview();
+        });
+        vectorMap.on('moveend',renderHtmlMarkers);
+      }
+
+      function startVectorMap() {
+        if (vectorMap || mapRoot.clientWidth < 2 || mapRoot.clientHeight < 2) return;
+        vectorMap = new maplibregl.Map({
+          container:canvasRoot,
+          style:'https://tiles.openfreemap.org/styles/liberty',
+          center:[-88.8,35.85],
+          zoom:7.3,
+          minZoom:5.2,
+          maxZoom:18,
+          pitchWithRotate:false,
+          dragRotate:false,
+          touchPitch:false,
+          attributionControl:false
+        });
+        canvasRoot.__trsMap = vectorMap;
+        window.__TRS_VECTOR_MAP = vectorMap;
+        vectorMap.touchZoomRotate.disableRotation();
+        vectorMap.on('load',() => {
+          addPropertyLayers();
+          bindMapInteractions();
+          mapLoaded = true;
+          mapRoot.classList.add('vector-map-ready');
+          applyMapState(window.TRS_MAP_STATE || {selectedLocationName:'West Tennessee',boundaryVisible:false},true);
+          renderHtmlMarkers();
+        });
+        vectorMap.on('error',event => {
+          canvasRoot.dataset.vectorError = String(event?.error?.message || event?.error || 'Unknown map error').slice(0, 240);
+          if (!mapLoaded) console.warn('Vector map unavailable; retaining the geographic fallback.',event.error);
+        });
+      }
+
+      document.addEventListener('trsmapstatechange',event => {
+        lastState = event.detail;
+        if (!vectorMap) startVectorMap();
+        else if (mapLoaded) applyMapState(event.detail);
+      });
+      document.addEventListener('listingfilterchange',() => {
+        if (!mapLoaded) return;
+        updateListingSource();
+      });
+      document.addEventListener('listingmapviewchange',() => {
+        requestAnimationFrame(() => {
+          startVectorMap();
+          vectorMap?.resize();
+          if (mapLoaded) applyMapState(lastState || window.TRS_MAP_STATE,true);
+        });
+      });
+
+      zoomInButton.addEventListener('click',event => {
+        if (!vectorMap) return;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        vectorMap.zoomIn({duration:260});
+      },true);
+      zoomOutButton.addEventListener('click',event => {
+        if (!vectorMap) return;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        vectorMap.zoomOut({duration:260});
+      },true);
+      popup.addEventListener('mouseenter',() => window.clearTimeout(previewHideTimer));
+      popup.addEventListener('mouseleave',schedulePreviewHide);
+      popupLink.addEventListener('click',event => {
+        if (!popup.dataset.modalId) return;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        openModal(popup.dataset.modalId);
+      },true);
+
+      const mapResizeObserver = new ResizeObserver(() => {
+        if (!vectorMap) startVectorMap();
+        else vectorMap.resize();
+      });
+      mapResizeObserver.observe(mapRoot);
+      startVectorMap();
     });
   </script>
 
