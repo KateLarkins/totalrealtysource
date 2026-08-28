@@ -34,6 +34,39 @@
   document.getElementById('agent-listings-description').textContent = `Active properties from REALTOR® ${agent.name}.`;
   document.getElementById('contact-heading').textContent = `Contact ${agent.name}`;
   document.getElementById('profile-add-testimonial').href = `agent-reviews.html?agent=${encodeURIComponent(slug || 'lynda-climer')}#write-review`;
+  const addTestimonialLink=document.getElementById('profile-add-testimonial');
+  const inlineReview=document.getElementById('profile-inline-review');
+  const inlineReviewForm=document.getElementById('profile-inline-review-form');
+  const inlineReviewStatus=document.getElementById('profile-inline-review-status');
+  document.getElementById('profile-inline-review-intro').textContent=`We appreciate you taking the time to fill out a testimonial. Thanks for choosing ${agent.name} as your agent!`;
+  const closeInlineReview=()=>{
+    inlineReview.classList.remove('is-open');
+    inlineReview.hidden=true;
+    addTestimonialLink.setAttribute('aria-expanded','false');
+    addTestimonialLink.focus();
+  };
+  addTestimonialLink.setAttribute('aria-controls','profile-inline-review');
+  addTestimonialLink.setAttribute('aria-expanded','false');
+  addTestimonialLink.addEventListener('click',event=>{
+    if(!window.matchMedia('(max-width:620px)').matches)return;
+    event.preventDefault();
+    if(inlineReview.classList.contains('is-open')){closeInlineReview();return;}
+    inlineReview.hidden=false;
+    inlineReview.classList.add('is-open');
+    addTestimonialLink.setAttribute('aria-expanded','true');
+    inlineReview.querySelector('input[name="name"]').focus();
+    inlineReview.scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+  inlineReview.querySelector('.profile-inline-review-close').addEventListener('click',closeInlineReview);
+  inlineReviewForm.addEventListener('submit',event=>{
+    event.preventDefault();
+    const form=event.currentTarget,button=form.querySelector('button[type="submit"]'),data=new FormData(form);
+    button.disabled=true;inlineReviewStatus.textContent='Submitting your testimonial…';
+    fetch('https://total-realty-source-api.total-realty-source.workers.dev/api/review',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({agent:slug||'lynda-climer',name:clean(data.get('name')),email:clean(data.get('email')),rating:clean(data.get('rating')),review:clean(data.get('review')),website:clean(data.get('website'))})})
+      .then(async response=>{const result=await response.json().catch(()=>({}));if(!response.ok)throw new Error(result.error||'Your testimonial could not be submitted.');form.reset();inlineReviewStatus.textContent='Thank you. Your testimonial was sent to Total Realty Source for review.';})
+      .catch(error=>{inlineReviewStatus.textContent=String(error.message||'Your testimonial could not be submitted').replace(/[.!?]+$/,'')+'. Please try again later.';})
+      .finally(()=>{button.disabled=false;});
+  });
   document.querySelector('#agent-contact-form textarea').value = `I'm interested in working with ${agent.name}.`;
   document.getElementById('agent-specialties').replaceChildren(...agent.specialties.map(value => {const li=document.createElement('li');li.textContent=value;return li;}));
   const testimonialSection = document.getElementById('agent-testimonial-section');
