@@ -62,12 +62,37 @@ a {
  line-height: 1.6;
 }
 
+/* Keep the primary About page section headings visually consistent. */
+.about-section-heading {
+ font-family: 'Bodoni Moda', Georgia, serif !important;
+ font-weight: 700 !important;
+ color: #000 !important;
+}
+
+.agent-service-card h3 {
+ color: #000 !important;
+}
+
+.market-heading-break {
+ display: inline;
+}
+
 
 
 /* =========================
   Responsive Adjustments
 ========================= */
 @media (max-width: 768px) {
+ .stronger-communities-copy .about-section-heading {
+   font-size: 27px !important;
+   line-height: 1.15 !important;
+   letter-spacing: 1.2px !important;
+ }
+
+ .market-heading-break {
+   display: block;
+ }
+
  .team-cards {
    grid-template-columns: 1fr;
    justify-items: center;
@@ -410,7 +435,7 @@ parent.classList.toggle('open');
 <section id="team" style="background:#ffffff;padding:60px 2%;position:relative;">
   <div style="max-width:900px;margin:0 auto;">
 
-    <h2 style="font-size:30px;font-family:'Bodoni Moda';text-align:center;margin:0 0 8px 0;color:#023E6C;text-transform:uppercase;letter-spacing:3px;font-weight:300;">
+    <h2 class="about-section-heading" style="font-size:30px;font-family:'Bodoni Moda';text-align:center;margin:0 0 8px 0;color:#023E6C;text-transform:uppercase;letter-spacing:3px;font-weight:700;">
       Meet Our Team
     </h2>
 
@@ -503,7 +528,7 @@ parent.classList.toggle('open');
   
   <div style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto;">
     <div style="max-width: 800px; margin: 0 auto 70px; text-align: center;">
-      <h2 style="font-family: 'Bodoni Moda'; font-size: 32px; color: #000000; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px;">Our Services</h2>
+      <h2 class="about-section-heading" style="font-family: 'Bodoni Moda'; font-size: 32px; color: #000000; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; font-weight:700;">Our Services</h2>
       <p style="font-family: 'Lora'; font-size: 1.1rem; color: #444; line-height: 1.8;">
         Expert real estate guidance for every stage of ownership in West Tennessee.
       </p>
@@ -535,7 +560,7 @@ parent.classList.toggle('open');
     </div>
     
     <div class="stronger-communities-copy" style="flex: 1; min-width: 300px; text-align: left;">
-      <h2 style="font-family: 'Bodoni Moda'; font-size: 2.2rem; color: #000000; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; font-weight:700;">West Tennessee Market Coverage</h2>
+      <h2 class="about-section-heading" style="font-family: 'Bodoni Moda'; font-size: 2.2rem; color: #000000; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; font-weight:700;"><span class="market-heading-break">West Tennessee</span> <span class="market-heading-break">Market Coverage</span></h2>
       <p style="font-family: 'Lora'; font-style: italic; font-size: 1.25rem; line-height: 1.8; color: #444; border-left: 2px solid #023E6C; padding-left: 25px;">
         Total Realty Source provides residential, commercial, land, rental, property management, and renovation services throughout West Tennessee.
       </p>

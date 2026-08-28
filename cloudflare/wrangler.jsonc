@@ -9,7 +9,8 @@
     "head_sampling_rate": 1
   },
   "vars": {
-    "REVIEW_EMAIL": "katelwork77@gmail.com"
+    "REVIEW_EMAIL": "katelwork77@gmail.com",
+    "TOUR_EMAIL": "katelwork77@gmail.com"
   },
   "d1_databases": [
     {

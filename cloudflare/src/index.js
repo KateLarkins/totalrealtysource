@@ -135,6 +135,57 @@ async function handleReview(request, env, origin) {
   return json({ ok: true }, 200, origin);
 }
 
+async function handleTour(request, env, origin) {
+  const contentLength = Number(request.headers.get("Content-Length") || 0);
+  if (contentLength > 20000) return json({ error: "Tour request is too large." }, 413, origin);
+  let body;
+  try { body = await request.json(); }
+  catch (_) { return json({ error: "Invalid tour request." }, 400, origin); }
+  if (body.website) return json({ ok: true }, 200, origin);
+
+  const agent = String(body.agent || "total-realty-source").trim();
+  const agentName = String(body.agentName || "Total Realty Source").trim().slice(0, 100);
+  const firstName = String(body.firstName || "").trim().slice(0, 60);
+  const lastName = String(body.lastName || "").trim().slice(0, 60);
+  const email = String(body.email || "").trim().slice(0, 160);
+  const phone = String(body.phone || "").trim().slice(0, 40);
+  const property = String(body.property || "").trim().slice(0, 240);
+  const mls = String(body.mls || "").trim().slice(0, 40);
+  const preferredDate = String(body.preferredDate || "").trim().slice(0, 20);
+  const preferredTime = String(body.preferredTime || "").trim().slice(0, 100);
+  const message = String(body.message || "").trim().slice(0, 1500);
+  if (firstName.length < 1 || lastName.length < 1 || property.length < 3 || !/^\S+@\S+\.\S+$/.test(email) || !/^\d{4}-\d{2}-\d{2}$/.test(preferredDate) || preferredTime.length < 3) {
+    return json({ error: "Please complete the required tour information." }, 400, origin);
+  }
+
+  const hash = await visitorHash(request, env.CONTACT_RATE_SALT);
+  const recent = await env.DB.prepare("SELECT COUNT(*) AS total FROM contact_attempts WHERE visitor_hash = ? AND created_at >= datetime('now', '-1 hour')").bind(hash).first("total");
+  if (Number(recent || 0) >= 5) return json({ error: "Too many requests were submitted. Please try again later." }, 429, origin);
+
+  let recipients = {};
+  try { recipients = JSON.parse(env.AGENT_EMAILS_JSON || "{}"); } catch (_) {}
+  const recipient = recipients[agent] || env.TOUR_EMAIL;
+  if (!recipient) return json({ error: "Tour-request delivery is not configured." }, 503, origin);
+
+  const emailResponse = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { "Authorization": `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      from: env.FROM_EMAIL,
+      to: [recipient],
+      reply_to: email,
+      subject: `Tour request for ${property}`,
+      text: `Property: ${property}\nMLS: ${mls || "Not provided"}\nListing agent: ${agentName}\n\nRequested by: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone || "Not provided"}\nPreferred date: ${preferredDate}\nPreferred time: ${preferredTime}\n\nNotes: ${message || "None"}\n\nThis is a tour request, not a confirmed appointment. Please contact the visitor to confirm availability.`,
+    }),
+  });
+  if (!emailResponse.ok) {
+    console.error(JSON.stringify({ event: "tour_delivery_failed", status: emailResponse.status, agent }));
+    return json({ error: "Your tour request could not be delivered. Please call the agent instead." }, 502, origin);
+  }
+  await env.DB.prepare("INSERT INTO contact_attempts (visitor_hash) VALUES (?)").bind(hash).run();
+  return json({ ok: true }, 200, origin);
+}
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin") || "";
@@ -146,6 +197,7 @@ export default {
       if (viewMatch && (request.method === "GET" || request.method === "POST")) return await handleViews(request, env, decodeURIComponent(viewMatch[1]), origin);
       if (url.pathname === "/api/contact" && request.method === "POST") return await handleContact(request, env, origin);
       if (url.pathname === "/api/review" && request.method === "POST") return await handleReview(request, env, origin);
+      if (url.pathname === "/api/tour" && request.method === "POST") return await handleTour(request, env, origin);
       return json({ error: "Not found." }, 404, origin);
     } catch (error) {
       console.error(JSON.stringify({ event: "worker_error", message: error instanceof Error ? error.message : String(error) }));
