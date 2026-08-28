@@ -20,7 +20,7 @@
   const slug = new URLSearchParams(location.search).get('agent') || '';
   const agent = agents[slug] || agents['lynda-climer'];
   const clean = value => String(value || '').replace(/\s+/g,' ').trim();
-  document.title = `${agent.name} | West Tennessee Real Estate Agent`;
+  document.title = `${agent.name} | Total Realty Source`;
   const description = `${agent.name} is a ${agent.title.toLowerCase()} with Total Realty Source, helping buyers and sellers across West Tennessee.`;
   document.querySelector('meta[name="description"]').setAttribute('content', description);
   document.getElementById('agent-canonical').href = `https://totalrealtysource.com/agent-profile.html?agent=${encodeURIComponent(slug || 'lynda-climer')}`;

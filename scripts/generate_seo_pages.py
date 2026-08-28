@@ -230,7 +230,7 @@ def write_listing_pages(listings):
         folder.mkdir(parents=True, exist_ok=True)
         canonical = f"{SITE}/listings/{item['slug']}/"
         city_slug = f"{slugify(item['city'])}-tn"
-        title = f"{item['street']}, {item['city']} TN | {item['type']} for Sale"
+        title = f"{item['street']}, {item['city']} TN | {item['type']} for Sale | Total Realty Source"
         meta = f"{item['price']} {item['type'].lower()} for sale at {item['address']}. View photos, property details, map, and listing agent information."
         image_urls = [absolute_image(image) for image in item["images"]]
         property_schema = {"@context":"https://schema.org","@type":"SingleFamilyResidence" if item["category"] == "homes" else "Residence" if item["category"] == "other" else "Place","name":item["address"],"description":item["description"],"url":canonical,"image":image_urls,"address":{"@type":"PostalAddress","streetAddress":item["street"],"addressLocality":item["city"],"addressRegion":"TN","postalCode":item["zip"],"addressCountry":"US"},"offers":{"@type":"Offer","priceCurrency":"USD","price":re.sub(r"[^0-9.]", "", item["price"]),"availability":"https://schema.org/InStock"},"broker":{"@type":"RealEstateAgent","name":item["agent"],"worksFor":{"@type":"RealEstateAgent","name":"Total Realty Source","telephone":"+1-731-574-9340","url":SITE}}}

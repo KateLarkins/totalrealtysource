@@ -1362,7 +1362,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-description-highlights i { display:grid; place-items:center; width:20px; height:20px; color:#fff; background:#023E6C; border-radius:50%; font-size:9px; }
 .modal-mobile-description-summary,.modal-mobile-description-toggle { display:none; }
 .modal-description-collapse { position:relative; max-height:155px; overflow:hidden; transition:max-height .3s ease; }
-.modal-description-collapse::after,.modal-facts-collapse::after { content:""; position:absolute; right:0; bottom:0; left:0; height:72px; pointer-events:none; background:linear-gradient(to bottom,rgba(255,255,255,0),#fff); }
+.modal-description-collapse::after,.modal-facts-collapse::after { content:""; position:absolute; right:0; bottom:0; left:0; height:44px; pointer-events:none; background:linear-gradient(to bottom,rgba(255,255,255,0),#fff); }
 .modal-description-collapse.is-expanded { max-height:3000px; }
 .modal-description-collapse.is-expanded::after,.modal-facts-collapse.is-expanded::after { display:none; }
 .modal-description-collapse p { margin:0; color:#222; font:15px/1.7 'Lora',serif; }
@@ -1405,7 +1405,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-share-icon { font:700 19px/1 Arial,sans-serif; }
 .modal-share-accessible-label { position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
 .modal-facts-features { margin:34px 0 12px; padding-top:26px; border-top:1px solid #D8DEE2; }
-.modal-facts-collapse { position:relative; max-height:520px; overflow:hidden; transition:max-height .35s ease; }
+.modal-facts-collapse { position:relative; max-height:245px; overflow:hidden; transition:max-height .35s ease; }
 .modal-facts-collapse.is-expanded { max-height:10000px; }
 .modal-facts-group { margin:0 0 27px; }
 .modal-facts-group h4 { margin:0 0 12px; color:#111; font:700 18px 'Lora',serif; }
@@ -9088,6 +9088,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       let selectedLocationName = 'West Tennessee';
       let boundaryVisible = false;
       let focusedListingModalId = '';
+      let selectedListingAreaIds = null;
       let zoomAnimationFrame = 0;
       let secondaryRoadDetailVisible = null;
       let allLocationSuggestions = [];
@@ -9501,7 +9502,9 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       function applyGeographicBoundaryFilter() {
         let resultCount = 0;
         currentListings.forEach(listing => {
-          const visible = d3.geoContains(selectedBoundary, [listing.longitude, listing.latitude]);
+          const visible = selectedListingAreaIds
+            ? selectedListingAreaIds.has(listing.modalId)
+            : d3.geoContains(selectedBoundary, [listing.longitude, listing.latitude]);
           listing.card.dataset.mapVisible = visible ? 'true' : 'false';
           if (visible) resultCount++;
         });
@@ -10097,6 +10100,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         boundaryVisible = false;
         locationSearchActive = false;
         focusedListingModalId = '';
+        selectedListingAreaIds = null;
         selectedLocationName = 'West Tennessee';
         locationQuery.value = 'Search All West Tennessee Properties';
         selectedLocationLabel.textContent = 'West Tennessee';
@@ -10163,6 +10167,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             return;
           }
           selectedBoundary = currentLocationBoundary(latitude, longitude);
+          selectedListingAreaIds = null;
           selectedLocationName = 'Near your current location';
           selectedLocationLabel.textContent = selectedLocationName;
           locationQuery.value = 'Near me';
@@ -10223,6 +10228,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         boundaryVisible = false;
         locationSearchActive = false;
         focusedListingModalId = '';
+        selectedListingAreaIds = null;
         selectedLocationName = 'Map area';
         selectedLocationLabel.textContent = 'Map area';
         locationQuery.value = '';
@@ -10305,6 +10311,76 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           locationSearchActive = false;
           boundaryVisible = false;
           focusedListingModalId = exactListing.modalId;
+          selectedListingAreaIds = null;
+          removeBoundaryButton.hidden = false;
+          clearLocationButton.hidden = false;
+          clearLocationButton.setAttribute('aria-label', `Clear ${selectedLocationName} search`);
+          searchAreaButton.hidden = true;
+          renderMap();
+          submitButton.disabled = false;
+          return;
+        }
+
+        // Prefer the location recorded on our active listing cards before using
+        // a municipal geocoder boundary. West Tennessee mailing cities often
+        // extend beyond incorporated limits (Camden is a common example), and
+        // buyers expect a city search to include every listing carrying that
+        // city in its address.
+        const normalizedAreaQuery = query.toLowerCase()
+          .replace(/\btennessee\b/g, 'tn')
+          .replace(/[^a-z0-9]/g, '');
+        const queryCityOnly = normalizedAreaQuery.replace(/tn(?:\d{5})?$/, '');
+        const listingsInNamedArea = currentListings.filter(listing => {
+          const normalizedListingAddress = listing.address.toLowerCase()
+            .replace(/\btennessee\b/g, 'tn')
+            .replace(/[^a-z0-9]/g, '');
+          return normalizedListingAddress.endsWith(normalizedAreaQuery) ||
+            (queryCityOnly && normalizedListingAddress.endsWith(`${queryCityOnly}tn`));
+        });
+        if (listingsInNamedArea.length) {
+          const longitudes = listingsInNamedArea.map(listing => listing.longitude);
+          const latitudes = listingsInNamedArea.map(listing => listing.latitude);
+          try {
+            const boundaryParameters = new URLSearchParams({
+              q: `${query}, Tennessee`,
+              format: 'jsonv2',
+              addressdetails: '1',
+              polygon_geojson: '1',
+              countrycodes: 'us',
+              limit: '5'
+            });
+            const boundaryResponse = await fetch(`https://nominatim.openstreetmap.org/search?${boundaryParameters}`, {
+              headers: {'Accept-Language': 'en-US,en;q=0.8'}
+            });
+            if (!boundaryResponse.ok) throw new Error('Location boundary unavailable');
+            const boundaryResults = (await boundaryResponse.json()).filter(item =>
+              (item.address?.state_code === 'TN' || /Tennessee/i.test(item.display_name || '')) &&
+              (item.geojson?.type === 'Polygon' || item.geojson?.type === 'MultiPolygon'));
+            if (!boundaryResults.length) throw new Error('Location boundary unavailable');
+            selectedBoundary = boundaryFromResult(boundaryResults[0]);
+          } catch (_) {
+            // A rounded fallback keeps the map useful if the boundary service is
+            // temporarily unavailable without replacing geography with a box.
+            const centerLongitude = (Math.min(...longitudes) + Math.max(...longitudes)) / 2;
+            const centerLatitude = (Math.min(...latitudes) + Math.max(...latitudes)) / 2;
+            const longitudeRadius = Math.max(0.02, (Math.max(...longitudes) - Math.min(...longitudes)) * 0.7);
+            const latitudeRadius = Math.max(0.015, (Math.max(...latitudes) - Math.min(...latitudes)) * 0.7);
+            selectedBoundary = {
+              type: 'Feature',
+              properties: {listingArea: query, fallback: true},
+              geometry: {type: 'Polygon', coordinates: [Array.from({length:65}, (_, index) => {
+                const angle = -index / 64 * Math.PI * 2;
+                return [centerLongitude + Math.cos(angle) * longitudeRadius, centerLatitude + Math.sin(angle) * latitudeRadius];
+              })]}
+            };
+          }
+          selectedListingAreaIds = new Set(listingsInNamedArea.map(listing => listing.modalId));
+          selectedLocationName = query.replace(/,?\s*Tennessee\b/i, ', TN').replace(/,?\s*TN\b/i, ', TN');
+          selectedLocationLabel.textContent = selectedLocationName;
+          searchMessage.textContent = '';
+          locationSearchActive = true;
+          boundaryVisible = true;
+          focusedListingModalId = '';
           removeBoundaryButton.hidden = false;
           clearLocationButton.hidden = false;
           clearLocationButton.setAttribute('aria-label', `Clear ${selectedLocationName} search`);
@@ -10315,6 +10391,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         }
 
         try {
+          selectedListingAreaIds = null;
           const zipCode = query.match(/^\s*(\d{5})(?:-\d{4})?\s*$/)?.[1];
           if (zipCode) {
             const zipBoundary = await censusZipBoundary(zipCode);
