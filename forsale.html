@@ -237,7 +237,7 @@
       list-style: none;
       border: 1px solid #d1d1d1;
       border-radius: 50%;
-      background: rgba(255,255,255,.68);
+      background: rgba(255,255,255,.58);
       box-shadow: 0 1px 3px rgba(0,0,0,.12);
       color: #888;
       cursor: pointer;
@@ -256,7 +256,7 @@
       padding: 6px 8px;
       border: 1px solid #d7d7d7;
       border-radius: 4px;
-      background: rgba(255,255,255,.62);
+      background: rgba(255,255,255,.42);
       box-shadow: 0 2px 7px rgba(0,0,0,.14);
       color: #666;
       font: 9px/1.4 Arial, sans-serif;
@@ -10795,9 +10795,6 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         attributionDetails.querySelector('summary')?.addEventListener('click', () => {
           attributionDetails.dataset.userToggled = 'true';
         });
-        window.setTimeout(() => {
-          if (attributionDetails.dataset.userToggled !== 'true') attributionDetails.open = false;
-        }, 5000);
       }
       if (!mapRoot || !canvasRoot || !window.maplibregl) return;
 
@@ -11069,6 +11066,12 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           bindMapInteractions();
           mapLoaded = true;
           mapRoot.classList.add('vector-map-ready');
+          if (attributionDetails && attributionDetails.dataset.userToggled !== 'true') {
+            attributionDetails.open = true;
+            window.setTimeout(() => {
+              if (attributionDetails.dataset.userToggled !== 'true') attributionDetails.open = false;
+            }, 8000);
+          }
           applyMapState(window.TRS_MAP_STATE || {selectedLocationName:'West Tennessee',boundaryVisible:false},true);
           renderHtmlMarkers();
         });
