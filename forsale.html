@@ -1510,6 +1510,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-neighborhood-map-header h3 { margin:0; color:#111; font:600 25px/1.2 'Bodoni Moda',serif; }
 .modal-neighborhood-map-header p { margin:5px 0 0; color:#555; font:13px/1.45 'Lora',serif; }
 .modal-map-expand { display:inline-flex; align-items:center; justify-content:center; gap:7px; min-height:40px; padding:8px 13px; color:#fff; background:#0B4068; border-radius:5px; font:700 13px/1 'Lora',serif; text-decoration:none; white-space:nowrap; }
+.modal-map-expand svg { width:15px; height:15px; flex:0 0 15px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
 .modal-map-expand:hover,.modal-map-expand:focus-visible { color:#fff; background:#082F4D; }
 .modal-map-frame { position:relative; width:100%; height:360px; overflow:hidden; background:#E8ECEE; border:1px solid #CDD5DA; border-radius:8px; }
 .modal-map-frame iframe { display:block; width:100%; height:100%; border:0; }
@@ -1536,10 +1537,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-whats-special h3,.modal-facts-features h3 { margin:0 0 18px; color:#111; font:600 29px/1.2 'Bodoni Moda',serif; }
 .modal-special-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:17px; }
 .modal-special-tag { padding:7px 10px; color:#111; background:#F1F2F2; border-radius:3px; font:700 11px/1.2 'Lora',serif; letter-spacing:.05em; text-transform:uppercase; }
-.modal-description-highlights { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; margin:0 0 16px; padding:0; list-style:none; columns:auto; }
-.modal-description-highlights li { display:grid; grid-template-columns:22px minmax(0,1fr); gap:8px; align-items:start; margin:0; padding:11px 12px; color:#26343C; background:#F5F7F8; border-radius:6px; font:13px/1.45 'Lora',serif; }
-.modal-description-highlights i { display:grid; place-items:center; width:20px; height:20px; color:#fff; background:#023E6C; border-radius:50%; font-size:9px; }
-.modal-mobile-description-summary,.modal-mobile-description-toggle { display:none; }
+.modal-description-text { margin:0; color:#222; font:15px/1.75 'Lora',serif; }
 .modal-description-collapse { position:relative; max-height:155px; overflow:hidden; transition:max-height .3s ease; }
 .modal-description-collapse::after,.modal-facts-collapse::after { content:""; position:absolute; right:0; bottom:0; left:0; height:44px; pointer-events:none; background:linear-gradient(to bottom,rgba(255,255,255,0),#fff); }
 .modal-description-collapse.is-expanded { max-height:3000px; }
@@ -1637,16 +1635,9 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   .modal-property-fact:nth-child(2n) { border-right:0; }
   .modal-property-fact:nth-child(2n+1) { padding-left:0; }
   .modal-property-fact:last-child { grid-column:1 / -1; padding-left:0; border-right:0; }
-  .modal-description-highlights { grid-template-columns:1fr; gap:8px; }
   .modal-description-collapse { max-height:0; }
   .modal-description-collapse::after { display:none; }
   .modal-description-collapse.is-expanded { max-height:3000px; margin-top:14px; }
-  .modal-property-description-enhanced .modal-description-body { max-height:0; margin:0 !important; overflow:hidden; transition:max-height .3s ease,margin .3s ease; }
-  .modal-property-description-enhanced .modal-description-body.is-expanded { max-height:5000px; margin-top:14px !important; }
-  .modal-mobile-description-summary { display:grid; grid-template-columns:1fr; gap:8px; margin:14px 0 0; padding:0; list-style:none; columns:auto; }
-  .modal-mobile-description-summary li { display:grid; grid-template-columns:22px minmax(0,1fr); gap:8px; align-items:start; margin:0; padding:11px 12px; color:#26343C; background:#F5F7F8; border-radius:6px; font:13px/1.45 'Lora',serif; }
-  .modal-mobile-description-summary i { display:grid; place-items:center; width:20px; height:20px; color:#fff; background:#023E6C; border-radius:50%; font-size:9px; }
-  .modal-mobile-description-toggle { display:inline-block; margin-top:12px; padding:0; color:#111; background:none; border:0; border-bottom:1px solid #111; font:700 14px 'Lora',serif; cursor:pointer; }
   .modal-neighborhood-map-header { align-items:flex-start; }
   .modal-neighborhood-map-header h3 { font-size:22px; }
   .modal-map-frame { height:300px; }
@@ -7485,7 +7476,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const virtualTour = virtualTourUrl ? `<a class="modal-virtual-tour" href="${virtualTourUrl}" target="_blank" rel="noopener"><span aria-hidden="true">▶</span> Virtual tour</a>` : '';
         const directions = `<a class="modal-directions" href="https://www.google.com/maps/dir/?api=1&amp;destination=${encodedAddress}&amp;travelmode=driving" target="_blank" rel="noopener" aria-label="Get directions from your current location to ${address}"><span aria-hidden="true">⌖</span> Directions from my location</a>`;
         const virtualTourControls = `<div class="modal-map-tools">${directions}${virtualTour}</div>`;
-        section.innerHTML = `<div class="modal-neighborhood-map-header"><div><h3>Location &amp; Neighborhood</h3><p>${address}</p></div><a class="modal-map-expand" href="https://www.google.com/maps/search/?api=1&query=${encodedAddress}" target="_blank" rel="noopener" aria-label="Expand map for ${address}"><span aria-hidden="true">↗</span> Expand map</a></div><div class="modal-map-frame"><iframe title="Map of ${address}" data-map-src="https://www.google.com/maps?q=${encodedAddress}&amp;output=embed&amp;z=15" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><div class="modal-map-home-marker" aria-hidden="true"><span>🏠</span></div></div><p class="modal-map-note">Google Maps shows nearby shops, restaurants, churches, and other neighborhood places when available.</p>${virtualTourControls}`;
+        section.innerHTML = `<div class="modal-neighborhood-map-header"><div><h3>Location &amp; Neighborhood</h3><p>${address}</p></div><a class="modal-map-expand" href="https://www.google.com/maps/search/?api=1&query=${encodedAddress}" target="_blank" rel="noopener" aria-label="Expand map for ${address}"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 5h5v5"></path><path d="M19 5l-8 8"></path><path d="M19 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"></path></svg><span>Expand map</span></a></div><div class="modal-map-frame"><iframe title="Map of ${address}" data-map-src="https://www.google.com/maps?q=${encodedAddress}&amp;output=embed&amp;z=15" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><div class="modal-map-home-marker" aria-hidden="true"><span>🏠</span></div></div><p class="modal-map-note">Google Maps shows nearby shops, restaurants, churches, and other neighborhood places when available.</p>${virtualTourControls}`;
         content.appendChild(section);
       });
     }
@@ -7575,18 +7566,9 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const descriptionText = descriptionSection?.querySelector('p')?.textContent.replace(/Information deemed reliable[\s\S]*$/i,'').trim() || 'Contact the listing agent for additional property details.';
         const featureItems = Array.from(featureSection?.querySelectorAll('li') || []).map(item => item.textContent.replace(/\s+/g,' ').trim()).filter(Boolean);
         const specialTags = featureItems.flatMap(item => (item.split(':')[1] || '').split(';')).map(item => item.trim()).filter(item => item && !/^n\/?a$/i.test(item)).slice(0,3);
-        const descriptionHighlights = descriptionText
-          .split(/(?<=[.!?])\s+|\s*;\s*/)
-          .map(sentence => sentence.replace(/\s+/g, ' ').trim())
-          .filter(Boolean)
-          .slice(0, 3)
-          .map(sentence => {
-            const words = sentence.split(' ');
-            return words.length > 18 ? `${words.slice(0, 18).join(' ').replace(/[,.]$/, '')}…` : sentence;
-          });
         const special = document.createElement('section');
         special.className = 'modal-whats-special';
-        special.innerHTML = `<h3>What's special</h3>${specialTags.length ? `<div class="modal-special-tags">${specialTags.map(tag => `<span class="modal-special-tag">${escapeHtml(tag)}</span>`).join('')}</div>` : ''}${descriptionHighlights.length ? `<ul class="modal-description-highlights">${descriptionHighlights.map(highlight => `<li><i class="fa fa-check" aria-hidden="true"></i><span>${escapeHtml(highlight)}</span></li>`).join('')}</ul>` : ''}<div class="modal-description-collapse"><p>${escapeHtml(descriptionText)}</p></div><button class="modal-show-more" type="button" aria-expanded="false">Read full description</button>`;
+        special.innerHTML = `<h3>Property Description</h3>${specialTags.length ? `<div class="modal-special-tags">${specialTags.map(tag => `<span class="modal-special-tag">${escapeHtml(tag)}</span>`).join('')}</div>` : ''}<p class="modal-description-text">${escapeHtml(descriptionText)}</p>`;
         overview.insertAdjacentElement('afterend', special);
         if (featureSection) featureSection.hidden = true;
         if (descriptionSection) descriptionSection.hidden = true;
@@ -7895,52 +7877,6 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           window.setTimeout(scheduleExpiration, Math.min(remaining + 100, 2147483647));
         };
         scheduleExpiration();
-      });
-    }
-
-    function enhanceMobileListingDescriptions() {
-      document.querySelectorAll('.custom-modal').forEach(modal => {
-        const heading = Array.from(modal.querySelectorAll('h3')).find(item => /^Property Description$/i.test(item.textContent.trim()));
-        const section = heading?.parentElement;
-        const paragraph = section?.querySelector(':scope > p') || section?.querySelector('p');
-        if (!section || !paragraph || section.classList.contains('modal-property-description-enhanced')) return;
-        const description = paragraph.textContent.replace(/Information deemed reliable[\s\S]*$/i, '').replace(/\s+/g, ' ').trim();
-        if (!description) return;
-        const highlights = description
-          .split(/[.!?]+\s+|\s*;\s*/)
-          .map(sentence => sentence.trim())
-          .filter(Boolean)
-          .slice(0, 3)
-          .map(sentence => {
-            const words = sentence.split(/\s+/);
-            return words.length > 18 ? `${words.slice(0, 18).join(' ').replace(/[,.]$/, '')}…` : sentence;
-          });
-        const summary = document.createElement('ul');
-        summary.className = 'modal-mobile-description-summary';
-        highlights.forEach(highlight => {
-          const item = document.createElement('li');
-          const icon = document.createElement('i');
-          icon.className = 'fa fa-check';
-          icon.setAttribute('aria-hidden', 'true');
-          const copy = document.createElement('span');
-          copy.textContent = highlight;
-          item.append(icon, copy);
-          summary.appendChild(item);
-        });
-        const toggle = document.createElement('button');
-        toggle.type = 'button';
-        toggle.className = 'modal-mobile-description-toggle';
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.textContent = 'Read full description';
-        paragraph.classList.add('modal-description-body');
-        paragraph.insertAdjacentElement('beforebegin', summary);
-        paragraph.insertAdjacentElement('afterend', toggle);
-        section.classList.add('modal-property-description-enhanced');
-        toggle.addEventListener('click', () => {
-          const expanded = paragraph.classList.toggle('is-expanded');
-          toggle.setAttribute('aria-expanded', String(expanded));
-          toggle.textContent = expanded ? 'Hide full description' : 'Read full description';
-        });
       });
     }
 
@@ -8395,7 +8331,6 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       };
       safelyRunModalSetup(normalizeModalAgentPhones);
       safelyRunModalSetup(addListingMarketingDetails);
-      safelyRunModalSetup(enhanceMobileListingDescriptions);
       safelyRunModalSetup(addModalPropertyFacts);
       safelyRunModalSetup(addModalBackButtons);
       setTimeout(() => {
