@@ -1257,6 +1257,10 @@
 .modal-contact-actions .request-tour-button:hover,.modal-contact-actions .request-tour-button:focus-visible { color:#fff; background:#111; border-color:#111; }
 .modal-contact-actions a[href^="tel:"] { color:#fff; background:#0B4068; }
 .modal-contact-actions a:hover,.modal-contact-actions a:focus-visible { color:#fff; background:#082F4D; border-color:#082F4D; }
+.modal-contact-actions .request-tour-button { order:1; }
+.modal-contact-actions a[href^="tel:"] { order:2; }
+.modal-contact-actions .modal-favorite-listing { order:3; }
+.modal-contact-actions .modal-top-share-button { order:4; gap:7px; }
 /* Older listing markup underlined every heading. When a heading wrapped, that
    decoration looked like two horizontal rules. Section dividers now supply the
    single separator instead. */
@@ -7325,7 +7329,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const agent = agents[agentName];
         const modal = document.getElementById(card.dataset.modal);
         const content = modal?.querySelector('.custom-modal-content');
-        if (!agent || !content || modal.querySelector(`img[alt="${agentName}"]`) || modal.querySelector('.modal-agent-summary')) return;
+        if (!agent || !content || modal.querySelector('[data-agent-name]') || modal.querySelector(`img[alt="${agentName}"]`) || modal.querySelector('.modal-agent-summary')) return;
         const summary = document.createElement('section');
         summary.className = 'modal-agent-summary';
         summary.setAttribute('aria-label', `Contact ${agentName}`);
@@ -8056,6 +8060,50 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       });
     }
 
+    function removeDuplicateModalAgentProfiles() {
+      document.querySelectorAll('.custom-modal').forEach(modal => {
+        const agentProfiles = Array.from(modal.querySelectorAll('.modal-agent-contact-card,.modal-agent-summary'))
+          .filter((profile, index, profiles) => !profiles.some(other => other !== profile && other.contains(profile)));
+        if (agentProfiles.length < 2) return;
+        const preferred = agentProfiles.find(profile => profile.classList.contains('modal-agent-contact-card') && profile.querySelector('img'))
+          || agentProfiles.find(profile => profile.querySelector('img'))
+          || agentProfiles[0];
+        agentProfiles.forEach(profile => {
+          if (profile !== preferred) profile.remove();
+        });
+      });
+    }
+
+    function ensureTopModalShareButtons() {
+      document.querySelectorAll('.custom-modal').forEach(modal => {
+        const actions = modal.querySelector('.modal-contact-actions');
+        if (!actions || actions.querySelector('.modal-top-share-button')) return;
+        const shareButton = document.createElement('button');
+        shareButton.type = 'button';
+        shareButton.className = 'modal-top-share-button';
+        shareButton.innerHTML = '<i class="fa fa-share-square-o" aria-hidden="true"></i><span>Share</span>';
+        shareButton.setAttribute('aria-label', 'Share this listing');
+        shareButton.addEventListener('click', () => {
+          const lowerShareButton = modal.querySelector('.modal-share-wrap .modal-native-share,.modal-share-wrap .modal-share-toggle');
+          if (lowerShareButton) {
+            lowerShareButton.click();
+            lowerShareButton.focus({ preventScroll:true });
+            return;
+          }
+          const card = document.querySelector(`.card[data-modal="${CSS.escape(modal.id)}"]`);
+          const address = modal.querySelector('h2')?.textContent.replace(/\s+/g, ' ').trim()
+            || card?.querySelector('.address')?.textContent.replace(/\s+/g, ' ').trim()
+            || 'Property listing';
+          const url = `https://totalrealtysource.com/forsale.html?listing=${encodeURIComponent(modal.id)}`;
+          if (navigator.share) navigator.share({ title:address, url }).catch(error => {
+            if (error?.name !== 'AbortError') console.error('Unable to share listing:', error);
+          });
+          else navigator.clipboard?.writeText(url).then(() => alert('Listing link copied.')).catch(() => prompt('Copy this listing link:', url));
+        });
+        actions.appendChild(shareButton);
+      });
+    }
+
     function ensureEveryModalHasFactsAndFeatures() {
       document.querySelectorAll('.card[data-modal],.removed-listing[data-modal]').forEach(card => {
         const modal = document.getElementById(card.dataset.modal);
@@ -8358,6 +8406,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         safelyRunModalSetup(normalizeModalAgentPhones);
         safelyRunModalSetup(normalizeModalSharePlacement);
         safelyRunModalSetup(standardizeNativeModalSharing);
+        safelyRunModalSetup(removeDuplicateModalAgentProfiles);
+        safelyRunModalSetup(ensureTopModalShareButtons);
       }, 0);
       safelyRunModalSetup(addModalNeighborhoodMaps);
     });
