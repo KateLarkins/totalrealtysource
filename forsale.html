@@ -1388,6 +1388,7 @@ body.workspace-view-split .property-back-to-top-wrap { display:flex; }
 .saved-properties-section header { display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:18px; margin-bottom:16px; }
 .saved-properties-section header p { margin:0 0 5px; color:#0B4068; font:700 11px 'Lora'; letter-spacing:.12em; }
 .saved-properties-section header h2 { margin:0; color:#111; font:600 27px/1.15 'Bodoni Moda'; }
+.saved-properties-actions { display:flex; align-items:center; flex-wrap:wrap; gap:9px; }
 .clear-saved-listings { display:inline-flex; align-items:center; justify-content:center; gap:7px; min-height:42px; padding:9px 14px; color:#fff; background:#0B4068; border:1px solid #0B4068; border-radius:7px; font:600 14px 'Lora',serif; cursor:pointer; white-space:nowrap; }
 .clear-saved-listings:hover,.clear-saved-listings:focus-visible { color:#fff; background:#082F4D; border-color:#082F4D; }
 .clear-saved-listings .clear-saved-x { font:700 20px/1 Arial,sans-serif; transform:translateY(-1px); }
@@ -1899,8 +1900,8 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   <div style="position:relative; display:inline-block; min-width:260px;">
     <select id="domSort" aria-label="Sort by days on market" style="padding:12px 40px 12px 14px;font-size:15px;font-family:'Lora', Arial, sans-serif;color:white;border:1px solid #023E6C;border-radius:6px;background-color:#023E6C;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;width:100%;">
       <option value="recommended">Sort: Recommended</option>
-      <option value="dom-asc">Sort: Newest</option>
-      <option value="dom-desc" selected>Sort: Oldest</option>
+      <option value="dom-desc" selected>Sort: Oldest to Newest</option>
+      <option value="dom-asc">Sort: Newest to Oldest</option>
       <option value="price-asc">Sort by: Price (Low to High)</option>
       <option value="price-desc">Sort by: Price (High to Low)</option>
     </select>
@@ -2048,7 +2049,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       savedSection.id = 'saved-properties-section';
       savedSection.className = 'saved-properties-section';
       savedSection.hidden = true;
-      savedSection.innerHTML = '<header><div><p>SAVED ACROSS WEST TENNESSEE</p><h2>Saved Homes</h2></div><button id="clear-saved-listings" class="clear-saved-listings" type="button"><span class="clear-saved-x" aria-hidden="true">&times;</span> Clear All</button></header><div id="saved-properties-grid" class="grid"></div><p class="saved-properties-empty" hidden>No saved properties yet. Select the like button on any property to save.</p>';
+      savedSection.innerHTML = '<header><div><p>SAVED ACROSS WEST TENNESSEE</p><h2>Saved Homes</h2></div><div class="saved-properties-actions"><button id="saved-listings-back" class="clear-saved-listings" type="button"><span aria-hidden="true">&larr;</span> Back</button><button id="clear-saved-listings" class="clear-saved-listings" type="button"><span class="clear-saved-x" aria-hidden="true">&times;</span> Clear All</button></div></header><div id="saved-properties-grid" class="grid"></div><p class="saved-properties-empty" hidden>No saved properties yet. Select the like button on any property to save.</p>';
       resultsPanel.appendChild(savedSection);
       resultsPanel.appendChild(explore);
       filterBar.insertAdjacentElement('afterend', workspace);
@@ -8898,6 +8899,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       const emptyState = document.getElementById('listing-empty-state');
       const savedKey = 'trs-saved-listings';
       let savedOnly = false;
+      let savedReturnState = null;
       let mapBoundaryActive = true;
       let saved = new Set();
       try { saved = new Set(JSON.parse(localStorage.getItem(savedKey) || '[]')); } catch (_) {}
@@ -9252,7 +9254,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         });
         ['beds','baths','type','agent','sort'].forEach(key => { if (state[key] != null && controls[key]?.querySelector(`option[value="${CSS.escape(String(state[key]))}"]`)) controls[key].value = state[key]; });
         savedOnly = Boolean(state.savedOnly);
-        if (!rawState) controls.sort.value = 'recommended';
+        if (!rawState || controls.sort.value === 'recommended') controls.sort.value = 'dom-desc';
       } catch (_) {}
       const linkedSearchParameters = new URLSearchParams(window.location.search);
       const linkedPropertyType = linkedSearchParameters.get('type');
@@ -9273,7 +9275,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       if (linkedSearchParameters.get('saved') === '1') {
         savedOnly = true;
       }
-      controls.sort.value = controls.sort.value || 'recommended';
+      controls.sort.value = controls.sort.value || 'dom-desc';
       controls.sort.dispatchEvent(new Event('change'));
       Object.values(controls).filter(control => control && control !== controls.saved).forEach(control => control.addEventListener('change', applyFilters));
       controls.min.addEventListener('input', applyFilters);
@@ -9282,7 +9284,44 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         controls.type.value = button.dataset.propertyType;
         applyFilters();
       }));
+      function restoreSearchBeforeSavedHomes() {
+        const state = savedReturnState;
+        savedOnly = false;
+        controls.saved.setAttribute('aria-pressed', 'false');
+        controls.saved.textContent = 'Saved Homes ♡';
+        if (state) {
+          ['min','max','beds','baths','type','agent','sort'].forEach(key => {
+            if (state[key] != null && controls[key]) controls[key].value = state[key];
+          });
+          const locationQuery = document.getElementById('map-location-query');
+          if (state.location && locationQuery) {
+            locationQuery.value = state.location;
+            document.getElementById('map-location-search')?.requestSubmit();
+          } else {
+            document.getElementById('map-remove-boundary')?.click();
+          }
+          setWorkspaceView(state.view || 'split');
+        }
+        savedReturnState = null;
+        applyFilters();
+        requestAnimationFrame(() => document.querySelector('.property-search-workspace')?.scrollIntoView({behavior:'smooth',block:'start'}));
+      }
       controls.saved.addEventListener('click', () => {
+        if (savedOnly) {
+          restoreSearchBeforeSavedHomes();
+          return;
+        }
+        savedReturnState = {
+          min:controls.min.value,
+          max:controls.max.value,
+          beds:controls.beds.value,
+          baths:controls.baths.value,
+          type:controls.type.value,
+          agent:controls.agent.value,
+          sort:controls.sort.value,
+          location:document.getElementById('map-selected-location')?.textContent.trim() === 'West Tennessee' ? '' : document.getElementById('map-location-query')?.value.trim(),
+          view:document.body.classList.contains('workspace-view-map') ? 'map' : document.body.classList.contains('workspace-view-list') ? 'list' : 'split'
+        };
         savedOnly = !savedOnly;
         controls.saved.setAttribute('aria-pressed', String(savedOnly));
         controls.saved.textContent = `Saved Homes ${savedOnly ? '♥' : '♡'}`;
@@ -9298,6 +9337,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         savedIds.forEach(syncFavoriteButtons);
         applyFilters();
       });
+      document.getElementById('saved-listings-back')?.addEventListener('click', restoreSearchBeforeSavedHomes);
       document.getElementById('clearListingFilters').addEventListener('click', () => {
         controls.min.value=''; controls.max.value=''; controls.beds.value='0'; controls.baths.value='0'; controls.type.value='all'; controls.agent.value='all'; savedOnly=false; controls.saved.setAttribute('aria-pressed','false'); controls.saved.textContent='Saved Homes ♡';
         document.getElementById('map-remove-boundary')?.click(); applyFilters();
