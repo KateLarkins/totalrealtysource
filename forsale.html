@@ -1290,6 +1290,7 @@
 .modal-agent-summary > img { flex:0 0 88px; width:88px; height:88px; object-fit:cover; border-radius:50%; }
 .modal-agent-summary-copy { flex:1 1 220px; min-width:0; }
 .modal-agent-summary-copy strong { display:block; margin-bottom:5px; color:#111; font-family:'Bodoni Moda',serif; font-size:19px; }
+.modal-agent-profile-link { display:inline-block; margin:0 0 4px; color:#111; font:600 13px 'Lora',serif; text-decoration:underline; }
 .modal-agent-summary-copy p { margin:3px 0; color:#444; font-size:14px; }
 .modal-agent-summary-actions { display:flex; flex-wrap:wrap; gap:9px; }
 .modal-agent-summary-actions a { display:inline-flex; align-items:center; justify-content:center; min-height:42px; padding:9px 14px; color:#fff; background:#0B4068; border:1px solid #0B4068; border-radius:6px; font:600 14px 'Lora',serif; text-decoration:none; }
@@ -1646,7 +1647,12 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   .modal-map-expand { min-height:38px; padding:7px 10px; font-size:12px; }
   .modal-map-tools { display:block; }
   .modal-virtual-tour,.modal-directions { width:100%; margin-top:10px; }
-  .modal-primary-stat { min-width:74px; padding:0 14px; }
+  .modal-primary-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); width:100%; gap:0; }
+  .modal-primary-stat { min-width:0; padding:2px 8px; }
+  .modal-primary-stat:first-child { padding-left:0; }
+  .modal-primary-stat:last-child { padding-right:0; border-right:0; }
+  .modal-primary-stat strong { font-size:clamp(17px,5.2vw,21px); overflow-wrap:anywhere; }
+  .modal-primary-stat span { font-size:11px; }
   .modal-listing-meta { grid-template-columns:1fr; }
   .modal-agent-share-row { grid-template-columns:1fr; gap:18px; }
   .modal-agent-share-row > .modal-share-wrap { justify-self:start; justify-items:start; margin-top:0; }
@@ -1654,6 +1660,11 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   .modal-agent-share-row > .modal-share-wrap .modal-share-links { justify-content:flex-start; }
   .modal-agent-contact-card { align-items:flex-start; gap:14px; }
   .modal-agent-contact-card > img,.modal-agent-headshot { flex-basis:82px; width:82px !important; height:82px !important; }
+  .modal-agent-contact-details a[href*="agent-profile"],.modal-agent-contact-details a[href="about.html"] { display:block; width:max-content; margin-top:5px; }
+  .modal-agent-summary { display:grid; grid-template-columns:82px minmax(0,1fr); align-items:start; }
+  .modal-agent-summary > img { grid-row:1 / span 2; width:82px; height:82px; }
+  .modal-agent-summary-actions { grid-column:2; width:100%; }
+  .modal-agent-summary-actions a { flex:1 1 auto; }
   .modal-share-wrap { justify-self:start; }
   .modal-share-panel { right:auto; left:0; width:min(290px,calc(100vw - 76px)); }
   .modal-facts-group ul,.modal-complete-facts .modal-facts-group ul { grid-template-columns:1fr; columns:auto; }
@@ -1712,25 +1723,31 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   .listing-map-layout { display:block; }
   .listing-map-navigation { margin-top:12px; }
   .map-location-search { flex-wrap:wrap; gap:8px; }
-  #listing-filter-bar .map-location-search { flex:1 0 100%; width:100%; max-width:none; }
-  .map-location-search .map-search-input-wrap { flex:1 1 100%; }
-  .map-location-search > button[type="submit"] { width:100%; margin:0; }
-  .map-location-search .use-current-location { width:100%; margin-left:0; }
+  #listing-filter-bar .map-location-search { display:contents; }
+  #listing-filter-bar .map-location-search .map-search-input-wrap { order:1; flex:1 1 100%; width:100%; }
+  #listing-filter-bar .popular-property-searches { order:2; flex:1 1 100%; }
+  #clearListingFilters { order:3; flex:1 1 calc(50% - 5px); }
+  #mobileFiltersToggle { order:4; }
+  #listing-filter-bar .category-filter-tabs { order:5; }
+  #listing-filter-bar .map-location-search > button[type="submit"] { order:6; width:100%; margin:0; }
+  #listing-filter-bar .map-location-search .use-current-location { order:7; width:100%; margin-left:0; }
+  #listing-filter-bar .filter-popover { order:8; }
+  #listing-filter-bar > div:has(#agentFilter) { order:9; }
   body.mobile-list-view .listing-map-layout { display:none; }
   body.mobile-map-view #featured-listings-header, body.mobile-map-view #listing-results-summary,
   body.mobile-map-view section.container:has(.grid) { display:none !important; }
   #listing-filter-bar { padding:18px 16px !important; gap:12px 10px !important; align-items:flex-end !important; }
   .mobile-filters-toggle { display:block; flex:1 1 calc(50% - 5px); }
-  .category-filter-tabs { flex:1 0 100%; justify-content:space-between; }
-  .category-filter-tabs button { flex:1; padding-inline:6px; }
-  .category-filter-tabs button { min-height:44px; height:44px; padding-inline:4px; font-size:14px !important; }
+  .category-filter-tabs { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); flex:1 0 100%; gap:7px; }
+  .category-filter-tabs::before { content:"Property type"; grid-column:1 / -1; color:#333; font:600 13px/1.3 'Lora',serif; }
+  .category-filter-tabs button { width:100%; padding-inline:8px; }
+  .category-filter-tabs button { min-height:44px; height:44px; font-size:13px !important; }
   .category-filter-tabs i { margin-right:3px; }
   #showSplitView { display:none; }
   body:not(.mobile-filters-open) #listing-filter-bar .listing-filter-field,
   body:not(.mobile-filters-open) #listing-filter-bar .filter-popover,
   body:not(.mobile-filters-open) #listing-filter-bar > div:has(#agentFilter),
-  body:not(.mobile-filters-open) #savedHomesFilter,
-  body:not(.mobile-filters-open) #clearListingFilters { display:none !important; }
+  body:not(.mobile-filters-open) #savedHomesFilter { display:none !important; }
   .listing-filter-field { min-width:calc(50% - 5px); }
   .filter-popover { flex:1 1 calc(50% - 5px); }
   .filter-popover-panel { min-width:min(330px,calc(100vw - 32px)); }
@@ -1781,7 +1798,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
     <div class="dropdown-container">
       <a href="forsale.html" class="nav-link">For Sale ▾</a>
       <div class="dropdown">
-        <a href="forsale.html" class="dropdown-item">All Listings</a>
+        <a href="forsale.html" class="dropdown-item">All Listings for Sale</a>
         <a href="forsale.html?type=homes" class="dropdown-item">Homes for Sale</a>
         <a href="forsale.html?type=land" class="dropdown-item">Land for Sale</a>
         <a href="forsale.html?type=other" class="dropdown-item">Other Properties</a>
@@ -1812,7 +1829,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
   <div class="drawer-dropdown">
     <a href="forsale.html" class="drawer-link">For Sale ▾</a>
     <div class="drawer-submenu">
-      <a href="forsale.html" class="drawer-link">All Listings</a>
+      <a href="forsale.html" class="drawer-link">All Listings for Sale</a>
       <a href="forsale.html?type=homes" class="drawer-link">Homes for Sale</a>
       <a href="forsale.html?type=land" class="drawer-link">Land for Sale</a>
       <a href="forsale.html?type=other" class="drawer-link">Other Properties</a>
@@ -1909,13 +1926,13 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   </div>
   <button id="mobileFiltersToggle" class="mobile-filters-toggle" type="button" aria-expanded="false">Filters</button>
   <div class="category-filter-tabs" role="group" aria-label="Property category">
-    <button type="button" data-property-type="all" aria-pressed="true">All</button>
-    <button type="button" data-property-type="homes" aria-pressed="false"><i></i> Homes</button>
+    <button type="button" data-property-type="all" aria-pressed="true">All Listings</button>
+    <button type="button" data-property-type="homes" aria-pressed="false"><i></i> Houses</button>
     <button type="button" data-property-type="land" aria-pressed="false"><i></i> Land</button>
-    <button type="button" data-property-type="other" aria-pressed="false"><i></i> Other</button>
+    <button type="button" data-property-type="other" aria-pressed="false"><i></i> Other Properties</button>
   </div>
   <button id="savedHomesFilter" class="saved-homes-filter" type="button" aria-pressed="false">Saved Homes ♡</button>
-  <button id="clearListingFilters" class="clear-listing-filters" type="button"><span aria-hidden="true">&times;</span> Clear All</button>
+  <button id="clearListingFilters" class="clear-listing-filters" type="button"><span aria-hidden="true">&times;</span> Clear All Filters</button>
   <div class="results-view-toggle" role="group" aria-label="Results view"><button id="showSplitView" type="button" aria-pressed="true">Split</button><button id="showListView" type="button" aria-pressed="false">List</button><button id="showMapView" type="button" aria-pressed="false">Map</button></div>
   <div id="active-filter-chips" class="active-filter-chips" aria-label="Active filters"></div>
 </div>
@@ -2145,7 +2162,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
     <div id="homes-listing-grid" class="grid">
 
-            <div class="card" data-mls="2600665" data-dom="158" data-modal="wakefieldModal" data-lat="35.709321" data-lng="-88.867634" data-map-category="homes">
+            <div class="card" data-mls="2600665" data-dom="166" data-modal="wakefieldModal" data-lat="35.709321" data-lng="-88.867634" data-map-category="homes">
               <!-- Open house -->
               
                 <!-- <div onclick="toggleOpenHouse(this)" style="position:absolute;top:0;left:0;width:0;height:0;border-top:90px solid rgba(218,165,32,0.75);border-right:90px solid transparent;cursor:pointer;z-index:3;">
@@ -2441,7 +2458,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 
 <!-- Active listing MLS 2603288 -->
-<div class="card" data-mls="2603288" data-dom="52" data-modal="listing2603288Modal" data-agent="Amy McLemore" data-lat="36.060588" data-lng="-88.995757" data-map-category="homes" data-previous-price="$204,900" data-promotion-date="2026-09-02">
+<div class="removed-listing" hidden data-mls="2603288" data-dom="54" data-modal="listing2603288Modal" data-agent="Amy McLemore" data-lat="36.060588" data-lng="-88.995757" data-map-category="homes" data-previous-price="$204,900" data-promotion-date="2026-09-02">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260714021516238057000000-o.jpg" alt="310 Elm Street" onclick="openModal('listing2603288Modal')" />
   <div class="card-body">
     <p class="price">$197,500</p>
@@ -2555,7 +2572,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603386 -->
-<div class="card" data-mls="2603386" data-dom="48" data-modal="listing2603386Modal" data-agent="Lisa Ann Ballinger" data-lat="35.801455" data-lng="-88.769253" data-map-category="homes">
+<div class="card" data-mls="2603386" data-dom="56" data-modal="listing2603386Modal" data-agent="Lisa Ann Ballinger" data-lat="35.801455" data-lng="-88.769253" data-map-category="homes">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260717154234723718000000-o.jpg" alt="514 E Church Street" onclick="openModal('listing2603386Modal')" />
   <div class="card-body">
     <p class="price">$269,900</p>
@@ -2614,7 +2631,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603387 -->
-<div class="card" data-mls="2603387" data-dom="48" data-modal="listing2603387Modal" data-agent="Lisa Ann Ballinger" data-lat="35.801591" data-lng="-88.769092" data-map-category="homes">
+<div class="card" data-mls="2603387" data-dom="56" data-modal="listing2603387Modal" data-agent="Lisa Ann Ballinger" data-lat="35.801591" data-lng="-88.769092" data-map-category="homes">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260717150509079215000000-o.jpg" alt="520 E Church Street" onclick="openModal('listing2603387Modal')" />
   <div class="card-body">
     <p class="price">$269,900</p>
@@ -2673,21 +2690,21 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2604156 -->
-<div class="card" data-mls="2604156" data-dom="2" data-modal="listing2604156Modal" data-agent="Amy McLemore" data-lat="35.94616" data-lng="-88.928842" data-map-category="homes">
+<div class="card" data-mls="2604156" data-dom="10" data-modal="listing2604156Modal" data-agent="Amy McLemore" data-lat="35.94616" data-lng="-88.928842" data-map-category="homes">
   <img loading="lazy" decoding="async" src="https://cdn.photos.sparkplatform.com/ctn/20260830102355779187000000-o.jpg" alt="62 Old Jackson Road" onclick="openModal('listing2604156Modal')">
   <div class="card-body"><p class="price">$149,900</p><p class="address">62 Old Jackson Road<br>Trenton, TN</p><a href="#" class="details-link" onclick="openModal('listing2604156Modal'); return false;">View Details</a><div class="stats"><div><strong>2</strong><span>Beds</span></div><div><strong>1,140</strong><span>Sq.Ft.</span></div><div><strong>1</strong><span>Bath</span></div></div></div>
 </div>
 <div id="listing2604156Modal" class="custom-modal" style="display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,.5)"><div class="custom-modal-content" style="background:#fff;margin:3% auto;padding:30px;border-radius:8px;border:1px solid #ccc;width:90%;max-width:1000px;position:relative"><span class="close" onclick="closeModal()">&times;</span><div class="carousel" style="position:relative;margin-bottom:20px"><img loading="lazy" decoding="async" class="slide" src="https://cdn.photos.sparkplatform.com/ctn/20260830102355779187000000-o.jpg" alt="62 Old Jackson Road" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"></div><div style="margin-bottom:25px"><h2>62 Old Jackson Road, Trenton, TN 38382</h2><p style="font-size:23px;font-weight:bold;font-family:'Lora'">$149,900</p><div style="display:flex;flex-wrap:wrap;gap:20px;font-family:'Lora'"><div><strong>MLS:</strong> 2604156</div><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 2</div><div><strong>Baths:</strong> 1</div><div><strong>Sqft:</strong> 1,140</div><div><strong>Lot:</strong> 1 acre</div><div><strong>Year Built:</strong> 1921</div><div><strong>County:</strong> Gibson</div></div></div><div style="margin-bottom:25px"><h3>Key Features</h3><ul style="list-style:none;padding-left:0;column-count:2;gap:20px;font-family:'Lora'"><li><strong>Interior:</strong> 9-foot ceilings; crown molding; cedar closets; walk-in pantry</li><li><strong>Kitchen:</strong> Oak cabinetry; stainless-steel appliances; breakfast bar</li><li><strong>Fireplace:</strong> Brick, double-sided gas-log fireplace</li><li><strong>Exterior:</strong> Covered front porch; storage building; metal carport</li><li><strong>Utilities:</strong> Well; septic tank; electricity and water connected</li><li><strong>Parking:</strong> Gravel parking with four open spaces</li></ul></div><div style="margin-bottom:25px"><h3>Property Description</h3><p style="line-height:1.6;font-family:'Lora'">Classic farmhouse charm meets everyday convenience on a one-acre lot outside the Trenton city limits. This one-level home features 9-foot ceilings, crown molding, a spacious great room centered around a brick gas-log fireplace, and a kitchen with oak cabinetry, stainless-steel appliances, a breakfast bar, and walk-in pantry. Both bedrooms offer cedar-lined closets, while the bath includes a tile walk-in shower and built-in storage. A wide covered front porch, storage building, 24-by-20-foot metal carport, vinyl siding, architectural-shingle roof, and double-pane windows complete the property.</p></div><div style="border-top:1px solid #ccc;padding-top:20px;font-family:'Lora'"><strong data-agent-name>Amy McLemore</strong> · <a href="agent-profile.html?agent=amy-mclemore">View Profile</a> · (731) 234-0049</div></div></div>
 
 <!-- Active listing MLS 2604123 -->
-<div class="card" data-mls="2604123" data-dom="6" data-modal="listing2604123Modal" data-agent="Lisa Ann Ballinger" data-lat="35.806581" data-lng="-88.767016" data-map-category="homes">
+<div class="removed-listing" hidden data-mls="2604123" data-dom="10" data-modal="listing2604123Modal" data-agent="Lisa Ann Ballinger" data-lat="35.806581" data-lng="-88.767016" data-map-category="homes">
   <img loading="lazy" decoding="async" src="https://cdn.photos.sparkplatform.com/ctn/20260828162057533696000000-o.jpg" alt="11 Roy Hargrove Road" onclick="openModal('listing2604123Modal')">
   <div class="card-body"><p class="price">$479,900</p><p class="address">11 Roy Hargrove Road<br>Medina, TN</p><a href="#" class="details-link" onclick="openModal('listing2604123Modal'); return false;">View Details</a><div class="stats"><div><strong>4</strong><span>Beds</span></div><div><strong>2,970</strong><span>Sq.Ft.</span></div><div><strong>3.5</strong><span>Baths</span></div></div></div>
 </div>
 <div id="listing2604123Modal" class="custom-modal" style="display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,.5)"><div class="custom-modal-content" style="background:#fff;margin:3% auto;padding:30px;border-radius:8px;border:1px solid #ccc;width:90%;max-width:1000px;position:relative"><span class="close" onclick="closeModal()">&times;</span><div class="carousel" style="position:relative;margin-bottom:20px"><img loading="lazy" decoding="async" class="slide" src="https://cdn.photos.sparkplatform.com/ctn/20260828162057533696000000-o.jpg" alt="11 Roy Hargrove Road" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"></div><div style="margin-bottom:25px"><h2>11 Roy Hargrove Road, Medina, TN 38355</h2><p style="font-size:23px;font-weight:bold;font-family:'Lora'">$479,900</p><div style="display:flex;flex-wrap:wrap;gap:20px;font-family:'Lora'"><div><strong>MLS:</strong> 2604123</div><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 4</div><div><strong>Baths:</strong> 3.5</div><div><strong>Sqft:</strong> 2,970</div><div><strong>Garage:</strong> 2 spaces</div><div><strong>Year Built:</strong> 2026</div><div><strong>County:</strong> Gibson</div></div></div><div style="margin-bottom:25px"><h3>Key Features</h3><ul style="list-style:none;padding-left:0;column-count:2;gap:20px;font-family:'Lora'"><li><strong>Construction:</strong> New two-story brick home</li><li><strong>Kitchen:</strong> Solid-surface countertops and large island</li><li><strong>Primary Suite:</strong> Main-level suite with patio access</li><li><strong>Primary Bath:</strong> Double vanity, soaking tub, and tiled shower</li><li><strong>Interior:</strong> Office; walk-in closets; two laundry rooms</li><li><strong>Exterior:</strong> Fenced backyard; patio; two upper balconies</li><li><strong>Parking:</strong> Two-car front-facing garage</li><li><strong>Schools:</strong> Medina School District</li></ul></div><div style="margin-bottom:25px"><h3>Property Description</h3><p style="line-height:1.6;font-family:'Lora'">Brand-new construction in the Medina School District with four bedrooms, three and one-half baths, and an office. The open-concept living, dining, and kitchen areas are designed for entertaining and everyday living, with solid-surface countertops and a large kitchen island. The main-level primary suite opens to the patio and fenced backyard and includes a spa-style bath with a double vanity, soaking tub, and tiled shower. Three bedrooms have walk-in closets, two upstairs bedrooms open to private balconies, and two laundry rooms add convenience.</p></div><div style="border-top:1px solid #ccc;padding-top:20px;font-family:'Lora'"><strong data-agent-name>Lisa Ann Ballinger</strong> · <a href="agent-profile.html?agent=lisa-ballinger">View Profile</a> · (731) 223-0919</div></div></div>
 
 <!-- Active listing MLS 2603442 -->
-<div class="card" data-mls="2603442" data-dom="35" data-modal="listing2603442Modal" data-agent="Jackie David" data-lat="35.631964" data-lng="-88.819354" data-map-category="homes">
+<div class="card" data-mls="2603442" data-dom="43" data-modal="listing2603442Modal" data-agent="Jackie David" data-lat="35.631964" data-lng="-88.819354" data-map-category="homes">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260722133608075367000000-o.jpg" alt="111 Westwood Avenue" onclick="openModal('listing2603442Modal')" />
   <div class="card-body">
     <p class="price">$199,000</p>
@@ -2747,7 +2764,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 
 <!-- Active listing MLS 2603159 -->
-<div class="card" data-mls="2603159" data-dom="62" data-modal="listing2603159Modal" data-agent="Tamra L Jones" data-lat="35.644958" data-lng="-88.822146" data-map-category="homes">
+<div class="card" data-mls="2603159" data-dom="70" data-modal="listing2603159Modal" data-agent="Tamra L Jones" data-lat="35.644958" data-lng="-88.822146" data-map-category="homes">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260813040523968825000000-o.jpg" alt="1256 Campbell Street" onclick="openModal('listing2603159Modal')" />
   <div class="card-body">
     <p class="price">$185,000</p>
@@ -2870,7 +2887,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     <!-- Home 2 Grid -->
     
     <div class="grid">
-            <div class="card" data-mls="2601110" data-dom="170" data-modal="16860Modal" data-lat="36.137072" data-lng="-88.494267" data-map-category="homes">
+            <div class="card" data-mls="2601110" data-dom="178" data-modal="16860Modal" data-lat="36.137072" data-lng="-88.494267" data-map-category="homes">
               <img src="https://cdn.photos.sparkplatform.com/ctn/20260317152147488476000000-o.jpg" alt="Home" onclick="openModal('16860Modal')" />
               <div class="card-body">
                 <p class="price">$259,900</p>
@@ -3168,7 +3185,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
                 </div>
                 </div>
 
-                <div class="card" data-mls="2601721" data-dom="141" data-modal="tickleStreetModal" data-lat="36.047471" data-lng="-89.385108" data-map-category="homes">
+                <div class="card" data-mls="2601721" data-dom="149" data-modal="tickleStreetModal" data-lat="36.047471" data-lng="-89.385108" data-map-category="homes">
                   <img src="https://cdn.photos.sparkplatform.com/ctn/20260417002203034486000000-o.jpg" alt="Home" onclick="openModal('tickleStreetModal')" />
                   <div class="card-body">
                     <p class="price">$125,000</p>
@@ -3402,16 +3419,16 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
        
 
 <!-- MLS additions verified from textexport-6.csv on August 27, 2026 -->
-<div class="card" data-mls="2604082" data-dom="7" data-modal="listing2604082Modal" data-agent="Jackie David" data-lat="36.024193" data-lng="-88.810131" data-map-category="homes" data-promotion-date="2026-08-27"><img src="https://cdn.photos.sparkplatform.com/ctn/20260827175833032693000000-o.jpg" alt="35 Vick Road" onclick="openModal('listing2604082Modal')"><div class="card-body"><p class="price">$179,000</p><p class="address">35 Vick Road<br>Bradford, TN</p><a href="#" class="details-link" onclick="openModal('listing2604082Modal'); return false;">View Details</a><div class="stats"><div><strong>3</strong><span>Beds</span></div><div><strong>1,447</strong><span>Sq.Ft.</span></div><div><strong>1</strong><span>Bath</span></div></div></div></div>
+<div class="card" data-mls="2604082" data-dom="15" data-modal="listing2604082Modal" data-agent="Jackie David" data-lat="36.024193" data-lng="-88.810131" data-map-category="homes" data-promotion-date="2026-08-27"><img src="https://cdn.photos.sparkplatform.com/ctn/20260827175833032693000000-o.jpg" alt="35 Vick Road" onclick="openModal('listing2604082Modal')"><div class="card-body"><p class="price">$179,000</p><p class="address">35 Vick Road<br>Bradford, TN</p><a href="#" class="details-link" onclick="openModal('listing2604082Modal'); return false;">View Details</a><div class="stats"><div><strong>3</strong><span>Beds</span></div><div><strong>1,447</strong><span>Sq.Ft.</span></div><div><strong>1</strong><span>Bath</span></div></div></div></div>
 <div id="listing2604082Modal" class="custom-modal" style="display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,.5)"><div class="custom-modal-content" style="background:#fff;margin:3% auto;padding:30px;border-radius:8px;border:1px solid #ccc;width:90%;max-width:1000px;position:relative"><span class="close" onclick="closeModal()">&times;</span><div class="carousel" style="position:relative;margin-bottom:20px"><img loading="lazy" decoding="async" class="slide" src="https://cdn.photos.sparkplatform.com/ctn/20260827175833032693000000-o.jpg" alt="35 Vick Road" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"></div><h2>35 Vick Road, Bradford, TN 38316</h2><p style="font-size:23px;font-weight:bold;font-family:'Lora'">$179,000</p><div style="display:flex;flex-wrap:wrap;gap:20px;font-family:'Lora'"><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 3</div><div><strong>Baths:</strong> 1</div><div><strong>Sqft:</strong> 1,447</div><div><strong>Lot:</strong> 1.1 acres</div><div><strong>Year Built:</strong> 1929</div></div><h3>Property Description</h3><p style="line-height:1.6;font-family:'Lora'">Move-in-ready and meticulously maintained, this three-bedroom home sits on 1.1 acres in the Bradford school district with no city taxes. Updates include fresh paint, new vinyl siding, extra-large gutters, and added floor joists. The fully fenced backyard and detached garage provide room for outdoor living, storage, or a workspace.</p><div class="modal-contact-actions"><a href="tel:+17314876545">Call Jackie David</a></div></div></div>
 
-<div class="card" data-mls="2604068" data-dom="8" data-modal="listing2604068Modal" data-agent="Amy McLemore" data-lat="35.873559" data-lng="-88.753989" data-map-category="homes"><img src="https://cdn.photos.sparkplatform.com/ctn/20260826194041578640000000-o.jpg" alt="14006 Westhaven Cove" onclick="openModal('listing2604068Modal')"><div class="card-body"><p class="price">$265,000</p><p class="address">14006 Westhaven Cove<br>Milan, TN</p><a href="#" class="details-link" onclick="openModal('listing2604068Modal'); return false;">View Details</a><div class="stats"><div><strong>3</strong><span>Beds</span></div><div><strong>1,229</strong><span>Sq.Ft.</span></div><div><strong>2</strong><span>Baths</span></div></div></div></div>
+<div class="card" data-mls="2604068" data-dom="16" data-modal="listing2604068Modal" data-agent="Amy McLemore" data-lat="35.873559" data-lng="-88.753989" data-map-category="homes"><img src="https://cdn.photos.sparkplatform.com/ctn/20260826194041578640000000-o.jpg" alt="14006 Westhaven Cove" onclick="openModal('listing2604068Modal')"><div class="card-body"><p class="price">$265,000</p><p class="address">14006 Westhaven Cove<br>Milan, TN</p><a href="#" class="details-link" onclick="openModal('listing2604068Modal'); return false;">View Details</a><div class="stats"><div><strong>3</strong><span>Beds</span></div><div><strong>1,229</strong><span>Sq.Ft.</span></div><div><strong>2</strong><span>Baths</span></div></div></div></div>
 <div id="listing2604068Modal" class="custom-modal" style="display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,.5)"><div class="custom-modal-content" style="background:#fff;margin:3% auto;padding:30px;border-radius:8px;border:1px solid #ccc;width:90%;max-width:1000px;position:relative"><span class="close" onclick="closeModal()">&times;</span><div class="carousel" style="position:relative;margin-bottom:20px"><img loading="lazy" decoding="async" class="slide" src="https://cdn.photos.sparkplatform.com/ctn/20260826194041578640000000-o.jpg" alt="14006 Westhaven Cove" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"></div><h2>14006 Westhaven Cove, Milan, TN 38358</h2><p style="font-size:23px;font-weight:bold;font-family:'Lora'">$265,000</p><div style="display:flex;flex-wrap:wrap;gap:20px;font-family:'Lora'"><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 3</div><div><strong>Baths:</strong> 2</div><div><strong>Sqft:</strong> 1,229</div><div><strong>Lot:</strong> 0.26 acres</div><div><strong>Year Built:</strong> 2024</div></div><h3>Property Description</h3><p style="line-height:1.6;font-family:'Lora'">Well-maintained, one-level brick home with nearly $16,000 in upgrades, including spray-foam insulation, a tankless water heater, and a custom butcher-block kitchen island. The open floor plan features a vaulted great room, granite countertops, stainless-steel appliances, covered front and rear outdoor spaces, and a spacious primary walk-in closet.</p><div class="modal-contact-actions"><a href="tel:+17312340049">Call Amy McLemore</a></div></div></div>
 
-<div class="card" data-mls="2600613" data-dom="142" data-modal="listing2600613Modal" data-agent="Jackie David" data-lat="35.858821" data-lng="-88.777328" data-map-category="land"><img src="https://cdn.photos.sparkplatform.com/ctn/20260216171741030273000000-o.jpg" alt="0 Chapel Hill Road acreage" onclick="openModal('listing2600613Modal')"><div class="card-body"><p class="price">$343,000</p><p class="address">0 Chapel Hill Road<br>Milan, TN</p><a href="#" class="details-link" onclick="openModal('listing2600613Modal'); return false;">View Details</a><div class="stats"><div><strong>29.76</strong><span>Acres</span></div><div><strong>Land</strong><span>Type</span></div></div></div></div>
+<div class="card" data-mls="2600613" data-dom="150" data-modal="listing2600613Modal" data-agent="Jackie David" data-lat="35.858821" data-lng="-88.777328" data-map-category="land"><img src="https://cdn.photos.sparkplatform.com/ctn/20260216171741030273000000-o.jpg" alt="0 Chapel Hill Road acreage" onclick="openModal('listing2600613Modal')"><div class="card-body"><p class="price">$343,000</p><p class="address">0 Chapel Hill Road<br>Milan, TN</p><a href="#" class="details-link" onclick="openModal('listing2600613Modal'); return false;">View Details</a><div class="stats"><div><strong>29.76</strong><span>Acres</span></div><div><strong>Land</strong><span>Type</span></div></div></div></div>
 <div id="listing2600613Modal" class="custom-modal" style="display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,.5)"><div class="custom-modal-content" style="background:#fff;margin:3% auto;padding:30px;border-radius:8px;border:1px solid #ccc;width:90%;max-width:1000px;position:relative"><span class="close" onclick="closeModal()">&times;</span><div class="carousel"><img loading="lazy" decoding="async" class="slide" src="https://cdn.photos.sparkplatform.com/ctn/20260216171741030273000000-o.jpg" alt="0 Chapel Hill Road acreage" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"></div><h2>0 Chapel Hill Road, Milan, TN 38358</h2><p style="font-size:23px;font-weight:bold;font-family:'Lora'">$343,000</p><div style="display:flex;flex-wrap:wrap;gap:20px;font-family:'Lora'"><div><strong>Type:</strong> Agricultural Land</div><div><strong>Lot:</strong> 29.76 acres</div><div><strong>County:</strong> Gibson</div></div><h3>Property Description</h3><p style="line-height:1.6;font-family:'Lora'">Exceptional 29.76-acre tract with gently rolling terrain, open pasture, mature hardwoods, and convenient road frontage. Located in the South Gibson County School District with easy access to Milan, Jackson, and surrounding communities.</p><div class="modal-contact-actions"><a href="tel:+17314876545">Call Jackie David</a></div></div></div>
 
-<div class="card" data-mls="2505592" data-dom="280" data-modal="listing2505592Modal" data-agent="Brandie Bassett" data-lat="35.380879" data-lng="-87.943747" data-map-category="land"><img src="https://cdn.photos.sparkplatform.com/ctn/20251126225750946188000000-o.jpg" alt="0 B J Woodson Lane acreage" onclick="openModal('listing2505592Modal')"><div class="card-body"><p class="price">$65,000</p><p class="address">0 B J Woodson Lane<br>Clifton, TN</p><a href="#" class="details-link" onclick="openModal('listing2505592Modal'); return false;">View Details</a><div class="stats"><div><strong>20.07</strong><span>Acres</span></div><div><strong>Land</strong><span>Type</span></div></div></div></div>
+<div class="card" data-mls="2505592" data-dom="288" data-modal="listing2505592Modal" data-agent="Brandie Bassett" data-lat="35.380879" data-lng="-87.943747" data-map-category="land"><img src="https://cdn.photos.sparkplatform.com/ctn/20251126225750946188000000-o.jpg" alt="0 B J Woodson Lane acreage" onclick="openModal('listing2505592Modal')"><div class="card-body"><p class="price">$65,000</p><p class="address">0 B J Woodson Lane<br>Clifton, TN</p><a href="#" class="details-link" onclick="openModal('listing2505592Modal'); return false;">View Details</a><div class="stats"><div><strong>20.07</strong><span>Acres</span></div><div><strong>Land</strong><span>Type</span></div></div></div></div>
 <div id="listing2505592Modal" class="custom-modal" style="display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,.5)"><div class="custom-modal-content" style="background:#fff;margin:3% auto;padding:30px;border-radius:8px;border:1px solid #ccc;width:90%;max-width:1000px;position:relative"><span class="close" onclick="closeModal()">&times;</span><div class="carousel"><img loading="lazy" decoding="async" class="slide" src="https://cdn.photos.sparkplatform.com/ctn/20251126225750946188000000-o.jpg" alt="0 B J Woodson Lane acreage" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"></div><h2>0 B J Woodson Lane, Clifton, TN 38425</h2><p style="font-size:23px;font-weight:bold;font-family:'Lora'">$65,000</p><div style="display:flex;flex-wrap:wrap;gap:20px;font-family:'Lora'"><div><strong>Type:</strong> Land</div><div><strong>Lot:</strong> 20.07 acres</div><div><strong>County:</strong> Hardin</div></div><h3>Property Description</h3><p style="line-height:1.6;font-family:'Lora'">A private 20.07-acre tract in the Ross Creek Ridge area with rolling hardwoods, a small open homesite or food-plot area, gravel-road access, and approximately 596 feet of frontage. Convenient to Clifton, the Tennessee River, marina and boat ramps, and Ross Creek Landing.</p><div class="modal-contact-actions"><a href="tel:+17316952785">Call Brandie Bassett</a></div></div></div>
 
       <!-- close grid div -->
@@ -3420,7 +3437,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       <section style="padding: 2%";></section>
       <div class="grid">
 
-        <div class="card" data-mls="2602869" data-dom="78" data-modal="miffModal" data-lat="35.572785" data-lng="-88.659858" data-map-category="homes">
+        <div class="card" data-mls="2602869" data-dom="86" data-modal="miffModal" data-lat="35.572785" data-lng="-88.659858" data-map-category="homes">
           <img src="https://cdn.photos.sparkplatform.com/ctn/20260618180133204350000000-o.jpg" alt="Home" onclick="openModal('miffModal')" />
           <div class="card-body">
             <p class="price">$174,900</p>
@@ -3564,7 +3581,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         </div>
 
 
-        <div class="card" data-mls="2601705" data-dom="130" data-modal="66BearTraceDriveModal" data-lat="35.709547" data-lng="-88.838746" data-map-category="homes">
+        <div class="card" data-mls="2601705" data-dom="138" data-modal="66BearTraceDriveModal" data-lat="35.709547" data-lng="-88.838746" data-map-category="homes">
           <img src="https://cdn.photos.sparkplatform.com/ctn/20260415155520194342000000-o.jpg" alt="Home" onclick="openModal('66BearTraceDriveModal')" />
           <div class="card-body">
             <p class="price">$314,900</p>
@@ -3851,7 +3868,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             </div>
 
 
-                    <div class="card" data-mls="2602281" data-dom="111" data-modal="306WileyParkerRoadModal" data-agent="Ashley McMillan" data-lat="35.661564" data-lng="-88.841709" data-map-category="homes">
+                    <div class="card" data-mls="2602281" data-dom="119" data-modal="306WileyParkerRoadModal" data-agent="Ashley McMillan" data-lat="35.661564" data-lng="-88.841709" data-map-category="homes">
                       <img src="https://cdn.photos.sparkplatform.com/ctn/20260516144514658739000000-o.jpg" alt="Home" onclick="openModal('306WileyParkerRoadModal')" />
                       <div class="card-body">
                         <p class="price">$575,000</p>
@@ -3989,10 +4006,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
                     </div>
                     </div>
 
-                    <div class="card" data-mls="2601038" data-dom="178" data-modal="redfieldModal" data-lat="35.692365" data-lng="-88.887913" data-map-category="homes">
+                    <div class="card" data-mls="2601038" data-dom="186" data-modal="redfieldModal" data-lat="35.692365" data-lng="-88.887913" data-map-category="homes" data-previous-price="$485,000" data-promotion-date="2026-09-07">
                       <img src="https://cdn.photos.sparkplatform.com/ctn/20260305192921708020000000-o.jpg" alt="Home" onclick="openModal('redfieldModal')"/>
                       <div class="card-body">
-                        <p class="price">$485,000</p>
+                        <p class="price">$460,000</p>
                         <p class="address">290 Redfield Drive<br>Jackson, TN</p>
                         <a href="#" class="details-link" onclick="openModal('redfieldModal');">View Details</a>
                         <div class="stats">
@@ -4056,7 +4073,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
                       <!-- Property Overview -->
                       <div style="margin-bottom: 25px;">
                         <h2 style="margin-bottom: 5px; font-family:'Bodoni Moda'; font-size: 25px;">290 Redfield Drive, Jackson, TN 38305</h2>
-                        <p style="font-size: 23px; font-weight: bold; margin: 5px 0 10px; font-family:'Lora'">$485,000</p>
+                        <p style="font-size: 23px; font-weight: bold; margin: 5px 0 10px; font-family:'Lora'">$460,000</p>
                   
                         <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 1em; font-family:'Lora'">
                           <div><strong>Beds:</strong> 4</div>
@@ -4145,7 +4162,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
       
 
-    <div class="card" data-mls="2601468" data-dom="153" data-modal="74PowellModal" data-lat="35.652309" data-lng="-88.842133" data-map-category="homes">
+    <div class="card" data-mls="2601468" data-dom="161" data-modal="74PowellModal" data-lat="35.652309" data-lng="-88.842133" data-map-category="homes">
       <img src="https://cdn.photos.sparkplatform.com/ctn/20260404000446447089000000-o.jpg" alt="Home" onclick="openModal('74PowellModal')" />
       <div class="card-body">
         <p class="price">$260,000</p>
@@ -4431,7 +4448,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       </div>
 
 
-      <div class="card" data-mls="2601171" data-dom="174" data-modal="rollingModal" data-agent="Brandie Bassett" data-lat="35.671098" data-lng="-88.892185" data-map-category="homes">
+      <div class="card" data-mls="2601171" data-dom="182" data-modal="rollingModal" data-agent="Brandie Bassett" data-lat="35.671098" data-lng="-88.892185" data-map-category="homes">
         <img src="https://cdn.photos.sparkplatform.com/ctn/20260320191513746776000000-o.jpg" alt="Home" onclick="openModal('rollingModal')" />
         <div class="card-body">
           <p class="price">$289,900</p>
@@ -4588,7 +4605,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           </div>
 
 <!-- Active listing MLS 2603840 -->
-<div class="card" data-mls="2603840" data-dom="21" data-modal="listing2603840Modal" data-agent="Jackie David" data-lat="35.926788" data-lng="-88.76766" data-map-category="homes" data-listing-updated="2026-08-27T16:56:00-05:00">
+<div class="removed-listing" hidden data-mls="2603840" data-dom="28" data-modal="listing2603840Modal" data-agent="Jackie David" data-lat="35.926788" data-lng="-88.76766" data-map-category="homes" data-listing-updated="2026-08-27T16:56:00-05:00">
   <img src="https://cdn1.photos.sparkplatform.com/ctn/20260813174217292676000000-o.jpg" alt="4011 Creswell Street" onclick="openModal('listing2603840Modal')" />
   <div class="card-body">
     <p class="price">$1,500/month</p>
@@ -4603,7 +4620,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2604012 -->
-<div class="card" data-mls="2604012" data-dom="12" data-modal="listing2604012Modal" data-agent="Brandie Bassett" data-lat="36.339303" data-lng="-88.840427" data-map-category="homes">
+<div class="card" data-mls="2604012" data-dom="20" data-modal="listing2604012Modal" data-agent="Brandie Bassett" data-lat="36.339303" data-lng="-88.840427" data-map-category="homes">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260822224249556985000000-o.jpg" alt="135 Christine Street" onclick="openModal('listing2604012Modal')" />
   <div class="card-body"><p class="price">$109,900</p><p class="address">135 Christine Street<br>Martin, TN</p><a href="#" class="details-link" onclick="openModal('listing2604012Modal'); return false;">View Details</a><div class="stats"><div><strong>3</strong><span>Beds</span></div><div><strong>1,686</strong><span>Sq.Ft.</span></div><div><strong>1.5</strong><span>Baths</span></div></div></div>
 </div>
@@ -4620,7 +4637,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603986 -->
-<div class="card" data-mls="2603986" data-dom="13" data-modal="listing2603986Modal" data-agent="Lisa Ann Ballinger" data-lat="36.3691534" data-lng="-88.3590159" data-map-category="homes">
+<div class="card" data-mls="2603986" data-dom="21" data-modal="listing2603986Modal" data-agent="Lisa Ann Ballinger" data-lat="36.3691534" data-lng="-88.3590159" data-map-category="homes">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260821132435063282000000-o.jpg" alt="210 Tatertown Road" onclick="openModal('listing2603986Modal')" />
   <div class="card-body"><p class="price">$129,900</p><p class="address">210 Tatertown Road<br>Paris, TN</p><a href="#" class="details-link" onclick="openModal('listing2603986Modal'); return false;">View Details</a><div class="stats"><div><strong>3</strong><span>Beds</span></div><div><strong>1,408</strong><span>Sq.Ft.</span></div><div><strong>1</strong><span>Bath</span></div></div></div>
 </div>
@@ -4629,7 +4646,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603985 -->
-<div class="card" data-mls="2603985" data-dom="14" data-modal="listing2603985Modal" data-agent="Brandie Bassett" data-lat="35.7123558" data-lng="-88.792942" data-map-category="homes">
+<div class="card" data-mls="2603985" data-dom="22" data-modal="listing2603985Modal" data-agent="Brandie Bassett" data-lat="35.7123558" data-lng="-88.792942" data-map-category="homes">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260821141223719620000000-o.jpg" alt="23 Chestnut Cove" onclick="openModal('listing2603985Modal')" />
   <div class="card-body"><p class="price">$229,000</p><p class="address">23 Chestnut Cove<br>Oakfield, TN</p><a href="#" class="details-link" onclick="openModal('listing2603985Modal'); return false;">View Details</a><div class="stats"><div><strong>4</strong><span>Beds</span></div><div><strong>1,465</strong><span>Sq.Ft.</span></div><div><strong>2</strong><span>Baths</span></div></div></div>
 </div>
@@ -4638,7 +4655,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2601160 -->
-<div class="card" data-mls="2601160" data-dom="161" data-modal="listing2601160Modal" data-agent="Brandie Bassett" data-lat="35.9320769" data-lng="-88.5778777" data-map-category="homes">
+<div class="card" data-mls="2601160" data-dom="169" data-modal="listing2601160Modal" data-agent="Brandie Bassett" data-lat="35.9320769" data-lng="-88.5778777" data-map-category="homes">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260320155427360304000000-o.jpg" alt="3875 Terry Road" onclick="openModal('listing2601160Modal')" />
   <div class="card-body"><p class="price">$340,000</p><p class="address">3875 Terry Road<br>Huntingdon, TN</p><a href="#" class="details-link" onclick="openModal('listing2601160Modal'); return false;">View Details</a><div class="stats"><div><strong>5</strong><span>Beds</span></div><div><strong>3,715</strong><span>Sq.Ft.</span></div><div><strong>3.5</strong><span>Baths</span></div></div></div>
 </div>
@@ -4663,8 +4680,22 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   </div>
 </div>
 
+<!-- Active listing MLS 2604246 -->
+<div class="card" data-mls="2604246" data-dom="5" data-modal="listing2604246Modal" data-agent="Amy McLemore" data-lat="35.714102" data-lng="-88.709951" data-map-category="homes" data-promotion-date="2026-09-06">
+  <img loading="lazy" decoding="async" src="https://cdn0.photos.sparkplatform.com/ctn/20260906195120422104000000-o.jpg" alt="54 Bryce Drive" onclick="openModal('listing2604246Modal')">
+  <div class="card-body"><p class="price">$239,900</p><p class="address">54 Bryce Drive<br>Jackson, TN</p><a href="#" class="details-link" onclick="openModal('listing2604246Modal'); return false;">View Details</a><div class="stats"><div><strong>3</strong><span>Beds</span></div><div><strong>1,568</strong><span>Sq.Ft.</span></div><div><strong>2</strong><span>Baths</span></div></div></div>
+</div>
+<div id="listing2604246Modal" class="custom-modal" style="display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,.5)"><div class="custom-modal-content" style="background:#fff;margin:3% auto;padding:30px;border-radius:8px;border:1px solid #ccc;width:90%;max-width:1000px;position:relative"><span class="close" onclick="closeModal()">&times;</span><div class="carousel" style="position:relative;margin-bottom:20px"><img class="slide" src="https://cdn0.photos.sparkplatform.com/ctn/20260906195120422104000000-o.jpg" alt="54 Bryce Drive" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"><img class="slide" src="https://cdn0.photos.sparkplatform.com/ctn/20260906195758676508000000-o.jpg" alt="54 Bryce Drive backyard" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"><img class="slide" src="https://cdn0.photos.sparkplatform.com/ctn/20260907034342235296000000-o.jpg" alt="54 Bryce Drive pond view" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"></div><h2>54 Bryce Drive, Jackson, TN 38305</h2><p style="font-size:23px;font-weight:bold;font-family:'Lora'">$239,900</p><div style="display:flex;flex-wrap:wrap;gap:20px;font-family:'Lora'"><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 3</div><div><strong>Baths:</strong> 2</div><div><strong>Sqft:</strong> 1,568</div><div><strong>Lot:</strong> 0.82 acre</div><div><strong>Year Built:</strong> 2026</div></div><h3>Property Description</h3><p style="line-height:1.6;font-family:'Lora'">New 2026 Champion home on 0.82 acre in Seven Oaks with pond views, a permanent brick foundation, an asphalt driveway, and a tree-lined backyard adjoining agricultural land. The open split-bedroom plan includes luxury vinyl flooring throughout, a spacious great room, stainless appliances, a six-foot kitchen island, three walk-in closets, and front and rear decks. County taxes only, with convenient access to Interstate 40 and Jackson shopping and dining.</p><div style="border-top:1px solid #ccc;padding-top:20px;font-family:'Lora'"><strong data-agent-name>Amy McLemore</strong> · <a href="agent-profile.html?agent=amy-mclemore">View Profile</a> · (731) 234-0049</div></div></div>
+
+<!-- Active listing MLS 2604262 -->
+<div class="card" data-mls="2604262" data-dom="3" data-modal="listing2604262Modal" data-agent="Brandie Bassett" data-lat="35.824205" data-lng="-88.590251" data-map-category="homes" data-promotion-date="2026-09-08">
+  <img loading="lazy" decoding="async" src="https://cdn0.photos.sparkplatform.com/ctn/20260909001622717107000000-o.jpg" alt="4115 Highway 70 East" onclick="openModal('listing2604262Modal')">
+  <div class="card-body"><p class="price">$299,900</p><p class="address">4115 Highway 70 East<br>Cedar Grove, TN</p><a href="#" class="details-link" onclick="openModal('listing2604262Modal'); return false;">View Details</a><div class="stats"><div><strong>3</strong><span>Beds</span></div><div><strong>1,786</strong><span>Sq.Ft.</span></div><div><strong>2</strong><span>Baths</span></div></div></div>
+</div>
+<div id="listing2604262Modal" class="custom-modal" style="display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,.5)"><div class="custom-modal-content" style="background:#fff;margin:3% auto;padding:30px;border-radius:8px;border:1px solid #ccc;width:90%;max-width:1000px;position:relative"><span class="close" onclick="closeModal()">&times;</span><div class="carousel" style="position:relative;margin-bottom:20px"><img class="slide" src="https://cdn0.photos.sparkplatform.com/ctn/20260909001622717107000000-o.jpg" alt="4115 Highway 70 East" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"><img class="slide" src="https://cdn0.photos.sparkplatform.com/ctn/20260909001620813366000000-o.jpg" alt="4115 Highway 70 East exterior" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"><img class="slide" src="https://cdn1.photos.sparkplatform.com/ctn/20260910211729157765000000-o.jpg" alt="4115 Highway 70 East recent photo" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"></div><h2>4115 Highway 70 East, Cedar Grove, TN 38321</h2><p style="font-size:23px;font-weight:bold;font-family:'Lora'">$299,900</p><div style="display:flex;flex-wrap:wrap;gap:20px;font-family:'Lora'"><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 3</div><div><strong>Baths:</strong> 2</div><div><strong>Sqft:</strong> 1,786</div><div><strong>Lot:</strong> 11 acres</div><div><strong>Year Built:</strong> 1951</div><div><strong>Garage:</strong> 2 spaces</div></div><h3>Property Description</h3><p style="line-height:1.6;font-family:'Lora'">Updated one-level home on 11 acres with three bedrooms, two baths, an attached two-car garage, two fireplaces, and a separate workshop. Improvements include a remodeled kitchen, fresh paint, new windows, a new water heater, and a roof approximately three years old. The property is outside city limits with no subdivision or restrictive covenants.</p><div style="border-top:1px solid #ccc;padding-top:20px;font-family:'Lora'"><strong data-agent-name>Brandie Bassett</strong> · <a href="agent-profile.html?agent=brandie-bassett">View Profile</a> · (731) 695-2785</div></div></div>
+
 <!-- Active listing MLS 2602665 -->
-<div class="card" data-mls="2602665" data-dom="31" data-modal="listing2602665Modal" data-agent="Amy McLemore" data-lat="35.708434" data-lng="-88.777231" data-map-category="homes" data-previous-price="$639,900" data-promotion-date="2026-09-03">
+<div class="card" data-mls="2602665" data-dom="39" data-modal="listing2602665Modal" data-agent="Amy McLemore" data-lat="35.708434" data-lng="-88.777231" data-map-category="homes" data-previous-price="$639,900" data-promotion-date="2026-09-03">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260607191154559149000000-o.jpg" alt="46 Oakfield Road" onclick="openModal('listing2602665Modal')" />
   <div class="card-body">
     <p class="price">$629,900</p>
@@ -4717,7 +4748,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     <div id="land-listing-grid" class="grid">
 
 <!-- Active listing MLS 2603158 -->
-<div class="card" data-mls="2603158" data-dom="63" data-modal="listing2603158Modal" data-agent="Tamra L Jones" data-lat="36.087530" data-lng="-88.114863" data-map-category="land">
+<div class="card" data-mls="2603158" data-dom="71" data-modal="listing2603158Modal" data-agent="Tamra L Jones" data-lat="36.087530" data-lng="-88.114863" data-map-category="land">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260705183023198131000000-o.jpg" alt="0 McKelvey Road" onclick="openModal('listing2603158Modal')" />
   <div class="card-body">
     <p class="price">$55,000</p>
@@ -4776,7 +4807,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603156 -->
-<div class="card" data-mls="2603156" data-dom="63" data-modal="listing2603156Modal" data-agent="Tamra L Jones" data-lat="36.089265" data-lng="-88.112604" data-map-category="land">
+<div class="card" data-mls="2603156" data-dom="71" data-modal="listing2603156Modal" data-agent="Tamra L Jones" data-lat="36.089265" data-lng="-88.112604" data-map-category="land">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260705162720050954000000-o.jpg" alt="0 McKelvey Road" onclick="openModal('listing2603156Modal')" />
   <div class="card-body">
     <p class="price">$42,000</p>
@@ -4835,7 +4866,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603157 -->
-<div class="card" data-mls="2603157" data-dom="63" data-modal="listing2603157Modal" data-agent="Tamra L Jones" data-lat="36.087559" data-lng="-88.114794" data-map-category="land">
+<div class="card" data-mls="2603157" data-dom="71" data-modal="listing2603157Modal" data-agent="Tamra L Jones" data-lat="36.087559" data-lng="-88.114794" data-map-category="land">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260705182343527877000000-o.jpg" alt="0 McKelvey Road" onclick="openModal('listing2603157Modal')" />
   <div class="card-body">
     <p class="price">$47,000</p>
@@ -4895,7 +4926,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 
 <!-- Active listing MLS 2603133 -->
-<div class="card" data-mls="2603133" data-dom="63" data-modal="listing2603133Modal" data-agent="Tamra L Jones" data-lat="36.088462" data-lng="-88.115799" data-map-category="land">
+<div class="card" data-mls="2603133" data-dom="71" data-modal="listing2603133Modal" data-agent="Tamra L Jones" data-lat="36.088462" data-lng="-88.115799" data-map-category="land">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260704023528937740000000-o.jpg" alt="0 Quiet Oak Lane" onclick="openModal('listing2603133Modal')" />
   <div class="card-body">
     <p class="price">$34,000</p>
@@ -4954,7 +4985,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603134 -->
-<div class="card" data-mls="2603134" data-dom="63" data-modal="listing2603134Modal" data-agent="Tamra L Jones" data-lat="36.080869" data-lng="-88.121278" data-map-category="land">
+<div class="card" data-mls="2603134" data-dom="71" data-modal="listing2603134Modal" data-agent="Tamra L Jones" data-lat="36.080869" data-lng="-88.121278" data-map-category="land">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260704025913342755000000-o.jpg" alt="0 Quiet Oak Lane" onclick="openModal('listing2603134Modal')" />
   <div class="card-body">
     <p class="price">$47,000</p>
@@ -5013,7 +5044,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603135 -->
-<div class="card" data-mls="2603135" data-dom="63" data-modal="listing2603135Modal" data-agent="Tamra L Jones" data-lat="36.088032" data-lng="-88.114502" data-map-category="land">
+<div class="card" data-mls="2603135" data-dom="71" data-modal="listing2603135Modal" data-agent="Tamra L Jones" data-lat="36.088032" data-lng="-88.114502" data-map-category="land">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260704031113473234000000-o.jpg" alt="0 Quiet Oak Lane" onclick="openModal('listing2603135Modal')" />
   <div class="card-body">
     <p class="price">$34,000</p>
@@ -5072,7 +5103,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603136 -->
-<div class="card" data-mls="2603136" data-dom="63" data-modal="listing2603136Modal" data-agent="Tamra L Jones" data-lat="36.087825" data-lng="-88.114497" data-map-category="land">
+<div class="card" data-mls="2603136" data-dom="71" data-modal="listing2603136Modal" data-agent="Tamra L Jones" data-lat="36.087825" data-lng="-88.114497" data-map-category="land">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260704032639725470000000-o.jpg" alt="0 Quiet Oak Lane" onclick="openModal('listing2603136Modal')" />
   <div class="card-body">
     <p class="price">$31,000</p>
@@ -5131,7 +5162,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603143 -->
-<div class="card" data-mls="2603143" data-dom="63" data-modal="listing2603143Modal" data-agent="Tamra L Jones" data-lat="36.088021" data-lng="-88.114559" data-map-category="land">
+<div class="card" data-mls="2603143" data-dom="71" data-modal="listing2603143Modal" data-agent="Tamra L Jones" data-lat="36.088021" data-lng="-88.114559" data-map-category="land">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260705002658687410000000-o.jpg" alt="0 Zachary Lane" onclick="openModal('listing2603143Modal')" />
   <div class="card-body">
     <p class="price">$31,000</p>
@@ -5190,7 +5221,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603146 -->
-<div class="card" data-mls="2603146" data-dom="63" data-modal="listing2603146Modal" data-agent="Tamra L Jones" data-lat="36.087851" data-lng="-88.114762" data-map-category="land">
+<div class="card" data-mls="2603146" data-dom="71" data-modal="listing2603146Modal" data-agent="Tamra L Jones" data-lat="36.087851" data-lng="-88.114762" data-map-category="land">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260705010431866185000000-o.jpg" alt="0 Zachary Lane" onclick="openModal('listing2603146Modal')" />
   <div class="card-body">
     <p class="price">$33,000</p>
@@ -5249,7 +5280,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603147 -->
-<div class="card" data-mls="2603147" data-dom="63" data-modal="listing2603147Modal" data-agent="Tamra L Jones" data-lat="36.087992" data-lng="-88.114406" data-map-category="land">
+<div class="card" data-mls="2603147" data-dom="71" data-modal="listing2603147Modal" data-agent="Tamra L Jones" data-lat="36.087992" data-lng="-88.114406" data-map-category="land">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260705014230217023000000-o.jpg" alt="0 Zachary Lane" onclick="openModal('listing2603147Modal')" />
   <div class="card-body">
     <p class="price">$31,000</p>
@@ -5308,7 +5339,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603145 -->
-<div class="card" data-mls="2603145" data-dom="63" data-modal="listing2603145Modal" data-agent="Tamra L Jones" data-lat="36.087923" data-lng="-88.114843" data-map-category="land">
+<div class="card" data-mls="2603145" data-dom="71" data-modal="listing2603145Modal" data-agent="Tamra L Jones" data-lat="36.087923" data-lng="-88.114843" data-map-category="land">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260705004549061066000000-o.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603145Modal')" />
   <div class="card-body">
     <p class="price">$35,000</p>
@@ -5367,7 +5398,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603148 -->
-<div class="card" data-mls="2603148" data-dom="63" data-modal="listing2603148Modal" data-agent="Tamra L Jones" data-lat="36.090104" data-lng="-88.113236" data-map-category="land">
+<div class="card" data-mls="2603148" data-dom="71" data-modal="listing2603148Modal" data-agent="Tamra L Jones" data-lat="36.090104" data-lng="-88.113236" data-map-category="land">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260705015603233371000000-o.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603148Modal')" />
   <div class="card-body">
     <p class="price">$33,000</p>
@@ -5426,7 +5457,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603149 -->
-<div class="card" data-mls="2603149" data-dom="63" data-modal="listing2603149Modal" data-agent="Tamra L Jones" data-lat="36.088093" data-lng="-88.115025" data-map-category="land">
+<div class="card" data-mls="2603149" data-dom="71" data-modal="listing2603149Modal" data-agent="Tamra L Jones" data-lat="36.088093" data-lng="-88.115025" data-map-category="land">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260705021100479665000000-o.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603149Modal')" />
   <div class="card-body">
     <p class="price">$31,000</p>
@@ -5485,7 +5516,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603150 -->
-<div class="card" data-mls="2603150" data-dom="63" data-modal="listing2603150Modal" data-agent="Tamra L Jones" data-lat="36.087889" data-lng="-88.114607" data-map-category="land">
+<div class="card" data-mls="2603150" data-dom="71" data-modal="listing2603150Modal" data-agent="Tamra L Jones" data-lat="36.087889" data-lng="-88.114607" data-map-category="land">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260705022021443716000000-o.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603150Modal')" />
   <div class="card-body">
     <p class="price">$34,000</p>
@@ -5544,7 +5575,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603152 -->
-<div class="card" data-mls="2603152" data-dom="63" data-modal="listing2603152Modal" data-agent="Tamra L Jones" data-lat="36.087655" data-lng="-88.114983" data-map-category="land">
+<div class="card" data-mls="2603152" data-dom="71" data-modal="listing2603152Modal" data-agent="Tamra L Jones" data-lat="36.087655" data-lng="-88.114983" data-map-category="land">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260705041525827445000000-o.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603152Modal')" />
   <div class="card-body">
     <p class="price">$32,000</p>
@@ -5603,7 +5634,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603153 -->
-<div class="card" data-mls="2603153" data-dom="63" data-modal="listing2603153Modal" data-agent="Tamra L Jones" data-lat="36.090670" data-lng="-88.113268" data-map-category="land">
+<div class="card" data-mls="2603153" data-dom="71" data-modal="listing2603153Modal" data-agent="Tamra L Jones" data-lat="36.090670" data-lng="-88.113268" data-map-category="land">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260705042510749879000000-o.jpg" alt="0 Whispering Hills Drive" onclick="openModal('listing2603153Modal')" />
   <div class="card-body">
     <p class="price">$30,000</p>
@@ -5661,7 +5692,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
   </div>
 </div>
 
-            <div class="card" data-mls="2506001" data-dom="247" data-modal="ncentralModal" data-lat="35.858254" data-lng="-88.920188" data-map-category="land">
+            <div class="card" data-mls="2506001" data-dom="255" data-modal="ncentralModal" data-lat="35.858254" data-lng="-88.920188" data-map-category="land">
               <img src="https://cdn.photos.sparkplatform.com/ctn/20251231015436589429000000-o.jpg" alt="Home" onclick="openModal('ncentralModal')" />
               <div class="card-body">
                 <p class="price">$174,900</p>
@@ -5786,7 +5817,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         </div>
         </div>
 
-        <div class="card" data-mls="2602132" data-dom="119" data-modal="79InnsdaleCoveModal" data-lat="35.671082" data-lng="-88.833478" data-map-category="land">
+        <div class="card" data-mls="2602132" data-dom="127" data-modal="79InnsdaleCoveModal" data-lat="35.671082" data-lng="-88.833478" data-map-category="land">
           <img src="https://cdn.photos.sparkplatform.com/ctn/20260509190124866851000000-o.jpg" alt="Home" onclick="openModal('79InnsdaleCoveModal')" />
           <div class="card-body">
             <p class="price">$499,000</p>
@@ -5893,7 +5924,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         </div>
         </div>
         </div>
-        <div class="card" data-mls="2602050" data-dom="123" data-modal="2324ChanningWayModal" data-lat="36.076800" data-lng="-88.120678" data-map-category="land">
+        <div class="card" data-mls="2602050" data-dom="131" data-modal="2324ChanningWayModal" data-lat="36.076800" data-lng="-88.120678" data-map-category="land">
           <img src="https://cdn.photos.sparkplatform.com/ctn/20260505034037893578000000-o.jpg" alt="Home" onclick="openModal('2324ChanningWayModal')" />
           <div class="card-body">
             <p class="price">$53,900</p>
@@ -6006,7 +6037,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             <!-- New line Land -->
             <section style="padding: 2%";></section>
             <div class="grid">
-            <div class="card" data-mls="2600728" data-dom="193" data-modal="lotfiveModal" data-lat="36.008781" data-lng="-88.883796" data-map-category="land">
+            <div class="card" data-mls="2600728" data-dom="201" data-modal="lotfiveModal" data-lat="36.008781" data-lng="-88.883796" data-map-category="land">
               <img src="https://cdn.photos.sparkplatform.com/ctn/20260223122121803032000000-o.jpg" alt="Home" onclick="openModal('lotfiveModal')" />
               <div class="card-body">
                 <p class="price">$19,000</p>
@@ -6131,7 +6162,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           </div>
           
 
-          <div class="card" data-mls="2602344" data-dom="107" data-modal="0ClaytonDriveModal" data-lat="36.089936" data-lng="-88.114523" data-map-category="land">
+          <div class="card" data-mls="2602344" data-dom="115" data-modal="0ClaytonDriveModal" data-lat="36.089936" data-lng="-88.114523" data-map-category="land">
             <img src="https://cdn.photos.sparkplatform.com/ctn/20260520025716609174000000-o.jpg" alt="Home" onclick="openModal('0ClaytonDriveModal')" />
             <div class="card-body">
               <p class="price">$35,000</p>
@@ -6241,7 +6272,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           </div>
           </div>
           </div>
-          <div class="card" data-mls="2602345" data-dom="107" data-modal="0CarriageHouseModal" data-lat="36.090857" data-lng="-88.114976" data-map-category="land">
+          <div class="card" data-mls="2602345" data-dom="115" data-modal="0CarriageHouseModal" data-lat="36.090857" data-lng="-88.114976" data-map-category="land">
             <img src="https://cdn.photos.sparkplatform.com/ctn/20260520032538332961000000-o.jpg" alt="Home" onclick="openModal('0CarriageHouseModal')" />
             <div class="card-body">
               <p class="price">$22,000</p>
@@ -6349,7 +6380,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           </div>
 
 
-          <div class="card" data-mls="2603120" data-dom="63" data-modal="Lot70Modal" data-lat="36.087434" data-lng="-88.118728" data-map-category="land">
+          <div class="card" data-mls="2603120" data-dom="71" data-modal="Lot70Modal" data-lat="36.087434" data-lng="-88.118728" data-map-category="land">
             <img src="https://cdn.photos.sparkplatform.com/ctn/20260703041402557846000000-o.jpg" alt="Home" onclick="openModal('Lot70Modal')" />
             <div class="card-body">
               <p class="price">$34,000</p>
@@ -6463,7 +6494,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             <section style="padding: 2%";></section>
             <div class="grid">
              
-              <div class="card" data-mls="2603119" data-dom="63" data-modal="Lot66Modal" data-lat="36.088759" data-lng="-88.119369" data-map-category="land">
+              <div class="card" data-mls="2603119" data-dom="71" data-modal="Lot66Modal" data-lat="36.088759" data-lng="-88.119369" data-map-category="land">
                 <img src="https://cdn.photos.sparkplatform.com/ctn/20260703035249918372000000-o.jpg" alt="Home" onclick="openModal('Lot66Modal')" />
                 <div class="card-body">
                   <p class="price">$42,000</p>
@@ -6581,7 +6612,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           </div>
 
           <div id="other-listing-grid" class="grid">
-            <div class="card" data-mls="2505069" data-dom="317" data-modal="coopModal" data-lat="35.692795" data-lng="-88.805525" data-map-category="other">
+            <div class="card" data-mls="2505069" data-dom="325" data-modal="coopModal" data-lat="35.692795" data-lng="-88.805525" data-map-category="other">
               <img src="https://cdn.photos.sparkplatform.com/ctn/20251020132225096001000000-o.jpg" alt="Home" onclick="openModal('coopModal')" />
               <div class="card-body">
                 <p class="price">$999,500</p>
@@ -6747,7 +6778,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             </div>
             </div>
 
-            <div class="card" data-mls="2602794" data-dom="80" data-modal="1110Modal" data-lat="35.919749" data-lng="-88.758586" data-map-category="other" data-previous-price="$150,000" data-promotion-date="2026-09-04">
+            <div class="card" data-mls="2602794" data-dom="88" data-modal="1110Modal" data-lat="35.919749" data-lng="-88.758586" data-map-category="other" data-previous-price="$150,000" data-promotion-date="2026-09-04">
               <img src="https://cdn.photos.sparkplatform.com/ctn/20260614175256577687000000-o.jpg" alt="Home" onclick="openModal('1110Modal')" />
               <div class="card-body">
                 <p class="price">$140,000</p>
@@ -6872,7 +6903,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
 
 
-                <div class="card" data-mls="2602947" data-dom="71" data-modal="fedModal" data-lat="35.668670" data-lng="-88.834720" data-map-category="other">
+                <div class="card" data-mls="2602947" data-dom="79" data-modal="fedModal" data-lat="35.668670" data-lng="-88.834720" data-map-category="other">
                   <img src="https://cdn.photos.sparkplatform.com/ctn/20260623173051180969000000-o.jpg" alt="Home" onclick="openModal('fedModal')" />
                   <div class="card-body">
                     <p class="price">$369,900</p>
@@ -7021,7 +7052,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
                 
             
 <!-- Active listing MLS 2603649 -->
-<div class="card" data-mls="2603649" data-dom="33" data-modal="listing2603649Modal" data-agent="Tamra L Jones" data-lat="35.669115" data-lng="-88.840363" data-map-category="other">
+<div class="card" data-mls="2603649" data-dom="41" data-modal="listing2603649Modal" data-agent="Tamra L Jones" data-lat="35.669115" data-lng="-88.840363" data-map-category="other">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260803025709154178000000-o.jpg" alt="375 VANN Drive Unit D" onclick="openModal('listing2603649Modal')" />
   <div class="card-body">
     <p class="price">$2,000</p>
@@ -7097,7 +7128,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603063 -->
-<div class="card" data-mls="2603063" data-dom="65" data-modal="listing2603063Modal" data-agent="Lynda C Climer" data-lat="36.494757" data-lng="-88.895612" data-map-category="other">
+<div class="card" data-mls="2603063" data-dom="73" data-modal="listing2603063Modal" data-agent="Lynda C Climer" data-lat="36.494757" data-lng="-88.895612" data-map-category="other">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260705194307171827000000-o.jpg" alt="1203 Industrial Park Road" onclick="openModal('listing2603063Modal')" />
   <div class="card-body">
     <p class="price">$339,000</p>
@@ -7156,10 +7187,10 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 </div>
 
 <!-- Active listing MLS 2603618 -->
-<div class="card" data-mls="2603618" data-dom="35" data-modal="listing2603618Modal" data-agent="Lynda C Climer" data-lat="35.632712" data-lng="-88.846441" data-map-category="other">
+<div class="card" data-mls="2603618" data-dom="43" data-modal="listing2603618Modal" data-agent="Lynda C Climer" data-lat="35.632712" data-lng="-88.846441" data-map-category="other" data-previous-price="$749,000" data-promotion-date="2026-09-04">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260731205514704012000000-o.jpg" alt="1082 US-45 Bypass" onclick="openModal('listing2603618Modal')" />
   <div class="card-body">
-    <p class="price">$749,000</p>
+    <p class="price">$739,000</p>
     <p class="address">1082 US-45 Bypass<br>Jackson, TN</p>
     <a href="#" class="details-link" onclick="openModal('listing2603618Modal'); return false;">View Details</a>
     <div class="stats">
@@ -7183,7 +7214,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     </div>
     <div style="margin-bottom: 25px;">
       <h2 style="margin-bottom:5px; font-family:'Bodoni Moda'; font-size:25px;">1082 US-45 Bypass, Jackson, TN 38301</h2>
-      <p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Lora'">$749,000</p>
+      <p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Lora'">$739,000</p>
       <div style="display:flex; flex-wrap:wrap; gap:20px; font-size:1em; font-family:'Lora'">
         <div><strong>MLS:</strong> 2603618</div><div><strong>Type:</strong> Business</div>
         <div><strong>Beds:</strong> N/A</div><div><strong>Baths:</strong> N/A</div><div><strong>Sqft:</strong> 5,940</div>
@@ -7340,7 +7371,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         const summary = document.createElement('section');
         summary.className = 'modal-agent-summary';
         summary.setAttribute('aria-label', `Contact ${agentName}`);
-        summary.innerHTML = `<img src="${agent.image}" alt="${agentName}"><div class="modal-agent-summary-copy"><strong>${agentName}</strong><p>Listing agent · Total Realty Source</p><p>${agent.phone}</p></div><div class="modal-agent-summary-actions"><a href="tel:${agent.phoneHref}">Call Agent</a><a href="${agent.profile}">View Profile</a></div>`;
+        summary.innerHTML = `<img src="${agent.image}" alt="${agentName}"><div class="modal-agent-summary-copy"><strong>${agentName}</strong><a class="modal-agent-profile-link" href="${agent.profile}">View Profile</a><p>Listing agent · Total Realty Source</p><p>${agent.phone}</p></div><div class="modal-agent-summary-actions"><a href="tel:${agent.phoneHref}">Call Agent</a></div>`;
         content.appendChild(summary);
       });
     }
@@ -7348,7 +7379,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
     let currentSlide = 0;
     let activeModalId = null;
-    const listingMachineUpdatedAt = '2026-09-03T15:23:00-05:00';
+    const listingMachineUpdatedAt = '2026-09-11T13:56:00-05:00';
     const listingAgentPhones = {
       'Amy McLemore': '731-234-0049',
       'Lynda Climer': '731-217-3827',
@@ -9246,8 +9277,14 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           sessionStorage.setItem('trs-listing-filters', JSON.stringify({min:controls.min.value,max:controls.max.value,beds:controls.beds.value,baths:controls.baths.value,type:controls.type.value,agent:controls.agent.value,sort:controls.sort.value,savedOnly}));
         } catch (_) {}
       }
+      const linkedSearchParameters = new URLSearchParams(window.location.search);
       try {
-        const rawState = sessionStorage.getItem('trs-listing-filters');
+        // A normal For Sale navigation always starts with the complete West
+        // Tennessee inventory. Only the dedicated Saved Homes URL restores its
+        // previous filter state.
+        const rawState = linkedSearchParameters.get('saved') === '1'
+          ? sessionStorage.getItem('trs-listing-filters')
+          : null;
         const state = JSON.parse(rawState || '{}');
         ['min','max'].forEach(key => {
           if (state[key] != null) controls[key].value = String(state[key]) === '999999999' || String(state[key]) === '0' ? '' : state[key];
@@ -9256,7 +9293,6 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         savedOnly = Boolean(state.savedOnly);
         if (!rawState || controls.sort.value === 'recommended') controls.sort.value = 'dom-desc';
       } catch (_) {}
-      const linkedSearchParameters = new URLSearchParams(window.location.search);
       const linkedPropertyType = linkedSearchParameters.get('type');
       const linkedMaximumPrice = linkedSearchParameters.get('max');
       const linkedMinimumBeds = linkedSearchParameters.get('beds');
