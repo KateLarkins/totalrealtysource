@@ -59,7 +59,7 @@ const MANUAL_EVENTS = [];
         <div class="event-label-row"><span class="event-type">${event.type === 'open-house' ? 'Open House' : 'Community Event'}</span>${badge ? `<span class="event-day-badge">${badge}</span>` : ''}</div>
         <h3>${escapeText(event.title)}</h3>
         <p class="event-date">${escapeText(formatDate(event.startDate, event.endDate))}</p>
-        ${event.location ? `<p class="event-location">${escapeText(event.location)}</p>` : ''}
+        ${event.location && event.type !== 'open-house' ? `<p class="event-location">${escapeText(event.location)}</p>` : ''}
         <p class="event-description">${escapeText(event.description || 'Join Total Realty Source for this upcoming event.')}</p>
         <p class="event-host"><strong>Hosted by:</strong> ${escapeText(event.host || 'Total Realty Source')}</p>
         ${action}

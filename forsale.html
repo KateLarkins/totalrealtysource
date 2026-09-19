@@ -1483,7 +1483,9 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .price.is-price-drop,.modal-price-drop { color:inherit !important; }
 .price-drop-arrow { display:inline-block; margin-left:9px; margin-right:2px; color:#168447; font:900 .9em/1 Arial,sans-serif; transform:translateY(-1px); }
 .price-drop-amount { display:inline-block; margin-left:0; color:#168447; font-weight:700; white-space:nowrap; }
-.open-house-bubble { display:inline-flex; align-items:center; gap:7px; padding:7px 11px; color:#fff; background:#0B4068; border:2px solid #fff; border-radius:999px; box-shadow:0 3px 10px rgba(15,35,50,.24); font:700 12px/1.15 'Lora',serif; letter-spacing:.02em; }
+.open-house-bubble { display:inline-flex; align-items:center; gap:7px; padding:7px 10px; color:#000; background:#fff; border:1px solid #d7d7d7; border-radius:999px; box-shadow:0 2px 7px rgba(15,35,50,.14); font:700 12px/1.15 'Lora',serif; letter-spacing:.02em; }
+.open-house-bubble::before { content:""; flex:0 0 8px; width:8px; height:8px; background:#168447; border-radius:50%; }
+.open-house-bubble > span:first-child { display:none; }
 .card > .open-house-bubble { position:absolute; top:43px; right:auto; left:12px; z-index:6; max-width:calc(100% - 24px); }
 .custom-modal .carousel > .open-house-bubble { position:absolute; top:15px; right:15px; z-index:12; max-width:55%; }
 .custom-modal .carousel { overflow:hidden; }
@@ -1495,8 +1497,9 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .elm-key-features li { break-inside:avoid; margin:0; line-height:1.55; }
 @media (max-width:600px) { .listing-carousel-arrow { width:42px; height:42px; } .listing-carousel-arrow--previous { left:8px; } .listing-carousel-arrow--next { right:8px; } }
 @media (max-width:700px) { .elm-key-features { grid-template-columns:1fr; } }
-.modal-open-house-details { margin:0 0 24px; padding:18px 20px; color:#163647; background:#EFF7F2; border:1px solid #B7D9C4; border-left:5px solid #168447; border-radius:8px; font:15px/1.55 'Lora',serif; }
-.modal-open-house-details h3 { margin:0 0 6px; color:#116B3A; font:700 20px/1.2 'Bodoni Moda',serif; }
+.modal-open-house-details { margin:0 0 24px; padding:16px 0; color:#000; background:transparent; border:0; border-top:1px solid #dedede; border-bottom:1px solid #dedede; border-radius:0; font:15px/1.55 'Lora',serif; }
+.modal-open-house-details h3 { display:flex; align-items:center; gap:9px; margin:0 0 10px; color:#000; font:600 29px/1.2 'Bodoni Moda',serif; }
+.modal-open-house-details h3::before { content:""; flex:0 0 9px; width:9px; height:9px; background:#168447; border-radius:50%; }
 .modal-open-house-details p { margin:4px 0 0; }
 .modal-property-facts { clear:both; display:grid; grid-template-columns:repeat(5,minmax(140px,1fr)); gap:0; width:100%; margin:22px 0 10px; padding:20px 0; border-top:1px solid #D8DEE2; border-bottom:1px solid #D8DEE2; }
 .modal-property-fact { display:flex; align-items:flex-start; gap:10px; min-width:0; padding:5px 12px; border-right:1px solid #E1E5E8; }
@@ -1508,6 +1511,17 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-property-fact-value { color:#111; font-size:14px; font-weight:700; line-height:1.35; }
 .modal-property-fact-label { margin-top:3px; color:#585858; font-size:11px; line-height:1.3; }
 .modal-listing-updated { margin:10px 0 0; color:#5A5A5A; font:12px/1.5 'Lora',serif; }
+.open-house-agent-stack { display:flex; flex-direction:column; align-items:flex-start; gap:5px; }
+.open-house-agent-stack strong { color:#111; font-family:'Bodoni Moda',serif; font-size:18px; }
+.open-house-agent-stack a { color:#111; text-decoration:underline; }
+.open-house-agent-stack span { color:#444; }
+.modal-agent-contact-card.open-house-agent-stack { flex-direction:row; align-items:center; padding-top:0; border-top:0; }
+.open-house-agent-stack .modal-agent-contact-details { display:flex; flex-direction:column; align-items:flex-start; gap:5px; text-align:left; }
+@media (min-width:701px) {
+  .custom-modal .modal-property-facts { margin-top:30px; padding-top:26px; }
+  .custom-modal .modal-meta-updated { margin-bottom:12px; }
+  #listing2602665Modal .custom-modal-content > p + div { margin-top:32px !important; padding-top:14px; }
+}
 .modal-neighborhood-map { margin:30px 0 4px; padding-top:25px; border-top:1px solid #D8DEE2; }
 .modal-neighborhood-map-header { display:flex; align-items:flex-end; justify-content:space-between; gap:18px; margin-bottom:14px; }
 .modal-neighborhood-map-header h3 { margin:0; color:#111; font:600 25px/1.2 'Bodoni Moda',serif; }
@@ -1522,9 +1536,12 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-map-note { margin:8px 0 0; color:#666; font:11px/1.45 'Lora',serif; }
 .modal-zillow-summary { clear:both; width:100%; margin:4px 0 28px; font-family:'Lora',serif; }
 .modal-price-cut { margin:0 0 7px; color:#168447; font-size:14px; font-weight:700; }
-.modal-summary-price { margin:0 0 7px; color:#111; font:700 clamp(30px,5vw,42px)/1.1 'Lora',serif; }
+.modal-summary-price { margin:0 0 7px; color:#111; font:700 clamp(30px,5vw,42px)/1.1 'Bodoni Moda',serif; }
 .modal-summary-address-row { display:flex; align-items:flex-start; justify-content:space-between; gap:15px; }
 .modal-summary-address { margin:0; color:#111; font:700 clamp(20px,3vw,27px)/1.3 'Lora',serif; }
+.custom-modal:has(.modal-open-house-details) .modal-summary-price { font-size:22px; line-height:1.2; }
+.custom-modal:has(.modal-open-house-details) .modal-summary-address { font-size:27px; }
+.custom-modal:has(.modal-open-house-details) .carousel .slide { object-fit:cover !important; object-position:center !important; background:#f4f5f5; }
 .modal-summary-address-row .modal-favorite-listing { flex:0 0 auto; min-width:98px; }
 .modal-primary-stats { display:flex; flex-wrap:wrap; gap:0; margin:22px 0; }
 .modal-primary-stat { min-width:90px; padding:0 25px; border-right:1px solid #D7DCE0; text-align:center; }
@@ -1536,7 +1553,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .modal-payment-estimate { margin:0; color:#333; font:14px 'Lora',serif; }
 .modal-payment-estimate strong { color:#111; font-size:18px; }
 .modal-prequalify { color:#0B4068; font:700 14px 'Lora',serif; text-decoration:underline; }
-.modal-whats-special { margin:30px 0; padding:26px 0; border-top:1px solid #D8DEE2; border-bottom:1px solid #D8DEE2; }
+.modal-whats-special { clear:both; width:100%; margin:30px 0; padding:26px 0; box-sizing:border-box; border-top:1px solid #D8DEE2; border-bottom:1px solid #D8DEE2; }
 .modal-whats-special h3,.modal-facts-features h3 { margin:0 0 18px; color:#111; font:600 29px/1.2 'Bodoni Moda',serif; }
 .modal-special-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:17px; }
 .modal-special-tag { padding:7px 10px; color:#111; background:#F1F2F2; border-radius:3px; font:700 11px/1.2 'Lora',serif; letter-spacing:.05em; text-transform:uppercase; }
@@ -2707,7 +2724,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 <div class="card" data-mls="2603442" data-dom="47" data-modal="listing2603442Modal" data-agent="Jackie David" data-lat="35.631964" data-lng="-88.819354" data-map-category="homes">
   <img src="https://cdn.photos.sparkplatform.com/ctn/20260722133608075367000000-o.jpg" alt="111 Westwood Avenue" onclick="openModal('listing2603442Modal')" />
   <div class="card-body">
-    <p class="price">$199,000</p>
+    <p class="price">$187,000</p>
     <p class="address">111 Westwood Avenue<br>Jackson, TN</p>
     <a href="#" class="details-link" onclick="openModal('listing2603442Modal'); return false;">View Details</a>
     <div class="stats">
@@ -2731,7 +2748,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
     </div>
     <div style="margin-bottom: 25px;">
       <h2 style="margin-bottom:5px; font-family:'Bodoni Moda'; font-size:25px;">111 Westwood Avenue, Jackson, TN 38301</h2>
-      <p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Lora'">$199,000</p>
+      <p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Lora'">$187,000</p>
       <div style="display:flex; flex-wrap:wrap; gap:20px; font-size:1em; font-family:'Lora'">
         <div><strong>MLS:</strong> 2603442</div><div><strong>Type:</strong> Single Family Residence</div>
         <div><strong>Beds:</strong> 4</div><div><strong>Baths:</strong> 3</div><div><strong>Sqft:</strong> 1,712</div>
@@ -4685,15 +4702,15 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 <div id="listing2604246Modal" class="custom-modal" style="display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,.5)"><div class="custom-modal-content" style="background:#fff;margin:3% auto;padding:30px;border-radius:8px;border:1px solid #ccc;width:90%;max-width:1000px;position:relative"><span class="close" onclick="closeModal()">&times;</span><div class="carousel" style="position:relative;margin-bottom:20px"><img class="slide" src="https://cdn.photos.sparkplatform.com/ctn/20260906195120422104000000-o.jpg" alt="54 Bryce Drive" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"><img class="slide" src="https://cdn0.photos.sparkplatform.com/ctn/20260906195758676508000000-o.jpg" alt="54 Bryce Drive backyard" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"><img class="slide" src="https://cdn0.photos.sparkplatform.com/ctn/20260907034342235296000000-o.jpg" alt="54 Bryce Drive pond view" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"></div><h2>54 Bryce Drive, Jackson, TN 38305</h2><p style="font-size:23px;font-weight:bold;font-family:'Lora'">$239,900</p><div style="display:flex;flex-wrap:wrap;gap:20px;font-family:'Lora'"><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 3</div><div><strong>Baths:</strong> 2</div><div><strong>Sqft:</strong> 1,568</div><div><strong>Lot:</strong> 0.82 acre</div><div><strong>Year Built:</strong> 2026</div></div><h3>Property Description</h3><p style="line-height:1.6;font-family:'Lora'">New 2026 Champion home on 0.82 acre in Seven Oaks with pond views, a permanent brick foundation, an asphalt driveway, and a tree-lined backyard adjoining agricultural land. The open split-bedroom plan includes luxury vinyl flooring throughout, a spacious great room, stainless appliances, a six-foot kitchen island, three walk-in closets, and front and rear decks. County taxes only, with convenient access to Interstate 40 and Jackson shopping and dining.</p><div style="border-top:1px solid #ccc;padding-top:20px;font-family:'Lora'"><strong data-agent-name>Amy McLemore</strong> · <a href="agent-profile.html?agent=amy-mclemore">View Profile</a> · (731) 234-0049</div></div></div>
 
 <!-- Active listing MLS 2604262 -->
-<div class="card" data-mls="2604262" data-dom="7" data-modal="listing2604262Modal" data-agent="Brandie Bassett" data-lat="35.824205" data-lng="-88.590251" data-map-category="homes" data-promotion-date="2026-09-08" data-open-house-start="2026-09-20T14:00:00-05:00" data-open-house-end="2026-09-20T16:00:00-05:00" data-open-house-date="Sunday, September 20 · 2:00–4:00 PM" data-open-house-description="Tour this updated three-bedroom home on 11 acres, meet the listing agent, and explore the home, workshop, and surrounding property in person.">
+<div class="removed-listing" hidden data-mls="2604262" data-dom="7" data-modal="listing2604262Modal" data-agent="Brandie Bassett" data-lat="35.824205" data-lng="-88.590251" data-map-category="homes" data-promotion-date="2026-09-08" data-open-house-start="2026-09-20T14:00:00-05:00" data-open-house-end="2026-09-20T16:00:00-05:00" data-open-house-date="Sunday, September 20 · 2:00–4:00 PM" data-open-house-description="Tour this updated three-bedroom home on 11 acres, meet the listing agent, and explore the home, workshop, and surrounding property in person.">
   <img loading="lazy" decoding="async" src="https://cdn.photos.sparkplatform.com/ctn/20260909001622717107000000-o.jpg" alt="4115 Highway 70 East" onclick="openModal('listing2604262Modal')">
   <div class="card-body"><p class="price">$299,900</p><p class="address">4115 Highway 70 East<br>Cedar Grove, TN</p><a href="#" class="details-link" onclick="openModal('listing2604262Modal'); return false;">View Details</a><div class="stats"><div><strong>3</strong><span>Beds</span></div><div><strong>1,786</strong><span>Sq.Ft.</span></div><div><strong>2</strong><span>Baths</span></div></div></div>
 </div>
 <div id="listing2604262Modal" class="custom-modal" style="display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,.5)"><div class="custom-modal-content" style="background:#fff;margin:3% auto;padding:30px;border-radius:8px;border:1px solid #ccc;width:90%;max-width:1000px;position:relative"><span class="close" onclick="closeModal()">&times;</span><div class="carousel" style="position:relative;margin-bottom:20px"><img class="slide" src="https://cdn.photos.sparkplatform.com/ctn/20260909001622717107000000-o.jpg" alt="4115 Highway 70 East" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"><img class="slide" src="https://cdn0.photos.sparkplatform.com/ctn/20260909001620813366000000-o.jpg" alt="4115 Highway 70 East exterior" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"><img class="slide" src="https://cdn1.photos.sparkplatform.com/ctn/20260910211729157765000000-o.jpg" alt="4115 Highway 70 East recent photo" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"></div><h2>4115 Highway 70 East, Cedar Grove, TN 38321</h2><p style="font-size:23px;font-weight:bold;font-family:'Lora'">$299,900</p><div style="display:flex;flex-wrap:wrap;gap:20px;font-family:'Lora'"><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 3</div><div><strong>Baths:</strong> 2</div><div><strong>Sqft:</strong> 1,786</div><div><strong>Lot:</strong> 11 acres</div><div><strong>Year Built:</strong> 1951</div><div><strong>Garage:</strong> 2 spaces</div></div><h3>Property Description</h3><p style="line-height:1.6;font-family:'Lora'">Updated one-level home on 11 acres with three bedrooms, two baths, an attached two-car garage, two fireplaces, and a separate workshop. Improvements include a remodeled kitchen, fresh paint, new windows, a new water heater, and a roof approximately three years old. The property is outside city limits with no subdivision or restrictive covenants.</p><div style="border-top:1px solid #ccc;padding-top:20px;font-family:'Lora'"><strong data-agent-name>Brandie Bassett</strong> · <a href="agent-profile.html?agent=brandie-bassett">View Profile</a> · (731) 695-2785</div></div></div>
 
 <!-- Active listing MLS 2602665 -->
-<div class="card" data-mls="2602665" data-dom="43" data-modal="listing2602665Modal" data-agent="Amy McLemore" data-lat="35.708434" data-lng="-88.777231" data-map-category="homes" data-listing-updated="2026-09-15T16:05:00-05:00" data-open-house-start="2026-09-20T14:00:00-05:00" data-open-house-end="2026-09-20T16:00:00-05:00" data-open-house-date="Sunday, September 20 · 2:00–4:00 PM" data-open-house-description="Come see 46 Oakfield Road in person. Tour the home, take a look around, and see if this could be the one for you.">
-  <img src="https://cdn.photos.sparkplatform.com/ctn/20260607191154559149000000-o.jpg" alt="46 Oakfield Road" onclick="openModal('listing2602665Modal')" />
+<div class="card" data-mls="2602665" data-dom="43" data-modal="listing2602665Modal" data-agent="Amy McLemore" data-lat="35.708434" data-lng="-88.777231" data-map-category="homes" data-listing-updated="2026-09-18T12:00:00-05:00" data-open-house-start="2026-09-20T14:00:00-05:00" data-open-house-end="2026-09-20T16:00:00-05:00" data-open-house-date="Sunday, September 20 · 2:00–4:00 PM" data-open-house-description="Come see 46 Oakfield Road in person. Tour the home, take a look around, and see if this could be the one for you.">
+  <img src="46oakfield/20260607191152818476000000-o.jpg" alt="46 Oakfield Road" onclick="openModal('listing2602665Modal')" />
   <div class="card-body">
     <p class="price">$629,900</p>
     <p class="address">46 Oakfield Road<br>Oakfield, TN</p>
@@ -4704,15 +4721,22 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 <div id="listing2602665Modal" class="custom-modal" style="display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.5);">
   <div class="custom-modal-content" style="background-color:white; margin:3% auto; padding:30px; border-radius:8px; border:1px solid #ccc; width:90%; max-width:1000px; position:relative;">
     <span class="close" onclick="closeModal()">&times;</span>
-    <div class="carousel" style="position:relative; margin-bottom:20px;"><img class="slide" src="https://cdn.photos.sparkplatform.com/ctn/20260607191154559149000000-o.jpg" alt="46 Oakfield Road" style="width:100%; max-height:450px; object-fit:cover; border-radius:6px;"></div>
+    <div class="carousel" style="position:relative; margin-bottom:20px;"><img class="slide" src="46oakfield/20260607191152818476000000-o.jpg" alt="46 Oakfield Road" style="width:100%; max-height:450px; object-fit:cover; border-radius:6px;"></div>
     <h2 style="margin-bottom:5px; font-family:'Bodoni Moda'; font-size:25px;">46 Oakfield Road, Oakfield, TN 38362</h2>
-    <p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Lora'">$629,900</p>
-    <div style="display:flex; flex-wrap:wrap; gap:20px; font-family:'Lora'"><div><strong>MLS:</strong> 2602665</div><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 4</div><div><strong>Baths:</strong> 3.5</div><div><strong>Sqft:</strong> 4,156</div><div><strong>Lot:</strong> 1.39 Acres</div><div><strong>Year Built:</strong> 1973</div><div><strong>Pool:</strong> Yes</div><div><strong>Garage:</strong> 2 spaces</div></div>
+    <p style="font-size:23px; font-weight:bold; margin:5px 0 10px; font-family:'Bodoni Moda'">$629,900</p>
+    <div style="display:flex; flex-wrap:wrap; gap:20px; margin-top:32px; padding-top:18px; font-family:'Lora'"><div><strong>MLS:</strong> 2602665</div><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 4</div><div><strong>Baths:</strong> 3.5</div><div><strong>Sqft:</strong> 4,156</div><div><strong>Lot:</strong> 1.39 Acres</div><div><strong>Year Built:</strong> 1973</div><div><strong>Pool:</strong> Yes</div><div><strong>Garage:</strong> 2 spaces</div></div>
     <h3 style="border-bottom:1px solid #ccc; padding-bottom:5px; font-family:'Bodoni Moda'">Property Description</h3>
-    <p style="line-height:1.6; font-family:'Lora'">Welcome to 46 Oakfield Rd — a stately brick home nestled on 1.39 beautifully landscaped acres in NE Madison County. This one-of-a-kind property offers over 4,100 heated square feet, a main-level owner's suite, formal dining room, two living areas, two gas log fireplaces, a finished walk-out basement, screened porch, deck, covered patio, and a private in-ground pool.</p>
-    <div style="border-top:1px solid #ccc; padding-top:20px; font-family:'Lora'"><strong data-agent-name>Amy McLemore</strong> · <a href="about.html">View Profile</a> · (731) 234-0049</div>
+    <p style="width:100%; margin-bottom:24px; padding-bottom:24px; border-bottom:1px solid #dedede; box-sizing:border-box; line-height:1.6; font-family:'Lora'">Welcome to 46 Oakfield Rd — a stately brick home nestled on 1.39 beautifully landscaped acres in NE Madison County. This one-of-a-kind property offers over 4,100 heated square feet, a main-level owner's suite, formal dining room, two living areas, two gas log fireplaces, a finished walk-out basement, screened porch, deck, covered patio, and a private in-ground pool.</p>
+    <div class="open-house-agent-stack" style="padding-top:20px; font-family:'Lora'"><strong data-agent-name>Amy McLemore</strong><a href="amy-mclemore.html">View Profile</a><span>(731) 234-0049</span></div>
   </div>
 </div>
+
+<!-- Active listing MLS 2604381 -->
+<div class="card" data-mls="2604381" data-dom="2" data-modal="listing2604381Modal" data-agent="Jackie David" data-lat="35.702572" data-lng="-88.799387" data-map-category="homes">
+  <img loading="lazy" decoding="async" src="https://cdn.resize.sparkplatform.com/ctn/1280x1024/true/20260916180649502603000000-o.jpg" alt="227 Buttonwood Drive" onclick="openModal('listing2604381Modal')">
+  <div class="card-body"><p class="price">$215,000</p><p class="address">227 Buttonwood Drive<br>Jackson, TN</p><a href="#" class="details-link" onclick="openModal('listing2604381Modal'); return false;">View Details</a><div class="stats"><div><strong>3</strong><span>Beds</span></div><div><strong>1,480</strong><span>Sq.Ft.</span></div><div><strong>2</strong><span>Baths</span></div></div></div>
+</div>
+<div id="listing2604381Modal" class="custom-modal" style="display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,.5)"><div class="custom-modal-content" style="background:#fff;margin:3% auto;padding:30px;border-radius:8px;border:1px solid #ccc;width:90%;max-width:1000px;position:relative"><span class="close" onclick="closeModal()">&times;</span><div class="carousel" style="position:relative;margin-bottom:20px"><img class="slide" src="https://cdn.resize.sparkplatform.com/ctn/1280x1024/true/20260916180649502603000000-o.jpg" alt="227 Buttonwood Drive exterior" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"><img class="slide" src="https://cdn.resize.sparkplatform.com/ctn/1280x1024/true/20260916180643354290000000-o.jpg" alt="227 Buttonwood Drive interior" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"><img class="slide" src="https://cdn.resize.sparkplatform.com/ctn/1280x1024/true/20260916180639316257000000-o.jpg" alt="227 Buttonwood Drive property view" style="width:100%;max-height:450px;object-fit:cover;border-radius:6px"></div><h2>227 Buttonwood Drive, Jackson, TN 38305</h2><p style="font-size:23px;font-weight:bold;font-family:'Lora'">$215,000</p><div style="display:flex;flex-wrap:wrap;gap:20px;font-family:'Lora'"><div><strong>Type:</strong> Single Family Residence</div><div><strong>Beds:</strong> 3</div><div><strong>Baths:</strong> 2</div><div><strong>Sqft:</strong> 1,480</div><div><strong>Year Built:</strong> 1990</div><div><strong>Garage:</strong> 2 spaces</div><div><strong>County:</strong> Madison</div></div><h3>Key Features</h3><ul style="list-style:none;padding-left:0;column-count:2;gap:20px;font-family:'Lora'"><li><strong>Kitchen:</strong> Electric range, dishwasher, refrigerator, and range hood</li><li><strong>Interior:</strong> Vaulted ceilings, ceiling fans, double vanity, and walk-in closets</li><li><strong>Fireplace:</strong> Gas log</li><li><strong>Exterior:</strong> Vinyl siding and covered front porch</li><li><strong>Parking:</strong> Attached two-car garage</li><li><strong>Utilities:</strong> Public water and sewer; natural gas available</li></ul><h3>Property Description</h3><p style="line-height:1.6;font-family:'Lora'">Beautifully designed 1,480-square-foot home with three bedrooms and two full baths in Madison County, with no city taxes. The primary suite includes a spacious walk-in closet and double-vanity bath. Two additional bedrooms provide space for family, guests, or a home office. A functional layout and attached two-car garage offer everyday comfort, convenience, and useful storage.</p><div style="border-top:1px solid #ccc;padding-top:20px;font-family:'Lora'"><strong data-agent-name>Jackie David</strong> · <a href="agent-profile.html?agent=jackie-david">View Profile</a> · (731) 487-6545</div></div></div>
 
       <!-- close grid div -->
         </div>
@@ -5921,7 +5945,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         </div>
         </div>
         </div>
-        <div class="card" data-mls="2602050" data-dom="135" data-modal="2324ChanningWayModal" data-lat="36.076800" data-lng="-88.120678" data-map-category="land">
+        <div class="removed-listing" hidden data-mls="2602050" data-dom="135" data-modal="2324ChanningWayModal" data-lat="36.076800" data-lng="-88.120678" data-map-category="land">
           <img src="https://cdn.photos.sparkplatform.com/ctn/20260505034037893578000000-o.jpg" alt="Home" onclick="openModal('2324ChanningWayModal')" />
           <div class="card-body">
             <p class="price">$53,900</p>
@@ -7376,7 +7400,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
 
     let currentSlide = 0;
     let activeModalId = null;
-    const listingMachineUpdatedAt = '2026-09-15T16:05:00-05:00';
+    const listingMachineUpdatedAt = '2026-09-18T12:00:00-05:00';
     const listingAgentPhones = {
       'Amy McLemore': '731-234-0049',
       'Lynda Climer': '731-217-3827',
@@ -7490,7 +7514,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
         factsRow.setAttribute('aria-label', 'Property facts');
         factsRow.innerHTML = facts.map(fact => `<div class="modal-property-fact">${fact.icon}<span class="modal-property-fact-copy"><span class="modal-property-fact-value">${fact.value}</span><span class="modal-property-fact-label">${fact.label}</span></span></div>`).join('');
 
-        const updated = new Date(card.dataset.listingUpdated || listingMachineUpdatedAt);
+        const updated = new Date(listingMachineUpdatedAt);
         const updateRow = document.createElement('p');
         updateRow.className = 'modal-listing-updated';
         updateRow.textContent = `Listing updated: ${updatedFormatter.format(updated).replace(' AM','am').replace(' PM','pm')}`;
@@ -7894,7 +7918,7 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           const details = document.createElement('section');
           details.className = 'modal-open-house-details';
           const heading = document.createElement('h3');
-          heading.textContent = 'Open House';
+          heading.textContent = 'Open House Details';
           const date = document.createElement('p');
           const strong = document.createElement('strong');
           strong.textContent = openHouseDate;
