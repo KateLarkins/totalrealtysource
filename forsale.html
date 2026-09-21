@@ -1333,7 +1333,8 @@ body.workspace-view-split .property-back-to-top-wrap { display:flex; }
 .recently-viewed-card { position:relative; min-width:0; padding:0; overflow:hidden; color:#111; background:#fff; border:1px solid #DDE3E7; border-radius:8px; text-align:left; cursor:pointer; }
 .recently-viewed-card:hover,.recently-viewed-card:focus-visible { border-color:#0B4068; box-shadow:0 4px 14px rgba(15,35,50,.12); }
 .recently-viewed-card img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; }
-.recently-viewed-open-house { position:absolute; top:10px; left:10px; z-index:2; display:inline-flex; padding:7px 10px; color:#fff; background:#0B4068; border:0; border-radius:999px; box-shadow:0 3px 9px rgba(15,35,50,.22); font:700 11px/1 'Lora'; letter-spacing:.04em; text-transform:uppercase; }
+.recently-viewed-open-house { position:absolute; top:10px; left:10px; z-index:2; display:inline-flex; align-items:center; gap:7px; padding:7px 10px; color:#000; background:#fff; border:1px solid #d7d7d7; border-radius:999px; box-shadow:0 2px 7px rgba(15,35,50,.14); font:700 11px/1.15 'Lora',serif; letter-spacing:.02em; text-transform:none; }
+.recently-viewed-open-house::before { content:""; flex:0 0 8px; width:8px; height:8px; background:#168447; border-radius:50%; }
 .recently-viewed-card-copy { display:block; padding:13px 14px 15px; }
 .recently-viewed-card-price { display:block; margin-bottom:5px; font:700 17px 'Lora'; }
 .recently-viewed-card-address { display:block; color:#555; font:14px/1.45 'Lora'; }
@@ -1486,7 +1487,7 @@ body.workspace-view-map .property-search-workspace #tennessee-listing-map {
 .open-house-bubble { display:inline-flex; align-items:center; gap:7px; padding:7px 10px; color:#000; background:#fff; border:1px solid #d7d7d7; border-radius:999px; box-shadow:0 2px 7px rgba(15,35,50,.14); font:700 12px/1.15 'Lora',serif; letter-spacing:.02em; }
 .open-house-bubble::before { content:""; flex:0 0 8px; width:8px; height:8px; background:#168447; border-radius:50%; }
 .open-house-bubble > span:first-child { display:none; }
-.card > .open-house-bubble { position:absolute; top:43px; right:auto; left:12px; z-index:6; max-width:calc(100% - 24px); }
+.card > .open-house-bubble { position:absolute; top:12px; right:auto; left:86px; z-index:6; max-width:calc(100% - 98px); padding:6px 9px; font-size:10px; white-space:nowrap; }
 .custom-modal .carousel > .open-house-bubble { position:absolute; top:15px; right:15px; z-index:12; max-width:55%; }
 .custom-modal .carousel { overflow:hidden; }
 .listing-carousel-arrow { position:absolute; top:50%; z-index:24; display:flex; align-items:center; justify-content:center; width:46px; height:46px; padding:0; transform:translateY(-50%); color:#111; background:rgba(255,255,255,.96); border:1px solid #BFC4C8; border-radius:50%; box-shadow:0 2px 10px rgba(0,0,0,.18); font:700 25px/1 Arial,sans-serif; cursor:pointer; }
