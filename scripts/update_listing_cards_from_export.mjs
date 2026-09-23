@@ -77,7 +77,7 @@ for (let i = 0; i < starts.length; i += 1) {
 }
 html = pieces.join('');
 fs.writeFileSync(htmlPath, html);
-const displayExclusions = new Set(['2603131']); // duplicate property record for 16860 Highland Drive
+const displayExclusions = new Set();
 const activeMls = new Set(rows.filter(row => row.Status === 'A' && !displayExclusions.has(row['List Number'])).map(row => row['List Number']));
 const siteMls = new Set([...html.matchAll(/<div class="card"[^>]*data-mls="(\d+)"/g)].map(match => match[1]));
 const missingActive = [...activeMls].filter(mls => !siteMls.has(mls));
