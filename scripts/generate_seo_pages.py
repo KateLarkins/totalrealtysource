@@ -275,9 +275,12 @@ def write_robots_and_sitemaps(listings, cities, specialty_urls):
 
 def main():
     listings = parse_listings()
-    for output in (ROOT / "homes-for-sale", ROOT / "listings"):
-        if output.exists():
-            shutil.rmtree(output)
+    # Update generated files in place so folder-sync services do not move
+    # regenerated content into conflict copies after a directory replacement.
+    active_slugs = {item["slug"] for item in listings}
+    for page in (ROOT / "listings").glob("*/index.html"):
+        if page.parent.name not in active_slugs:
+            page.unlink()
     cities = write_city_pages(listings)
     write_listing_pages(listings)
     specialty_urls = write_jackson_specialty_pages(listings)
