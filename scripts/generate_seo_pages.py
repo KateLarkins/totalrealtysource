@@ -7,7 +7,6 @@ from pathlib import Path
 from urllib.parse import quote
 import json
 import re
-import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "forsale.html"
@@ -98,7 +97,7 @@ def parse_listings():
         if not images:
             image = first(r'<img[^>]+src="([^"]+)"', card)
             images = [image] if image else []
-        agent = first(r'<strong[^>]*data-agent-name[^>]*>(.*?)</strong>', modal, "Total Realty Source")
+        agent = first(r'data-agent="([^\"]+)"', match.group(0)) or first(r'<strong[^>]*data-agent-name[^>]*>(.*?)</strong>', modal, "Total Realty Source")
         lat = first(r'data-lat="([^"]+)"', match.group(0))
         lng = first(r'data-lng="([^"]+)"', match.group(0))
         category = first(r'data-map-category="([^"]+)"', match.group(0), "other")
@@ -115,7 +114,7 @@ def parse_listings():
         used_slugs.add(slug)
         listings.append({
             "modal": modal_id, "address": address, "street": street, "city": city, "zip": zipcode,
-            "price": price, "beds": stats.get("beds", ""), "baths": stats.get("baths", ""),
+            "price": price, "beds": stats.get("beds", stats.get("bed", "")), "baths": stats.get("baths", stats.get("bath", "")),
             "sqft": stats.get("sqft", stats.get("sqft", "")), "type": property_type,
             "description": description, "images": images, "agent": agent, "lat": lat, "lng": lng,
             "category": category, "slug": slug,

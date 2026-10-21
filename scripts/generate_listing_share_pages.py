@@ -32,7 +32,9 @@ def slugify(value: str) -> str:
 def sentence(address: str, card: str, modal: str) -> str:
     stats = {}
     for value, label in re.findall(r"<div[^>]*>\s*<strong[^>]*>(.*?)</strong>\s*<span[^>]*>(.*?)</span>", card, flags=re.I | re.S):
-        stats[clean(label).lower()] = clean(value)
+        normalized_label = clean(label).lower()
+        normalized_label = {"bed": "beds", "bath": "baths"}.get(normalized_label, normalized_label)
+        stats[normalized_label] = clean(value)
     type_value = first(r"<strong>\s*Type:\s*</strong>\s*([^<]+)", modal, "Property")
     features = []
     for value in re.findall(r"<li[^>]*>\s*<strong>[^<]+:</strong>\s*([^<]+)</li>", modal, flags=re.I | re.S):
