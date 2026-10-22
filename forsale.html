@@ -8624,19 +8624,12 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
           .attr('display', boundaryVisible ? null : 'none')
           .text(selectedLocationName.split(',')[0].toUpperCase());
 
-        const locationCounts = new Map();
         currentListings.forEach(listing => {
           const point = projection([listing.longitude, listing.latitude]);
-          const collisionCellSize = 8;
-          const key = `${Math.round(point[0] / collisionCellSize)},${Math.round(point[1] / collisionCellSize)}`;
-          const duplicateIndex = locationCounts.get(key) || 0;
-          locationCounts.set(key, duplicateIndex + 1);
-          const angle = duplicateIndex * 2.399963;
-          const radius = duplicateIndex ? 3 + Math.sqrt(duplicateIndex) * 3 : 0;
           listing.x = point[0];
           listing.y = point[1];
-          listing.offsetX = Math.cos(angle) * radius;
-          listing.offsetY = Math.sin(angle) * radius;
+          listing.offsetX = 0;
+          listing.offsetY = 0;
         });
 
         const pinLinks = mapLayer.selectAll('.listing-pin-link')
@@ -9369,34 +9362,11 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
       function renderHtmlMarkers() {
         if (!mapLoaded || !vectorMap) return;
         clearHtmlMarkers();
-        const gridSize = vectorMap.getZoom() >= 13 ? 30 : 46;
-        const groups = new Map();
         visibleListings().forEach((item, index) => {
-          const point = vectorMap.project([item.longitude, item.latitude]);
-          const key = `${Math.round(point.x / gridSize)}:${Math.round(point.y / gridSize)}`;
-          if (!groups.has(key)) groups.set(key, []);
-          groups.get(key).push({...item, featureId:index + 1});
-        });
-        const placedMarkers = [];
-        groups.forEach(group => {
-          group.forEach((item, groupIndex) => {
           const longitude = item.longitude;
           const latitude = item.latitude;
-          const anchor = vectorMap.project([longitude, latitude]);
-          const markerWidth = Math.max(52, item.shortPrice.length * 7 + 24), markerHeight = 32;
-          let offset = [0, 0];
-          // Separate overlapping price buttons so each visible label has its own click target.
-          if (anchor.x >= 0 && anchor.x <= mapRoot.clientWidth && anchor.y >= 0 && anchor.y <= mapRoot.clientHeight) {
-            for (let attempt = 0; attempt < 1000; attempt++) {
-              const radius = 14 * Math.sqrt(attempt), angle = attempt * 2.399963;
-              const x = Math.max(markerWidth / 2 + 5, Math.min(mapRoot.clientWidth - markerWidth / 2 - 5, anchor.x + Math.cos(angle) * radius));
-              const y = Math.max(markerHeight / 2 + 8, Math.min(mapRoot.clientHeight - markerHeight / 2 - 38, anchor.y + Math.sin(angle) * radius));
-              const box = {left:x-markerWidth/2,right:x+markerWidth/2,top:y-markerHeight/2,bottom:y+markerHeight/2};
-              if (!placedMarkers.some(other => box.left < other.right+3 && box.right > other.left-3 && box.top < other.bottom+3 && box.bottom > other.top-3)) {
-                offset = [x-anchor.x, y-anchor.y]; placedMarkers.push(box); break;
-              }
-            }
-          }
+          // Keep markers anchored to actual coordinates at every zoom level.
+          item = {...item, featureId:index + 1};
           const element = document.createElement('button');
           element.type = 'button';
           element.className = `trs-html-map-marker property ${item.category}`;
@@ -9407,15 +9377,14 @@ document.querySelectorAll('.drawer-dropdown > .drawer-link').forEach(link => {
             element.dataset.featureId = String(item.featureId);
             const preview = pinned => {
               const point = vectorMap.project([item.longitude,item.latitude]);
-              showPreview(feature, {x:point.x + offset[0],y:point.y + offset[1]}, pinned);
+              showPreview(feature, point, pinned);
             };
             element.addEventListener('mouseenter', () => { if (popup.dataset.pinned !== 'true') preview(false); });
             element.addEventListener('mouseleave', schedulePreviewHide);
             element.addEventListener('focus', () => preview(true));
             element.addEventListener('blur', schedulePreviewHide);
             element.addEventListener('click', event => { event.stopPropagation(); preview(true); });
-          htmlMarkers.push(new maplibregl.Marker({element,anchor:'center',offset}).setLngLat([longitude,latitude]).addTo(vectorMap));
-          });
+          htmlMarkers.push(new maplibregl.Marker({element,anchor:'center'}).setLngLat([longitude,latitude]).addTo(vectorMap));
         });
         canvasRoot.dataset.htmlMarkers = String(htmlMarkers.length);
         canvasRoot.dataset.htmlListings = String(visibleListings().length);

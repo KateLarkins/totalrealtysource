@@ -5,7 +5,7 @@ When reconciling the website with Flexmls:
 1. Add, update, or remove the listing cards in `forsale.html`.
 2. Whenever a property has closed, update `homepageListingMetrics.closedListings` in `index.html` to the latest verified Flexmls total. This one value updates both homepage closed-listing displays.
 3. Confirm the homepage property count matches the number of active cards. The homepage calculates this automatically; `52` in `index.html` is only the no-network fallback.
-4. Open Flexmls office-listing statistics and update `homepage-average-list-price` in `index.html` with the current average List Price.
+4. Do not add an average for-sale price to the homepage; the owner requested its removal.
 5. Check the Flexmls Hot Sheet for the previous seven days. When it shows a price reduction, add `data-previous-price="$OLD_PRICE"` and `data-promotion-date="YYYY-MM-DD"` to that listing's `.card`. The website keeps the current price in its normal color and automatically adds a green downward arrow plus the green reduction amount on both the card and modal for seven days.
 6. When Flexmls shows an open house, add `data-open-house-start="YYYY-MM-DDTHH:MM:SS-05:00"`, `data-open-house-end="YYYY-MM-DDTHH:MM:SS-05:00"`, and `data-open-house-description="DESCRIPTION"` to that listing's `.card`. Keep `data-agent` set to the listing agent, because that name is displayed as the event host. The listing and modal bubbles remain visible until the ending time, and `events.html` automatically adds the open house to its Open Houses section.
 7. Check Total Realty Source's Facebook Events page for future community events. Add verified upcoming events to `MANUAL_EVENTS` in `events.js`; never add Facebook events that have already ended.
