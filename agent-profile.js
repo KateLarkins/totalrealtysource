@@ -23,7 +23,7 @@
   document.title = `${agent.name} | Total Realty Source`;
   const description = `${agent.name} is a ${agent.title.toLowerCase()} with Total Realty Source, helping buyers and sellers across West Tennessee.`;
   document.querySelector('meta[name="description"]').setAttribute('content', description);
-  document.getElementById('agent-canonical').href = `https://totalrealtysource.com/agent-profile.html?agent=${encodeURIComponent(slug || 'lynda-climer')}`;
+  document.getElementById('agent-canonical').href = `https://totalrealtysource.com/${agents[slug] ? slug : 'lynda-climer'}.html`;
   document.getElementById('agent-name').textContent = agent.name;
   document.getElementById('agent-first-name').textContent = agent.name.split(' ')[0];
   document.getElementById('agent-title').textContent = `${agent.title} · Total Realty Source`;
@@ -67,7 +67,8 @@
       .catch(error=>{inlineReviewStatus.textContent=String(error.message||'Your testimonial could not be submitted').replace(/[.!?]+$/,'')+'. Please try again later.';})
       .finally(()=>{button.disabled=false;});
   });
-  document.querySelector('#agent-contact-form textarea').value = `I'm interested in working with ${agent.name}.`;
+  const propertyRequest = clean(new URLSearchParams(location.search).get('property') || '').slice(0, 240);
+  document.querySelector('#agent-contact-form textarea').value = propertyRequest ? `I'm interested in ${propertyRequest}. Please contact me about availability and a showing.` : `I'm interested in working with ${agent.name}.`;
   document.getElementById('agent-specialties').replaceChildren(...agent.specialties.map(value => {const li=document.createElement('li');li.textContent=value;return li;}));
   const testimonialSection = document.getElementById('agent-testimonial-section');
   if (agent.testimonials?.length) {

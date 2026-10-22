@@ -186,7 +186,7 @@
   <section class="communities"><div class="shell"><p class="kicker">Explore locally</p><h2 class="heading">West Tennessee Communities</h2><p class="intro">Browse current properties in the communities our team serves every day.</p><div class="community-grid">
     <a class="community" href="homes-for-sale/jackson-tn/"><img src="Unsplash/greetings-from-jackson-tennessee-mural.jpg" alt="Jackson, Tennessee" loading="lazy"><div class="community-copy"><span>Browse homes</span><h3>Jackson</h3><p>Madison County properties and city living</p></div></a><a class="community" href="homes-for-sale/medina-tn/"><img src="Office/Medina.jpg" alt="Medina, Tennessee" loading="lazy"><div class="community-copy"><span>Browse homes</span><h3>Medina</h3><p>Local neighborhoods and growing communities</p></div></a><a class="community" href="homes-for-sale/milan-tn/"><img src="Unsplash/Milan-mural-1.png" alt="Milan, Tennessee" loading="lazy"><div class="community-copy"><span>Browse homes</span><h3>Milan</h3><p>Homes and land in Gibson County</p></div></a><a class="community" href="homes-for-sale/humboldt-tn/"><img src="Unsplash/wbbj-7.png" alt="Humboldt, Tennessee" loading="lazy"><div class="community-copy"><span>Browse homes</span><h3>Humboldt</h3><p>Residential and investment opportunities</p></div></a>
   </div></div></section>
-  <section class="bedroom-feature" aria-label="Explore West Tennessee homes"><a class="bedroom-feature-link" href="forsale.html?type=homes"><div class="bedroom-feature-heading"><div class="bedroom-feature-content"><h2>Move-in ready homes for you.</h2><p>Explore the homes currently featured by Total Realty Source.</p></div><span class="bedroom-feature-cta">Explore Homes <span aria-hidden="true">→</span></span></div><div class="bedroom-property-preview" aria-label="Featured home previews"><article><strong>$250,000</strong><span>57 Wakefield Cove</span><small>Jackson, TN</small></article><article><strong>$185,000</strong><span>1256 Campbell Street</span><small>Jackson, TN</small></article><article><strong>$229,000</strong><span>23 Chestnut Cove</span><small>Oakfield, TN</small></article><article><strong>$629,900</strong><span>46 Oakfield Road</span><small>Oakfield, TN</small></article></div></a></section>
+  <section class="bedroom-feature" aria-label="Explore West Tennessee homes"><a class="bedroom-feature-link" href="forsale.html?type=homes"><div class="bedroom-feature-heading"><div class="bedroom-feature-content"><h2>Move-in ready homes for you.</h2><p>Explore the homes currently featured by Total Realty Source.</p></div><span class="bedroom-feature-cta">Explore Homes <span aria-hidden="true">→</span></span></div><div class="bedroom-property-preview" aria-label="Featured home previews"><article data-home-preview="wakefieldModal"><strong>$250,000</strong><span>57 Wakefield Cove</span><span>Jackson, TN</span></article><article data-home-preview="listing2603159Modal"><strong>$179,500</strong><span>1256 Campbell Street</span><span>Jackson, TN</span></article><article data-home-preview="listing2604937Modal"><strong>$239,900</strong><span>14141 Barrenfield Drive</span><span>Milan, TN</span></article><article data-home-preview="listing2602665Modal"><strong>$629,900</strong><span>46 Oakfield Road</span><span>Oakfield, TN</span></article></div></a></section>
   <section class="trust"><div class="shell trust-grid"><div class="trust-copy"><p class="kicker">West Tennessee Market Experience</p><h2 class="heading">Representation supported by local market knowledge</h2><p>Total Realty Source agents assist clients with property searches, pricing, negotiations, contracts, and transaction coordination throughout West Tennessee.</p><div class="trust-actions"><a class="btn" href="about.html">Meet Our Agents</a><a class="btn" href="contact.html">Contact Our Team</a></div></div><div class="reviews"><article class="review"><div class="stars">★★★★★</div><blockquote>“Brandie was so amazing in our home search! She was so responsive and worked to find homes within our budget and in the area that we were looking.”</blockquote><cite>— Heather R.</cite></article><article class="review"><div class="stars">★★★★★</div><blockquote>“Ashley is not only thoughtful but goes above and beyond to help in any way possible. She is always one call or text away and will give her honest feedback on every situation.”</blockquote><cite>— Travis and Tiffany Sutton</cite></article></div></div></section>
 </main>
 <section class="seo-link-matrix" id="west-tennessee-searches" aria-labelledby="seo-links-title"><div><h2 id="seo-links-title">Explore West Tennessee Real Estate</h2><nav aria-label="West Tennessee real estate searches"><a href="homes-for-sale/jackson-tn/">Jackson Homes for Sale</a><a href="homes-for-sale/medina-tn/">Medina Homes for Sale</a><a href="homes-for-sale/milan-tn/">Milan Homes for Sale</a><a href="homes-for-sale/humboldt-tn/">Humboldt Homes for Sale</a><a href="homes-for-sale/dyer-tn/">Dyer Homes for Sale</a><a href="homes-for-sale/martin-tn/">Martin Homes for Sale</a><a href="forsale.html?type=homes">West Tennessee Homes</a><a href="west-tennessee/land-acreage/">Land and Acreage</a><a href="forsale.html?type=other">Commercial and Other Properties</a><a href="homes-for-rent/west-tennessee/">West Tennessee Homes for Rent</a></nav></div></section>
@@ -203,6 +203,12 @@ const heroSearch=document.getElementById('heroSearch');
 document.querySelectorAll('#heroMaxPrice,#heroBeds').forEach(select=>select.addEventListener('change',()=>select.classList.toggle('filter-active',Boolean(select.value))));
 document.querySelectorAll('.tab').forEach(button=>button.addEventListener('click',()=>{
   intent=button.dataset.intent;
+  const budget=document.getElementById('heroMaxPrice');
+  const prices=intent==='rent' ? [[1000,'Up to $1,000/month'],[1500,'Up to $1,500/month'],[2000,'Up to $2,000/month'],[2500,'Up to $2,500/month'],[3000,'Up to $3,000/month'],[4000,'Up to $4,000/month']] : [[150000,'Up to $150K'],[250000,'Up to $250K'],[350000,'Up to $350K'],[500000,'Up to $500K'],[750000,'Up to $750K'],[1000000,'Up to $1M']];
+  budget.replaceChildren(new Option(intent==='rent'?'Any monthly rent':'Any price',''),...prices.map(([value,label])=>new Option(label,String(value))));
+  budget.setAttribute('aria-label',intent==='rent'?'Maximum monthly rent':'Maximum price');
+  budget.classList.remove('filter-active');
+
   document.querySelectorAll('.tab').forEach(tab=>tab.classList.toggle('active',tab===button));
   heroSearch.classList.toggle('sell-mode',intent==='sell');
   if(intent==='sell'){
@@ -230,7 +236,7 @@ document.getElementById('heroSearch').addEventListener('submit',event=>{
   }
   const looksLikeStreet=/^\d+\s|\b(street|st\.?|road|rd\.?|drive|dr\.?|lane|ln\.?|avenue|ave\.?|boulevard|blvd\.?|court|ct\.?|circle|cir\.?)\b/i.test(query);
   if(looksLikeStreet){searchHelp.textContent='To browse nearby listings, enter the city or ZIP code instead of a street address.';heroInput.focus();return}
-  const params=new URLSearchParams({location:query});
+  const params=new URLSearchParams({location:query,type:'homes'});
   const maxPrice=document.getElementById('heroMaxPrice').value;
   const beds=document.getElementById('heroBeds').value;
   if(maxPrice)params.set('max',maxPrice);
@@ -249,8 +255,8 @@ const inventoryPromise=fetch('forsale.html',{cache:'no-store'}).then(response=>r
   return [...page.querySelectorAll('.card[data-map-category="homes"]')].map(card=>{
     const priceText=card.querySelector('.price')?.textContent||'';
     const price=Number(priceText.replace(/[^0-9.]/g,''));
-    const stats=[...card.querySelectorAll('.stats strong')].map(item=>Number(item.textContent.replace(/[^0-9.]/g,'')));
-    const sqft=stats[1]||0;
+    const sqftStat=[...card.querySelectorAll('.stats > div')].find(item=>/^(sq\.?\s*ft\.?|sqft)$/i.test(item.querySelector('span')?.textContent.trim()||''));
+    const sqft=Number((sqftStat?.querySelector('strong')?.textContent||'').replace(/[^0-9.]/g,''));
     const modal=page.getElementById(card.dataset.modal);
     const addressElement=card.querySelector('.address');
     const addressParts=(addressElement?.innerHTML||'').split(/<br\s*\/?\s*>/i).map(part=>part.replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').trim()).filter(Boolean);
@@ -388,8 +394,8 @@ document.querySelectorAll('[data-closed-listings]').forEach(x=>x.textContent=(19
 const activeListingCountTargets=()=>document.querySelectorAll('#homepage-property-count,#overview-property-count,.professional-count strong,.desktop-editorial-count strong,.desktop-property-count strong');
 const setHomepageListingCount=total=>activeListingCountTargets().forEach(target=>target.textContent=Number(total).toLocaleString('en-US'));
 setHomepageListingCount(48);
-(async()=>{try{const r=await fetch('forsale.html',{cache:'no-store'}),d=new DOMParser().parseFromString(await r.text(),'text/html'),total=d.querySelectorAll('.card[data-map-category]').length;setHomepageListingCount(total);const hint=document.getElementById('heroInventoryHint');if(hint)hint.textContent=`${total.toLocaleString('en-US')} current listings`;}catch(_){}})();
+(async()=>{try{const r=await fetch('forsale.html',{cache:'no-store'}),d=new DOMParser().parseFromString(await r.text(),'text/html'),total=d.querySelectorAll('.card[data-map-category]').length;setHomepageListingCount(total);document.querySelectorAll('[data-home-preview]').forEach(preview=>{const card=d.querySelector('.card[data-modal=\"'+CSS.escape(preview.dataset.homePreview)+'\"]');if(!card){preview.remove();return;}preview.querySelector('strong').textContent=card.querySelector('.price').textContent;});const hint=document.getElementById('heroInventoryHint');if(hint)hint.textContent=`${total.toLocaleString('en-US')} current listings`;}catch(_){}})();
 </script>
-<script src="nav-drawer.js"></script>
+<script src="nav-drawer.js?v=20261021-ui1"></script>
 <script src="analytics-events.js" defer></script>
 </body></html>

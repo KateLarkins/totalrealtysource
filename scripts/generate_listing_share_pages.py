@@ -61,6 +61,7 @@ def main() -> None:
     OUTPUT.mkdir(exist_ok=True)
     cards = list(re.finditer(r'<div class="card"(?P<attrs>[^>]*)data-modal="(?P<modal>[^"]+)"[^>]*>', html, flags=re.I))
     generated = 0
+    active_pages = set()
     slug_counts = {}
     for index, match in enumerate(cards):
         modal_id = match.group("modal")
@@ -119,7 +120,11 @@ def main() -> None:
         (OUTPUT / f"{address_slug}.html").write_text(page, encoding="utf-8")
         # Retain the former internal-name URL as an invisible compatibility redirect.
         (OUTPUT / f"{modal_id}.html").write_text(page, encoding="utf-8")
+        active_pages.update({f"{address_slug}.html", f"{modal_id}.html"})
         generated += 1
+    for page in OUTPUT.glob("*.html"):
+        if page.name not in active_pages:
+            page.write_text('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0;url=../forsale.html?type=all"><title>Browse current properties | Total Realty Source</title></head><body><p>This property is no longer in our active inventory. <a href="../forsale.html?type=all">Browse current properties</a>.</p></body></html>\n', encoding="utf-8")
     print(f"Generated {generated} listing share pages in {OUTPUT}")
 
 

@@ -5,3 +5,14 @@
 cloudflare/node_modules/
 cloudflare/.wrangler/
 .pnpm-store/
+
+# Local exports, keys and publishing scratch files must stay out of the website.
+/.flexmls-sync/
+/certbot/
+/*.pem
+/*.enc
+/*.key
+/*.csr
+/work/
+/outputs/
+/listings [0-9]*/

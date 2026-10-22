@@ -1,0 +1,17 @@
+url: "https://totalrealtysource.com"
+baseurl: ""
+exclude:
+  - scripts
+  - cloudflare
+  - work
+  - outputs
+  - design-alternatives
+  - certbot
+  - .flexmls-sync
+  - "*.md"
+  - "*.csv"
+  - "*.pem"
+  - "*.enc"
+  - "*.key"
+  - "*.csr"
+  - "*.code-workspace"
