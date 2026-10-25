@@ -144,6 +144,7 @@
       const doc = new DOMParser().parseFromString(await response.text(),'text/html');
       const aliases = agent.aliases.map(value => value.toLowerCase());
       const cards = [...doc.querySelectorAll('.card[data-modal]')].filter(card => {
+        if (card.classList.contains('removed-listing')) return false;
         const modalAgent = doc.getElementById(card.dataset.modal)?.querySelector('[data-agent-name]')?.textContent;
         return aliases.includes(clean(modalAgent || card.dataset.agent).toLowerCase());
       });
