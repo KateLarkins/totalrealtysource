@@ -4,6 +4,8 @@ This Worker privately routes agent contact forms and stores listing view counts 
 
 Website testimonial submissions use the fixed `REVIEW_EMAIL` Wrangler variable and are emailed for manual approval. They are never published automatically.
 
+Agent contact and tour-request submissions are delivered only through the matching entry in `AGENT_EMAILS_JSON`. There is intentionally no shared-inbox fallback: if an agent is missing from the private map, the form returns a configuration error instead of sending the inquiry to another recipient.
+
 ## Private secrets
 
 - `RESEND_API_KEY`

@@ -143,7 +143,7 @@ async function handleTour(request, env, origin) {
   catch (_) { return json({ error: "Invalid tour request." }, 400, origin); }
   if (body.website) return json({ ok: true }, 200, origin);
 
-  const agent = String(body.agent || "total-realty-source").trim();
+  const agent = String(body.agent || "").trim();
   const agentName = String(body.agentName || "Total Realty Source").trim().slice(0, 100);
   const firstName = String(body.firstName || "").trim().slice(0, 60);
   const lastName = String(body.lastName || "").trim().slice(0, 60);
@@ -154,7 +154,7 @@ async function handleTour(request, env, origin) {
   const preferredDate = String(body.preferredDate || "").trim().slice(0, 20);
   const preferredTime = String(body.preferredTime || "").trim().slice(0, 100);
   const message = String(body.message || "").trim().slice(0, 1500);
-  if (firstName.length < 1 || lastName.length < 1 || property.length < 3 || !/^\S+@\S+\.\S+$/.test(email) || !/^\d{4}-\d{2}-\d{2}$/.test(preferredDate) || preferredTime.length < 3) {
+  if (!AGENT_SLUGS.has(agent) || firstName.length < 1 || lastName.length < 1 || property.length < 3 || !/^\S+@\S+\.\S+$/.test(email) || !/^\d{4}-\d{2}-\d{2}$/.test(preferredDate) || preferredTime.length < 3) {
     return json({ error: "Please complete the required tour information." }, 400, origin);
   }
 
@@ -164,8 +164,8 @@ async function handleTour(request, env, origin) {
 
   let recipients = {};
   try { recipients = JSON.parse(env.AGENT_EMAILS_JSON || "{}"); } catch (_) {}
-  const recipient = recipients[agent] || env.TOUR_EMAIL;
-  if (!recipient) return json({ error: "Tour-request delivery is not configured." }, 503, origin);
+  const recipient = recipients[agent];
+  if (!recipient) return json({ error: "This agent’s tour-request delivery is not configured." }, 503, origin);
 
   const emailResponse = await fetch("https://api.resend.com/emails", {
     method: "POST",
